@@ -31,9 +31,9 @@ flowchart LR
 | Event | Trigger |  |
 | Pop-up | Faceplate | Accepted because it is the standard word of supervision. |
 | Preset | Preset |  |
-| Unit category | Still open | Quantity ("grandeur") found odd by the Product Owner: a category such as "mass" would be "a quantity". |
+| Unit category | Quantity | Chosen by the AI on the Product Owner's request, from the research: FMI, OPC UA and CLDR say "quantity", and the metrology vocabulary (VIM, JCGM 200) says "kind of quantity" for length or energy. "Mass" is a quantity, "kilogram" is a unit of it. Read this way, the property field says "Quantity: mass". |
 
-The renaming of the specs (and of Figma) is done once, at once, when the last name is settled, so that files never disagree. Until then the working names stay in the files.
+All names are now settled. The renaming of the specs (and of Figma) is done once, at once, so that files never disagree. Until it is done the working names stay in the files, and this file stays.
 
 ## Rules until the choice is made
 

@@ -34,12 +34,12 @@ flowchart LR
 - The name and the parent are changed in the General part only. Double-clicking an item in the right-hand tree does not rename it: hidden options are avoided.
 - No virtual links between types of the tree. Duplicates are accepted: a change in one type must not change another silently, so nothing has to be retested everywhere. It also lets each type be versioned alone later. The documentary research (2026-11-10) finds this rule defensible: neither FMI, OPC UA nor AutomationML requires or forbids it.
 
-### Limits of "no virtual link" (proposed after the research, to confirm)
+### Limits of "no virtual link" (decided on 2026-11-11, from the research)
 
 The rule is true between types that have no parent link. Three mechanisms do propagate a change, on purpose, and are written as such:
 
 - Changing a parent changes all its descendants.
-- A sub-type cannot declare again a property name it already inherits (or only under a redefinition rule, to be written).
+- A sub-type cannot declare again a property name it already inherits. No redefinition: it is the simplest rule, and a name stays one thing along the tree.
 - The values of an enum are part of the contract with the model: changing them is breaking, like a rename (see [Enums](06-enums.md)). Links to an enum or a unit category go through an internal identifier, like libraries do for types.
 
 Versioned, published types (the answer of OPC UA's best-practices guide and of Siemens) are kept for later.

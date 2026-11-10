@@ -85,14 +85,14 @@ All of it stays in pure JavaScript.
 - A conversion is one of the closed forms. A pair of free expressions, going and back, is the last resort. The application checks that the pair is a round trip.
 - The application needs a good stock of ready-made units from the start. Whether it ships a catalogue (and under which licence: UCUM, QUDT, CLDR) is open.
 
-### Proposed after the research, to confirm
+The following were validated on 2026-11-11 by the Product Owner, who asked for the choice that makes the most sense from the research.
 
 - The user types a value in the display unit, so the back conversion (display unit to model unit) is also needed. The model value is still the only one stored.
-- A temperature and a temperature difference are not converted the same way (25 °C is 77 °F, but a difference of 25 °C is a difference of 45 °F). A category, or a "relative" flag, covers differences: a heating rate in °C/min is a difference.
+- A temperature and a temperature difference are not converted the same way: 25 °C is 77 °F, but a difference of 25 °C is a difference of 45 °F (a heating rate in °C/min is a difference). A difference is its own category ("temperature difference"), with its own units and a proportional conversion. This needs no new mechanism, and it keeps the rule that a conversion only exists inside a category.
 - Unit names carry their variant (US gallon, thermochemical calorie), because one name hides several values.
 - Units are flat: "m³/h" is one unit with its own factor, nothing is deduced from its parts.
 - When a conversion is not defined (logarithm of zero), the display says so instead of showing a wrong number.
-- Floating point does not round-trip exactly (12 997 of 100 000 values do not come back unchanged from °C to °F to °C): display rounding hides it, and an input is rounded before it goes to the model. The rounding rule is open.
+- Floating point does not round-trip exactly (12 997 of 100 000 values do not come back unchanged from °C to °F to °C): display rounding hides it. A value typed in the display unit is converted back to the model unit, then rounded to 12 significant digits before it goes to the model, which removes the floating-point noise (100.03999999999999 becomes 100.04) and keeps the real precision of a 64-bit double (about 15 digits).
 
 ## Decimal places
 
