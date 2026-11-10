@@ -24,7 +24,7 @@ flowchart TD
 
 - Commands are created and changed in Metadata only.
 - In a symbol, direct commands: the user links a command from Metadata to a click on a part of the symbol.
-- On the web front, a command is a button and nothing else (to check against the typed-value command below).
+- On the web front, a command is a button, except a typed-value command, which has two ways to take its value (see below).
 - A preset does not choose commands: all the commands of a type stay available. The symbol says which it uses.
 
 ## Set a signal, fixed value
@@ -44,16 +44,24 @@ sequenceDiagram
 
 ## Set a signal, typed value
 
-On a number signal, an input appears and the person types the value to send, instead of a fixed one. Such a command is not necessarily tied to a click on the symbol: it can also live in a faceplate. The typed value follows the same checks as any typed value: bounds, conversion back to the model unit and rounding (see [Faceplates](08-faceplates.md) and [Units](05-units.md)).
+On a number signal, the person types the value to send, instead of a fixed one. Two ways to give it, both allowed (decided by the Product Owner on 2026-11-11), on the web and on the desktop:
+
+| Way | What the user sees | Where it lives |
+| --- | --- | --- |
+| Display that becomes an input | A read-only display of the value. A click on it turns it into an input, placed right there with an SVG foreignObject (a form element inside the SVG of the symbol). | On the symbol. |
+| Faceplate | The input sits in the faceplate, which opens as a panel. | In the faceplate (see [Faceplates](08-faceplates.md)). |
+
+A typed-value command can use either way or both. It is not necessarily tied to a click on a part of the symbol. The typed value follows the same checks as any typed value: bounds, conversion back to the model unit and rounding (see [Faceplates](08-faceplates.md) and [Units](05-units.md)).
 
 ```mermaid
 sequenceDiagram
     actor U as User
     participant F as Front
     participant M as Model (back)
-    U->>F: triggers the command
+    U->>F: clicks the read-only display, or opens the faceplate
     F-->>U: an input appears
     U->>F: types 120
+    F->>F: checks the bounds, converts, rounds
     F->>M: setpoint = 120
 ```
 
@@ -62,7 +70,3 @@ sequenceDiagram
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Command (set a signal, trigger) | Metadata | Faceplate entry, click on a part of a symbol | Link a command to a click | No |
-
-## Open questions
-
-- On the web, what does a typed-value command do? Proposal: a button that opens a small input. It is also listed in [Open questions](12-open-questions.md).

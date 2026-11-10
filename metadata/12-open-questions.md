@@ -10,7 +10,6 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 
 | Question | Page | Written as |
 | --- | --- | --- |
-| On the web, what does a typed-value command do? | [Commands](07-commands.md) | Open; proposal: a button that opens a small input. |
 | Palette, icon list and default icon and colour | [Icons](02-icons.md) | To define with the design system. |
 | Folder, generated files and conflicts between people | [Files and conflicts](../storage/files-and-conflicts.md) | Open, not about metadata. |
 | Source and licence of the ready-made catalogue of units | [Units](05-units.md) | Open: the licences of UCUM, QUDT, CLDR and NIST were not checked; to settle before release. |
