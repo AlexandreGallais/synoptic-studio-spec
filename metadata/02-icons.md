@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Icons · Previous: [Types](01-types.md) · Next: [Documentation](03-documentation.md)
 
-Status: draft, rules stated by the Product Owner on 2026-11-10. Nothing here is validated.
+Status: validated by the Product Owner on 2026-11-11. Open points are listed in [Open questions](12-open-questions.md).
 
 An icon helps to recognise a type at a glance, in addition to its name. It is only for the application and says nothing to the model.
 

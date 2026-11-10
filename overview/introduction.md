@@ -23,7 +23,7 @@ The Product Owner splits the application in three parts.
 
 | Part | What it holds | Specified in |
 | --- | --- | --- |
-| Metadata | The data and documentation a symbol can be attached to: type tree, icons, documentation, properties, units, enums, commands, pop-ups, presets, libraries. | [Metadata](../metadata/README.md) |
+| Metadata | The data and documentation a symbol can be attached to: type tree, icons, documentation, signals, units, enums, commands, faceplates, presets, libraries. | [Metadata](../metadata/README.md) |
 | Two other parts | Not described yet. | To come. |
 
 How the files of every part are read and written is described in [Storage](../storage/README.md).
@@ -50,7 +50,7 @@ The editor is also a tool to specify an installation and to help the people who 
 - The user can draw the whole plan of the installation.
 - Every symbol has a type (a pump, for example).
 - A type carries linked documentation: when the user selects a pump, they find the information on how to create a pump.
-- A type's properties are the inputs and outputs of the model: they define in advance the signals that simulation models connect to.
+- A type's signals are the inputs and outputs of the model: they define in advance what simulation models connect to.
 
 ## Two modes
 

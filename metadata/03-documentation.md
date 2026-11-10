@@ -1,8 +1,8 @@
 # Type documentation
 
-> [Home](../README.md) › [Metadata](README.md) › Documentation · Previous: [Icons](02-icons.md) · Next: [Properties](04-properties.md)
+> [Home](../README.md) › [Metadata](README.md) › Documentation · Previous: [Icons](02-icons.md) · Next: [Signals](04-signals.md)
 
-Status: draft, rules stated by the Product Owner on 2026-11-10. Nothing here is validated.
+Status: validated by the Product Owner on 2026-11-11. Open points are listed in [Open questions](12-open-questions.md).
 
 A type has a documentation page, where people put what explains the type: a description and links to documents and sources.
 

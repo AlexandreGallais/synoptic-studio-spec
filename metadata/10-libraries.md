@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Libraries · Previous: [Presets](09-presets.md) · Next: [Who changes what](11-who-changes-what.md)
 
-Status: draft, rules stated by the Product Owner on 2026-11-10. Nothing here is validated.
+Status: validated by the Product Owner on 2026-11-11. Open points are listed in [Open questions](12-open-questions.md).
 
 A library is a flat list that points to types. It only sorts them, so that people find their way. Everyone can have all the types, and a library sorts them by project or by trade.
 

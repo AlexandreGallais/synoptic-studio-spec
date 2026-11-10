@@ -2,13 +2,13 @@
 
 The specifications of **Synoptic Studio**, the open source desktop application to create and edit synoptics (animated process views of an industrial installation).
 
-Status: draft. The specs are written with the Product Owner and are not validated yet.
+Status: the Metadata part is validated by the Product Owner (2026-11-11). The other parts are not written yet.
 
 ## What Synoptic Studio is
 
 Synoptic Studio lets a company model its installation and build synoptics animated in JavaScript, without a SCADA. It replaces only the visual part of a SCADA: creating a view and displaying it. The company wires its own controllers to the displayed view.
 
-It is also a tool to specify an installation and to help the people who simulate a whole circuit: the properties of a type define in advance the signals that simulation models connect to.
+It is also a tool to specify an installation and to help the people who simulate a whole circuit: the signals of a type define in advance what simulation models connect to.
 
 ```mermaid
 flowchart LR
@@ -30,13 +30,13 @@ The Product Owner splits the application in three parts. Only the first one is s
 ```mermaid
 flowchart TD
     APP["Synoptic Studio (open source application)"]
-    APP --> MD["Part 1: Metadata, specified"]
+    APP --> MD["Part 1: Metadata, specified and validated"]
     APP --> P2["Part 2: to describe"]
     APP --> P3["Part 3: to describe"]
     APP --> ST["Storage: how every part reads and writes its files"]
     MD --> MD1["Types, icons, documentation"]
-    MD --> MD2["Properties, units, enums"]
-    MD --> MD3["Commands, pop-ups, presets, libraries"]
+    MD --> MD2["Signals, units, enums"]
+    MD --> MD3["Commands, faceplates, presets, libraries"]
 ```
 
 ## Where to read
@@ -50,10 +50,10 @@ flowchart TD
 Metadata pages, in reading order:
 
 1. What a type is: [Types](metadata/01-types.md), [Icons](metadata/02-icons.md), [Documentation](metadata/03-documentation.md).
-2. The model side: [Properties](metadata/04-properties.md), [Units](metadata/05-units.md), [Enums](metadata/06-enums.md).
-3. The front side: [Commands](metadata/07-commands.md), [Pop-ups](metadata/08-popups.md), [Presets](metadata/09-presets.md).
+2. The model side: [Signals](metadata/04-signals.md), [Units](metadata/05-units.md), [Enums](metadata/06-enums.md).
+3. The front side: [Commands](metadata/07-commands.md), [Faceplates](metadata/08-faceplates.md), [Presets](metadata/09-presets.md).
 4. How it is used: [Libraries](metadata/10-libraries.md), [Who changes what](metadata/11-who-changes-what.md).
-5. What is left to decide: [Naming](metadata/12-naming.md), [Open questions](metadata/13-open-questions.md).
+5. What is left to decide: [Open questions](metadata/12-open-questions.md).
 
 ## What it does not contain
 
