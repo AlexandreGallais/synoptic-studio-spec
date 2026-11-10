@@ -43,6 +43,7 @@ For each command or event entry, the user adds it and gives it the name shown in
 - They are given in the synoptic, on each symbol the user places. The same symbol placed twice can have two different titles.
 - They only change what the pop-up shows. They never go to the model.
 - A synoptic can therefore edit more than the ticking of entries: it also sets the title and the description of the pop-up of each placed symbol.
+- The description is plain text only: no Markdown, no formatting, no links. Line breaks are kept. This keeps the pop-up light.
 
 ```mermaid
 flowchart LR
@@ -66,7 +67,3 @@ flowchart LR
 | --- | --- | --- | --- | --- |
 | Pop-up and its entries | Metadata | Preset (saved with entries shown by default) | Tick or untick entries | Tick or untick entries |
 | Pop-up title and description | Synoptic, on each placed symbol | The pop-up of that symbol | No | Write them |
-
-## Open questions
-
-- Is the description of a pop-up plain text or Markdown? Proposal: plain text. It is also listed in [Open questions](13-open-questions.md).

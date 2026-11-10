@@ -8,7 +8,6 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 
 | Question | Page | Written as |
 | --- | --- | --- |
-| Is the description of a pop-up plain text or Markdown? | [Pop-ups](08-popups.md) | Open; proposal: plain text. |
 | On the web, what does a typed-value command do? | [Commands](07-commands.md) | Open; proposal: a button that opens a small input. |
 | Palette, icon list and default icon and colour | [Icons](02-icons.md) | To define with the design system. |
 | Folder, generated files and conflicts between people | [Files and conflicts](../storage/files-and-conflicts.md) | Open, not about metadata. |
