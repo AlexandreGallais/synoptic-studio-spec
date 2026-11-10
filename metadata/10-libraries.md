@@ -64,17 +64,17 @@ flowchart LR
     C --> D[In a symbol, choose the library: only its types are shown]
 ```
 
-## Where it is used
+## A ticked type whose parent is not ticked
 
-| Thing | Created and changed in | Used in | In a symbol | In a synoptic |
-| --- | --- | --- | --- | --- |
-| Library (ticked types) | Metadata | Left view of the symbol's type choice | Choose a library, then one of its types | No |
+- The parent is still shown in the tree, so that the path stays readable.
+- On the symbol side, the parent cannot be selected: it is shown but greyed, only the ticked types can be chosen.
 
 ## Why the library has no version
 
 Libraries and types are generated as files, which the open source version reads from and writes to a folder (see [Storage](../storage/files-and-conflicts.md)). A version of a library is not a notion of these specs for now: the application only has access to a folder, so no versioning option was started. How a file is saved and how conflicts between people are avoided is not about metadata: it is described in [Storage](../storage/files-and-conflicts.md).
 
-## A ticked type whose parent is not ticked
+## Where it is used
 
-- The parent is still shown in the tree, so that the path stays readable.
-- On the symbol side, the parent cannot be selected: it is shown but greyed, only the ticked types can be chosen.
+| Thing | Created and changed in | Used in | In a symbol | In a synoptic |
+| --- | --- | --- | --- | --- |
+| Library (ticked types) | Metadata | Left view of the symbol's type choice | Choose a library, then one of its types | No |

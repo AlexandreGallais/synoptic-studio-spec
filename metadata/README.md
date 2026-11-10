@@ -84,7 +84,17 @@ flowchart LR
 
 ## Page layout
 
-Every page follows the same order: navigation line, status, rules and diagrams, "Where it is used" table, then "Open questions" when there are some.
+Every concept page (types to libraries) follows the same skeleton, in this order:
+
+1. Title, then the navigation line (breadcrumb, previous, next).
+2. `Status:` line, then a short paragraph saying what the page is about.
+3. `## Rules`: the rules stated by the Product Owner, with their diagrams.
+4. Detail sections specific to the page (fields, steps, examples of use).
+5. `## Example`, when the page has one.
+6. `## Where it is used`: the table of where the thing is created, changed and used.
+7. `## Open questions`, last, only when the page has some; each is also listed in [Open questions](13-open-questions.md).
+
+The index pages ([Who changes what](11-who-changes-what.md), [Naming](12-naming.md), [Open questions](13-open-questions.md)) keep their own shape, with the same header lines.
 
 ## See also
 

@@ -6,16 +6,6 @@ Status: draft, rules stated by the Product Owner on 2026-11-10. Nothing here is 
 
 A preset is made under a type (example: pneumatic positive displacement pump). It saves a pop-up with its defaults, so that a symbol or a synoptic starts well configured. It stays simple: defaults, nothing more.
 
-## What a preset holds
-
-```mermaid
-flowchart TD
-    R[Preset] --> D[Default values of properties]
-    R --> U[Display unit for each: starts as the model unit]
-    R --> N[Decimal places for each: start as the Units page default]
-    R --> V[Pop-up entries shown by default]
-```
-
 ## Rules
 
 - A type needs at least one preset to be chosen in a symbol or a synoptic. No preset is created automatically. If no preset fits, the user creates one in Metadata.
@@ -38,6 +28,16 @@ sequenceDiagram
     U->>SY: edits a default value or a display unit
     U->>SN: chooses the preset
     U->>SN: edits a default value or a display unit
+```
+
+## What a preset holds
+
+```mermaid
+flowchart TD
+    R[Preset] --> D[Default values of properties]
+    R --> U[Display unit for each: starts as the model unit]
+    R --> N[Decimal places for each: start as the Units page default]
+    R --> V[Pop-up entries shown by default]
 ```
 
 ## Where it is used

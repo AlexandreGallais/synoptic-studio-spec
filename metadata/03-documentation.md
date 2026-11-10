@@ -6,6 +6,11 @@ Status: draft, rules stated by the Product Owner on 2026-11-10. Nothing here is 
 
 A type has a documentation page, where people put what explains the type: a description and links to documents and sources.
 
+## Rules
+
+- Documentation is created and changed in Metadata only.
+- The description and the links do not go to the model.
+
 ## What the page holds
 
 | Part | Meaning |
@@ -58,11 +63,6 @@ flowchart TD
     K1 -->|"open"| F["The folder that contains it opens"]
     K2 -->|"open"| B["The browser opens"]
 ```
-
-## Rules
-
-- Documentation is created and changed in Metadata only.
-- The description and the links do not go to the model.
 
 ## Where it is used
 

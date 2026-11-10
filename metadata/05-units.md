@@ -6,7 +6,7 @@ Status: draft, rules stated by the Product Owner on 2026-11-10. Nothing here is 
 
 A Units page lists unit categories (mass, volume, flow, pressure...), created by the user.
 
-## Structure
+## Rules
 
 ```mermaid
 flowchart TD

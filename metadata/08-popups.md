@@ -6,7 +6,9 @@ Status: draft, rules stated by the Product Owner on 2026-11-10. Nothing here is 
 
 A pop-up is a panel built in Metadata. It is the front side of a type: what the user sees and can act on.
 
-## An entry
+## Rules
+
+### An entry
 
 ```mermaid
 flowchart TD
@@ -27,14 +29,14 @@ For each property entry, the user:
 
 For each command or event entry, the user adds it and gives it the name shown in the pop-up.
 
-## Ticking entries
+### Ticking entries
 
 - The pop-up is saved in a preset, with the entries shown by default (see [Presets](09-presets.md)).
 - In a symbol and in a synoptic, the full list of entries is always there and the user can tick or untick each one.
 - This changes the display only, never the model's inputs and outputs.
 - In a synoptic, only the pop-up can be edited. A command that is not wanted means a new symbol, because the symbol shows something extra.
 
-## Title and description: given in the synoptic, not in Metadata
+### Title and description: given in the synoptic, not in Metadata
 
 - A pop-up can show a title and, possibly, a description.
 - They are not defined in Metadata: they are not part of a type, a pop-up or a preset.

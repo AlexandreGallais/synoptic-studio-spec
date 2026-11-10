@@ -44,6 +44,6 @@ flowchart TD
 | --- | --- | --- | --- | --- |
 | Icon and colour of a type | Metadata, General | Tree, tiles, lists | No | No |
 
-## To define with the design system
+## Open questions
 
-The contents of the palette, the list of icons at the start, and the default icon and colour are not decided here. They are defined when the design system is defined.
+- To define with the design system: the contents of the palette, the list of icons at the start, and the default icon and colour are not decided here. They are defined when the design system is defined.

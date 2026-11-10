@@ -20,6 +20,13 @@ flowchart TD
     E --> N[A name, no target]
 ```
 
+## Rules
+
+- Commands are created and changed in Metadata only.
+- In a symbol, direct commands: the user links a command from Metadata to a click on a part of the symbol.
+- On the web front, a command is a button and nothing else (to check against the typed-value command below).
+- A preset does not choose commands: all the commands of a type stay available. The symbol says which it uses.
+
 ## Set a property, fixed value
 
 Example: the command `start`, when the user clicks a zone of the symbol, sets the property `running` to `true`. The user edits the value sent.
@@ -49,13 +56,6 @@ sequenceDiagram
     U->>F: types 120
     F->>M: setpoint = 120
 ```
-
-## Rules
-
-- Commands are created and changed in Metadata only.
-- In a symbol, direct commands: the user links a command from Metadata to a click on a part of the symbol.
-- On the web front, a command is a button and nothing else (to check against the typed-value command above).
-- A preset does not choose commands: all the commands of a type stay available. The symbol says which it uses.
 
 ## Where it is used
 

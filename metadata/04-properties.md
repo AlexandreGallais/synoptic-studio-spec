@@ -6,6 +6,13 @@ Status: draft, rules stated by the Product Owner on 2026-11-10. Nothing here is 
 
 A property is a signal between the front and the model: an input or an output of the model. Only these are defined here. Properties that stay inside the model are not defined in Metadata: the people who write the model name them as they wish, and they are invisible to the application.
 
+## Rules
+
+- No default value on a property: default values live in presets only (see [Presets](09-presets.md)).
+- Properties are inherited along the tree: "Pneumatic positive displacement pump" has the properties of Pump, of Positive displacement pump and of its own.
+- Properties are created and changed in Metadata only, never in a symbol or a synoptic.
+- A property's name is part of the model's interface definition: it is set once and is not meant to change. Renaming one is breaking for models, as for types (see [Types](01-types.md)). It is done the same way: Edit button, change, Save button, with no warning.
+
 ## Fields
 
 | Field | Meaning | Rule |
@@ -35,13 +42,6 @@ classDiagram
     Property ..> UnitCategory : category
     Property ..> Enum : link
 ```
-
-## Rules
-
-- No default value on a property: default values live in presets only (see [Presets](09-presets.md)).
-- Properties are inherited along the tree: "Pneumatic positive displacement pump" has the properties of Pump, of Positive displacement pump and of its own.
-- Properties are created and changed in Metadata only, never in a symbol or a synoptic.
-- A property's name is part of the model's interface definition: it is set once and is not meant to change. Renaming one is breaking for models, as for types (see [Types](01-types.md)). It is done the same way: Edit button, change, Save button, with no warning.
 
 ## Example
 
