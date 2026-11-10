@@ -4,7 +4,7 @@
 
 Status: draft, rules stated by the Product Owner on 2026-11-10. Nothing here is validated.
 
-A property is a signal between the front and the model: an input or an output of the model. Only these are defined here. Properties that stay inside the model are not defined in Metadata: the people who write the model name them as they wish, and they are invisible to the application.
+A property is a signal between the front and the model: an input or an output of the model. Only these are defined here. Metadata is the contract with the model: what is negotiated with the model author is written here. Transforming data (for example mapping a value to a 0 to 1 range for an animation, proportionally or not) is not done here: it belongs to symbol editing. Properties that stay inside the model are not defined in Metadata: the people who write the model name them as they wish, and they are invisible to the application.
 
 ## Rules
 
@@ -18,11 +18,11 @@ A property is a signal between the front and the model: an input or an output of
 | Field | Meaning | Rule |
 | --- | --- | --- |
 | Name | The property's name. | It is also its variable identifier. No second label. |
-| Type | What kind of value. | Number, boolean, text or enum. Proposed after the research, to confirm: a number is an integer or a real, as in FMI and SSP. |
+| Type | What kind of value. | Integer, real, boolean, text or enum (decided on 2026-11-11). A real is a 64-bit double. |
 | Enum | For an enum: the list of values. | An enum picked from the Enums page (see [Enums](06-enums.md)). A link to it, never a copy, and never defined in the property. |
 | Unit category | What the value measures (volume, flow, pressure...). | Picked from the Units page (see [Units](05-units.md)). Only for numbers. |
 | Model unit | The unit in which the model handles the value. | By default the model unit of the category. Can be overridden here with another unit of the same category. |
-| Minimum, maximum | Bounds of a number. | Metadata of the property, written in the model unit. In FMI and OPC UA they are indicative: the zone the model is designed for, not a guarantee. Whether the application also blocks an input outside them is open. |
+| Minimum, maximum | Bounds of a number. | Metadata of the property, indicative, written in the model unit (decided on 2026-11-11). They are the zone the model is designed for, not a guarantee. Whether the application also blocks an input outside them is open. |
 | Direction | Input or output of the model. | Belongs to the property. |
 
 ```mermaid

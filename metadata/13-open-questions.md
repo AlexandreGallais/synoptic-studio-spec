@@ -11,8 +11,9 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | On the web, what does a typed-value command do? | [Commands](07-commands.md) | Open; proposal: a button that opens a small input. |
 | Palette, icon list and default icon and colour | [Icons](02-icons.md) | To define with the design system. |
 | Folder, generated files and conflicts between people | [Files and conflicts](../storage/files-and-conflicts.md) | Open, not about metadata. |
-| Final names | [Naming](12-naming.md) | Open; the research gives an opinion for each. |
-| Confirm the choices proposed after the research (parent limits, enum items as (name, value) and their change rule, integer or real, conversion by reference family and closed forms, differences, back conversion) | [Types](01-types.md), [Enums](06-enums.md), [Properties](04-properties.md), [Units](05-units.md) | Proposed, to confirm. |
+| Name of "unit category" (the other names are decided) | [Naming](12-naming.md) | Open; research opinion: Quantity, found odd. |
+| Confirm the choices proposed after the research (parent limits, enum items as (name, value) and their change rule, temperature differences, back conversion, unit variants, undefined conversion) | [Types](01-types.md), [Enums](06-enums.md), [Units](05-units.md) | Proposed, to confirm. |
+| Does the application ship a catalogue of ready-made units, and under which licence? | [Units](05-units.md) | Open. |
 | Are bounds only information, or do they block an input? Do models need parameters, distinct from inputs and outputs? Does the pop-up need a display label distinct from the name? | [Properties](04-properties.md) | Open. |
 | How is a value typed in the display unit rounded before it goes to the model? | [Units](05-units.md) | Open. |
 

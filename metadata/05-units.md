@@ -20,7 +20,7 @@ flowchart TD
 - A category holds one or more unit families.
 - A family is a table of units, like the school ladder: kilogram, hectogram, decagram, gram, decigram, centigram, milligram. Each unit has its ratio to the others in the family.
 - A category can hold several families. Example: category "mass" has the family "gram" (the metric ladder) and the family "pound" (pound, ounce...).
-- Between two families, the user writes the mathematical formula to go from one to the other, one formula for each direction. Formulas are not limited to a factor, so cases like temperature are covered. The research proposes a simpler way, see "Conversions only inside a category".
+- Each category has a reference family. Every other family is converted to it and from it, never pairwise (decided by the Product Owner on 2026-11-11). Formulas are not limited to a factor, so cases like temperature are covered. See "Conversions only inside a category".
 
 ```mermaid
 flowchart LR
@@ -79,10 +79,14 @@ The documentary research (2026-11-10) answers which function is needed: no singl
 
 All of it stays in pure JavaScript.
 
-### Proposed after the research, to confirm
+### Decided on 2026-11-11
 
 - Each category has a reference family. Families convert to it and from it, not pairwise: 4 families need 6 formulas instead of 12, and two formulas cannot contradict each other.
 - A conversion is one of the closed forms. A pair of free expressions, going and back, is the last resort. The application checks that the pair is a round trip.
+- The application needs a good stock of ready-made units from the start. Whether it ships a catalogue (and under which licence: UCUM, QUDT, CLDR) is open.
+
+### Proposed after the research, to confirm
+
 - The user types a value in the display unit, so the back conversion (display unit to model unit) is also needed. The model value is still the only one stored.
 - A temperature and a temperature difference are not converted the same way (25 °C is 77 °F, but a difference of 25 °C is a difference of 45 °F). A category, or a "relative" flag, covers differences: a heating rate in °C/min is a difference.
 - Unit names carry their variant (US gallon, thermochemical calorie), because one name hides several values.

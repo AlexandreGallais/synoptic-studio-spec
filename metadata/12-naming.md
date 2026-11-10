@@ -22,6 +22,19 @@ flowchart LR
     P --> D["Names chosen, then applied to every spec file"]
 ```
 
+## Decisions of 2026-11-11
+
+| Today | Decided | Note |
+| --- | --- | --- |
+| Property | Signal |  |
+| Command | Command |  |
+| Event | Trigger |  |
+| Pop-up | Faceplate | Accepted because it is the standard word of supervision. |
+| Preset | Preset |  |
+| Unit category | Still open | Quantity ("grandeur") found odd by the Product Owner: a category such as "mass" would be "a quantity". |
+
+The renaming of the specs (and of Figma) is done once, at once, when the last name is settled, so that files never disagree. Until then the working names stay in the files.
+
 ## Rules until the choice is made
 
 - The working names stay in the specs (property, command, event, pop-up, preset), so that every file says the same thing.
