@@ -8,12 +8,13 @@ An Enums page lists the enums of the application, like the Units page lists the 
 
 ## Rules
 
-- An enum is a named list of values: a list of numbers or a list of strings.
+- An enum is a named list of items. Proposed after the research, to confirm: an item is a pair (name, value), as in FMI, SSP and OPC UA. The name is the readable text; the value is the number or string the model receives. Names are unique in the enum, and so are values.
 - Enums are created and changed on the Enums page only, never inside a property, a symbol or a synoptic.
 - A new enum goes into the list of the Enums page. The list can be filled in advance, before any property uses it.
 - A property of the type enum picks one enum of the list. It is a link to the existing enum, never a copy.
 - Several properties can point to the same enum.
 - Changing an enum changes it for every property that points to it: that is the point of a link.
+- Proposed after the research, to confirm: the values of an enum are part of the contract with the model. Adding, removing or changing a value is breaking, like a rename (OPC UA's best-practices guide forbids it for a published enum). Changing the name of an item, which the model does not see, is not breaking.
 
 ```mermaid
 flowchart LR

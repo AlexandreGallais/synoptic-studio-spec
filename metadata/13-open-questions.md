@@ -11,7 +11,10 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | On the web, what does a typed-value command do? | [Commands](07-commands.md) | Open; proposal: a button that opens a small input. |
 | Palette, icon list and default icon and colour | [Icons](02-icons.md) | To define with the design system. |
 | Folder, generated files and conflicts between people | [Files and conflicts](../storage/files-and-conflicts.md) | Open, not about metadata. |
-| Final names | [Naming](12-naming.md) | Open. |
+| Final names | [Naming](12-naming.md) | Open; the research gives an opinion for each. |
+| Confirm the choices proposed after the research (parent limits, enum items as (name, value) and their change rule, integer or real, conversion by reference family and closed forms, differences, back conversion) | [Types](01-types.md), [Enums](06-enums.md), [Properties](04-properties.md), [Units](05-units.md) | Proposed, to confirm. |
+| Are bounds only information, or do they block an input? Do models need parameters, distinct from inputs and outputs? Does the pop-up need a display label distinct from the name? | [Properties](04-properties.md) | Open. |
+| How is a value typed in the display unit rounded before it goes to the model? | [Units](05-units.md) | Open. |
 
 ```mermaid
 flowchart LR
@@ -20,10 +23,8 @@ flowchart LR
     A["Answered"] -->|"removed from both, answer written in the page's rules"| F
 ```
 
-## To do later
+## Documentary research: done
 
-One documentary research is a task of the specification list. It is launched when the conversation is finished, once these files are consistent. It covers three things:
+The documentary research of 2026-11-10 covered data models, unit conversions and vocabulary. Its report is `research/t2-recherche-documentaire-unique-modeles-de-donnees/rapport.md` (a source, never committed). What it settles is written in [Types](01-types.md), [Properties](04-properties.md), [Units](05-units.md), [Enums](06-enums.md) and [Naming](12-naming.md), as proposals until the Product Owner confirms.
 
-- Data models: full reading of the standards (FMI, OPC UA, AutomationML) and the risks of shared nodes and inheritance for stability. See [Types](01-types.md), [Properties](04-properties.md), [Enums](06-enums.md).
-- Unit conversions: which mathematical function is needed to convert any unit into any other unit of the same physical family (kilograms to pounds, never kilograms to volts), across the physics a model can use. See [Units](05-units.md).
-- Vocabulary: which words the standards and the trades use for these concepts (signal, variable or property; command, control, event or trigger; preset, template, configuration or profile; pop-up, panel or inspector). See [Naming](12-naming.md).
+Not read by the research, to read if the subject matters: the exact linear conversion of OPC UA Part 8, the mirror-object rules of AutomationML (IEC 62714), ISA-101 for "faceplate", and the licences of UCUM, QUDT and CLDR if the application ships a ready-made unit catalogue.

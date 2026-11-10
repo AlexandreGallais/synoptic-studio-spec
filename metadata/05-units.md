@@ -20,7 +20,7 @@ flowchart TD
 - A category holds one or more unit families.
 - A family is a table of units, like the school ladder: kilogram, hectogram, decagram, gram, decigram, centigram, milligram. Each unit has its ratio to the others in the family.
 - A category can hold several families. Example: category "mass" has the family "gram" (the metric ladder) and the family "pound" (pound, ounce...).
-- Between two families, the user writes the mathematical formula to go from one to the other, one formula for each direction. Formulas are not limited to a factor, so cases like temperature are covered.
+- Between two families, the user writes the mathematical formula to go from one to the other, one formula for each direction. Formulas are not limited to a factor, so cases like temperature are covered. The research proposes a simpler way, see "Conversions only inside a category".
 
 ```mermaid
 flowchart LR
@@ -65,7 +65,30 @@ sequenceDiagram
 
 ## Conversions only inside a category
 
-A conversion only exists between two units of the same category: kilograms to pounds, never kilograms to volts. A documentary research is planned to say which mathematical function is needed to make every conversion between units of the same physical family (it is one of the questions of the documentary research, see [Open questions](13-open-questions.md), "To do later").
+A conversion only exists between two units of the same category: kilograms to pounds, never kilograms to volts.
+
+The documentary research (2026-11-10) answers which function is needed: no single one. Four closed forms cover the useful cases, and a pair of free expressions covers the rest.
+
+| Form | Going | Back | Example |
+| --- | --- | --- | --- |
+| Proportional | y = a·x | x = y / a | kilogram and pound |
+| Affine | y = a·x + b | x = (y − b) / a | Celsius, Fahrenheit |
+| Inverse | y = a / x | x = a / y | L/100 km and miles per gallon |
+| Logarithmic | y = k·log(x / x₀) | x = x₀·base^(y / k) | decibel, pH |
+| Other, one value | y = f(x) | x = f⁻¹(y) | slope in % = 100·tan(angle) |
+
+All of it stays in pure JavaScript.
+
+### Proposed after the research, to confirm
+
+- Each category has a reference family. Families convert to it and from it, not pairwise: 4 families need 6 formulas instead of 12, and two formulas cannot contradict each other.
+- A conversion is one of the closed forms. A pair of free expressions, going and back, is the last resort. The application checks that the pair is a round trip.
+- The user types a value in the display unit, so the back conversion (display unit to model unit) is also needed. The model value is still the only one stored.
+- A temperature and a temperature difference are not converted the same way (25 °C is 77 °F, but a difference of 25 °C is a difference of 45 °F). A category, or a "relative" flag, covers differences: a heating rate in °C/min is a difference.
+- Unit names carry their variant (US gallon, thermochemical calorie), because one name hides several values.
+- Units are flat: "m³/h" is one unit with its own factor, nothing is deduced from its parts.
+- When a conversion is not defined (logarithm of zero), the display says so instead of showing a wrong number.
+- Floating point does not round-trip exactly (12 997 of 100 000 values do not come back unchanged from °C to °F to °C): display rounding hides it, and an input is rounded before it goes to the model. The rounding rule is open.
 
 ## Decimal places
 
