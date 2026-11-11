@@ -4,47 +4,68 @@
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
 
-The symbol editor is a vector drawing editor, close to Figma and Inkscape for what it needs.
+The symbol editor is a vector drawing editor, close to Figma and Inkscape for what it needs. It works with **modes** and **tools**: a mode is a way of working on the drawing, and each mode shows its own tools in the tool bar.
 
 ## Rules
 
-- Every drawing mode is a tool of the tool bar. Nothing is hidden behind a double click.
-- Everything drawn is a path. A rectangle, an ellipse and a polygon are paths once drawn.
-- The drawing is made of layers, which are the layers of an SVG. The name "layer" is provisional. A layer can be the target of an animation or of an interaction (see [Animation](04-animation.md) and [Interactions](05-interactions.md)).
-- Colours (fill, stroke) and the options of a shape (corner radius, for example) are not tools. They are in the right-hand panel, which shows the options that fit the selected shape.
+- A **tool** is what the mouse does in the drawing: select, draw a rectangle, write a text.
+- A **mode** changes what the editor is for. Switching mode changes the tools of the tool bar and what the right-hand panel shows.
+- Nothing is hidden behind a double click: to edit points, the user switches to the point editing mode.
+- Everything drawn stays a path, in the layers of an SVG, so the symbol stays a real SVG. A rectangle, an ellipse and a polygon are paths once drawn. A text stays a text, because it can show a value or a unit (see [Animation](04-animation.md)).
+- The name "layer" is provisional. A layer can be the target of an animation or of an interaction (see [Animation](04-animation.md) and [Interactions](05-interactions.md)).
+- Colours (fill, stroke) and the options of a shape (corner radius, for example) are neither tools nor modes. They are in the right-hand panel, which shows the options that fit the selected shape.
 
 ## Moving around the drawing
 
-- With the mouse: the scroll wheel, and the middle button, held down, which shows the hand while it is held.
-- With the trackpad: the usual gestures to scroll and to zoom.
-- The Hand tool does the same, from the tool bar.
+- Mouse: the scroll wheel, and the middle button held down, which shows the hand while it is held.
+- Trackpad: the usual gestures, to scroll and to zoom.
+- The Hand tool does the same from the tool bar.
 
-## Tools of the tool bar
+## Modes
 
-| Tool | What it does |
-| --- | --- |
-| Select | Select shapes, move them and resize them. |
-| Hand | Move the view (not a shape). |
-| Rectangle | Draw a rectangle. |
-| Ellipse | Draw a circle or an ellipse. |
-| Polygon | Draw a polygon. |
-| Text | Write a text. A text can show a signal's value or unit (see [Animation](04-animation.md)). |
-| Pen | Draw a path point by point, with straight lines and curves. It is also the tool for lines: there is no line tool. |
-| Point editing | A mode to edit the points of a path: select, move, add and remove points and handles. |
+| Mode | What it is for | Tools in the tool bar | Right-hand panel |
+| --- | --- | --- | --- |
+| Drawing | The default mode: draw and arrange shapes. | Select, Hand, Rectangle, Ellipse, Polygon, Text, Pen | Options of the selected shape (colours, corner radius...) |
+| Point editing | Edit the points of a path. | Select, Hand, Pen | Options of the selected point |
+| Alignment | Place shapes in relation to each other. | Select, Hand | Alignment of the selected shapes |
+| Interaction | Draw the zones that react to a gesture (see [Interactions](05-interactions.md)). | Select, Hand, Interaction zone | Options of the zone |
 
-## Other modes and tools
+The Rectangle, Ellipse, Polygon and Text tools exist only in the drawing mode. The Interaction mode and its tool are only for a dynamic symbol, since a static symbol has no interaction.
 
-| What | Where | What it does |
-| --- | --- | --- |
-| Interaction zone | Only in the interaction mode, not in the tool bar | Draw a zone that reacts to a gesture (see [Interactions](05-interactions.md)). |
-| Alignment | The right-hand panel, like point editing: selecting shapes switches it to alignment | Align the selected shapes. |
-| Group | Not in the tool bar. Select several shapes, then right click and "Group", or Ctrl+G | Gather shapes in a group above the paths. |
-| Boolean operations | Expert menu | Select two shapes, then make a new shape from them (intersection and the like). |
-| Placement and duplication | Expert menu | Duplicate a shape along a rule. Examples: pick a point and a radius, then 30 copies of a shape equally spaced on the circle; or copies equally spaced along the edge of an existing shape or line. |
+## Tools
 
-The expert menu holds the tools that are not for everyday drawing.
+### Select
 
-## The pen
+- Clicks a shape to select it. Several shapes can be selected.
+- Moves the selected shapes with the mouse and resizes them.
+- A right click on a selection opens a menu, which has "Group".
+- In the point editing mode, it selects points and handles instead of shapes.
+
+### Hand
+
+- Moves the view, not a shape. It is also given by the middle button of the mouse.
+
+### Rectangle
+
+- Draws a rectangle by dragging. It becomes a path. Its corner radius is set in the right-hand panel.
+
+### Ellipse
+
+- Draws an ellipse, or a circle, by dragging. It becomes a path.
+
+### Polygon
+
+- Draws a closed shape with straight sides. It becomes a path.
+
+### Text
+
+- Writes a text in the drawing. A text can show the value or the unit of a signal (see [Animation](04-animation.md)).
+
+### Pen
+
+- Draws a path point by point, with straight lines and curves.
+- It is also the tool for lines: there is no line tool.
+- In the point editing mode, it starts from an existing point to draw further.
 
 | Action | Result |
 | --- | --- |
@@ -53,7 +74,56 @@ The expert menu holds the tools that are not for everyday drawing.
 | Click again, with no modifier | As in Figma, the next segment is a curve again. |
 | Click again, holding a modifier key | The next segment is a straight line straight away. |
 
-The modifier is an option wanted by the Product Owner, because a curve again after a curve is often a nuisance. The key is not chosen (Shift and Alt were mentioned), nor whether it only applies to the next segment or stays on.
+The modifier is an option wanted by the Product Owner, because a curve again after a curve is often a nuisance. The key is not chosen (Shift and Alt were mentioned), nor whether it applies to the next segment only or stays on.
+
+```mermaid
+flowchart LR
+    A["Click point A"] --> B["Click point B: straight line"]
+    A --> C["Press and drag on point B: curve"]
+    C --> D{"Modifier key held at the next click?"}
+    D -- "No" --> E["Next segment is a curve again"]
+    D -- "Yes" --> F["Next segment is straight"]
+```
+
+### Interaction zone
+
+- Only in the Interaction mode. Draws a zone on the symbol that reacts to a gesture (see [Interactions](05-interactions.md)).
+
+## Point editing mode
+
+- The tool bar keeps Select, Hand and Pen. The shape tools disappear.
+- Select picks points and handles, and moves them.
+- Points can be added and removed.
+- The Pen starts from an existing point to trace another one.
+
+## Alignment mode
+
+- The tool bar keeps only Select and Hand.
+- The right-hand panel becomes an alignment panel for the selected shapes.
+- The mode is only for placing shapes, not for drawing them.
+
+## Groups
+
+A group is neither a tool nor a mode.
+
+- To make one, the user selects several shapes, then right click and "Group", or Ctrl+G.
+- A group has no size of its own: it has the size of what is inside it, as in an SVG.
+- A group is a node of the SVG, above the paths. An empty group does not exist.
+
+## Expert menu
+
+A menu for the tools that are not for everyday drawing. They work on shapes that already exist.
+
+### Boolean operations
+
+- The user selects two shapes, then chooses the operation (intersection and the like).
+- The result is a new shape made from the two.
+
+### Placement and duplication
+
+- The user picks a reference, then a shape to duplicate, then the rule of the duplication.
+- Example 1: pick a point and a radius, then ask for 30 copies of a shape, equally spaced on the circle.
+- Example 2: pick an existing line or shape, then ask for copies that follow its edge, equally spaced along it.
 
 ## Where it is used
 
@@ -63,8 +133,7 @@ The modifier is an option wanted by the Product Owner, because a curve again aft
 
 ## Open questions
 
-- Do groups get a size or a layout (vertical, horizontal, grid), like Figma frames? Kept in mind, not decided.
-- The exact options of the expert tools (boolean operations, duplication) and of alignment.
-- The pen modifier key and how it works.
+- The exact options of the expert tools (boolean operations, placement and duplication) and of the alignment panel.
+- The pen modifier key, and how it works.
 
-All three are in [Open questions](07-open-questions.md).
+Both are in [Open questions](07-open-questions.md).
