@@ -20,7 +20,7 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 
 | Mode | What it is for | Tools in the tool bar | Right-hand panel |
 | --- | --- | --- | --- |
-| [Drawing](../04-drawing-mode/README.md) | The default mode: draw and arrange shapes. | Select, Hand, Rectangle, Ellipse, Polygon, Text, Pen | Options of the selected shape (colours, corner radius...) |
+| [Drawing](../04-drawing-mode/README.md) | The default mode: draw and arrange shapes. | Select, Hand, Rectangle, Ellipse, Polygon, Text, Pen, Group | Options of the selected shape (colours, corner radius...) |
 | [Point editing](../05-point-editing-mode/README.md) | Edit the points of a path. | Select, Hand, Pen | Options of the selected point |
 | [Alignment](../06-alignment-mode/README.md) | Place shapes in relation to each other. | Select, Hand | Alignment of the selected shapes |
 | [Interaction](../07-interaction-mode/README.md) | Draw the zones that react to a gesture, and link them to commands. | Select, Hand, Interaction zone | The interactions of the selected place |
@@ -45,7 +45,6 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 | --- | --- |
 | [Select](select.md) | The Select tool, in every mode except Run. |
 | [Hand](hand.md) | The Hand tool, in every mode. |
-| [Groups](groups.md) | Grouping shapes, and the layout of a group. Neither a tool nor a mode. |
 | [Expert menu](expert-menu/README.md) | The menu of the tools that are not for everyday drawing. |
 
 ## Where it is used

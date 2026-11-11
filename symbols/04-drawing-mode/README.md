@@ -8,11 +8,10 @@ The default mode of the [editor](../03-editor/README.md): draw and arrange shape
 
 ## Rules
 
-- Tool bar: [Select](../03-editor/select.md), [Hand](../03-editor/hand.md), [Rectangle](rectangle.md), [Ellipse](ellipse.md), [Polygon](polygon.md), [Text](text.md), [Pen](pen.md).
-- The Rectangle, Ellipse, Polygon and Text tools exist only in this mode.
+- Tool bar: [Select](../03-editor/select.md), [Hand](../03-editor/hand.md), [Rectangle](rectangle.md), [Ellipse](ellipse.md), [Polygon](polygon.md), [Text](text.md), [Pen](pen.md), [Group](group.md).
+- The Rectangle, Ellipse, Polygon, Text and Group tools exist only in this mode.
 - Right-hand panel: the options of the selected shape (colours, corner radius...).
 - Everything drawn becomes a path, except a text, which stays a text.
-- Shapes can be gathered in a [group](../03-editor/groups.md).
 
 ## Tools of this mode
 
@@ -23,3 +22,4 @@ The default mode of the [editor](../03-editor/README.md): draw and arrange shape
 | [Polygon](polygon.md) | Draws a polygon of 3 to 20 sides. |
 | [Text](text.md) | Writes a text, which can show a value or a unit. |
 | [Pen](pen.md) | Draws a path point by point, and lines. |
+| [Group](group.md) | Gathers shapes in a group, which can have a layout. |
