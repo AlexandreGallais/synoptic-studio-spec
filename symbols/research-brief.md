@@ -30,6 +30,11 @@ Status: draft. This file gathers everything the symbols part leaves to a documen
 - Context: the keys are not defined for now. Every key must have a visible equivalent in the interface.
 - Question: what are the conventions of drawing software for the modifier keys of: a square or a circle while drawing (Shift or Ctrl), a selection rectangle that touches or fully encloses (Shift or Alt), and a pen that chains straight segments (which key, one segment or a switch)? See [Select](03-editor/select.md), [Rectangle](04-drawing-mode/rectangle.md) and [Pen](04-drawing-mode/pen.md).
 
+### 5. Fonts: licences, weights, italic, baseline fit
+
+- Context: see [Text tool](04-drawing-mode/text.md). Only fonts bundled with the software are offered, chosen among fonts free to be put in SVG files, with an option to embed them in the exported SVG.
+- Question: which open fonts can be bundled and embedded in an SVG under their licence? How can the weights and the italic that a font really offers be read? How do software and browsers compute a text box that fits the baseline (ascent, descent, "trim") rather than the glyphs? Can SVG text carry a native stroke in every engine?
+
 ## What stays out of the research
 
 The code, the performance measures (they come from the POC), the geometric engine and the intersection calculations (another research), the SaaS, phones and tablets, and the final choice of effects (the Product Owner decides, on the report and the POC).
