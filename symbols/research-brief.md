@@ -6,6 +6,8 @@ Status: draft. This file gathers everything the symbols part leaves to a documen
 
 Which questions go in the research: for now only questions 1 to 4 (the drawing tools discussed with the Product Owner). Question 5 and the questions of the pages not discussed yet are not sent.
 
+Where the report is saved: in the `synoptic-studio-spec` project, folder `research/`, sub-folder `t3/` (`research/t3/rapport.md`, annexes beside it). That folder is ignored by Git.
+
 ## Questions
 
 ### 1. Which SVG effects keep the performance
