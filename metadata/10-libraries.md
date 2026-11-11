@@ -12,7 +12,7 @@ A library is a flat list that points to types. It only sorts them, so that peopl
 - Any type can go in, at any level, alone. Example: a library can hold "Positive displacement pump" and "Centrifugal pump" without "Pump". What is ticked is what limits the choice in the library.
 - A type can be in several libraries. Each library only points to it, through the type's internal identifier (see [Types](01-types.md)).
 - No library inside a library.
-- In a symbol, the user must first choose a library. Only the types of that library are then shown. All the types are never shown at once in a symbol.
+- A symbol library (Symbol Lib) is linked to one library of types (Type Lib), which is the library described here. In a symbol, only the types of that Type Lib are shown, never all the types at once (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md)).
 - A library is not used in a synoptic.
 
 ```mermaid
@@ -61,7 +61,7 @@ flowchart LR
 flowchart LR
     A[Create an empty library] --> B[Tick types in the tree]
     B --> C[The left view shows the library]
-    C --> D[In a symbol, choose the library: only its types are shown]
+    C --> D[A Symbol Lib linked to this library: only its types are shown]
 ```
 
 ## A ticked type whose parent is not ticked
@@ -77,4 +77,4 @@ Libraries and types are generated as files, which the open source version reads 
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Library (ticked types) | Metadata | Left view of the symbol's type choice | Choose a library, then one of its types | No |
+| Library (ticked types) | Metadata | Type choice of the Symbol Libs linked to it | Choose one of its types | No |

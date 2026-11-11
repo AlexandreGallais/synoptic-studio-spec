@@ -8,7 +8,7 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 
 | Thing | Created and changed in | In a symbol | In a synoptic |
 | --- | --- | --- | --- |
-| Library | Metadata | Choose a library, then one of its types | No |
+| Library (Type Lib) | Metadata | Choose one of the types of the Type Lib linked to the Symbol Lib | No |
 | Type (name, parent, icon) | Metadata, General | Choose its type (only here) | No |
 | Type documentation | Metadata | No | No |
 | Signal | Metadata | No | No |

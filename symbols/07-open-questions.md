@@ -8,8 +8,6 @@ This file is the index of the open questions. A question sits in the file it con
 
 | Question | Page | Written as |
 | --- | --- | --- |
-| Metadata's Libraries page still says that the user chooses a library in a symbol: to align once validated. | [Libraries and symbols](01-libraries-and-symbols.md) | To align with Metadata. |
-| Do a change of the bounds or of the quantity of a signal break a link? Does a type removed from its Type Lib, while symbols still use it, break them? | [Libraries and symbols](01-libraries-and-symbols.md) | To confirm. |
 | Names to review: layer, interaction, gesture (left click, right click...), zone, symbol mode, static and dynamic. "Symbol Lib" and "Type Lib" are settled. Metadata already uses "trigger" for a kind of command: a gesture must not be confused with it. | All | A research on the vocabulary can be done, as for Metadata. |
 | Full list of tools and their options (fill, stroke, align, group, boolean operations, zoom, snapping...), point editing detail. | [Drawing](02-drawing.md) | To describe. |
 | The pen modifier key, and how it works exactly (next segment only, or a switch). | [Drawing](02-drawing.md) | To confirm. |
