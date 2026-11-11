@@ -78,4 +78,4 @@ flowchart LR
 
 ## Open questions
 
-- The list of animatable properties, the shapes of mapping (linear or not), animation of an enum. See [Open questions](../10-open-questions.md).
+- The list of animatable properties, the shapes of mapping (linear or not), animation of an enum: left to the assistant's next research (question 7 of the [research brief](../research-brief.md)). See [Open questions](../10-open-questions.md).

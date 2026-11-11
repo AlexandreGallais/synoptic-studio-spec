@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Research brief
 
-Status: questions 1 to 4 were researched and the report is back (2026-11-11). Its answers are written in the pages concerned, under "What the research found". Questions 5 and 6 and the questions of the pages not discussed yet are not sent.
+Status: questions 1 to 4 were researched and the report is back (2026-11-11). Its answers are written in the pages concerned, under "What the research found". Questions 5, 6 and 7 and the questions of the pages not discussed yet are not sent.
 
 Where the report is: in the `synoptic-studio-spec` project, folder `research/t1-recherche-documentaire-claude-desktop-effets-svg/` (`rapport.md`, annexes beside it). That folder is ignored by Git.
 
@@ -29,6 +29,15 @@ Asked by the Product Owner (2026-11-11): the assistant must answer these two poi
 - Context: see [Interaction mode](07-interaction-mode/README.md). An interaction links a place, a gesture and what happens (a command, or opening the faceplate). The Product Owner wants more gestures than left click, right click and double click.
 - Question 6a: which gestures do supervision (SCADA, HMI), design and prototyping software offer on an element (click, double click, right click, hover, long press, drag, wheel, key...), which ones exist on every desktop platform and in a browser, and which ones should the list hold? Propose a list, labelled as an opinion.
 - Question 6b: how do these tools name the concept "when a gesture is done on a place, something happens" (interaction, event, trigger, action, behaviour...) and the gesture itself? Metadata already uses "trigger" for a kind of command: the name must not be confused with it. Propose names, with sources, labelled as an opinion.
+
+### 7. Animation: animatable properties, mapping, enum
+
+Asked by the Product Owner (2026-11-11), who does not want to read the animation page and its open questions: the assistant answers them in its next research and proposes. No priority, same rule as question 6.
+
+- Context: see [Animation mode](08-animation-mode/README.md). A signal animates a shape, a layer or a text.
+- Question 7a: which properties of an SVG drawing can a signal drive, with a good performance and natively in SVG (rotation, position, size, colour, opacity, visibility, blinking, dash offset, gradient...)? Which ones to refuse? Propose a list, labelled as an opinion.
+- Question 7b: which shapes of mapping from a value to a property do supervision and animation software offer (linear, with clamp, by steps or thresholds, curve, table of points...)? Which ones to offer?
+- Question 7c: how is an enum animated (a look per value, a table value to property, a state machine...)? How do the tools of the field name these things?
 
 ## What the report leaves open
 
