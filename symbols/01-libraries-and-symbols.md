@@ -18,7 +18,9 @@ Symbols are kept in Symbol Libs. As for types, a library is only a way to sort a
 - A symbol is static or dynamic (see [the overview](README.md)). In a Symbol Lib, the user clicks "Create a symbol" and first chooses static or dynamic.
 - A dynamic symbol is attached to one type of Metadata (see [Types](../metadata/01-types.md)), which the user must choose before drawing, the way Metadata says: first a Type Lib, then one of its types (see [Libraries](../metadata/10-libraries.md)). The symbol is linked to its type from the start. Several dynamic symbols can be attached to the same type, with different drawings and different presets: a centrifugal pump can have a manual symbol and a motorised one, with no change in Metadata.
 - A static symbol has no type, no preset, no faceplate, no animation and no interaction. Only the creation of the symbol and its visuals remain: the drawing (see [Drawing](02-drawing.md)).
-- The user can switch a symbol between static and dynamic whenever they want, in the symbol editor. Becoming dynamic requires choosing a type then. What happens to the type, the animations and the interactions when a dynamic symbol becomes static is to settle (see [Open questions](07-open-questions.md)).
+- The user can switch a symbol between static and dynamic whenever they want, in the symbol editor. Becoming dynamic requires choosing a type then.
+- Switching a dynamic symbol to static drops nothing: the type, the preset, the faceplate entries, the animations and the interactions are kept, only hidden (decided by the Product Owner on 2026-11-11). Switching back to dynamic brings them all back, so a mistake costs nothing. While hidden, they do nothing and are not shown anywhere, in the editor or in a synoptic.
+- If the type was changed while the symbol was static, the kept animations and interactions that no longer match the new type are the only open point (see [Open questions](07-open-questions.md)).
 - The type of a dynamic symbol can be changed afterwards, in the symbol editor only (see [Types](../metadata/01-types.md)).
 
 ```mermaid
@@ -33,7 +35,7 @@ flowchart TD
     F --> G["Symbol editor"]
     H --> G
     D --> G
-    G -.->|"switch static or dynamic at any time"| K
+    G -.->|"switch at any time: what was done is hidden, never lost"| K
 ```
 
 ## Example
@@ -56,4 +58,4 @@ The names below are only names given by the user, not styles.
 
 ## Open questions
 
-- What happens to the type, animations and interactions when a dynamic symbol is switched to static (kept hidden, or dropped)? See [Open questions](07-open-questions.md).
+- Can the type be changed while a symbol is static? If so, what happens to the hidden animations and interactions that no longer fit? See [Open questions](07-open-questions.md).

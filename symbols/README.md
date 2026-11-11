@@ -29,7 +29,7 @@ flowchart LR
 | Dynamic | A symbol that is animated and stands for something of the installation. | Required, from Metadata | Yes | Yes | Yes |
 | Static | A symbol that may stand for something, but is not animated. Only its drawing exists. | None | No | No | No |
 
-When creating a symbol, the user chooses static or dynamic, and can switch whenever they want. In a synoptic, a dynamic symbol can be placed and left unwired: it then behaves as a static one (this belongs to part 3).
+When creating a symbol, the user chooses static or dynamic, and can switch whenever they want. Switching to static only hides the type, animations and interactions; switching back restores them. In a synoptic, a dynamic symbol can be placed and left unwired: it then behaves as a static one (this belongs to part 3).
 
 The two kinds of library are the **Symbol Lib** (sorts symbols) and the **Type Lib** (sorts types, in Metadata).
 
