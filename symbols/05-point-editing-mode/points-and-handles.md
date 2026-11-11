@@ -42,4 +42,4 @@ Changing X and Y changes the angle and the length, and the other way round. The 
 
 ## Open questions
 
-- The exact list of mirroring modes, and whether more are needed: the Product Owner is looking for the names used by drawing software. See [Open questions](../10-open-questions.md).
+- None kept here. The names and the list of mirroring modes are in the [research brief](../research-brief.md).

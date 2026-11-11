@@ -31,4 +31,4 @@ Select is in the tool bar of every mode except the Run mode. What it does depend
 
 ## Open questions
 
-- Which modifier key selects only the shapes entirely inside the rectangle (Shift and Alt were mentioned). It will be defined later. See [Open questions](../10-open-questions.md).
+- None kept here. Which modifier key selects only the shapes entirely inside the rectangle is in the [research brief](../research-brief.md).

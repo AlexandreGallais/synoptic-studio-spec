@@ -27,4 +27,4 @@ The polygon is drawn by dragging a box, like the rectangle and the ellipse. It b
 
 ## Open questions
 
-- Why does Figma draw its polygon the way it does, and is there a logic behind it? A triangle does not fill the box, and the Product Owner does not know why. A documentary research, launched at the end, answers it and says whether a "like Figma" mode is kept. See [Open questions](../10-open-questions.md).
+- None kept here. Why Figma places its polygon the way it does, and whether a "like Figma" mode is kept, are in the [research brief](../research-brief.md).

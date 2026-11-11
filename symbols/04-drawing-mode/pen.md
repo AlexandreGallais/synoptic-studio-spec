@@ -33,4 +33,4 @@ flowchart LR
 
 ## Open questions
 
-- Which key, and how the modifier works exactly. It will be defined later. See [Open questions](../10-open-questions.md).
+- None kept here. Which key, and how the modifier works, is in the [research brief](../research-brief.md).

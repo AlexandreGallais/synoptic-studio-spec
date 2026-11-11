@@ -29,4 +29,4 @@ Proposed by the assistant, all native in SVG. Which ones are kept depends on the
 
 ## Open questions
 
-- Which effects are kept: a documentary research, launched at the end, says which SVG features keep the performance; the performance POC then measures what the sources do not settle. See [Open questions](../10-open-questions.md).
+- None kept here. Which effects are kept is in the [research brief](../research-brief.md): a documentary research, launched at the end, then the performance POC.

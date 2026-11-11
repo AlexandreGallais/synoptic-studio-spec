@@ -9,11 +9,8 @@ This file is the index of the open questions. A question sits in the file it con
 | Question | Page | Written as |
 | --- | --- | --- |
 | Names to review: layer, interaction, gesture (left click, right click...), zone, symbol mode, static and dynamic. "Symbol Lib" and "Type Lib" are settled. Metadata already uses "trigger" for a kind of command: a gesture must not be confused with it. | All | A research on the vocabulary can be done, as for Metadata. |
-| Polygon: is a third mode "like Figma" kept? Figma's triangle does not fill its box and the Product Owner does not know why. | [Polygon tool](04-drawing-mode/polygon.md) | A documentary research, at the end, like the one for Metadata (the same research as the SVG effects). |
+| Everything left to the documentary research: which SVG effects keep the performance, how a polygon is placed in its box (and a "like Figma" mode), the names of the handle mirroring modes, the modifier keys. | [Research brief](research-brief.md) | One research, launched at the end when the Product Owner says so. No task before. |
 | Options of each expert entry, of the alignment panel and of the group (anchors, placement of the children). | [Expert menu](03-editor/expert-menu/README.md), [Alignment mode](06-alignment-mode/README.md), [Group](04-drawing-mode/group.md) | To describe, page by page. |
-| Mirroring modes of the handles: is the list "none, mirror angle, mirror angle and length" complete? | [Points and handles](05-point-editing-mode/points-and-handles.md) | To check with drawing software. |
-| Which effects (shadows, blurs, colour changes, masks) are kept. | [Effects and masks](04-drawing-mode/effects-and-masks.md) | A documentary research on which SVG effects keep the performance (launched at the end), then the performance POC. |
-| Modifier keys (square, selection rectangle, pen): not defined for now. | [Select](03-editor/select.md), [Pen](04-drawing-mode/pen.md) | To put in the final research, once everything is discussed. |
 | Properties an animation can drive, shape of the mapping (linear or not), animation of an enum. | [Animation mode](08-animation-mode/README.md) | To describe. |
 | Can a text that shows a value become an input on click, from the symbol editor? | [Animation mode](08-animation-mode/README.md) | To confirm. |
 | Gesture list, and can an interaction open the faceplate? | [Interaction mode](07-interaction-mode/README.md) | To settle. |
