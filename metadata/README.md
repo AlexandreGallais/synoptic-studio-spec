@@ -98,3 +98,4 @@ The index pages ([Who changes what](11-who-changes-what.md), [Open questions](12
 ## See also
 
 - [Storage](../storage/README.md): how the files that types and libraries generate are saved.
+- [Screens of Metadata](../screens/metadata.md): every screen of this part, with its buttons, fields and lists, and what is missing.

@@ -71,3 +71,4 @@ Same skeleton as the Metadata pages: title and navigation line, `Status:` line, 
 
 - [Metadata](../metadata/README.md): types, signals, commands, faceplates, presets. This part only uses them and never changes them.
 - [Storage](../storage/README.md): how the files of symbols and Symbol Libs are saved.
+- [Screens of the symbol editor](../screens/symbols.md) and [Screens of the pipes](../screens/pipes.md): every screen of this part, with its buttons, fields and lists, and what is missing.

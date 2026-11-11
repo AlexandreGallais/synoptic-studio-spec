@@ -47,6 +47,7 @@ flowchart TD
 | [`metadata/`](metadata/README.md) | Part 1 of the application: the data and documentation a symbol can be attached to. | [Metadata overview](metadata/README.md) |
 | [`symbols/`](symbols/README.md) | Part 2 of the application: symbol libraries, drawing, animation, interactions. Draft. | [Symbols overview](symbols/README.md) |
 | [`storage/`](storage/README.md) | The folder the application points to, the generated files, and how conflicts between people are avoided. | [Files and conflicts](storage/files-and-conflicts.md) |
+| [`screens/`](screens/README.md) | The inventory of the screens and menus: for each screen, a map, every button, field and list with its status, and what is missing. | [Map of the screens](screens/README.md) |
 
 Metadata pages, in reading order:
 
