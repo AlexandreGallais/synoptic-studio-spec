@@ -13,7 +13,7 @@ An interaction says: when the user does a gesture on a place of the symbol, a co
 - Several gestures are possible on a place: left click, right click, double click, and others (the Product Owner wants more than these three; the list is to settle).
 - Each interaction links a place, a gesture and a command of the type (see [Commands](../metadata/07-commands.md)): a command that sets a signal, or a trigger.
 - A symbol uses only the commands it links: a preset never chooses commands.
-- Interactions only make sense on a dynamic symbol (to confirm for a static one).
+- Interactions exist on a dynamic symbol only. A static symbol has none: it has no type, so no command to send.
 
 ```mermaid
 flowchart LR

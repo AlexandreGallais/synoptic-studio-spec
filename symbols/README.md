@@ -8,11 +8,11 @@ Status: draft, written from the Product Owner's oral description of 2026-11-11. 
 
 ## The big picture
 
-The user picks a symbol library, sees the flat list of its symbols, and creates or opens a symbol. In the symbol editor, the user draws, then links the drawing to the type's signals (animation) and commands (interactions).
+The user picks a Symbol Lib, sees the flat list of its symbols, and creates or opens a symbol. In the symbol editor, the user draws, then links the drawing to the type's signals (animation) and commands (interactions).
 
 ```mermaid
 flowchart LR
-    L["Symbol library: a flat list of symbols"] --> S["Symbol"]
+    L["Symbol Lib: a flat list of symbols"] --> S["Symbol"]
     S --> D["Drawing: shapes, text, pen, layers"]
     S --> T["Type and preset, from Metadata"]
     D --> A["Animation: an output signal moves a part of the drawing"]
@@ -24,18 +24,20 @@ flowchart LR
 
 ## Static and dynamic symbols
 
-| Kind | What it is | Animation | Interactions |
-| --- | --- | --- | --- |
-| Dynamic | A symbol that is animated and stands for something of the installation. | Yes | Yes |
-| Static | A symbol that may stand for something, but is not animated. | No | To settle |
+| Kind | What it is | Type | Preset and faceplate | Animation | Interactions |
+| --- | --- | --- | --- | --- | --- |
+| Dynamic | A symbol that is animated and stands for something of the installation. | Required, from Metadata | Yes | Yes | Yes |
+| Static | A symbol that may stand for something, but is not animated. Only its drawing exists. | None | No | No | No |
 
-In a synoptic, a dynamic symbol can be placed and left unwired: it then behaves as a static one (this belongs to part 3).
+When creating a symbol, the user chooses static or dynamic, and can switch whenever they want. In a synoptic, a dynamic symbol can be placed and left unwired: it then behaves as a static one (this belongs to part 3).
+
+The two kinds of library are the **Symbol Lib** (sorts symbols) and the **Type Lib** (sorts types, in Metadata).
 
 ## What it contains
 
 | Page | What it holds |
 | --- | --- |
-| [Libraries and symbols](01-libraries-and-symbols.md) | Symbol libraries, the flat list, creating a symbol, static and dynamic. |
+| [Libraries and symbols](01-libraries-and-symbols.md) | Symbol Libs, the flat list, creating a symbol, static and dynamic. |
 | [Drawing](02-drawing.md) | The editor tools, layers, point editing, the pen and its straight-after-curve option. |
 | [Type, preset and faceplate](03-type-and-faceplate.md) | The type of a symbol, its preset, which faceplate entries the symbol shows. |
 | [Animation](04-animation.md) | Linking an output signal to a change of the drawing, values and units in texts. |
@@ -57,4 +59,4 @@ Same skeleton as the Metadata pages: title and navigation line, `Status:` line, 
 ## See also
 
 - [Metadata](../metadata/README.md): types, signals, commands, faceplates, presets. This part only uses them and never changes them.
-- [Storage](../storage/README.md): how the files of symbols and symbol libraries are saved.
+- [Storage](../storage/README.md): how the files of symbols and Symbol Libs are saved.
