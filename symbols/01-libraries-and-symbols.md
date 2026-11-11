@@ -10,7 +10,7 @@ A **Symbol Lib** holds symbols. A **Type Lib** (see [Libraries](../metadata/10-l
 
 ### Symbol Lib
 
-- It holds flat lists, never a tree: its dynamic symbols and its static symbols (every library can have both), then its pipe styles, junction styles, crossing styles and pipe end shapes (see [Pipes](pipes/README.md)).
+- It holds flat lists, never a tree: its dynamic symbols and its static symbols (every library can have both), then its pipe styles. Each pipe style holds its own junctions, crossings and start and end shapes (decided by the Product Owner, 2026-11-11; see [Pipes](pipes/README.md)).
 - It has a name and a Type Lib. Nothing else: the lists above are its content, not settings.
 - Every symbol is in one Symbol Lib, and only one. No symbol lives outside a library.
 - In symbol mode, the user selects a Symbol Lib, sees its symbols, then opens one or creates one.
@@ -99,7 +99,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.5, 
 - **Quality of a value.** Ignition shows an overlay when the quality is not good (see [Animation mode](08-animation-mode/README.md)).
 - **Usage counter.** The archived Figma page shows "used by 38 pipes" on a style. Opinion: add it to symbols and styles; it prepares the display of broken links.
 - **Named colours.** Opinion: a flat list "Colours" in the Symbol Lib, which symbols and styles point to (see [Fill and border](04-drawing-mode/fill-and-border.md)).
-- **Where pipe parts live.** The archived Figma page keeps junctions, crossings and end parts inside the pipe style, not in separate lists: to decide (see [Pipes](pipes/README.md)).
+- **Where pipe parts live.** The archived Figma page keeps junctions, crossings and end parts inside the pipe style. The Product Owner chose the same (2026-11-11).
 
 ## Where it is used
 

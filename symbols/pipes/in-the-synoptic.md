@@ -8,10 +8,10 @@ Status: draft, from the Product Owner's description of 2026-11-11. Not validated
 
 - In the synoptic mode, a **pipe tool** draws pipes between the connection points of symbols (see [Connection points](connection-points.md)).
 - The user clicks point after point. The segments are straight. Everything else is computed (see [Pipes](README.md)).
-- **Junction**: the user clicks inside an existing pipe, then draws another one. The editor computes the junction and splits the pipe in two. The junction takes the junction style (see [Junctions](junctions.md)).
-- **Crossing**: where a pipe passes over another, the editor computes a bridge, a gap or nothing, according to the crossing style (see [Crossings](crossings.md)).
+- **Junction**: the user clicks inside an existing pipe, then draws another one. The editor computes the junction and splits the pipe in two. The junction takes the look set in the pipe style (see [Junctions](junctions.md)).
+- **Crossing**: where a pipe passes over another, the editor computes a bridge, a gap or nothing, according to the pipe style (see [Crossings](crossings.md)).
 - **Which pipe is on top**: when the mouse is over a crossing, the editor highlights it. A click changes which of the two pipes passes over the other.
-- The user chooses the style of each pipe among those of the Symbol Lib, and its start and end shapes (see [Pipe ends](ends.md)).
+- The user chooses the style of each pipe among those of the Symbol Lib, then its start and end shapes among those of that style, or none (see [Pipe ends](ends.md)).
 
 ## What the research found
 

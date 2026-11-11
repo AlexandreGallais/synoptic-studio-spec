@@ -22,7 +22,7 @@ flowchart LR
     T --> I
     S --> Y["Placed in a synoptic (part 3)"]
     D --> K["Connection points: where pipes attach"]
-    L2["Symbol Lib: pipe, junction, crossing and end styles"] --> Y
+    L2["Symbol Lib: pipe styles, with their junctions, crossings and ends"] --> Y
     K --> Y
 ```
 
@@ -50,7 +50,7 @@ The two kinds of library are the **Symbol Lib** (sorts symbols) and the **Type L
 | [Interaction mode](07-interaction-mode/README.md) | Interaction zones, gestures, what a gesture does. |
 | [Animation mode](08-animation-mode/README.md) | Linking an output signal to a change of the drawing, values and units in texts. |
 | [Run mode](09-run-mode/README.md) | Trying the symbol with test values, and simulating another screen. |
-| [Pipes](pipes/README.md) | Connection points of a symbol, and the styles of pipes, junctions, crossings and ends kept in the Symbol Lib. |
+| [Pipes](pipes/README.md) | Connection points of a symbol, and the pipe styles kept in the Symbol Lib, each with its junctions, crossings and ends. |
 | [Open questions](10-open-questions.md) | Every open question in one place. |
 | [Research brief](research-brief.md) | The questions sent to the documentary research, and where the answers are. |
 

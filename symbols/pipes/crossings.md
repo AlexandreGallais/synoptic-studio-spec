@@ -8,7 +8,7 @@ A crossing is a place where a pipe passes over another one without being connect
 
 ## Rules
 
-- The user chooses the **type of crossing** in a crossing style of the Symbol Lib:
+- The user chooses the **type of crossing** in the **pipe style** (see [Pipe styles](pipe-styles.md)), not in a separate list of the Symbol Lib (decided by the Product Owner, 2026-11-11):
 
 | Type | What happens |
 | --- | --- |
@@ -23,12 +23,12 @@ A crossing is a place where a pipe passes over another one without being connect
 
 ## Example
 
-| Crossing style | Type | Radius of the pipe | Result |
+| Pipe style | Crossing type | Corner radius of the style | Result |
 | --- | --- | --- | --- |
-| Rounded bridge | Bridge | 8 px | Round arch |
-| Square bridge | Bridge | 0 | Square arch |
-| Cut | Gap | any | Interruption |
-| Overlap | None | any | One over the other |
+| Water | Bridge | 8 px | Round arch |
+| Cooling water | Bridge | 0 | Square arch |
+| Oil | Gap | any | Interruption |
+| Electricity | None | any | One over the other |
 
 ## What the research found
 
@@ -42,7 +42,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.1, 
 
 | Point | Proposal |
 | --- | --- |
-| Size | Set in the crossing style: size of a bridge; for a gap, the width of the pipe on top plus a fixed clearance on each side. |
+| Size | Set in the pipe style: size of a bridge; for a gap, the width of the pipe on top plus a fixed clearance on each side. |
 | Default rule | The **last drawn pipe passes over**; the click in the synoptic is the exception, kept per crossing. |
 | Drawing | Never with a mask: the pipe underneath is really cut, the one on top really deviated. |
 | Bridge and corner radius | Radius of the bridge equal to the corner radius, bounded by the size of the bridge; at radius 0, a square bridge (shapes that exist in Visio and yFiles). |

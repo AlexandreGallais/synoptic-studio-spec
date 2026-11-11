@@ -18,6 +18,11 @@ A pipe style says how a pipe looks according to what it contains. The user creat
 | Border | Optional. A border on each side of the pipe, with its own size and colour, like the [border of a shape](../04-drawing-mode/fill-and-border.md) (never an SVG stroke). |
 | Corner radius | Rounds the right angles of the pipe (see below). |
 | Flow dashes | Optional. Dashes that go from the start of the pipe to its end (see below). |
+| Junctions | How a branch looks: flat, circle or square (see [Junctions](junctions.md)). |
+| Crossings | What happens where a pipe of this style passes over another: bridge, gap, none (see [Crossings](crossings.md)). |
+| Start and end shapes | The shapes a pipe of this style can have at its start and at its end (see [Pipe ends](ends.md)). |
+
+- Junctions, crossings and end shapes are **parts of the pipe style**, not separate lists of the Symbol Lib (decided by the Product Owner, 2026-11-11). They are computed from the style; the user never draws them on each pipe.
 
 - The content ("what the pipe contains") only names and groups the styles: electricity, water, oil, steam... The editor does not know what a fluid is.
 - A pipe has one style, chosen in the synoptic.

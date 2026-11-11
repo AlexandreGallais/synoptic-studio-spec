@@ -25,10 +25,10 @@ This file is the index of the open questions. A question sits in the file it con
 | **Text that becomes an input: HTML field laid over the text instead of a `foreignObject`.** It reopens a validated page ([Commands](../metadata/07-commands.md), decision 0003). | [Animation mode](08-animation-mode/README.md) | HTML field over the text, after POC P12; needs a dated decision. |
 | Do the signals carry a quality in the contract with the model? | [Animation mode](08-animation-mode/README.md) | Yes, shown by default. |
 | Name "Test mode"; form of the simulation log and of the simulated faceplate. | [Run mode](09-run-mode/README.md) | Test mode; a log line: time, place, gesture, effect, value. |
-| Junctions, crossings and ends inside the pipe style or in separate lists; a branch as one pipe or two; inline symbols; a type of Metadata for a pipe; path kind per pipe. | [Pipes](pipes/README.md) | Inside the style; one pipe; yes; yes, three signals. |
+| A branch as one pipe or two; inline symbols; a type of Metadata for a pipe; path kind per pipe. (Junctions, crossings and ends inside the pipe style: decided 2026-11-11.) | [Pipes](pipes/README.md) | One pipe; yes; yes, three signals. |
 | Two strokes or computed outlines for a pipe; flow dashes as a native stroke. | [Pipe styles](pipes/pipe-styles.md) | After POC P9; native stroke, animated only with a flow. |
 | Size of bridges and gaps; default "last drawn on top"; borders on a bridge. | [Crossings](pipes/crossings.md) | Size in the style; last drawn on top. |
-| Four or nine anchors on an end shape. | [Pipe ends](pipes/ends.md) | Not settled by the report. |
+| Four or nine anchors on an end shape; copy an end shape from another style; arrows of a symbol's lines. | [Pipe ends](pipes/ends.md) | Not settled by the report. |
 
 ## Still open, not researched
 
