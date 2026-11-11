@@ -39,10 +39,11 @@ In a Symbol Lib, "Create a symbol" first asks: static or dynamic?
 
 ### Switching between static and dynamic
 
-- The user can switch whenever they want, in the symbol editor. Becoming dynamic requires choosing a type then.
+- The user can switch whenever they want, in the symbol editor.
 - Switching to static drops nothing: the type, preset, faceplate entries, animations and interactions are kept, only hidden. They do nothing and are shown nowhere, neither in the editor nor in a synoptic. Switching back brings them all back, so a mistake costs nothing.
 - While static, there is no type selection. Metadata can still change in the meantime.
-- On return to dynamic, the user chooses the type again, and anything that no longer fits is checked as below.
+- On return to dynamic, the symbol is still linked to the type it had: the user does not choose it again (decided by the Product Owner on 2026-11-11). They choose a type only if that type was deleted in the meantime, or if the symbol was static from its creation and never had one.
+- Anything that no longer fits the type is then checked as below.
 
 ### When Metadata changes
 
@@ -51,7 +52,7 @@ Decided by the Product Owner on 2026-11-11.
 - A rename never breaks a symbol. A symbol is linked to a signal, a command or a type through its internal identifier, not through its name, so a renamed signal is followed: the symbol keeps working and nothing is asked of the user.
 - A change of the interface can break it: a signal or a command removed, a signal that is no longer an output, a value of another type, a type changed, and so on. The animation or interaction that was linked to it is then broken: nothing is there any more.
 - A broken item is kept, marked as broken, and does nothing. The error is solved on the symbol side, not in Metadata: the user fixes the link or removes the item.
-- The same holds when the type of a dynamic symbol is changed in the editor, and on return from static.
+- The same holds when the type of a dynamic symbol is changed in the editor, when its type is deleted and the user chooses another, and on return from static.
 
 ```mermaid
 flowchart TD
