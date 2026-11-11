@@ -48,4 +48,4 @@ flowchart LR
 
 ## Open questions
 
-- Gesture list and name of the concept. See [Open questions](../10-open-questions.md).
+- Gesture list and name of the concept: left to the assistant's next research (question 6 of the [research brief](../research-brief.md)). See [Open questions](../10-open-questions.md).

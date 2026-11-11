@@ -18,7 +18,7 @@ This file is the index of the open questions. A question sits in the file it con
 | Fonts research (question 5 of the brief). | [Research brief](research-brief.md) | Not sent yet. |
 | Options of each expert entry, of the alignment panel and of the group (anchors, placement of the children). | [Expert menu](03-editor/expert-menu/README.md), [Alignment mode](06-alignment-mode/README.md), [Group](04-drawing-mode/group.md) | To describe, page by page. |
 | Properties an animation can drive, shape of the mapping (linear or not), animation of an enum. | [Animation mode](08-animation-mode/README.md) | To describe. |
-| Gesture list. | [Interaction mode](07-interaction-mode/README.md) | To settle. |
+| Gesture list, and name of the interaction concept. | [Interaction mode](07-interaction-mode/README.md) | The assistant answers them in its next research (question 6 of the [brief](research-brief.md)), not the Product Owner. |
 | Do interactions work in the Run mode? | [Run mode](09-run-mode/README.md) | Open. |
 | What the faceplate opened by an interaction allows once the symbol is placed (display only, or display with commands). | Part 3 | Belongs to the synoptic part, not written yet. |
 | How are an unwired dynamic symbol and the placement in a synoptic handled? | Part 3 | Belongs to the synoptic part, not written yet. |
