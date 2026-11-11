@@ -10,8 +10,8 @@ A **Symbol Lib** holds symbols. A **Type Lib** (see [Libraries](../metadata/10-l
 
 ### Symbol Lib
 
-- It holds two flat lists, never a tree: its dynamic symbols and its static symbols. Every library can have both.
-- It has a name and a Type Lib. Nothing else.
+- It holds flat lists, never a tree: its dynamic symbols and its static symbols (every library can have both), then its pipe styles, junction styles, crossing styles and pipe end shapes (see [Pipes](pipes/README.md)).
+- It has a name and a Type Lib. Nothing else: the lists above are its content, not settings.
 - Every symbol is in one Symbol Lib, and only one. No symbol lives outside a library.
 - In symbol mode, the user selects a Symbol Lib, sees its symbols, then opens one or creates one.
 - Why several Symbol Libs: a software or a factory needs its own look for the same objects. To change a look over time, the user creates a new Symbol Lib instead of editing the old one.

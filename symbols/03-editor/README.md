@@ -27,7 +27,9 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 | [Interaction](../07-interaction-mode/README.md) | Draw the zones that react to a gesture, and link them to commands. | Select, Hand, Interaction zone | The interactions of the selected place |
 | [Animation](../08-animation-mode/README.md) | Link the signals to the parts of the drawing. | Select, Hand | The animations of the selected part |
 | [Run](../09-run-mode/README.md) | Try the symbol with test values and see it at the size of another screen. | Hand | The test values, and the simulated screen |
+| [Connection](../pipes/connection-points.md) (provisional) | Place the connection points where pipes attach. | Select, Hand, Connection point | The options of the selected point |
 
+- The Connection mode is an assumption of the assistant: the Product Owner did not say which mode places the connection points (see [Connection points](../pipes/connection-points.md)).
 - The Interaction, Animation and Run modes are only for a dynamic symbol: a static symbol has no interaction, no animation and nothing to test with signals.
 - The [Expert menu](expert-menu/README.md) can add a second tool bar on top of the current mode.
 - Other modes may be added later.
@@ -46,6 +48,7 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 | --- | --- |
 | [Select](select.md) | The Select tool, in every mode except Run. |
 | [Hand](hand.md) | The Hand tool, in every mode. |
+| [Anchors](anchors.md) | The nine named points of a box, used by groups, polygons, alignment and pipe ends. |
 | [Expert menu](expert-menu/README.md) | The menu of the tools that are not for everyday drawing. |
 
 ## Where it is used

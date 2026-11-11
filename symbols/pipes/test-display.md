@@ -1,0 +1,31 @@
+# Test display
+
+> [Home](../../README.md) › [Symbols](../README.md) › [Pipes](README.md) › Test display
+
+Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+
+When the user edits a pipe style, a junction style, a crossing style or an end shape in a Symbol Lib, a test display shows them on every case a pipe can meet. It lets the user understand what an edit does without drawing a synoptic.
+
+## Rules
+
+- The test display is part of the editor of the Symbol Lib: it is always visible next to the style being edited, and it redraws at each change.
+- It holds a fixed set of cases, made of pipes drawn with the style being edited:
+
+| Case | What it shows |
+| --- | --- |
+| Straight pipe | The fill, the width, the border, the flow dashes. |
+| Right angle | The corner radius. |
+| Other angles | An angle other than 90 degrees, a very short segment. |
+| Junction | One junction with the current junction style. |
+| Several junctions | A 3-way and a 4-way junction. |
+| Crossing | One crossing with the current crossing style, both ways. |
+| Start and end | The start shape and the end shape. |
+| Connected to a symbol | A pipe that arrives on a connection point. |
+
+- The cases are not editable by the user.
+
+## Open questions
+
+- Is the list of cases fixed or can the user add their own?
+- Does the test display also show several styles together (water and oil crossing, steam meeting water)?
+- Is it also available in the Run mode, with the flow dashes moving?

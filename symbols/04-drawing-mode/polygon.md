@@ -16,7 +16,7 @@ The polygon is drawn by dragging a box, like the rectangle and the ellipse. It b
 | Filled | fills the box as much as possible. It is not forced to be equilateral. |
 | Equilateral | keeps all its sides equal. It is not forced to fill the box. |
 
-- **Anchors**: the user says where the polygon is placed in its box, with anchors on the box (its sides and its corners). Two ways to use an anchor:
+- **Anchors**: the user says where the polygon is placed in its box, with the [anchors](../03-editor/anchors.md) of the box (its sides and its corners). Two ways to use an anchor:
   - a **corner** of the polygon touches the anchor;
   - a **side** of the polygon touches the anchor.
 - Example: "a side always touches the left anchor, whatever the number of sides".

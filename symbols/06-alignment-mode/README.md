@@ -25,7 +25,7 @@ There is only one way to align, with no choice of mode:
 
 ### Anchoring
 
-The user chooses how the shapes to place are anchored on the reference. The choice is made in the alignment panel, by anchors, and it applies to the shapes to place.
+The user chooses how the shapes to place are anchored on the reference (see [Anchors](../03-editor/anchors.md)). The choice is made in the alignment panel, by anchors, and it applies to the shapes to place.
 
 - The reference is the **real shape** of the first selected layer, not a square box around it. A circle is a circle: it is the same area the user can click (see [Select](../03-editor/select.md)).
 - Two placements, on the limit of the reference:

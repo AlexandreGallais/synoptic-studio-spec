@@ -12,7 +12,8 @@ The user picks a Symbol Lib, sees the flat list of its symbols, and creates or o
 
 ```mermaid
 flowchart LR
-    L["Symbol Lib: a flat list of symbols"] --> S["Symbol"]
+    L["Symbol Lib: flat lists of symbols and of styles"] --> S["Symbol"]
+    L --> L2
     S --> D["Drawing: shapes, text, pen, layers"]
     S --> T["Type and preset, from Metadata"]
     D --> A["Animation: an output signal moves a part of the drawing"]
@@ -20,6 +21,9 @@ flowchart LR
     T --> A
     T --> I
     S --> Y["Placed in a synoptic (part 3)"]
+    D --> K["Connection points: where pipes attach"]
+    L2["Symbol Lib: pipe, junction, crossing and end styles"] --> Y
+    K --> Y
 ```
 
 ## Static and dynamic symbols
@@ -46,15 +50,18 @@ The two kinds of library are the **Symbol Lib** (sorts symbols) and the **Type L
 | [Interaction mode](07-interaction-mode/README.md) | Interaction zones, gestures, what a gesture does. |
 | [Animation mode](08-animation-mode/README.md) | Linking an output signal to a change of the drawing, values and units in texts. |
 | [Run mode](09-run-mode/README.md) | Trying the symbol with test values, and simulating another screen. |
+| [Pipes](pipes/README.md) | Connection points of a symbol, and the styles of pipes, junctions, crossings and ends kept in the Symbol Lib. |
 | [Open questions](10-open-questions.md) | Every open question in one place. |
+| [Research brief](research-brief.md) | The questions sent to the documentary research, and where the answers are. |
 
-One folder per mode, with its tools inside. What several modes share is in the editor folder.
+One folder per mode, with its tools inside. What several modes share is in the editor folder (selection, hand, anchors, expert menu).
 
 ## Reading order
 
 1. [Libraries and symbols](01-libraries-and-symbols.md), then [Type, preset and faceplate](02-type-and-faceplate.md).
 2. [Editor](03-editor/README.md), then the modes in order: drawing, point editing, alignment, interaction, animation, run.
-3. [Open questions](10-open-questions.md).
+3. [Pipes](pipes/README.md).
+4. [Open questions](10-open-questions.md), then the [research brief](research-brief.md).
 
 ## Page layout
 

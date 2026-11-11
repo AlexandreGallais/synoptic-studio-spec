@@ -33,7 +33,7 @@ A group is an SVG `g` element. Its first use is to give a structure to several s
 ### Absolute children
 
 - A child can be set **absolute**: it leaves the layout.
-- Its position is given by two anchors: an anchor of the group and an anchor of the child. Example: the child's bottom left corner on the group's top right corner.
+- Its position is given by two [anchors](../03-editor/anchors.md): an anchor of the group and an anchor of the child. Example: the child's bottom left corner on the group's top right corner.
 - This puts the child outside the shape of the group while it stays in the group.
 - An absolute child does not change the size of the group.
 
