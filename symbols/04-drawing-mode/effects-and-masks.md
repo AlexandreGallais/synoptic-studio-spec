@@ -4,28 +4,29 @@
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
 
-Effects (SVG filters) and masks are set from the right-hand panel, like the [fill and border](fill-and-border.md). The Product Owner does not know SVG filters well: the editor must offer them in a menu, not ask the user to write anything.
+Effects and masks are set from the right-hand panel, like the [fill and border](fill-and-border.md). The Product Owner does not know SVG filters well: the editor offers them in a menu, and the user writes nothing.
 
 ## Rules
 
+- **Only what SVG does natively.** Every effect and every mask comes from the SVG itself: its filters, its `clipPath` and its `mask`. Nothing is simulated with copies or tricks. An effect that SVG does not do natively is not offered. This is why there is no "blur of what is behind the shape".
 - **Effects menu**: each shape has an "Effects" menu in the right-hand panel, to add, edit and remove effects.
 - **Mask**: a shape can be shown only through another shape. Example: a big circle, of which only the part inside a triangle is shown. The shape that cuts is chosen by the user.
-- **Performance comes first**: an effect is offered only if it keeps the performance objective (see the project criteria on gestures and 120 Hz). Filters are expensive in SVG, especially on large areas or over an animated content.
-- If an effect or a setting makes the performance fall too much, it is not offered. The answer is "not possible", and the limit goes in the research report of the performance POC.
+- **Performance comes first**: an effect is offered only if it keeps the performance objective (see the project criteria on gestures and 120 Hz). Filters are expensive in SVG, especially on large areas or over an animated content. The goal: never offer something that lags, so the final result stays smooth.
+- If an effect or a setting makes the performance fall too much, it is not offered. The answer is "not possible", and the limit goes in the research report.
 
 ## Proposed effects, to confirm
 
-Proposed by the assistant. Which ones are kept depends on the performance POC.
+Proposed by the assistant, all native in SVG. Which ones are kept depends on the research and the performance POC.
 
-| Effect | Notes |
-| --- | --- |
-| Drop shadow |  |
-| Inner shadow |  |
-| Blur of the shape |  |
-| Blur of what is behind the shape | Not native in SVG. Simulated: a blurred copy of what is below, cut to the shape. The most expensive one. |
-| Colour changes | Saturation, hue, grey levels. |
-| Mask by a shape | Hard edge (cut) or soft edge (the mask gives the transparency). |
+| Effect | SVG feature | Notes |
+| --- | --- | --- |
+| Drop shadow | Filter |  |
+| Inner shadow | Filter |  |
+| Blur of the shape | Filter |  |
+| Colour changes | Filter | Saturation, hue, grey levels. |
+| Cut by a shape | `clipPath` | Hard edge. The cheapest. |
+| Mask by a shape | `mask` | Soft edge: the mask gives the transparency. |
 
 ## Open questions
 
-- Which effects are kept: a documentary research, launched at the end, says which SVG features keep the performance; the performance POC then measures what the sources do not settle. The goal: never offer something that lags, so the final result stays smooth. See [Open questions](../10-open-questions.md).
+- Which effects are kept: a documentary research, launched at the end, says which SVG features keep the performance; the performance POC then measures what the sources do not settle. See [Open questions](../10-open-questions.md).

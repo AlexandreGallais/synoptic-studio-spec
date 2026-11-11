@@ -9,22 +9,22 @@ The polygon is drawn by dragging a box, like the rectangle and the ellipse. It b
 ## Rules
 
 - **Number of sides**: chosen by the user, from 3 to 20.
-- **How the polygon fills its box**: the Product Owner wants one of two behaviours, never a blend of both.
+- **How the polygon fills its box**: two modes wanted by the Product Owner, never a blend of both.
 
 | Mode | The polygon... |
 | --- | --- |
 | Filled | fills the box as much as possible. It is not forced to be equilateral. |
 | Equilateral | keeps all its sides equal. It is not forced to fill the box. |
 
+- A third mode, "like Figma", may be added. Figma is not equilateral and does not fill the box either: it depends on the research below.
 - **Anchors**: the user says where the polygon is placed in its box, with anchors on the box (its sides and its corners). Two ways to use an anchor:
   - a **corner** of the polygon touches the anchor;
   - a **side** of the polygon touches the anchor.
 - Example: "a side always touches the left anchor, whatever the number of sides".
-- **Points**: like the rectangle and the ellipse, its points can be edited in the [point editing mode](../05-point-editing-mode/README.md) (see [Points and handles](../05-point-editing-mode/points-and-handles.md)).
+- **Points**: like the rectangle and the ellipse, its points can be edited in the [point editing mode](../05-point-editing-mode/README.md). Each point can have its own corner radius, or its handles (see [Points and handles](../05-point-editing-mode/points-and-handles.md)).
 - **Fill and border**: the ones every shape has (see [Fill and border](fill-and-border.md)).
 - **Effects and mask**: the ones every shape has (see [Effects and masks](effects-and-masks.md)).
 
 ## Open questions
 
-- Figma draws its polygon in a way the Product Owner does not understand: a triangle does not fill the box, and it is not clear why. Whether a third mode "like Figma" is kept depends on a documentary research on how Figma, and drawing software in general, place a polygon in its box. It will be done at the end, like the one done for Metadata. See [Open questions](../10-open-questions.md).
-- Does the polygon have a corner radius? Not said by the Product Owner.
+- Why does Figma draw its polygon the way it does, and is there a logic behind it? A triangle does not fill the box, and the Product Owner does not know why. A documentary research, launched at the end, answers it and says whether a "like Figma" mode is kept. See [Open questions](../10-open-questions.md).

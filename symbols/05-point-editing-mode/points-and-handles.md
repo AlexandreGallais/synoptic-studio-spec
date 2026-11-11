@@ -18,6 +18,7 @@ A selected point is in one of two modes, and the user switches between them free
 | Handles | The point has handles that shape the curve. |
 
 - Each mode keeps its own settings. Switching to the corner radius mode and back to the handles mode gives the handles as they were, and the other way round. Nothing is forgotten.
+- The points of a [rectangle](../04-drawing-mode/rectangle.md), of a [polygon](../04-drawing-mode/polygon.md) and of a path can each have their own corner radius or their handles.
 - A point of an [ellipse](../04-drawing-mode/ellipse.md) has no corner radius mode: it has handles only.
 
 ### Mirroring of the handles
