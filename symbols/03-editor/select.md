@@ -37,6 +37,11 @@ Source: the research report (`research/t1-…/rapport.md`).
 - Selection rectangle, "entirely enclosed": Option (Alt) while dragging in Sketch; the direction of the drag in AutoCAD (left to right: enclosed entirely; right to left: everything crossed); no way in Figma (asked by its users since 2021). In Inkscape the same Alt key does the opposite (takes what the stroke touches).
 - Figma: Ctrl or Command while dragging takes nested layers. Sketch: Command ignores groups.
 
+## Decided by the Product Owner (2026-11-11)
+
+- **Keys must exist on every platform** (Windows, macOS, Linux). "Option" does not exist on Windows, so the specs name the key **Alt** (it is the Option key on a Mac).
+- A selection rectangle selects only the shapes it contains entirely while **Alt** is held. The option in the panel stays as the visible equivalent.
+
 ## Open questions
 
-- Which free key selects only the shapes entirely inside the rectangle (Option or Alt is the only one found), or does the direction of the drag decide. The Product Owner chooses; the option in the panel stays as the visible equivalent.
+- None.
