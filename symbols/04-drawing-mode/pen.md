@@ -38,3 +38,11 @@ While the Pen is used, the editor shows two buttons, so that the user never has 
 - It locks the direction of the segment to fixed angles, so that a perfectly straight line, horizontal, vertical or at a regular angle, is easy to draw.
 - Angle steps proposed by the assistant, to confirm: 15°, 30°, 45° and 90°. The user picks the step; 45° is the usual one. A step of 90° gives horizontal and vertical lines only.
 - With the lock on, the segment snaps to the nearest angle of the step.
+
+## What the research found
+
+Source: the research report (`research/t1-…/rapport.md`). The keys are not chosen; the Product Owner decides.
+
+- Angle steps found in other software: 45° (Sketch, with Shift, from the previous point; Illustrator for a rotation) and 15° (Inkscape, with Ctrl). This agrees with the steps proposed above.
+- Turning a curve back to a straight segment, in other software: a gesture on the last point (Illustrator: click the last point again, its outgoing handle disappears; Sketch: Command at the creation of the next point makes it independent; Penpot: "Make corner" and "Make curve" commands), or a mode that lasts (Affinity: "Polygon" mode for straight lines, "Pen" or "Smart" for curves). The two buttons of the project are the visible equivalent of such gestures.
+- "As in Figma, after a curve the next segment is a curve": neither confirmed nor contradicted, the Figma pages read do not document it.

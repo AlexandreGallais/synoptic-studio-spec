@@ -29,6 +29,14 @@ Select is in the tool bar of every mode except the Run mode. What it does depend
 - Resizing never applies a scale or a transform. A rectangle that grows gets a bigger width and a bigger height. Its border does not grow: the border has the fixed value the user gave it.
 - A text is resized the same way, with one rule more: its box is shown when it is selected, and dragging the box enlarges the text zone only. The size of the text does not change (see [Text](../04-drawing-mode/text.md)).
 
+## What the research found
+
+Source: the research report (`research/t1-…/rapport.md`).
+
+- In every software read, Shift adds to the selection or removes from it. Shift is therefore taken: the key for "entirely enclosed" must be another one.
+- Selection rectangle, "entirely enclosed": Option (Alt) while dragging in Sketch; the direction of the drag in AutoCAD (left to right: enclosed entirely; right to left: everything crossed); no way in Figma (asked by its users since 2021). In Inkscape the same Alt key does the opposite (takes what the stroke touches).
+- Figma: Ctrl or Command while dragging takes nested layers. Sketch: Command ignores groups.
+
 ## Open questions
 
-- None kept here. Which modifier key selects only the shapes entirely inside the rectangle is in the [research brief](../research-brief.md).
+- Which free key selects only the shapes entirely inside the rectangle (Option or Alt is the only one found), or does the direction of the drag decide. The Product Owner chooses; the option in the panel stays as the visible equivalent.

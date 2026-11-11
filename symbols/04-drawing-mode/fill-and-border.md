@@ -32,3 +32,9 @@ Proposed by the assistant, the Product Owner asked it to think of what can be of
 - **Position**: outside, in the middle, or inside the shape.
 - **Fill**: a colour or a gradient, as above.
 - **Dashes**: the border can be dotted or dashed, as the user wants. The user types two values: the length of a dash and the space between two dashes. Example: dash 2, space 2.
+
+### Dashes: what the research says
+
+- Native SVG dashes (`stroke-dasharray`) exist only for a stroke. The border of the project is a fill, so two ways remain: keep a hidden stroke under the hood, or compute each dash as a small shape. The second is a geometric calculation redone at each resize, for the geometry research. Which one: to decide by the Product Owner.
+- The cost follows the number of dashes (the perimeter divided by dash plus space). The editor needs a maximum number of dashes per shape, set by the POC (P8).
+- No source gives the cost of a gradient or of its number of colour stops: a short POC (P8) is planned.

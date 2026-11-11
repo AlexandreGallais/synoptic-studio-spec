@@ -40,6 +40,14 @@ When a handle is selected, it can be edited in two ways, which stay linked:
 
 Changing X and Y changes the angle and the length, and the other way round. The angle and length way is for a handle that must go at a precise angle, which X and Y alone do not give easily.
 
+### What the research found
+
+Source: the research report (`research/t1-…/rapport.md`). Confidence: high.
+
+- The three names are those of Figma (its programming interface has `NONE`, `ANGLE`, `ANGLE_AND_LENGTH`) and, since its "Dublin" version, of Sketch. Figma writes the first one "No mirroring": a possible variant of "None".
+- The same three behaviours exist elsewhere under other names: Inkscape Cusp / Smooth / Symmetric, CorelDRAW Cusp / Smooth / Symmetrical.
+- **The list is complete for mirrors.** Other modes exist but are not mirrors: "Auto" (Inkscape) and "Smart" (Affinity) set the handles in place of the user; Sketch "Straight" is already the corner radius mode; Penpot "Corner" and "Curve" are two states only.
+
 ## Open questions
 
-- None kept here. The names and the list of mirroring modes are in the [research brief](../research-brief.md).
+- None.
