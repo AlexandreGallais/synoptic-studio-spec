@@ -20,7 +20,8 @@ Symbols are kept in Symbol Libs. As for types, a library is only a way to sort a
 - A static symbol has no type, no preset, no faceplate, no animation and no interaction. Only the creation of the symbol and its visuals remain: the drawing (see [Drawing](02-drawing.md)).
 - The user can switch a symbol between static and dynamic whenever they want, in the symbol editor. Becoming dynamic requires choosing a type then.
 - Switching a dynamic symbol to static drops nothing: the type, the preset, the faceplate entries, the animations and the interactions are kept, only hidden (decided by the Product Owner on 2026-11-11). Switching back to dynamic brings them all back, so a mistake costs nothing. While hidden, they do nothing and are not shown anywhere, in the editor or in a synoptic.
-- If the type was changed while the symbol was static, the kept animations and interactions that no longer match the new type are the only open point (see [Open questions](07-open-questions.md)).
+- While a symbol is static, there is no type and no type selection in the symbol editor: the type can only be chosen on a dynamic symbol. The type itself can still change in Metadata in the meantime (a signal removed or renamed, for example).
+- When the symbol becomes dynamic again, the type selection comes back and the user chooses the type again. The animations and interactions that no longer fit the type, because Metadata changed, are broken (decided by the Product Owner on 2026-11-11). A broken item is kept, marked as broken and does nothing, until the user fixes it or removes it. The same holds when a dynamic symbol's type is changed, or when Metadata changes the type of a dynamic symbol.
 - The type of a dynamic symbol can be changed afterwards, in the symbol editor only (see [Types](../metadata/01-types.md)).
 
 ```mermaid
@@ -58,4 +59,4 @@ The names below are only names given by the user, not styles.
 
 ## Open questions
 
-- Can the type be changed while a symbol is static? If so, what happens to the hidden animations and interactions that no longer fit? See [Open questions](07-open-questions.md).
+- How does the user fix a broken animation or interaction (rebind it or remove it), and how are broken items shown? See [Open questions](07-open-questions.md).

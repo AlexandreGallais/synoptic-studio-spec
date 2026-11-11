@@ -8,7 +8,7 @@ This file is the index of the open questions. A question sits in the file it con
 
 | Question | Page | Written as |
 | --- | --- | --- |
-| Can the type be changed while a symbol is static, and what happens to the hidden animations and interactions that no longer fit the new type (the case also exists when the type of a dynamic symbol is changed)? | [Libraries and symbols](01-libraries-and-symbols.md) | Open. |
+| How does the user fix a broken animation or interaction (rebind to another signal or command, or remove it), and how are broken items shown? | [Libraries and symbols](01-libraries-and-symbols.md) | To describe. |
 | Names to review: layer, interaction, gesture (left click, right click...), zone, symbol mode, static and dynamic. "Symbol Lib" and "Type Lib" are settled. Metadata already uses "trigger" for a kind of command: a gesture must not be confused with it. | All | A research on the vocabulary can be done, as for Metadata. |
 | Full list of tools and their options (fill, stroke, align, group, boolean operations, zoom, snapping...), point editing detail. | [Drawing](02-drawing.md) | To describe. |
 | The pen modifier key, and how it works exactly (next segment only, or a switch). | [Drawing](02-drawing.md) | To confirm. |
