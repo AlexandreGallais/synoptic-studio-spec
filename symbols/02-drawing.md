@@ -11,7 +11,8 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 - A **tool** is what the mouse does in the drawing: select, draw a rectangle, write a text.
 - A **mode** changes what the editor is for. Switching mode changes the tools of the tool bar and what the right-hand panel shows.
 - Nothing is hidden behind a double click: to edit points, the user switches to the point editing mode.
-- Everything drawn stays a path, in the layers of an SVG, so the symbol stays a real SVG. A rectangle, an ellipse and a polygon are paths once drawn. A text stays a text, because it can show a value or a unit (see [Animation](04-animation.md)).
+- Key shortcuts and modifier keys are allowed, as in every drawing software, but never alone: each one has a visible equivalent (an option in the panel or the tool bar). The software is used by everyone, including an expert of 80 who makes synoptics.
+- Everything drawn stays a path, in the layers of an SVG, so the symbol stays a real SVG. A text stays a text, because it can show a value or a unit (see [Animation](04-animation.md)).
 - The name "layer" is provisional. A layer can be the target of an animation or of an interaction (see [Animation](04-animation.md) and [Interactions](05-interactions.md)).
 - Colours (fill, stroke) and the options of a shape (corner radius, for example) are neither tools nor modes. They are in the right-hand panel, which shows the options that fit the selected shape.
 
@@ -42,11 +43,30 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 
 ### Select
 
-- Clicks a shape to select it. Several shapes can be selected.
-- Moves the selected shapes with the mouse and resizes them.
-- A text is not resized like a shape: its box is shown when it is selected, and dragging the box enlarges the text zone only. The size of the text does not change and no transform is applied to it.
-- A right click on a selection opens a menu, which has "Group".
-- In the point editing mode, it selects points and handles instead of shapes.
+What it does depends on the mode.
+
+| Mode | What Select picks |
+| --- | --- |
+| Drawing | Shapes: to select them, move them and resize them. |
+| Point editing | Points and handles of a path. |
+| Alignment | The shapes to place in relation to each other. |
+| Interaction | The shapes, or the places, on which an interaction is set. |
+| Animation | The parts of the drawing that a signal animates. |
+| Run | Nothing: Select is not offered. |
+
+Selecting:
+
+- A click on a shape selects it.
+- Several shapes can be selected: with Shift or Ctrl held, a click adds a shape to the selection (or removes it). In the point editing mode, several points can be selected the same way.
+- A press in the empty space, held while dragging, draws a selection rectangle.
+- By default, every shape the rectangle touches is selected. A modifier key makes the rectangle select only the shapes it contains entirely. The key is not chosen yet (Shift and Alt were mentioned); like every modifier, it has a visible option too.
+
+Moving and resizing:
+
+- The selected shapes can be moved with the mouse.
+- A selection has a box with small squares on its sides and corners, to resize it.
+- Resizing never applies a scale or a transform. A rectangle that grows gets a bigger width and a bigger height. Its stroke does not grow: the stroke has the fixed value the user gave it.
+- A text is resized the same way, with one rule more: its box is shown when it is selected, and dragging the box enlarges the text zone only. The size of the text does not change.
 
 ### Hand
 
@@ -54,20 +74,51 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 
 ### Rectangle
 
-- Draws a rectangle by dragging. It becomes a path. Its corner radius is set in the right-hand panel.
+- Draws a rectangle by dragging. It becomes a path.
+- Its corner radius is set in the right-hand panel.
+- While drawing, a modifier key (Shift or Ctrl, not chosen) forces the width and the height to be equal: a square. The panel has a visible option that links the width and the height, for the same result.
 
 ### Ellipse
 
-- Draws an ellipse, or a circle, by dragging. It becomes a path.
+- Draws an ellipse by dragging: an oval or a circle. It becomes a path.
+- An ellipse has no corner radius. It is not a rectangle with a big radius.
+- The same modifier key and the same visible option as for the rectangle force the width and the height to be equal: a circle.
 
 ### Polygon
 
-- Draws a closed shape with straight sides. It becomes a path.
+The polygon is drawn by dragging a box, like the rectangle and the ellipse. It becomes a path. A polygon does not always touch all the sides of its box, so the tool has options, set in the right-hand panel.
+
+**Number of sides.** Chosen by the user, from 3 to 20. Figma goes up to 60, which is useless here, and real shapes rarely go above 8, but 20 does not get in the way of anyone.
+
+**How the polygon fills its box.** Three modes:
+
+| Mode | The polygon... |
+| --- | --- |
+| Filled | fills the box as much as possible. Its sides may be unequal. |
+| Equilateral | keeps all its sides equal, and is as big as the box allows. |
+| Like Figma | is placed in the box the way Figma and other drawing software do it: a triangle does not fill the box, a polygon of four sides touches the four corners. |
+
+**Anchors.** The user says where the polygon is placed in its box, with anchors on the box (its sides and its corners). Two ways to use an anchor:
+
+- a **corner** of the polygon touches the anchor;
+- a **side** of the polygon touches the anchor.
+
+Example: "a side always touches the left anchor, whatever the number of sides". It makes the shape easier to place.
 
 ### Text
 
 - Writes a text in the drawing. A text can show the value or the unit of a signal (see [Animation](04-animation.md)).
-- The box of a text sets the text zone. Resizing the box never resizes the text itself (see Select).
+- The editor computes the size of the text from the font, to give the box its size.
+- A text is edited like in a word processor: the user can format a part of it.
+
+Options proposed for a text, to confirm:
+
+| Group | Options |
+| --- | --- |
+| Font | Family, size, weight (bold), italic |
+| Colour | Colour of the text, colour of the background (highlight) |
+| Lines | Underline, strikethrough, line above. They sit below, in the middle and above the text. |
+| Layout | Horizontal alignment (left, centre, right), vertical alignment in the box, line height, letter spacing, wrapping inside the box |
 
 ### Pen
 
@@ -82,7 +133,7 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 | Click again, with no modifier | As in Figma, the next segment is a curve again. |
 | Click again, holding a modifier key | The next segment is a straight line straight away. |
 
-The modifier is an option wanted by the Product Owner, because a curve again after a curve is often a nuisance. The key is not chosen (Shift and Alt were mentioned), nor whether it applies to the next segment only or stays on.
+The modifier is an option wanted by the Product Owner, because a curve again after a curve is often a nuisance. It works like the key that makes a rectangle a square: a shortcut, not the only way. So the pen also has a visible option that says, point by point, "this point is a curve" or "this point is a straight line". The key is not chosen (Shift, Ctrl and Alt were mentioned), nor whether it applies to the next segment only or stays on.
 
 ```mermaid
 flowchart LR
@@ -99,14 +150,15 @@ flowchart LR
 
 ## Point editing mode
 
-- The tool bar keeps Select, Hand and Pen. The shape tools disappear.
-- Select picks points and handles, and moves them.
+- The tool bar keeps Select, Hand and Pen. The Rectangle, Ellipse, Polygon and Text tools disappear.
+- Select picks points and handles, one or several, and moves them.
 - Points can be added and removed.
 - The Pen starts from an existing point to trace another one.
 
 ## Alignment mode
 
 - The tool bar keeps only Select and Hand.
+- Select picks the shapes to place in relation to each other.
 - The right-hand panel becomes an alignment panel for the selected shapes.
 - The mode is only for placing shapes, not for drawing them.
 
@@ -114,9 +166,11 @@ flowchart LR
 
 A group is neither a tool nor a mode.
 
-- To make one, the user selects several shapes, then right click and "Group", or Ctrl+G.
-- A group has no size of its own: it has the size of what is inside it, as in an SVG.
-- A group is a node of the SVG, above the paths. An empty group does not exist.
+- To make one, the user selects several shapes, then right click and "Group", or Ctrl+G. A group gathers shapes: an empty group does not exist.
+- By default, the children of a group are placed freely (absolute), and the group has the size of what is inside it.
+- A group can be given a **layout**, set in the right-hand panel, like the auto layout of Figma or a flex display in CSS: everything inside is laid out horizontally or vertically, and starts from a corner, for example the bottom left. Grids are not decided.
+- A child can leave the layout and stay placed freely, fixed or tied to a corner of the group: "this one goes to the bottom right of the group, that one to the top right".
+- The runtime may do more than an SVG can. A group with a layout can have its own size, and the runtime recalculates the layout when something changes: a text that grows, for example, pushes or follows the others as the layout says.
 
 ## Expert menu
 
@@ -124,8 +178,8 @@ A menu for the tools that are not for everyday drawing. They work on shapes that
 
 ### Boolean operations
 
-- The user selects two shapes, then chooses the operation (intersection and the like).
-- The result is a new shape made from the two.
+- The user selects shapes, then opens the shape creation entry of the expert menu.
+- The editor goes into a mode where the user picks the kind of operation (intersection and the like). The result is a new shape made from the selected shapes.
 
 ### Placement and duplication
 
@@ -141,7 +195,8 @@ A menu for the tools that are not for everyday drawing. They work on shapes that
 
 ## Open questions
 
-- The exact options of the expert tools (boolean operations, placement and duplication) and of the alignment panel.
-- The pen modifier key, and how it works.
+- The exact geometry of the three polygon modes, to take from how Figma places a polygon in its box.
+- The exact options of the expert tools, of the alignment panel and of the group layout.
+- The modifier keys (square, selection rectangle, pen), and how the pen modifier works.
 
-Both are in [Open questions](07-open-questions.md).
+All three are in [Open questions](07-open-questions.md).
