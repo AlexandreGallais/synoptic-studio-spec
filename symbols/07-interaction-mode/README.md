@@ -46,6 +46,52 @@ flowchart LR
 | Interaction zone | Symbol editor | Symbol | Draw | No |
 | Interaction (place, gesture, command) | Symbol editor | Symbol | Create, edit | No |
 
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, sections 3.8 to 3.10). "Opinion" is the report's, not a decision.
+
+### Gestures
+
+Tools offer from six to twelve gestures (Ignition Perspective, Figma prototype, WinCC OA): click, double click, right click, press and release, pointer enter and leave, key, wheel, drag, delay. They all exist on Windows, macOS, Linux and in a browser. Traps: the context menu of the browser must be cancelled, and Firefox still shows it when Shift is held; in Ignition a disabled component still receives the click.
+
+| Gesture proposed | Keep? | Reason (opinion of the report) |
+| --- | --- | --- |
+| Click (left) | Yes | The usual case. |
+| Double click | Yes | To specify: on the same place, does the click wait for the double-click delay? |
+| Right click | Yes | The menu of the browser is cancelled; keyboard equivalent: the menu key. |
+| While pressed (press, then release) | Yes | A held command: one value at the press, another at the release. To specify: release outside the place. |
+| Key (when the place has the focus) | Yes | Needed by keyboard access. |
+| Pointer enter, pointer leave | No, as a command trigger | Risk of an accidental send; hover is for visual feedback. |
+| Wheel, middle click | No | They move and zoom the drawing. |
+| Drag | Not first | The text that becomes an input and the faceplate cover setting a value. |
+| Long press, touch gestures | No | Tablets and phones are out of scope. |
+
+### Names
+
+| Tool | The whole | The gesture | What happens | The place |
+| --- | --- | --- | --- | --- |
+| Figma | Interaction | Trigger | Action | Hotspot |
+| Ignition | — | Event | Action | Component |
+| WinCC OA | — | Event | Function, action | Graphics object |
+
+"Trigger" is taken by Metadata; "Event" and "Action" were set aside by decision 0002. Opinion of the report: **Interaction** (the whole), **Gesture** (the gesture), **Effect** (what happens: send a command, or open the faceplate), **Interaction zone** (the drawn zone). Confidence: medium.
+
+### Feedback, disabled state, confirmation, keyboard
+
+| Subject | Sources | Opinion of the report |
+| --- | --- | --- |
+| Hover, cursor, pressed state | Content shown on hover must be dismissable, hoverable and persistent; components and their states need a contrast of 3:1 (WCAG). | Per place: "hand" cursor, light outline on hover, pressed state; optional tooltip in plain text. |
+| Disabled state | Disable the commands not valid in the context. | A condition "disabled when", linked to an output boolean signal: the place looks inactive and sends nothing. |
+| Confirmation | HMIs confirm actions with heavy consequences, in two steps (one secondary source). | An option "confirm before sending" per interaction, off by default; the box names the command and the value. Confidence: low. |
+| Keyboard | Everything usable with the keyboard (WCAG level A); a visible focus (level AA). | Each interactive place reached with Tab, in an order that can be set; Enter or Space acts as a click; the menu key as a right click; an accessible name taken from the command. |
+
+## To decide by the Product Owner
+
+1. The gesture list above (short list, advised)?
+2. The names Interaction, Gesture, Effect, Interaction zone?
+3. Write here the feedback, the "disabled when" condition, the optional confirmation and the keyboard access (advised), or leave them to part 3?
+
 ## Open questions
 
-- Gesture list and name of the concept: left to the assistant's next research (question 6 of the [research brief](../research-brief.md)). See [Open questions](../10-open-questions.md).
+- Click and double click on the same place: does the click wait? Release of "while pressed" outside the place?
+- See [Open questions](../10-open-questions.md).

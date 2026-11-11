@@ -22,8 +22,18 @@ A start shape and an end shape can be set on a pipe. They are created in the Sym
 | Flange | A thin rectangle across the pipe | Middle of the box |
 | Cap | A half circle | Middle of the flat side |
 
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, sections 3.5, 3.7, 3.18).
+
+- The archived Figma page draws a start or end "part" in a W × H box with **four anchors, at the middle of the sides**: the user picks the side where the pipe attaches; the drawing may go outside the box; nothing is scaled; each end of a pipe offers the parts of its style, or none; a part can be copied from another style. The specs say nine anchors: to decide.
+- SVG has start, middle and end markers; a marker can take the paint of the line that uses it (`context-stroke`, support per engine not read). draw.io and GoJS have arrowheads.
+- Opinion of the report: **one single concept, the end shape of the Symbol Lib**, for the lines drawn in symbols (see [Fill and border](../04-drawing-mode/fill-and-border.md)) and for the pipes.
+- Names: **Start**, **End**, and **End shape** for the shape; avoid "cap", which is the end of a stroke in SVG.
+
 ## Open questions
 
+- Four anchors on the sides (archived Figma page) or nine (current specs)?
 - Is the whole shape filled with the pipe colour, or only the parts the user marks (so that a border stays its own colour)?
 - Does the end shape rotate with the last segment of the pipe, and can it be mirrored?
 - Is the end shape a symbol of the lib (a static symbol with a connection point) or a separate kind of object?

@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › Pipes · Previous: [Run mode](../09-run-mode/README.md)
 
-Status: draft, from the Product Owner's oral description of 2026-11-11. Not validated. The Figma page "Flow Pipes" of the design system file was not read when this page was written: the Product Owner said it holds everything and asked to read it later (see [Open questions](../10-open-questions.md)).
+Status: draft, from the Product Owner's oral description of 2026-11-11 and the second research report of 2026-11-11 (`research/t4-…/rapport.md`, which also read the archived Figma page "Flow · Pipes"). Not validated.
 
 Pipes are the lines that connect symbols in a synoptic. The user draws them with a pipe tool, and the editor computes the rest: joints, corners, junctions, crossings. This part of the specs covers what is **created in a library** (the styles) and what the symbol must offer (the connection points). How a pipe is drawn in a synoptic is in [Pipes in the synoptic](in-the-synoptic.md), which belongs to part 3.
 
@@ -51,6 +51,84 @@ The user only gives points and styles. The editor computes: the rounded corners,
 | Pipe, junction, crossing and end styles | Symbol Lib | Pipes of a synoptic | Create, edit, test | Choose |
 | Pipe drawing, junctions, crossings | Synoptic (part 3) | Synoptic | No | Draw, edit |
 
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, sections 3.1 to 3.7). Nothing was measured. "Opinion" is the report's provisional opinion, not a decision.
+
+### How other software models pipes
+
+- The software read (draw.io, Visio, Ignition, AutoCAD Plant 3D, JointJS, GoJS, yFiles, libavoid) agree on four objects: a **connection point** with a direction, the **pipe** (or link), the **crossing** ("line jump": arc, gap, square or nothing, with a size), and, less often, the **junction**. Confidence: high.
+- Which pipe passes over another is decided by a general rule: the stacking order (draw.io), the orientation (yFiles: horizontal over vertical), or a page setting (Visio). No software read offers the click on a crossing that the project wants: it stays, as an exception to a default rule.
+- No colour of content is universal: four colour codes of piping (ASME A13.1, BS 1710, ISO 14726, DIN 2403) disagree on steam, natural gas, nitrogen, acids and oxygen. The rule "the content only names and groups the styles" is consistent with this: the editor holds no colour of content.
+- The texts of the symbol standards (ISA-5.1, ISO 14617, EN 60617, ISO 10628) are paid and were not opened: what can be taken from them without a copyright problem stays open.
+
+### The archived Figma page "Flow · Pipes"
+
+An archived inspiration, not a decision. It differs from these pages on several points:
+
+| Subject | Archived Figma page | These specs |
+| --- | --- | --- |
+| Where junctions, crossings and ends live | Inside the pipe style | Four separate flat lists in the Symbol Lib |
+| A branch | The pipe stays one pipe (a tree) | The pipe is split in two |
+| Anchors of an end shape | Four, at the middle of the sides; one side chosen | Nine (sides and corners) |
+| Corner radius | In the style, "for rounded paths"; the path kind (straight, right angles, rounded) is chosen per pipe | In the style only |
+| Names | Core, Outline, Line, Part, Plain | Fill, Border, Flow dashes, End shape, Flat |
+| Inline symbols | Yes: a symbol with two connection points slides along the pipe | Absent |
+| Usage counter | "Used by 38 pipes" | Absent |
+| Dashes | A line style (continuous or dashed) | Flow dashes, maybe animated |
+
+### What the others do and this part lacks (opinion of the report)
+
+| Missing | Opinion |
+| --- | --- |
+| **Inline symbol** placed on a pipe (valve, reducer, flow arrow), sliding along it, bends included | Add: the clearest gap. |
+| Size of a bridge or a gap, set in the style | Add (see [Crossings](crossings.md)). |
+| Default rule of which pipe is on top | Write it: the last drawn is on top; the click is the exception. |
+| Orthogonal lock while drawing a pipe | Add, like the angle lock of the pen. |
+| Path kind per pipe (straight, right angles, rounded) | To discuss with the corner radius of the style. |
+| Usage counter of a style | Add: it prepares the display of broken links. |
+| Colouring by topology (zenon) | Refuse: the editor does not know what a fluid is. |
+| Automatic routing around symbols (libavoid) | Not in the first version: the Product Owner wants a path by clicks. |
+
+### Vocabulary (opinion of the report)
+
+| Concept | Words found | Proposed name |
+| --- | --- | --- |
+| The pipe | pipe, connector, edge, link, schematic line | **Pipe** |
+| What it contains | service, fluid, appearance, content | **Content** (a group label; "fluid" excludes electricity; "service" is the trade word) |
+| The style | appearance, connector style, pipe style | **Pipe style** |
+| The connection point | connection point, pin, port, anchor point | **Connection point** ("anchor" is already taken by the nine anchors) |
+| The junction | junction, branch, junction marker, waypoint | **Junction** (the place), **Junction marker** (the shape), **Branch** (the pipe that leaves) |
+| The crossing | line jump, bridge, jumpover, gap, loop | **Crossing**, of type **Bridge**, **Gap** or **None** |
+| Start and end | arrowhead, start, end, parts, marker | **Start**, **End**, **End shape**; avoid "cap", which is the end of a stroke in SVG |
+
+### Computing pipes
+
+- The computation holds in plain JavaScript with known bricks (arc at a corner, offset of a polyline, cut, arc for a bridge). Only the search of the crossings is to measure: comparing every segment with every other costs the square of their number; a spatial index and a recomputation limited to the two segments next to the moved point should bring it back to a few tens of tests (hypothesis, not a result).
+- Opinion: never draw a bridge or a gap with a mask (Ignition hit the limit of the number of masks of the browser); compute the geometry. Confidence: medium.
+- What is recomputed when a point moves:
+
+```mermaid
+flowchart TD
+    M["A point of the pipe moves"] --> A["Its two neighbouring segments"]
+    A --> B["The roundings of the corners touched"]
+    A --> C["The crossings of these segments, searched again"]
+    A --> D["Junctions, ends and inline symbols on these segments"]
+    C --> F["The bridge or gap of the other pipe concerned"]
+    X["The rest of the synoptic"] --> K["Kept in cache"]
+```
+
+- For the geometry research (not this part): offset of a polyline with arcs (body, borders, kinds of joins); search of the crossings between segments and arcs, with a spatial index, incremental; cut of a path at a point and insertion of an arc; length along a path (position of an inline symbol, start of the dashes).
+- POC proposed, **P9**: 100, 300 then 1 000 pipes of 5 segments, 1 000 to 10 000 crossings, one point moved with the mouse; work time per frame in plain JavaScript, with and without index; ways A and B of [Pipe styles](pipe-styles.md).
+
+## To decide by the Product Owner
+
+1. Junctions, crossings and end shapes: inside the pipe style (archived Figma page, advised by the report: one object to choose per pipe) or four separate lists (current specs)?
+2. A branch: one pipe as a tree (archived page, Ignition, advised) or two pipes (current specs)?
+3. Inline symbols on a pipe: add them (advised)?
+4. Can a pipe have a type of Metadata (see [Pipe styles](pipe-styles.md))?
+5. Path kind per pipe (straight, right angles, rounded) next to the corner radius of the style?
+
 ## Open questions
 
-- The list is in [Open questions](../10-open-questions.md): most of them are left to the next research (questions 8 to 12 of the [research brief](../research-brief.md)).
+- The list is in [Open questions](../10-open-questions.md).

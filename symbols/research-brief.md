@@ -2,9 +2,12 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Research brief
 
-Status: questions 1 to 4 were researched and the report is back (2026-11-11). Its answers are written in the pages concerned, under "What the research found". Questions 5 to 22 are written for the second research (task brief rewritten on 2026-11-11, after a full pass over the part), not sent yet.
+Status: both researches are back (2026-11-11). Questions 1 to 4: first report. Questions 5 to 22: second report. Their answers are written in the pages concerned, under "What the research found", with what is left to the Product Owner under "To decide by the Product Owner".
 
-Where the report is: in the `synoptic-studio-spec` project, folder `research/t1-recherche-documentaire-claude-desktop-effets-svg/` (`rapport.md`, annexes beside it). That folder is ignored by Git.
+Where the reports are, in the `synoptic-studio-spec` project (folders ignored by Git, `rapport.md` and annexes beside it):
+
+- first report: `research/t1-recherche-documentaire-claude-desktop-effets-svg/`;
+- second report: `research/t4-recherche-documentaire-claude-desktop-partie-symboles/`.
 
 ## Questions and where the answers are
 
@@ -14,8 +17,30 @@ Where the report is: in the `synoptic-studio-spec` project, folder `research/t1-
 | 2. How a polygon is placed in its box | [Polygon tool](04-drawing-mode/polygon.md) |
 | 3. Handle mirroring: names and list | [Points and handles](05-point-editing-mode/points-and-handles.md) |
 | 4. Modifier keys | [Select](03-editor/select.md), [Rectangle](04-drawing-mode/rectangle.md), [Pen](04-drawing-mode/pen.md) |
+| 5. Fonts | [Text tool](04-drawing-mode/text.md) |
+| 6. Gestures and name of the concept | [Interaction mode](07-interaction-mode/README.md) |
+| 7. Animatable properties, mapping, enum | [Animation mode](08-animation-mode/README.md) |
+| 8 to 11. Pipes | [Pipes](pipes/README.md) and its pages |
+| 12. The assistant's questions | [Editor](03-editor/README.md), [Anchors](03-editor/anchors.md), [Select](03-editor/select.md), [Point editing mode](05-point-editing-mode/README.md), [Group](04-drawing-mode/group.md), [Animation mode](08-animation-mode/README.md), [Run mode](09-run-mode/README.md), [Connection points](pipes/connection-points.md) |
+| 13. Libraries | [Libraries and symbols](01-libraries-and-symbols.md) |
+| 14. Geometry of a symbol | [Editor](03-editor/README.md) |
+| 15. Open paths | [Fill and border](04-drawing-mode/fill-and-border.md), [Pipe ends](pipes/ends.md) |
+| 16. Boolean operations, duplication, distribution | [Boolean operations](03-editor/expert-menu/boolean-operations.md), [Placement and duplication](03-editor/expert-menu/placement-and-duplication.md), [Alignment mode](06-alignment-mode/README.md) |
+| 17. Colours | [Fill and border](04-drawing-mode/fill-and-border.md) |
+| 18. Texts that show a value | [Animation mode](08-animation-mode/README.md), [Text tool](04-drawing-mode/text.md) |
+| 19. Animation, more | [Animation mode](08-animation-mode/README.md) |
+| 20. Interaction, more | [Interaction mode](07-interaction-mode/README.md) |
+| 21. Symbol file and SVG export | [Editor](03-editor/README.md) |
+| 22. Desktop window | [Effects and masks](04-drawing-mode/effects-and-masks.md) |
 
-## Not researched yet
+## What the second report could not answer
+
+- The texts of ISA-101, ISA-18.2, ISA-5.1, ISO 14617, EN 60617, ISO 10628, EEMUA 201, NUREG-0700: paid standards, not opened; what can be taken from the symbol standards without a copyright problem stays open.
+- AVEVA and Siemens documentation (not readable or not reached); the connectors of Inkscape and FigJam.
+- Key conflicts (Alt and Linux window managers, Ctrl+G in browsers); grid and snapping, HMI number format strings, colour variables: no source read.
+- DEXPI terms (P&ID exchange): seen only in search results.
+
+## The questions as they were sent
 
 ### 5. Fonts: licences, weights, italic, baseline fit
 

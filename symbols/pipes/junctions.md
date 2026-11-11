@@ -29,8 +29,19 @@ A junction is a place where a pipe splits in two (or where several pipes meet).
 | Round marker | Circle | 12 px | Pipe colour | 2 px, dark grey |
 | Square marker | Square | 12 px | Pipe colour | 2 px, dark grey |
 
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, sections 3.1, 3.5, 3.7).
+
+- In Ignition, a pipe is a tree of "connections" from an "origin": two pipes laid on each other merge. In the archived Figma page, a branch adds a junction at its start and **the original pipe stays one pipe**; the branches are found by the editor, only the marker is styled. libavoid has a "JunctionRef", fixed or free. draw.io joins two links with a "waypoint" shape.
+- This differs from the rule above (the pipe is split in two). Opinion of the report: one pipe as a tree. To decide (see [Pipes](README.md)).
+- The archived page names the kinds Plain, Circle, Square, with a diameter "bigger than the pipe", a fill and a stroke.
+- Proposed names: **Junction** (the place), **Junction marker** (the shape), **Branch** (the pipe that leaves).
+- Three or more pipes at one point: an order between the pipes, then each pair is handled (opinion of the report).
+
 ## Open questions
 
+- Split in two or one pipe as a tree: to decide (see [Pipes](README.md)).
 - Where several pipes of different styles meet, which style gives the colour of the junction?
 - Is the junction size a fixed value or a multiple of the pipe width?
 - Can the junction style be something else than a circle or a square (a free shape, like the ends of a pipe)?

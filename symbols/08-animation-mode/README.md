@@ -76,6 +76,79 @@ flowchart LR
 | Animation (signal, target, mapping) | Symbol editor | Symbol | Create, edit | No |
 | Text linked to a value or to a unit | Symbol editor | Symbol | Create, edit | No |
 
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, sections 3.11 to 3.16, 3.21). Nothing measured; "Opinion" is the report's.
+
+### Properties a signal can drive
+
+Transform and opacity, animated by CSS or by the animation interface of the browser, go through the graphics card; animating a position or a radius by attribute, deforming a path or moving dashes triggers a repaint, whose cost follows the area.
+
+| Property | SVG mechanism | Expected cost | Opinion of the report |
+| --- | --- | --- | --- |
+| Rotation | Transform | Low | Offer |
+| Position | Transform | Low | Offer |
+| Opacity | Opacity | Low | Offer |
+| Visibility (show, hide) | Display | Low | Offer |
+| Fill or border colour | Repaint | Medium, but rare (a change of state) | Offer |
+| Fill level (tank, gauge) | Cut by a rectangle that moves | Low if the cut is simple | Offer, as a dedicated animation |
+| Blinking | Opacity animation | Low | Offer, bounded (below) |
+| Dash travel | `stroke-dashoffset` | Repaint at each frame | Pipes and lines only, subject to POC P10 |
+| Gradient stop or colour | Repaint | To measure | Subject to a POC |
+| Size by scale | Transform | Low, but makes the borders grow | Not first: against "never a scale" |
+| Point deformation, filter parameters, `viewBox` | Repaint or filter | High | Refuse |
+
+### Shapes of mapping
+
+| Shape | For | Opinion of the report |
+| --- | --- | --- |
+| Bounded linear: an input range becomes an output range; outside it, the output stays at its bound | Integer, real | Offer; the input range takes the bounds of the signal by default |
+| By ranges (thresholds): a table of non-overlapping ranges, each with a value (as in WinCC Unified, which flags overlaps) | Integer, real | Offer |
+| Two values | Boolean | Offer |
+| State table | Enum | Offer (below) |
+| Table of points (piecewise linear) | Integer, real | Later |
+| Curve, expression, script | — | Refuse: against "for everyone" |
+
+Confidence: low (one tool read).
+
+### Enum: a state table
+
+For each value of the enum, the values of a few properties (colour, visible layers, text), plus a default row for an unknown value. No state machine: the enum already carries the state, and transitions are the model's business. Code a state by brightness and a word, never by colour alone. Keep the word "Animation" ("dynamization" at Siemens). Confidence: low.
+
+### Transition, pivot, conflicts, blinking
+
+| Subject | Opinion of the report | Confidence |
+| --- | --- | --- |
+| Jump or smooth | An option per animation: no transition, or a short linear duration; none by default for a change of state. | low |
+| Pivot | One of the nine anchors of the box (centre by default) or a point set by the user. In CSS, an SVG element turns around the origin of the `viewBox` unless `transform-box: fill-box` is set. | medium |
+| Two animations on one property | Forbid it and flag it in the editor; transforms of different kinds compose in a fixed order: move, then rotate. | very low |
+| Blinking | A "Blink" animation at a fixed rate, under three flashes per second (WCAG level A), by opacity; a reminder in the editor ("keep it for the abnormal"); a global stop; follow the system's "reduce motion". A blink lasting more than five seconds must be possible to stop. | medium |
+| Many animated symbols | POC **P11**: 50, 200, 1 000 symbols animated by signals at 10 updates per second. | — |
+
+### Quality of a value
+
+Ignition classes quality as Good, Uncertain, Bad, Error, and shows an overlay on the component (pending, unknown, error). Opinion of the report: show it **by default** on every symbol animated by a signal whose quality is not good, with a mark that is not only a colour; not an animation to configure. The signals of Metadata have no quality: it is a question for the contract with the model.
+
+### Texts that show a value
+
+- The browser formats a number by language (decimal comma), with or without thousand separators, leading zeros, decimals or significant digits, standard, scientific or engineering notation, sign always or never.
+- Opinion of the report: no free format string. In the preset: the decimals (already). Per text: thousand separator (off by default), sign, leading zeros, notation. The language of the application sets the decimal comma.
+- Missing value: a long dash and the quality mark. Out of bounds: the value as it is (the bounds are indicative). Too long for a fixed box: "####", never truncated digits. Confidence: very low.
+
+### A text that becomes an input: a gap with a validated page
+
+- `foreignObject` is supported everywhere since 2015, but **WebKit misplaces HTML content inside it** as soon as it gets a layer (opacity, transform, relative or absolute position): bug opened in 2009, still open (changed 2026-09-11). An `<input>` in it is badly scaled and the buttons of a number field are shifted.
+- Opinion of the report: do not put the input in the SVG. On click, lay an HTML field over the text, outside the SVG. This differs from [Commands](../../metadata/07-commands.md) and decision 0003 (validated), which say "an SVG `foreignObject`". POC **P12**: an input in a `foreignObject` against an HTML field laid over it, in Chromium, Firefox and WebKit, with zoom and rotation of the symbol. Confidence: high.
+- Pitfalls of the input: Enter validates, Escape cancels, losing the focus cancels; the value shown is frozen while typing; decimal comma by language; bounds and conversion follow the faceplate rules of Metadata.
+
+## To decide by the Product Owner
+
+1. The list of animatable properties and the shapes of mapping above?
+2. The state table for an enum?
+3. Blinking bounded under three flashes per second, with a global stop?
+4. Quality of a value shown by default: needs a quality in the contract with the model.
+5. Text that becomes an input: an HTML field laid over the text instead of a `foreignObject`? It reopens a validated page (decision 0003): a dated decision is needed, after the POC P12.
+
 ## Open questions
 
-- The list of animatable properties, the shapes of mapping (linear or not), animation of an enum: left to the assistant's next research (question 7 of the [research brief](../research-brief.md)). See [Open questions](../10-open-questions.md).
+- See [Open questions](../10-open-questions.md).

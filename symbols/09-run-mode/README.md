@@ -49,6 +49,17 @@ The Run mode can show the symbol as it would look on another screen, which is no
 | --- | --- | --- | --- | --- |
 | Run mode | Symbol editor | Checking a symbol | Use | No |
 
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, sections 3.15, 3.16).
+
+- Figma's prototype chains triggers and actions without running anything. Opinion of the report: the log is a list, one line per action: time, place, gesture, effect, value.
+- Faceplate: a click on a value or an element opens its faceplate, which must not hide the graphic (HMI guide). Opinion: a floating window near the symbol, that can be moved.
+- Screen simulation: size and resolution are not enough; opinion of the report: add the **scale factor of the system** (100 % to 200 %).
+- Quality: a selector of quality per signal (good, uncertain, bad) would let the user test the quality mark (see [Animation mode](../08-animation-mode/README.md)).
+- Name: nothing runs here. Opinion of the report: **Test mode** (the archived Figma file has a separate "Runtime" page).
+
 ## Open questions
 
+- Name: Test mode, to confirm.
 - The form of the simulation log and of the simulated faceplate (where the log is shown, what a line says, whether the faceplate shows the test values). See [Open questions](../10-open-questions.md).

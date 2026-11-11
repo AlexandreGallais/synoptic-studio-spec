@@ -19,7 +19,11 @@ The word "anchor" is used by several pages. They all mean the same thing, and th
 | [Alignment mode](../06-alignment-mode/README.md) | Place the shapes to place on the reference, inside or outside. |
 | [Pipe ends](../pipes/ends.md) | Say where the pipe is attached to the end shape. |
 
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, section 3.15). No tool read aligns on the real outline of a shape. Opinion of the report: on a real shape, the anchors are **the centre, plus the eight points where a ray from the centre (top, bottom, left, right, diagonals) meets the outline**. On a rectangle, the four middles match; the corners differ when the rectangle is rounded.
+
 ## Open questions
 
-- The Product Owner wants the alignment to use the real shape of the first selection, not its square box. Nine anchors do not fit a circle or a free form: what an anchor is on a real shape is to settle (see [Alignment mode](../06-alignment-mode/README.md)).
+- Anchors on a real shape: the proposal above, to confirm (see [Alignment mode](../06-alignment-mode/README.md)).
 - Whether the anchors are always nine, or if the user can add their own.

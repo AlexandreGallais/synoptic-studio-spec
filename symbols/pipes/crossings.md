@@ -30,9 +30,28 @@ A crossing is a place where a pipe passes over another one without being connect
 | Cut | Gap | any | Interruption |
 | Overlap | None | any | One over the other |
 
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, sections 3.1, 3.3, 3.4, 3.5, 3.7).
+
+- Everywhere, a crossing is an arc, a gap, a square or nothing, **with a size**: draw.io (none, arc, gap, sharp; one size), Visio (smooth arc, gap, square, multi-sided arc; horizontal and vertical size), JointJS (arc, cubic, gap; size 5 by default), yFiles (gap, arc, rectangle, two sides), Plant 3D (gap or loop, with a width), Ignition (a gap of 4 by default, 0 removes it). Confidence: high.
+- Which pipe passes over: the stacking order (draw.io: the link on top jumps), the orientation (yFiles), or a page setting (Visio). No software read offers the click of the project. The archived Figma page has it: hover a crossing, click to swap; the panel of the pipe lists all its crossings and offers "swap all".
+- Ignition hit the limit of the number of masks of the browser with its gaps, and added a setting that removes them "for a possible performance gain". GoJS warns that jumps need considerable computation with many links.
+
+### Opinion of the report
+
+| Point | Proposal |
+| --- | --- |
+| Size | Set in the crossing style: size of a bridge; for a gap, the width of the pipe on top plus a fixed clearance on each side. |
+| Default rule | The **last drawn pipe passes over**; the click in the synoptic is the exception, kept per crossing. |
+| Drawing | Never with a mask: the pipe underneath is really cut, the one on top really deviated. |
+| Bridge and corner radius | Radius of the bridge equal to the corner radius, bounded by the size of the bridge; at radius 0, a square bridge (shapes that exist in Visio and yFiles). |
+| Crossing on a rounded corner, or too close to a corner, a junction or another crossing | Fall back to a gap, or draw nothing. |
+| Two parallel pipes laid on each other | Not a crossing: draw nothing. |
+| Three pipes or more at one point | An order between the pipes, then each pair; neighbouring bridges merge. |
+| Name | **Crossing**, of type **Bridge**, **Gap** or **None**. |
+
 ## Open questions
 
-- Size of a bridge or of a gap: fixed, a multiple of the width, set in the style?
-- Several pipes crossing at one point, or two pipes crossing at a corner: what does the computation do?
+- Size of a bridge or of a gap, default rule "last drawn on top": proposed by the report, to confirm.
 - Does a bridge keep the borders of the pipe (the border follows the arch)?
-- Which pipe is on top by default (the last drawn, the first)?

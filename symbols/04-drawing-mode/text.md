@@ -54,3 +54,23 @@ The last two are set in the [Animation mode](../08-animation-mode/README.md).
 
 - Only the fonts of the software are offered. They are chosen among the fonts free to be put in SVG files (licence).
 - **Embedding**: an option puts the fonts directly into the exported SVG document, so that no font is needed next to it. The user chooses whether to embed or not.
+
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, sections 3.21, 3.23). "Opinion" is the report's.
+
+| Subject | Sources | Opinion of the report | Confidence |
+| --- | --- | --- | --- |
+| Licence | A font under the **OFL** can be shipped with any software and embedded in a document, whole or in part, without the document becoming OFL. Subsetting or converting the font is a modification: the reserved name can then no longer be used. The FAQ says nothing about SVG or base64. | Pick OFL fonts with no reserved name, or embed the whole file. | medium |
+| Weights, italic | Weight goes from 100 (Thin) to 900 (Black); any value from 1 to 1000 is valid. | List weights and italics from an inventory of the bundled fonts; italic only if the family has a real one. | medium |
+| Box fit to the line | CSS has `text-box-trim` and `text-box-edge` (cap height, baseline), available everywhere since August 2026. Nothing equivalent was read for SVG text. | "Fit to the line": from the cap height to the baseline, computed from the metrics of the font. | low |
+| Text border | A stroke applies to text; `paint-order: stroke` paints it under the fill; available everywhere since January 2020. | **Offer the text border**: native and simple. | high |
+| Text along a path, vertical text | No source read. | Refuse first. | — |
+| Translatable texts | No source read. | Out of the first version, keeping a stable identifier per text. | — |
+
+For a text that shows a value (number format, missing value, text that becomes an input), see [Animation mode](../08-animation-mode/README.md).
+
+## To decide by the Product Owner
+
+1. OFL fonts only, embedded whole?
+2. The text border is native: keep it in the specs (it was "not a priority, dropped if not simple")?

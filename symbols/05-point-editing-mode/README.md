@@ -56,6 +56,14 @@ flowchart LR
     F --> K["Fill, border and effects kept"]
 ```
 
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, section 3.15).
+
+- In a boolean group of Figma, each shape keeps its dimensions, position, rotation and corner radius. Opinion of the report: a free form keeps fill, border and effects; the options proper to the former shape (number of sides, box of the ellipse) leave the panel; the global corner radius becomes a radius per point.
+- Points list: no source read. Opinion of the report: the points of the selected shapes; all the shapes, folded, when nothing is selected.
+- Name: the report proposes **Path** instead of "free form" (the word of SVG).
+
 ## Open questions
 
 - Options that belong to the former shape (the corner radius of a rectangle, the number of sides of a polygon, the box of an ellipse): once the shape is a free form, are they gone from the panel, or kept as shortcuts? The Product Owner said nothing is lost, but these options describe a shape that no longer has a fixed geometry.

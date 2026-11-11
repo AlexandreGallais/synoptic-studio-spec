@@ -24,8 +24,16 @@ When the user edits a pipe style, a junction style, a crossing style or an end s
 
 - The cases are not editable by the user.
 
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, section 3.15).
+
+- The archived Figma page calls it "Pipe style preview". Opinion of the report: rename "Test display" to **Preview**.
+- Cases to add if the corresponding rules are kept: an inline symbol on a pipe, a crossing on a corner and near a junction, a branch (see [Pipes](README.md)).
+
 ## Open questions
 
+- Name: Preview, to confirm.
 - Is the list of cases fixed or can the user add their own?
 - Does the test display also show several styles together (water and oil crossing, steam meeting water)?
 - Is it also available in the Run mode, with the flow dashes moving?

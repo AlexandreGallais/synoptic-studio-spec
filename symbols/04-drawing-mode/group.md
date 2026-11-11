@@ -41,6 +41,10 @@ A group is an SVG `g` element. Its first use is to give a structure to several s
 
 - The runtime may do more than an SVG can. It places the children again when something changes: a text that grows, for example.
 
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, section 3.15). Figma gives a child constraints (left, right, centre, both, scale) to its parent frame; a Figma group has none. Opinion of the report: the layout without flex is enough for symbols; the anchors play the role of constraints.
+
 ## Open questions
 
 - The list of anchors and the exact options of the panel. See [Open questions](../10-open-questions.md).

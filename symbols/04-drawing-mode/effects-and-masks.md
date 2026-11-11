@@ -79,11 +79,40 @@ Source: the research report (`research/t1-…/rapport.md`, in the project, not c
 - What is measured: the work time of each frame during the gesture, in milliseconds, read in the browser profiler (the time between two frames is not enough: a 60 Hz engine lengthens it without being slow). P0 and P2 first.
 - Decision threshold proposed: 95 % of the frames at 8.3 ms or less and none above 16.7 ms at the most demanding setting offered, in each engine aimed at: offer. The rule holds up to a setting, then breaks: offer with that limit. It breaks at the smallest useful setting: refuse. The maximum stays the one the Product Owner sets.
 
+### POC added by the second research
+
+The second report (`research/t4-…/rapport.md`) proposes four more POC, in the same repository and with the same measure:
+
+| POC | Question | Page |
+| --- | --- | --- |
+| P9 | Pipes: search of the crossings while a point moves, with and without spatial index; two strokes or computed outlines. | [Pipes](../pipes/README.md) |
+| P10 | Animated flow dashes on 10 to 500 pipes: CSS, SMIL, JavaScript steps. | [Pipe styles](../pipes/pipe-styles.md) |
+| P11 | 50 to 1 000 symbols animated by signals at 10 updates per second. | [Animation mode](../08-animation-mode/README.md) |
+| P12 | Input in a `foreignObject` against an HTML field laid over the text, with zoom and rotation. | [Animation mode](../08-animation-mode/README.md) |
+
+### Desktop window: Chromium without Electron? (second research)
+
+| Option | Engine per system | Size | Updates | Shell language | Licence, state |
+| --- | --- | --- | --- | --- | --- |
+| Electron | Embedded Chromium everywhere | Most apps above 100 MB | One Chromium major version out of two | JavaScript (Node.js) | MIT |
+| NW.js | Embedded browser and Node.js everywhere | Not read | Not read | JavaScript | NW.js community |
+| Tauri 2 (system view) | WebView2 on Windows, WKWebView on macOS, webkit2gtk on Linux | Light | With the system | Rust | Stable |
+| Tauri 3 with CEF | Embedded Chromium everywhere | Hundreds of MB more | Chromium version chosen by the app | Rust | Alpha (page of 2026-09-13); no sandbox on Windows yet |
+| CEF directly | Embedded Chromium | Heavy | Follows Chromium | C or C++ | BSD |
+| Wails | WebView2 on Windows; no embedded browser | Light | With the system | Go | Not read |
+| Neutralinojs | The system web view | Light | With the system | Provided binary, JavaScript interface | Not read |
+| Installed web app | The user's browser: Chrome or Edge; Safari "Add to Dock"; not Firefox | None | With the browser | No shell | — |
+
+- Chromium without Electron exists (Tauri 3 with CEF, CEF, NW.js), but the project criterion "all the code in JavaScript" sets aside Tauri, Wails and CEF, unless an exception is validated.
+- The options based on the system view inherit WebKit on macOS and Linux (no GPU filters, 60 frames per second).
+- The installed web app works from a local address: it fits the architecture of the project (a local server for the files, the same front in a browser).
+- Opinion of the report (not a decision): 1. **Electron**, the only fully JavaScript option that guarantees Chromium on the three systems; the price is the size and following its versions. 2. **Local server and installed web app**, the lightest, which exists anyway; to ship first for trials, if Chrome or Edge is present. 3. **Tauri 3 with CEF**: to watch, not now. Confidence: medium.
+
 ## To decide by the Product Owner
 
 The report's questions that the specs cannot answer alone:
 
-1. Which desktop window: embedded Chromium or the system view? It fixes the engine to measure first. **Postponed by the Product Owner (2026-11-11), not decided.** He wants the lightest and simplest to maintain for an open source application, so possibly Tauri, possibly Electron. Chromium is probably the best for effects and 120 Hz; he wonders whether Chromium can be used without Electron. To think about later.
+1. Which desktop window: embedded Chromium or the system view? It fixes the engine to measure first. **Postponed by the Product Owner (2026-11-11), not decided.** He wants the lightest and simplest to maintain for an open source application, so possibly Tauri, possibly Electron. Chromium is probably the best for effects and 120 Hz; he wondered whether Chromium can be used without Electron: the second research answers above. Linked question: does the criterion "all the code in JavaScript" allow a shell in Rust?
 2. Which browsers must the front hold at 8.3 ms when plugged into a browser: Chromium only, or Firefox and Safari too?
 3. Is an effect suspended during the gesture and restored at release an acceptable concession (if the drop shadow does not hold in WebKit)?
 4. Can a colour filter be replaced by recomputed colours, or must it stay a filter in the exported SVG?

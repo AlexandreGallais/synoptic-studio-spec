@@ -2,29 +2,44 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Open questions · Previous: [Run mode](09-run-mode/README.md)
 
-Status: draft. Everything in this part is still a draft: these are the questions raised while writing it.
+Status: draft. Everything in this part is still a draft: these are the questions raised while writing it. Both researches are back (2026-11-11): their answers and opinions are in the pages; what is left is for the Product Owner to decide.
 
 This file is the index of the open questions. A question sits in the file it concerns and is listed here; once answered, it is removed from both and the answer goes in the rules.
 
+## To decide by the Product Owner, after the researches
+
+| Question | Page | Opinion of the research |
+| --- | --- | --- |
+| Names: Advanced tools, Path, Interaction zone, Preview, Test mode; Layer, static and dynamic kept. | [Editor](03-editor/README.md) | Those names. |
+| Rotation as the only transform of a shape; frame of a symbol; minimum snapping and guides; editor data in one `<metadata>` block; missing features to add now. | [Editor](03-editor/README.md) | See the page. |
+| Desktop window; does "all in JavaScript" allow a shell in Rust? Browsers to hold at 8.3 ms; which effects go in the specs (two lots?); effect suspended during a gesture; colour filter or recomputed colours. | [Effects and masks](04-drawing-mode/effects-and-masks.md) | Electron, and the installed web app first; two lots of effects. |
+| Open paths (middle only, caps, joins); native stroke under the hood for a "middle" border, which also settles the dashes; named colours and a "high-performance" palette. | [Fill and border](04-drawing-mode/fill-and-border.md) | Yes to the three. |
+| OFL fonts embedded whole; text border kept. | [Text tool](04-drawing-mode/text.md) | Yes. |
+| Third polygon mode "like Figma"; anchors on corners reserved to 3 and 4 sides or another meaning. | [Polygon](04-drawing-mode/polygon.md) | Drop the third mode. |
+| Modifier keys (square, from the centre, angle lock). "Entirely enclosed" is settled: Alt. | [Select](03-editor/select.md), [Rectangle](04-drawing-mode/rectangle.md), [Pen](04-drawing-mode/pen.md) | Conventions written; key conflicts not researched. |
+| Free form: options of the former shape; points list. | [Point editing mode](05-point-editing-mode/README.md) | Drop the options of the former shape; list the selected shapes. |
+| Anchors on a real shape; distribution with equal spacing; one anchor for all the shapes to place or one each. | [Alignment mode](06-alignment-mode/README.md), [Anchors](03-editor/anchors.md) | Centre plus eight points on the outline; add the distribution. |
+| Boolean operations and duplication rules. | [Boolean operations](03-editor/expert-menu/boolean-operations.md), [Placement and duplication](03-editor/expert-menu/placement-and-duplication.md) | Four operations; polar, along a path, grid. |
+| Gesture list; names Interaction, Gesture, Effect; feedback, "disabled when", confirmation, keyboard. | [Interaction mode](07-interaction-mode/README.md) | Short list; those names; write them here. |
+| Animatable properties, shapes of mapping, enum state table, blinking bounded, quality of a value, number format. | [Animation mode](08-animation-mode/README.md) | See the page. |
+| **Text that becomes an input: HTML field laid over the text instead of a `foreignObject`.** It reopens a validated page ([Commands](../metadata/07-commands.md), decision 0003). | [Animation mode](08-animation-mode/README.md) | HTML field over the text, after POC P12; needs a dated decision. |
+| Do the signals carry a quality in the contract with the model? | [Animation mode](08-animation-mode/README.md) | Yes, shown by default. |
+| Name "Test mode"; form of the simulation log and of the simulated faceplate. | [Run mode](09-run-mode/README.md) | Test mode; a log line: time, place, gesture, effect, value. |
+| Junctions, crossings and ends inside the pipe style or in separate lists; a branch as one pipe or two; inline symbols; a type of Metadata for a pipe; path kind per pipe. | [Pipes](pipes/README.md) | Inside the style; one pipe; yes; yes, three signals. |
+| Two strokes or computed outlines for a pipe; flow dashes as a native stroke. | [Pipe styles](pipes/pipe-styles.md) | After POC P9; native stroke, animated only with a flow. |
+| Size of bridges and gaps; default "last drawn on top"; borders on a bridge. | [Crossings](pipes/crossings.md) | Size in the style; last drawn on top. |
+| Four or nine anchors on an end shape. | [Pipe ends](pipes/ends.md) | Not settled by the report. |
+
+## Still open, not researched
+
 | Question | Page | Written as |
 | --- | --- | --- |
-| Names to review: layer, interaction, gesture (left click, right click...), zone, symbol mode, static and dynamic. "Symbol Lib" and "Type Lib" are settled. Metadata already uses "trigger" for a kind of command: a gesture must not be confused with it. | All | A research on the vocabulary can be done, as for Metadata. |
-| Desktop window (embedded Chromium or system view) and browsers to hold at 8.3 ms; which effects go in the specs (two lots?); effect suspended during a gesture; colour filter or recomputed colours. | [Effects and masks](04-drawing-mode/effects-and-masks.md) | The research report is back; the Product Owner decides. |
-| Dashes of a fill-based border: hidden stroke or computed dashes. | [Fill and border](04-drawing-mode/fill-and-border.md) | To decide. |
-| Third polygon mode "like Figma" (the report advises dropping it); anchors on corners reserved to 3 and 4 sides or another meaning. | [Polygon](04-drawing-mode/polygon.md) | To decide. |
-| Modifier keys (square, from the centre, angle lock). Rule: only keys that exist on every platform. "Entirely enclosed" is settled: Alt. | [Select](03-editor/select.md), [Rectangle](04-drawing-mode/rectangle.md), [Pen](04-drawing-mode/pen.md) | The conventions are written; the Product Owner chooses. |
-| Point editing: options of the former shape once it becomes a free form (corner radius, sides...); list of points in the panel: all shapes or the selected ones. | [Point editing mode](05-point-editing-mode/README.md) | To confirm. |
-| Alignment: what an anchor is on a real shape (circle, free form), a gap between shapes, one anchor for all the shapes to place or one each. | [Alignment mode](06-alignment-mode/README.md) | To confirm. |
-| Pipes: everything listed at the end of each page of [Pipes](pipes/README.md) (connection points and their mode, pipe styles and their corner radius, junctions, crossings, end shapes, test display, flow dashes), and the Figma page "Flow Pipes", not read yet. | [Pipes](pipes/README.md) | Questions 8 to 11 of the [brief](research-brief.md). |
-| The assistant's own questions on the whole symbols part (anchors on real shapes, hit area, free form, points list, faceplate, text as input, keys, missing features...). | All | Question 12 of the [brief](research-brief.md). |
-| Fonts research (question 5 of the brief). | [Research brief](research-brief.md) | Not sent yet. |
-| Questions added after a full pass (2026-11-11): placed symbols and their updates, broken links and signal quality; frame, scaling, rotation and crisp rendering; borders, caps and joins of open paths; boolean operations, duplication, distribution; named colours and HMI style guides; number formatting and missing values; smooth animation, pivot, blinking; interaction feedback, confirmation, keyboard access; symbol file and SVG export; desktop window. | All | Questions 13 to 22 of the [brief](research-brief.md), for the second research. |
-| Options of each expert entry, of the alignment panel and of the group (anchors, placement of the children). | [Expert menu](03-editor/expert-menu/README.md), [Alignment mode](06-alignment-mode/README.md), [Group](04-drawing-mode/group.md) | To describe, page by page. |
-| Properties an animation can drive, shape of the mapping (linear or not), animation of an enum. | [Animation mode](08-animation-mode/README.md) | The assistant answers them in its next research (question 7 of the [brief](research-brief.md)), not the Product Owner. |
-| Gesture list, and name of the interaction concept. | [Interaction mode](07-interaction-mode/README.md) | The assistant answers them in its next research (question 6 of the [brief](research-brief.md)), not the Product Owner. |
-| Form of the simulation log and of the simulated faceplate in the Run mode (the principle is settled: nothing is sent, the action is only shown). | [Run mode](09-run-mode/README.md) | To describe. |
+| Key conflicts (Alt and the Linux window managers, Ctrl+G in browsers). | [Editor](03-editor/README.md) | Not found by the research. |
+| What can be taken from the symbol standards (ISA-5.1, ISO 14617, EN 60617, ISO 10628) without a copyright problem. | [Pipes](pipes/README.md) | Paid standards, not opened. |
+| Options of each entry of the advanced tools, of the alignment panel and of the group (anchors, placement of the children). | [Expert menu](03-editor/expert-menu/README.md), [Alignment mode](06-alignment-mode/README.md), [Group](04-drawing-mode/group.md) | To describe, page by page. |
+| Connection points: which mode places them, their names, the snapping zone. | [Connection points](pipes/connection-points.md) | To describe. |
 | What the faceplate opened by an interaction allows once the symbol is placed (display only, or display with commands). | Part 3 | Belongs to the synoptic part, not written yet. |
-| How are an unwired dynamic symbol and the placement in a synoptic handled? | Part 3 | Belongs to the synoptic part, not written yet. |
+| How are an unwired dynamic symbol, a placed symbol (linked instance) and its scale handled in a synoptic? | Part 3 | Belongs to the synoptic part, not written yet. |
 
 ```mermaid
 flowchart LR

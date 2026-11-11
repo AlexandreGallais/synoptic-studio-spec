@@ -57,6 +57,64 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 | --- | --- | --- | --- | --- |
 | Paths, text, groups, layers | Symbol editor | Symbol drawing, animation and interaction targets | Draw, edit | No |
 
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, sections 3.15, 3.17, 3.22). "Opinion" is the report's, not a decision.
+
+### Geometry of a symbol
+
+| Subject | Sources | Opinion of the report | Confidence |
+| --- | --- | --- | --- |
+| Frame | Ignition gives a drawing a `viewBox` and `preserveAspectRatio`. | A fixed frame in pixels, equal to the `viewBox`, origin at the top left; a command "fit the frame to the content". | low |
+| A placed symbol resized | Figma: constraints to the parent frame, "Scale" keeps size and position in percent. `vector-effect: non-scaling-stroke` keeps the width of a stroke, not of a fill. | In the synoptic, a uniform scale of the whole symbol; write that "never a scale" holds in the symbol editor. Later: a new layout by the anchors of the groups. | low |
+| Rotation, mirror | In libavoid the connection points follow quarter turns and mirrors; in Figma the rotation stays a property. | Rotation: a property of the shape, the only transform allowed; the box and the anchors turn with it. Mirror: recomputed in the points. In the synoptic: quarter turns and mirror, connection points and directions followed. | low |
+| Crisp lines | `shape-rendering: crispEdges` may align edges on screen pixels, with no guarantee. | Positions and sizes in whole pixels by default. A fill-based border of whole width on whole coordinates is crisp with no half-pixel shift. | low |
+| Grid and snapping | No source read. | Minimum: snap to the pixel, to the points, edges, centres and anchors of other shapes, to the frame; temporary guides of alignment and equal spacing; arrows: 1 px, Shift: 10 px. Rulers and placed guides: later. | very low |
+
+### Names (opinion of the report)
+
+| Current name | Proposal | Support |
+| --- | --- | --- |
+| Layer | Keep | Inkscape marks a group as a layer |
+| Interaction, gesture | Keep | Figma |
+| Zone | Interaction zone | "Hotspot" in Figma |
+| Static, dynamic | Keep | Same words in the archived Figma file |
+| Expert menu | Advanced tools | Name of a page of the archived Figma file |
+| Free form | Path | Word of SVG |
+| Fit, fixed; absolute child | Keep | — |
+| Reference, shapes to place | Keep | "Key object" at Adobe |
+| Test display | Preview | "Pipe style preview" in the archived Figma file |
+| Run mode | Test mode | Nothing runs; the archived file has a separate "Runtime" page |
+| Connection mode | Provisional | — |
+
+### What looks missing compared with the editors read (opinion of the report)
+
+Undo and redo; grid, snapping and guides; import of an SVG; variants of a symbol; display of the quality of a value (see [Animation mode](../08-animation-mode/README.md)); "disabled when" condition and tooltip (see [Interaction mode](../07-interaction-mode/README.md)); inline symbols on a pipe (see [Pipes](../pipes/README.md)); usage counter; lock and hide a layer; stacking order; translatable texts; keyboard access.
+
+### Symbol file and SVG export
+
+- Inkscape saves an ordinary SVG plus attributes in two namespaces of its own; the standard allows them, and the file must render the same with or without them; its "plain SVG" export removes them.
+
+| Option | For | Against |
+| --- | --- | --- |
+| A · A namespace of its own (like Inkscape) | Proven | Another tool may read it badly |
+| B · `data-*` attributes | Simple | Spreads the model over the whole file |
+| C · One `<metadata>` block, linked to the elements by their `id` | Geometry in pure SVG; one block to remove at export | The block and the drawing can drift apart |
+| D · A JSON file beside it | SVG intact | Two files to keep together |
+
+- Opinion of the report: **C**, with a "plain SVG" export that removes the block. Confidence: low.
+- Portable export (opinion): paths, groups, plain text, linear and radial gradients, cuts; no `foreignObject`, no animation, no own attribute; effects as an option. Ignition warns that embedding a big SVG can degrade performance (link above 100 KB).
+- Import of an SVG made elsewhere (opinion): worth it, as a static symbol, after the first version: strokes turned into "middle" borders, transforms recomputed, CSS styles brought back on the elements, with the list of what was lost. The file is read through the server.
+
+## To decide by the Product Owner
+
+1. The names above (Advanced tools, Path, Interaction zone, Preview, Test mode).
+2. Rotation as the only transform allowed on a shape; mirror recomputed in the points.
+3. The minimum set of snapping and guides.
+4. The data of the editor in one `<metadata>` block of the SVG.
+5. Which missing features go in the specs now, and which later.
+
 ## Open questions
 
-The open questions are on the pages they concern, and listed in [Open questions](../10-open-questions.md).
+- Key conflicts (Alt and the window managers of Linux, Ctrl+G in browsers) were not read by the research: still open.
+- The other open questions are on the pages they concern, and listed in [Open questions](../10-open-questions.md).

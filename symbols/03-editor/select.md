@@ -37,6 +37,10 @@ Source: the research report (`research/t1-…/rapport.md`).
 - Selection rectangle, "entirely enclosed": Option (Alt) while dragging in Sketch; the direction of the drag in AutoCAD (left to right: enclosed entirely; right to left: everything crossed); no way in Figma (asked by its users since 2021). In Inkscape the same Alt key does the opposite (takes what the stroke touches).
 - Figma: Ctrl or Command while dragging takes nested layers. Sketch: Command ignores groups.
 
+Second research report (`research/t4-…/rapport.md`, section 3.15):
+
+- The clickable real shape, transparent fill included, is native: `pointer-events` has values that make the inside clickable whatever the fill. Opinion of the report: let the browser do the hit test, with no computation in JavaScript. (The definitions of the values were not on the page opened.)
+
 ## Decided by the Product Owner (2026-11-11)
 
 - **Keys must exist on every platform** (Windows, macOS, Linux), the same everywhere: see the rule in the [editor](README.md). "Option" does not exist on Windows, so the specs name the key **Alt** (it is the Option key on a Mac).

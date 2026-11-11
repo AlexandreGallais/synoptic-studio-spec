@@ -44,9 +44,16 @@ flowchart LR
     P --> R["The shapes to place move; the reference stays"]
 ```
 
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, sections 3.15, 3.19).
+
+- Illustrator aligns on a "key object" that does not move, and measures the spacing between the edges: the same idea as the reference here. No tool read aligns on the real outline.
+- Opinion of the report on anchors: on a real shape, the centre plus the eight points where a ray from the centre (top, bottom, left, right, diagonals) meets the outline (see [Anchors](../03-editor/anchors.md)).
+- Illustrator offers, next to alignment, a **distribution with equal spacing**, with a typed value, measured between the edges. Opinion of the report: it is missing here, and it also answers the question of a gap between the shapes.
+
 ## Open questions
 
-- The exact anchors: the Product Owner said the shapes must be "anchored" and the values are inside and outside. The usual nine anchors of a rectangle (four corners, four sides, centre) do not fit a real shape such as a circle. What is an anchor on a circle or on a free form: the points where the limit meets a direction (top, bottom, left, right, diagonals), the centre, or something else? To settle with the Product Owner.
-- Offset: can the user add a gap (a distance) between the shapes once anchored, for example a margin for a shape placed outside?
+- Anchors on a real shape: the proposal above, to confirm.
+- Distribution with equal spacing and a typed gap: add it to this mode?
 - Several shapes to place: do they all go to the same anchor (so they pile up), or can each have its own?
-- The assistant did not find any source for the alignment options in the research report: none is quoted here.

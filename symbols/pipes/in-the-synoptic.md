@@ -13,6 +13,16 @@ Status: draft, from the Product Owner's description of 2026-11-11. Not validated
 - **Which pipe is on top**: when the mouse is over a crossing, the editor highlights it. A click changes which of the two pipes passes over the other.
 - The user chooses the style of each pipe among those of the Symbol Lib, and its start and end shapes (see [Pipe ends](ends.md)).
 
+## What the research found
+
+Source: the second research report (`research/t4-…/rapport.md`, sections 3.1, 3.3, 3.5). To use when part 3 is written.
+
+- Drawing: Ignition draws orthogonal segments by default (Alt: steps of 15 degrees, Shift: free). Opinion: an **orthogonal lock** while drawing, like the angle lock of the pen.
+- The archived Figma page gives a pipe a panel: style (with "edit this style"), path kind (Straight, Right angles, Rounded), start and end, inline symbols with their position in percent, crossings (with "swap all").
+- **Inline symbol** (archived page, Plant 3D): right click on the pipe, pick a symbol with two connection points; it slides along the pipe, bends included, without leaving it; removed, the pipe keeps its place and points. Advised by the report.
+- A branch leaves one pipe as a tree in the archived page and in Ignition (see [Junctions](junctions.md)).
+- Automatic routing (libavoid): not in the first version, the user draws by clicks.
+
 ## Open questions
 
 - Which Symbol Lib do the pipe styles come from when a synoptic uses several libraries?
