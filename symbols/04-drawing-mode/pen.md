@@ -41,7 +41,7 @@ While the Pen is used, the editor shows two buttons, so that the user never has 
 
 ## What the research found
 
-Source: the research report (`research/t1-…/rapport.md`). The keys are not chosen; the Product Owner decides.
+Source: the research report (`research/t1-…/rapport.md`). The keys are not chosen; the Product Owner decides, among keys that exist on every platform (Shift, Ctrl, Alt: see the rule in the [editor](../03-editor/README.md)). Command and Option, quoted below for other software, are not available.
 
 - Angle steps found in other software: 45° (Sketch, with Shift, from the previous point; Illustrator for a rotation) and 15° (Inkscape, with Ctrl). This agrees with the steps proposed above.
 - Turning a curve back to a straight segment, in other software: a gesture on the last point (Illustrator: click the last point again, its outgoing handle disappears; Sketch: Command at the creation of the next point makes it independent; Penpot: "Make corner" and "Make curve" commands), or a mode that lasts (Affinity: "Polygon" mode for straight lines, "Pen" or "Smart" for curves). The two buttons of the project are the visible equivalent of such gestures.

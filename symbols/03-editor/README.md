@@ -11,6 +11,7 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 - A **tool** is what the mouse does in the drawing: select, draw a rectangle, write a text.
 - A **mode** changes what the editor is for. Switching mode changes the tools of the tool bar and what the right-hand panel shows.
 - Nothing is hidden behind a double click: to edit points, the user switches to the point editing mode.
+- **Same keys on every platform** (Product Owner, 2026-11-11). Windows, macOS and Linux behave the same. Only keys that exist on all three are used: Shift, Ctrl and Alt (the Option key on a Mac), with letters, digits, arrows and function keys. No Command, Option or Windows key in the specs. Whenever a page asks which key to use, this rule applies first.
 - Key shortcuts and modifier keys are allowed, as in every drawing software, but never alone: each one has a visible equivalent (an option in the panel or the tool bar). The software is used by everyone, including an expert of 80 who makes synoptics.
 - Everything drawn stays a path, in the layers of an SVG, so the symbol stays a real SVG. A text stays a text, because it can show a value or a unit (see [Animation mode](../08-animation-mode/README.md)).
 - The name "layer" is provisional. A layer can be the target of an animation or of an interaction.

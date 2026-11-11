@@ -39,7 +39,7 @@ Source: the research report (`research/t1-…/rapport.md`).
 
 ## Decided by the Product Owner (2026-11-11)
 
-- **Keys must exist on every platform** (Windows, macOS, Linux). "Option" does not exist on Windows, so the specs name the key **Alt** (it is the Option key on a Mac).
+- **Keys must exist on every platform** (Windows, macOS, Linux), the same everywhere: see the rule in the [editor](README.md). "Option" does not exist on Windows, so the specs name the key **Alt** (it is the Option key on a Mac).
 - A selection rectangle selects only the shapes it contains entirely while **Alt** is held. The option in the panel stays as the visible equivalent.
 
 ## Open questions
