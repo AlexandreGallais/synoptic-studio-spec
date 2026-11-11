@@ -8,6 +8,7 @@ Animating a symbol means that the value of a signal changes a part of the drawin
 
 ## Rules
 
+- Animations are made in the Animation mode of the editor (see [Drawing](02-drawing.md)).
 - The user selects a signal, then says what it animates: a shape, a layer, a text.
 - Only the output signals of the type are offered for an animation. An output is what the model sends, and the model computes what the symbol shows. An input is what the model receives and is never animated.
 - A value ordered and a value obtained are two signals for the model. Example: `opening_order` (input, what the user asks) and `opening` (output, what the model computes). The symbol animates `opening`. The faceplate can show both (see [Faceplates](../metadata/08-faceplates.md)).

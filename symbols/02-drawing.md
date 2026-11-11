@@ -20,6 +20,8 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 - Mouse: the scroll wheel, and the middle button held down, which shows the hand while it is held.
 - Trackpad: the usual gestures, to scroll and to zoom.
 - The Hand tool does the same from the tool bar.
+- The zoom is shown as a percentage, in one place of the editor, and the user can type a value in it. At 100%, the symbol is shown at its real size.
+- Simulating the size of the symbol on another screen is not done here but in the Run mode (see [Testing](06-testing.md)).
 
 ## Modes
 
@@ -28,9 +30,13 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 | Drawing | The default mode: draw and arrange shapes. | Select, Hand, Rectangle, Ellipse, Polygon, Text, Pen | Options of the selected shape (colours, corner radius...) |
 | Point editing | Edit the points of a path. | Select, Hand, Pen | Options of the selected point |
 | Alignment | Place shapes in relation to each other. | Select, Hand | Alignment of the selected shapes |
-| Interaction | Draw the zones that react to a gesture (see [Interactions](05-interactions.md)). | Select, Hand, Interaction zone | Options of the zone |
+| Interaction | Draw the zones that react to a gesture, and link them to commands (see [Interactions](05-interactions.md)). | Select, Hand, Interaction zone | The interactions of the selected place |
+| Animation | Link the signals to the parts of the drawing (see [Animation](04-animation.md)). | Select, Hand | The animations of the selected part |
+| Run | Try the symbol with test values and see it at the size of another screen (see [Testing](06-testing.md)). | Hand | The test values, and the simulated screen |
 
-The Rectangle, Ellipse, Polygon and Text tools exist only in the drawing mode. The Interaction mode and its tool are only for a dynamic symbol, since a static symbol has no interaction.
+- The Rectangle, Ellipse, Polygon and Text tools exist only in the drawing mode.
+- The Interaction, Animation and Run modes are only for a dynamic symbol: a static symbol has no interaction, no animation and nothing to test with signals.
+- Other modes may be added later.
 
 ## Tools
 
@@ -38,6 +44,7 @@ The Rectangle, Ellipse, Polygon and Text tools exist only in the drawing mode. T
 
 - Clicks a shape to select it. Several shapes can be selected.
 - Moves the selected shapes with the mouse and resizes them.
+- A text is not resized like a shape: its box is shown when it is selected, and dragging the box enlarges the text zone only. The size of the text does not change and no transform is applied to it.
 - A right click on a selection opens a menu, which has "Group".
 - In the point editing mode, it selects points and handles instead of shapes.
 
@@ -60,6 +67,7 @@ The Rectangle, Ellipse, Polygon and Text tools exist only in the drawing mode. T
 ### Text
 
 - Writes a text in the drawing. A text can show the value or the unit of a signal (see [Animation](04-animation.md)).
+- The box of a text sets the text zone. Resizing the box never resizes the text itself (see Select).
 
 ### Pen
 
@@ -112,7 +120,7 @@ A group is neither a tool nor a mode.
 
 ## Expert menu
 
-A menu for the tools that are not for everyday drawing. They work on shapes that already exist.
+A menu for the tools that are not for everyday drawing. They work on shapes that already exist. Whether they are tools or modes is not decided yet: they change the editor a lot, like a mode, but they only make sense with the right shapes selected (two shapes for a boolean operation), which is not like a mode.
 
 ### Boolean operations
 

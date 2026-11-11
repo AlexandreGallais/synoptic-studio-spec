@@ -14,7 +14,7 @@ This file is the index of the open questions. A question sits in the file it con
 | Properties an animation can drive, shape of the mapping (linear or not), animation of an enum. | [Animation](04-animation.md) | To describe. |
 | Can a text that shows a value become an input on click, from the symbol editor? | [Animation](04-animation.md) | To confirm. |
 | Gesture list, and can an interaction open the faceplate? | [Interactions](05-interactions.md) | To settle. |
-| Do interactions work in the test mode? | [Testing](06-testing.md) | Open. |
+| Do interactions work in the Run mode? | [Testing](06-testing.md) | Open. |
 | How are an unwired dynamic symbol and the placement in a synoptic handled? | Part 3 | Belongs to the synoptic part, not written yet. |
 
 ```mermaid
