@@ -18,7 +18,7 @@ The default mode of the [editor](../03-editor/README.md): draw and arrange shape
 
 | Tool | What it does |
 | --- | --- |
-| [Group](group.md) | Gathers shapes in a group, which can have a layout. |
+| [Group](group.md) | Creates a group (an SVG `g`), which can have its own size. |
 | [Rectangle](rectangle.md) | Draws a rectangle, with a corner radius. |
 | [Ellipse](ellipse.md) | Draws an oval or a circle. |
 | [Polygon](polygon.md) | Draws a polygon of 3 to 20 sides. |

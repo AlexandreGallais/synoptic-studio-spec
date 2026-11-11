@@ -4,19 +4,43 @@
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
 
-Group is a tool of the tool bar, like Select or Rectangle: the user can pick it to create a group. A group is also the object it creates, which gathers shapes.
+Group is a tool of the tool bar, like Select or Rectangle: the user picks it to create a group. A group is also the object it creates.
+
+A group is an SVG `g` element. Its first use is to give a structure to several shapes: for example, the [animation](../08-animation-mode/README.md) can then make the whole group turn.
 
 ## Rules
 
-- The tool is in the tool bar of the [drawing mode](README.md).
-- Besides the tool, a group can be created from a selection with Ctrl+G, or with right click and "Group". Both have the tool as their visible equivalent.
-- A group gathers shapes: an empty group does not exist.
-- By default, the children of a group are placed freely (absolute), and the group has the size of what is inside it.
-- A group can be given a **layout**, set in the right-hand panel, like the auto layout of Figma or a flex display in CSS: everything inside is laid out horizontally or vertically, and starts from a corner, for example the bottom left. Grids are not decided.
-- A child can leave the layout and stay placed freely, fixed or tied to a corner of the group: "this one goes to the bottom right of the group, that one to the top right".
-- The runtime may do more than an SVG can. A group with a layout can have its own size, and the runtime recalculates the layout when something changes: a text that grows, for example, pushes or follows the others as the layout says.
-- The Product Owner finds the layout complicated but wants it to be possible.
+### Creating a group
+
+- With the Group tool, from the tool bar.
+- With Ctrl+G on a selection, or with right click and "Group". The tool is the visible equivalent of both.
+
+### Two sizes: fit or own size
+
+- In SVG, a group has no size of its own: it takes the size of what is inside. The editor overrides this, so that a group can be given a size and a position.
+- The size is set like in Figma: a **width** and a **height**, each one either **fit** or **fixed**.
+  - Fit, on both: the group is a plain SVG group. It wraps its children and nothing more. This is the default.
+  - Fixed: the group has the size the user gave it, and it no longer fits its content.
+- A group with its own size can be empty. The size and the position are only simulated by the editor: no rectangle is added inside the group, and the SVG bounding box is not relied on.
+
+### Layout of the children
+
+- It is available when the group has its own size. The panel offers the placement of the children in the group: centred, or aligned left, right, top or bottom, with anchors.
+- All the children centred is the simple case. When the group fits its content, the biggest child gives the size, and the others are centred on it.
+- The Product Owner does not want a flex display (rows, columns, gaps): he sees no case where it would be useful.
+
+### Absolute children
+
+- A child can be set **absolute**: it leaves the layout.
+- Its position is given by two anchors: an anchor of the group and an anchor of the child. Example: the child's bottom left corner on the group's top right corner.
+- This puts the child outside the shape of the group while it stays in the group.
+- An absolute child does not change the size of the group.
+
+### The runtime
+
+- The runtime may do more than an SVG can. It places the children again when something changes: a text that grows, for example.
 
 ## Open questions
 
-- The exact options of the group layout, and how the tool is used with the mouse. See [Open questions](../10-open-questions.md).
+- The list of anchors and the exact options of the panel. See [Open questions](../10-open-questions.md).
+- How the Group tool is used with the mouse: click the shapes one by one, or draw a frame.
