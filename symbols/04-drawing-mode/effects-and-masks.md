@@ -28,4 +28,4 @@ Proposed by the assistant. Which ones are kept depends on the performance POC.
 
 ## Open questions
 
-- Which effects are kept: to decide with the performance POC. See [Open questions](../10-open-questions.md).
+- Which effects are kept: a documentary research, launched at the end, says which SVG features keep the performance; the performance POC then measures what the sources do not settle. The goal: never offer something that lags, so the final result stays smooth. See [Open questions](../10-open-questions.md).
