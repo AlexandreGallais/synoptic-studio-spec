@@ -16,21 +16,25 @@ The Pen is also in the [point editing mode](../05-point-editing-mode/README.md).
 | --- | --- |
 | Click a point, then click another | A straight line between them. |
 | Press on the second point and drag before releasing | The segment becomes a curve, shaped by the drag. |
-| Click again, with no modifier | As in Figma, the next segment is a curve again. |
-| Click again, holding a modifier key | The next segment is a straight line straight away. |
-
-- The modifier is wanted by the Product Owner, because a curve again after a curve is often a nuisance.
-- It is a shortcut, not the only way: the pen also has a visible option that says, point by point, "this point is a curve" or "this point is a straight line".
+| Click again | As in Figma, the next segment is a curve again, after a curve. |
 
 ```mermaid
 flowchart LR
     A["Click point A"] --> B["Click point B: straight line"]
     A --> C["Press and drag on point B: curve"]
-    C --> D{"Modifier key held at the next click?"}
-    D -- "No" --> E["Next segment is a curve again"]
-    D -- "Yes" --> F["Next segment is straight"]
 ```
 
-## Open questions
+## The two buttons of the Pen
 
-- None kept here. Which key, and how the modifier works, is in the [research brief](../research-brief.md).
+While the Pen is used, the editor shows two buttons, so that the user never has to hunt for how to do things. Like every shortcut, each one can also be done with a key, but the button is always there (see the rule on visible equivalents in the [editor](../03-editor/README.md)).
+
+### Straight line button
+
+- When the segment being drawn is a curve, the button turns it back into a straight line.
+- It answers the case where a curve after a curve is a nuisance.
+
+### Angle lock button
+
+- It locks the direction of the segment to fixed angles, so that a perfectly straight line, horizontal, vertical or at a regular angle, is easy to draw.
+- Angle steps proposed by the assistant, to confirm: 15°, 30°, 45° and 90°. The user picks the step; 45° is the usual one. A step of 90° gives horizontal and vertical lines only.
+- With the lock on, the segment snaps to the nearest angle of the step.
