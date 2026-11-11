@@ -131,14 +131,14 @@ flowchart TD
 ## Decided by the Product Owner (2026-11-11)
 
 - Junctions, crossings and start and end shapes live **inside the pipe style**, as in the archived Figma page and as the report advised. They are computed: the user picks a style for a pipe and does not edit these parts by hand.
+- A symbol can be **connected to a pipe**: it fits onto it and can only be moved along it (see [Pipes in the synoptic](in-the-synoptic.md)).
 - One **base pipe style** per Symbol Lib, overridden by **pipe styles** (colours by default, any option when needed); dashes as **sequences of coloured segments**, for pipes and for every border; dashes computed as cleanly as possible, an odd cut in a corner accepted.
 
 ## To decide by the Product Owner
 
 1. A branch: one pipe as a tree (archived page, Ignition, advised) or two pipes (current specs)?
-2. Inline symbols on a pipe: add them (advised)?
-3. Can a pipe have a type of Metadata (see [Pipe styles](pipe-styles.md))?
-4. Path kind per pipe (straight, right angles, rounded) next to the corner radius of the style?
+2. Can a pipe have a type of Metadata (see [Pipe styles](pipe-styles.md))?
+3. Path kind per pipe (straight, right angles, rounded) next to the corner radius of the style?
 
 ## Open questions
 

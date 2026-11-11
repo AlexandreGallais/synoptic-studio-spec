@@ -30,7 +30,8 @@ When the user edits the base pipe style or a pipe style in a Symbol Lib (body, b
 Source: the second research report (`research/t4-…/rapport.md`, section 3.15).
 
 - The archived Figma page calls it "Pipe style preview". Opinion of the report: rename "Test display" to **Preview**.
-- Cases to add if the corresponding rules are kept: an inline symbol on a pipe, a crossing on a corner and near a junction, a branch (see [Pipes](README.md)).
+- Cases to add if the corresponding rules are kept: a crossing on a corner and near a junction, a branch (see [Pipes](README.md)).
+- Case to add, since a symbol can be connected to a pipe (2026-11-11): a symbol connected to a straight segment and to a bend (proposed by the assistant).
 
 ## Open questions
 
