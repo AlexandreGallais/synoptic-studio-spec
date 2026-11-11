@@ -27,7 +27,7 @@ This file is the index of the open questions. A question sits in the file it con
 | Name "Test mode"; form of the simulation log and of the simulated faceplate. | [Run mode](09-run-mode/README.md) | Test mode; a log line: time, place, gesture, effect, value. |
 | A branch as one pipe or two; a type of Metadata for a pipe; path kind per pipe. (Junctions, crossings and ends inside the pipe style; symbol connected to a pipe: decided 2026-11-11.) | [Pipes](pipes/README.md) | One pipe; yes, three signals. |
 | Symbol connected to a pipe: which symbols, pipe cut under it or not, how its position is kept, what happens when the pipe changes. | [Pipes in the synoptic](pipes/in-the-synoptic.md) | Two connection points, pipe continuous under it (archived Figma page). |
-| Animated dashes and their direction; what drives a pipe; path kind per pipe. (Base pipe style with overrides, dash sequences, computed dashes: decided 2026-11-11.) | [Pipe styles](pipes/pipe-styles.md) | A type of Metadata with three signals. |
+| Properties a signal can drive on a pipe style; a type on the base style; a branch with its own values and propagation; global stop and "reduce motion"; path kind per pipe. (Base style with overrides, dash sequences, computed dashes, moving dashes with a direction, propagation at junctions, optional type on a pipe style: decided 2026-11-11.) | [Pipe styles](pipes/pipe-styles.md) | Global stop and "reduce motion": yes. |
 | Size of bridges and gaps; default "last drawn on top"; borders on a bridge. | [Crossings](pipes/crossings.md) | Size in the style; last drawn on top. |
 | Four or nine anchors on an end shape; copy an end shape from another style; arrows of a symbol's lines. | [Pipe ends](pipes/ends.md) | Not settled by the report. |
 

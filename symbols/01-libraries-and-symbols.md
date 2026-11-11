@@ -10,7 +10,7 @@ A **Symbol Lib** holds symbols. A **Type Lib** (see [Libraries](../metadata/10-l
 
 ### Symbol Lib
 
-- It holds flat lists, never a tree: its dynamic symbols and its static symbols (every library can have both), then its pipe styles. It also has one base pipe style, the global look of its pipes, that the pipe styles override. Junctions, crossings and start and end shapes are parts of the styles (decided by the Product Owner, 2026-11-11; see [Pipe styles](pipes/pipe-styles.md)).
+- It holds flat lists, never a tree: its dynamic symbols and its static symbols (every library can have both), then its pipe styles. It also has one base pipe style, the global look of its pipes, that the pipe styles override. Junctions, crossings and start and end shapes are parts of the styles (decided by the Product Owner, 2026-11-11; see [Pipe styles](pipes/pipe-styles.md)). A pipe style can be linked to a type, which is then taken from the Type Lib of the Symbol Lib (assumption, to confirm).
 - It has a name and a Type Lib. Nothing else: the lists above are its content, not settings.
 - Every symbol is in one Symbol Lib, and only one. No symbol lives outside a library.
 - In symbol mode, the user selects a Symbol Lib, sees its symbols, then opens one or creates one.

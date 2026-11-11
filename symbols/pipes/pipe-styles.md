@@ -73,6 +73,36 @@ Example:
 - The computation aims for the cleanest result: dashes that run continuously along the pipe, with no odd piece where it can be avoided.
 - It is not a hard requirement (Product Owner, 2026-11-11): where a dash cuts a little oddly in a corner, it is accepted as it is.
 
+### Moving dashes
+
+Decided by the Product Owner (2026-11-11).
+
+- A style has an option to make its dashes **move**: they travel along the pipe to show the flow.
+- The user chooses the **direction** of the movement: from the start of the pipe to its end, or the other way.
+- **Propagation**: where a pipe splits in two (a junction), the movement goes on into the branches, following the flow. The pipe is no longer a plain drawing: it behaves half like a symbol.
+- Assumptions of the assistant, to confirm: the speed is set in the style when no model drives it; the movement can be stopped by a global setting and by the system setting "reduce motion" (advised by the research).
+
+### A pipe style linked to a type
+
+Decided by the Product Owner (2026-11-11).
+
+- A pipe style **can** be linked to a type of Metadata, if the user wants it. It is optional: a style with no type is a drawing, with fixed or moving dashes as set above.
+- Linked to a type, the style is animated by the model, like a dynamic symbol (see [Animation mode](../08-animation-mode/README.md)). Examples given by the Product Owner:
+  - the **speed** of the moving dashes follows a value of the model;
+  - the **colours** (body, border) change with what happens;
+  - the **direction** of the movement changes with the model;
+  - and other properties of the style, "plenty of things like that".
+- Assumptions of the assistant, to confirm: the type is chosen among the types of the Type Lib linked to the Symbol Lib (see [Libraries and symbols](../01-libraries-and-symbols.md)); only output signals animate, with the same shapes of mapping as for symbols (bounded linear, by ranges, two values for a boolean, state table for an enum).
+- Each pipe of the synoptic then gets its own values from the model, as a placed symbol does (to write in part 3).
+
+```mermaid
+flowchart LR
+    T["Type of Metadata (optional)"] -->|"output signals"| S["Pipe style"]
+    S --> D["Dashes: moving or not, direction, speed"]
+    S --> C["Colours of body and border"]
+    D -->|"propagation at junctions"| B["Branches"]
+```
+
 ### Corner radius
 
 - The user draws a pipe with straight segments only: click, click, click.
@@ -120,15 +150,14 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.2, 
 | Option | Principle | Opinion of the report |
 | --- | --- | --- |
 | A · Nothing | The pipe is a drawing; its dashes are fixed. | The simplest; poor compared with SCADA tools (ThingsBoard: fluid present, flow present, direction, speed, leak). |
-| B · The pipe has a type of Metadata | A "dynamic" pipe style is linked to a type (signals: flow present, direction, state), like a dynamic symbol. | **Advised**, limited to three signals: a boolean "flow present" (dashes moving or still), a direction (forward, backward), an enum of state that changes the style (hot, cold). A speed proportional to the flow is refused first: the eye cannot read it. Confidence: low (one tool source). |
+| B · The pipe has a type of Metadata | A "dynamic" pipe style is linked to a type (signals: flow present, direction, state), like a dynamic symbol. | **Advised**, limited to three signals: a boolean "flow present" (dashes moving or still), a direction (forward, backward), an enum of state that changes the style (hot, cold). A speed proportional to the flow is refused first: the eye cannot read it. Confidence: low (one tool source). **Chosen by the Product Owner (2026-11-11), without the limit to three signals: the speed can follow the model.** |
 | C · The pipe borrows a signal of a neighbouring symbol | In the synoptic, a signal of a connected symbol is picked. | Quick, but links a drawing to another in a fragile way. |
 
-## To decide by the Product Owner
-
-1. Do the dashes move (animated), and in which direction? (Linked to the next question.)
-2. What drives a pipe: nothing, a type of Metadata with three signals (advised by the report), or a signal of a neighbour?
-
 ## Open questions
+
+- Which properties of a style a signal can drive, beyond the speed, the direction and the colours (width, dashes on or off, border on or off...)?
+- Can the base pipe style be linked to a type, or only the pipe styles?
+- Propagation: when a branch has its own values (a closed valve on one branch), does it stop the movement downstream?
 
 - Is the corner radius only in the style, or can the path kind (straight, right angles, rounded) be chosen per pipe, as in the archived Figma page?
 - Can a style hold several layers (the body, then a border, then a second line), or just the options above?
