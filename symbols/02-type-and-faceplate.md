@@ -1,6 +1,6 @@
 # Type, preset and faceplate
 
-> [Home](../README.md) › [Symbols](README.md) › Type, preset and faceplate · Previous: [Drawing](02-drawing.md) · Next: [Animation](04-animation.md)
+> [Home](../README.md) › [Symbols](README.md) › Type, preset and faceplate · Previous: [Libraries and symbols](01-libraries-and-symbols.md) · Next: [Editor](03-editor/README.md)
 
 Status: draft, from the Product Owner's description of 2026-11-11, on top of the validated Metadata part. Not validated.
 

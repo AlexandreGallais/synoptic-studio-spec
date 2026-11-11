@@ -1,6 +1,6 @@
 # Placement and duplication
 
-> [Home](../../README.md) › [Symbols](../README.md) › [Drawing](../02-drawing.md) › [Expert menu](expert-menu.md) › Placement and duplication
+> [Home](../../../README.md) › [Symbols](../../README.md) › [Editor](../README.md) › [Expert menu](README.md) › Placement and duplication
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
 
@@ -12,4 +12,4 @@ Status: draft, from the Product Owner's description of 2026-11-11. Not validated
 
 ## Open questions
 
-- The list of rules and their options. See [Open questions](../07-open-questions.md).
+- The list of rules and their options. See [Open questions](../../10-open-questions.md).

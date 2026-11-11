@@ -1,6 +1,6 @@
 # Hand tool
 
-> [Home](../../README.md) › [Symbols](../README.md) › [Drawing](../02-drawing.md) › Hand
+> [Home](../../README.md) › [Symbols](../README.md) › [Editor](README.md) › Hand
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
 

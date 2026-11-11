@@ -1,6 +1,6 @@
 # Polygon tool
 
-> [Home](../../README.md) › [Symbols](../README.md) › [Drawing](../02-drawing.md) › Polygon
+> [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › Polygon
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
 
@@ -23,4 +23,4 @@ The polygon is drawn by dragging a box, like the rectangle and the ellipse. It b
 
 ## Open questions
 
-- Figma draws its polygon in a way the Product Owner does not understand: a triangle does not fill the box, and it is not clear why. Whether a third mode "like Figma" is kept depends on a documentary research on how Figma, and drawing software in general, place a polygon in its box. It will be done at the end, like the one done for Metadata. See [Open questions](../07-open-questions.md).
+- Figma draws its polygon in a way the Product Owner does not understand: a triangle does not fill the box, and it is not clear why. Whether a third mode "like Figma" is kept depends on a documentary research on how Figma, and drawing software in general, place a polygon in its box. It will be done at the end, like the one done for Metadata. See [Open questions](../10-open-questions.md).

@@ -1,6 +1,6 @@
 # Libraries and symbols
 
-> [Home](../README.md) › [Symbols](README.md) › Libraries and symbols · Next: [Drawing](02-drawing.md)
+> [Home](../README.md) › [Symbols](README.md) › Libraries and symbols · Next: [Type, preset and faceplate](02-type-and-faceplate.md)
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
 
@@ -32,7 +32,7 @@ A **Symbol Lib** holds symbols. A **Type Lib** (see [Libraries](../metadata/10-l
 | --- | --- | --- |
 | Type | Required, chosen before drawing, among the types of the Type Lib. It can be changed later. | None |
 | Preset, faceplate, animation, interaction | Yes | None |
-| What the user does | Draws, then links the drawing to the type | Draws only (see [Drawing](02-drawing.md)) |
+| What the user does | Draws, then links the drawing to the type | Draws only (see [Editor](03-editor/README.md)) |
 
 Several dynamic symbols can share a type, with different drawings and presets: a centrifugal pump can have a manual symbol and a motorised one, with no change in Metadata.
 

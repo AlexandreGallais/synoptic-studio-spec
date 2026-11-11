@@ -1,6 +1,6 @@
 # Rectangle tool
 
-> [Home](../../README.md) › [Symbols](../README.md) › [Drawing](../02-drawing.md) › Rectangle
+> [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › Rectangle
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
 
@@ -13,4 +13,4 @@ Status: draft, from the Product Owner's description of 2026-11-11. Not validated
 
 ## Open questions
 
-- Which modifier key, Shift or Ctrl. It will be defined later. See [Open questions](../07-open-questions.md).
+- Which modifier key, Shift or Ctrl. It will be defined later. See [Open questions](../10-open-questions.md).

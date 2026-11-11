@@ -1,10 +1,10 @@
 # Groups
 
-> [Home](../../README.md) › [Symbols](../README.md) › [Drawing](../02-drawing.md) › Groups
+> [Home](../../README.md) › [Symbols](../README.md) › [Editor](README.md) › Groups
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
 
-A group is neither a tool nor a mode.
+A group is neither a tool nor a mode. It is used in the drawing, but it is not tied to one mode.
 
 ## Rules
 
@@ -17,5 +17,5 @@ A group is neither a tool nor a mode.
 
 ## Open questions
 
-- The exact options of the group layout. See [Open questions](../07-open-questions.md).
+- The exact options of the group layout. See [Open questions](../10-open-questions.md).
 - Is "Group" also an entry of the tool bar, besides Ctrl+G and the right click? The Product Owner said "the groups to add to the tools" after saying a group is neither a tool nor a mode.

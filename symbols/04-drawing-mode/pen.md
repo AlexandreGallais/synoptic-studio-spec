@@ -1,14 +1,16 @@
 # Pen tool
 
-> [Home](../../README.md) › [Symbols](../README.md) › [Drawing](../02-drawing.md) › Pen
+> [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › Pen
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+
+The Pen is also in the [point editing mode](../05-point-editing-mode/README.md).
 
 ## Rules
 
 - Draws a path point by point, with straight lines and curves.
 - It is also the tool for lines: there is no line tool.
-- In the [point editing mode](mode-point-editing.md), it starts from an existing point to draw further.
+- In the point editing mode, it starts from an existing point to draw further.
 
 | Action | Result |
 | --- | --- |
@@ -31,4 +33,4 @@ flowchart LR
 
 ## Open questions
 
-- Which key, and how the modifier works exactly. It will be defined later. See [Open questions](../07-open-questions.md).
+- Which key, and how the modifier works exactly. It will be defined later. See [Open questions](../10-open-questions.md).

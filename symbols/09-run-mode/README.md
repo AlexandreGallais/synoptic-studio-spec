@@ -1,15 +1,16 @@
-# Testing
+# Run mode
 
-> [Home](../README.md) › [Symbols](README.md) › Testing · Previous: [Interactions](05-interactions.md)
+> [Home](../../README.md) › [Symbols](../README.md) › Run mode · Previous: [Animation mode](../08-animation-mode/README.md) · Next: [Open questions](../10-open-questions.md)
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
 
-Testing is the **Run mode** of the symbol editor (see [Drawing](02-drawing.md)). The user tries the symbol without a model: they give values to the signals that animate it, and see it move. Only dynamic symbols have it.
+The mode of the [editor](../03-editor/README.md) in which the user tries the symbol without a model: they give values to the signals that animate it, and see it move. Only dynamic symbols have it.
 
 ## Rules
 
+- Tool bar: [Hand](../03-editor/hand.md) only. Right-hand panel: the test values, and the simulated screen.
 - The Run mode shows every output signal used by an animation of the symbol.
-- The user gives each one a value, within its bounds when it has some (see [Signals](../metadata/04-signals.md)): a number, a boolean, or a value of its enum.
+- The user gives each one a value, within its bounds when it has some (see [Signals](../../metadata/04-signals.md)): a number, a boolean, or a value of its enum.
 - The symbol is redrawn at each change, with the display units and decimal places of its preset.
 - Nothing is sent to a model, and nothing is saved in the symbol.
 
@@ -35,4 +36,4 @@ The Run mode can show the symbol as it would look on another screen, which is no
 
 ## Open questions
 
-- Do interactions work in the Run mode, and what do they do without a model? See [Open questions](07-open-questions.md).
+- Do interactions work in the Run mode, and what do they do without a model? See [Open questions](../10-open-questions.md).
