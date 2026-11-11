@@ -56,7 +56,7 @@ Decided by the Product Owner (2026-11-11). A text can be set at the size the use
 | An enum | A **selection menu** opens, with the whole list of the enum, and the user picks one item. |
 
 - The user chooses, in the editor, which of these a text does: number input, text input, or selection menu.
-- The enum case works on the value or on the string shown: a click on it opens the menu.
+- An enum is shown by the display text of its item, never by its key (see [Enums](../../metadata/06-enums.md)). A click on it opens the menu of the display texts; the command sends the key of the item picked.
 - What the user picks or types is sent as a command of the type, like any other command.
 
 ```mermaid

@@ -28,7 +28,9 @@ For each signal entry, the user:
 - picks the display unit, among the units of the signal's quantity;
 - for an enum, picks the input shown, in read and in write: radio on one line, radio on several lines, select, and so on.
 
-For each command or trigger entry, the user adds it and gives it the name shown in the faceplate.
+For each command or trigger entry, the user picks it in the list of the type's commands and gives it the name shown in the faceplate.
+
+An enum is always shown by the display texts of its items, never by their keys (see [Enums](06-enums.md)).
 
 ### Name and description of a signal: set in the preset
 
@@ -42,7 +44,7 @@ For each command or trigger entry, the user adds it and gives it the name shown 
 
 - When the user types a value in a write entry, the faceplate checks it against the bounds of the signal. The bounds are written in the model unit and are shown in the display unit.
 - A value outside the bounds is refused, with a message that says the bounds. Nothing is sent to the model.
-- An integer signal accepts whole numbers only. An enum signal accepts only the values of its enum.
+- An integer signal accepts whole numbers only. An enum signal accepts only the items of its enum: the user picks a display text, the model receives its key.
 - A value that passes is converted back to the model unit and rounded to 12 significant digits before it goes to the model (see [Units](05-units.md)).
 
 ```mermaid

@@ -86,6 +86,20 @@ All of it stays in pure JavaScript.
 - A conversion is one of the closed forms. A pair of free expressions, going and back, is the last resort. The application checks that the pair is a round trip.
 - The user types a value in the display unit, so the back conversion (display unit to model unit) is also needed. The model value is still the only one stored.
 - A temperature and a temperature difference are not converted the same way: 25 °C is 77 °F, but a difference of 25 °C is a difference of 45 °F (a heating rate in °C/min is a difference). A difference is its own quantity ("temperature difference"), with its own units and a proportional conversion. This needs no new mechanism, and it keeps the rule that a conversion only exists inside a quantity.
+- On the Units page, a difference is shown **in the same place as its quantity**, attached to it (Product Owner, 2026-11-11): the user finds "temperature difference" right under "temperature", not elsewhere in the list. It stays a quantity of its own for the conversions and for the choice of a signal.
+
+## The Units page
+
+- The page lists the quantities. Each difference is shown under its quantity.
+- A click on a quantity opens it: its families, its reference family, its default model unit and its default decimal places.
+- A click on a family opens its table of units and its conversion to the reference family and back.
+
+```mermaid
+flowchart LR
+    L["List of quantities, each difference under its quantity"] -->|"click a quantity"| Q["Quantity: families, reference family, default model unit, default decimals"]
+    Q -->|"click a family"| F["Family: units and ratios, conversion to the reference and back"]
+```
+
 - Unit names carry their variant (US gallon, thermochemical calorie), because one name hides several values.
 - Units are flat: "m³/h" is one unit with its own factor, nothing is deduced from its parts.
 - When a conversion is not defined (logarithm of zero), the display says so instead of showing a wrong number.

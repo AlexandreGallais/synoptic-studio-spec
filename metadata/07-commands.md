@@ -9,15 +9,18 @@ A command is how the front acts on the model. Two kinds, kept apart because they
 | Kind | Meaning | What the user edits |
 | --- | --- | --- |
 | Set a signal | "This signal must take this value". | The signal targeted, and how the value is given: fixed (set in Metadata) or typed (see below). |
-| Trigger | "This happened, deal with it". | Its name only. It targets nothing: the model decides what to do. |
+| Trigger | "This happened, deal with it". | Its name only, which is its identifier. It targets nothing: the model decides what to do. |
+
+A command has a name and a kind (Product Owner, 2026-11-11).
 
 ```mermaid
 flowchart TD
-    C[Command] --> S[Set a signal]
+    C["Command: a name and a kind"] --> S[Set a signal]
     C --> E[Trigger]
+    S --> TS[Target signal]
     S --> F[Fixed value]
-    S --> T[Typed value, number only]
-    E --> N[A name, no target]
+    S --> T["Typed value, of the target signal's type"]
+    E --> N["A name, its identifier; no target"]
 ```
 
 ## Rules
@@ -45,7 +48,9 @@ sequenceDiagram
 
 ## Set a signal, typed value
 
-On a number signal, the person types the value to send, instead of a fixed one. Two ways to give it, both allowed (decided by the Product Owner on 2026-11-11), on the web and on the desktop:
+The person types the value to send, instead of a fixed one. **The typed value follows the type of the target signal** (Product Owner, 2026-11-11): a number for an integer or a real, a text for a text, an item of the enum for an enum (the person picks its display text, the model receives its key). It replaces the earlier "number only" rule, and matches the texts of a symbol that become a number input, a text input or an enum menu (see [Animation mode](../symbols/08-animation-mode/README.md)).
+
+Two ways to give it, both allowed (decided by the Product Owner on 2026-11-11), on the web and on the desktop:
 
 | Way | What the user sees | Where it lives |
 | --- | --- | --- |

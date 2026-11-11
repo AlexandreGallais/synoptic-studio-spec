@@ -42,6 +42,11 @@ flowchart TD
     R --> V[Faceplate entries shown by default]
 ```
 
+## Open questions
+
+- The description of each signal in the preset (plain text, shown in the faceplate under the name): the Product Owner is no longer sure it belongs here (2026-11-11, review of the screens). Keep it, move it, or drop it?
+- A preset has no name in the specs: how does the user tell two presets apart?
+
 ## Where it is used
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |

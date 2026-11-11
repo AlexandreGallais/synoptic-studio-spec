@@ -375,7 +375,7 @@ mindmap
 | SY-08.6 | Pivot | 9-point grid or a point | Centre by default. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.7 | Text: what it shows | Radio | Written text, the value of a signal, or the unit of a signal only. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-08.8 | Text: show the unit | Toggle | With the value. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
-| SY-08.9 | Text: becomes an input | Radio + Select (command) | Number input, text input, or enum menu; sends a command. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
+| SY-08.9 | Text: becomes an input | Radio + Select (command) | Number input, text input, or enum menu (display texts shown, key sent); sends a command. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.10 | Number format | Toggles | Thousand separator, sign, leading zeros, notation. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 
 Gaps:
@@ -410,7 +410,7 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SY-09.1 | Test value of a number | Number field or Slider | Within the bounds of the signal. | Decided | [Run mode](../symbols/09-run-mode/README.md) |
-| SY-09.2 | Test value of an enum | Select | — | Decided | [Run mode](../symbols/09-run-mode/README.md) |
+| SY-09.2 | Test value of an enum | Select | The display texts of the enum. | Decided | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.3 | Test value of a boolean | Toggle | — | Proposed | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.4 | Quality of a signal | Select | Good, uncertain, bad. | Proposed | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.5 | Simulated screen | Number fields (or a list of screens) | Size and resolution; scale factor proposed. | Decided | [Run mode](../symbols/09-run-mode/README.md) |

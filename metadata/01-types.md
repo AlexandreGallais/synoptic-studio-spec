@@ -31,7 +31,10 @@ flowchart LR
 
 - No abstract types: "Pump", "Positive displacement pump" and "Pneumatic positive displacement pump" can all be chosen.
 - A type inherits the signals of its parents.
-- The name and the parent are changed in the General part only. Double-clicking an item in the right-hand tree does not rename it: hidden options are avoided.
+- The type tree is on the **left** of the screen, as in a code editor (IDE), where every tree sits on the left (Product Owner, 2026-11-11).
+- The name and the parent are changed in the General part only. Double-clicking an item in the tree does not rename it: hidden options are avoided.
+- The parts of a type are shown in this order (Product Owner, 2026-11-11): General, Documentation, Signals, Commands, Faceplate, Presets.
+- The General part holds only the name, the parent, the icon and the colour. Nothing more is needed (Product Owner, 2026-11-11).
 - No virtual links between types of the tree. Duplicates are accepted: a change in one type must not change another silently, so nothing has to be retested everywhere. It also lets each type be versioned alone later. The documentary research (2026-11-10) finds this rule defensible: neither FMI, OPC UA nor AutomationML requires or forbids it.
 
 ### Limits of "no virtual link" (decided on 2026-11-11, from the research)

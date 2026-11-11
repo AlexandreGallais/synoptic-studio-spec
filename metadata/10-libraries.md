@@ -44,15 +44,15 @@ flowchart TD
 
 ## Choosing the types of a library
 
-The screen has two views side by side.
+The screen has two views side by side, read from left to right (Product Owner, 2026-11-11): where the user picks on the left, what the library holds on the right.
 
-- Right view: the whole type tree, where the user ticks. Each type is a fairly big tile with a checkbox. Clicking a tile ticks it and it turns green. Small arrows fold or unfold the branches, and a search field filters the tree. The user ticks, ticks, ticks: everything green is selected, and that is all.
-- Left view: the same tree rebuilt with only the ticked types, which is what the library holds.
+- Left view: the whole type tree, where the user ticks. Each type is a fairly big tile with a checkbox. Clicking a tile ticks it and it turns green. Small arrows fold or unfold the branches, and a search field filters the tree. The user ticks, ticks, ticks: everything green is selected, and that is all.
+- Right view: the same tree rebuilt with only the ticked types, which is what the library holds.
 - Each tile shows the type's icon, its model identifier (its name) and its description (see [Documentation](03-documentation.md)).
 
 ```mermaid
 flowchart LR
-    R["Right view: whole tree, tiles with checkboxes, search, fold arrows"] -->|"the user ticks tiles, they turn green"| L["Left view: tree rebuilt with the ticked types only"]
+    L["Left view: whole tree, tiles with checkboxes, search, fold arrows"] -->|"the user ticks tiles, they turn green"| R["Right view: tree rebuilt with the ticked types only"]
 ```
 
 ## Steps
@@ -60,7 +60,7 @@ flowchart LR
 ```mermaid
 flowchart LR
     A[Create an empty library] --> B[Tick types in the tree]
-    B --> C[The left view shows the library]
+    B --> C[The right view shows the library]
     C --> D[A Symbol Lib linked to this library: only its types are shown]
 ```
 

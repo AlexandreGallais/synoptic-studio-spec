@@ -8,28 +8,37 @@ An Enums page lists the enums of the application, like the Units page lists the 
 
 ## Rules
 
-- An enum is a named list of values: a list of numbers or a list of strings. An item is a value alone, with no separate readable name (decided by the Product Owner on 2026-11-11): when the user picks an item, the signal receives exactly that value, and the value is what the faceplate shows. Values are unique in the enum. The research found that FMI, SSP and OPC UA use a pair (name, value); the project chooses not to.
+- An enum is a named list of items. **Each item is a pair: a key and a display text** (Product Owner, 2026-11-11, replacing the "value alone" rule written earlier the same day):
+  - the **key** is what the model receives: a number or a string, chosen for the whole enum; keys are unique in the enum;
+  - the **display text** is what people read: the faceplate, a text of a symbol and the test values show it, never the key.
+- When the user picks an item, the signal receives exactly its key.
+- It is the pair (name, value) the research found in FMI, SSP and OPC UA.
 - Enums are created and changed on the Enums page only, never inside a signal, a symbol or a synoptic.
 - A new enum goes into the list of the Enums page. The list can be filled in advance, before any signal uses it.
 - A signal of the type enum picks one enum of the list. It is a link to the existing enum, never a copy.
 - Several signals can point to the same enum.
 - Changing an enum changes it for every signal that points to it: that is the point of a link.
-- The values of an enum are part of the contract with the model (decided on 2026-11-11, from the research). Adding, removing or changing a value is breaking, like a rename: OPC UA's best-practices guide forbids it for a published enum. The model must follow.
+- The keys of an enum are part of the contract with the model (decided on 2026-11-11, from the research). Adding, removing or changing a key is breaking, like a rename: OPC UA's best-practices guide forbids it for a published enum. The model must follow. Changing a display text is not breaking: it never goes to the model.
+
+| Enum | Kind of key | Items (key: display text) |
+| --- | --- | --- |
+| `operating_mode` | number | 0: Off, 1: Manual, 2: Automatic |
+| `speed` | string | `low`: Low speed, `high`: High speed |
 
 ```mermaid
 flowchart LR
-    P["Enums page: list of named enums"] --> E1["mode: auto, manual, off"]
-    P --> E2["speed: 1, 2, 3"]
+    P["Enums page: list of named enums"] --> E1["operating_mode: 0 Off, 1 Manual, 2 Automatic"]
+    P --> E2["speed: low Low speed, high High speed"]
     A["Signal mode of a pump"] -->|"link"| E1
     B["Signal mode of a valve"] -->|"link"| E1
-    C["Signal gear of a motor"] -->|"link"| E2
+    C["Signal speed of a motor"] -->|"link"| E2
 ```
 
 ## Steps
 
 ```mermaid
 flowchart LR
-    A["Create an enum on the Enums page"] --> B["Add its values"]
+    A["Create an enum on the Enums page, choose number or string keys"] --> B["Add its items: key and display text"]
     B --> C["On a signal of type enum, pick the enum"]
     C --> D["The signal follows the enum: no copy"]
 ```
@@ -38,6 +47,6 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Enum, its values | Enums page | Signal: picks one as a link | No | No |
+| Enum, its items (key and display text) | Enums page | Signal: picks one as a link | No | No |
 
 The faceplate chooses how an enum is shown (radio on one line, radio on several lines, select...), see [Faceplates](08-faceplates.md).
