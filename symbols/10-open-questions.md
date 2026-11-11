@@ -13,7 +13,7 @@ This file is the index of the open questions. A question sits in the file it con
 | Names: Advanced tools, Path, Interaction zone, Preview, Test mode; Layer, static and dynamic kept. | [Editor](03-editor/README.md) | Those names. |
 | Rotation as the only transform of a shape; frame of a symbol; minimum snapping and guides; editor data in one `<metadata>` block; missing features to add now. | [Editor](03-editor/README.md) | See the page. |
 | Desktop window; does "all in JavaScript" allow a shell in Rust? Browsers to hold at 8.3 ms; which effects go in the specs (two lots?); effect suspended during a gesture; colour filter or recomputed colours. | [Effects and masks](04-drawing-mode/effects-and-masks.md) | Electron, and the installed web app first; two lots of effects. |
-| Open paths (middle only, caps, joins); native stroke under the hood for a "middle" border, which also settles the dashes; named colours and a "high-performance" palette. | [Fill and border](04-drawing-mode/fill-and-border.md) | Yes to the three. |
+| Open paths (middle only, caps, joins); native stroke for a plain "middle" border or every border computed; dashes of shape borders computed like pipes; named colours and a "high-performance" palette. (Dash sequences of coloured segments: decided 2026-11-11.) | [Fill and border](04-drawing-mode/fill-and-border.md) | Yes to open paths and colours. |
 | OFL fonts embedded whole; text border kept. | [Text tool](04-drawing-mode/text.md) | Yes. |
 | Third polygon mode "like Figma"; anchors on corners reserved to 3 and 4 sides or another meaning. | [Polygon](04-drawing-mode/polygon.md) | Drop the third mode. |
 | Modifier keys (square, from the centre, angle lock). "Entirely enclosed" is settled: Alt. | [Select](03-editor/select.md), [Rectangle](04-drawing-mode/rectangle.md), [Pen](04-drawing-mode/pen.md) | Conventions written; key conflicts not researched. |
@@ -26,7 +26,7 @@ This file is the index of the open questions. A question sits in the file it con
 | Do the signals carry a quality in the contract with the model? | [Animation mode](08-animation-mode/README.md) | Yes, shown by default. |
 | Name "Test mode"; form of the simulation log and of the simulated faceplate. | [Run mode](09-run-mode/README.md) | Test mode; a log line: time, place, gesture, effect, value. |
 | A branch as one pipe or two; inline symbols; a type of Metadata for a pipe; path kind per pipe. (Junctions, crossings and ends inside the pipe style: decided 2026-11-11.) | [Pipes](pipes/README.md) | One pipe; yes; yes, three signals. |
-| Two strokes or computed outlines for a pipe; flow dashes as a native stroke. | [Pipe styles](pipes/pipe-styles.md) | After POC P9; native stroke, animated only with a flow. |
+| Animated dashes and their direction; what drives a pipe; path kind per pipe. (Base pipe style with overrides, dash sequences, computed dashes: decided 2026-11-11.) | [Pipe styles](pipes/pipe-styles.md) | A type of Metadata with three signals. |
 | Size of bridges and gaps; default "last drawn on top"; borders on a bridge. | [Crossings](pipes/crossings.md) | Size in the style; last drawn on top. |
 | Four or nine anchors on an end shape; copy an end shape from another style; arrows of a symbol's lines. | [Pipe ends](pipes/ends.md) | Not settled by the report. |
 

@@ -31,11 +31,16 @@ Proposed by the assistant, the Product Owner asked it to think of what can be of
 - **Size**: the width of the border, in pixels. Example: a border of 2 px.
 - **Position**: outside, in the middle, or inside the shape.
 - **Fill**: a colour or a gradient, as above.
-- **Dashes**: the border can be dotted or dashed, as the user wants. The user types two values: the length of a dash and the space between two dashes. Example: dash 2, space 2.
+- **Dashes**: the border can be dashed, as the user wants, with a **dash sequence** (Product Owner, 2026-11-11, the same rule as for pipes, see [Pipe styles](../pipes/pipe-styles.md)):
+  - a sequence of segments, each with a **length** and a **colour**, repeated along the border;
+  - a gap is a segment with a **transparent** colour: "black 2, transparent 2" gives classic dashes;
+  - several colours can follow each other: "red 4, black 4" gives red and black dashes;
+  - the sequence can be as long as the user wants.
+- The dashes are computed along the border, as cleanly as possible; an odd cut in a corner is accepted.
 
 ### Dashes: what the research says
 
-- Native SVG dashes (`stroke-dasharray`) exist only for a stroke. The border of the project is a fill, so two ways remain: keep a hidden stroke under the hood, or compute each dash as a small shape. The second is a geometric calculation redone at each resize, for the geometry research. Which one: to decide by the Product Owner.
+- Native SVG dashes (`stroke-dasharray`) exist only for a stroke, and have **one colour**. The border of the project is a fill, and a dash sequence can have several colours: the dashes are therefore computed, each dash as a small shape, as the Product Owner wants for pipes ("everything is computed"). It is a geometric calculation redone at each resize, for the geometry research. For shape borders, this follows from the dash sequence; to confirm by the Product Owner.
 - The cost follows the number of dashes (the perimeter divided by dash plus space). The editor needs a maximum number of dashes per shape, set by the POC (P8).
 - No source gives the cost of a gradient or of its number of colour stops: a short POC (P8) is planned.
 
@@ -47,7 +52,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.18,
 
 - SVG 2 has no inner or outer stroke. Opinion: an open path has no inside, so only the **middle** position makes sense; inside and outside are greyed out. Confidence: medium.
 - Line caps: butt, round, square. Line joins: miter (with a limit, 4 by default, beyond which it becomes a bevel), round, bevel. Opinion: offer these three caps and three joins.
-- A border "in the middle" looks exactly like a native stroke. Opinion: allowing a native stroke under the hood **in this case only** would settle at once the dashes, the caps and the joins, and leave to the computation only the inside and outside borders. Two ways of rendering to maintain.
+- A border "in the middle" looks exactly like a native stroke. Opinion: allowing a native stroke under the hood **in this case only** would settle at once the dashes, the caps and the joins, and leave to the computation only the inside and outside borders. Two ways of rendering to maintain. Since then, dashes are sequences of several colours (2026-11-11), which a native stroke cannot draw in one piece: the native stroke would only help plain borders.
 - Arrows on a line: SVG markers exist (start, middle, end). Opinion: one single concept, the end shape of the Symbol Lib, for lines and pipes (see [Pipe ends](../pipes/ends.md)).
 
 ### Gradients
@@ -66,5 +71,6 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.18,
 ## To decide by the Product Owner
 
 1. Open paths: middle position only, three caps, three joins?
-2. A native stroke allowed under the hood for a "middle" border (this also settles the dashes question above)?
-3. Named colours in the Symbol Lib, and a "high-performance" palette by default?
+2. A native stroke allowed under the hood for a plain "middle" border, or every border computed?
+3. Dashes of shape borders computed, like those of pipes?
+4. Named colours in the Symbol Lib, and a "high-performance" palette by default?

@@ -4,7 +4,7 @@
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
 
-When the user edits a pipe style in a Symbol Lib (its body, junctions, crossings and end shapes), a test display shows it on every case a pipe can meet. It lets the user understand what an edit does without drawing a synoptic.
+When the user edits the base pipe style or a pipe style in a Symbol Lib (body, border, junctions, crossings and end shapes), a test display shows it on every case a pipe can meet. It lets the user understand what an edit does without drawing a synoptic.
 
 ## Rules
 
@@ -13,7 +13,8 @@ When the user edits a pipe style in a Symbol Lib (its body, junctions, crossings
 
 | Case | What it shows |
 | --- | --- |
-| Straight pipe | The fill, the width, the border, the flow dashes. |
+| Straight pipe | The body fill, the width, the border, the dash sequences. |
+| Base and styles | The base pipe style next to the style being edited, to see what it overrides (proposed by the assistant). |
 | Right angle | The corner radius. |
 | Other angles | An angle other than 90 degrees, a very short segment. |
 | Junction | One junction of the style. |

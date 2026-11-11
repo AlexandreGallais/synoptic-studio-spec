@@ -8,7 +8,7 @@ A crossing is a place where a pipe passes over another one without being connect
 
 ## Rules
 
-- The user chooses the **type of crossing** in the **pipe style** (see [Pipe styles](pipe-styles.md)), not in a separate list of the Symbol Lib (decided by the Product Owner, 2026-11-11):
+- The user chooses the **type of crossing** in the **base pipe style**, and a pipe style can override it (see [Pipe styles](pipe-styles.md)); it is not a separate list of the Symbol Lib (decided by the Product Owner, 2026-11-11):
 
 | Type | What happens |
 | --- | --- |
