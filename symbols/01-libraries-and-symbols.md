@@ -4,27 +4,45 @@
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
 
-Symbols are kept in Symbol Libs. As for types, a library is only a way to sort and to find. What changes from one library to another is mostly the graphics: the same pump can be drawn differently in each library.
+Symbols are kept in Symbol Libs. A Symbol Lib is a way of representing symbols: what changes from one library to another is mostly the graphics, so the same pump can be drawn differently in each.
+
+The two kinds of library are the **Symbol Lib** (sorts symbols) and the **Type Lib** (sorts types, see [Libraries](../metadata/10-libraries.md)). The names were given by the Product Owner on 2026-11-11.
 
 ## Rules
 
-- Symbols are a flat list, never a tree. A Symbol Lib is a flat list of symbols.
-- In symbol mode, the user first selects a Symbol Lib. The list of its symbols is then shown. Then the user opens a symbol or creates a new one.
-- The two kinds of library are called **Symbol Lib** and **Type Lib** (named by the Product Owner on 2026-11-11). A Type Lib is the Metadata one (see [Libraries](../metadata/10-libraries.md)): it sorts types. A Symbol Lib sorts drawings. This page says "Symbol Lib" and "Type Lib" from here on.
-- A symbol always lives in a library. There is no symbol outside a library, and a symbol lives in one library only: it cannot be in several (decided by the Product Owner on 2026-11-11).
-- There is one kind of Symbol Lib. A library is a way of representing symbols. It has a name given by the user and its Type Lib. It has no style, no category and no other field.
-- Why several libraries: one library alone cannot be enough. Symbols used for one kind of software, or for one factory, must look one way; another software or factory needs another look. A pump is not always drawn the same way, and a symbol that exists in one library may not be needed in another.
-- A library also lets a graphic representation evolve over time: when the user wants to change the look, they create another library and draw the symbols again there, instead of changing the first one.
-- A symbol is static or dynamic (see [the overview](README.md)). In a Symbol Lib, the user clicks "Create a symbol" and first chooses static or dynamic.
-- A Symbol Lib is linked to one Type Lib, when the library is created, and stays attached to it (decided by the Product Owner on 2026-11-11). In that Symbol Lib, only the types of that Type Lib can be chosen: no type from another Type Lib is ever offered.
-- Why: in Metadata, types are global, and each project or need can have its own Type Lib. Linking the Symbol Lib to a Type Lib saves the user from choosing a Type Lib at every symbol, and keeps the choice small and framed. A pump is the same pump in Metadata wherever it is used: if it cannot be the same everywhere, the types are wrong, not the library.
-- A dynamic symbol is attached to one type of Metadata (see [Types](../metadata/01-types.md)), which the user must choose before drawing, among the types of the Symbol Lib's Type Lib (see [Libraries](../metadata/10-libraries.md)). The symbol is linked to its type from the start. Several dynamic symbols can be attached to the same type, with different drawings and different presets: a centrifugal pump can have a manual symbol and a motorised one, with no change in Metadata.
-- A static symbol has no type, no preset, no faceplate, no animation and no interaction. Only the creation of the symbol and its visuals remain: the drawing (see [Drawing](02-drawing.md)).
-- The user can switch a symbol between static and dynamic whenever they want, in the symbol editor. Becoming dynamic requires choosing a type then.
-- Switching a dynamic symbol to static drops nothing: the type, the preset, the faceplate entries, the animations and the interactions are kept, only hidden (decided by the Product Owner on 2026-11-11). Switching back to dynamic brings them all back, so a mistake costs nothing. While hidden, they do nothing and are not shown anywhere, in the editor or in a synoptic.
-- While a symbol is static, there is no type and no type selection in the symbol editor: the type can only be chosen on a dynamic symbol. The type itself can still change in Metadata in the meantime (a signal removed or renamed, for example).
-- When the symbol becomes dynamic again, the type selection comes back and the user chooses the type again. The animations and interactions that no longer fit the type, because Metadata changed, are broken (decided by the Product Owner on 2026-11-11). A broken item is kept, marked as broken and does nothing, until the user fixes it or removes it. The same holds when a dynamic symbol's type is changed, or when Metadata changes the type of a dynamic symbol.
-- The type of a dynamic symbol can be changed afterwards, in the symbol editor only (see [Types](../metadata/01-types.md)).
+### The Symbol Lib
+
+- A Symbol Lib is a flat list of symbols, never a tree.
+- It is the only kind of symbol library. It has a name given by the user and a Type Lib (see below), and no other field: no style, no category.
+- A symbol always lives in a library, and in one library only. It cannot be outside one, nor in several.
+- In symbol mode, the user first selects a Symbol Lib. Its symbols are then listed, and the user opens one or creates a new one.
+- Why several libraries: one cannot be enough. Symbols for one kind of software or one factory must look one way, another software or factory needs another look, and a symbol of one library may not be needed in another.
+- A library also lets a look evolve: to change it, the user creates another library and draws the symbols again, instead of changing the first one.
+
+### Its Type Lib
+
+- A Symbol Lib is linked to one Type Lib when it is created, and stays attached to it.
+- In that Symbol Lib, only the types of that Type Lib can be chosen. No type from another Type Lib is ever offered.
+- Why: types are global in Metadata, and each project or need can have its own Type Lib. The link saves a Type Lib choice at every symbol and keeps the choice small. A pump is the same pump in Metadata wherever it is used: if it cannot be the same everywhere, the types are wrong, not the library.
+
+### Creating a symbol
+
+In a Symbol Lib, "Create a symbol" first asks: static or dynamic?
+
+| Kind | Type | Preset, faceplate, animation, interaction | What remains |
+| --- | --- | --- | --- |
+| Dynamic | Required, chosen before drawing among the types of the Type Lib | Yes | Everything |
+| Static | None | None | The drawing only (see [Drawing](02-drawing.md)) |
+
+- A dynamic symbol is linked to its type from the start (see [Types](../metadata/01-types.md)). The type can be changed later, in the symbol editor only, still among the types of the Type Lib.
+- Several dynamic symbols can share a type, with different drawings and presets: a centrifugal pump can have a manual symbol and a motorised one, with no change in Metadata.
+
+### Switching between static and dynamic
+
+- The user can switch whenever they want, in the symbol editor. Becoming dynamic requires choosing a type then.
+- Switching to static drops nothing: the type, preset, faceplate entries, animations and interactions are kept, only hidden. They do nothing and are shown nowhere, neither in the editor nor in a synoptic. Switching back brings them all back, so a mistake costs nothing.
+- While static, there is no type selection. Metadata can still change the type in the meantime (a signal removed or renamed, for example).
+- On return to dynamic, the user chooses the type again. The animations and interactions that no longer fit the type are broken. A broken item is kept, marked as broken and does nothing until the user fixes or removes it. The same holds when the type of a dynamic symbol is changed, in the editor or in Metadata.
 
 ```mermaid
 flowchart TD
@@ -43,7 +61,7 @@ flowchart TD
 
 ## Example
 
-The names below are only names given by the user, not styles.
+The library names are only names given by the user.
 
 | Symbol Lib | Its Type Lib | Symbols | Types they use |
 | --- | --- | --- | --- |
@@ -54,13 +72,12 @@ The names below are only names given by the user, not styles.
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Symbol Lib | Symbol mode | Choice of a symbol | Create, select | To settle (part 3) |
-| Link from a Symbol Lib to its Type Lib | Symbol mode, when the Symbol Lib is created | Choice of the type of a dynamic symbol | Choose at creation | No |
+| Symbol Lib and its Type Lib | Symbol mode, the link when the library is created | Choice of a symbol and of its type | Create, select | To settle (part 3) |
 | Symbol | Symbol editor | Synoptics | Create, draw, link | Placed |
 | Static or dynamic | Chosen at creation, switched in the symbol editor | Symbol | Choose, switch | No |
 | Type of a dynamic symbol | Chosen at creation, changed in the symbol editor | Symbol | Choose, change | No |
 
 ## Open questions
 
-- Can the link to the Type Lib be changed later, and what happens to the types of the symbols if it is? Can a Type Lib serve several Symbol Libs (it seems so: it is only a link)? Does a Symbol Lib of static symbols only need a Type Lib? See [Open questions](07-open-questions.md).
+- Can the link to the Type Lib be changed later, and what happens to the types of the symbols if it is? Can a Type Lib serve several Symbol Libs (it seems so: it is only a link)? Does a library of static symbols only need a Type Lib? See [Open questions](07-open-questions.md).
 - How does the user fix a broken animation or interaction (rebind it or remove it), and how are broken items shown? See [Open questions](07-open-questions.md).
