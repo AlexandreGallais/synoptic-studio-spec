@@ -12,7 +12,7 @@ The default mode of the [editor](../03-editor/README.md): draw and arrange shape
 - The order is the one the Product Owner chose: groups, then the basic shapes (rectangle, ellipse, polygon), then the pen, then the text.
 - The Group, Rectangle, Ellipse, Polygon, Pen and Text tools exist only in this mode (the Pen is also in the point editing mode).
 - Right-hand panel: the options of the selected shape (colours, corner radius...).
-- The shapes have a fill and a border (see [Fill and border](fill-and-border.md)).
+- The shapes have a fill and a border (see [Fill and border](fill-and-border.md)), and can have effects and a mask (see [Effects and masks](effects-and-masks.md)).
 - Everything drawn becomes a path, except a text, which stays a text.
 
 ## Tools of this mode
