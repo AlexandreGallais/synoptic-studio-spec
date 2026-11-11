@@ -21,6 +21,7 @@ A group is an SVG `g` element. Its first use is to give a structure to several s
 - The size is set like in Figma: a **width** and a **height**, each one either **fit** or **fixed**.
   - Fit, on both: the group is a plain SVG group. It wraps its children and nothing more. This is the default.
   - Fixed: the group has the size the user gave it, and it no longer fits its content.
+- A group has no fill and no border (see [Fill and border](fill-and-border.md)).
 - A group with its own size can be empty. The size and the position are only simulated by the editor: no rectangle is added inside the group, and the SVG bounding box is not relied on.
 
 ### Layout of the children

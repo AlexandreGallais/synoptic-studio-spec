@@ -26,7 +26,7 @@ Select is in the tool bar of every mode except the Run mode. What it does depend
 
 - The selected shapes can be moved with the mouse.
 - A selection has a box with small squares on its sides and corners, to resize it.
-- Resizing never applies a scale or a transform. A rectangle that grows gets a bigger width and a bigger height. Its stroke does not grow: the stroke has the fixed value the user gave it.
+- Resizing never applies a scale or a transform. A rectangle that grows gets a bigger width and a bigger height. Its border does not grow: the border has the fixed value the user gave it.
 - A text is resized the same way, with one rule more: its box is shown when it is selected, and dragging the box enlarges the text zone only. The size of the text does not change (see [Text](../04-drawing-mode/text.md)).
 
 ## Open questions

@@ -14,7 +14,7 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 - Key shortcuts and modifier keys are allowed, as in every drawing software, but never alone: each one has a visible equivalent (an option in the panel or the tool bar). The software is used by everyone, including an expert of 80 who makes synoptics.
 - Everything drawn stays a path, in the layers of an SVG, so the symbol stays a real SVG. A text stays a text, because it can show a value or a unit (see [Animation mode](../08-animation-mode/README.md)).
 - The name "layer" is provisional. A layer can be the target of an animation or of an interaction.
-- Colours (fill, stroke) and the options of a shape (corner radius, for example) are neither tools nor modes. They are in the right-hand panel, which shows the options that fit the selected shape.
+- Colours (fill, border) and the options of a shape (corner radius, for example) are neither tools nor modes. They are in the right-hand panel, which shows the options that fit the selected shape.
 
 ## Modes
 
