@@ -83,7 +83,7 @@ Source: the research report (`research/t1-…/rapport.md`, in the project, not c
 
 The report's questions that the specs cannot answer alone:
 
-1. Which desktop window: embedded Chromium or the system view? It fixes the engine to measure first.
+1. Which desktop window: embedded Chromium or the system view? It fixes the engine to measure first. **Postponed by the Product Owner (2026-11-11), not decided.** He wants the lightest and simplest to maintain for an open source application, so possibly Tauri, possibly Electron. Chromium is probably the best for effects and 120 Hz; he wonders whether Chromium can be used without Electron. To think about later.
 2. Which browsers must the front hold at 8.3 ms when plugged into a browser: Chromium only, or Firefox and Safari too?
 3. Is an effect suspended during the gesture and restored at release an acceptable concession (if the drop shadow does not hold in WebKit)?
 4. Can a colour filter be replaced by recomputed colours, or must it stay a filter in the exported SVG?
