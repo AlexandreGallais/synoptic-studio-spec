@@ -9,7 +9,8 @@ This file is the index of the open questions. A question sits in the file it con
 | Question | Page | Written as |
 | --- | --- | --- |
 | Names to review: layer, interaction, gesture (left click, right click...), zone, symbol mode, static and dynamic. "Symbol Lib" and "Type Lib" are settled. Metadata already uses "trigger" for a kind of command: a gesture must not be confused with it. | All | A research on the vocabulary can be done, as for Metadata. |
-| Full list of tools and their options (fill, stroke, align, group, boolean operations, zoom, snapping...), point editing detail. | [Drawing](02-drawing.md) | To describe. |
+| Do groups get a size or a layout (vertical, horizontal, grid), like Figma frames? | [Drawing](02-drawing.md) | To think about. |
+| Exact options of the expert tools (boolean operations, duplication) and of alignment. | [Drawing](02-drawing.md) | To describe. |
 | The pen modifier key, and how it works exactly (next segment only, or a switch). | [Drawing](02-drawing.md) | To confirm. |
 | Properties an animation can drive, shape of the mapping (linear or not), animation of an enum. | [Animation](04-animation.md) | To describe. |
 | Can a text that shows a value become an input on click, from the symbol editor? | [Animation](04-animation.md) | To confirm. |
