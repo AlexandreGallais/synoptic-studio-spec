@@ -13,6 +13,7 @@ This file is the index of the open questions. A question sits in the file it con
 | Dashes of a fill-based border: hidden stroke or computed dashes. | [Fill and border](04-drawing-mode/fill-and-border.md) | To decide. |
 | Third polygon mode "like Figma" (the report advises dropping it); anchors on corners reserved to 3 and 4 sides or another meaning. | [Polygon](04-drawing-mode/polygon.md) | To decide. |
 | Modifier keys (square, from the centre, angle lock). Rule: only keys that exist on every platform. "Entirely enclosed" is settled: Alt. | [Select](03-editor/select.md), [Rectangle](04-drawing-mode/rectangle.md), [Pen](04-drawing-mode/pen.md) | The conventions are written; the Product Owner chooses. |
+| Point editing: options of the former shape once it becomes a free form (corner radius, sides...); list of points in the panel: all shapes or the selected ones. | [Point editing mode](05-point-editing-mode/README.md) | To confirm. |
 | Fonts research (question 5 of the brief). | [Research brief](research-brief.md) | Not sent yet. |
 | Options of each expert entry, of the alignment panel and of the group (anchors, placement of the children). | [Expert menu](03-editor/expert-menu/README.md), [Alignment mode](06-alignment-mode/README.md), [Group](04-drawing-mode/group.md) | To describe, page by page. |
 | Properties an animation can drive, shape of the mapping (linear or not), animation of an enum. | [Animation mode](08-animation-mode/README.md) | To describe. |
