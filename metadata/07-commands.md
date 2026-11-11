@@ -23,6 +23,7 @@ flowchart TD
 ## Rules
 
 - Commands are created and changed in Metadata only.
+- A command also has an internal identifier, set by the software, that never changes, like a type's (see [Types](01-types.md)). It exists on the application side only and never goes to the model. Symbols link to a command through it, so renaming a command does not break them (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md)).
 - In a symbol, direct commands: the user links a command from Metadata to a click on a part of the symbol.
 - On the web front, a command is a button, except a typed-value command, which has two ways to take its value (see below).
 - A preset does not choose commands: all the commands of a type stay available. The symbol says which it uses.

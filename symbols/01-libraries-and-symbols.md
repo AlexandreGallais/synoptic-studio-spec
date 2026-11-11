@@ -18,8 +18,10 @@ A **Symbol Lib** holds symbols. A **Type Lib** (see [Libraries](../metadata/10-l
 
 ### Type Lib of a Symbol Lib
 
-- The user links the Symbol Lib to one Type Lib when creating it. The link stays.
+- The user links the Symbol Lib to one Type Lib when creating it.
 - In this Symbol Lib, only the types of that Type Lib can be chosen.
+- The user can change the Type Lib later: they click the Symbol Lib and change its Type Lib.
+- Changing it can break every symbol of the Symbol Lib. If the new Type Lib has exactly the same types, nothing breaks.
 - Why: types are global in Metadata, and each project can have its own Type Lib. The link avoids choosing a Type Lib at every symbol. A pump is the same in Metadata wherever it is used.
 
 ### Creating a symbol
@@ -43,8 +45,9 @@ The user can switch between static and dynamic at any time.
 ### When Metadata changes
 
 - **A rename** is followed. The symbol is linked by identifier, not by name, so it keeps working and nothing is asked.
-- **A change of interface** (a type changed, a signal removed...) can break a link. The animation or interaction is then marked broken and does nothing.
-- **Fixing it** is done on the symbol side, never in Metadata.
+- **A change of interface** (a type changed, a signal removed...) can break a link: what it points to is gone, or can no longer be used the same way. This also happens when the Type Lib of the Symbol Lib is changed.
+- **A broken item** is shown with a small red marker (an icon, to design) that says it is broken. It may say why, later. The animation itself is not changed: it just cannot work the same way any more.
+- **Fixing it** is up to the user, on the symbol side, never in Metadata. There is no automatic repair: the user acts until no error is left.
 
 ```mermaid
 flowchart TD
@@ -74,8 +77,8 @@ flowchart TD
 
 ## Open questions
 
-- Can the Type Lib of a Symbol Lib be changed later? Can one Type Lib serve several Symbol Libs? Does a Symbol Lib of static symbols need one?
-- Which changes break a link exactly, how are broken items shown, and how are they fixed (relink or remove)?
-- A rename can only be followed if signals and commands have an internal identifier, as types do. Metadata does not say it yet.
+- Can one Type Lib serve several Symbol Libs? Does a Symbol Lib of static symbols need one?
+- Which changes break a link exactly? What does the red marker look like, and does it tell why?
+- What tools help the user fix a broken item (relink, remove, or other)?
 
 All three are in [Open questions](07-open-questions.md).
