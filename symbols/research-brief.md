@@ -4,6 +4,8 @@
 
 Status: draft. This file gathers everything the symbols part leaves to a documentary research. It will be sent when the Product Owner says so, once the whole part is discussed. No task is created before that.
 
+Which questions go in the research: for now only questions 1 to 4 (the drawing tools discussed with the Product Owner). Question 5 and the questions of the pages not discussed yet are not sent.
+
 ## Questions
 
 ### 1. Which SVG effects keep the performance

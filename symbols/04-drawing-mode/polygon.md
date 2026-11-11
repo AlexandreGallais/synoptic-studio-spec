@@ -16,7 +16,7 @@ The polygon is drawn by dragging a box, like the rectangle and the ellipse. It b
 | Filled | fills the box as much as possible. It is not forced to be equilateral. |
 | Equilateral | keeps all its sides equal. It is not forced to fill the box. |
 
-- A third mode, "like Figma", may be added. Figma is not equilateral and does not fill the box either: it depends on the research below.
+- A third mode, "like Figma", may be added. Figma is not equilateral and does not fill the box either: it depends on the [research brief](../research-brief.md).
 - **Anchors**: the user says where the polygon is placed in its box, with anchors on the box (its sides and its corners). Two ways to use an anchor:
   - a **corner** of the polygon touches the anchor;
   - a **side** of the polygon touches the anchor.
