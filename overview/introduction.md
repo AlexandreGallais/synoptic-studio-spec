@@ -24,7 +24,8 @@ The Product Owner splits the application in three parts.
 | Part | What it holds | Specified in |
 | --- | --- | --- |
 | Metadata | The data and documentation a symbol can be attached to: type tree, icons, documentation, signals, units, enums, commands, faceplates, presets, libraries. | [Metadata](../metadata/README.md) |
-| Two other parts | Not described yet. | To come. |
+| Symbols | Creating symbols: symbol libraries, drawing, animation by signals, interactions with commands. Draft. | [Symbols](../symbols/README.md) |
+| Third part | Not described yet. | To come. |
 
 How the files of every part are read and written is described in [Storage](../storage/README.md).
 
@@ -69,7 +70,7 @@ These specs cover only the open source desktop application.
 
 ## Open questions
 
-- **The two other parts** of the application: to describe with the Product Owner.
+- **The third part** of the application: to describe with the Product Owner (the second, Symbols, is a draft).
 - **Runtime.** It is not one of the 7 validated projects. Option advised: note it apart, specify the editor first and the view file format the runtime will read.
 - **The "big drawing"** mentioned by the Product Owner was not received (the message held only text).
 - **Summary view.** Is a summary view a separate file, or a view stored inside the installation file? Not asked yet.

@@ -2,7 +2,7 @@
 
 The specifications of **Synoptic Studio**, the open source desktop application to create and edit synoptics (animated process views of an industrial installation).
 
-Status: the Metadata part is validated by the Product Owner (2026-11-11). The other parts are not written yet.
+Status: the Metadata part is validated by the Product Owner (2026-11-11). The Symbols part is a draft (2026-11-11). The third part is not written yet.
 
 ## What Synoptic Studio is
 
@@ -25,13 +25,13 @@ Read the full story in the [introduction](overview/introduction.md).
 
 ## The three parts of the application
 
-The Product Owner splits the application in three parts. Only the first one is specified so far.
+The Product Owner splits the application in three parts. The first is validated, the second is a draft, the third is not described yet.
 
 ```mermaid
 flowchart TD
     APP["Synoptic Studio (open source application)"]
     APP --> MD["Part 1: Metadata, specified and validated"]
-    APP --> P2["Part 2: to describe"]
+    APP --> P2["Part 2: Symbols, draft"]
     APP --> P3["Part 3: to describe"]
     APP --> ST["Storage: how every part reads and writes its files"]
     MD --> MD1["Types, icons, documentation"]
@@ -45,6 +45,7 @@ flowchart TD
 | --- | --- | --- |
 | [`overview/`](overview/README.md) | The general presentation of the software. | [Introduction](overview/introduction.md) |
 | [`metadata/`](metadata/README.md) | Part 1 of the application: the data and documentation a symbol can be attached to. | [Metadata overview](metadata/README.md) |
+| [`symbols/`](symbols/README.md) | Part 2 of the application: symbol libraries, drawing, animation, interactions. Draft. | [Symbols overview](symbols/README.md) |
 | [`storage/`](storage/README.md) | The folder the application points to, the generated files, and how conflicts between people are avoided. | [Files and conflicts](storage/files-and-conflicts.md) |
 
 Metadata pages, in reading order:
