@@ -8,8 +8,8 @@ This file is the index of the open questions. A question sits in the file it con
 
 | Question | Page | Written as |
 | --- | --- | --- |
-| Does a static symbol have a type, a preset and a faceplate, or none? Can it have interactions? | [Type, preset and faceplate](03-type-and-faceplate.md), [Interactions](05-interactions.md) | Open. |
-| Names of the two kinds of library (symbol library, type library), and can a symbol be in several libraries? | [Libraries and symbols](01-libraries-and-symbols.md) | Open. |
+| A type is chosen at every symbol creation. Does a static symbol still keep a preset and a faceplate, or only the type? Can it have interactions? | [Type, preset and faceplate](03-type-and-faceplate.md), [Interactions](05-interactions.md) | Open. |
+| Names of the two kinds of library (symbol library, type library). | [Libraries and symbols](01-libraries-and-symbols.md) | Open, with the other names to review. |
 | Names to review: layer, interaction, gesture (left click, right click...), zone, symbol mode, static and dynamic. Metadata already uses "trigger" for a kind of command: a gesture must not be confused with it. | All | A research on the vocabulary can be done, as for Metadata. |
 | Full list of tools and their options (fill, stroke, align, group, boolean operations, zoom, snapping...), point editing detail. | [Drawing](02-drawing.md) | To describe. |
 | The pen modifier key, and how it works exactly (next segment only, or a switch). | [Drawing](02-drawing.md) | To confirm. |
