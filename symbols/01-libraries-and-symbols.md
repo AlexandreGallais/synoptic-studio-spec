@@ -41,8 +41,17 @@ In a Symbol Lib, "Create a symbol" first asks: static or dynamic?
 
 - The user can switch whenever they want, in the symbol editor. Becoming dynamic requires choosing a type then.
 - Switching to static drops nothing: the type, preset, faceplate entries, animations and interactions are kept, only hidden. They do nothing and are shown nowhere, neither in the editor nor in a synoptic. Switching back brings them all back, so a mistake costs nothing.
-- While static, there is no type selection. Metadata can still change the type in the meantime (a signal removed or renamed, for example).
-- On return to dynamic, the user chooses the type again. The animations and interactions that no longer fit the type are broken. A broken item is kept, marked as broken and does nothing until the user fixes or removes it. The same holds when the type of a dynamic symbol is changed, in the editor or in Metadata.
+- While static, there is no type selection. Metadata can still change in the meantime.
+- On return to dynamic, the user chooses the type again, and anything that no longer fits is checked as below.
+
+### When Metadata changes
+
+Decided by the Product Owner on 2026-11-11.
+
+- A rename never breaks a symbol. A symbol is linked to a signal, a command or a type through its internal identifier, not through its name, so a renamed signal is followed: the symbol keeps working and nothing is asked of the user.
+- A change of the interface can break it: a signal or a command removed, a signal that is no longer an output, a value of another type, a type changed, and so on. The animation or interaction that was linked to it is then broken: nothing is there any more.
+- A broken item is kept, marked as broken, and does nothing. The error is solved on the symbol side, not in Metadata: the user fixes the link or removes the item.
+- The same holds when the type of a dynamic symbol is changed in the editor, and on return from static.
 
 ```mermaid
 flowchart TD
@@ -80,4 +89,5 @@ The library names are only names given by the user.
 ## Open questions
 
 - Can the link to the Type Lib be changed later, and what happens to the types of the symbols if it is? Can a Type Lib serve several Symbol Libs (it seems so: it is only a link)? Does a library of static symbols only need a Type Lib? See [Open questions](07-open-questions.md).
-- How does the user fix a broken animation or interaction (rebind it or remove it), and how are broken items shown? See [Open questions](07-open-questions.md).
+- Which changes of Metadata exactly break a link (the list above is only examples), how are broken items shown, and how does the user fix one (rebind it to another signal or command, or remove it)? See [Open questions](07-open-questions.md).
+- For a rename to be followed, signals and commands need an internal identifier like types have; Metadata states it only for types, enums and quantities. See [Open questions](07-open-questions.md).
