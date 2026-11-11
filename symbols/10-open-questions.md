@@ -14,11 +14,10 @@ This file is the index of the open questions. A question sits in the file it con
 | Third polygon mode "like Figma" (the report advises dropping it); anchors on corners reserved to 3 and 4 sides or another meaning. | [Polygon](04-drawing-mode/polygon.md) | To decide. |
 | Modifier keys (square, from the centre, angle lock). Rule: only keys that exist on every platform. "Entirely enclosed" is settled: Alt. | [Select](03-editor/select.md), [Rectangle](04-drawing-mode/rectangle.md), [Pen](04-drawing-mode/pen.md) | The conventions are written; the Product Owner chooses. |
 | Point editing: options of the former shape once it becomes a free form (corner radius, sides...); list of points in the panel: all shapes or the selected ones. | [Point editing mode](05-point-editing-mode/README.md) | To confirm. |
-| Alignment: the exact anchors (nine of the bounding box?), a gap between shapes, one anchor for all the shapes to place or one each. | [Alignment mode](06-alignment-mode/README.md) | To confirm. |
+| Alignment: what an anchor is on a real shape (circle, free form), a gap between shapes, one anchor for all the shapes to place or one each. | [Alignment mode](06-alignment-mode/README.md) | To confirm. |
 | Fonts research (question 5 of the brief). | [Research brief](research-brief.md) | Not sent yet. |
 | Options of each expert entry, of the alignment panel and of the group (anchors, placement of the children). | [Expert menu](03-editor/expert-menu/README.md), [Alignment mode](06-alignment-mode/README.md), [Group](04-drawing-mode/group.md) | To describe, page by page. |
 | Properties an animation can drive, shape of the mapping (linear or not), animation of an enum. | [Animation mode](08-animation-mode/README.md) | To describe. |
-| Can a text that shows a value become an input on click, from the symbol editor? | [Animation mode](08-animation-mode/README.md) | To confirm. |
 | Gesture list, and can an interaction open the faceplate? | [Interaction mode](07-interaction-mode/README.md) | To settle. |
 | Do interactions work in the Run mode? | [Run mode](09-run-mode/README.md) | Open. |
 | How are an unwired dynamic symbol and the placement in a synoptic handled? | Part 3 | Belongs to the synoptic part, not written yet. |

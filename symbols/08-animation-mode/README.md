@@ -45,7 +45,29 @@ flowchart LR
     S --> U["Text 2: the unit only, in the display unit"]
 ```
 
-A text that shows a value can be turned into an input when the user clicks it, if a typed-value command is linked to it (see [Commands](../../metadata/07-commands.md), the display that becomes an input). This is to confirm with the Product Owner.
+### A text that becomes an input
+
+Decided by the Product Owner (2026-11-11). A text can be set at the size the user needs, and it can turn into an input when the user clicks it, if a command is linked to it (see [Commands](../../metadata/07-commands.md), the display that becomes an input). It makes quick commands: no separate panel is opened.
+
+| What the text shows | What a click does |
+| --- | --- |
+| A number | The text turns into a **number input**, right there. This is the main case. |
+| A text | The text can turn into a **text input**. Less common than the number. |
+| An enum | A **selection menu** opens, with the whole list of the enum, and the user picks one item. |
+
+- The user chooses, in the editor, which of these a text does: number input, text input, or selection menu.
+- The enum case works on the value or on the string shown: a click on it opens the menu.
+- What the user picks or types is sent as a command of the type, like any other command.
+
+```mermaid
+flowchart LR
+    T["Text shown"] -->|"number: click"| N["Number input"]
+    T -->|"text: click"| X["Text input"]
+    T -->|"enum: click"| M["Menu with the whole list"]
+    N --> C["Command sent to the model"]
+    X --> C
+    M --> C
+```
 
 ## Where it is used
 
