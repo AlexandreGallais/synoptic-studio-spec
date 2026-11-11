@@ -8,6 +8,7 @@ This file is the index of the open questions. A question sits in the file it con
 
 | Question | Page | Written as |
 | --- | --- | --- |
+| Can the link from a Symbol Lib to its Type Lib be changed later, and what then? Can one Type Lib serve several Symbol Libs? Is the link required for a library of static symbols? Metadata's Libraries page still says that the user chooses a library in a symbol: it must be aligned once this is validated. | [Libraries and symbols](01-libraries-and-symbols.md) | Open. |
 | How does the user fix a broken animation or interaction (rebind to another signal or command, or remove it), and how are broken items shown? | [Libraries and symbols](01-libraries-and-symbols.md) | To describe. |
 | Names to review: layer, interaction, gesture (left click, right click...), zone, symbol mode, static and dynamic. "Symbol Lib" and "Type Lib" are settled. Metadata already uses "trigger" for a kind of command: a gesture must not be confused with it. | All | A research on the vocabulary can be done, as for Metadata. |
 | Full list of tools and their options (fill, stroke, align, group, boolean operations, zoom, snapping...), point editing detail. | [Drawing](02-drawing.md) | To describe. |

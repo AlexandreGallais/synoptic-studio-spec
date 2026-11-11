@@ -31,7 +31,7 @@ flowchart LR
 
 When creating a symbol, the user chooses static or dynamic, and can switch whenever they want. Switching to static only hides the type, animations and interactions; switching back restores them. In a synoptic, a dynamic symbol can be placed and left unwired: it then behaves as a static one (this belongs to part 3).
 
-The two kinds of library are the **Symbol Lib** (sorts symbols) and the **Type Lib** (sorts types, in Metadata).
+The two kinds of library are the **Symbol Lib** (sorts symbols) and the **Type Lib** (sorts types, in Metadata). A Symbol Lib is linked to one Type Lib and only offers its types.
 
 ## What it contains
 
