@@ -10,7 +10,7 @@ A **Symbol Lib** holds symbols. A **Type Lib** (see [Libraries](../metadata/10-l
 
 ### Symbol Lib
 
-- It is a flat list of symbols, not a tree.
+- It holds two flat lists, never a tree: its dynamic symbols and its static symbols. There is no "static library": every library can have both.
 - It has a name and a Type Lib. Nothing else.
 - Every symbol is in one Symbol Lib, and only one. No symbol lives outside a library.
 - In symbol mode, the user selects a Symbol Lib, sees its symbols, then opens one or creates one.
@@ -46,9 +46,34 @@ The user can switch between static and dynamic at any time.
 ### When Metadata changes
 
 - **A rename** is followed. The symbol is linked by identifier, not by name, so it keeps working and nothing is asked.
-- **A change of interface** can break a link: what it points to is gone, or can no longer be used the same way. Example: a signal goes from number to string. This also happens when the Type Lib of the Symbol Lib is changed. The full list of what breaks a link is to write (see below).
+- **A change of interface** breaks a link when what it points to is gone, or can no longer be used the same way. The list is below.
 - **A broken item** is shown as broken, with a small red mark. How it looks is for the design, later. It may say why, later too. The animation itself is not changed: it just cannot work the same way any more.
 - **Fixing it**: there is no tool and no automatic repair. The item only warns that it is broken, and the user redoes the mapping properly, on the symbol side, never in Metadata.
+
+#### What breaks a link
+
+| Change in Metadata | What breaks in the symbol |
+| --- | --- |
+| A type is deleted, or is not in the new Type Lib | The symbol has no type any more: all its animations and interactions are broken until a type is chosen. |
+| A signal is deleted (also one inherited from a parent) | Its animations, the texts that show its value or unit, and its test value. |
+| A command is deleted | The interactions that send it. |
+| The value type of a signal changes (number, boolean, text, enum) | Its animations and its texts, which were mapped for the old type. |
+| The enum of an enum signal is replaced by another enum, or a value used by the symbol is removed | Its animations and texts. |
+| A signal becomes an input | Its animations: only outputs can animate. |
+| A command changes kind (set a signal, trigger) | The interactions that send it. |
+| A signal loses its quantity | The texts that show its unit. |
+
+What never breaks a link:
+
+- a rename of a type, a signal, a command, an enum or a quantity;
+- a new signal, a new command, a new enum value;
+- a change of description, documentation, icon or colour;
+- a change in a preset (defaults, display units, decimals, names, entries shown).
+
+To confirm with the Product Owner:
+
+- a change of the bounds of a signal, or of its quantity (the animation mapping may no longer fit);
+- a type removed from its Type Lib while symbols still use it.
 
 ```mermaid
 flowchart TD
@@ -78,7 +103,6 @@ flowchart TD
 
 ## Open questions
 
-- Does a Symbol Lib of static symbols need a Type Lib?
-- The complete list of changes that break a link, to write in these specs.
+- Two cases of the list of changes that break a link are to confirm (see above).
 
-Both are in [Open questions](07-open-questions.md).
+It is in [Open questions](07-open-questions.md).
