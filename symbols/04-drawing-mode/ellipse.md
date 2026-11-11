@@ -6,6 +6,9 @@ Status: draft, from the Product Owner's description of 2026-11-11. Not validated
 
 ## Rules
 
-- Draws an ellipse by dragging: an oval or a circle. It becomes a path.
-- An ellipse has no corner radius. It is not a rectangle with a big radius.
+- Draws an ellipse by dragging: an oval or a circle. It becomes a path with 4 points, as in Figma.
 - The same modifier key and the same visible option as for the [Rectangle](rectangle.md) force the width and the height to be equal: a circle.
+- **No corner radius**: it makes no sense for an ellipse. The right-hand panel does not show it.
+- **Points**: in the [point editing mode](../05-point-editing-mode/README.md), the 4 points can be edited with their handles (see [Points and handles](../05-point-editing-mode/points-and-handles.md)). The ellipse can then become any shape.
+- **Fill and border**: the ones every shape has (see [Fill and border](fill-and-border.md)).
+- **Effects and mask**: the ones every shape has (see [Effects and masks](effects-and-masks.md)).
