@@ -142,7 +142,7 @@ Ignition classes quality as Good, Uncertain, Bad, Error, and shows an overlay on
 ### A text that becomes an input: a gap with a validated page
 
 - `foreignObject` is supported everywhere since 2015, but **WebKit misplaces HTML content inside it** as soon as it gets a layer (opacity, transform, relative or absolute position): bug opened in 2009, still open (changed 2026-09-11). An `<input>` in it is badly scaled and the buttons of a number field are shifted.
-- Opinion of the report: do not put the input in the SVG. On click, lay an HTML field over the text, outside the SVG. This differs from [Commands](../../metadata/07-commands.md) and decision 0003 (validated), which say "an SVG `foreignObject`". POC **P12**: an input in a `foreignObject` against an HTML field laid over it, in Chromium, Firefox and WebKit, with zoom and rotation of the symbol. Confidence: high.
+- Opinion of the report: do not put the input in the SVG. On click, lay an HTML field over the text, outside the SVG. Decision 0014 (accepted) makes the text write an input signal of the type directly, without a command; decision 0006 (proposed) carries the HTML field instead of an SVG `foreignObject` and waits for POC P12. POC **P12**: an input in a `foreignObject` against an HTML field laid over it, in Chromium, Firefox and WebKit, with zoom and rotation of the symbol. Confidence: high.
 - Pitfalls of the input: Enter validates, Escape cancels, losing the focus cancels; the value shown is frozen while typing; decimal comma by language; bounds and conversion follow the faceplate rules of Metadata.
 
 ## To decide by the Product Owner
@@ -151,7 +151,7 @@ Ignition classes quality as Good, Uncertain, Bad, Error, and shows an overlay on
 2. The state table for an enum?
 3. Blinking bounded under three flashes per second, with a global stop?
 4. Quality of a value shown by default: needs a quality in the contract with the model.
-5. Text that becomes an input: an HTML field laid over the text instead of a `foreignObject`? It reopens a validated page (decision 0003): a dated decision is needed, after the POC P12.
+5. Text that becomes an input: an HTML field laid over the text instead of a `foreignObject`? Proposed in decision 0006, settled after the POC P12.
 
 ## Open questions
 
