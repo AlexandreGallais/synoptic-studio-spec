@@ -45,7 +45,7 @@ flowchart LR
     W["Wrong parent"] --> D["Delete the type"] --> N["Create it again under the right parent"]
 ```
 
-- The parts of a type are shown in this order (Product Owner, 2026-11-11): General, Documentation, Signals, Commands, Faceplate, Presets. How they are shown is open: tabs in a row break the rule of columns, so four proposals are drawn (see [The parts of a type: four proposals](#the-parts-of-a-type-four-proposals)).
+- The parts of a type are shown in this order (Product Owner, 2026-11-11): General, Documentation, Signals, Commands, Presets. The Faceplate part is merged into the Presets since 2026-11-16 (see [Presets](09-presets.md)). How they are shown is open: tabs in a row break the rule of columns, so four proposals are drawn (see [The parts of a type: four proposals](#the-parts-of-a-type-four-proposals)).
 
 ### The type tree: search, create, delete (Product Owner, 2026-11-16)
 
@@ -83,8 +83,7 @@ flowchart LR
     T --> DO[Documentation]
     T --> P[Signals]
     T --> C[Commands]
-    T --> U[Faceplates]
-    T --> R[Presets]
+    T --> R[Presets, which build the faceplate]
 ```
 
 | Part | File |
@@ -93,19 +92,18 @@ flowchart LR
 | Documentation: description (Markdown), links | [Documentation](03-documentation.md) |
 | Signals | [Signals](04-signals.md) |
 | Commands | [Commands](07-commands.md) |
-| Faceplates | [Faceplates](08-faceplates.md) |
-| Presets | [Presets](09-presets.md) |
+| Presets and their faceplate | [Presets](09-presets.md) |
 
 ## The parts of a type: four proposals
 
-The Product Owner likes the tabs in a row, which are easy to use, but they break the rule "columns rather than rows" (see [Layout rules](../screens/README.md#layout-rules)). He asked for three or four ways to show the six parts (2026-11-16). They are drawn in the Figma file, page "Spec", section "MD-01 · Parts of a type: four proposals". Nothing is chosen.
+The Product Owner likes the tabs in a row, which are easy to use, but they break the rule "columns rather than rows" (see [Layout rules](../screens/README.md#layout-rules)). He asked for three or four ways to show the parts (2026-11-16; six then, five since the Faceplate part was merged into the Presets the same day). They are drawn in the Figma file, page "Spec", section "MD-01 · Parts of a type: four proposals". Nothing is chosen.
 
 | Proposal | What it is | For | Against |
 | --- | --- | --- | --- |
-| A. Tabs in a row | The six parts as tabs above the editor (the current wireframes). | Known by everyone; all the width stays for the part. | A row, against the rule of columns. |
-| B. A column of parts | A narrow column between the tree and the editor lists the six parts, one under the other, with their names. | Follows the rule of columns; the names stay readable. | One more column: less width for the part. |
-| C. A strip of icons | The same column, reduced to six icons, the name in a tooltip. | Narrow: almost all the width stays for the part. | Icons to learn; the name is hidden until the mouse is over it. |
-| D. Under the type, in the tree | When a type is selected, its six parts unfold under it in the tree, as the layers of a frame in Figma. | No extra column; the type and its part are read together. | The tree grows and moves; a part is mixed with the types. |
+| A. Tabs in a row | The five parts as tabs above the editor (the current wireframes). | Known by everyone; all the width stays for the part. | A row, against the rule of columns. |
+| B. A column of parts | A narrow column between the tree and the editor lists the five parts, one under the other, with their names. | Follows the rule of columns; the names stay readable. | One more column: less width for the part. |
+| C. A strip of icons | The same column, reduced to five icons, the name in a tooltip. | Narrow: almost all the width stays for the part. | Icons to learn; the name is hidden until the mouse is over it. |
+| D. Under the type, in the tree | When a type is selected, its five parts unfold under it in the tree, as the layers of a frame in Figma. | No extra column; the type and its part are read together. | The tree grows and moves; a part is mixed with the types. |
 
 ```mermaid
 block-beta
@@ -160,5 +158,5 @@ flowchart LR
 
 ## Open questions
 
-- How are the six parts of a type shown: tabs, a column of parts, a strip of icons, or under the type in the tree? See [the four proposals](#the-parts-of-a-type-four-proposals).
+- How are the five parts of a type shown: tabs, a column of parts, a strip of icons, or under the type in the tree? See [the four proposals](#the-parts-of-a-type-four-proposals).
 - Deleting a type: is the user warned that symbols will lose their type (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md))?

@@ -1,6 +1,6 @@
 # Commands
 
-> [Home](../README.md) › [Metadata](README.md) › Commands · Previous: [Enums](06-enums.md) · Next: [Faceplates](08-faceplates.md)
+> [Home](../README.md) › [Metadata](README.md) › Commands · Previous: [Enums](06-enums.md) · Next: [Presets](09-presets.md)
 
 Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (a command always sends a fixed value; commands shown in a table). Open points are listed in [Open questions](12-open-questions.md).
 
@@ -28,7 +28,7 @@ flowchart TD
 - A command also has an internal identifier, set by the software, that never changes, like a type's (see [Types](01-types.md)). It exists on the application side only and never goes to the model. Symbols link to a command through it, so renaming a command does not break them (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md)).
 - In a symbol, direct commands: the user links a command from Metadata to a click on a part of the symbol.
 - On the front, a command is a button: the user clicks it, and that is all.
-- A preset does not choose commands: all the commands of a type stay available. The symbol says which it uses.
+- A preset does not choose commands: all the commands of a type stay available. The symbol says which it uses. The preset only ticks which commands have a button in the faceplate, and gives that button its text (see [Presets](09-presets.md#the-table-of-a-preset)).
 
 ## The value is always fixed
 
@@ -45,7 +45,7 @@ Decided by the Product Owner on 2026-11-16. It replaces the "typed value" of 202
 | Text | A text, typed. |
 | Enum | An item of the enum, picked by its display text; the model receives its key. |
 
-- To let a person **type a value**, a command is not used: a signal entry of the faceplate is set to **write** (see [Faceplates](08-faceplates.md)). The person types the value there; it is checked, converted and sent to the model.
+- To let a person **type a value**, a command is not used: a signal of the preset is set to **write**, which puts an input in the faceplate (see [Presets](09-presets.md#typing-a-value)). The person types the value there; it is checked, converted and sent to the model.
 
 ```mermaid
 flowchart LR
@@ -84,7 +84,7 @@ The commands of a type are shown in **one table**, like the signals (Product Own
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Command (set a signal, trigger) | Metadata | Faceplate entry, click on a part of a symbol | Link a command to a click | No |
+| Command (set a signal, trigger) | Metadata | Button of the faceplate (ticked in the preset), click on a part of a symbol | Link a command to a click | No |
 
 ## Open questions
 

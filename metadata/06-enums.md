@@ -50,7 +50,7 @@ flowchart LR
 | --- | --- | --- | --- | --- |
 | Enum, its items (key and display text) | Enums page | Signal: picks one as a link | No | No |
 
-The faceplate chooses how an enum is shown (radio on one line, radio on several lines, select...), see [Faceplates](08-faceplates.md).
+The preset chooses how an enum is shown in the faceplate (radio on one line, radio on several lines, select), see [Presets](09-presets.md#the-table-of-a-preset).
 
 ## Open questions
 

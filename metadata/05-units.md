@@ -127,5 +127,5 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Quantity, families, reference family, conversions, default model unit, default decimals | Units page | Signal (quantity, model unit), faceplate and preset (display unit, decimals) | No | No |
-| Display unit, decimal places | Faceplate, then preset in Metadata | Faceplate entry | Edit | Edit |
+| Quantity, families, reference family, conversions, default model unit, default decimals | Units page | Signal (quantity, model unit), preset (display unit, decimals) | No | No |
+| Display unit, decimal places | Preset, in Metadata | Faceplate, texts of a symbol that show a value | Edit | Edit |

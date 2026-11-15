@@ -54,7 +54,7 @@ Metadata pages, in reading order:
 
 1. What a type is: [Types](metadata/01-types.md), [Icons](metadata/02-icons.md), [Documentation](metadata/03-documentation.md).
 2. The model side: [Signals](metadata/04-signals.md), [Units](metadata/05-units.md), [Enums](metadata/06-enums.md).
-3. The front side: [Commands](metadata/07-commands.md), [Faceplates](metadata/08-faceplates.md), [Presets](metadata/09-presets.md).
+3. The front side: [Commands](metadata/07-commands.md), [Presets and their faceplate](metadata/09-presets.md).
 4. How it is used: [Who changes what](metadata/11-who-changes-what.md).
 5. What is left to decide: [Open questions](metadata/12-open-questions.md).
 

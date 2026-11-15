@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Signals · Previous: [Documentation](03-documentation.md) · Next: [Units](05-units.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table; an ID and a display name). Open points are listed in [Open questions](12-open-questions.md).
 
 A signal is what goes between the front and the model: an input or an output of the model. Only these are defined here. Values that stay inside the model are not defined in Metadata: the people who write the model name them as they wish, and they are invisible to the application.
 
@@ -16,24 +16,28 @@ A signal is what goes between the front and the model: an input or an output of 
 - A signal's name is part of the model's interface definition: it is set once and is not meant to change. Renaming one is breaking for models, as for types (see [Types](01-types.md)).
 - **The whole signal is edited with Edit and Save** (Product Owner, 2026-11-11), not only its name: the user clicks Edit on the signal, changes any of its fields, then clicks Save. Nothing can be changed by mistake. No warning is added.
 - A signal also has an internal identifier, set by the software, that never changes, like a type's (see [Types](01-types.md)). It exists on the application side only and never goes to the model. Symbols link to a signal through it, so renaming a signal does not break them (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md)).
-- A signal has no display label of its own. The name and the description shown to the user are set in the preset (see [Presets](09-presets.md)); until then the faceplate shows the signal's name.
+- A signal has an **ID** and a **display name** (Product Owner, 2026-11-16). The ID is its name for the model: the identifier above, set once. The display name is what people see, in the faceplate and wherever the signal is shown to the public. It replaces the name and description per signal that the preset used to hold: the faceplate always shows the same name for a signal (see [Presets](09-presets.md)).
+- The display name is plain text, never goes to the model, and can change without breaking anything. Until it is written, the ID is shown.
+- A signal has no description (Product Owner, 2026-11-16).
 
 ## Fields
 
 | Field | Meaning | Rule |
 | --- | --- | --- |
-| Name | The signal's name. | It is also its variable identifier. No second label on the signal. |
+| ID | The signal's name for the model. | Its variable identifier, set once. Shown as "ID" in the table. |
+| Display name | The name people see. | Plain text, never sent to the model; changing it breaks nothing. Empty: the ID is shown. |
 | Type | What kind of value. | Integer, real, boolean, text or enum. A real is a 64-bit double. |
 | Enum | For an enum: the list of values. | An enum picked from the Enums page (see [Enums](06-enums.md)). A link to it, never a copy, and never defined in the signal. |
 | Quantity | What the value measures (volume, flow, pressure, a temperature difference...). | Optional: a signal may have none. Only for integers and reals. Picked from the Units page, where a difference sits next to its quantity (see [Units](05-units.md)). |
 | Model unit | The unit in which the model handles the value. | Only when a quantity is chosen. By default the model unit of the quantity; can be overridden here with another unit of the same quantity. |
-| Minimum, maximum | Bounds of an integer or a real. | Metadata of the signal, indicative, written in the model unit. They are the zone the model is designed for, not a guarantee. The faceplate refuses a typed value outside them (see [Faceplates](08-faceplates.md)). |
+| Minimum, maximum | Bounds of an integer or a real. | Metadata of the signal, indicative, written in the model unit. They are the zone the model is designed for, not a guarantee. The faceplate refuses a typed value outside them (see [Presets](09-presets.md#typing-a-value)). |
 | Direction | Input or output of the model. | Belongs to the signal. Seen from the model: an input is what the model receives, an output is what it sends. |
 
 ```mermaid
 classDiagram
     class Signal {
-        name
+        ID
+        display name
         type
         enum
         quantity
@@ -50,11 +54,11 @@ classDiagram
 
 ## Example
 
-| Name | Type | Enum | Quantity | Min | Max | Direction |
-| --- | --- | --- | --- | --- | --- | --- |
-| `running` | boolean |  |  |  |  | input |
-| `flow` | real |  | flow | 0 | 500 | output |
-| `mode` | enum | `operating_mode` (0 Off, 1 Manual, 2 Automatic) | none |  |  | input |
+| ID | Display name | Type | Enum | Quantity | Min | Max | Direction |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `running` | Running | boolean |  |  |  |  | input |
+| `flow` | Flow | real |  | flow | 0 | 500 | output |
+| `mode` | Operating mode | enum | `operating_mode` (0 Off, 1 Manual, 2 Automatic) | none |  |  | input |
 
 ## The table of signals
 
@@ -62,7 +66,8 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 
 | Column | Values |
 | --- | --- |
-| Name | The model identifier. The Product Owner says it is "plutôt un ID" and doubts the header should say "name": header to confirm. |
+| ID | The model identifier (Product Owner, 2026-11-16: "l'ID, qui est le modèle identifiant"). |
+| Display name | The name shown to people. |
 | Type | Integer, real, boolean, text, enum. |
 | Enum | For an enum signal only: the enum it points to. |
 | Quantity | Optional, integers and reals only. |
@@ -79,20 +84,20 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 
 ```mermaid
 block-beta
-    columns 8
-    h1["Name"] h2["Type"] h3["Enum"] h4["Quantity"] h5["Model unit"] h6["Min"] h7["Max"] h8["Direction"]
-    r1["running"] r2["boolean"] r3["-"] r4["-"] r5["-"] r6["-"] r7["-"] r8["input"]
-    s1["flow"] s2["real"] s3["-"] s4["flow"] s5["m³/h"] s6["0"] s7["500"] s8["output"]
+    columns 9
+    h1["ID"] h0["Display name"] h2["Type"] h3["Enum"] h4["Quantity"] h5["Model unit"] h6["Min"] h7["Max"] h8["Direction"]
+    r1["running"] r0["Running"] r2["boolean"] r3["-"] r4["-"] r5["-"] r6["-"] r7["-"] r8["input"]
+    s1["flow"] s0["Flow"] s2["real"] s3["-"] s4["flow"] s5["m³/h"] s6["0"] s7["500"] s8["output"]
 ```
 
 ## Where it is used
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Signal (name, type, enum, quantity, model unit, bounds, direction) | Metadata | Faceplate entries (read, or write to type a value), commands that set it, preset default values, names and descriptions | No | No |
+| Signal (ID, display name, type, enum, quantity, model unit, bounds, direction) | Metadata | Lines of a preset and its faceplate (read, or write to type a value), commands that set it | No | No |
 
 ## Open questions
 
-- Header of the first column: "Name" or "ID"?
+- Decimal places on the signal itself, so that the model fixes how many decimals an input or an output has? The Product Owner doubts it (2026-11-16): the model should give and receive the real value, and decimals are for display only. To think about.
 - Edit and Save in the table: for the whole table, or for one line?
 - In a table, does hovering the enum of a line still show its items?

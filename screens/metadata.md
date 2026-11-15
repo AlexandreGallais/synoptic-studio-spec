@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Screens](README.md) › Metadata
 
-Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
+Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
 
 ## MD-00 · Navigation bar of Metadata
 
@@ -27,7 +27,7 @@ The tree is on the left, as in a code editor, just right of the navigation bar; 
 ```mermaid
 block-beta
     columns 4
-    rail["MD-00 bar"] tree["Type tree"] editor["Type editor: General, Documentation, Signals, Commands, Faceplate, Presets"]:2
+    rail["MD-00 bar"] tree["Type tree"] editor["Type editor: General, Documentation, Signals, Commands, Presets"]:2
 ```
 
 ```mermaid
@@ -46,8 +46,7 @@ mindmap
       2 MD-03 Documentation
       3 MD-04 Signals
       4 MD-05 Commands
-      5 MD-06 Faceplate
-      6 MD-07 Presets
+      5 MD-07 Presets and their faceplate
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
@@ -57,7 +56,7 @@ mindmap
 | MD-01.3 | Create a child type | Button (+), on hover | On the right of each type, shown when the mouse is over it; creates a type under it, with a default name. | Decided | [Types](../metadata/01-types.md) |
 | MD-01.3b | Create a root type | Button (+), always shown | On the title "Type tree". Its look worries the Product Owner; kept. | Decided (look: Open) | [Types](../metadata/01-types.md) |
 | MD-01.4 | Delete a type | Right click › menu › Delete | A menu of options opens on a right click; Delete is one of them. | Decided | [Types](../metadata/01-types.md) |
-| MD-01.5 | Parts of the type | Open: four proposals | In this order: General, Documentation, Signals, Commands, Faceplate, Presets. Tabs, a column of parts, a strip of icons, or under the type in the tree. | Decided (order), Open (display) | [Types](../metadata/01-types.md) |
+| MD-01.5 | Parts of the type | Open: four proposals | In this order: General, Documentation, Signals, Commands, Presets (the Faceplate part merged into Presets, 2026-11-16). Tabs, a column of parts, a strip of icons, or under the type in the tree. | Decided (order), Open (display) | [Types](../metadata/01-types.md) |
 | MD-01.6 | Search | Text field | Under the title "Type tree". | Decided | [Types](../metadata/01-types.md) |
 
 Gaps:
@@ -156,7 +155,7 @@ The signals are shown in **one table** that takes as much room as possible: one 
 block-beta
     columns 1
     add["+ Add a signal, above the table"]
-    table["Table: Name (or ID) | Type | Enum | Quantity | Model unit | Min | Max | Direction; own signals, then inherited ones"]
+    table["Table: ID | Display name | Type | Enum | Quantity | Model unit | Min | Max | Direction; own signals, then inherited ones"]
 ```
 
 How the fields depend on each other: the type decides which fields exist; the quantity decides which units can be chosen.
@@ -179,7 +178,8 @@ mindmap
       Own signals
       Inherited signals, read only
       Columns
-        Name or ID
+        ID
+        Display name
         Type
         Enum, for an enum
         Quantity, optional
@@ -199,7 +199,8 @@ mindmap
 | MD-04.3 | Inherited signals | Lines of the table | Read only here; edited in the type that declares them. Their look (greyed, with the parent's name) is not said. | Implied | [Signals](../metadata/04-signals.md) |
 | MD-04.4 | Add a signal | Button (+) | Above the table ([layout rules](README.md#add-buttons-above-the-list)). | Decided | [Layout rules](README.md#add-buttons-above-the-list) |
 | MD-04.5 | Edit, Save | Button (icon) | Nothing changes without Edit then Save; no warning. For the whole table or for one line: open. | Decided (rule), Open (scope) | [Signals](../metadata/04-signals.md) |
-| MD-04.6 | Name | Column, text field | Model identifier. A sub-type cannot reuse an inherited name. Header "Name" or "ID": open. | Decided (header: Open) | [Signals](../metadata/04-signals.md) |
+| MD-04.6 | ID | Column, text field | Model identifier; header "ID" (2026-11-16). A sub-type cannot reuse an inherited ID. | Decided | [Signals](../metadata/04-signals.md) |
+| MD-04.6b | Display name | Column, text field | The name people see, in the faceplate and elsewhere. Plain text; never sent to the model; empty: the ID is shown (2026-11-16). | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.7 | Type | Column, select | Integer, real (64-bit double), boolean, text, enum. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.8 | Enum | Column, select | Only for the type enum: an enum of the Enums page, as a link. Empty otherwise. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-04.9 | Quantity | Column, select | Optional, integer and real only. A quantity or a difference (a difference sits under its quantity). | Decided | [Units](../metadata/05-units.md) |
@@ -211,7 +212,7 @@ mindmap
 Gaps:
 
 - Order of the signals: by creation, by name, or chosen by the user?
-- Width of the window: what happens when the eight columns do not fit (scroll sideways, narrower columns)?
+- Width of the window: what happens when the nine columns do not fit (scroll sideways, narrower columns)?
 
 ## MD-05 · Commands
 
@@ -247,7 +248,7 @@ mindmap
 | MD-05.5 | Target signal | Column, select | For "Set a signal"; empty for a trigger. | Decided | [Commands](../metadata/07-commands.md) |
 | MD-05.6 | Value: fixed or typed | — | Removed (2026-11-16): the value is always fixed. | Decided | [Commands](../metadata/07-commands.md#the-value-is-always-fixed) |
 | MD-05.7 | Value | Column, field of the target signal's type | Fixed, written in Metadata: a number, true or false, a text, or an item of the enum. Empty for a trigger. | Decided | [Commands](../metadata/07-commands.md#the-value-is-always-fixed) |
-| MD-05.8 | Typed value | — | Removed (2026-11-16): a person types a value in a faceplate entry set to write. | Decided | [Faceplates](../metadata/08-faceplates.md) |
+| MD-05.8 | Typed value | — | Removed (2026-11-16): a person types a value in the faceplate, for a signal set to write in the preset. | Decided | [Presets](../metadata/09-presets.md#typing-a-value) |
 | MD-05.9 | Delete a command | Right click › Delete | No button on the lines ([layout rules](README.md#delete-by-right-click-in-metadata), to confirm). | Proposed | [Commands](../metadata/07-commands.md#the-table-of-commands) |
 
 Gaps:
@@ -255,82 +256,76 @@ Gaps:
 - Edit and Save in the table: as for the signals, open.
 - Can a command target a signal of any direction, or only an input?
 
-## MD-06 · Faceplate
+## MD-06 · Faceplate: merged into MD-07
 
-Path: Metadata › Types › a type › Faceplate.
+The Faceplate part was merged into the Presets by the Product Owner on 2026-11-16 ("les presets ne servent qu'à la faceplate"). Its controls are now in [MD-07](#md-07--presets-and-their-faceplate). The identifier MD-06 is not reused.
 
-The list of entries is on the left and the panel of the selected entry on the right ([layout rules](README.md#layout-rules)). The Product Owner will go over this screen again later (2026-11-16).
-
-```mermaid
-mindmap
-  root((MD-06 Faceplate))
-    Entries
-      Signal entry
-        Signal
-        Read or write
-        Display unit
-        Input of an enum
-      Command or trigger entry
-        Picked in the list of commands
-        Name shown
-```
-
-| ID | Element | Kind | Values and behaviour | Status | Source |
-| --- | --- | --- | --- | --- | --- |
-| MD-06.1 | Entries | List | Signal entries and command or trigger entries. | Decided | [Faceplates](../metadata/08-faceplates.md) |
-| MD-06.2 | Add a signal entry | Button (+) | Above the list of entries ([layout rules](README.md#add-buttons-above-the-list)). | Decided (place), Implied (button) | [Faceplates](../metadata/08-faceplates.md) |
-| MD-06.3 | Signal | not said (select) | The signal shown. | Decided | [Faceplates](../metadata/08-faceplates.md) |
-| MD-06.4 | Read or write | not said (radio) | — | Decided | [Faceplates](../metadata/08-faceplates.md) |
-| MD-06.5 | Display unit | Select | Units of the signal's quantity. | Decided | [Faceplates](../metadata/08-faceplates.md) |
-| MD-06.6 | Input of an enum | Select | Radio on one line, radio on several lines, select, "and so on"; in read and in write. Shows the display texts. | Decided (list open: "and so on") | [Faceplates](../metadata/08-faceplates.md) |
-| MD-06.7 | Add a command or trigger entry | Button (+) | Above the list of entries. Picked in the list of the type's commands. | Decided | [Faceplates](../metadata/08-faceplates.md) |
-| MD-06.8 | Name shown | Text field | The name of the command button in the faceplate. | Decided | [Faceplates](../metadata/08-faceplates.md) |
-
-Gaps:
-
-- This page is the thinnest of Metadata (Product Owner's remark, 2026-11-11), to go over again.
-- Order of the entries: can the user reorder them? Groups or separators?
-- Full list of enum inputs ("and so on").
-- Can the same signal appear twice (read and write)?
-- A preview of the faceplate while editing?
-- Remove an entry.
-
-## MD-07 · Presets
+## MD-07 · Presets and their faceplate
 
 Path: Metadata › Types › a type › Presets.
 
-The list of presets is on the left and the selected preset on the right ([layout rules](README.md#layout-rules)).
+The list of presets is on the left. The selected preset is on the right: its name, the title and description of its faceplate, a button that shows the faceplate, then **one table** with every signal and every command of the type (Product Owner, 2026-11-16).
+
+```mermaid
+block-beta
+    columns 4
+    list["List of presets, + above"] head["Faceplate title, description; button Show the faceplate"]:3
+    space signals["Table of signals: Shown | Signal | Input | Read or write | Display unit | Decimals | Default value"]:3
+    space commands["Table of commands: Shown | Command | Name on the button"]:3
+```
 
 ```mermaid
 mindmap
   root((MD-07 Presets))
     List of presets
+      Plus above the list
+      Name of each preset
     A preset
-      For each signal
-        Default value
+      Name, place open
+      Faceplate title, optional
+      Faceplate description, plain text
+      Button Show the faceplate
+      Table of signals, every signal of the type
+        Shown, checkbox
+        Signal, its display name
+        Input, by type of signal
+        Read or write
         Display unit
-        Decimal places
-        Name shown
-        Description, to confirm
-      Entries shown by default
+        Decimals
+        Default value
+      Table of commands, every command of the type
+        Shown, checkbox
+        Command
+        Name on the button
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | MD-07.1 | List of presets | List | At least one is needed to use the type in a symbol; none is created automatically. | Decided | [Presets](../metadata/09-presets.md) |
 | MD-07.2 | Create a preset | Button (+) | Above the list of presets ([layout rules](README.md#add-buttons-above-the-list)). | Decided (place), Implied (button) | [Presets](../metadata/09-presets.md) |
-| MD-07.3 | Name of the preset | not said | Never mentioned. | Open | [Presets](../metadata/09-presets.md) |
-| MD-07.4 | Default value | Field of the signal's type | One per signal. | Decided | [Presets](../metadata/09-presets.md) |
-| MD-07.5 | Display unit | Select | Starts as the model unit. | Decided | [Presets](../metadata/09-presets.md) |
-| MD-07.6 | Decimal places | Number field | Starts as the quantity's default. | Decided | [Presets](../metadata/09-presets.md) |
-| MD-07.7 | Name shown | Text field | Plain text; shown in the faceplate instead of the signal's name. | Decided | [Presets](../metadata/09-presets.md) |
-| MD-07.8 | Description | Text field, multi-line | Plain text, line breaks kept, shown in the faceplate. The Product Owner is no longer sure it belongs to the preset. | Open | [Presets](../metadata/09-presets.md) |
-| MD-07.9 | Entries shown by default | Checkbox per entry | Unticked entries stay available in a symbol and a synoptic. | Decided | [Presets](../metadata/09-presets.md) |
+| MD-07.3 | Name of the preset | Text field | A preset has a name (2026-11-16). The field above the table "is not nice there": its place is open. | Decided (name), Open (place) | [Presets](../metadata/09-presets.md) |
+| MD-07.4 | Faceplate title | Text field | Optional; plain text. Can be changed on each symbol placed in a synoptic. | Decided | [Presets](../metadata/09-presets.md#title-and-description-of-the-faceplate) |
+| MD-07.5 | Faceplate description | Text field, multi-line | Optional; plain text, line breaks kept. | Decided | [Presets](../metadata/09-presets.md#title-and-description-of-the-faceplate) |
+| MD-07.6 | Show the faceplate | Button | Opens the faceplate as it would look, built from the table (2026-11-16). | Decided | [Presets](../metadata/09-presets.md#show-the-faceplate) |
+| MD-07.7 | Table of signals | Table | Every signal of the type, own and inherited; one line each; no "add an entry". | Decided | [Presets](../metadata/09-presets.md#the-table-of-a-preset) |
+| MD-07.8 | Shown | Checkbox, per line | Shown in the faceplate at the start; an unticked line stays available in a symbol and a synoptic. | Decided | [Presets](../metadata/09-presets.md#the-table-of-a-preset) |
+| MD-07.9 | Signal | Column, read only | The display name of the signal; not renamed in the preset. | Proposed (to confirm) | [Signals](../metadata/04-signals.md) |
+| MD-07.10 | Input | Column, select | Second column. Depends on the type of the signal; in read and in write. Enum: radio on one line, radio on several lines, select. Other types: open. | Decided (enum), Open (others) | [Presets](../metadata/09-presets.md#the-table-of-a-preset) |
+| MD-07.11 | Read or write | Column, radio | Write: a person types a value, checked against the bounds. | Decided | [Presets](../metadata/09-presets.md#typing-a-value) |
+| MD-07.12 | Display unit | Column, select | Only with a quantity; starts as the model unit. | Decided | [Presets](../metadata/09-presets.md) |
+| MD-07.13 | Decimals | Column, number field | Integers and reals; starts as the quantity's default. Display only. | Decided | [Units](../metadata/05-units.md#decimal-places) |
+| MD-07.14 | Default value | Column, field of the signal's type | The value the symbol starts with. | Decided | [Presets](../metadata/09-presets.md) |
+| MD-07.15 | Table of commands | Table | Every command of the type: Shown (checkbox), Command (read only), Name on the button (text field). | Decided | [Presets](../metadata/09-presets.md#the-table-of-a-preset) |
+| MD-07.16 | Description per signal | — | Removed (2026-11-16): no description per signal or command. | Decided | [Presets](../metadata/09-presets.md) |
 
 Gaps:
 
 - Rename, duplicate and delete a preset; what happens to the symbols that use a deleted preset?
 - Does a sub-type see the presets of its parent?
+- Order of the lines: the order of the signals, or chosen in the preset? Groups or separators in the faceplate?
+- Can a signal set to write be an output of the model?
+- Where the faceplate opens when the button is clicked (a floating window, a panel), and how it is closed.
+- Width: what happens when the seven columns do not fit.
 
 ## MD-08 · Units
 

@@ -4,7 +4,7 @@
 
 The first part of Synoptic Studio: the data and documentation a symbol can be attached to. It is the model side (what an object is, what goes in and out of it), not the front side (how it looks).
 
-Status: validated by the Product Owner on 2026-11-11, then changed by him the same day while reviewing the [screens](../screens/metadata.md): type tree on the left, order of the parts, three modes for the description, links that only open folders, a signal edited as a whole, enum items as a key and a display text, typed values of any type, differences shown with their quantity. On 2026-11-16, while reviewing the wireframes, he removed the libraries of types and set the layout rules of the [screens](../screens/README.md#layout-rules) (a navigation bar on the left, a list on the left and its panel on the right), made enum keys numbers only, and said how a type is created (a + on hover) and deleted (right click). Later that day he made the parent of a type fixed at creation, the description always editable (no view mode), the add buttons always above the lists, the signals and commands into tables, and the value of a command always fixed (a typed value goes through a write entry of the faceplate). The questions still open are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11, then changed by him the same day while reviewing the [screens](../screens/metadata.md): type tree on the left, order of the parts, three modes for the description, links that only open folders, a signal edited as a whole, enum items as a key and a display text, typed values of any type, differences shown with their quantity. On 2026-11-16, while reviewing the wireframes, he removed the libraries of types and set the layout rules of the [screens](../screens/README.md#layout-rules) (a navigation bar on the left, a list on the left and its panel on the right), made enum keys numbers only, and said how a type is created (a + on hover) and deleted (right click). Later that day he made the parent of a type fixed at creation, the description always editable (no view mode), the add buttons always above the lists, the signals and commands into tables, and the value of a command always fixed (a typed value goes through a write entry of the faceplate). Last, he merged the faceplate into the presets (a preset is one table that builds the faceplate, seen with a button) and gave each signal an ID and a display name. The questions still open are listed in [Open questions](12-open-questions.md).
 
 ## The big picture
 
@@ -12,43 +12,42 @@ Metadata answers one question: what is this object, and how do we talk to it? It
 
 ### Step 1: what a type is made of
 
-The user builds a tree of types. Each type is made of four things.
+The user builds a tree of types. Each type is made of three things.
 
 ```mermaid
 flowchart TD
     T["Type (example: Centrifugal pump)"]
     T --> P["Signals: what the model sends and receives (flow, running...)"]
-    T --> C["Commands: what the user can order (start, set a setpoint...)"]
-    T --> U["Faceplate: the panel that shows signals and commands"]
-    T --> R["Presets: a ready-made faceplate with default values"]
+    T --> C["Commands: what the user can order (start, stop...)"]
+    T --> R["Presets: default values, and the faceplate they build"]
 ```
 
 ### Step 2: the model side and the front side
 
-Signals and commands are the contract with the model (the back). The faceplate and the presets are only about what the user sees (the front). Units are used by both to show values the way the user wants.
+Signals and commands are the contract with the model (the back). The presets, and the faceplate they build, are only about what the user sees (the front). Units are used by both to show values the way the user wants.
 
 ```mermaid
 flowchart LR
     subgraph Model["MODEL SIDE: the contract with the back"]
-        P["Signals"]
+        P["Signals: ID and display name"]
         C["Commands"]
         N["Units: default model unit per quantity, overridable per signal"]
     end
     subgraph Front["FRONT SIDE: what the user sees"]
-        U["Faceplate"]
         R["Presets"]
+        U["Faceplate"]
         D["Display units"]
     end
-    P -->|"shown in"| U
-    C -->|"shown in"| U
+    P -->|"lines of"| R
+    C -->|"lines of"| R
     N -->|"converted into"| D
-    D -->|"chosen in"| U
-    R -->|"saves the faceplate with default values, names and descriptions"| U
+    D -->|"chosen in"| R
+    R -->|"builds"| U
 ```
 
 ### Step 3: how it is used
 
-A symbol picks a type, among all the types of the tree, and a preset. A synoptic uses symbols and can only tick faceplate entries and write their title and description. There are no libraries of types (Product Owner, 2026-11-16).
+A symbol picks a type, among all the types of the tree, and a preset. A synoptic uses symbols and can only change their faceplate: the lines shown, the defaults, its title and description. There are no libraries of types (Product Owner, 2026-11-16).
 
 ```mermaid
 flowchart LR
@@ -63,12 +62,11 @@ flowchart LR
 | [Types](01-types.md) | The type tree, its two identifiers (name for the model, internal one for the app), inheritance, and the link between a type and a symbol. |
 | [Icons](02-icons.md) | The icon and colour of a type, from a predefined SVG list. |
 | [Documentation](03-documentation.md) | The documentation page of a type: Markdown description and links to files, folders and URLs. |
-| [Signals](04-signals.md) | The model's inputs and outputs: fields, type, bounds, direction. |
+| [Signals](04-signals.md) | The model's inputs and outputs: ID, display name, type, bounds, direction. |
 | [Units](05-units.md) | Quantities, families, reference family, conversions, model unit and display unit, ready-made units. |
 | [Enums](06-enums.md) | The Enums page: named lists of values, picked by a signal as a link, never copied. |
 | [Commands](07-commands.md) | The two kinds of command: set a signal (always a fixed value) and trigger; the table of commands. |
-| [Faceplates](08-faceplates.md) | What a faceplate entry is: read or write, display unit, enum input, names; the check of typed values; title and description given in the synoptic. |
-| [Presets](09-presets.md) | Defaults: values, display units, decimal places, names and descriptions of signals, entries shown at the start. |
+| [Presets](09-presets.md) | One table per preset that builds the faceplate: lines shown, input, read or write, display unit, decimals, default value; commands shown and their button; title and description of the faceplate; the button that shows it; the check of typed values. |
 | [Who changes what](11-who-changes-what.md) | The table of where each thing is created and changed. |
 | [Open questions](12-open-questions.md) | Every open question in one place. |
 
@@ -76,11 +74,11 @@ flowchart LR
 
 1. What a type is: [Types](01-types.md), [Icons](02-icons.md), [Documentation](03-documentation.md).
 2. The model side: [Signals](04-signals.md), [Units](05-units.md), [Enums](06-enums.md).
-3. The front side: [Commands](07-commands.md), [Faceplates](08-faceplates.md), [Presets](09-presets.md).
+3. The front side: [Commands](07-commands.md), [Presets](09-presets.md).
 4. How it is used: [Who changes what](11-who-changes-what.md).
 5. What is left to decide: [Open questions](12-open-questions.md).
 
-The page numbers jump from 09 to 11: page 10 held the libraries of types, removed on 2026-11-16.
+The page numbers jump: page 08 held the faceplates, merged into the presets on 2026-11-16, and page 10 the libraries of types, removed the same day.
 
 ## Page layout
 
