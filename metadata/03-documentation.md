@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Documentation · Previous: [Icons](02-icons.md) · Next: [Signals](04-signals.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (always editable, full page button with the type tree kept, add buttons above the links). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no Edit step, read-only mode kept, full page button with the type tree kept, add buttons above the links, the description shown on this page only). Open points are listed in [Open questions](12-open-questions.md).
 
 A type has a documentation page, where people put what explains the type: a description and links to documents and sources.
 
@@ -15,7 +15,7 @@ A type has a documentation page, where people put what explains the type: a desc
 
 | Part | Meaning |
 | --- | --- |
-| Description | A text in Markdown that says what the type is. Where else it is shown is open: it was shown in the tiles of the library screen, removed with the libraries of types (2026-11-16). |
+| Description | A text in Markdown that says what the type is. Shown on this page only (Product Owner, 2026-11-16). |
 | Links | Links to files, folders and URLs (standards, datasheets, project folders...), each with a short description. |
 
 ```mermaid
@@ -29,15 +29,17 @@ flowchart TD
 ## The description
 
 - It is stored in Markdown.
-- **The description is always editable** (Product Owner, 2026-11-16): there is no view mode and no button to go to the edit mode. It replaces the three modes of 2026-11-11 (view, edit, Markdown).
-- Two ways to write it, and the user switches between them at any time:
+- **No Edit or Save step** (Product Owner, 2026-11-16): what is typed is kept, as everywhere in Metadata, and checked on the [Versions](13-versions.md) page before a version is made.
+- **The read-only mode stays** (Product Owner, 2026-11-16, correcting what he had said earlier that day: "en fait, si, faut le laisser"). Three modes, and the user switches between them at any time:
 
 | Mode | What the user sees | When |
 | --- | --- | --- |
-| Visual | A visual editor (what you see is what you get), with a formatting tool bar. | By default. |
+| Read only | The description laid out, nothing can be typed. | Which mode opens first is open. |
+| Visual | A visual editor (what you see is what you get), with a formatting tool bar. | When the user switches to it. |
 | Markdown | The raw text, for those who write Markdown faster. | When the user switches to it. |
 
-- The buttons that switch between visual and Markdown sit **on the right of the formatting tool bar**, on the same line (Product Owner, 2026-11-16).
+- Switching to Visual or Markdown is not an Edit button: there is nothing to save or to confirm when going back to read only.
+- The buttons that switch between the modes sit **on the right of the formatting tool bar**, on the same line (Product Owner, 2026-11-16).
 - The tool bar also has a **full page** button (Product Owner, 2026-11-16):
   - the description takes the whole page of the documentation, and the links are no longer shown, so the user only types text, calmly;
   - it is not the full screen of the system: the window stays as it is, and the menus of the application stay;
@@ -47,8 +49,9 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    O["Open a type"] --> E["Visual editor, always editable, tool bar"]
-    E <-->|"switch, right of the tool bar"| M["Markdown: raw text"]
+    R["Read only: laid out"] <-->|"switch, right of the tool bar"| E["Visual editor, tool bar"]
+    E <-->|"switch"| M["Markdown: raw text"]
+    R <-->|"switch"| M
     E -->|"full page button"| F["The description takes the whole editing part; links hidden; tree and menus kept"]
     F -->|"same button"| E
 ```
@@ -88,4 +91,4 @@ flowchart TD
 
 ## Open questions
 
-- Is the description shown anywhere else than the documentation page (a tooltip in the type tree, in the type choice of a symbol)? It was shown in the tiles of the library screen, removed with the libraries of types (Product Owner, 2026-11-16).
+- Which mode opens first: read only, or visual?

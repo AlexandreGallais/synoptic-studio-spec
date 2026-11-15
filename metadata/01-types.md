@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Types · Next: [Icons](02-icons.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no libraries of types, type tree actions, fixed parent, icon buttons in General, parts shown as a strip of icons). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no libraries of types, type tree actions, fixed parent, icon buttons in General, parts shown as a strip of icons, no Edit or Save step, no warning on delete). Open points are listed in [Open questions](12-open-questions.md).
 
 A type is the representation of a symbol at one level of detail. Types form a tree, hence parents and sub-types.
 
@@ -52,7 +52,7 @@ flowchart LR
 - A **search field** sits under the title "Type tree".
 - **Create:** each type of the tree has a **+** on its right, shown when the mouse is over the type. It creates a new type **under** it (a child). The new type starts with a default name, changed afterwards in General.
 - A **+** on the title "Type tree" creates a type at the root. It is always shown, so that creating a type is never hidden. The Product Owner fears it looks bad ("ça va être dégueulasse … s'il le faut"): kept, its look is for the design.
-- **Delete:** a right click on a type opens a menu of options; **Delete** is one of them.
+- **Delete:** a right click on a type opens a menu of options; **Delete** is one of them. No warning that symbols lose their type (Product Owner, 2026-11-16: "ça ne sert à rien … il ne faut pas faire ça"). The delete shows on the [Versions](13-versions.md) page, where it can be undone before a version is made.
 
 ```mermaid
 flowchart LR
@@ -62,7 +62,7 @@ flowchart LR
 ```
 
 - The General part holds only the name, the parent, the icon and the colour. Nothing more is needed (Product Owner, 2026-11-11, confirmed on 2026-11-16).
-- In General, Edit, Save and the resets to the parent (icon, colour) are **icon buttons**, without a text label (Product Owner, 2026-11-16).
+- In General, the name is **always editable**: no Edit or Save button (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps"). The resets to the parent (icon, colour) are **icon buttons**, without a text label.
 - No virtual links between types of the tree. Duplicates are accepted: a change in one type must not change another silently, so nothing has to be retested everywhere. It also lets each type be versioned alone later. The documentary research (2026-11-10) finds this rule defensible: neither FMI, OPC UA nor AutomationML requires or forbids it.
 
 ### Limits of "no virtual link" (decided on 2026-11-11, from the research)
@@ -73,7 +73,7 @@ The rule is true between types that have no parent link. Three mechanisms do pro
 - A sub-type cannot declare again a signal name it already inherits. No redefinition: it is the simplest rule, and a name stays one thing along the tree.
 - The values of an enum are part of the contract with the model: changing them is breaking, like a rename (see [Enums](06-enums.md)). Links to an enum or a quantity go through an internal identifier, like symbols do for types.
 
-Versioned, published types (the answer of OPC UA's best-practices guide and of Siemens) are kept for later.
+Versions, the answer of OPC UA's best-practices guide and of Siemens, came on 2026-11-16: Metadata as a whole is versioned (see [Versions](13-versions.md)).
 
 ## What a type holds
 
@@ -152,15 +152,19 @@ flowchart LR
     R --> M["Model: its interface definition changed, the model must follow"]
 ```
 
-## How a rename is done: deliberate, without a warning
+## How a rename is done: typed in place, checked in the versions
 
-- A name can never be changed just by typing in place. The user clicks an Edit button, changes the name, then clicks a Save button.
-- Those few deliberate actions are what make the change important. No warning or confirmation dialog is added on top: it would only waste time, and people doing this know what they are doing.
+Changed by the Product Owner on 2026-11-16. It replaces the Edit and Save buttons of 2026-11-11.
+
+- The name is typed in place in General, like every field of Metadata. No Edit or Save button, no warning, no confirmation dialog.
+- What stops a mistake is the [Versions](13-versions.md) page: before a version is made, the rename is shown among the differences, and it can be undone. A rename breaks the model, so it makes the version a major one.
 - The consequences for models (see above) are to be explained in a user manual. That manual is not part of the open source version.
 
 ```mermaid
 flowchart LR
-    A["Click Edit"] --> B["Change the name"] --> C["Click Save"]
+    A["Type the new name in General"] --> B["Versions page: the rename is in the differences"]
+    B -->|"undo"| U["The old name is back"]
+    B -->|"make a version"| V["Major version: the model must follow"]
 ```
 
 ## Where it is used
@@ -168,7 +172,3 @@ flowchart LR
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Type (name, parent) | Metadata: the name in General, the parent at creation only | Signal and command inheritance | Chosen among all the types, only here | No |
-
-## Open questions
-
-- Deleting a type: is the user warned that symbols will lose their type (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md))?

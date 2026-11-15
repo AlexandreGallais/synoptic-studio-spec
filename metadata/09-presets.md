@@ -1,8 +1,8 @@
 # Presets and their faceplate
 
-> [Home](../README.md) › [Metadata](README.md) › Presets · Previous: [Commands](07-commands.md) · Next: [Who changes what](11-who-changes-what.md)
+> [Home](../README.md) › [Metadata](README.md) › Presets · Previous: [Commands](07-commands.md) · Next: [Versions](13-versions.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16: the faceplate and the presets are **merged** into this one part, a preset is one table, and the faceplate is seen with a button. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16: the faceplate and the presets are **merged** into this one part, a preset is one table, always editable, and the faceplate is seen with a button; the name people see for each signal is written here. Open points are listed in [Open questions](12-open-questions.md).
 
 A preset is made under a type (example: pneumatic positive displacement pump). It holds the defaults of a symbol and **builds its faceplate**, so that a symbol or a synoptic starts well configured. A faceplate is the panel that shows the signals and the commands of a placed symbol: what the user sees and can act on. "Faceplate" is the standard word of supervision software for this panel.
 
@@ -16,6 +16,7 @@ Decided by the Product Owner on 2026-11-16: "Faceplate et preset, il faut fusion
 - The display unit and the decimal places of the preset also serve the texts of a symbol that show a value (see [Animation mode](../symbols/08-animation-mode/README.md)): a preset is not only the faceplate, but the faceplate is wholly in the preset.
 - A preset is an override: what it does not change comes from the signal and from the Units page (model unit, default decimals).
 - It stays simple: defaults, nothing more.
+- The preset is always editable, with no Edit or Save step (Product Owner, 2026-11-16). Its changes are checked on the [Versions](13-versions.md) page before a version is made.
 
 ```mermaid
 flowchart TD
@@ -32,7 +33,7 @@ flowchart TD
 ### A type needs a preset
 
 - A type needs at least one preset to be chosen in a symbol or a synoptic. No preset is created automatically. If no preset fits, the user creates one in Metadata.
-- A preset has a name, which tells two presets of a type apart (Product Owner, 2026-11-16). Where the name is edited on the screen is open: the field above the table "is not nice there".
+- A preset has a name, which tells two presets of a type apart (Product Owner, 2026-11-16). Its field stays above the table for now: the Product Owner finds the place "pas mal" and will look at it again later (2026-11-16).
 
 ### The table of a preset
 
@@ -41,19 +42,20 @@ A preset is shown as **one table** with every signal of the type, own and inheri
 | Column | Values | Rule |
 | --- | --- | --- |
 | Shown | Checkbox | Ticked: the signal is in the faceplate at the start. Unticked: it stays available, a symbol or a synoptic can tick it. |
-| Signal | The signal's display name, read only | The name comes from the signal (see [Signals](04-signals.md)); the preset does not rename it. |
-| Input | Select, depending on the type of the signal | Second column (Product Owner, 2026-11-16). How the value is shown, in read and in write. For an enum: radio on one line, radio on several lines, select. For the other types: open. |
+| Signal | The signal's ID, read only | Which signal the line is about (see [Signals](04-signals.md)). |
+| Name shown | Text field | The name people see for this signal in the faceplate (Product Owner, 2026-11-16: "le display name qu'il faut afficher dans le preset, exactement"). Plain text, never sent to the model; changing it breaks nothing. Empty: the ID is shown. |
+| Input | Select for an enum; fixed for the other types | How the value is shown, in read and in write (Product Owner, 2026-11-16). For an enum: radio on one line, radio on several lines, select. For the other types there is nothing to choose: a number field for an integer or a real, true or false for a boolean, a text field for a text (assistant's reading of "il n'y a rien de compliqué", to confirm). |
 | Read or write | Radio | Read: the faceplate shows the value. Write: a person can type a value for the model. |
 | Display unit | Select | Only with a quantity. Among the units of the signal's quantity; starts as the signal's model unit. |
 | Decimals | Number field | Integers and reals only. Starts as the default of the quantity on the Units page (see [Units](05-units.md)). Display only. |
-| Default value | Field of the signal's type | The value the symbol starts with. |
+| Default value | Field of the signal's type | The value the symbol starts with. A boolean: true or false. An integer or a real: a number, typed. A text: a text, typed. An enum: an item, picked by its display text (Product Owner, 2026-11-16: "si c'est un nombre, on peut écrire une valeur par défaut, et puis basta"). |
 
 The commands of the type follow in their own table, one per line:
 
 | Column | Values | Rule |
 | --- | --- | --- |
 | Shown | Checkbox | Ticked: the command's button is in the faceplate. |
-| Command | The command's name, read only | From the table of commands (see [Commands](07-commands.md)). |
+| Command | The command's ID, read only | From the table of commands (see [Commands](07-commands.md)). |
 | Name on the button | Text field | What the button of the faceplate says. Plain text. |
 
 - No description per signal or per command (Product Owner, 2026-11-16: "La description pour chaque signal ou commande, non").
@@ -63,11 +65,11 @@ The commands of the type follow in their own table, one per line:
 
 ```mermaid
 block-beta
-    columns 7
-    h1["Shown"] h2["Signal"] h3["Input"] h4["Read or write"] h5["Display unit"] h6["Decimals"] h7["Default value"]
-    a1["☑"] a2["Inlet pressure"] a3["Number"] a4["Read"] a5["bar"] a6["1"] a7["2.5"]
-    b1["☑"] b2["Mode"] b3["Select"] b4["Write"] b5["-"] b6["-"] b7["Automatic"]
-    c1["☐"] c2["Running"] c3["not said"] c4["Read"] c5["-"] c6["-"] c7["false"]
+    columns 8
+    h1["Shown"] h2["Signal"] h0["Name shown"] h3["Input"] h4["Read or write"] h5["Display unit"] h6["Decimals"] h7["Default value"]
+    a1["☑"] a2["inlet_pressure"] a0["Inlet pressure"] a3["Number"] a4["Read"] a5["bar"] a6["1"] a7["2.5"]
+    b1["☑"] b2["mode"] b0["Mode"] b3["Select"] b4["Write"] b5["-"] b6["-"] b7["Automatic"]
+    c1["☐"] c2["running"] c0["Running"] c3["True or false"] c4["Read"] c5["-"] c6["-"] c7["false"]
 ```
 
 ### Title and description of the faceplate
@@ -85,7 +87,7 @@ block-beta
 ### Typing a value
 
 - A signal set to **write** is the only way for a person to type a value for the model: a command always sends a fixed value (see [Commands](07-commands.md#the-value-is-always-fixed)).
-- Only an **input** of the model can be set to write; for an output, write is greyed. It follows the Product Owner's rule for commands (2026-11-16): sending a value to an output makes no sense, the model computes it; overriding an output is another mechanism, still an idea (see [Commands](07-commands.md#idea-commands-that-override-an-output)).
+- Only an **input** of the model can be set to write; for an output, write is greyed. It follows the Product Owner's rule for commands (2026-11-16): sending a value to an output makes no sense, the model computes it; overriding an output is another mechanism, a command of its own with a fixed value (see [Commands](07-commands.md)).
 - When the user types a value, the faceplate checks it against the bounds of the signal. The bounds are written in the model unit and are shown in the display unit.
 - A value outside the bounds is refused, with a message that says the bounds. Nothing is sent to the model.
 - An integer signal accepts whole numbers only. An enum signal accepts only the items of its enum: the user picks a display text, the model receives its key.
@@ -122,12 +124,12 @@ sequenceDiagram
 
 Preset `default` of `centrifugal_pump`, faceplate title "Feed pump".
 
-| Shown | Signal | Input | Read or write | Display unit | Decimals | Default value |
-| --- | --- | --- | --- | --- | --- | --- |
-| ☑ | Inlet pressure | not said (number) | read | bar | 1 | 2.5 |
-| ☑ | Speed | not said (number) | read | rpm | 0 | 0 |
-| ☐ | Running | not said (boolean) | read |  |  | false |
-| ☑ | Mode | select | write |  |  | Automatic |
+| Shown | Signal | Name shown | Input | Read or write | Display unit | Decimals | Default value |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ☑ | `inlet_pressure` | Inlet pressure | number field | read | bar | 1 | 2.5 |
+| ☑ | `speed` | Speed | number field | read | rpm | 0 | 0 |
+| ☐ | `running` | Running | true or false | read |  |  | false |
+| ☑ | `mode` | Mode | select | write |  |  | Automatic |
 
 | Shown | Command | Name on the button |
 | --- | --- | --- |
@@ -139,13 +141,12 @@ Preset `default` of `centrifugal_pump`, faceplate title "Feed pump".
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Preset and its name | Metadata, under a type | Symbol and synoptic start from it | Choose one | Choose one |
-| Lines shown, input, read or write, display unit, decimals, default value | Preset, in Metadata | Faceplate of the symbol or synoptic; texts of a symbol that show a value | Edit | Edit |
+| Lines shown, name shown, input, read or write, display unit, decimals, default value | Preset, in Metadata | Faceplate of the symbol or synoptic; texts of a symbol that show a value | Edit | Edit |
 | Command shown, name on the button | Preset, in Metadata | Faceplate of the symbol or synoptic | Edit | Edit |
 | Faceplate title and description | Preset, in Metadata | Faceplate of the symbol or synoptic | Edit | Edit, on each placed symbol |
 
 ## Open questions
 
-- A name shown per signal in the preset: the Product Owner said "Name shown, oui" while reading the table, and also that the faceplate always shows the display name of the signal. Written here as the signal's display name only, no renaming in the preset: to confirm.
-- Where the name of a preset is edited: the field above the table "is not nice there" (Product Owner, 2026-11-16).
-- The inputs of a signal that is not an enum (number, boolean, text): which choices?
+- Where the name of a preset is edited: above the table for now, to look at again later (Product Owner, 2026-11-16).
+- The input of a signal that is not an enum: fixed by its type (number field, true or false, text field), as written above? Assistant's reading, to confirm.
 - Order of the lines: the order of the signals, or chosen in the preset?

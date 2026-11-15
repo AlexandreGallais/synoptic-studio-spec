@@ -68,7 +68,7 @@ Decided by the Product Owner on 2026-11-16: the signals and the commands of a ty
 ### Navigation bar on the left
 
 - A narrow bar of icons sits on the far left of the window (a "rail").
-- In Metadata, it holds one icon per page: **Types**, **Units**, **Enums** (decided). The Product Owner first named an icon for the libraries too, then removed the libraries of types in the same review.
+- In Metadata, it holds one icon per page: **Types**, **Units**, **Enums** (decided), then **Versions** (Product Owner, 2026-11-16; see [Versions](../metadata/13-versions.md)). The Product Owner first named an icon for the libraries too, then removed the libraries of types in the same review.
 - In the symbol mode, it holds a **Libraries** button (a kind of "home"), a separator, then the list of every Symbol Lib (decided): see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode).
 - There is one bar per part. Going from one part to another is done in the top bar (below).
 
@@ -76,7 +76,7 @@ Decided by the Product Owner on 2026-11-16: the signals and the commands of a ty
 
 Decided by the Product Owner on 2026-11-16. From left to right:
 
-1. The **logo**. The name heard is "Epipasta": to confirm.
+1. The **logo**: a valve, like the logo already in the Figma file (Product Owner, 2026-11-16). The word "Epipasta" heard earlier was a transcription error.
 2. Three icons, one per part: **Metadata**, **Symbols**, **Synoptic** (part 3, not written yet).
 3. On the right, the window buttons **minimise, maximise, close**, as in Windows.
 
@@ -91,7 +91,7 @@ block-beta
 ```mermaid
 block-beta
     columns 5
-    rail["Bar: Types, Units, Enums"] tree["Type tree"] list["List of the part: signals..."] panel["Panel of the selected item"]:2
+    rail["Bar: Types, Units, Enums, Versions"] tree["Type tree"] list["List of the part: signals..."] panel["Panel of the selected item"]:2
 ```
 
 ## How to read a screen
@@ -154,6 +154,7 @@ flowchart TD
     MD01 --> MD07["MD-07 Presets and their faceplate"]
     MD --> MD08["MD-08 Units"]
     MD --> MD09["MD-09 Enums"]
+    MD --> MD11["MD-11 Versions"]
 
     SY --> SY01["SY-01 Symbol Libs"]
     SY01 --> SY02["SY-02 Left-hand panel of a Symbol Lib"]
