@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Versions · Previous: [Presets](09-presets.md) · Next: [Who changes what](11-who-changes-what.md)
 
-Status: draft, written on 2026-11-16 from the Product Owner's words. Not validated. Open points are listed in [Open questions](12-open-questions.md).
+Status: draft, written on 2026-11-16 from the Product Owner's words. The principle (always editable, versions instead of Edit and Save) is decision 0017, accepted on 2026-11-16, which changes decision 0009; the details below are not validated. Open points are listed in [Open questions](12-open-questions.md).
 
 Metadata is always editable, and versions keep it from breaking: the user edits freely, then sees every difference, undoes what is wrong, and makes a version with a number that says how much changed (Product Owner, 2026-11-16: "comme ça, tu n'aurais jamais rien de cassé, et on arrête de mettre des edits validés partout").
 
