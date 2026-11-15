@@ -13,14 +13,11 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | Palette, icon list and default icon and colour | [Icons](02-icons.md) | To define with the design system. |
 | Folder, generated files and conflicts between people | [Files and conflicts](../storage/files-and-conflicts.md) | Open, not about metadata. |
 | Source and licence of the ready-made catalogue of units | [Units](05-units.md) | Open: the licences of UCUM, QUDT, CLDR and NIST were not checked; to settle before release. |
-| A name shown per signal in the preset, or the signal's display name only; where the name of a preset is edited; inputs of a signal that is not an enum; write on an output; order of the lines | [Presets](09-presets.md) | Raised when the faceplate was merged into the presets (2026-11-16). |
-| Enum keys: whole numbers only, or any number | [Enums](06-enums.md) | Raised when string keys were removed (2026-11-16). |
-| How the five parts of a type are shown (tabs, a column, icons, under the type in the tree) | [Types](01-types.md) | Four proposals drawn for the Product Owner (2026-11-16). |
+| A name shown per signal in the preset, or the signal's display name only; where the name of a preset is edited; inputs of a signal that is not an enum; order of the lines | [Presets](09-presets.md) | Raised when the faceplate was merged into the presets (2026-11-16). |
+| Deleting a type: is the user warned that symbols lose their type? | [Types](01-types.md) | Open. |
 | Where the description of a type is shown besides its documentation page | [Documentation](03-documentation.md) | Raised by the removal of the libraries of types (2026-11-16). |
-| Full page of the description: does the type tree stay visible? | [Documentation](03-documentation.md) | Raised with the full page button (2026-11-16). |
-| Table of signals: Edit and Save for the table or a line; hover on an enum; decimal places on the signal itself | [Signals](04-signals.md) | Raised when the signals became a table (2026-11-16); decimals noted at the Product Owner's request the same day. |
-| What a text that becomes an input writes, now that commands have a fixed value only; directions a command can target | [Commands](07-commands.md) | Raised when typed values were removed from commands (2026-11-16). |
-| Delete by right click in all of Metadata | [Layout rules](../screens/README.md#delete-by-right-click-in-metadata) | Preference of the Product Owner, said with a doubt (2026-11-16). |
+| Table of signals: Edit and Save for the table or a line (one line favoured, with a doubt); a bubble listing the items of an enum; decimal places on the signal itself | [Signals](04-signals.md) | Raised when the signals became a table (2026-11-16); decimals noted at the Product Owner's request the same day. |
+| Commands that override an output, without going through the model | [Commands](07-commands.md) | An idea of the Product Owner (2026-11-16), not decided. |
 | Every control the specs need but never describe (create, delete, order...) | [Screens of Metadata](../screens/metadata.md) | Listed as gaps, screen by screen. |
 
 ```mermaid

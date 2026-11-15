@@ -2,13 +2,13 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Commands · Previous: [Enums](06-enums.md) · Next: [Presets](09-presets.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (a command always sends a fixed value; commands shown in a table). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (a command always sends a fixed value; commands shown in a table; a command targets an input only). Open points are listed in [Open questions](12-open-questions.md).
 
 A command is how the front acts on the model with one click. Two kinds, kept apart because they do not say the same thing.
 
 | Kind | Meaning | What the user edits |
 | --- | --- | --- |
-| Set a signal | "This signal must take this value". | The signal targeted, and the value sent, fixed in Metadata. |
+| Set a signal | "This signal must take this value". | The signal targeted, an input of the model only, and the value sent, fixed in Metadata. |
 | Trigger | "This happened, deal with it". | Its name only, which is its identifier. It targets nothing: the model decides what to do. |
 
 A command has a name and a kind (Product Owner, 2026-11-11).
@@ -28,6 +28,7 @@ flowchart TD
 - A command also has an internal identifier, set by the software, that never changes, like a type's (see [Types](01-types.md)). It exists on the application side only and never goes to the model. Symbols link to a command through it, so renaming a command does not break them (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md)).
 - In a symbol, direct commands: the user links a command from Metadata to a click on a part of the symbol.
 - On the front, a command is a button: the user clicks it, and that is all.
+- **A command targets an input of the model only** (Product Owner, 2026-11-16): sending a value to an output "n'a pas trop de sens", since the model computes it. The target list of "Set a signal" shows the inputs only.
 - A preset does not choose commands: all the commands of a type stay available. The symbol says which it uses. The preset only ticks which commands have a button in the faceplate, and gives that button its text (see [Presets](09-presets.md#the-table-of-a-preset)).
 
 ## The value is always fixed
@@ -74,7 +75,7 @@ The commands of a type are shown in **one table**, like the signals (Product Own
 | --- | --- |
 | Kind | Set a signal, or Trigger. |
 | Name | The command's identifier. |
-| Target signal | For "Set a signal" only. |
+| Target signal | For "Set a signal" only: an input of the model. |
 | Value | For "Set a signal" only: the fixed value, of the target signal's type. |
 
 - A trigger leaves the target and the value empty.
@@ -86,7 +87,24 @@ The commands of a type are shown in **one table**, like the signals (Product Own
 | --- | --- | --- | --- | --- |
 | Command (set a signal, trigger) | Metadata | Button of the faceplate (ticked in the preset), click on a part of a symbol | Link a command to a click | No |
 
+## A text that becomes an input does not use a command
+
+A text of a symbol that becomes an input when clicked writes an **input signal** of the type directly, with the same checks as a write entry of the faceplate (bounds, conversion from the display unit, enum item). No command is used (Product Owner, 2026-11-16, accepting the assistant's proposal). See [Animation mode](../symbols/08-animation-mode/README.md#a-text-that-becomes-an-input).
+
+## Idea: commands that override an output
+
+Said by the Product Owner on 2026-11-16 as a wish ("ce serait bien"), not decided.
+
+- Besides the commands sent to the inputs, a second family: commands that **override an output**. They do not go through the model; they say "I want this value to be overridden".
+- The Product Owner notes that it is "une mécanique complètement différente" from sending a value to an input.
+
+```mermaid
+flowchart LR
+    C["Command"] --> I["Set a signal: an input, sent to the model (decided)"]
+    C --> E["Trigger (decided)"]
+    C -.-> O["Override an output: does not go through the model (idea, open)"]
+```
+
 ## Open questions
 
-- A text of a symbol that becomes an input when clicked was tied to a typed-value command, which no longer exists. What does it write now? See [Animation mode](../symbols/08-animation-mode/README.md#a-text-that-becomes-an-input).
-- Can a command target a signal of any direction, or only an input?
+- Commands that override an output: in the open source version, and if so who applies the override (the model, the server, the front) and how it ends?

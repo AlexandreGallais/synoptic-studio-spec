@@ -2,14 +2,14 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Enums · Previous: [Units](05-units.md) · Next: [Commands](07-commands.md)
 
-Status: validated by the Product Owner on 2026-11-11. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers). No open question.
 
 An Enums page lists the enums of the application, like the Units page lists the quantities. A signal of the type enum does not hold its own list of values: it points to an enum of this page.
 
 ## Rules
 
 - An enum is a named list of items. **Each item is a pair: a key and a display text** (Product Owner, 2026-11-11, replacing the "value alone" rule written earlier the same day):
-  - the **key** is what the model receives: **always a number** (Product Owner, 2026-11-16, replacing "a number or a string, chosen for the whole enum"); keys are unique in the enum;
+  - the **key** is what the model receives: **always a whole number** (0, 1, 2...; Product Owner, 2026-11-16, replacing "a number or a string, chosen for the whole enum": "les enums, c'est tout le temps des entiers"); keys are unique in the enum;
   - the **display text** is what people read: the faceplate, a text of a symbol and the test values show it, never the key.
 - No string keys (Product Owner, 2026-11-16). Why: every enum can be checked in one place, the Enums page, and the configuration files are generated from it; so the model never needs a readable key, and the display text is enough for people.
 - When the user picks an item, the signal receives exactly its key.
@@ -39,7 +39,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A["Create an enum on the Enums page"] --> B["Add its items: number key and display text"]
+    A["Create an enum on the Enums page"] --> B["Add its items: whole number key and display text"]
     B --> C["On a signal of type enum, pick the enum"]
     C --> D["The signal follows the enum: no copy"]
 ```
@@ -51,7 +51,3 @@ flowchart LR
 | Enum, its items (key and display text) | Enums page | Signal: picks one as a link | No | No |
 
 The preset chooses how an enum is shown in the faceplate (radio on one line, radio on several lines, select), see [Presets](09-presets.md#the-table-of-a-preset).
-
-## Open questions
-
-- Is a key a whole number only (0, 1, 2), or can it be any number? The Product Owner said "only numbers" (2026-11-16).

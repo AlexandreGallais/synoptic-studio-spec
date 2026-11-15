@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Screens](README.md) › Metadata
 
-Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
+Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal; then the parts of a type as a strip of icons, delete by right click everywhere, commands to inputs only, whole number enum keys, the type tree kept in full page). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
 
 ## MD-00 · Navigation bar of Metadata
 
@@ -26,8 +26,8 @@ The tree is on the left, as in a code editor, just right of the navigation bar; 
 
 ```mermaid
 block-beta
-    columns 4
-    rail["MD-00 bar"] tree["Type tree"] editor["Type editor: General, Documentation, Signals, Commands, Presets"]:2
+    columns 5
+    rail["MD-00 bar"] tree["Type tree"] strip["Strip of 5 icons: General, Documentation, Signals, Commands, Presets"] editor["Editor of the selected part"]:2
 ```
 
 ```mermaid
@@ -41,7 +41,7 @@ mindmap
       Select a type
       Right click, Delete
       No rename by double click
-    Type editor, in this order
+    Strip of icons, name on hover, in this order
       1 MD-02 General
       2 MD-03 Documentation
       3 MD-04 Signals
@@ -56,14 +56,14 @@ mindmap
 | MD-01.3 | Create a child type | Button (+), on hover | On the right of each type, shown when the mouse is over it; creates a type under it, with a default name. | Decided | [Types](../metadata/01-types.md) |
 | MD-01.3b | Create a root type | Button (+), always shown | On the title "Type tree". Its look worries the Product Owner; kept. | Decided (look: Open) | [Types](../metadata/01-types.md) |
 | MD-01.4 | Delete a type | Right click › menu › Delete | A menu of options opens on a right click; Delete is one of them. | Decided | [Types](../metadata/01-types.md) |
-| MD-01.5 | Parts of the type | Open: four proposals | In this order: General, Documentation, Signals, Commands, Presets (the Faceplate part merged into Presets, 2026-11-16). Tabs, a column of parts, a strip of icons, or under the type in the tree. | Decided (order), Open (display) | [Types](../metadata/01-types.md) |
+| MD-01.5 | Parts of the type | Strip of icons, in a column | Between the tree and the editor; one icon per part, in this order: General, Documentation, Signals, Commands, Presets; the name shown on hover (proposal C, 2026-11-16). | Decided (look: to work on) | [Types](../metadata/01-types.md#the-parts-of-a-type-a-strip-of-icons) |
 | MD-01.6 | Search | Text field | Under the title "Type tree". | Decided | [Types](../metadata/01-types.md) |
 
 Gaps:
 
 - Which other options the right-click menu holds (duplicate, rename?), and whether the user is warned that symbols lose their type on a delete.
 - Fold arrows on the branches: drawn, never said.
-- The parts of the type: see the four proposals in [Types](../metadata/01-types.md#the-parts-of-a-type-four-proposals) and in the Figma file.
+- The icons of the five parts (to choose with the design system). The wireframes MD-02 to MD-07 still show tabs in a row until they are redrawn with the strip.
 
 ## MD-02 · General
 
@@ -132,17 +132,16 @@ mindmap
 | MD-03.3 | Description, Markdown | Editor (raw text) | For those who write Markdown faster; the user switches between visual and Markdown at any time. | Decided | [Documentation](../metadata/03-documentation.md) |
 | MD-03.4 | Go to edit | — | Removed (2026-11-16): there is no view mode to leave. | Decided | [Documentation](../metadata/03-documentation.md) |
 | MD-03.4b | Visual, Markdown | Buttons (switch) | On the right of the formatting tool bar, on the same line (2026-11-16). | Decided | [Documentation](../metadata/03-documentation.md) |
-| MD-03.4c | Full page | Button (icon), in the tool bar | The description takes the whole page; the links are hidden; the window and the menus of the application stay. The same button brings the page back (2026-11-16). | Decided | [Documentation](../metadata/03-documentation.md) |
+| MD-03.4c | Full page | Button (icon), in the tool bar | The description takes the whole editing part; the links are hidden; the window, the menus of the application and the type tree stay. The same button brings the page back (2026-11-16). | Decided | [Documentation](../metadata/03-documentation.md) |
 | MD-03.5 | Links | List | Each link: a path or a URL, and a description. | Decided | [Documentation](../metadata/03-documentation.md) |
 | MD-03.6 | Add a path | Button + selection window | Above the list of links. The server opens a window; only the path is kept (`W:/...`). A file or a folder. | Decided | [Documentation](../metadata/03-documentation.md) |
 | MD-03.7 | Add a URL | Button + text field | Above the list of links. Typed or pasted. | Decided | [Documentation](../metadata/03-documentation.md) |
 | MD-03.8 | Description of a link | Text field | Plain text, not Markdown. | Decided | [Documentation](../metadata/03-documentation.md) |
 | MD-03.9 | Open | Button (not said) | Always a folder: the one that contains the file, or the folder itself. Never launches a file or a program. A URL opens in the browser. | Decided | [Documentation](../metadata/03-documentation.md) |
-| MD-03.10 | Remove a link | Right click › Delete | No delete button on the line ([layout rules](README.md#delete-by-right-click-in-metadata), to confirm). | Proposed | [Layout rules](README.md#delete-by-right-click-in-metadata) |
+| MD-03.10 | Remove a link | Right click › Delete | No delete button on the line ([layout rules](README.md#delete-by-right-click-in-metadata)). | Decided | [Layout rules](README.md#delete-by-right-click-in-metadata) |
 
 Gaps:
 
-- In full page, does the type tree stay visible, or only the top bar and the navigation bar?
 - How is a link edited? Can links be reordered?
 
 ## MD-04 · Signals
@@ -189,16 +188,16 @@ mindmap
     Right click on a line
       Delete
     Edit and Save
-      Whole table or one line, open
+      Whole table or one line, open, one line favoured
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | MD-04.1 | Table of signals | Table | One line per signal, one column per field; takes as much room as possible. Own and inherited signals (2026-11-16). | Decided | [Signals](../metadata/04-signals.md#the-table-of-signals) |
-| MD-04.2 | Enum on a signal line | — | The line shows the enum's name. Hovering it to see the items: to confirm in a table. | Decided (hover: Open) | [Signals](../metadata/04-signals.md) |
+| MD-04.2 | Enum on a signal line | — | The line shows the enum's name. A bubble listing its items when the mouse rests on the name: open. | Decided (bubble: Open) | [Signals](../metadata/04-signals.md) |
 | MD-04.3 | Inherited signals | Lines of the table | Read only here; edited in the type that declares them. Their look (greyed, with the parent's name) is not said. | Implied | [Signals](../metadata/04-signals.md) |
 | MD-04.4 | Add a signal | Button (+) | Above the table ([layout rules](README.md#add-buttons-above-the-list)). | Decided | [Layout rules](README.md#add-buttons-above-the-list) |
-| MD-04.5 | Edit, Save | Button (icon) | Nothing changes without Edit then Save; no warning. For the whole table or for one line: open. | Decided (rule), Open (scope) | [Signals](../metadata/04-signals.md) |
+| MD-04.5 | Edit, Save | Button (icon) | Nothing changes without Edit then Save; no warning. For the whole table or for one line: open, the Product Owner leans towards one line. | Decided (rule), Open (scope) | [Signals](../metadata/04-signals.md) |
 | MD-04.6 | ID | Column, text field | Model identifier; header "ID" (2026-11-16). A sub-type cannot reuse an inherited ID. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.6b | Display name | Column, text field | The name people see, in the faceplate and elsewhere. Plain text; never sent to the model; empty: the ID is shown (2026-11-16). | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.7 | Type | Column, select | Integer, real (64-bit double), boolean, text, enum. | Decided | [Signals](../metadata/04-signals.md) |
@@ -207,7 +206,7 @@ mindmap
 | MD-04.10 | Model unit | Column, select | Only with a quantity. Default: the quantity's model unit; another unit of the same quantity can be chosen. | Decided | [Units](../metadata/05-units.md) |
 | MD-04.11 | Minimum, maximum | Columns, number fields | Integer and real only; indicative; in the model unit. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.12 | Direction | Column, select | Input or output of the model. | Decided | [Signals](../metadata/04-signals.md) |
-| MD-04.13 | Delete a signal | Right click › Delete | No button on the lines ([layout rules](README.md#delete-by-right-click-in-metadata), to confirm). | Proposed | [Signals](../metadata/04-signals.md#the-table-of-signals) |
+| MD-04.13 | Delete a signal | Right click › Delete | No button on the lines ([layout rules](README.md#delete-by-right-click-in-metadata)). | Decided | [Signals](../metadata/04-signals.md#the-table-of-signals) |
 
 Gaps:
 
@@ -245,16 +244,16 @@ mindmap
 | MD-05.2 | Add a command | Button (+) | Above the table ([layout rules](README.md#add-buttons-above-the-list)). | Decided | [Layout rules](README.md#add-buttons-above-the-list) |
 | MD-05.3 | Name | Column, text field | For a trigger, the name is its identifier and all it has. Symbols follow a rename (internal identifier). | Decided | [Commands](../metadata/07-commands.md) |
 | MD-05.4 | Kind | Column, select | First column. Set a signal, or Trigger. | Decided | [Commands](../metadata/07-commands.md) |
-| MD-05.5 | Target signal | Column, select | For "Set a signal"; empty for a trigger. | Decided | [Commands](../metadata/07-commands.md) |
+| MD-05.5 | Target signal | Column, select | For "Set a signal": lists the inputs of the model only (2026-11-16); empty for a trigger. | Decided | [Commands](../metadata/07-commands.md) |
 | MD-05.6 | Value: fixed or typed | — | Removed (2026-11-16): the value is always fixed. | Decided | [Commands](../metadata/07-commands.md#the-value-is-always-fixed) |
 | MD-05.7 | Value | Column, field of the target signal's type | Fixed, written in Metadata: a number, true or false, a text, or an item of the enum. Empty for a trigger. | Decided | [Commands](../metadata/07-commands.md#the-value-is-always-fixed) |
 | MD-05.8 | Typed value | — | Removed (2026-11-16): a person types a value in the faceplate, for a signal set to write in the preset. | Decided | [Presets](../metadata/09-presets.md#typing-a-value) |
-| MD-05.9 | Delete a command | Right click › Delete | No button on the lines ([layout rules](README.md#delete-by-right-click-in-metadata), to confirm). | Proposed | [Commands](../metadata/07-commands.md#the-table-of-commands) |
+| MD-05.9 | Delete a command | Right click › Delete | No button on the lines ([layout rules](README.md#delete-by-right-click-in-metadata)). | Decided | [Commands](../metadata/07-commands.md#the-table-of-commands) |
 
 Gaps:
 
 - Edit and Save in the table: as for the signals, open.
-- Can a command target a signal of any direction, or only an input?
+- Commands that override an output, without going through the model: an idea of the Product Owner, open (see [Commands](../metadata/07-commands.md#idea-commands-that-override-an-output)).
 
 ## MD-06 · Faceplate: merged into MD-07
 
@@ -311,7 +310,7 @@ mindmap
 | MD-07.8 | Shown | Checkbox, per line | Shown in the faceplate at the start; an unticked line stays available in a symbol and a synoptic. | Decided | [Presets](../metadata/09-presets.md#the-table-of-a-preset) |
 | MD-07.9 | Signal | Column, read only | The display name of the signal; not renamed in the preset. | Proposed (to confirm) | [Signals](../metadata/04-signals.md) |
 | MD-07.10 | Input | Column, select | Second column. Depends on the type of the signal; in read and in write. Enum: radio on one line, radio on several lines, select. Other types: open. | Decided (enum), Open (others) | [Presets](../metadata/09-presets.md#the-table-of-a-preset) |
-| MD-07.11 | Read or write | Column, radio | Write: a person types a value, checked against the bounds. | Decided | [Presets](../metadata/09-presets.md#typing-a-value) |
+| MD-07.11 | Read or write | Column, radio | Write: a person types a value, checked against the bounds. Write is greyed for an output of the model (2026-11-16). | Decided | [Presets](../metadata/09-presets.md#typing-a-value) |
 | MD-07.12 | Display unit | Column, select | Only with a quantity; starts as the model unit. | Decided | [Presets](../metadata/09-presets.md) |
 | MD-07.13 | Decimals | Column, number field | Integers and reals; starts as the quantity's default. Display only. | Decided | [Units](../metadata/05-units.md#decimal-places) |
 | MD-07.14 | Default value | Column, field of the signal's type | The value the symbol starts with. | Decided | [Presets](../metadata/09-presets.md) |
@@ -323,7 +322,6 @@ Gaps:
 - Rename, duplicate and delete a preset; what happens to the symbols that use a deleted preset?
 - Does a sub-type see the presets of its parent?
 - Order of the lines: the order of the signals, or chosen in the preset? Groups or separators in the faceplate?
-- Can a signal set to write be an output of the model?
 - Where the faceplate opens when the button is clicked (a floating window, a panel), and how it is closed.
 - Width: what happens when the seven columns do not fit.
 
@@ -393,7 +391,7 @@ mindmap
     An enum
       Name
       Items
-        Key, a number, sent to the model
+        Key, a whole number, sent to the model
         Display text, shown to people
 ```
 
@@ -404,9 +402,9 @@ mindmap
 | MD-09.3 | Name | Text field | — | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.4 | Kind of key | — | Removed (Product Owner, 2026-11-16): a key is always a number, there are no string keys. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.5 | Items | List | Each item a key and a display text. | Decided | [Enums](../metadata/06-enums.md) |
-| MD-09.6 | Key | Number field | Unique; what the model receives. Changing it is breaking for the model. Whole numbers only: open. | Decided | [Enums](../metadata/06-enums.md) |
+| MD-09.6 | Key | Whole number field | Unique; what the model receives; whole numbers only (2026-11-16). Changing it is breaking for the model. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.7 | Display text | Text field | What the faceplate, the symbol texts and the test values show. Not breaking. | Decided | [Enums](../metadata/06-enums.md) |
-| MD-09.8 | Add, remove an item | Button (+), right click › Delete | The + above the list of items; remove by right click ([layout rules](README.md#delete-by-right-click-in-metadata), to confirm). | Decided (place of +), Proposed (remove) | [Enums](../metadata/06-enums.md) |
+| MD-09.8 | Add, remove an item | Button (+), right click › Delete | The + above the list of items; remove by right click ([layout rules](README.md#delete-by-right-click-in-metadata)). | Decided | [Enums](../metadata/06-enums.md) |
 
 Gaps:
 

@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Documentation · Previous: [Icons](02-icons.md) · Next: [Signals](04-signals.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (always editable, full page button, add buttons above the links). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (always editable, full page button with the type tree kept, add buttons above the links). Open points are listed in [Open questions](12-open-questions.md).
 
 A type has a documentation page, where people put what explains the type: a description and links to documents and sources.
 
@@ -41,6 +41,7 @@ flowchart TD
 - The tool bar also has a **full page** button (Product Owner, 2026-11-16):
   - the description takes the whole page of the documentation, and the links are no longer shown, so the user only types text, calmly;
   - it is not the full screen of the system: the window stays as it is, and the menus of the application stay;
+  - **the type tree stays visible** (Product Owner, 2026-11-16): only the editing part takes the whole page, the rest of the screen does not move;
   - the same button brings the page back.
 - The description is written in the documentation page, not in General. It does not go to the model.
 
@@ -48,7 +49,7 @@ flowchart TD
 flowchart LR
     O["Open a type"] --> E["Visual editor, always editable, tool bar"]
     E <-->|"switch, right of the tool bar"| M["Markdown: raw text"]
-    E -->|"full page button"| F["The description takes the whole page; links hidden; menus kept"]
+    E -->|"full page button"| F["The description takes the whole editing part; links hidden; tree and menus kept"]
     F -->|"same button"| E
 ```
 
@@ -87,5 +88,4 @@ flowchart TD
 
 ## Open questions
 
-- In full page, does the type tree stay visible, or only the top bar and the navigation bar?
 - Is the description shown anywhere else than the documentation page (a tooltip in the type tree, in the type choice of a symbol)? It was shown in the tiles of the library screen, removed with the libraries of types (Product Owner, 2026-11-16).

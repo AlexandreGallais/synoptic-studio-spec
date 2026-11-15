@@ -47,9 +47,10 @@ flowchart LR
 
 ### A text that becomes an input
 
-Decided by the Product Owner (2026-11-11). A text can be set at the size the user needs, and it can turn into an input when the user clicks it, if a command is linked to it (see [Commands](../../metadata/07-commands.md), the display that becomes an input). It makes quick commands: no separate panel is opened.
+Decided by the Product Owner (2026-11-11). A text can be set at the size the user needs, and it can turn into an input when the user clicks it, if an input signal is linked to it. It makes quick entries: no separate panel is opened.
 
-> Open since 2026-11-16: commands with a typed value no longer exist; a command always sends a fixed value, and a typed value goes through a signal entry of the faceplate set to write (see [Commands](../../metadata/07-commands.md#the-value-is-always-fixed)). What this text writes once it becomes an input is to settle with the Product Owner. Proposal of the assistant: it writes an input signal of the type directly, with the same checks as a write entry of the faceplate. The lines below still say "command" until then.
+- Since commands always send a fixed value (2026-11-16, see [Commands](../../metadata/07-commands.md#the-value-is-always-fixed)), this text **writes an input signal of the type directly**, with the same checks as a write entry of the faceplate: bounds, conversion from the display unit, enum item (Product Owner, 2026-11-16, accepting the assistant's proposal). No command is used.
+- Only an input signal can be linked: an output is computed by the model.
 
 | What the text shows | What a click does |
 | --- | --- |
@@ -58,17 +59,18 @@ Decided by the Product Owner (2026-11-11). A text can be set at the size the use
 | An enum | A **selection menu** opens, with the whole list of the enum, and the user picks one item. |
 
 - The user chooses, in the editor, which of these a text does: number input, text input, or selection menu.
-- An enum is shown by the display text of its item, never by its key (see [Enums](../../metadata/06-enums.md)). A click on it opens the menu of the display texts; the command sends the key of the item picked.
-- What the user picks or types is sent as a command of the type, like any other command.
+- An enum is shown by the display text of its item, never by its key (see [Enums](../../metadata/06-enums.md)). A click on it opens the menu of the display texts; the input signal receives the key of the item picked.
+- What the user picks or types is checked, converted to the model unit, then written to the input signal.
 
 ```mermaid
 flowchart LR
     T["Text shown"] -->|"number: click"| N["Number input"]
     T -->|"text: click"| X["Text input"]
     T -->|"enum: click"| M["Menu with the whole list"]
-    N --> C["Command sent to the model"]
-    X --> C
-    M --> C
+    N --> K["Checked and converted, as in the faceplate"]
+    X --> K
+    M --> K
+    K --> S["Input signal written, sent to the model"]
 ```
 
 ## Where it is used

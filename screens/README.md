@@ -55,11 +55,11 @@ block-beta
 
 ### Delete by right click, in Metadata
 
-Preference of the Product Owner on 2026-11-16, said with a doubt ("je ne sais pas"): to confirm.
+Decided by the Product Owner on 2026-11-16: a preference first said with a doubt, then confirmed the same day ("la suppression par clic droit s'applique partout, à tout Metadata").
 
 - In Metadata, deleting is never a button always shown on the screen: an option seen at once invites a click.
 - Deleting is done by a right click on the item, then **Delete** in the menu that opens, as for the types (decided for the types on 2026-11-16).
-- So the tables and lists of Metadata have no delete button on their lines.
+- So the tables and lists of Metadata have no delete button on their lines: types, links, signals, commands, presets, quantities and units, enums and their items.
 
 ### Tables for the parts of a type
 

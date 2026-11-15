@@ -85,6 +85,7 @@ block-beta
 ### Typing a value
 
 - A signal set to **write** is the only way for a person to type a value for the model: a command always sends a fixed value (see [Commands](07-commands.md#the-value-is-always-fixed)).
+- Only an **input** of the model can be set to write; for an output, write is greyed. It follows the Product Owner's rule for commands (2026-11-16): sending a value to an output makes no sense, the model computes it; overriding an output is another mechanism, still an idea (see [Commands](07-commands.md#idea-commands-that-override-an-output)).
 - When the user types a value, the faceplate checks it against the bounds of the signal. The bounds are written in the model unit and are shown in the display unit.
 - A value outside the bounds is refused, with a message that says the bounds. Nothing is sent to the model.
 - An integer signal accepts whole numbers only. An enum signal accepts only the items of its enum: the user picks a display text, the model receives its key.
@@ -147,5 +148,4 @@ Preset `default` of `centrifugal_pump`, faceplate title "Feed pump".
 - A name shown per signal in the preset: the Product Owner said "Name shown, oui" while reading the table, and also that the faceplate always shows the display name of the signal. Written here as the signal's display name only, no renaming in the preset: to confirm.
 - Where the name of a preset is edited: the field above the table "is not nice there" (Product Owner, 2026-11-16).
 - The inputs of a signal that is not an enum (number, boolean, text): which choices?
-- Can a signal set to write be an output of the model?
 - Order of the lines: the order of the signals, or chosen in the preset?

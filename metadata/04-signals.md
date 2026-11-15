@@ -76,11 +76,11 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 | Direction | Input or output. |
 
 - The fields that do not apply to a line stay empty (no enum for a real, no quantity for a boolean).
-- The line of an enum signal shows the name of the enum it points to (Product Owner, 2026-11-11). Whether hovering it still shows the items of the enum, in a table, is to confirm. The enums themselves are made on their own page (see [Enums](06-enums.md)), never in the table of signals.
+- The line of an enum signal shows the name of the enum it points to (Product Owner, 2026-11-11). Open: when the mouse rests on that name (for example `operating_mode`), does a small bubble list its items (0 Off, 1 Manual, 2 Automatic), so that the Enums page need not be opened? The enums themselves are made on their own page (see [Enums](06-enums.md)), never in the table of signals.
 - The table shows the signals of the type and the signals it inherits from its parents. Inherited lines cannot be edited here: they are edited in the type that declares them.
 - The button that adds a signal sits **above the table** (see the [layout rules](../screens/README.md#add-buttons-above-the-list)).
-- No button on each line. Deleting a signal is done by a right click on its line, then Delete: a delete that is always shown invites a click (Product Owner's preference, 2026-11-16, to confirm for all of Metadata).
-- How Edit and Save work in a table (the whole table, or one line at a time) is open; until it is settled, the rule above holds: nothing changes without Edit then Save.
+- No button on each line. Deleting a signal is done by a right click on its line, then Delete: a delete that is always shown invites a click (Product Owner, 2026-11-16, for all of Metadata: see the [layout rules](../screens/README.md#delete-by-right-click-in-metadata)).
+- How Edit and Save work in a table (the whole table, or one line at a time) is open. The Product Owner leans towards **one line at a time**, with a doubt ("plutôt par ligne … je sais pas", 2026-11-16). Until it is settled, the rule above holds: nothing changes without Edit then Save.
 
 ```mermaid
 block-beta
@@ -99,5 +99,5 @@ block-beta
 ## Open questions
 
 - Decimal places on the signal itself, so that the model fixes how many decimals an input or an output has? The Product Owner doubts it (2026-11-16): the model should give and receive the real value, and decimals are for display only. To think about.
-- Edit and Save in the table: for the whole table, or for one line?
-- In a table, does hovering the enum of a line still show its items?
+- Edit and Save in the table: for the whole table, or for one line? The Product Owner leans towards one line, with a doubt.
+- Mouse resting on the enum name of a line: a bubble with its items, or nothing?
