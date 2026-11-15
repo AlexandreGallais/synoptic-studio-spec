@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Screens](README.md) › Metadata
 
-Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
+Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
 
 ## MD-00 · Navigation bar of Metadata
 
@@ -68,37 +68,39 @@ Gaps:
 
 ## MD-02 · General
 
-Path: Metadata › Types › a type › General. Complete: nothing more is needed (Product Owner, 2026-11-11).
+Path: Metadata › Types › a type › General. Complete: nothing more is needed (Product Owner, 2026-11-11, confirmed on 2026-11-16).
 
 ```mermaid
 mindmap
   root((MD-02 General))
     Name
       Read only
-      Edit button
-      Save button
+      Edit icon
+      Save icon
     Parent
+      Name and icon
+      Read only, never changed
     Icon
       Predefined list
-      Reset to the parent
+      Reset icon
     Colour
       Fixed palette
-      Reset to the parent
+      Reset icon
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | MD-02.1 | Name | Text field | Read only until Edit is clicked. The model identifier, readable (`centrifugal_pump`). | Decided | [Types](../metadata/01-types.md) |
-| MD-02.2 | Edit | Button | Makes the name editable. | Decided | [Types](../metadata/01-types.md) |
-| MD-02.3 | Save | Button | Saves the new name. No warning, no confirmation dialog. | Decided | [Types](../metadata/01-types.md) |
-| MD-02.4 | Parent | not said (select or tree) | Changed here only. | Decided | [Types](../metadata/01-types.md) |
+| MD-02.2 | Edit | Button (icon) | Makes the name editable. An icon, no text label (2026-11-16). | Decided | [Types](../metadata/01-types.md) |
+| MD-02.3 | Save | Button (icon) | Saves the new name. No warning, no confirmation dialog. An icon, no text label (2026-11-16). | Decided | [Types](../metadata/01-types.md) |
+| MD-02.4 | Parent | Read only: name and icon | Set at creation, never changed (2026-11-16). A wrong parent: delete the type and create it again. | Decided | [Types](../metadata/01-types.md) |
 | MD-02.5 | Icon | not said (list of icons) | One icon of the predefined SVG list. No import. | Decided | [Icons](../metadata/02-icons.md) |
 | MD-02.6 | Colour | Colour (palette only) | One colour of a fixed palette; no free colour. | Decided | [Icons](../metadata/02-icons.md) |
-| MD-02.7 | Reset icon, reset colour | Button | Shown when the type overrides its parent's choice; makes it follow the parent again. | Decided | [Icons](../metadata/02-icons.md) |
+| MD-02.7 | Reset icon, reset colour | Button (icon) | Shown when the type overrides its parent's choice; makes it follow the parent again. An icon, no text label (2026-11-16). | Decided | [Icons](../metadata/02-icons.md) |
 
 Gaps:
 
-- Does the parent change follow the same Edit and Save steps as the name?
+- Which icons for Edit, Save and Reset (to choose with the design system).
 
 ## MD-03 · Documentation
 
@@ -108,14 +110,14 @@ Path: Metadata › Types › a type › Documentation.
 mindmap
   root((MD-03 Documentation))
     Description
-      View mode
-        Default when not empty
-      Edit mode
-        Visual editor with a tool bar
-        Default when empty
-      Markdown mode
-        Raw text
+      Always editable
+      Formatting tool bar
+        On its right, Visual and Markdown
+        Full page button
+      Visual editor, by default
+      Markdown, raw text
     Links
+      Add a path, add a URL, above the list
       Path to a file or a folder
       URL
       Description of the link
@@ -126,32 +128,35 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-03.1 | Description, view mode | Rendered text | Shown by default when the type already has a description. | Decided | [Documentation](../metadata/03-documentation.md) |
-| MD-03.2 | Description, edit mode | Editor (visual) | A "what you see is what you get" editor with a formatting tool bar; shown by default when the description is empty. | Decided | [Documentation](../metadata/03-documentation.md) |
-| MD-03.3 | Description, Markdown mode | Editor (raw text) | For those who write Markdown faster; the user switches between edit and Markdown at any time. | Decided | [Documentation](../metadata/03-documentation.md) |
-| MD-03.4 | Go to edit | not said (button) | From the view mode to the edit mode. | Implied | [Documentation](../metadata/03-documentation.md) |
+| MD-03.1 | Description, view mode | — | Removed (2026-11-16): the description is always editable. | Decided | [Documentation](../metadata/03-documentation.md) |
+| MD-03.2 | Description, visual editor | Editor (visual) | A "what you see is what you get" editor with a formatting tool bar; shown by default. | Decided | [Documentation](../metadata/03-documentation.md) |
+| MD-03.3 | Description, Markdown | Editor (raw text) | For those who write Markdown faster; the user switches between visual and Markdown at any time. | Decided | [Documentation](../metadata/03-documentation.md) |
+| MD-03.4 | Go to edit | — | Removed (2026-11-16): there is no view mode to leave. | Decided | [Documentation](../metadata/03-documentation.md) |
+| MD-03.4b | Visual, Markdown | Buttons (switch) | On the right of the formatting tool bar, on the same line (2026-11-16). | Decided | [Documentation](../metadata/03-documentation.md) |
+| MD-03.4c | Full page | Button (icon), in the tool bar | The description takes the whole page; the links are hidden; the window and the menus of the application stay. The same button brings the page back (2026-11-16). | Decided | [Documentation](../metadata/03-documentation.md) |
 | MD-03.5 | Links | List | Each link: a path or a URL, and a description. | Decided | [Documentation](../metadata/03-documentation.md) |
-| MD-03.6 | Add a path | Button + selection window | The server opens a window; only the path is kept (`W:/...`). A file or a folder. | Decided | [Documentation](../metadata/03-documentation.md) |
-| MD-03.7 | Add a URL | Text field | Typed or pasted. | Decided | [Documentation](../metadata/03-documentation.md) |
+| MD-03.6 | Add a path | Button + selection window | Above the list of links. The server opens a window; only the path is kept (`W:/...`). A file or a folder. | Decided | [Documentation](../metadata/03-documentation.md) |
+| MD-03.7 | Add a URL | Button + text field | Above the list of links. Typed or pasted. | Decided | [Documentation](../metadata/03-documentation.md) |
 | MD-03.8 | Description of a link | Text field | Plain text, not Markdown. | Decided | [Documentation](../metadata/03-documentation.md) |
 | MD-03.9 | Open | Button (not said) | Always a folder: the one that contains the file, or the folder itself. Never launches a file or a program. A URL opens in the browser. | Decided | [Documentation](../metadata/03-documentation.md) |
-| MD-03.10 | Edit or remove a link | not said | — | Implied | — |
+| MD-03.10 | Remove a link | Right click › Delete | No delete button on the line ([layout rules](README.md#delete-by-right-click-in-metadata), to confirm). | Proposed | [Layout rules](README.md#delete-by-right-click-in-metadata) |
 
 Gaps:
 
-- How does the user leave the edit mode: a Save button, or a click outside?
-- How is a link edited or removed? Can links be reordered?
+- In full page, does the type tree stay visible, or only the top bar and the navigation bar?
+- How is a link edited? Can links be reordered?
 
 ## MD-04 · Signals
 
 Path: Metadata › Types › a type › Signals.
 
-The list of signals is on the left, the panel of the selected signal on the right (Product Owner, 2026-11-16): a panel under the list would move down as the list grows.
+The signals are shown in **one table** that takes as much room as possible: one line per signal, one column per field (Product Owner, 2026-11-16). It replaces the list on the left and its panel on the right, drawn earlier the same day. The + that adds a signal sits above the table.
 
 ```mermaid
 block-beta
-    columns 3
-    list["List of signals: own, then inherited"] panel["Panel of the selected signal: Edit, fields, Save"]:2
+    columns 1
+    add["+ Add a signal, above the table"]
+    table["Table: Name (or ID) | Type | Enum | Quantity | Model unit | Min | Max | Direction; own signals, then inherited ones"]
 ```
 
 How the fields depend on each other: the type decides which fields exist; the quantity decides which units can be chosen.
@@ -169,82 +174,85 @@ flowchart LR
 ```mermaid
 mindmap
   root((MD-04 Signals))
-    List of signals, on the left
+    Plus above the table
+    Table, one line per signal
       Own signals
-      Inherited signals
-      Enum line shows the enum name
-        Hover shows its items
-    Panel of the selected signal, on the right
-      Edited as a whole
-      Edit button
-      Name
-      Type
-      Enum, for an enum
-      Quantity, optional
-      Model unit, with a quantity
-      Minimum and maximum
-      Direction, input or output
-      Save button
+      Inherited signals, read only
+      Columns
+        Name or ID
+        Type
+        Enum, for an enum
+        Quantity, optional
+        Model unit, with a quantity
+        Minimum and maximum
+        Direction, input or output
+    Right click on a line
+      Delete
+    Edit and Save
+      Whole table or one line, open
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-04.1 | List of signals | List | On the left. Own and inherited signals. A click selects a signal and shows it in the panel on the right. | Decided | [Signals](../metadata/04-signals.md), [Layout rules](README.md#layout-rules) |
-| MD-04.2 | Enum on a signal line | — | The line shows the enum's name; hovering it shows its items. | Decided | [Signals](../metadata/04-signals.md) |
-| MD-04.3 | Inherited signals | not said | How they look in the list (greyed, with the parent's name) is not said. | Implied | [Signals](../metadata/04-signals.md) |
-| MD-04.4 | Add a signal | not said (button) | — | Implied | [Signals](../metadata/04-signals.md) |
-| MD-04.5 | Edit, Save | Button | In the panel on the right. The whole signal goes into edit mode, then is saved: nothing changes by mistake; no warning. | Decided | [Signals](../metadata/04-signals.md) |
-| MD-04.6 | Name | Text field | Model identifier. A sub-type cannot reuse an inherited name. | Decided | [Signals](../metadata/04-signals.md) |
-| MD-04.7 | Type | not said (select) | Integer, real (64-bit double), boolean, text, enum. | Decided | [Signals](../metadata/04-signals.md) |
-| MD-04.8 | Enum | not said (select) | Only for the type enum: an enum of the Enums page, as a link. | Decided | [Enums](../metadata/06-enums.md) |
-| MD-04.9 | Quantity | not said (select) | Optional, integer and real only. A quantity or a difference (a difference sits under its quantity). | Decided | [Units](../metadata/05-units.md) |
-| MD-04.10 | Model unit | not said (select) | Only with a quantity. Default: the quantity's model unit; another unit of the same quantity can be chosen. | Decided | [Units](../metadata/05-units.md) |
-| MD-04.11 | Minimum, maximum | Number field | Integer and real only; indicative; in the model unit. | Decided | [Signals](../metadata/04-signals.md) |
-| MD-04.12 | Direction | not said (radio) | Input or output of the model. | Decided | [Signals](../metadata/04-signals.md) |
-| MD-04.13 | Delete a signal | not said | Its effect on symbols is written; the control is not. | Implied | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| MD-04.1 | Table of signals | Table | One line per signal, one column per field; takes as much room as possible. Own and inherited signals (2026-11-16). | Decided | [Signals](../metadata/04-signals.md#the-table-of-signals) |
+| MD-04.2 | Enum on a signal line | — | The line shows the enum's name. Hovering it to see the items: to confirm in a table. | Decided (hover: Open) | [Signals](../metadata/04-signals.md) |
+| MD-04.3 | Inherited signals | Lines of the table | Read only here; edited in the type that declares them. Their look (greyed, with the parent's name) is not said. | Implied | [Signals](../metadata/04-signals.md) |
+| MD-04.4 | Add a signal | Button (+) | Above the table ([layout rules](README.md#add-buttons-above-the-list)). | Decided | [Layout rules](README.md#add-buttons-above-the-list) |
+| MD-04.5 | Edit, Save | Button (icon) | Nothing changes without Edit then Save; no warning. For the whole table or for one line: open. | Decided (rule), Open (scope) | [Signals](../metadata/04-signals.md) |
+| MD-04.6 | Name | Column, text field | Model identifier. A sub-type cannot reuse an inherited name. Header "Name" or "ID": open. | Decided (header: Open) | [Signals](../metadata/04-signals.md) |
+| MD-04.7 | Type | Column, select | Integer, real (64-bit double), boolean, text, enum. | Decided | [Signals](../metadata/04-signals.md) |
+| MD-04.8 | Enum | Column, select | Only for the type enum: an enum of the Enums page, as a link. Empty otherwise. | Decided | [Enums](../metadata/06-enums.md) |
+| MD-04.9 | Quantity | Column, select | Optional, integer and real only. A quantity or a difference (a difference sits under its quantity). | Decided | [Units](../metadata/05-units.md) |
+| MD-04.10 | Model unit | Column, select | Only with a quantity. Default: the quantity's model unit; another unit of the same quantity can be chosen. | Decided | [Units](../metadata/05-units.md) |
+| MD-04.11 | Minimum, maximum | Columns, number fields | Integer and real only; indicative; in the model unit. | Decided | [Signals](../metadata/04-signals.md) |
+| MD-04.12 | Direction | Column, select | Input or output of the model. | Decided | [Signals](../metadata/04-signals.md) |
+| MD-04.13 | Delete a signal | Right click › Delete | No button on the lines ([layout rules](README.md#delete-by-right-click-in-metadata), to confirm). | Proposed | [Signals](../metadata/04-signals.md#the-table-of-signals) |
 
 Gaps:
 
-- Are the fields that do not apply hidden or greyed (quantity for a boolean, enum for a real)?
 - Order of the signals: by creation, by name, or chosen by the user?
+- Width of the window: what happens when the eight columns do not fit (scroll sideways, narrower columns)?
 
 ## MD-05 · Commands
 
 Path: Metadata › Types › a type › Commands.
 
-As for the signals, the list of commands is on the left and the panel of the selected command on the right ([layout rules](README.md#layout-rules)).
+As for the signals, the commands are shown in **one table**, the kind in the first column (Product Owner, 2026-11-16). The + that adds a command sits above the table.
 
 ```mermaid
 mindmap
   root((MD-05 Commands))
-    List of commands
-    A command
-      Name
+    Plus above the table
+    Table, one line per command
       Kind
         Set a signal
-          Target signal
-          Fixed value
-          Typed value, of the target's type
         Trigger
-          Name only, its identifier
+      Name
+      Target signal, for Set a signal
+      Value, fixed, of the target's type
+        Number typed
+        True or false
+        Text typed
+        Enum item picked
+    Right click on a line
+      Delete
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-05.1 | List of commands | List | On the left; the selected command in a panel on the right. | Implied (layout: Decided) | [Commands](../metadata/07-commands.md) |
-| MD-05.2 | Add a command | not said (button) | — | Implied | [Commands](../metadata/07-commands.md) |
-| MD-05.3 | Name | Text field | For a trigger, the name is its identifier and all it has. Symbols follow a rename (internal identifier). | Decided | [Commands](../metadata/07-commands.md) |
-| MD-05.4 | Kind | not said (radio) | Set a signal, or Trigger. | Decided | [Commands](../metadata/07-commands.md) |
-| MD-05.5 | Target signal | not said (select) | For "Set a signal". | Decided | [Commands](../metadata/07-commands.md) |
-| MD-05.6 | Value: fixed or typed | not said (radio) | — | Decided | [Commands](../metadata/07-commands.md) |
-| MD-05.7 | Fixed value | Field of the target signal's type | The value sent (example: `running` = `true`). | Decided | [Commands](../metadata/07-commands.md) |
-| MD-05.8 | Typed value | — | The person types a value of the target signal's type: a number, a text, or an item of an enum. | Decided | [Commands](../metadata/07-commands.md) |
-| MD-05.9 | Delete a command | not said | Its effect on symbols is written; the control is not. | Implied | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| MD-05.1 | Table of commands | Table | One line per command; kind, name, target signal, value (2026-11-16). | Decided | [Commands](../metadata/07-commands.md#the-table-of-commands) |
+| MD-05.2 | Add a command | Button (+) | Above the table ([layout rules](README.md#add-buttons-above-the-list)). | Decided | [Layout rules](README.md#add-buttons-above-the-list) |
+| MD-05.3 | Name | Column, text field | For a trigger, the name is its identifier and all it has. Symbols follow a rename (internal identifier). | Decided | [Commands](../metadata/07-commands.md) |
+| MD-05.4 | Kind | Column, select | First column. Set a signal, or Trigger. | Decided | [Commands](../metadata/07-commands.md) |
+| MD-05.5 | Target signal | Column, select | For "Set a signal"; empty for a trigger. | Decided | [Commands](../metadata/07-commands.md) |
+| MD-05.6 | Value: fixed or typed | — | Removed (2026-11-16): the value is always fixed. | Decided | [Commands](../metadata/07-commands.md#the-value-is-always-fixed) |
+| MD-05.7 | Value | Column, field of the target signal's type | Fixed, written in Metadata: a number, true or false, a text, or an item of the enum. Empty for a trigger. | Decided | [Commands](../metadata/07-commands.md#the-value-is-always-fixed) |
+| MD-05.8 | Typed value | — | Removed (2026-11-16): a person types a value in a faceplate entry set to write. | Decided | [Faceplates](../metadata/08-faceplates.md) |
+| MD-05.9 | Delete a command | Right click › Delete | No button on the lines ([layout rules](README.md#delete-by-right-click-in-metadata), to confirm). | Proposed | [Commands](../metadata/07-commands.md#the-table-of-commands) |
 
 Gaps:
 
-- Is a command edited as a whole with Edit and Save, like a signal?
-- A typed value on a boolean signal: allowed (a switch), or always a fixed value?
+- Edit and Save in the table: as for the signals, open.
 - Can a command target a signal of any direction, or only an input?
 
 ## MD-06 · Faceplate
@@ -270,12 +278,12 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | MD-06.1 | Entries | List | Signal entries and command or trigger entries. | Decided | [Faceplates](../metadata/08-faceplates.md) |
-| MD-06.2 | Add a signal entry | not said (button) | — | Implied | [Faceplates](../metadata/08-faceplates.md) |
+| MD-06.2 | Add a signal entry | Button (+) | Above the list of entries ([layout rules](README.md#add-buttons-above-the-list)). | Decided (place), Implied (button) | [Faceplates](../metadata/08-faceplates.md) |
 | MD-06.3 | Signal | not said (select) | The signal shown. | Decided | [Faceplates](../metadata/08-faceplates.md) |
 | MD-06.4 | Read or write | not said (radio) | — | Decided | [Faceplates](../metadata/08-faceplates.md) |
 | MD-06.5 | Display unit | Select | Units of the signal's quantity. | Decided | [Faceplates](../metadata/08-faceplates.md) |
 | MD-06.6 | Input of an enum | Select | Radio on one line, radio on several lines, select, "and so on"; in read and in write. Shows the display texts. | Decided (list open: "and so on") | [Faceplates](../metadata/08-faceplates.md) |
-| MD-06.7 | Add a command or trigger entry | not said (button) | Picked in the list of the type's commands. | Decided (control not said) | [Faceplates](../metadata/08-faceplates.md) |
+| MD-06.7 | Add a command or trigger entry | Button (+) | Above the list of entries. Picked in the list of the type's commands. | Decided | [Faceplates](../metadata/08-faceplates.md) |
 | MD-06.8 | Name shown | Text field | The name of the command button in the faceplate. | Decided | [Faceplates](../metadata/08-faceplates.md) |
 
 Gaps:
@@ -310,7 +318,7 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | MD-07.1 | List of presets | List | At least one is needed to use the type in a symbol; none is created automatically. | Decided | [Presets](../metadata/09-presets.md) |
-| MD-07.2 | Create a preset | not said (button) | — | Implied | [Presets](../metadata/09-presets.md) |
+| MD-07.2 | Create a preset | Button (+) | Above the list of presets ([layout rules](README.md#add-buttons-above-the-list)). | Decided (place), Implied (button) | [Presets](../metadata/09-presets.md) |
 | MD-07.3 | Name of the preset | not said | Never mentioned. | Open | [Presets](../metadata/09-presets.md) |
 | MD-07.4 | Default value | Field of the signal's type | One per signal. | Decided | [Presets](../metadata/09-presets.md) |
 | MD-07.5 | Display unit | Select | Starts as the model unit. | Decided | [Presets](../metadata/09-presets.md) |
@@ -360,7 +368,7 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | MD-08.1 | List of quantities | List | Mass, volume, flow... Each difference is shown under its quantity, and stays a quantity of its own. | Decided | [Units](../metadata/05-units.md) |
-| MD-08.2 | Add a quantity | not said (button) | The user can add and change quantities, families and units. | Decided (control not said) | [Units](../metadata/05-units.md) |
+| MD-08.2 | Add a quantity, a family, a unit | Button (+) | Above each list ([layout rules](README.md#add-buttons-above-the-list)). The user can add and change quantities, families and units. | Decided | [Units](../metadata/05-units.md) |
 | MD-08.3 | Default model unit | Select | Among the units of the quantity. | Decided | [Units](../metadata/05-units.md) |
 | MD-08.4 | Default decimal places | Number field | The global setting for display. | Decided | [Units](../metadata/05-units.md) |
 | MD-08.5 | Reference family | Select | Every other family converts to it and back. | Decided | [Units](../metadata/05-units.md) |
@@ -397,13 +405,13 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | MD-09.1 | List of enums | List | A page of its own, not part of the signals. Enums can be made before any signal uses them. | Decided | [Enums](../metadata/06-enums.md) |
-| MD-09.2 | Add an enum | not said (button) | — | Implied | [Enums](../metadata/06-enums.md) |
+| MD-09.2 | Add an enum | Button (+) | Above the list of enums ([layout rules](README.md#add-buttons-above-the-list)). | Decided (place), Implied (button) | [Enums](../metadata/06-enums.md) |
 | MD-09.3 | Name | Text field | — | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.4 | Kind of key | — | Removed (Product Owner, 2026-11-16): a key is always a number, there are no string keys. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.5 | Items | List | Each item a key and a display text. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.6 | Key | Number field | Unique; what the model receives. Changing it is breaking for the model. Whole numbers only: open. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.7 | Display text | Text field | What the faceplate, the symbol texts and the test values show. Not breaking. | Decided | [Enums](../metadata/06-enums.md) |
-| MD-09.8 | Add, remove an item | not said | — | Implied | [Enums](../metadata/06-enums.md) |
+| MD-09.8 | Add, remove an item | Button (+), right click › Delete | The + above the list of items; remove by right click ([layout rules](README.md#delete-by-right-click-in-metadata), to confirm). | Decided (place of +), Proposed (remove) | [Enums](../metadata/06-enums.md) |
 
 Gaps:
 

@@ -385,7 +385,7 @@ mindmap
 
 Gaps:
 
-- For a typed-value command: the value is typed where (the faceplate, a text that becomes an input)?
+- Commands with a typed value no longer exist (2026-11-16): a command always sends a fixed value; a typed value goes through a faceplate entry set to write.
 - Remove an interaction; edit or delete a zone.
 
 ## SY-08 · Animation mode
@@ -426,7 +426,7 @@ mindmap
 | SY-08.6 | Pivot | 9-point grid or a point | Centre by default. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.7 | Text: what it shows | Radio | Written text, the value of a signal, or the unit of a signal only. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-08.8 | Text: show the unit | Toggle | With the value. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
-| SY-08.9 | Text: becomes an input | Radio + Select (command) | Number input, text input, or enum menu (display texts shown, key sent); sends a command. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
+| SY-08.9 | Text: becomes an input | Radio + Select | Number input, text input, or enum menu (display texts shown, key sent). What it writes is open since commands with a typed value were removed (2026-11-16); proposal: an input signal, directly. | Decided (input), Open (what it writes) | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.10 | Number format | Toggles | Thousand separator, sign, leading zeros, notation. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 
 Gaps:

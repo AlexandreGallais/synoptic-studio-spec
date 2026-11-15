@@ -4,7 +4,7 @@
 
 The first part of Synoptic Studio: the data and documentation a symbol can be attached to. It is the model side (what an object is, what goes in and out of it), not the front side (how it looks).
 
-Status: validated by the Product Owner on 2026-11-11, then changed by him the same day while reviewing the [screens](../screens/metadata.md): type tree on the left, order of the parts, three modes for the description, links that only open folders, a signal edited as a whole, enum items as a key and a display text, typed values of any type, differences shown with their quantity. On 2026-11-16, while reviewing the wireframes, he removed the libraries of types and set the layout rules of the [screens](../screens/README.md#layout-rules) (a navigation bar on the left, a list on the left and its panel on the right), made enum keys numbers only, and said how a type is created (a + on hover) and deleted (right click). The questions still open are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11, then changed by him the same day while reviewing the [screens](../screens/metadata.md): type tree on the left, order of the parts, three modes for the description, links that only open folders, a signal edited as a whole, enum items as a key and a display text, typed values of any type, differences shown with their quantity. On 2026-11-16, while reviewing the wireframes, he removed the libraries of types and set the layout rules of the [screens](../screens/README.md#layout-rules) (a navigation bar on the left, a list on the left and its panel on the right), made enum keys numbers only, and said how a type is created (a + on hover) and deleted (right click). Later that day he made the parent of a type fixed at creation, the description always editable (no view mode), the add buttons always above the lists, the signals and commands into tables, and the value of a command always fixed (a typed value goes through a write entry of the faceplate). The questions still open are listed in [Open questions](12-open-questions.md).
 
 ## The big picture
 
@@ -66,7 +66,7 @@ flowchart LR
 | [Signals](04-signals.md) | The model's inputs and outputs: fields, type, bounds, direction. |
 | [Units](05-units.md) | Quantities, families, reference family, conversions, model unit and display unit, ready-made units. |
 | [Enums](06-enums.md) | The Enums page: named lists of values, picked by a signal as a link, never copied. |
-| [Commands](07-commands.md) | The two kinds of command: set a signal (fixed or typed value) and trigger. |
+| [Commands](07-commands.md) | The two kinds of command: set a signal (always a fixed value) and trigger; the table of commands. |
 | [Faceplates](08-faceplates.md) | What a faceplate entry is: read or write, display unit, enum input, names; the check of typed values; title and description given in the synoptic. |
 | [Presets](09-presets.md) | Defaults: values, display units, decimal places, names and descriptions of signals, entries shown at the start. |
 | [Who changes what](11-who-changes-what.md) | The table of where each thing is created and changed. |

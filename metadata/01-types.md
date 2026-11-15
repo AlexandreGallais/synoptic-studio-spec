@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Types · Next: [Icons](02-icons.md)
 
-Status: validated by the Product Owner on 2026-11-11. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no libraries of types, type tree actions, fixed parent, icon buttons in General). Open points are listed in [Open questions](12-open-questions.md).
 
 A type is the representation of a symbol at one level of detail. Types form a tree, hence parents and sub-types.
 
@@ -33,7 +33,18 @@ flowchart LR
 - A type inherits the signals of its parents.
 - The type tree is on the **left** of the screen, as in a code editor (IDE), where every tree sits on the left (Product Owner, 2026-11-11). It sits just right of the navigation bar of Metadata (see [Screens](../screens/README.md#layout-rules)).
 - There are no libraries of types: every type of the tree can be chosen everywhere (Product Owner, 2026-11-16).
-- The name and the parent are changed in the General part only. Double-clicking an item in the tree does not rename it: hidden options are avoided.
+- The name is changed in the General part only. Double-clicking an item in the tree does not rename it: hidden options are avoided.
+- **The parent never changes** (Product Owner, 2026-11-16). It is set when the type is created, by the + of the type under which it is created (or the + of the title, for a root type). General shows it, read only: its name with its icon.
+  - Why: moving a type to another parent changes the signals it inherits and breaks what uses it. No signal goes from one parent to another "aussi bêtement que ça". Metadata must stay strict ("ça doit être carré").
+  - A type created under the wrong parent is deleted and created again under the right one; it is never moved.
+
+```mermaid
+flowchart LR
+    C["+ on a type, or + on the title"] --> P["Parent set at creation"]
+    P --> F["Fixed: shown in General, read only"]
+    W["Wrong parent"] --> D["Delete the type"] --> N["Create it again under the right parent"]
+```
+
 - The parts of a type are shown in this order (Product Owner, 2026-11-11): General, Documentation, Signals, Commands, Faceplate, Presets. How they are shown is open: tabs in a row break the rule of columns, so four proposals are drawn (see [The parts of a type: four proposals](#the-parts-of-a-type-four-proposals)).
 
 ### The type tree: search, create, delete (Product Owner, 2026-11-16)
@@ -50,14 +61,15 @@ flowchart LR
     RC["Right click on a type"] --> M["Menu of options"] --> D["Delete"]
 ```
 
-- The General part holds only the name, the parent, the icon and the colour. Nothing more is needed (Product Owner, 2026-11-11).
+- The General part holds only the name, the parent, the icon and the colour. Nothing more is needed (Product Owner, 2026-11-11, confirmed on 2026-11-16).
+- In General, Edit, Save and the resets to the parent (icon, colour) are **icon buttons**, without a text label (Product Owner, 2026-11-16).
 - No virtual links between types of the tree. Duplicates are accepted: a change in one type must not change another silently, so nothing has to be retested everywhere. It also lets each type be versioned alone later. The documentary research (2026-11-10) finds this rule defensible: neither FMI, OPC UA nor AutomationML requires or forbids it.
 
 ### Limits of "no virtual link" (decided on 2026-11-11, from the research)
 
 The rule is true between types that have no parent link. Three mechanisms do propagate a change, on purpose, and are written as such:
 
-- Changing a parent changes all its descendants.
+- Changing the content of a parent (its signals, its commands) changes all its descendants. The parent link itself never changes (see above).
 - A sub-type cannot declare again a signal name it already inherits. No redefinition: it is the simplest rule, and a name stays one thing along the tree.
 - The values of an enum are part of the contract with the model: changing them is breaking, like a rename (see [Enums](06-enums.md)). Links to an enum or a quantity go through an internal identifier, like symbols do for types.
 
@@ -144,7 +156,7 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Type (name, parent) | Metadata, General | Signal and command inheritance | Chosen among all the types, only here | No |
+| Type (name, parent) | Metadata: the name in General, the parent at creation only | Signal and command inheritance | Chosen among all the types, only here | No |
 
 ## Open questions
 

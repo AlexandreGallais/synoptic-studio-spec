@@ -17,6 +17,10 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | Enum keys: whole numbers only, or any number | [Enums](06-enums.md) | Raised when string keys were removed (2026-11-16). |
 | How the six parts of a type are shown (tabs, a column, icons, under the type in the tree) | [Types](01-types.md) | Four proposals drawn for the Product Owner (2026-11-16). |
 | Where the description of a type is shown besides its documentation page | [Documentation](03-documentation.md) | Raised by the removal of the libraries of types (2026-11-16). |
+| Full page of the description: does the type tree stay visible? | [Documentation](03-documentation.md) | Raised with the full page button (2026-11-16). |
+| Table of signals: header "Name" or "ID"; Edit and Save for the table or a line; hover on an enum | [Signals](04-signals.md) | Raised when the signals became a table (2026-11-16). |
+| What a text that becomes an input writes, now that commands have a fixed value only; directions a command can target | [Commands](07-commands.md) | Raised when typed values were removed from commands (2026-11-16). |
+| Delete by right click in all of Metadata | [Layout rules](../screens/README.md#delete-by-right-click-in-metadata) | Preference of the Product Owner, said with a doubt (2026-11-16). |
 | Every control the specs need but never describe (create, delete, order...) | [Screens of Metadata](../screens/metadata.md) | Listed as gaps, screen by screen. |
 
 ```mermaid

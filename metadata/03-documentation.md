@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Documentation · Previous: [Icons](02-icons.md) · Next: [Signals](04-signals.md)
 
-Status: validated by the Product Owner on 2026-11-11. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (always editable, full page button, add buttons above the links). Open points are listed in [Open questions](12-open-questions.md).
 
 A type has a documentation page, where people put what explains the type: a description and links to documents and sources.
 
@@ -29,24 +29,27 @@ flowchart TD
 ## The description
 
 - It is stored in Markdown.
-- Three modes (Product Owner, 2026-11-11):
+- **The description is always editable** (Product Owner, 2026-11-16): there is no view mode and no button to go to the edit mode. It replaces the three modes of 2026-11-11 (view, edit, Markdown).
+- Two ways to write it, and the user switches between them at any time:
 
 | Mode | What the user sees | When |
 | --- | --- | --- |
-| View | The rendered text, to read. | By default when the type already has a description. |
-| Edit | A visual editor (what you see is what you get), with a tool bar that helps with the formatting. | By default when the description is empty. |
-| Markdown | The raw text, for those who write Markdown faster. | When the user switches to it from the edit mode. |
+| Visual | A visual editor (what you see is what you get), with a formatting tool bar. | By default. |
+| Markdown | The raw text, for those who write Markdown faster. | When the user switches to it. |
 
-- The user goes from the view mode to the edit mode to change the text, and switches between the visual editor and the raw Markdown at any time.
+- The buttons that switch between visual and Markdown sit **on the right of the formatting tool bar**, on the same line (Product Owner, 2026-11-16).
+- The tool bar also has a **full page** button (Product Owner, 2026-11-16):
+  - the description takes the whole page of the documentation, and the links are no longer shown, so the user only types text, calmly;
+  - it is not the full screen of the system: the window stays as it is, and the menus of the application stay;
+  - the same button brings the page back.
 - The description is written in the documentation page, not in General. It does not go to the model.
 
 ```mermaid
 flowchart LR
-    O["Open a type"] --> C{"Description empty?"}
-    C -- "No" --> V["View mode: rendered text"]
-    C -- "Yes" --> E["Edit mode: visual editor with its tool bar"]
-    V -->|"edit"| E
-    E <-->|"switch"| M["Markdown mode: raw text"]
+    O["Open a type"] --> E["Visual editor, always editable, tool bar"]
+    E <-->|"switch, right of the tool bar"| M["Markdown: raw text"]
+    E -->|"full page button"| F["The description takes the whole page; links hidden; menus kept"]
+    F -->|"same button"| E
 ```
 
 ## The links
@@ -54,6 +57,7 @@ flowchart LR
 - A link is one of two kinds: a path to a file or a folder, or a URL.
 - A path is chosen with a selection window: the user browses to the file or the folder, and the application keeps only its path (for example `W:/...`). The file is never loaded, copied or embedded.
 - A URL is typed or pasted.
+- The buttons that add a path or a URL sit **above the list of links**, never under it (see the [layout rules](../screens/README.md#add-buttons-above-the-list)).
 - Each link has a description: a short text in plain text (not Markdown) that says what is attached. It is a description, not a name.
 - A link to a file or a folder can be opened directly, so the user does not lose time. Opening **always opens a folder, never a file** (Product Owner, 2026-11-11):
   - a link to a file opens the folder that contains the file;
@@ -83,4 +87,5 @@ flowchart TD
 
 ## Open questions
 
+- In full page, does the type tree stay visible, or only the top bar and the navigation bar?
 - Is the description shown anywhere else than the documentation page (a tooltip in the type tree, in the type choice of a symbol)? It was shown in the tiles of the library screen, removed with the libraries of types (Product Owner, 2026-11-16).

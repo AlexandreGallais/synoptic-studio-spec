@@ -8,7 +8,7 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 
 | Thing | Created and changed in | In a symbol | In a synoptic |
 | --- | --- | --- | --- |
-| Type (name, parent, icon) | Metadata, General | Choose its type among all the types (only here) | No |
+| Type (name, parent, icon) | Metadata, General (the parent: set at creation, never changed) | Choose its type among all the types (only here) | No |
 | Type documentation | Metadata | No | No |
 | Signal | Metadata | No | No |
 | Quantity, families, reference family, conversions, default model unit, default decimals | Units page | No | No |

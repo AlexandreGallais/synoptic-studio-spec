@@ -42,6 +42,7 @@ An enum is always shown by the display texts of its items, never by their keys (
 
 ### Typing a value
 
+- A write entry is the only way for a person to type a value for the model: a command always sends a fixed value (Product Owner, 2026-11-16, see [Commands](07-commands.md#the-value-is-always-fixed)).
 - When the user types a value in a write entry, the faceplate checks it against the bounds of the signal. The bounds are written in the model unit and are shown in the display unit.
 - A value outside the bounds is refused, with a message that says the bounds. Nothing is sent to the model.
 - An integer signal accepts whole numbers only. An enum signal accepts only the items of its enum: the user picks a display text, the model receives its key.

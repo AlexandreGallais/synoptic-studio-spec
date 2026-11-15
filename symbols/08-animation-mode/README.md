@@ -49,6 +49,8 @@ flowchart LR
 
 Decided by the Product Owner (2026-11-11). A text can be set at the size the user needs, and it can turn into an input when the user clicks it, if a command is linked to it (see [Commands](../../metadata/07-commands.md), the display that becomes an input). It makes quick commands: no separate panel is opened.
 
+> Open since 2026-11-16: commands with a typed value no longer exist; a command always sends a fixed value, and a typed value goes through a signal entry of the faceplate set to write (see [Commands](../../metadata/07-commands.md#the-value-is-always-fixed)). What this text writes once it becomes an input is to settle with the Product Owner. Proposal of the assistant: it writes an input signal of the type directly, with the same checks as a write entry of the faceplate. The lines below still say "command" until then.
+
 | What the text shows | What a click does |
 | --- | --- |
 | A number | The text turns into a **number input**, right there. This is the main case. |

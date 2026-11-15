@@ -36,6 +36,35 @@ block-beta
     list["List: one line per item, a click selects"] panel["Panel of the selected item: its fields, its actions"]:2
 ```
 
+### Add buttons above the list
+
+Decided by the Product Owner on 2026-11-16, for every screen ("il faut que tu appliques cette méthode partout").
+
+- The buttons that add an item to a list (the **+**, "Add a path", "Add a URL"...) always sit **above the list**, never under it.
+- A button under a list moves down as the list grows, and gets harder and harder to reach.
+- It does not change the + shown on hover on each type of the type tree, which creates a child of that type (see [Types](../metadata/01-types.md)).
+
+```mermaid
+block-beta
+    columns 1
+    add["+ Add, above the list"]
+    l1["Item 1"]
+    l2["Item 2"]
+    l3["Item n: the list grows downwards, the button does not move"]
+```
+
+### Delete by right click, in Metadata
+
+Preference of the Product Owner on 2026-11-16, said with a doubt ("je ne sais pas"): to confirm.
+
+- In Metadata, deleting is never a button always shown on the screen: an option seen at once invites a click.
+- Deleting is done by a right click on the item, then **Delete** in the menu that opens, as for the types (decided for the types on 2026-11-16).
+- So the tables and lists of Metadata have no delete button on their lines.
+
+### Tables for the parts of a type
+
+Decided by the Product Owner on 2026-11-16: the signals and the commands of a type are shown in one table each, one line per item and one column per field, taking as much room as possible (see [Signals](../metadata/04-signals.md#the-table-of-signals) and [Commands](../metadata/07-commands.md#the-table-of-commands)). They replace, for these two parts, the list on the left and its panel on the right.
+
 ### Navigation bar on the left
 
 - A narrow bar of icons sits on the far left of the window (a "rail").
@@ -91,6 +120,7 @@ Each screen has:
 | Colour | A colour picker. |
 | Slider | A value chosen by dragging. |
 | Editor | A dedicated editing area (Markdown, drawing...). |
+| Table | Items one per line, their fields in columns. |
 | Dialog | A small window that asks something before going on. |
 
 When the specs do not say the kind, the table says "not said" and gives the most likely kind in brackets.
