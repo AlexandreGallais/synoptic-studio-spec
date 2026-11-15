@@ -87,7 +87,7 @@ Decided by the Product Owner (2026-11-11).
 Decided by the Product Owner (2026-11-11).
 
 - A pipe style **can** be linked to a type of Metadata, if the user wants it. It is optional: a style with no type is a drawing, with fixed or moving dashes as set above.
-- Linked to a type, the style is animated by the model, like a dynamic symbol (see [Animation mode](../08-animation-mode/README.md)). Examples given by the Product Owner:
+- Linked to a type, the style is animated by the model, like a symbol with a type (see [Animation mode](../08-animation-mode/README.md)). Examples given by the Product Owner:
   - the **speed** of the moving dashes follows a value of the model;
   - the **colours** (body, border) change with what happens;
   - the **direction** of the movement changes with the model;

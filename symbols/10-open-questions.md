@@ -10,7 +10,7 @@ This file is the index of the open questions. A question sits in the file it con
 
 | Question | Page | Opinion of the research |
 | --- | --- | --- |
-| Names: Advanced tools, Path, Interaction zone, Preview, Test mode; Layer, static and dynamic kept. | [Editor](03-editor/README.md) | Those names. |
+| Names: Advanced tools, Path, Interaction zone, Preview, Test mode; Layer kept. (Static and dynamic: dropped, one kind of symbol, 2026-11-15.) | [Editor](03-editor/README.md) | Those names. |
 | Rotation as the only transform of a shape; frame of a symbol; minimum snapping and guides; editor data in one `<metadata>` block; missing features to add now. | [Editor](03-editor/README.md) | See the page. |
 | Desktop window; does "all in JavaScript" allow a shell in Rust? Browsers to hold at 8.3 ms; which effects go in the specs (two lots?); effect suspended during a gesture; colour filter or recomputed colours. | [Effects and masks](04-drawing-mode/effects-and-masks.md) | Electron, and the installed web app first; two lots of effects. |
 | Open paths (middle only, caps, joins); native stroke for a plain "middle" border or every border computed; dashes of shape borders computed like pipes; named colours and a "high-performance" palette. (Dash sequences of coloured segments: decided 2026-11-11.) | [Fill and border](04-drawing-mode/fill-and-border.md) | Yes to open paths and colours. |
@@ -31,16 +31,27 @@ This file is the index of the open questions. A question sits in the file it con
 | Size of bridges and gaps; default "last drawn on top"; borders on a bridge. | [Crossings](pipes/crossings.md) | Size in the style; last drawn on top. |
 | Four or nine anchors on an end shape; copy an end shape from another style; arrows of a symbol's lines. | [Pipe ends](pipes/ends.md) | Not settled by the report. |
 
+## Raised by the review of 2026-11-15
+
+| Question | Page | Proposal of the assistant |
+| --- | --- | --- |
+| Thumbnail of a symbol in the list: the symbol itself, or its outlines only; what else an item shows. | [Libraries and symbols](01-libraries-and-symbols.md) | Outlines only, as Figma's outline view, with the name. |
+| Look of the Interaction, Animation and Run modes before a type is chosen. | [Libraries and symbols](01-libraries-and-symbols.md) | Greyed in the mode menu, with a tooltip "choose a type first". |
+| Place of the base pipe style. | [Libraries and symbols](01-libraries-and-symbols.md) | First item of the pipe styles list. |
+| Place of the floating tool bar: bottom or top of the drawing area. | [Editor](03-editor/README.md) | Bottom, centred (the Product Owner's leaning). |
+| Key and ratio of the precise move; does it also apply to whole shapes. | [Precise move](03-editor/precise-move.md) | See the page. |
+| What a line of the layer tree shows besides its name (lock, hide, icon of its kind). | [Layers](03-editor/layers.md) | Icon of the kind, name, hide, lock. |
+
 ## Still open, not researched
 
 | Question | Page | Written as |
 | --- | --- | --- |
 | Key conflicts (Alt and the Linux window managers, Ctrl+G in browsers). | [Editor](03-editor/README.md) | Not found by the research. |
 | What can be taken from the symbol standards (ISA-5.1, ISO 14617, EN 60617, ISO 10628) without a copyright problem. | [Pipes](pipes/README.md) | Paid standards, not opened. |
-| Options of each entry of the advanced tools, of the alignment panel and of the group (anchors, placement of the children). | [Expert menu](03-editor/expert-menu/README.md), [Alignment mode](06-alignment-mode/README.md), [Group](04-drawing-mode/group.md) | To describe, page by page. |
+| Options of each entry of the advanced tools, of the alignment panel and of the group (anchors, placement of the children). | [Advanced tools](03-editor/expert-menu/README.md), [Alignment mode](06-alignment-mode/README.md), [Group](04-drawing-mode/group.md) | To describe, page by page. |
 | Connection points: which mode places them, their names, the snapping zone. | [Connection points](pipes/connection-points.md) | To describe. |
 | What the faceplate opened by an interaction allows once the symbol is placed (display only, or display with commands). | Part 3 | Belongs to the synoptic part, not written yet. |
-| How are an unwired dynamic symbol, a placed symbol (linked instance) and its scale handled in a synoptic? | Part 3 | Belongs to the synoptic part, not written yet. |
+| How are an unwired symbol with a type, a placed symbol (linked instance) and its scale handled in a synoptic? | Part 3 | Belongs to the synoptic part, not written yet. |
 
 ```mermaid
 flowchart LR

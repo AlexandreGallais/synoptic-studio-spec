@@ -47,5 +47,5 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.1, 
 - A symbol connected to a pipe: any symbol, or only those with two connection points (in and out)? Is the pipe cut under the symbol (it goes in one side and out the other) or does the symbol sit on top of a continuous pipe? Where is its position kept (a distance or a percentage along the pipe)? What happens to it when the pipe is shortened, split or deleted?
 - Which Symbol Lib do the pipe styles come from when a synoptic uses several libraries?
 - How is a pipe attached when it is moved, split, joined or deleted, and what happens to the junctions?
-- A pipe whose style is linked to a type (decided 2026-11-11, see [Pipe styles](pipe-styles.md)): how it is wired to the model in the synoptic, like a placed dynamic symbol; and whether a branch has its own values or shares those of the trunk.
+- A pipe whose style is linked to a type (decided 2026-11-11, see [Pipe styles](pipe-styles.md)): how it is wired to the model in the synoptic, like a placed symbol with a type; and whether a branch has its own values or shares those of the trunk.
 - How is a pipe drawn between two points that are not at right angles, and how does the editor route it (automatic routing or only the user's clicks)?

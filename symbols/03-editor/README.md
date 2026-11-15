@@ -2,9 +2,38 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › Editor · Previous: [Type, preset and faceplate](../02-type-and-faceplate.md) · Next: [Drawing mode](../04-drawing-mode/README.md)
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+Status: draft, from the Product Owner's description of 2026-11-11, reviewed on 2026-11-15 (layout, floating bars, layers, precise move). Not validated.
 
 The symbol editor is a vector drawing editor, close to Figma and Inkscape for what it needs. It works with **modes** and **tools**. This page holds what is common to every mode; each mode has its own folder, with its tools inside.
+
+## Layout
+
+Decided by the Product Owner on 2026-11-15, unless said otherwise.
+
+```mermaid
+block-beta
+    columns 3
+    left["Left-hand panel: symbols, pipe styles, layers"] area["Drawing area, with the floating menus"] right["Right-hand panel: options of the selection, type and preset of the symbol"]
+```
+
+| Zone | What it holds |
+| --- | --- |
+| Left-hand panel | The symbols and the pipe styles of the Symbol Lib, then the [layers](layers.md) of the open symbol (see [Libraries and symbols](../01-libraries-and-symbols.md)). |
+| Modes menu | A floating menu at the **top left of the drawing area**: every mode, and the switch from one to another. |
+| Tool bar | A floating bar over the drawing area, with the tools of the current mode. Its place is open: at the **bottom** (the Product Owner's leaning: "for people, the bottom will be better") or at the top. |
+| Advanced tools bar | A button of the tool bar shows or hides a second floating bar, **just above the tool bar**, with all the [advanced tools](expert-menu/README.md). |
+| Right-hand panel | The options of the selection; the type and the preset of the symbol (see [Type, preset and faceplate](../02-type-and-faceplate.md)). |
+
+```mermaid
+block-beta
+    columns 3
+    modes["Modes menu (top left)"] space:2
+    space:3
+    space adv["Advanced tools bar, shown or hidden"] space
+    space tools["Tool bar of the mode (bottom, place open)"] space
+```
+
+Not placed yet: the zoom field, undo and redo, save.
 
 ## Rules
 
@@ -30,8 +59,8 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 | [Connection](../pipes/connection-points.md) (provisional) | Place the connection points where pipes attach. | Select, Hand, Connection point | The options of the selected point |
 
 - The Connection mode is an assumption of the assistant: the Product Owner did not say which mode places the connection points (see [Connection points](../pipes/connection-points.md)).
-- The Interaction, Animation and Run modes are only for a dynamic symbol: a static symbol has no interaction, no animation and nothing to test with signals.
-- The [Expert menu](expert-menu/README.md) can add a second tool bar on top of the current mode.
+- The Interaction, Animation and Run modes need a type: a symbol without a type has no interaction, no animation and nothing to test with signals (see [Libraries and symbols](../01-libraries-and-symbols.md)).
+- The [advanced tools](expert-menu/README.md) add a second bar just above the tool bar of the current mode.
 - Other modes may be added later.
 
 ## Moving around the drawing
@@ -48,8 +77,10 @@ The symbol editor is a vector drawing editor, close to Figma and Inkscape for wh
 | --- | --- |
 | [Select](select.md) | The Select tool, in every mode except Run. |
 | [Hand](hand.md) | The Hand tool, in every mode. |
+| [Layers](layers.md) | The tree of the layers of the symbol, in the left-hand panel. |
+| [Precise move](precise-move.md) | A key that makes a dragged point or handle move pixel by pixel. |
 | [Anchors](anchors.md) | The nine named points of a box, used by groups, polygons, alignment and pipe ends. |
-| [Expert menu](expert-menu/README.md) | The menu of the tools that are not for everyday drawing. |
+| [Advanced tools](expert-menu/README.md) | The second bar of the tools that are not for everyday drawing. |
 
 ## Where it is used
 
@@ -78,7 +109,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.15,
 | Layer | Keep | Inkscape marks a group as a layer |
 | Interaction, gesture | Keep | Figma |
 | Zone | Interaction zone | "Hotspot" in Figma |
-| Static, dynamic | Keep | Same words in the archived Figma file |
+| Static, dynamic | Keep (dropped by the Product Owner on 2026-11-15: one kind of symbol) | Same words in the archived Figma file |
 | Expert menu | Advanced tools | Name of a page of the archived Figma file |
 | Free form | Path | Word of SVG |
 | Fit, fixed; absolute child | Keep | — |
@@ -104,7 +135,7 @@ Undo and redo; grid, snapping and guides; import of an SVG; variants of a symbol
 
 - Opinion of the report: **C**, with a "plain SVG" export that removes the block. Confidence: low.
 - Portable export (opinion): paths, groups, plain text, linear and radial gradients, cuts; no `foreignObject`, no animation, no own attribute; effects as an option. Ignition warns that embedding a big SVG can degrade performance (link above 100 KB).
-- Import of an SVG made elsewhere (opinion): worth it, as a static symbol, after the first version: strokes turned into "middle" borders, transforms recomputed, CSS styles brought back on the elements, with the list of what was lost. The file is read through the server.
+- Import of an SVG made elsewhere (opinion): worth it, as a symbol without a type, after the first version: strokes turned into "middle" borders, transforms recomputed, CSS styles brought back on the elements, with the list of what was lost. The file is read through the server.
 
 ## To decide by the Product Owner
 

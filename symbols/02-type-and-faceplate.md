@@ -2,13 +2,14 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Type, preset and faceplate · Previous: [Libraries and symbols](01-libraries-and-symbols.md) · Next: [Editor](03-editor/README.md)
 
-Status: draft, from the Product Owner's description of 2026-11-11, on top of the validated Metadata part. Not validated.
+Status: draft, from the Product Owner's description of 2026-11-11, on top of the validated Metadata part, reviewed on 2026-11-15 (type optional). Not validated.
 
-A dynamic symbol is linked to a type, which gives it signals and commands. This page only recalls what Metadata already says, and what the symbol adds. It does not apply to static symbols, which have no type, preset or faceplate (see [Libraries and symbols](01-libraries-and-symbols.md)).
+A symbol can be linked to a type, which gives it signals and commands. This page only recalls what Metadata already says, and what the symbol adds. A symbol without a type yet has no preset and no faceplate (see [Libraries and symbols](01-libraries-and-symbols.md)).
 
 ## Rules
 
-- A dynamic symbol has one type. The type is chosen when the symbol is created, before any drawing, among the types of the Type Lib linked to the Symbol Lib, and can be changed afterwards (still among those types). Both happen in the symbol editor and only there (see [Types](../metadata/01-types.md)). The signals of the type, with those it inherits, are then the signals the symbol can use.
+- A symbol has at most one type, among the types of the Type Lib linked to the Symbol Lib. The type is never imposed: it can be chosen when the symbol is created, or later, and changed afterwards (still among those types) (Product Owner, 2026-11-15). Both happen in the symbol editor and only there (see [Types](../metadata/01-types.md)). The signals of the type, with those it inherits, are then the signals the symbol can use.
+- The type and the preset are chosen in the **right-hand panel** of the editor (Product Owner, 2026-11-15). Assumption of the assistant: the panel shows them when no shape is selected, as the settings of the symbol itself.
 - The symbol chooses a preset of its type (see [Presets](../metadata/09-presets.md)), then can edit its default values, display units, decimal places, names and descriptions. Example: to see a green pump, the user sets the default colour in the symbol.
 - The symbol decides which faceplate entries are ticked. The full list is always there; ticking or unticking changes the display only (see [Faceplates](../metadata/08-faceplates.md)).
 - The symbol says which commands it uses: a preset never chooses commands (see [Commands](../metadata/07-commands.md)).
@@ -26,6 +27,6 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Type of a dynamic symbol | Metadata | Symbol | Choose, only here | No |
-| Preset choice, defaults, display units, names | Preset, in Metadata | Dynamic symbol | Choose, edit | Choose, edit |
-| Faceplate entries ticked | Metadata | Dynamic symbol | Tick or untick | Tick or untick |
+| Type of a symbol, optional | Metadata | Symbol | Choose, only here | No |
+| Preset choice, defaults, display units, names | Preset, in Metadata | Symbol with a type | Choose, edit | Choose, edit |
+| Faceplate entries ticked | Metadata | Symbol with a type | Tick or untick | Tick or untick |

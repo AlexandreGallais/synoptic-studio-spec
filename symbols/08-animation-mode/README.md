@@ -12,7 +12,7 @@ The mode of the [editor](../03-editor/README.md) in which the signals are linked
 - The user selects a signal, then says what it animates: a shape, a layer, a text.
 - Only the output signals of the type are offered for an animation. An output is what the model sends, and the model computes what the symbol shows. An input is what the model receives and is never animated.
 - A value ordered and a value obtained are two signals for the model. Example: `opening_order` (input, what the user asks) and `opening` (output, what the model computes). The symbol animates `opening`. The faceplate can show both (see [Faceplates](../../metadata/08-faceplates.md)).
-- Only a dynamic symbol has animations. A static symbol has none, and no signal to animate, since it has no type.
+- Only a symbol with a type has animations. A symbol without a type has no signal to animate (see [Libraries and symbols](../01-libraries-and-symbols.md)).
 
 ```mermaid
 flowchart LR

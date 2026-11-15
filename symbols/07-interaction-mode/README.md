@@ -10,7 +10,7 @@ The mode of the [editor](../03-editor/README.md) in which the user says what hap
 
 - Tool bar: [Select](../03-editor/select.md), [Hand](../03-editor/hand.md) and Interaction zone (below).
 - Right-hand panel: the interactions of the selected place.
-- Only for a dynamic symbol. A static symbol has no interaction: it has no type, so no command to send.
+- Only for a symbol with a type. A symbol without a type has no command to send (see [Libraries and symbols](../01-libraries-and-symbols.md)).
 - The places offered for an interaction are: the zones the user drew, the bounding box of the whole symbol, and a layer. A layer is clickable as its real shape, not as the square around it, and stays clickable when its fill is transparent (see [Select](../03-editor/select.md)). Example: a button drawn on its own layer can be the place.
 - Several gestures are possible on a place: left click, right click, double click, and others (the Product Owner wants more than these three; the list is to settle).
 - Each interaction links a place, a gesture and what happens. What happens is one of two things:

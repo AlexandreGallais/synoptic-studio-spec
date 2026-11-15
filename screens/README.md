@@ -17,7 +17,7 @@ The rules stay in the pages of each part. When a page changes, the screen that s
 | File | Screens |
 | --- | --- |
 | [Metadata](metadata.md) | Types (tree and type editor with its six parts), Units, Enums, Libraries. |
-| [Symbol editor](symbols.md) | Symbol Libs, the content of a Symbol Lib, the symbol editor and its seven modes, the advanced tools. |
+| [Symbol editor](symbols.md) | Symbol Libs, the left-hand panel of a Symbol Lib, the symbol editor (layout, floating bars, layers) and its seven modes, the advanced tools. |
 | [Pipes](pipes.md) | The base pipe style, the pipe styles, the end shapes, the dash sequences, the preview, and pipes in a synoptic (part 3, preview). |
 
 ## How to read a screen
@@ -36,7 +36,7 @@ Each screen has:
 | --- | --- |
 | Button | An action, done at once. |
 | Text field | Free text on one line (multi-line when said). |
-| Number field | A number, with its unit when it has one. |
+| Number field | A number, with its unit when it has one. One shared component: arrows ±1, ±10 with a key (see [Number and text fields](../controls/number-and-text-fields.md)). |
 | Select | A choice in a list that drops down. |
 | Radio | A choice among a few options, all visible. |
 | Toggle | On or off. |
@@ -83,7 +83,7 @@ flowchart TD
     MD --> MD10["MD-10 Libraries: Type Libs"]
 
     SY --> SY01["SY-01 Symbol Libs"]
-    SY01 --> SY02["SY-02 Content of a Symbol Lib"]
+    SY01 --> SY02["SY-02 Left-hand panel of a Symbol Lib"]
     SY02 --> SY03["SY-03 Symbol editor"]
     SY03 --> SY04["SY-04 to SY-10: the seven modes"]
     SY03 --> SY11["SY-11 Advanced tools"]
@@ -100,7 +100,7 @@ These gaps come back on several screens; each file lists its own.
 
 - **Create, rename, delete, duplicate**: the specs say what things are and how they link, rarely how the user creates, deletes or duplicates them (types, signals, commands, presets, enums, quantities, libraries, symbols, pipe styles).
 - **Order**: the order of faceplate entries, of signals in a list, of layers in a symbol.
-- **Layers panel**: the drawing pages speak of "the layer tree", but no page describes it.
+- **Layers panel**: described since 2026-11-15 (see [Layers](../symbols/03-editor/layers.md)); what a line shows besides its name is still open.
 - **Undo and redo, save**: not described anywhere.
 - **Navigation**: how the user goes from Metadata to Symbols, and between the Metadata pages (menu, tabs, side bar), is not described.
 

@@ -25,7 +25,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.1, 
 - A connection point carries a **position and a direction** in Visio (inward, outward, both) and in libavoid (the visible sides of a "pin"). The assumption of the assistant is confirmed. Confidence: high.
 - A link can be **fixed** to a point or **floating** around the shape (draw.io). In draw.io a fixed link follows its symbol; in Ignition a pipe does not follow a moved component. The project wants the pipe to follow: the convention of diagram software.
 - In libavoid, the connection points follow a rotation by quarter turns and a mirror of the shape.
-- The inline symbols of the archived Figma page (valves, reducers, flow arrows) have two connection points. Opinion of the report: **a static symbol can have connection points** (a tank outline, an arrow), with names and search, no categories.
+- The inline symbols of the archived Figma page (valves, reducers, flow arrows) have two connection points. Opinion of the report: **a symbol without animation can have connection points** (a tank outline, an arrow), with names and search, no categories. Since 2026-11-15 every symbol is of the same kind, with or without a type: any symbol can have connection points.
 - Name: keep **Connection point**; "anchor" is already the word for the nine anchors of a box.
 
 ## Open questions

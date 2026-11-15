@@ -40,5 +40,5 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.5, 
 - The arrows of a line drawn in a symbol: their own shapes, or the end shapes of a pipe style?
 - Is the whole shape filled with the pipe colour, or only the parts the user marks (so that a border stays its own colour)?
 - Does the end shape rotate with the last segment of the pipe, and can it be mirrored?
-- Is the end shape a symbol of the lib (a static symbol with a connection point) or a separate kind of object?
+- Is the end shape a symbol of the lib (a symbol without a type, with a connection point) or a separate kind of object?
 - Does the end shape change the length of the pipe, or does it sit on top of the end?

@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Screens](README.md) › Symbol editor
 
-Status: draft, written by the assistant on 2026-11-11 from the [Symbols](../symbols/README.md) pages, themselves a draft. It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md). The pipes are in [Pipes](pipes.md).
+Status: draft, written by the assistant on 2026-11-11 from the [Symbols](../symbols/README.md) pages, themselves a draft, then updated with the Product Owner's review of 2026-11-15 (one list of symbols, left-hand panel, layers, floating bars, precise move). It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md). The pipes are in [Pipes](pipes.md).
 
 ## SY-01 · Symbol Libs
 
@@ -33,20 +33,35 @@ Gaps:
 - Rename, duplicate (to change a look over time, the user creates a new Symbol Lib: is it a copy of the old one?), delete.
 - Is the user warned before a change of Type Lib that breaks symbols, with the number of broken links?
 
-## SY-02 · Content of a Symbol Lib
+## SY-02 · Left-hand panel of a Symbol Lib
 
-Path: Symbols › a Symbol Lib.
+Path: Symbols › a Symbol Lib. The panel stays on the left while a symbol is open in the editor.
+
+```mermaid
+block-beta
+    columns 1
+    sym["Symbols: magnifier, +, list"]
+    pip["Pipe styles: magnifier, +, list"]
+    lay["Layers of the open symbol (SY-03)"]
+```
 
 ```mermaid
 mindmap
-  root((SY-02 Symbol Lib))
-    Dynamic symbols
-    Static symbols
-    Base pipe style
+  root((SY-02 Left-hand panel))
+    Symbols
+      Search
+      Create a symbol
+        Type, optional
+        Preset, optional
+      List, one kind of symbol
+        Thumbnail
+        Name
     Pipe styles
-    Create a symbol
-      Static or dynamic
-      Type, if dynamic
+      Search
+      Create a style
+      List
+        Base pipe style first, proposed
+    Layers, see SY-03
     Proposed
       Usage counter
       Named colours
@@ -54,38 +69,41 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-02.1 | Dynamic symbols, static symbols | List | Flat lists, never a tree. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-02.2 | Base pipe style, pipe styles | List | See [Pipes](pipes.md). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| SY-02.3 | Create a symbol | Button + Dialog | Asks first: static or dynamic. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-02.4 | Type | Select | For a dynamic symbol, before drawing: the types of the Type Lib; a parent not ticked is greyed. | Decided | [Libraries](../metadata/10-libraries.md) |
-| SY-02.5 | Open a symbol | not said (click) | Opens the symbol editor. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-02.6 | Broken mark | — | A small red mark on a broken item. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-02.7 | Usage counter | — | "Used by 38 pipes", on symbols and styles. | Proposed | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-02.8 | Named colours | List | A flat list "Colours" that symbols and styles point to. | Proposed | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md) |
+| SY-02.1 | List of symbols | List | One flat list, one kind of symbol: no static or dynamic. A click on an item opens it in the editor. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.2 | Search the symbols | Text field (magnifier) | Filters the list. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.3 | Create a symbol | Button (+) | The type and preset can be chosen here, never imposed. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.4 | Type, at creation | Select, optional | The types of the Type Lib; a parent not ticked is greyed. | Decided | [Libraries](../metadata/10-libraries.md) |
+| SY-02.5 | Item of the list | Thumbnail + name | The thumbnail is the symbol, or its outlines only (as Figma's outline view). | Decided (thumbnail: Open) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.6 | List of pipe styles | List | Flat; a click opens the style (see [Pipes](pipes.md)). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.7 | Search the pipe styles | Text field (magnifier) | Filters the list. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.8 | Create a pipe style | Button (+) | — | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.9 | Base pipe style | Item of the list | First item of the pipe styles list. | Proposed | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.10 | Broken mark | — | A small red mark on a broken item. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.11 | Usage counter | — | "Used by 38 pipes", on symbols and styles. | Proposed | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.12 | Named colours | List | A flat list "Colours" that symbols and styles point to. | Proposed | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md) |
 
 Gaps:
 
-- Name of a symbol: never mentioned. Search, sort, thumbnails in the lists?
-- Duplicate, rename and delete a symbol.
+- What an item shows besides its thumbnail and name.
+- Duplicate, rename and delete a symbol or a pipe style.
+- Sort of the lists (by name, by creation)?
 
 ## SY-03 · Symbol editor: what every mode shares
 
 Path: Symbols › a Symbol Lib › a symbol.
 
-The layout below is what the pages describe; the place of the mode switch and of the symbol settings is not said.
+The layout is decided (Product Owner, 2026-11-15), except the place of the tool bar (bottom or top) and of the zoom field.
 
 ```mermaid
 block-beta
     columns 3
-    top["Mode switch, zoom field, advanced tools menu (three dots)"]:3
-    tools["Tool bar of the mode"] canvas["Drawing area"] panel["Right-hand panel of the mode"]
-    second["Second tool bar of an advanced tool, can be hidden"]:3
+    left["Left-hand panel: SY-02 symbols and pipe styles, then the layers"] canvas["Drawing area: modes menu floating top left; advanced tools bar above the tool bar; tool bar floating at the bottom"] panel["Right-hand panel: options of the selection, type and preset of the symbol"]
 ```
 
 ```mermaid
 mindmap
   root((SY-03 Symbol editor))
-    Modes
+    Modes menu, floating top left
       SY-04 Drawing
       SY-05 Point editing
       SY-06 Alignment
@@ -93,39 +111,53 @@ mindmap
       SY-08 Animation
       SY-09 Run
       SY-10 Connection
-    Symbol settings
-      Static or dynamic
-      Type
+    Tool bar, floating
+      Tools of the mode
+      Show the advanced tools
+      Precise move
+    SY-11 Advanced tools bar
+    Layers, in the left-hand panel
+      Search
+      Unfold all
+      Fold all
+      Tree, groups as folders
+    Right-hand panel
+      Options of the selection
+      Type of the symbol, optional
       Preset
       Faceplate entries ticked
     Moving around
       Hand tool
       Wheel and middle button
       Zoom field
-    SY-11 Advanced tools
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-03.1 | Mode switch | not said | Drawing, Point editing, Alignment, Interaction, Animation, Run, Connection. Interaction, Animation and Run only for a dynamic symbol. | Decided (Connection: Proposed) | [Editor](../symbols/03-editor/README.md) |
-| SY-03.2 | Static or dynamic | not said (toggle) | Switch at any time; nothing is deleted. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-03.3 | Type | Select | Changed in the symbol editor only, among the types of the Type Lib. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
-| SY-03.4 | Preset | Select | Then its defaults, display units, decimals, names and descriptions are edited here. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
-| SY-03.5 | Faceplate entries | Checkbox per entry | The full list is always there. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
-| SY-03.6 | Hand | Button (tool) | Moves the view; also the middle button held. In every mode. | Decided | [Hand](../symbols/03-editor/hand.md) |
-| SY-03.7 | Zoom | Number field (%) | Shown in one place; the user can type a value; 100 % is the real size. | Decided | [Editor](../symbols/03-editor/README.md) |
-| SY-03.8 | Select | Button (tool) | In every mode except Run; picks what the mode works on. | Decided | [Select](../symbols/03-editor/select.md) |
-| SY-03.9 | Entirely enclosed | Toggle | Visible equivalent of Alt during a selection rectangle. | Decided | [Select](../symbols/03-editor/select.md) |
-| SY-03.10 | Layer tree | Tree | Named by the fill and border page ("in the layer tree, the user sees one shape only"); never described. | Implied | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md) |
-| SY-03.11 | Undo, redo, save | not said | Listed as missing by the research. | Proposed | [Editor](../symbols/03-editor/README.md) |
-| SY-03.12 | Grid, snapping, guides | not said | Minimum set proposed by the research. | Proposed | [Editor](../symbols/03-editor/README.md) |
+| SY-03.1 | Modes menu | Floating menu | At the top left of the drawing area: Drawing, Point editing, Alignment, Interaction, Animation, Run, Connection. Interaction, Animation and Run need a type. | Decided (Connection: Proposed) | [Editor](../symbols/03-editor/README.md) |
+| SY-03.2 | Tool bar | Floating bar | The tools of the mode; at the bottom of the drawing area (leaning) or at the top. | Decided (place: Open) | [Editor](../symbols/03-editor/README.md) |
+| SY-03.3 | Show the advanced tools | Button (in the tool bar) | Shows or hides the [SY-11](#sy-11--advanced-tools) bar just above. | Decided | [Advanced tools](../symbols/03-editor/expert-menu/README.md) |
+| SY-03.4 | Type | Select, optional | In the right-hand panel; among the types of the Type Lib; can be removed. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
+| SY-03.5 | Preset | Select | In the right-hand panel; then its defaults, display units, decimals, names and descriptions are edited here. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
+| SY-03.6 | Faceplate entries | Checkbox per entry | The full list is always there. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
+| SY-03.7 | Hand | Button (tool) | Moves the view; also the middle button held. In every mode. | Decided | [Hand](../symbols/03-editor/hand.md) |
+| SY-03.8 | Zoom | Number field (%) | Shown in one place (which one: not said); the user can type a value; 100 % is the real size. | Decided | [Editor](../symbols/03-editor/README.md) |
+| SY-03.9 | Select | Button (tool) | In every mode except Run; picks what the mode works on. | Decided | [Select](../symbols/03-editor/select.md) |
+| SY-03.10 | Entirely enclosed | Toggle | Visible equivalent of Alt during a selection rectangle. | Decided | [Select](../symbols/03-editor/select.md) |
+| SY-03.11 | Precise move | Toggle | Visible equivalent of the key that moves a dragged point or handle pixel by pixel. | Decided (key: Open) | [Precise move](../symbols/03-editor/precise-move.md) |
+| SY-03.12 | Layers | Tree | In the left-hand panel; groups as folders; one line per shape, its border included. | Decided | [Layers](../symbols/03-editor/layers.md) |
+| SY-03.13 | Search the layers | Text field (magnifier) | Filters by name. | Decided | [Layers](../symbols/03-editor/layers.md) |
+| SY-03.14 | Unfold all, fold all | Button each | Every group of the tree. | Decided | [Layers](../symbols/03-editor/layers.md) |
+| SY-03.15 | Line of a layer | — | Name; icon of its kind, hide, lock proposed. | Decided (name), Proposed (the rest) | [Layers](../symbols/03-editor/layers.md) |
+| SY-03.16 | Undo, redo, save | not said | Listed as missing by the research. | Proposed | [Editor](../symbols/03-editor/README.md) |
+| SY-03.17 | Grid, snapping, guides | not said | Minimum set proposed by the research. | Proposed | [Editor](../symbols/03-editor/README.md) |
 
 Gaps:
 
-- Where are the symbol settings (type, preset, faceplate entries): a mode of their own, a panel, a dialog?
-- The layer tree: where, what each line shows (name, lock, hide, order), how a layer is named.
+- Does the right-hand panel show the type and preset only when nothing is selected (assumption)?
+- How a layer is named, and whether the tree order is the stacking order.
 - Frame of the symbol (size, fit to content): proposed by the research, not placed in a screen.
-- Where are the preset's defaults, display units and names edited in the symbol?
+- Place of the zoom field, of undo and redo, of save.
 
 ## SY-04 · Drawing mode
 
@@ -256,6 +288,7 @@ mindmap
 | SY-05.7 | Handle angle, length | Number field | Linked to X and Y. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
 | SY-05.8 | Remove | Button | Removes the selected points. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
 | SY-05.9 | Add a point between two | Button | When two points are selected. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
+| SY-05.10 | Precise move | Key held while dragging, or the toggle SY-03.11 | A point or a handle moves pixel by pixel of the symbol, even zoomed out. | Decided (key: Open) | [Precise move](../symbols/03-editor/precise-move.md) |
 
 Gaps:
 
@@ -297,7 +330,7 @@ Gaps:
 
 ## SY-07 · Interaction mode
 
-Path: symbol editor › Interaction (dynamic symbol only).
+Path: symbol editor › Interaction (symbol with a type only).
 
 ```mermaid
 mindmap
@@ -339,7 +372,7 @@ Gaps:
 
 ## SY-08 · Animation mode
 
-Path: symbol editor › Animation (dynamic symbol only).
+Path: symbol editor › Animation (symbol with a type only).
 
 ```mermaid
 mindmap
@@ -385,7 +418,7 @@ Gaps:
 
 ## SY-09 · Run mode (name proposed: Test mode)
 
-Path: symbol editor › Run (dynamic symbol only).
+Path: symbol editor › Run (symbol with a type only).
 
 ```mermaid
 mindmap
@@ -448,19 +481,20 @@ mindmap
 
 Gaps:
 
-- Is this mode also offered to static symbols (proposed: yes)?
+- Is this mode also offered to a symbol without a type (proposed: yes)?
 - Size of the snapping zone.
 
-## SY-11 · Advanced tools (name proposed; "Expert menu" today)
+## SY-11 · Advanced tools
 
-Path: symbol editor › three dots menu.
+Path: symbol editor › tool bar › "Show the advanced tools" button. The bar appears just above the tool bar.
 
 ```mermaid
 mindmap
   root((SY-11 Advanced tools))
-    Menu with three dots
-    Second tool bar
-      Can be hidden
+    Second floating bar
+      Above the tool bar
+      Shown or hidden
+      Every advanced tool
     Boolean operations
       Union
       Subtract
@@ -474,8 +508,8 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-11.1 | Three dots menu | Button + menu | Lists every entry. | Decided | [Expert menu](../symbols/03-editor/expert-menu/README.md) |
-| SY-11.2 | Second tool bar | — | Shows the tools of the entry; can be hidden. | Decided | [Expert menu](../symbols/03-editor/expert-menu/README.md) |
+| SY-11.1 | Show the advanced tools | Button (in the tool bar) | Shows or hides the second bar (SY-03.3). Replaces the former three dots menu. | Decided | [Advanced tools](../symbols/03-editor/expert-menu/README.md) |
+| SY-11.2 | Second bar | Floating bar | Just above the tool bar; holds every advanced tool. | Decided | [Advanced tools](../symbols/03-editor/expert-menu/README.md) |
 | SY-11.3 | Boolean operation | Button each | Union, subtract, intersect, exclude; the result is a new shape. | Decided (list: Proposed) | [Boolean operations](../symbols/03-editor/expert-menu/boolean-operations.md) |
 | SY-11.4 | Duplication rule | Radio | Polar, along a path, grid. | Decided (polar, along a path), Proposed (grid) | [Placement and duplication](../symbols/03-editor/expert-menu/placement-and-duplication.md) |
 | SY-11.5 | Duplication options | Number fields + Toggle | Count or spacing, start and end angle, copies rotated or not. | Proposed | [Placement and duplication](../symbols/03-editor/expert-menu/placement-and-duplication.md) |

@@ -4,7 +4,7 @@
 
 Status: draft, written by the assistant on 2026-11-11 from the [Pipes](../symbols/pipes/README.md) pages, themselves a draft. It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md).
 
-The pipes are made in a Symbol Lib ([SY-02](symbols.md#sy-02--content-of-a-symbol-lib)) and drawn in a synoptic (part 3, not written). One base pipe style gives the look of every pipe of the library; each pipe style only changes what differs from it.
+The pipes are made in a Symbol Lib ([SY-02](symbols.md#sy-02--left-hand-panel-of-a-symbol-lib)) and drawn in a synoptic (part 3, not written). One base pipe style gives the look of every pipe of the library; each pipe style only changes what differs from it.
 
 ```mermaid
 flowchart LR

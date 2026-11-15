@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Libraries and symbols · Next: [Type, preset and faceplate](02-type-and-faceplate.md)
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+Status: draft, from the Product Owner's description of 2026-11-11, reviewed on 2026-11-15 (one list of symbols, type optional, the left-hand panel). Not validated.
 
 A **Symbol Lib** holds symbols. A **Type Lib** (see [Libraries](../metadata/10-libraries.md)) holds types. This page is about the Symbol Lib, how a symbol is created, and what happens to a symbol when Metadata changes.
 
@@ -10,11 +10,35 @@ A **Symbol Lib** holds symbols. A **Type Lib** (see [Libraries](../metadata/10-l
 
 ### Symbol Lib
 
-- It holds flat lists, never a tree: its dynamic symbols and its static symbols (every library can have both), then its pipe styles. It also has one base pipe style, the global look of its pipes, that the pipe styles override. Junctions, crossings and start and end shapes are parts of the styles (decided by the Product Owner, 2026-11-11; see [Pipe styles](pipes/pipe-styles.md)). A pipe style can be linked to a type, which is then taken from the Type Lib of the Symbol Lib (assumption, to confirm).
+- It holds two flat lists, never a tree: its **symbols**, then its **pipe styles**. It also has one base pipe style, the global look of its pipes, that the pipe styles override. Junctions, crossings and start and end shapes are parts of the styles (decided by the Product Owner, 2026-11-11; see [Pipe styles](pipes/pipe-styles.md)). A pipe style can be linked to a type, which is then taken from the Type Lib of the Symbol Lib (assumption, to confirm).
+- **One list of symbols only** (Product Owner, 2026-11-15). There is no "static" or "dynamic" kind: every symbol is the same kind of object, and a symbol simply has a type or not yet. The Product Owner settled it so that the software is simpler to understand at first.
 - It has a name and a Type Lib. Nothing else: the lists above are its content, not settings.
 - Every symbol is in one Symbol Lib, and only one. No symbol lives outside a library.
 - In symbol mode, the user selects a Symbol Lib, sees its symbols, then opens one or creates one.
 - Why several Symbol Libs: a software or a factory needs its own look for the same objects. To change a look over time, the user creates a new Symbol Lib instead of editing the old one.
+
+### The left-hand panel of the symbol mode
+
+Once a Symbol Lib is chosen, the left-hand panel shows, from top to bottom (Product Owner, 2026-11-15):
+
+| Zone | What it holds |
+| --- | --- |
+| Symbols | A search field (a small magnifier), a **+** button to create a symbol, then the list. A click on an item opens the symbol in the editor. |
+| Pipe styles | The same: a magnifier, a **+** button to create a style, then the list. A click on an item opens the style. |
+| Layers | The layers of the open symbol: see [Layers](03-editor/layers.md). |
+
+- An item of the symbol list shows a **thumbnail** and the **name** of the symbol.
+- The thumbnail is the symbol itself, or, as Figma does for its outline view, the symbol drawn with the outline of every shape only, without fills. Which one is kept is open.
+- The base pipe style sits in the list of the pipe styles, as its first item (assumption of the assistant, to confirm).
+
+```mermaid
+block-beta
+    columns 1
+    lib["Symbol Lib chosen"]
+    sym["Symbols: magnifier, +, list (thumbnail and name)"]
+    pip["Pipe styles: magnifier, +, list (base style first)"]
+    lay["Layers of the open symbol: magnifier, unfold all, fold all, tree"]
+```
 
 ### Type Lib of a Symbol Lib
 
@@ -26,21 +50,17 @@ A **Symbol Lib** holds symbols. A **Type Lib** (see [Libraries](../metadata/10-l
 
 ### Creating a symbol
 
-"Create a symbol" first asks: static or dynamic? The user can switch at any time.
+- The **+** of the symbol list creates a symbol. The type, and the preset, **can** be chosen at creation, among the types of the Type Lib, but nothing is imposed (Product Owner, 2026-11-15).
+- They can be chosen or changed later, in the right-hand panel of the editor (see [Type, preset and faceplate](02-type-and-faceplate.md)).
+- A symbol without a type is a drawing only: it has no signal and no command, so nothing to animate, to link to a gesture or to test. The Interaction, Animation and Run modes need a type (how they look before one is chosen: open).
+- Once a type is chosen, the user links the drawing to it (see [Editor](03-editor/README.md)).
 
-|  | Dynamic | Static |
-| --- | --- | --- |
-| Type | Required, chosen before drawing, among the types of the Type Lib. It can be changed later. | None |
-| Preset, faceplate, animation, interaction | Yes | None |
-| What the user does | Draws, then links the drawing to the type | Draws only (see [Editor](03-editor/README.md)) |
+Several symbols can share a type, with different drawings and presets: a centrifugal pump can have a manual symbol and a motorised one, with no change in Metadata.
 
-Several dynamic symbols can share a type, with different drawings and presets: a centrifugal pump can have a manual symbol and a motorised one, with no change in Metadata.
+### Removing the type of a symbol
 
-### Switching between static and dynamic
-
-- Dynamic to static hides everything linked to the type (type, preset, faceplate entries, animations, interactions). Nothing is deleted.
-- Static to dynamic brings it all back, with the same type. A mistake costs nothing.
-- The user chooses a type again only if the old one was deleted in Metadata, or if the symbol was never dynamic.
+- Removing the type of a symbol hides everything linked to it (preset, faceplate entries, animations, interactions). Nothing is deleted (rule kept from the former "dynamic to static" switch; to confirm).
+- Choosing the same type again brings it all back. A mistake costs nothing.
 
 ### When Metadata changes
 
@@ -48,7 +68,7 @@ Several dynamic symbols can share a type, with different drawings and presets: a
 - A change of the interface can **break a link**: what it points to is gone, or can no longer be used the same way (the list is below).
 - A broken item is shown as broken, with a small red mark. How it looks is for the design, later; it may say why, later too. The animation itself is not changed: it just cannot work the same way any more.
 - There is no tool and no automatic repair. The item only warns that it is broken, and the user redoes the mapping properly, on the symbol side, never in Metadata.
-- The same rules apply when the Type Lib of the Symbol Lib is changed, when the type of a symbol is changed, and when a static symbol becomes dynamic again.
+- The same rules apply when the Type Lib of the Symbol Lib is changed, when the type of a symbol is changed, and when a type is chosen again for a symbol that had lost it.
 
 #### What breaks a link
 
@@ -73,21 +93,21 @@ What never breaks a link:
 
 ```mermaid
 flowchart TD
-    A["Select a Symbol Lib (linked to a Type Lib)"] --> B["Create a symbol"]
-    B --> C{"Static or dynamic?"}
-    C -- "Dynamic" --> D["Choose a type of the Type Lib"]
-    C -- "Static" --> E["No type"]
+    A["Select a Symbol Lib (linked to a Type Lib)"] --> B["+ in the symbol list"]
+    B --> C{"Choose a type now?"}
+    C -- "Yes" --> D["Type and preset of the Type Lib"]
+    C -- "Later" --> E["No type yet: drawing only"]
     D --> F["Symbol editor"]
     E --> F
-    F -.->|"switch at any time"| C
+    F -.->|"choose or change the type in the right-hand panel"| D
 ```
 
 ## Example
 
 | Symbol Lib | Type Lib | Symbols |
 | --- | --- | --- |
-| Plant A | Hydraulics | Manual centrifugal pump, motorised centrifugal pump, valve (dynamic), tank outline (static) |
-| Plant B | Electricity | Circuit breaker, transformer (dynamic) |
+| Plant A | Hydraulics | Manual centrifugal pump, motorised centrifugal pump, valve (with a type), tank outline (no type) |
+| Plant B | Electricity | Circuit breaker, transformer (with a type) |
 
 ## What the research found
 
@@ -106,5 +126,10 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.5, 
 | Thing | Created and changed in | In a symbol | In a synoptic |
 | --- | --- | --- | --- |
 | Symbol Lib and its Type Lib | Symbol mode | Create, select | To settle (part 3) |
-| Static or dynamic | Symbol editor | Choose, switch | No |
-| Type of a dynamic symbol | Symbol editor | Choose, change | No |
+| Type of a symbol, optional | At creation, or in the right-hand panel of the editor | Choose, change, remove | No |
+
+## Open questions
+
+- Thumbnail of a symbol in the list: the symbol itself, or its outlines only (as Figma's outline view)? What else does an item show besides its name?
+- Before a type is chosen, are the Interaction, Animation and Run modes hidden, greyed, or shown with a message?
+- Is the base pipe style the first item of the pipe styles list, or elsewhere?

@@ -4,7 +4,7 @@
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
 
-The mode of the [editor](../03-editor/README.md) in which the user tries the symbol without a model: they give values to the signals that animate it, and see it move. Only dynamic symbols have it.
+The mode of the [editor](../03-editor/README.md) in which the user tries the symbol without a model: they give values to the signals that animate it, and see it move. Only symbols with a type have it.
 
 ## Rules
 

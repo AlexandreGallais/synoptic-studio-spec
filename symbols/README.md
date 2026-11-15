@@ -26,14 +26,16 @@ flowchart LR
     K --> Y
 ```
 
-## Static and dynamic symbols
+## One kind of symbol
 
-| Kind | What it is | Type | Preset and faceplate | Animation | Interactions |
-| --- | --- | --- | --- | --- | --- |
-| Dynamic | A symbol that is animated and stands for something of the installation. | Required, from Metadata | Yes | Yes | Yes |
-| Static | A symbol that may stand for something, but is not animated. Only its drawing exists. | None | No | No | No |
+There is one list of symbols and one kind of symbol (Product Owner, 2026-11-15): no "static" or "dynamic" symbol any more.
 
-When creating a symbol, the user chooses static or dynamic, and can switch whenever they want. Switching to static only hides the type, animations and interactions; switching back restores them. In a synoptic, a dynamic symbol can be placed and left unwired: it then behaves as a static one (this belongs to part 3).
+| A symbol... | Type | Preset and faceplate | Animation | Interactions |
+| --- | --- | --- | --- | --- |
+| with a type | From Metadata, chosen at creation or later | Yes | Yes | Yes |
+| without a type yet | None | No | No | No |
+
+The type is never imposed: it can be chosen when the symbol is created, or later in the right-hand panel of the editor. Removing it only hides the preset, animations and interactions; choosing it again restores them. In a synoptic, a symbol with a type can be placed and left unwired (this belongs to part 3).
 
 The two kinds of library are the **Symbol Lib** (sorts symbols) and the **Type Lib** (sorts types, in Metadata). A Symbol Lib is linked to one Type Lib and only offers its types.
 
@@ -41,9 +43,9 @@ The two kinds of library are the **Symbol Lib** (sorts symbols) and the **Type L
 
 | Page | What it holds |
 | --- | --- |
-| [Libraries and symbols](01-libraries-and-symbols.md) | Symbol Libs, the flat list, creating a symbol, static and dynamic. |
+| [Libraries and symbols](01-libraries-and-symbols.md) | Symbol Libs, the left-hand panel (symbols, pipe styles, layers), creating a symbol, its optional type. |
 | [Type, preset and faceplate](02-type-and-faceplate.md) | The type of a symbol, its preset, which faceplate entries the symbol shows. |
-| [Editor](03-editor/README.md) | What is common to every mode: rules, modes, moving around, Select, Hand, groups, the expert menu. |
+| [Editor](03-editor/README.md) | What is common to every mode: layout, floating bars, rules, modes, moving around, Select, Hand, layers, precise move, the advanced tools. |
 | [Drawing mode](04-drawing-mode/README.md) | Rectangle, ellipse, polygon, text, pen. |
 | [Point editing mode](05-point-editing-mode/README.md) | Editing the points of a path. |
 | [Alignment mode](06-alignment-mode/README.md) | Placing shapes in relation to each other. |
@@ -54,7 +56,7 @@ The two kinds of library are the **Symbol Lib** (sorts symbols) and the **Type L
 | [Open questions](10-open-questions.md) | Every open question in one place. |
 | [Research brief](research-brief.md) | The questions sent to the documentary research, and where the answers are. |
 
-One folder per mode, with its tools inside. What several modes share is in the editor folder (selection, hand, anchors, expert menu).
+One folder per mode, with its tools inside. What several modes share is in the editor folder (selection, hand, layers, precise move, anchors, advanced tools).
 
 ## Reading order
 
