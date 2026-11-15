@@ -34,7 +34,22 @@ flowchart LR
 - The type tree is on the **left** of the screen, as in a code editor (IDE), where every tree sits on the left (Product Owner, 2026-11-11). It sits just right of the navigation bar of Metadata (see [Screens](../screens/README.md#layout-rules)).
 - There are no libraries of types: every type of the tree can be chosen everywhere (Product Owner, 2026-11-16).
 - The name and the parent are changed in the General part only. Double-clicking an item in the tree does not rename it: hidden options are avoided.
-- The parts of a type are shown in this order (Product Owner, 2026-11-11): General, Documentation, Signals, Commands, Faceplate, Presets.
+- The parts of a type are shown in this order (Product Owner, 2026-11-11): General, Documentation, Signals, Commands, Faceplate, Presets. How they are shown is open: tabs in a row break the rule of columns, so four proposals are drawn (see [The parts of a type: four proposals](#the-parts-of-a-type-four-proposals)).
+
+### The type tree: search, create, delete (Product Owner, 2026-11-16)
+
+- A **search field** sits under the title "Type tree".
+- **Create:** each type of the tree has a **+** on its right, shown when the mouse is over the type. It creates a new type **under** it (a child). The new type starts with a default name, changed afterwards in General.
+- A **+** on the title "Type tree" creates a type at the root. It is always shown, so that creating a type is never hidden. The Product Owner fears it looks bad ("ça va être dégueulasse … s'il le faut"): kept, its look is for the design.
+- **Delete:** a right click on a type opens a menu of options; **Delete** is one of them.
+
+```mermaid
+flowchart LR
+    H["Mouse over a type"] --> P["+ on its right"] -->|"click"| C["New child type, default name"]
+    T["+ on the title Type tree, always shown"] -->|"click"| R["New type at the root, default name"]
+    RC["Right click on a type"] --> M["Menu of options"] --> D["Delete"]
+```
+
 - The General part holds only the name, the parent, the icon and the colour. Nothing more is needed (Product Owner, 2026-11-11).
 - No virtual links between types of the tree. Duplicates are accepted: a change in one type must not change another silently, so nothing has to be retested everywhere. It also lets each type be versioned alone later. The documentary research (2026-11-10) finds this rule defensible: neither FMI, OPC UA nor AutomationML requires or forbids it.
 
@@ -68,6 +83,23 @@ flowchart LR
 | Commands | [Commands](07-commands.md) |
 | Faceplates | [Faceplates](08-faceplates.md) |
 | Presets | [Presets](09-presets.md) |
+
+## The parts of a type: four proposals
+
+The Product Owner likes the tabs in a row, which are easy to use, but they break the rule "columns rather than rows" (see [Layout rules](../screens/README.md#layout-rules)). He asked for three or four ways to show the six parts (2026-11-16). They are drawn in the Figma file, page "Spec", section "MD-01 · Parts of a type: four proposals". Nothing is chosen.
+
+| Proposal | What it is | For | Against |
+| --- | --- | --- | --- |
+| A. Tabs in a row | The six parts as tabs above the editor (the current wireframes). | Known by everyone; all the width stays for the part. | A row, against the rule of columns. |
+| B. A column of parts | A narrow column between the tree and the editor lists the six parts, one under the other, with their names. | Follows the rule of columns; the names stay readable. | One more column: less width for the part. |
+| C. A strip of icons | The same column, reduced to six icons, the name in a tooltip. | Narrow: almost all the width stays for the part. | Icons to learn; the name is hidden until the mouse is over it. |
+| D. Under the type, in the tree | When a type is selected, its six parts unfold under it in the tree, as the layers of a frame in Figma. | No extra column; the type and its part are read together. | The tree grows and moves; a part is mixed with the types. |
+
+```mermaid
+block-beta
+    columns 4
+    a["A: tree | tabs in a row above the part"] b["B: tree | column of parts | part"] c["C: tree | strip of icons | part"] d["D: tree with the parts under the selected type | part"]
+```
 
 ## Type and symbol
 
@@ -113,3 +145,8 @@ flowchart LR
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Type (name, parent) | Metadata, General | Signal and command inheritance | Chosen among all the types, only here | No |
+
+## Open questions
+
+- How are the six parts of a type shown: tabs, a column of parts, a strip of icons, or under the type in the tree? See [the four proposals](#the-parts-of-a-type-four-proposals).
+- Deleting a type: is the user warned that symbols will lose their type (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md))?

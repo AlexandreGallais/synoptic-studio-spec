@@ -17,7 +17,7 @@ Path: Symbols. On the far left of every screen of the symbol mode (Product Owner
 Gaps:
 
 - How a Symbol Lib looks in the bar (icon, initials, name on hover).
-- How the user goes from the symbol mode to Metadata (see the [guide](README.md#layout-rules)).
+- Going from the symbol mode to Metadata is done in the top bar (see the [guide](README.md#top-bar-of-the-window)).
 
 ## SY-01 · Symbol Libs
 

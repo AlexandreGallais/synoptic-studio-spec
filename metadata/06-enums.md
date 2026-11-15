@@ -9,8 +9,9 @@ An Enums page lists the enums of the application, like the Units page lists the 
 ## Rules
 
 - An enum is a named list of items. **Each item is a pair: a key and a display text** (Product Owner, 2026-11-11, replacing the "value alone" rule written earlier the same day):
-  - the **key** is what the model receives: a number or a string, chosen for the whole enum; keys are unique in the enum;
+  - the **key** is what the model receives: **always a number** (Product Owner, 2026-11-16, replacing "a number or a string, chosen for the whole enum"); keys are unique in the enum;
   - the **display text** is what people read: the faceplate, a text of a symbol and the test values show it, never the key.
+- No string keys (Product Owner, 2026-11-16). Why: every enum can be checked in one place, the Enums page, and the configuration files are generated from it; so the model never needs a readable key, and the display text is enough for people.
 - When the user picks an item, the signal receives exactly its key.
 - It is the pair (name, value) the research found in FMI, SSP and OPC UA.
 - Enums are created and changed on the Enums page only, never inside a signal, a symbol or a synoptic.
@@ -20,15 +21,15 @@ An Enums page lists the enums of the application, like the Units page lists the 
 - Changing an enum changes it for every signal that points to it: that is the point of a link.
 - The keys of an enum are part of the contract with the model (decided on 2026-11-11, from the research). Adding, removing or changing a key is breaking, like a rename: OPC UA's best-practices guide forbids it for a published enum. The model must follow. Changing a display text is not breaking: it never goes to the model.
 
-| Enum | Kind of key | Items (key: display text) |
-| --- | --- | --- |
-| `operating_mode` | number | 0: Off, 1: Manual, 2: Automatic |
-| `speed` | string | `low`: Low speed, `high`: High speed |
+| Enum | Items (key: display text) |
+| --- | --- |
+| `operating_mode` | 0: Off, 1: Manual, 2: Automatic |
+| `speed` | 0: Low speed, 1: High speed |
 
 ```mermaid
 flowchart LR
     P["Enums page: list of named enums"] --> E1["operating_mode: 0 Off, 1 Manual, 2 Automatic"]
-    P --> E2["speed: low Low speed, high High speed"]
+    P --> E2["speed: 0 Low speed, 1 High speed"]
     A["Signal mode of a pump"] -->|"link"| E1
     B["Signal mode of a valve"] -->|"link"| E1
     C["Signal speed of a motor"] -->|"link"| E2
@@ -38,7 +39,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A["Create an enum on the Enums page, choose number or string keys"] --> B["Add its items: key and display text"]
+    A["Create an enum on the Enums page"] --> B["Add its items: number key and display text"]
     B --> C["On a signal of type enum, pick the enum"]
     C --> D["The signal follows the enum: no copy"]
 ```
@@ -50,3 +51,7 @@ flowchart LR
 | Enum, its items (key and display text) | Enums page | Signal: picks one as a link | No | No |
 
 The faceplate chooses how an enum is shown (radio on one line, radio on several lines, select...), see [Faceplates](08-faceplates.md).
+
+## Open questions
+
+- Is a key a whole number only (0, 1, 2), or can it be any number? The Product Owner said "only numbers" (2026-11-16).

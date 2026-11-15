@@ -41,7 +41,23 @@ block-beta
 - A narrow bar of icons sits on the far left of the window (a "rail").
 - In Metadata, it holds one icon per page: **Types**, **Units**, **Enums** (decided). The Product Owner first named an icon for the libraries too, then removed the libraries of types in the same review.
 - In the symbol mode, it holds a **Libraries** button (a kind of "home"), a separator, then the list of every Symbol Lib (decided): see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode).
-- Open: how the user goes from Metadata to the symbol mode (one bar for the whole application, or one bar per part).
+- There is one bar per part. Going from one part to another is done in the top bar (below).
+
+### Top bar of the window
+
+Decided by the Product Owner on 2026-11-16. From left to right:
+
+1. The **logo**. The name heard is "Epipasta": to confirm.
+2. Three icons, one per part: **Metadata**, **Symbols**, **Synoptic** (part 3, not written yet).
+3. On the right, the window buttons **minimise, maximise, close**, as in Windows.
+
+```mermaid
+block-beta
+    columns 6
+    logo["Logo"] md["Metadata"] sy["Symbols"] syn["Synoptic"] space win["Minimise, maximise, close"]
+```
+
+- Open: the window buttons on macOS (on the left there, as macOS does, or on the right as on Windows), and in a browser, where the window has no such buttons.
 
 ```mermaid
 block-beta
@@ -96,7 +112,7 @@ How the user goes from one screen to another. Part 3 (the synoptic) is not writt
 
 ```mermaid
 flowchart TD
-    APP["Synoptic Studio: a folder is open"] --> MD["Metadata: navigation bar MD-00"]
+    APP["Synoptic Studio: a folder is open; top bar: logo, Metadata, Symbols, Synoptic"] --> MD["Metadata: navigation bar MD-00"]
     APP --> SY["Symbols: navigation bar SY-00"]
     APP -.-> P3["Part 3: synoptic, not written"]
 
@@ -130,7 +146,7 @@ These gaps come back on several screens; each file lists its own.
 - **Order**: the order of faceplate entries, of signals in a list, of layers in a symbol.
 - **Layers panel**: described since 2026-11-15 (see [Layers](../symbols/03-editor/layers.md)); what a line shows besides its name is still open.
 - **Undo and redo, save**: not described anywhere.
-- **Navigation**: between the Metadata pages, a navigation bar on the left (decided 2026-11-16); from Metadata to Symbols, still not described.
+- **Navigation**: decided on 2026-11-16: the top bar goes from one part to another, and a bar on the left goes inside a part (see [Layout rules](#layout-rules)).
 
 ## See also
 

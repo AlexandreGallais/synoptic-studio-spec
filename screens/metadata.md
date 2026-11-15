@@ -16,8 +16,7 @@ Path: on the far left of every screen of Metadata (Product Owner, 2026-11-16).
 
 Gaps:
 
-- How the user goes from Metadata to the symbol mode: an icon of this bar, or another bar for the whole application?
-- Which icons (to choose with the design system).
+- Which icons (to choose with the design system). Going from Metadata to the symbol mode is done in the top bar (see the [layout rules](README.md#top-bar-of-the-window)).
 
 ## MD-01 · Types: the tree and the type editor
 
@@ -35,8 +34,12 @@ block-beta
 mindmap
   root((MD-01 Types))
     Type tree, on the left
+      Plus on the title, always shown
+      Search field under the title
       Types with icon and colour
+      Plus on a type, on hover
       Select a type
+      Right click, Delete
       No rename by double click
     Type editor, in this order
       1 MD-02 General
@@ -51,15 +54,17 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | MD-01.1 | Type tree | Tree | On the left. Shows each type with its icon and colour. A click selects the type. | Decided | [Types](../metadata/01-types.md), [Icons](../metadata/02-icons.md) |
 | MD-01.2 | Double click on a type | — | Does **not** rename: the name changes in General only. | Decided | [Types](../metadata/01-types.md) |
-| MD-01.3 | Create a type | Button (not said) | A type is created with a name and a parent. | Implied | [Types](../metadata/01-types.md) |
-| MD-01.4 | Delete a type | not said | Deleting is mentioned only for its effect on symbols (their link breaks). | Implied | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| MD-01.5 | Parts of the type | not said (tabs or sections) | In this order: General, Documentation, Signals, Commands, Faceplate, Presets. | Decided (order), Implied (tabs or sections) | [Types](../metadata/01-types.md) |
+| MD-01.3 | Create a child type | Button (+), on hover | On the right of each type, shown when the mouse is over it; creates a type under it, with a default name. | Decided | [Types](../metadata/01-types.md) |
+| MD-01.3b | Create a root type | Button (+), always shown | On the title "Type tree". Its look worries the Product Owner; kept. | Decided (look: Open) | [Types](../metadata/01-types.md) |
+| MD-01.4 | Delete a type | Right click › menu › Delete | A menu of options opens on a right click; Delete is one of them. | Decided | [Types](../metadata/01-types.md) |
+| MD-01.5 | Parts of the type | Open: four proposals | In this order: General, Documentation, Signals, Commands, Faceplate, Presets. Tabs, a column of parts, a strip of icons, or under the type in the tree. | Decided (order), Open (display) | [Types](../metadata/01-types.md) |
+| MD-01.6 | Search | Text field | Under the title "Type tree". | Decided | [Types](../metadata/01-types.md) |
 
 Gaps:
 
-- How is a type created, and where (a button above the tree, a right click)? How is it deleted, and is the user warned that symbols will break?
-- Does the type tree have a search field and fold arrows (the library screen had them before it was removed)?
-- The parts of the type: tabs or sections? With the layout rules, the parts that hold a list (Signals, Commands, Faceplate, Presets) put their list on the left and the selected item on the right; tabs keep that layout readable (assistant's opinion).
+- Which other options the right-click menu holds (duplicate, rename?), and whether the user is warned that symbols lose their type on a delete.
+- Fold arrows on the branches: drawn, never said.
+- The parts of the type: see the four proposals in [Types](../metadata/01-types.md#the-parts-of-a-type-four-proposals) and in the Figma file.
 
 ## MD-02 · General
 
@@ -384,11 +389,8 @@ mindmap
     List of enums
     An enum
       Name
-      Kind of key
-        Number
-        String
       Items
-        Key, sent to the model
+        Key, a number, sent to the model
         Display text, shown to people
 ```
 
@@ -397,9 +399,9 @@ mindmap
 | MD-09.1 | List of enums | List | A page of its own, not part of the signals. Enums can be made before any signal uses them. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.2 | Add an enum | not said (button) | — | Implied | [Enums](../metadata/06-enums.md) |
 | MD-09.3 | Name | Text field | — | Decided | [Enums](../metadata/06-enums.md) |
-| MD-09.4 | Kind of key | not said (radio) | Number or string, for the whole enum. | Decided | [Enums](../metadata/06-enums.md) |
+| MD-09.4 | Kind of key | — | Removed (Product Owner, 2026-11-16): a key is always a number, there are no string keys. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.5 | Items | List | Each item a key and a display text. | Decided | [Enums](../metadata/06-enums.md) |
-| MD-09.6 | Key | Number or text field | Unique; what the model receives. Changing it is breaking for the model. | Decided | [Enums](../metadata/06-enums.md) |
+| MD-09.6 | Key | Number field | Unique; what the model receives. Changing it is breaking for the model. Whole numbers only: open. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.7 | Display text | Text field | What the faceplate, the symbol texts and the test values show. Not breaking. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.8 | Add, remove an item | not said | — | Implied | [Enums](../metadata/06-enums.md) |
 
