@@ -14,6 +14,7 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | Folder, generated files and conflicts between people | [Files and conflicts](../storage/files-and-conflicts.md) | Open, not about metadata. |
 | Source and licence of the ready-made catalogue of units | [Units](05-units.md) | Open: the licences of UCUM, QUDT, CLDR and NIST were not checked; to settle before release. |
 | Description of each signal in a preset: keep, move or drop; name of a preset | [Presets](09-presets.md) | Raised by the Product Owner during the review of the screens (2026-11-11). |
+| Where the description of a type is shown besides its documentation page | [Documentation](03-documentation.md) | Raised by the removal of the libraries of types (2026-11-16). |
 | Every control the specs need but never describe (create, delete, order...) | [Screens of Metadata](../screens/metadata.md) | Listed as gaps, screen by screen. |
 
 ```mermaid

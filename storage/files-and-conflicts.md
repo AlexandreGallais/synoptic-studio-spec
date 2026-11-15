@@ -4,13 +4,13 @@
 
 Status: draft, rules stated by the Product Owner on 2026-11-10. Nothing here is validated.
 
-The open source application has access to a folder. Everything it generates (types, libraries, and the rest) is saved as files in that folder. All reading and writing goes through the server, never through the browser's file loading.
+The open source application has access to a folder. Everything it generates (types, Symbol Libs, and the rest) is saved as files in that folder. All reading and writing goes through the server, never through the browser's file loading.
 
 ## The folder
 
 - The user points the application to a folder.
 - The folder can be a shared one: people may choose a public shared folder and work on the same files at the same time.
-- Types and libraries generate files, and these files must be saved somewhere in that folder.
+- Types and Symbol Libs generate files, and these files must be saved somewhere in that folder.
 
 ## Avoiding conflicts
 

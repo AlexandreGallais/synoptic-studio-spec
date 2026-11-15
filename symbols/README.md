@@ -37,7 +37,7 @@ There is one list of symbols and one kind of symbol (Product Owner, 2026-11-15):
 
 The type is never imposed: it can be chosen when the symbol is created, or later in the right-hand panel of the editor. Removing it only hides the preset, animations and interactions; choosing it again restores them. In a synoptic, a symbol with a type can be placed and left unwired (this belongs to part 3).
 
-The two kinds of library are the **Symbol Lib** (sorts symbols) and the **Type Lib** (sorts types, in Metadata). A Symbol Lib is linked to one Type Lib and only offers its types.
+The only kind of library is the **Symbol Lib**, which sorts symbols. There are no libraries of types (Product Owner, 2026-11-16): a symbol picks its type among all the types of Metadata.
 
 ## What it contains
 

@@ -15,7 +15,7 @@ A type has a documentation page, where people put what explains the type: a desc
 
 | Part | Meaning |
 | --- | --- |
-| Description | A text in Markdown that says what the type is. It is shown in the tiles of the library screen, next to the model identifier. |
+| Description | A text in Markdown that says what the type is. Where else it is shown is open: it was shown in the tiles of the library screen, removed with the libraries of types (2026-11-16). |
 | Links | Links to files, folders and URLs (standards, datasheets, project folders...), each with a short description. |
 
 ```mermaid
@@ -24,7 +24,6 @@ flowchart TD
     T --> D[Documentation page]
     D --> D1["Description (Markdown)"]
     D --> D2["Links: file, folder or URL, each with a description"]
-    D1 -.->|"shown in"| Tile["Library tile: icon, model identifier, description"]
 ```
 
 ## The description
@@ -81,3 +80,7 @@ flowchart TD
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Description, links | Metadata | Documentation page of the type | No | No |
+
+## Open questions
+
+- Is the description shown anywhere else than the documentation page (a tooltip in the type tree, in the type choice of a symbol)? It was shown in the tiles of the library screen, removed with the libraries of types (Product Owner, 2026-11-16).

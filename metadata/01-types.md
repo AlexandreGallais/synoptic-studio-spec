@@ -18,7 +18,7 @@ flowchart TD
 
 - The General part holds the name, the parent, and an icon with its colour (see [Icons](02-icons.md)). The description and the links are in a separate documentation page (see [Documentation](03-documentation.md)).
 - The name is the type's identifier for the model, like a signal's name. No second label. It must be readable and exact, because model authors use it to know what the type is (example: `centrifugal_pump`). Where a standard already names things, the type takes that name.
-- A type also has an internal identifier, set by the software, that never changes. It exists on the application side only and never goes to the model. It is needed to define the parent and for libraries to point to the type, so renaming a type breaks nothing in the application.
+- A type also has an internal identifier, set by the software, that never changes. It exists on the application side only and never goes to the model. It is needed to define the parent and for symbols to point to the type, so renaming a type breaks nothing in the application.
 - So there are two identifiers: the name (seen by the model, meaningful) and the internal one (seen by the application only, meaningless).
 
 ```mermaid
@@ -26,12 +26,13 @@ flowchart LR
     T[Type] --> N["Name = model identifier, readable"]
     T --> I["Internal identifier, fixed, app only"]
     N -->|"seen by"| M[Model]
-    I -->|"used by"| A["Parent link, libraries, symbols"]
+    I -->|"used by"| A["Parent link, symbols"]
 ```
 
 - No abstract types: "Pump", "Positive displacement pump" and "Pneumatic positive displacement pump" can all be chosen.
 - A type inherits the signals of its parents.
-- The type tree is on the **left** of the screen, as in a code editor (IDE), where every tree sits on the left (Product Owner, 2026-11-11).
+- The type tree is on the **left** of the screen, as in a code editor (IDE), where every tree sits on the left (Product Owner, 2026-11-11). It sits just right of the navigation bar of Metadata (see [Screens](../screens/README.md#layout-rules)).
+- There are no libraries of types: every type of the tree can be chosen everywhere (Product Owner, 2026-11-16).
 - The name and the parent are changed in the General part only. Double-clicking an item in the tree does not rename it: hidden options are avoided.
 - The parts of a type are shown in this order (Product Owner, 2026-11-11): General, Documentation, Signals, Commands, Faceplate, Presets.
 - The General part holds only the name, the parent, the icon and the colour. Nothing more is needed (Product Owner, 2026-11-11).
@@ -43,7 +44,7 @@ The rule is true between types that have no parent link. Three mechanisms do pro
 
 - Changing a parent changes all its descendants.
 - A sub-type cannot declare again a signal name it already inherits. No redefinition: it is the simplest rule, and a name stays one thing along the tree.
-- The values of an enum are part of the contract with the model: changing them is breaking, like a rename (see [Enums](06-enums.md)). Links to an enum or a quantity go through an internal identifier, like libraries do for types.
+- The values of an enum are part of the contract with the model: changing them is breaking, like a rename (see [Enums](06-enums.md)). Links to an enum or a quantity go through an internal identifier, like symbols do for types.
 
 Versioned, published types (the answer of OPC UA's best-practices guide and of Siemens) are kept for later.
 
@@ -111,4 +112,4 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Type (name, parent) | Metadata, General | Library (as a pointer), signal and command inheritance | Chosen, only here | No |
+| Type (name, parent) | Metadata, General | Signal and command inheritance | Chosen among all the types, only here | No |

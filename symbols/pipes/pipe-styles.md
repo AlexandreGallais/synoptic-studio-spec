@@ -92,7 +92,8 @@ Decided by the Product Owner (2026-11-11).
   - the **colours** (body, border) change with what happens;
   - the **direction** of the movement changes with the model;
   - and other properties of the style, "plenty of things like that".
-- Assumptions of the assistant, to confirm: the type is chosen among the types of the Type Lib linked to the Symbol Lib (see [Libraries and symbols](../01-libraries-and-symbols.md)); only output signals animate, with the same shapes of mapping as for symbols (bounded linear, by ranges, two values for a boolean, state table for an enum).
+- The type is chosen among all the types of Metadata, as for a symbol: there are no libraries of types (Product Owner, 2026-11-16).
+- Assumption of the assistant, to confirm: only output signals animate, with the same shapes of mapping as for symbols (bounded linear, by ranges, two values for a boolean, state table for an enum).
 - Each pipe of the synoptic then gets its own values from the model, as a placed symbol does (to write in part 3).
 
 ```mermaid

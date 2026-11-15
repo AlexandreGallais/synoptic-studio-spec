@@ -114,7 +114,7 @@ mindmap
 | PI-02.5 | Override another option | not said (button or list) | Any option of [PI-01](#pi-01--base-pipe-style); example: a smaller width for gas pipes. | Decided (control not said) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.6 | Overridden options shown | — | The panel shows which options differ from the base. | Proposed | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.7 | Reset to the base | Button | Per overridden option. | Proposed | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-02.8 | Linked type | Select | Optional; a type of the Type Lib of the Symbol Lib (assumed). | Decided (Type Lib: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-02.8 | Linked type | Select | Optional; any type of Metadata (no library of types). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.9 | Animations | List, like [SY-08](symbols.md#sy-08--animation-mode) | Output signals drive the speed and direction of the dashes and the colours, and more ("plenty of things"). | Decided (properties beyond these: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 
 Gaps:

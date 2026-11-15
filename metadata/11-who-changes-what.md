@@ -1,6 +1,6 @@
 # Who changes what, and where
 
-> [Home](../README.md) › [Metadata](README.md) › Who changes what · Previous: [Libraries](10-libraries.md) · Next: [Open questions](12-open-questions.md)
+> [Home](../README.md) › [Metadata](README.md) › Who changes what · Previous: [Presets](09-presets.md) · Next: [Open questions](12-open-questions.md)
 
 Status: validated by the Product Owner on 2026-11-11. Open points are listed in [Open questions](12-open-questions.md).
 
@@ -8,8 +8,7 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 
 | Thing | Created and changed in | In a symbol | In a synoptic |
 | --- | --- | --- | --- |
-| Library (Type Lib) | Metadata | Choose one of the types of the Type Lib linked to the Symbol Lib | No |
-| Type (name, parent, icon) | Metadata, General | Choose its type (only here) | No |
+| Type (name, parent, icon) | Metadata, General | Choose its type among all the types (only here) | No |
 | Type documentation | Metadata | No | No |
 | Signal | Metadata | No | No |
 | Quantity, families, reference family, conversions, default model unit, default decimals | Units page | No | No |
@@ -23,7 +22,7 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 
 ```mermaid
 flowchart LR
-    M[Metadata] -->|"types, signals, commands, faceplates, presets, libraries"| S[Symbol]
+    M[Metadata] -->|"types, signals, commands, faceplates, presets"| S[Symbol]
     S -->|"choose a preset, edit defaults, display units, names and descriptions, link a command to a click, tick faceplate entries"| Y[Synoptic]
     Y -->|"choose a preset, edit defaults, display units, names and descriptions, tick faceplate entries"| Y
 ```
@@ -33,6 +32,5 @@ flowchart LR
 - Types: [Types](01-types.md), [Icons](02-icons.md), [Documentation](03-documentation.md).
 - Model side: [Signals](04-signals.md), [Units](05-units.md), [Enums](06-enums.md).
 - Front side: [Commands](07-commands.md), [Faceplates](08-faceplates.md), [Presets](09-presets.md).
-- Use: [Libraries](10-libraries.md).
 
 Each page also has its own "Where it is used" table, the detail of the table above. When one changes, the other must change too.

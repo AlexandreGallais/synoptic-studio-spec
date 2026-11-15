@@ -14,4 +14,5 @@ Status: draft, written from the Product Owner's oral description on 2026-11-10. 
 
 ## See also
 
-- [Metadata](../metadata/README.md): types and libraries are saved as files through this storage.
+- [Metadata](../metadata/README.md): types are saved as files through this storage.
+- [Symbols](../symbols/README.md): Symbol Libs are saved as files through this storage.

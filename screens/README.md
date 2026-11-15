@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › Screens
 
-Status: draft, written by the assistant on 2026-11-11 from the pages of [Metadata](../metadata/README.md) and [Symbols](../symbols/README.md). It adds no rule: it only shows, screen by screen, what the specs already say. Where the specs say nothing, it says so.
+Status: draft, written by the assistant on 2026-11-11 from the pages of [Metadata](../metadata/README.md) and [Symbols](../symbols/README.md). It adds no rule: it only shows, screen by screen, what the specs already say. Where the specs say nothing, it says so. The only rules written here are the [layout rules](#layout-rules), which hold for every screen (Product Owner, 2026-11-16).
 
 This folder is the **inventory of the screens and menus** of Synoptic Studio. For each screen it answers three questions at a glance:
 
@@ -16,9 +16,38 @@ The rules stay in the pages of each part. When a page changes, the screen that s
 
 | File | Screens |
 | --- | --- |
-| [Metadata](metadata.md) | Types (tree and type editor with its six parts), Units, Enums, Libraries. |
-| [Symbol editor](symbols.md) | Symbol Libs, the left-hand panel of a Symbol Lib, the symbol editor (layout, floating bars, layers) and its seven modes, the advanced tools. |
+| [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its six parts), Units, Enums. |
+| [Symbol editor](symbols.md) | The navigation bar, Symbol Libs, the left-hand panel of a Symbol Lib, the symbol editor (layout, floating bars, layers) and its seven modes, the advanced tools. |
 | [Pipes](pipes.md) | The base pipe style, the pipe styles, the end shapes, the dash sequences, the preview, and pipes in a synoptic (part 3, preview). |
+
+## Layout rules
+
+Set by the Product Owner on 2026-11-16, while reviewing the wireframes. They hold for every screen.
+
+### Columns, not rows
+
+- Things are separated in **columns**, side by side, rather than one under the other.
+- Most screens show a list. The **list goes on the left**, and the **panel of the selected item on the right**. A panel placed under a list moves down as the list grows: the user would look further and further for it.
+- So the information stays where the eye already is, whatever the length of the list.
+
+```mermaid
+block-beta
+    columns 3
+    list["List: one line per item, a click selects"] panel["Panel of the selected item: its fields, its actions"]:2
+```
+
+### Navigation bar on the left
+
+- A narrow bar of icons sits on the far left of the window (a "rail").
+- In Metadata, it holds one icon per page: **Types**, **Units**, **Enums** (decided). The Product Owner first named an icon for the libraries too, then removed the libraries of types in the same review.
+- In the symbol mode, it holds a **Libraries** button (a kind of "home"), a separator, then the list of every Symbol Lib (decided): see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode).
+- Open: how the user goes from Metadata to the symbol mode (one bar for the whole application, or one bar per part).
+
+```mermaid
+block-beta
+    columns 5
+    rail["Bar: Types, Units, Enums"] tree["Type tree"] list["List of the part: signals..."] panel["Panel of the selected item"]:2
+```
 
 ## How to read a screen
 
@@ -67,8 +96,8 @@ How the user goes from one screen to another. Part 3 (the synoptic) is not writt
 
 ```mermaid
 flowchart TD
-    APP["Synoptic Studio: a folder is open"] --> MD["Metadata"]
-    APP --> SY["Symbols"]
+    APP["Synoptic Studio: a folder is open"] --> MD["Metadata: navigation bar MD-00"]
+    APP --> SY["Symbols: navigation bar SY-00"]
     APP -.-> P3["Part 3: synoptic, not written"]
 
     MD --> MD01["MD-01 Types: tree and type editor"]
@@ -80,7 +109,6 @@ flowchart TD
     MD01 --> MD07["MD-07 Presets"]
     MD --> MD08["MD-08 Units"]
     MD --> MD09["MD-09 Enums"]
-    MD --> MD10["MD-10 Libraries: Type Libs"]
 
     SY --> SY01["SY-01 Symbol Libs"]
     SY01 --> SY02["SY-02 Left-hand panel of a Symbol Lib"]
@@ -102,7 +130,7 @@ These gaps come back on several screens; each file lists its own.
 - **Order**: the order of faceplate entries, of signals in a list, of layers in a symbol.
 - **Layers panel**: described since 2026-11-15 (see [Layers](../symbols/03-editor/layers.md)); what a line shows besides its name is still open.
 - **Undo and redo, save**: not described anywhere.
-- **Navigation**: how the user goes from Metadata to Symbols, and between the Metadata pages (menu, tabs, side bar), is not described.
+- **Navigation**: between the Metadata pages, a navigation bar on the left (decided 2026-11-16); from Metadata to Symbols, still not described.
 
 ## See also
 

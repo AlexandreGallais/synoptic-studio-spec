@@ -42,6 +42,13 @@ This file is the index of the open questions. A question sits in the file it con
 | Key and ratio of the precise move; does it also apply to whole shapes. | [Precise move](03-editor/precise-move.md) | See the page. |
 | What a line of the layer tree shows besides its name (lock, hide, icon of its kind). | [Layers](03-editor/layers.md) | Icon of the kind, name, hide, lock. |
 
+## Raised by the review of 2026-11-16
+
+| Question | Page | Proposal of the assistant |
+| --- | --- | --- |
+| How a Symbol Lib looks in the navigation bar (the bar itself is decided: Libraries button, separator, every Symbol Lib). | [Libraries and symbols](01-libraries-and-symbols.md) | Initials in a square, the name on hover. |
+| Type choice among all the types: how it stays quick when the tree grows. | [Libraries and symbols](01-libraries-and-symbols.md) | A tree with a search field, as in Metadata. |
+
 ## Still open, not researched
 
 | Question | Page | Written as |

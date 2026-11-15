@@ -8,7 +8,7 @@ A symbol can be linked to a type, which gives it signals and commands. This page
 
 ## Rules
 
-- A symbol has at most one type, among the types of the Type Lib linked to the Symbol Lib. The type is never imposed: it can be chosen when the symbol is created, or later, and changed afterwards (still among those types) (Product Owner, 2026-11-15). Both happen in the symbol editor and only there (see [Types](../metadata/01-types.md)). The signals of the type, with those it inherits, are then the signals the symbol can use.
+- A symbol has at most one type, among all the types of Metadata (no library of types since 2026-11-16). The type is never imposed: it can be chosen when the symbol is created, or later, and changed afterwards (Product Owner, 2026-11-15). Both happen in the symbol editor and only there (see [Types](../metadata/01-types.md)). The signals of the type, with those it inherits, are then the signals the symbol can use.
 - The type and the preset are chosen in the **right-hand panel** of the editor (Product Owner, 2026-11-15). Assumption of the assistant: the panel shows them when no shape is selected, as the settings of the symbol itself.
 - The symbol chooses a preset of its type (see [Presets](../metadata/09-presets.md)), then can edit its default values, display units, decimal places, names and descriptions. Example: to see a green pump, the user sets the default colour in the symbol.
 - The symbol decides which faceplate entries are ticked. The full list is always there; ticking or unticking changes the display only (see [Faceplates](../metadata/08-faceplates.md)).

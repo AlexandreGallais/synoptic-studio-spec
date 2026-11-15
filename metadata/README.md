@@ -4,7 +4,7 @@
 
 The first part of Synoptic Studio: the data and documentation a symbol can be attached to. It is the model side (what an object is, what goes in and out of it), not the front side (how it looks).
 
-Status: validated by the Product Owner on 2026-11-11, then changed by him the same day while reviewing the [screens](../screens/metadata.md): type tree on the left, order of the parts, three modes for the description, links that only open folders, a signal edited as a whole, enum items as a key and a display text, typed values of any type, differences shown with their quantity, library views from left to right. The questions still open are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11, then changed by him the same day while reviewing the [screens](../screens/metadata.md): type tree on the left, order of the parts, three modes for the description, links that only open folders, a signal edited as a whole, enum items as a key and a display text, typed values of any type, differences shown with their quantity. On 2026-11-16, while reviewing the wireframes, he removed the libraries of types and set the layout rules of the [screens](../screens/README.md#layout-rules) (a navigation bar on the left, a list on the left and its panel on the right). The questions still open are listed in [Open questions](12-open-questions.md).
 
 ## The big picture
 
@@ -48,11 +48,11 @@ flowchart LR
 
 ### Step 3: how it is used
 
-Libraries only sort the types. A symbol picks a type and a preset. A synoptic uses symbols and can only tick faceplate entries and write their title and description.
+A symbol picks a type, among all the types of the tree, and a preset. A synoptic uses symbols and can only tick faceplate entries and write their title and description. There are no libraries of types (Product Owner, 2026-11-16).
 
 ```mermaid
 flowchart LR
-    L["Library: a list of types"] -->|"the user picks a type"| S["Symbol: type + preset"]
+    L["Type tree: all the types"] -->|"the user picks a type"| S["Symbol: type + preset"]
     S -->|"placed in"| Y["Synoptic"]
 ```
 
@@ -69,7 +69,6 @@ flowchart LR
 | [Commands](07-commands.md) | The two kinds of command: set a signal (fixed or typed value) and trigger. |
 | [Faceplates](08-faceplates.md) | What a faceplate entry is: read or write, display unit, enum input, names; the check of typed values; title and description given in the synoptic. |
 | [Presets](09-presets.md) | Defaults: values, display units, decimal places, names and descriptions of signals, entries shown at the start. |
-| [Libraries](10-libraries.md) | Flat lists that point to types, filled by ticking tiles in the tree. |
 | [Who changes what](11-who-changes-what.md) | The table of where each thing is created and changed. |
 | [Open questions](12-open-questions.md) | Every open question in one place. |
 
@@ -78,12 +77,14 @@ flowchart LR
 1. What a type is: [Types](01-types.md), [Icons](02-icons.md), [Documentation](03-documentation.md).
 2. The model side: [Signals](04-signals.md), [Units](05-units.md), [Enums](06-enums.md).
 3. The front side: [Commands](07-commands.md), [Faceplates](08-faceplates.md), [Presets](09-presets.md).
-4. How it is used: [Libraries](10-libraries.md), [Who changes what](11-who-changes-what.md).
+4. How it is used: [Who changes what](11-who-changes-what.md).
 5. What is left to decide: [Open questions](12-open-questions.md).
+
+The page numbers jump from 09 to 11: page 10 held the libraries of types, removed on 2026-11-16.
 
 ## Page layout
 
-Every concept page (types to libraries) follows the same skeleton, in this order:
+Every concept page (types to presets) follows the same skeleton, in this order:
 
 1. Title, then the navigation line (breadcrumb, previous, next).
 2. `Status:` line, then a short paragraph saying what the page is about.
@@ -97,5 +98,5 @@ The index pages ([Who changes what](11-who-changes-what.md), [Open questions](12
 
 ## See also
 
-- [Storage](../storage/README.md): how the files that types and libraries generate are saved.
+- [Storage](../storage/README.md): how the files that types generate are saved.
 - [Screens of Metadata](../screens/metadata.md): every screen of this part, with its buttons, fields and lists, and what is missing.

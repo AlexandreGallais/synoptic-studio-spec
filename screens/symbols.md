@@ -2,36 +2,53 @@
 
 > [Home](../README.md) › [Screens](README.md) › Symbol editor
 
-Status: draft, written by the assistant on 2026-11-11 from the [Symbols](../symbols/README.md) pages, themselves a draft, then updated with the Product Owner's review of 2026-11-15 (one list of symbols, left-hand panel, layers, floating bars, precise move). It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md). The pipes are in [Pipes](pipes.md).
+Status: draft, written by the assistant on 2026-11-11 from the [Symbols](../symbols/README.md) pages, themselves a draft, then updated with the Product Owner's review of 2026-11-15 (one list of symbols, left-hand panel, layers, floating bars, precise move) and of 2026-11-16 (no libraries of types, navigation bar). It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md). The pipes are in [Pipes](pipes.md).
+
+## SY-00 · Navigation bar of the symbol mode
+
+Path: Symbols. On the far left of every screen of the symbol mode (Product Owner, 2026-11-16).
+
+| ID | Element | Kind | Values and behaviour | Status | Source |
+| --- | --- | --- | --- | --- | --- |
+| SY-00.1 | Libraries | Button (icon), at the top | A kind of "home": opens [SY-01](#sy-01--symbol-libs), the full list of the Symbol Libs with more information. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-00.2 | Separator | — | Between the Libraries button and the list. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-00.3 | Symbol Libs | List (one item each) | Every Symbol Lib, directly: one click changes the library shown in the left-hand panel. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+
+Gaps:
+
+- How a Symbol Lib looks in the bar (icon, initials, name on hover).
+- How the user goes from the symbol mode to Metadata (see the [guide](README.md#layout-rules)).
 
 ## SY-01 · Symbol Libs
 
-Path: Symbols.
+Path: Symbols › Libraries (the button at the top of the navigation bar).
+
+The page is the full list of the Symbol Libs, with more information than the navigation bar. Following the layout rules, the list is on the left and the selected library on the right.
 
 ```mermaid
 mindmap
   root((SY-01 Symbol Libs))
-    List of Symbol Libs
+    List of Symbol Libs, on the left
     Create a Symbol Lib
       Name
-      Type Lib
-    A Symbol Lib
-      Change its Type Lib
+    A Symbol Lib, on the right
+      Name
+      More information, not said
       Open it
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-01.1 | List of Symbol Libs | List | The user selects one to see its content. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-01.2 | Create a Symbol Lib | not said (button) | Asks a name and a Type Lib. | Decided (control not said) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-01.1 | List of Symbol Libs | List | On the left. The user selects one to see it on the right. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-01.2 | Create a Symbol Lib | not said (button) | Asks a name only. | Decided (control not said) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-01.3 | Name | Text field | — | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-01.4 | Type Lib | Select | One Type Lib; can serve several Symbol Libs. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-01.5 | Change the Type Lib | Select | The user clicks the Symbol Lib and changes it; may break symbols. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-01.4 | More information | not said | "Une liste mieux faite, avec plus d'infos": which information is not said (number of symbols and pipe styles, broken items, last change?). | Open | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-01.5 | Open | not said (button) | Shows the library in the left-hand panel ([SY-02](#sy-02--left-hand-panel-of-a-symbol-lib)). | Implied | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 
 Gaps:
 
 - Rename, duplicate (to change a look over time, the user creates a new Symbol Lib: is it a copy of the old one?), delete.
-- Is the user warned before a change of Type Lib that breaks symbols, with the number of broken links?
+- Which information the full list shows on each library.
 
 ## SY-02 · Left-hand panel of a Symbol Lib
 
@@ -72,7 +89,7 @@ mindmap
 | SY-02.1 | List of symbols | List | One flat list, one kind of symbol: no static or dynamic. A click on an item opens it in the editor. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.2 | Search the symbols | Text field (magnifier) | Filters the list. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.3 | Create a symbol | Button (+) | The type and preset can be chosen here, never imposed. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-02.4 | Type, at creation | Select, optional | The types of the Type Lib; a parent not ticked is greyed. | Decided | [Libraries](../metadata/10-libraries.md) |
+| SY-02.4 | Type, at creation | Select, optional | All the types of Metadata (no library of types). How the choice stays quick in a big tree: open. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.5 | Item of the list | Thumbnail + name | The thumbnail is the symbol, or its outlines only (as Figma's outline view). | Decided (thumbnail: Open) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.6 | List of pipe styles | List | Flat; a click opens the style (see [Pipes](pipes.md)). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.7 | Search the pipe styles | Text field (magnifier) | Filters the list. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
@@ -96,7 +113,8 @@ The layout is decided (Product Owner, 2026-11-15), except the place of the tool 
 
 ```mermaid
 block-beta
-    columns 3
+    columns 4
+    rail["Navigation bar SY-00"]
     left["Left-hand panel: SY-02 symbols and pipe styles, then the layers"] canvas["Drawing area: modes menu floating top left; advanced tools bar above the tool bar; tool bar floating at the bottom"] panel["Right-hand panel: options of the selection, type and preset of the symbol"]
 ```
 
@@ -137,7 +155,7 @@ mindmap
 | SY-03.1 | Modes menu | Floating menu | At the top left of the drawing area: Drawing, Point editing, Alignment, Interaction, Animation, Run, Connection. Interaction, Animation and Run need a type. | Decided (Connection: Proposed) | [Editor](../symbols/03-editor/README.md) |
 | SY-03.2 | Tool bar | Floating bar | The tools of the mode; at the bottom of the drawing area (leaning) or at the top. | Decided (place: Open) | [Editor](../symbols/03-editor/README.md) |
 | SY-03.3 | Show the advanced tools | Button (in the tool bar) | Shows or hides the [SY-11](#sy-11--advanced-tools) bar just above. | Decided | [Advanced tools](../symbols/03-editor/expert-menu/README.md) |
-| SY-03.4 | Type | Select, optional | In the right-hand panel; among the types of the Type Lib; can be removed. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
+| SY-03.4 | Type | Select, optional | In the right-hand panel; among all the types of Metadata; can be removed. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
 | SY-03.5 | Preset | Select | In the right-hand panel; then its defaults, display units, decimals, names and descriptions are edited here. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
 | SY-03.6 | Faceplate entries | Checkbox per entry | The full list is always there. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
 | SY-03.7 | Hand | Button (tool) | Moves the view; also the middle button held. In every mode. | Decided | [Hand](../symbols/03-editor/hand.md) |

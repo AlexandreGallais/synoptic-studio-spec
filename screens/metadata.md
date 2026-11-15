@@ -2,18 +2,33 @@
 
 > [Home](../README.md) › [Screens](README.md) › Metadata
 
-Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units, libraries). It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md).
+Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
+
+## MD-00 · Navigation bar of Metadata
+
+Path: on the far left of every screen of Metadata (Product Owner, 2026-11-16).
+
+| ID | Element | Kind | Values and behaviour | Status | Source |
+| --- | --- | --- | --- | --- | --- |
+| MD-00.1 | Types | Button (icon) | Opens [MD-01](#md-01--types-the-tree-and-the-type-editor). | Decided | [Layout rules](README.md#layout-rules) |
+| MD-00.2 | Units | Button (icon) | Opens [MD-08](#md-08--units). | Decided | [Layout rules](README.md#layout-rules) |
+| MD-00.3 | Enums | Button (icon) | Opens [MD-09](#md-09--enums). | Decided | [Layout rules](README.md#layout-rules) |
+
+Gaps:
+
+- How the user goes from Metadata to the symbol mode: an icon of this bar, or another bar for the whole application?
+- Which icons (to choose with the design system).
 
 ## MD-01 · Types: the tree and the type editor
 
 Path: Metadata › Types.
 
-The tree is on the left, as in a code editor; the selected type is edited on the right, its parts in a fixed order.
+The tree is on the left, as in a code editor, just right of the navigation bar; the selected type is edited on the right, its parts in a fixed order.
 
 ```mermaid
 block-beta
-    columns 3
-    tree["Type tree, on the left"] editor["Type editor: General, Documentation, Signals, Commands, Faceplate, Presets"]:2
+    columns 4
+    rail["MD-00 bar"] tree["Type tree"] editor["Type editor: General, Documentation, Signals, Commands, Faceplate, Presets"]:2
 ```
 
 ```mermaid
@@ -43,7 +58,8 @@ mindmap
 Gaps:
 
 - How is a type created, and where (a button above the tree, a right click)? How is it deleted, and is the user warned that symbols will break?
-- Does the type tree have a search field and fold arrows, as the library screen has?
+- Does the type tree have a search field and fold arrows (the library screen had them before it was removed)?
+- The parts of the type: tabs or sections? With the layout rules, the parts that hold a list (Signals, Commands, Faceplate, Presets) put their list on the left and the selected item on the right; tabs keep that layout readable (assistant's opinion).
 
 ## MD-02 · General
 
@@ -125,6 +141,14 @@ Gaps:
 
 Path: Metadata › Types › a type › Signals.
 
+The list of signals is on the left, the panel of the selected signal on the right (Product Owner, 2026-11-16): a panel under the list would move down as the list grows.
+
+```mermaid
+block-beta
+    columns 3
+    list["List of signals: own, then inherited"] panel["Panel of the selected signal: Edit, fields, Save"]:2
+```
+
 How the fields depend on each other: the type decides which fields exist; the quantity decides which units can be chosen.
 
 ```mermaid
@@ -140,12 +164,13 @@ flowchart LR
 ```mermaid
 mindmap
   root((MD-04 Signals))
-    List of signals
+    List of signals, on the left
       Own signals
       Inherited signals
       Enum line shows the enum name
         Hover shows its items
-    A signal, edited as a whole
+    Panel of the selected signal, on the right
+      Edited as a whole
       Edit button
       Name
       Type
@@ -159,11 +184,11 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-04.1 | List of signals | List | Own and inherited signals. | Decided | [Signals](../metadata/04-signals.md) |
+| MD-04.1 | List of signals | List | On the left. Own and inherited signals. A click selects a signal and shows it in the panel on the right. | Decided | [Signals](../metadata/04-signals.md), [Layout rules](README.md#layout-rules) |
 | MD-04.2 | Enum on a signal line | — | The line shows the enum's name; hovering it shows its items. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.3 | Inherited signals | not said | How they look in the list (greyed, with the parent's name) is not said. | Implied | [Signals](../metadata/04-signals.md) |
 | MD-04.4 | Add a signal | not said (button) | — | Implied | [Signals](../metadata/04-signals.md) |
-| MD-04.5 | Edit, Save | Button | The whole signal goes into edit mode, then is saved: nothing changes by mistake; no warning. | Decided | [Signals](../metadata/04-signals.md) |
+| MD-04.5 | Edit, Save | Button | In the panel on the right. The whole signal goes into edit mode, then is saved: nothing changes by mistake; no warning. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.6 | Name | Text field | Model identifier. A sub-type cannot reuse an inherited name. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.7 | Type | not said (select) | Integer, real (64-bit double), boolean, text, enum. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.8 | Enum | not said (select) | Only for the type enum: an enum of the Enums page, as a link. | Decided | [Enums](../metadata/06-enums.md) |
@@ -175,13 +200,14 @@ mindmap
 
 Gaps:
 
-- Are the fields edited in the line itself (a table), or in a panel for the selected signal?
 - Are the fields that do not apply hidden or greyed (quantity for a boolean, enum for a real)?
 - Order of the signals: by creation, by name, or chosen by the user?
 
 ## MD-05 · Commands
 
 Path: Metadata › Types › a type › Commands.
+
+As for the signals, the list of commands is on the left and the panel of the selected command on the right ([layout rules](README.md#layout-rules)).
 
 ```mermaid
 mindmap
@@ -200,7 +226,7 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-05.1 | List of commands | List | — | Implied | [Commands](../metadata/07-commands.md) |
+| MD-05.1 | List of commands | List | On the left; the selected command in a panel on the right. | Implied (layout: Decided) | [Commands](../metadata/07-commands.md) |
 | MD-05.2 | Add a command | not said (button) | — | Implied | [Commands](../metadata/07-commands.md) |
 | MD-05.3 | Name | Text field | For a trigger, the name is its identifier and all it has. Symbols follow a rename (internal identifier). | Decided | [Commands](../metadata/07-commands.md) |
 | MD-05.4 | Kind | not said (radio) | Set a signal, or Trigger. | Decided | [Commands](../metadata/07-commands.md) |
@@ -219,6 +245,8 @@ Gaps:
 ## MD-06 · Faceplate
 
 Path: Metadata › Types › a type › Faceplate.
+
+The list of entries is on the left and the panel of the selected entry on the right ([layout rules](README.md#layout-rules)). The Product Owner will go over this screen again later (2026-11-16).
 
 ```mermaid
 mindmap
@@ -258,6 +286,8 @@ Gaps:
 
 Path: Metadata › Types › a type › Presets.
 
+The list of presets is on the left and the selected preset on the right ([layout rules](README.md#layout-rules)).
+
 ```mermaid
 mindmap
   root((MD-07 Presets))
@@ -291,9 +321,9 @@ Gaps:
 
 ## MD-08 · Units
 
-Path: Metadata › Units.
+Path: Metadata › Units (navigation bar).
 
-The page goes from the list of quantities to a quantity, then to a family.
+The page goes from the list of quantities to a quantity, then to a family. Following the [layout rules](README.md#layout-rules), they sit in columns from left to right: the list, the selected quantity, the selected family.
 
 ```mermaid
 flowchart LR
@@ -344,7 +374,9 @@ Gaps:
 
 ## MD-09 · Enums
 
-Path: Metadata › Enums.
+Path: Metadata › Enums (navigation bar).
+
+The list of enums is on the left and the selected enum, with its items, on the right ([layout rules](README.md#layout-rules)).
 
 ```mermaid
 mindmap
@@ -378,49 +410,6 @@ Gaps:
 - Order of the items: is it the order of the menu in the faceplate?
 - Which signals use an enum: is it shown (a usage counter)?
 
-## MD-10 · Libraries (Type Libs)
+## MD-10 · Libraries: removed
 
-Path: Metadata › Libraries.
-
-The screen reads from left to right: the user picks on the left, the library takes shape on the right.
-
-```mermaid
-block-beta
-    columns 2
-    left["Left view: the whole type tree, tiles with checkboxes, search, fold arrows"] right["Right view: the tree rebuilt with the ticked types only"]
-```
-
-```mermaid
-mindmap
-  root((MD-10 Libraries))
-    List of libraries
-    A library
-      Left view, to pick
-        Whole tree
-        Tile per type
-          Icon
-          Name
-          Description
-          Checkbox
-        Search
-        Fold arrows
-      Right view, the result
-        Ticked types
-        Parents not ticked shown for the path
-```
-
-| ID | Element | Kind | Values and behaviour | Status | Source |
-| --- | --- | --- | --- | --- | --- |
-| MD-10.1 | List of libraries | List | Flat; no library inside a library. | Decided | [Libraries](../metadata/10-libraries.md) |
-| MD-10.2 | Create a library | not said (button) | Created empty. | Decided (control not said) | [Libraries](../metadata/10-libraries.md) |
-| MD-10.3 | Name of the library | not said | Never mentioned. | Implied | — |
-| MD-10.4 | Left view: tile of a type | Checkbox | Icon, model identifier, description; a click ticks it, it turns green. | Decided | [Libraries](../metadata/10-libraries.md) |
-| MD-10.5 | Search | Text field | Filters the tree of the left view. | Decided | [Libraries](../metadata/10-libraries.md) |
-| MD-10.6 | Fold arrows | Button | Fold or unfold a branch. | Decided | [Libraries](../metadata/10-libraries.md) |
-| MD-10.7 | Right view | Tree | The ticked types; a parent not ticked is shown for the path. | Decided | [Libraries](../metadata/10-libraries.md) |
-
-Gaps:
-
-- A library has no name in the specs; rename and delete are not described.
-- Is there a "tick a whole branch" action?
-- Which Symbol Libs use a library: is it shown?
+The libraries of types (Type Libs) were removed by the Product Owner on 2026-11-16. The identifier MD-10 is not reused.

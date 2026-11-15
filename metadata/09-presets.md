@@ -1,6 +1,6 @@
 # Presets
 
-> [Home](../README.md) › [Metadata](README.md) › Presets · Previous: [Faceplates](08-faceplates.md) · Next: [Libraries](10-libraries.md)
+> [Home](../README.md) › [Metadata](README.md) › Presets · Previous: [Faceplates](08-faceplates.md) · Next: [Who changes what](11-who-changes-what.md)
 
 Status: validated by the Product Owner on 2026-11-11. Open points are listed in [Open questions](12-open-questions.md).
 
