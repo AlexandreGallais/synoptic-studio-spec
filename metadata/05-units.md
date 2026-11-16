@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Units · Previous: [Signals](04-signals.md) · Next: [Enums](06-enums.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (the units are a ready-made catalogue, read only in the application, kept in files of the software that contributors complete; a signal says whether its value is a quantity or a difference; decision 0020, accepted on 2026-11-16; the same day: the choice shown in the one column "Quantity", a difference only where the conversion changes, default decimals fixed by the catalogue). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (the units are a ready-made catalogue, read only in the application, kept in files of the software that contributors complete; a signal says whether its value is a quantity or a difference; decision 0020, accepted on 2026-11-16; the same day: the choice shown in the one column "Quantity", a difference only where the conversion changes, default decimals fixed by the catalogue; at the end of the day, one model unit per quantity, the same everywhere, no longer chosen per signal). Open points are listed in [Open questions](12-open-questions.md).
 
 A Units page lists quantities (mass, volume, flow, pressure...), with their families and units. A quantity is what a value measures; a unit is one way to count it: the kilogram is a unit of the quantity mass.
 
@@ -59,18 +59,26 @@ flowchart LR
 
 ## Model unit and display unit
 
-- The catalogue gives each quantity a default model unit, shown on the Units page. Example: quantity "volume", default model unit centilitre.
-- A signal takes a quantity, not a unit: a signal is "volume", not "m³/h". By default it uses the model unit of its quantity.
-- A signal can override it: in its definition, the user picks another unit of the same quantity as the model unit of that signal. The model then handles this signal in that unit.
-- So the model unit is not one for all models: the quantity gives the default, the signal can change it.
-- A display unit is any unit of the same quantity, in any family. It is chosen in a faceplate, then in a preset, and can be edited in a symbol or a synoptic.
+Changed by the Product Owner on 2026-11-16, at the end of the day: "il faut, pour un même type de quantité, qu'il faille tout le temps la même unité, pour les différences pareil, partout. Comme ça, au moins, t'as pas de trucs chelous de conversion."
+
+- **One model unit per quantity, the same everywhere**: every signal of a quantity is handled by the model in that unit. A difference has its own model unit, the same everywhere too.
+- A signal takes a quantity, not a unit: a signal is "volume", not "m³/h". **The signal never chooses its model unit**: the override per signal of 2026-11-11 is removed, and the column Model unit with it (see [Signals](04-signals.md)).
+- **The model unit is not set in Metadata** ("ça va pas dans la définition de la metadata. Ça va plutôt après"). Two places are possible, not chosen yet:
+  - once and for good, in the catalogue files of the software: then it is the model unit the catalogue already gives each quantity, shown read only on the Units page;
+  - once per project, in a configuration file of the project.
+- À trancher : where the model unit is set (the catalogue for good, or the project). Until then, the Units page keeps showing the catalogue's model unit of each quantity.
+- A display unit is any unit of the same quantity, in any family. It is chosen in a preset, and can be edited in a symbol or a synoptic.
 - The value is converted for display only. The model value stays the same.
 
 ```mermaid
 flowchart TD
-    C["Units page: quantity volume, default model unit cL"] --> P1["Signal flow_in: no choice, model unit cL"]
-    C --> P2["Signal tank_level: overrides, model unit L"]
-    P1 --> D["Display unit: chosen in faceplate, preset, symbol, synoptic"]
+    C["Model unit of the quantity volume: cL, the same everywhere"] --> P1["Signal flow_in: handled in cL"]
+    C --> P2["Signal tank_level: handled in cL"]
+    W{"Set where?"} -.->|"for good"| CAT["Catalogue files of the software"]
+    W -.->|"per project"| PRJ["Configuration file of the project"]
+    CAT -.-> C
+    PRJ -.-> C
+    P1 --> D["Display unit: chosen in the preset, editable in a symbol or a synoptic"]
     P2 --> D
 ```
 
@@ -112,10 +120,10 @@ All of it stays in pure JavaScript.
 
 Decided by the Product Owner on 2026-11-16: "quand on choisit une quantité, il faudrait pouvoir choisir si c'est une quantité ou si c'est un écart."
 
-- When the user gives a signal a quantity, they also say whether its value is **the quantity itself** or **a difference** of it. Example: "pressure (quantity)" or "pressure (difference)".
+- When the user gives a signal a quantity, they also say whether its value is **the quantity itself** or **a difference** of it. Example: the pressure, or the pressure difference.
 - The conversion follows this choice: a difference of 25 °C is a difference of 45 °F, a value of 25 °C is 77 °F (see above).
-- **One column "Quantity"** in the table of signals holds the choice (Product Owner, 2026-11-16): its list offers "pressure (quantity)" and "pressure (difference)" side by side. No column of its own: one column less in a table that is already wide.
-- **Only the quantities whose conversion changes offer a difference** (Product Owner, 2026-11-16): those where a value and a difference are not converted the same way, because of an offset (temperature, gauge pressure...). The other quantities are offered once, without "(quantity)" or "(difference)": their value and their difference convert the same way.
+- **One column "Quantity"** in the table of signals holds the choice (Product Owner, 2026-11-16): its list offers the pressure and the pressure difference side by side, each with its **icon** (one for a quantity, one for a difference), and no "(quantity)" or "(difference)" written after the name. No column of its own: one column less in a table that is already wide.
+- **Only the quantities whose conversion changes offer a difference** (Product Owner, 2026-11-16): those where a value and a difference are not converted the same way, because of an offset (temperature, gauge pressure...). The other quantities are offered once: their value and their difference convert the same way.
 - Which quantities have a difference is written in the catalogue files, with the difference itself (Product Owner: "ce sera configuré"); the user never decides it.
 
 ## The Units page
@@ -157,9 +165,11 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Quantity, families, reference family, conversions, default model unit, default decimals | Catalogue files of the software, completed by contributors; read only on the Units page | Signal (quantity, value or difference, model unit), preset (display unit, decimals) | No | No |
+| Quantity, families, reference family, conversions, default model unit, default decimals | Catalogue files of the software, completed by contributors; read only on the Units page | Signal (quantity, value or difference), preset (display unit, decimals) | No | No |
+| Model unit of a quantity, the same everywhere | Outside Metadata: the catalogue for good, or a configuration file of the project (open) | Every signal of the quantity, its bounds, the conversions for display | No | No |
 | Display unit, decimal places | Preset, in Metadata | Faceplate, texts of a symbol that show a value | Edit | Edit |
 
 ## Open questions
 
 - Source and licence of the catalogue data (UCUM, QUDT, CLDR, NIST not checked).
+- Where the model unit of each quantity is set: once and for good in the catalogue, or once per project in a configuration file (Product Owner, 2026-11-16: "Je sais pas où on va le mettre encore").

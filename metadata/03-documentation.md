@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Documentation · Previous: [Icons](02-icons.md) · Next: [Signals](04-signals.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no Edit step, read-only mode kept, full page button with the type tree kept, add buttons above the links, the description shown on this page only); reviewing the wireframes later that day, he set the formatting tool bar in both modes, with the full page button in it, and a delete button with a warning on each link. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no Edit step, read-only mode kept, full page button with the type tree kept, add buttons above the links, the description shown on this page only); reviewing the wireframes later that day, he set the formatting tool bar in both modes, with the full page button in it, and a delete button with a warning on each link; at the end of the day, a handle to reorder the links, two small icons with a + on the right of their title (path, URL), and no column Open: a click on the path or the URL opens it, an icon at its start. Open points are listed in [Open questions](12-open-questions.md).
 
 A type has a documentation page, where people put what explains the type: a description and links to documents and sources.
 
@@ -75,15 +75,18 @@ flowchart LR
 - A link is one of two kinds: a path to a file or a folder, or a URL.
 - A path is chosen with a selection window: the user browses to the file or the folder, and the application keeps only its path (for example `W:/...`). The file is never loaded, copied or embedded.
 - A URL is typed or pasted.
-- The buttons that add a path or a URL sit **above the list of links**, never under it (see the [layout rules](../screens/README.md#add-buttons-above-the-list)).
+- The list has the title "Links", with **two small icons on its right, each with a small +**: a path icon, which opens the selection window, and a URL icon, which opens a field to type or paste (Product Owner, 2026-11-16: "un petit +, une petite icône à côté du titre", then, against a menu: "là, tu peux faire clac-clac. C'est beaucoup plus rapide"; see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)). They replace the two buttons "Add a path" and "Add a URL".
+- **No column "Open"** (Product Owner, 2026-11-16: "la colonne open, elle sert à rien"): a click on the path or on the URL itself opens it, as below. A **small icon at the start** of the path or of the URL says which kind it is (a folder or a link) and shows that it can be clicked ("une icône avant dans le path ou l'URL").
+- **The user chooses the order of the links** (Product Owner, 2026-11-16, reviewing the wireframes: "dans les liens de la documentation [...] il faudrait pouvoir changer de place"): each line has a **handle** at its very left, held and dragged to move it, as in the table of signals; the order is kept (see [Signals](04-signals.md#the-order-of-the-lines)).
+- The columns of the handle and of the delete button have no header (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
 - Each link has a description: a short text in plain text (not Markdown) that says what is attached. It is a description, not a name.
 - The list of links is **always editable**: its fields are changed in place, like everything in Metadata (validated by the Product Owner on 2026-11-16: "on ajoute un path ou une URL. Donc ça, c'est très bien").
 - **Deleting a link:** a delete button (an icon) in the **last column of its line, on the far right**; a click opens a warning that asks to confirm (Product Owner, 2026-11-16: "Tu me rajoutes un bouton de suppression [...] il y a un message de warning quand on clique sur Supprimer"). No right click (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
-- A link to a file or a folder can be opened directly, so the user does not lose time. Opening **always opens a folder, never a file** (Product Owner, 2026-11-11):
+- A link to a file or a folder can be opened directly, with a click on its path, so the user does not lose time. Opening **always opens a folder, never a file** (Product Owner, 2026-11-11):
   - a link to a file opens the folder that contains the file;
   - a link to a folder opens that folder.
 - The application never launches a file or a program: launching things blindly is not safe.
-- A URL opens in the browser.
+- A URL opens in the default browser, with a click on it.
 - Documents cannot be attached inside the application: that could be dangerous. Only links exist.
 - The path is kept as it is chosen, with no translation. In a company, everyone is expected to have the same drive letters. Otherwise, the absolute path is used (for example the path of the server).
 - The selection window and the opening of a folder are done by the server, since all access to files goes through the server (see [Storage](../storage/README.md)). In the free version, the application is a built program and the server runs on the user's computer, so it can open a folder window. In development, the front is opened in a browser, and the server still does it.
@@ -109,4 +112,4 @@ flowchart TD
 
 - Which mode opens first: read only, or visual?
 - The content of the formatting tool bar (proposed above) and no text colour: to confirm.
-- How a link is edited in place, and whether links can be reordered.
+- How a link is edited in place, now that a click on its path or URL opens it (a pencil, a double click, the description only?).

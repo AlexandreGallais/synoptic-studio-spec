@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Commands · Previous: [Enums](06-enums.md) · Next: [Presets](09-presets.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (a command always sends a fixed value; commands shown in a table, always editable; three kinds: set a signal, trigger, override an output; an ID instead of a name; decision 0019, accepted on 2026-11-16, which completes decision 0014; a handle on each line to choose the order). Reviewing the wireframes later that day, he confirmed the three kinds and the ID, asked for an example with every option, and replaced the delete by right click by a delete button with a warning; the inherited commands come first, like the inherited signals. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (a command always sends a fixed value; commands shown in a table, always editable; three kinds: set a signal, trigger, override an output; an ID instead of a name; decision 0019, accepted on 2026-11-16, which completes decision 0014; a handle on each line to choose the order). Reviewing the wireframes later that day, he confirmed the three kinds and the ID, asked for an example with every option, and replaced the delete by right click by a delete button with a warning; the inherited commands come first, like the inherited signals. At the end of the day he confirmed the handle on each own command ("En gros, faut le rajouter pour les commandes"), and set the small + on the right of the title and the columns of buttons without a header. Open points are listed in [Open questions](12-open-questions.md).
 
 A command is how the front acts with one click. Three kinds, kept apart because they do not say the same thing (Product Owner, 2026-11-16: "envoyer à une entrée, à un output, ou faire un trigger").
 
@@ -80,16 +80,16 @@ The commands of a type are shown in **one table**, like the signals (Product Own
 
 | Column | Values |
 | --- | --- |
-| Handle | A small grip at the very left of the line, with no value: it is held and dragged to move the line. |
+| Handle | A small grip at the very left of the line, with no value and no header: it is held and dragged to move the line. |
 | Kind | Set a signal, Trigger, or Override an output. First column of values. |
 | ID | The command's identifier (Product Owner, 2026-11-16: "comme dans les signaux, il vaut mieux mettre l'ID"). |
 | Target signal | For "Set a signal": an input, picked by its ID. For "Override an output": an output, picked by its ID. Empty for a trigger. |
 | Value | For "Set a signal" and "Override an output": the fixed value, of the target signal's type. Empty for a trigger. |
-
-| Delete | A delete button (an icon), in the last column, on the far right; a click opens a warning before anything is deleted (Product Owner, 2026-11-16). Not on the inherited lines. |
+| Delete | A delete button (an icon), in the last column, on the far right, with no header; a click opens a warning before anything is deleted (Product Owner, 2026-11-16). Not on the inherited lines. |
 
 - A trigger leaves the target and the value empty.
-- The button that adds a command sits above the table (see the [layout rules](../screens/README.md#add-buttons-above-the-list)).
+- The button that adds a command is a small **+ icon on the right of the title "Commands"**, above the table (see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)).
+- The columns of the handle and of the delete button have no header and take the least room possible (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
 - A command is deleted with the delete button of its line, then a warning that asks to confirm; there is no right click in Metadata (Product Owner, 2026-11-16; see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
 - **The inherited commands come first, read only**, from the first parent at the top of the tree down to the type's own commands, as for the signals (Product Owner, 2026-11-16, said for the signals; the commands are inherited the same way; see [The table of signals](04-signals.md#the-table-of-signals)).
 - **The user chooses the order of the type's own commands** with the handle at the left of each line, the same way as for the signals (Product Owner, 2026-11-16: "pouvoir trier l'ordre dans les tableaux"). The order is kept, a new command goes at the end, and a change of order is a patch on the [Versions](13-versions.md) page. See [The order of the lines](04-signals.md#the-order-of-the-lines). The faceplate places its command buttons in the order of its builder (see [Presets](09-presets.md#mode-faceplate-the-faceplate-builder)).

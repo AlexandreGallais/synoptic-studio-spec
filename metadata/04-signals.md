@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Signals · Previous: [Documentation](03-documentation.md) · Next: [Units](05-units.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table, always editable, direction first, line coloured by direction; no display name on the signal, it moved to the preset; a handle on each line to choose the order; the quantity says "quantity" or "difference"). Reviewing the wireframes later that day, he confirmed the ID and the removal of the display name, put the inherited signals first, read only, from the top of the tree down, marked a quantity and a difference by two icons, and replaced the delete by right click by a delete button with a warning. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table, always editable, direction first, line coloured by direction; no display name on the signal, it moved to the preset; a handle on each line to choose the order; the quantity says "quantity" or "difference"). Reviewing the wireframes later that day, he confirmed the ID and the removal of the display name, put the inherited signals first, read only, from the top of the tree down, marked a quantity and a difference by two icons, and replaced the delete by right click by a delete button with a warning. At the end of the day he removed the model unit from the signal (it is one per quantity, set outside Metadata), kept only the icons in the column Quantity, and left the columns of the handle and of the delete button without a header. Open points are listed in [Open questions](12-open-questions.md).
 
 A signal is what goes between the front and the model: an input or an output of the model. Only these are defined here. Values that stay inside the model are not defined in Metadata: the people who write the model name them as they wish, and they are invisible to the application.
 
@@ -20,6 +20,7 @@ A signal is what goes between the front and the model: an input or an output of 
 - **A signal has no display name** (Product Owner, 2026-11-16, later the same day): since the faceplate is built by the preset, the name people see is written in the preset, one per signal, in its faceplate builder (see [Presets](09-presets.md#mode-faceplate-the-faceplate-builder)). It replaces the display name on the signal decided earlier that day. Confirmed while reviewing the wireframes: "Dans Signal, le display name ne sert à rien. Je te le dis très clairement."
 - A signal has no description (Product Owner, 2026-11-16).
 - **The line of a signal is coloured by its direction** (Product Owner, 2026-11-16): an input line and an output line have two different colours, so that the two are told apart at a glance. The colours are chosen with the design system.
+- **A signal has no model unit** (Product Owner, 2026-11-16, end of the day: "« model unit », ça, on enlève. C'est pas ici qu'il faut mettre ça"). For one quantity, and for one difference, the model always uses **the same unit, everywhere**, so that there are no odd conversions. That unit is set once, outside Metadata (see [Units](05-units.md#model-unit-and-display-unit)). It replaces the model unit chosen per signal.
 
 ## Fields
 
@@ -29,9 +30,8 @@ A signal is what goes between the front and the model: an input or an output of 
 | ID | The signal's name for the model. | Its variable identifier, set once. Shown as "ID" in the table. |
 | Type | What kind of value. | Integer, real, boolean, text or enum. A real is a 64-bit double. |
 | Enum | For an enum: the list of values. | An enum picked from the Enums page (see [Enums](06-enums.md)). A link to it, never a copy, and never defined in the signal. |
-| Quantity | What the value measures (volume, flow, pressure...), and whether the value is the quantity itself or a difference of it. | Optional: a signal may have none. Only for integers and reals. Picked from the ready-made catalogue of the Units page, which the user never changes; the user says "quantity" or "difference", for example "pressure (quantity)" or "pressure (difference)" (Product Owner, 2026-11-16), see [Units](05-units.md#value-or-difference-chosen-in-the-signal). |
-| Model unit | The unit in which the model handles the value. | Only when a quantity is chosen. By default the model unit of the quantity; can be overridden here with another unit of the same quantity. |
-| Minimum, maximum | Bounds of an integer or a real. | Metadata of the signal, indicative, written in the model unit. They are the zone the model is designed for, not a guarantee. The faceplate refuses a typed value outside them (see [Presets](09-presets.md#typing-a-value)). |
+| Quantity | What the value measures (volume, flow, pressure...), and whether the value is the quantity itself or a difference of it. | Optional: a signal may have none. Only for integers and reals. Picked from the ready-made catalogue of the Units page, which the user never changes; the user picks the quantity or its difference, told apart by an icon (Product Owner, 2026-11-16), see [Units](05-units.md#value-or-difference-chosen-in-the-signal). |
+| Minimum, maximum | Bounds of an integer or a real. | Metadata of the signal, indicative, written in the model unit of the quantity. They are the zone the model is designed for, not a guarantee. The faceplate refuses a typed value outside them (see [Presets](09-presets.md#typing-a-value)). Kept: to confirm (see [Open questions](#open-questions)). |
 
 ```mermaid
 classDiagram
@@ -41,7 +41,6 @@ classDiagram
         type
         enum
         quantity
-        model unit
         minimum
         maximum
     }
@@ -55,18 +54,20 @@ classDiagram
 
 The signals of `centrifugal_pump`, a child of `pump`, itself a child of `equipment`. The example shows every kind of line: both directions, every type, a quantity offered once, a quantity and a difference, inherited lines first (Product Owner, 2026-11-16: "complète le tableau [...] pour qu'on comprenne mieux avec un peu toutes les options").
 
-| From | Direction | ID | Type | Enum | Quantity | Model unit | Min | Max |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `equipment`, read only | output | `fault_message` | text |  |  |  |  |  |
-| `pump`, read only | input | `running` | boolean |  |  |  |  |  |
-| `pump`, read only | output | `flow` | real |  | flow | m³/h | 0 | 500 |
-| own | input | `mode` | enum | `operating_mode` (0 Off, 1 Manual, 2 Automatic) |  |  |  |  |
-| own | input | `speed_setpoint` | integer |  | rotational speed | rpm | 0 | 3000 |
-| own | output | `inlet_pressure` | real |  | pressure (quantity) | kPa | 0 | 1000 |
-| own | output | `pressure_rise` | real |  | pressure (difference) | kPa | 0 | 600 |
-| own | output | `bearing_temperature` | real |  | temperature (quantity) | °C | -20 | 120 |
+In the column Quantity, ● stands for the icon of a quantity and Δ for the icon of a difference: both are placeholders, the icons are chosen with the design system. The bounds are in the model unit of each quantity, set outside Metadata.
 
-Flow and rotational speed are offered once, without "(quantity)" or "(difference)": their value and their difference convert the same way. Whether each model unit is the catalogue's default or an override depends on the catalogue, not written yet.
+| From | Direction | ID | Type | Enum | Quantity | Min | Max |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `equipment`, read only | output | `fault_message` | text |  |  |  |  |
+| `pump`, read only | input | `running` | boolean |  |  |  |  |
+| `pump`, read only | output | `flow` | real |  | ● flow | 0 | 500 |
+| own | input | `mode` | enum | `operating_mode` (0 Off, 1 Manual, 2 Automatic) |  |  |  |
+| own | input | `speed_setpoint` | integer |  | ● rotational speed | 0 | 3000 |
+| own | output | `inlet_pressure` | real |  | ● pressure | 0 | 1000 |
+| own | output | `pressure_rise` | real |  | Δ pressure | 0 | 600 |
+| own | output | `bearing_temperature` | real |  | ● temperature | -20 | 120 |
+
+Flow and rotational speed have no difference in the list: their value and their difference convert the same way.
 
 ## The table of signals
 
@@ -74,15 +75,17 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 
 | Column | Values |
 | --- | --- |
-| Handle | A small grip at the very left of the line, with no value: it is held and dragged to move the line (see [The order of the lines](#the-order-of-the-lines)). |
+| Handle | A small grip at the very left of the line, with no value and **no header**: it is held and dragged to move the line (see [The order of the lines](#the-order-of-the-lines)). |
 | Direction | Input or output. **First column** of values, before the ID, so that the line reads in order (Product Owner, 2026-11-16). |
 | ID | The model identifier (Product Owner, 2026-11-16: "l'ID, qui est le modèle identifiant"). |
 | Type | Integer, real, boolean, text, enum. |
 | Enum | For an enum signal only: the enum it points to. |
-| Quantity | Optional, integers and reals only. One column holds the choice of quantity and of "quantity" or "difference": its list offers "pressure (quantity)" and "pressure (difference)" (Product Owner, 2026-11-16). Only the quantities whose conversion changes (temperature, gauge pressure...) have the two items; the others are offered once (see [Units](05-units.md#value-or-difference-chosen-in-the-signal)). **An icon before the name** says which it is: one icon for a quantity, another for a difference, so that the two are told apart at a glance (Product Owner, 2026-11-16: "on met un symbole, une icône. Comme ça, c'est beaucoup plus simple à reconnaître"). The icons are chosen with the design system. |
-| Model unit | Only with a quantity. |
-| Minimum, maximum | Integers and reals only, in the model unit. |
-| Delete | A delete button (an icon), in the last column, on the far right; a click opens a warning before anything is deleted (Product Owner, 2026-11-16). Not on the inherited lines. |
+| Quantity | Optional, integers and reals only. One column holds the choice of the quantity or of its difference: its list offers the pressure and the pressure difference (Product Owner, 2026-11-16). Only the quantities whose conversion changes (temperature, gauge pressure...) have the two items; the others are offered once (see [Units](05-units.md#value-or-difference-chosen-in-the-signal)). **An icon before the name** says which it is: one icon for a quantity, another for a difference, so that the two are told apart at a glance (Product Owner, 2026-11-16: "on met un symbole, une icône. Comme ça, c'est beaucoup plus simple à reconnaître"). **The icon alone**: no "(quantity)" or "(difference)" after the name (Product Owner, 2026-11-16: "pas besoin de mettre (quantité) ou (différence) [...] quand on connaît les icônes"). The icons are chosen with the design system. |
+| Minimum, maximum | Integers and reals only, in the model unit of the quantity. |
+| Delete | A delete button (an icon), in the last column, on the far right, with **no header**; a click opens a warning before anything is deleted (Product Owner, 2026-11-16). Not on the inherited lines. |
+
+- **No column Model unit** (Product Owner, 2026-11-16, end of the day): the model unit is one per quantity, set outside Metadata (see [Units](05-units.md#model-unit-and-display-unit)).
+- The columns of the handle and of the delete button have no header and take the least room possible (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
 
 - Every line is always editable: a field is changed in place, with no Edit or Save step (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps, rapidement"). The changes are checked on the [Versions](13-versions.md) page before a version is made.
 - An input line and an output line have two different colours.
@@ -94,7 +97,7 @@ The signals of a type are shown in **one table**, one line per signal, one colum
   2. then those of the next parent, down the branch;
   3. last, the signals of the type itself.
   Example for `pneumatic_positive_displacement_pump`: the signals of `pump`, then of `positive_displacement_pump`, then its own. The column "From" of the example above is only there to explain the order; whether the table shows which parent a line comes from is left to the design.
-- The button that adds a signal sits **above the table** (see the [layout rules](../screens/README.md#add-buttons-above-the-list)).
+- The button that adds a signal is a small **+ icon on the right of the title "Signals"**, above the table (see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)).
 - **Deleting a signal** is done with the delete button in the last column of its line, then a warning that asks to confirm (Product Owner, 2026-11-16: "une icône de suppression et pas le clic droit"). There is no right click in Metadata (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)). The handle at the left of a line is not a button: it only moves the line.
 
 The block below shows the order of the columns; the two lines have the colours of an input and of an output.
@@ -102,15 +105,14 @@ The block below shows the order of the columns; the two lines have the colours o
 ```mermaid
 block-beta
     columns 9
-    h8["Direction"] h1["ID"] h2["Type"] h3["Enum"] h4["Quantity"] h5["Model unit"] h6["Min"] h7["Max"] h9["Delete"]
-    r8["input"] r1["running"] r2["boolean"] r3["-"] r4["-"] r5["-"] r6["-"] r7["-"] r9["bin icon"]
-    s8["output"] s1["flow"] s2["real"] s3["-"] s4["flow"] s5["m³/h"] s6["0"] s7["500"] s9["bin icon"]
+    h0[" "] h8["Direction"] h1["ID"] h2["Type"] h3["Enum"] h4["Quantity"] h6["Min"] h7["Max"] h9[" "]
+    r0["handle"] r8["input"] r1["running"] r2["boolean"] r3["-"] r4["-"] r6["-"] r7["-"] r9["bin icon"]
+    s0["handle"] s8["output"] s1["flow"] s2["real"] s3["-"] s4["● flow"] s6["0"] s7["500"] s9["bin icon"]
     style r8 fill:#dbeafe
     style r1 fill:#dbeafe
     style r2 fill:#dbeafe
     style r3 fill:#dbeafe
     style r4 fill:#dbeafe
-    style r5 fill:#dbeafe
     style r6 fill:#dbeafe
     style r7 fill:#dbeafe
     style s8 fill:#fef3c7
@@ -118,7 +120,6 @@ block-beta
     style s2 fill:#fef3c7
     style s3 fill:#fef3c7
     style s4 fill:#fef3c7
-    style s5 fill:#fef3c7
     style s6 fill:#fef3c7
     style s7 fill:#fef3c7
 ```
@@ -144,10 +145,11 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Signal (direction, ID, type, enum, quantity, model unit, bounds) | Metadata | Lines of a preset and its faceplate (read, or write to type a value), commands that set it | No | No |
+| Signal (direction, ID, type, enum, quantity, bounds) | Metadata | Lines of a preset and its faceplate (read, or write to type a value), commands that set it | No | No |
 
 ## Open questions
 
 - Decimal places on the signal itself, so that the model fixes how many decimals an input or an output has? The Product Owner doubts it (2026-11-16, confirmed the same day): the model should give and receive the real value, and decimals are for display only. Not added; to think about.
 - Mouse resting on the enum name of a line: a bubble with its items, or nothing?
 - The header of the column Quantity: "Quantity", or "Quantity / difference"? The Product Owner hesitates (2026-11-16: "faut peut-être mettre quantité/écart, trouver un meilleur nom qu'écart"). "Difference" is the word of the standards for "écart" (research of 2026-11-10).
+- Minimum and maximum: kept on the signal, or also set once outside Metadata like the model unit? When the model unit was removed, the Product Owner spoke of "min max" next to it as possibly redundant (2026-11-16); the assistant's reading is that only the model unit leaves, since bounds differ from one signal to another (a pump's flow, a valve's flow). Kept until the Product Owner says.

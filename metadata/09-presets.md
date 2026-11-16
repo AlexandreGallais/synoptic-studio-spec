@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Presets · Previous: [Commands](07-commands.md) · Next: [Versions](13-versions.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16: the faceplate and the presets are **merged** into this one part, always editable; the name people see for each signal is written here (decision 0018, accepted on 2026-11-16, which changes decision 0015). Later that day, a Faceplate part of its own only showed the faceplate of a chosen preset (decision 0021). Last, while reviewing the wireframes, he split the preset into **two modes**, chosen by a switch above its name: the **values** (display unit, decimals, default value of each signal) and the **faceplate builder** (a list of elements, with groups, titles and descriptions, that builds the faceplate), with no "shown" box (decision 0022, accepted on 2026-11-16, which changes a point of decisions 0015 and 0018). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16: the faceplate and the presets are **merged** into this one part, always editable; the name people see for each signal is written here (decision 0018, accepted on 2026-11-16, which changes decision 0015). Later that day, a Faceplate part of its own only showed the faceplate of a chosen preset (decision 0021). Last, while reviewing the wireframes, he split the preset into **two modes**, chosen by a switch above its name: the **values** (display unit, decimals, default value of each signal) and the **faceplate builder** (a list of elements, with groups, titles and descriptions, that builds the faceplate), with no "shown" box (decision 0022, accepted on 2026-11-16, which changes a point of decisions 0015 and 0018). At the end of the day he **removed the Faceplate part**: the faceplate is only the second mode of the preset; he confirmed the labels "Values" and "Faceplate", and made "Presets" the title of the list, with a small + on its right, so that the switch moves up. Open points are listed in [Open questions](12-open-questions.md).
 
 A preset is made under a type (example: pneumatic positive displacement pump). It holds the defaults of a symbol and **builds its faceplate**, so that a symbol or a synoptic starts well configured. A faceplate is the panel that shows the signals and the commands of a placed symbol: what the user sees and can act on. "Faceplate" is the standard word of supervision software for this panel.
 
@@ -14,13 +14,14 @@ Decided by the Product Owner on 2026-11-16: "Faceplate et preset, il faut fusion
 
 - Everything the faceplate shows is set in the preset: which signals and commands are shown, how, in which groups, and under which titles.
 - The display unit and the decimal places of the preset also serve the texts of a symbol that show a value (see [Animation mode](../symbols/08-animation-mode/README.md)): a preset is not only the faceplate, but the faceplate is wholly in the preset.
-- A preset is an override: what it does not change comes from the signal and from the Units page (model unit, default decimals).
+- A preset is an override: what it does not change comes from the signal and from the units (the model unit of the quantity, the default decimals).
 - The preset is always editable, with no Edit or Save step (Product Owner, 2026-11-16). Its changes are checked on the [Versions](13-versions.md) page before a version is made.
 
 ### A type needs a preset
 
 - A type needs at least one preset to be chosen in a symbol or a synoptic. No preset is created automatically. If no preset fits, the user creates one in Metadata.
-- The list of presets is on the left, with the + that creates one above it. The selected preset is on the right.
+- The list of presets is on the left. Its title is **"Presets"**, with a small **+ on its right** that creates a preset (Product Owner, 2026-11-16: "Preset, ça ne doit pas être le titre de toute la page. Tu dois juste mettre Preset comme titre de la liste et avoir un petit + à droite"; see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)). The page has no big title above.
+- The selected preset is on the right: the switch of the two modes **at the top**, where the page title was ("ça te permettra de remonter le truc Values / Faceplate"), then its name, then the mode chosen.
 - A preset has a name, which tells two presets of a type apart (Product Owner, 2026-11-16). Its field sits under the switch of the two modes, and stays the same in both.
 
 ### Two modes, chosen by a switch
@@ -30,7 +31,8 @@ Decided by the Product Owner on 2026-11-16, while reviewing the wireframes: "un 
 - A **switch** sits above the name of the preset. It changes what the right side shows:
   - **Values**: the display unit, the decimals and the default value of each signal;
   - **Faceplate**: the faceplate builder, where the faceplate is put together element by element.
-- The labels "Values" and "Faceplate" are the assistant's: to confirm. The Product Owner spoke of the builder as the "preset faceplate".
+- The labels are **"Values"** and **"Faceplate"** (proposed by the assistant, confirmed by the Product Owner on 2026-11-16: "que ce soit juste un truc Values et Faceplate").
+- **The faceplate has no part of its own**: it is made and seen only in this second mode of the preset (Product Owner, 2026-11-16, end of the day). It removes the Faceplate part of decision 0021.
 - The title and the description of the faceplate are no longer two fields next to the name: they move into the builder (Product Owner: "Faceplate title et faceplate description, ça, on le dégagerait").
 
 ```mermaid
@@ -49,7 +51,7 @@ A table with **every signal of the type**, own and inherited, one per line (Prod
 | Column | Values | Rule |
 | --- | --- | --- |
 | Signal | The signal's ID, read only | Which signal the line is about (see [Signals](04-signals.md)). |
-| Display unit | Select | Only with a quantity. Among the units of the signal's quantity; starts as the signal's model unit. |
+| Display unit | Select | Only with a quantity. Among the units of the signal's quantity; starts as the model unit of the quantity. |
 | Decimals | Number field | Integers and reals only. Starts as the default of the quantity on the Units page (see [Units](05-units.md)). Display only. |
 | Default value | Field of the signal's type | The value the symbol starts with. A boolean: true or false. An integer or a real: a number, typed. A text: a text, typed. An enum: an item, picked by its display text (Product Owner, 2026-11-16: "si c'est un nombre, on peut écrire une valeur par défaut, et puis basta"). |
 
@@ -73,7 +75,7 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas juste bêtement avoi
 
 - The builder is a **list of elements**, read from top to bottom like the faceplate it builds.
 - The faceplate always has a **title** and a **description** for the whole faceplate, at the top of the builder ("Tu as toujours un titre de pop-up, une description pour la pop-up entière. Ça, ça ne change pas"). Both are optional to fill. The description is plain text: no Markdown, no links; line breaks are kept.
-- **+ buttons** add an element, one at a time. An element is one of:
+- The list of elements has the title **"Elements"**, with, on its right, **one small icon with a + per kind** of element below; a click adds one element at a time. It applies the rule the Product Owner set for the links (2026-11-16: no menu, "clac-clac"); for the builder it is the assistant's proposal, to confirm (see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)). An element is one of:
 
 | Element | What it holds | Rule |
 | --- | --- | --- |
@@ -104,17 +106,10 @@ flowchart TD
     FP --> E6["Signal: inlet_pressure, read"]
 ```
 
-### The Faceplate part
+### No Faceplate part
 
-Decided by the Product Owner on 2026-11-16 (decision 0021): the Faceplate part, last of the parts, only shows the faceplate of a chosen preset, "sans configuration possible, juste du visuel": the list of presets on the left, the faceplate shown on the right, read only.
-
-À trancher: when the builder came, the Product Owner said "Faceplate, on peut le dégager", which may mean that this part is removed, now that the faceplate is built in the preset. Asked to the Product Owner; until then the part is kept.
-
-```mermaid
-block-beta
-    columns 3
-    list["List of presets: pick one"] face["The faceplate of the preset, shown, read only"]:2
-```
+- Earlier on 2026-11-16, a Faceplate part, last of the parts of a type, only showed the faceplate of a chosen preset (decision 0021).
+- At the end of the day, the Product Owner **removed it** from the parts of the type ("Tu ne m'as pas enlevé la page Faceplate [...] de la liste de part of the type"): the faceplate is the mode Faceplate of the preset, nothing else. The parts of a type are General, Documentation, Signals, Commands, Presets (see [Types](01-types.md)).
 
 ### Typing a value
 
@@ -201,11 +196,9 @@ Mode Faceplate:
 
 ## Open questions
 
-- The labels of the two modes of the switch: "Values" and "Faceplate" (assistant's proposal)?
-- The Faceplate part: removed now that the faceplate is built in the preset ("Faceplate, on peut le dégager"), or kept as a view only?
 - Groups: only one level, or a group inside a group?
+- The adds of the builder: five small icons with a +, as for the links?
 - The order of the faceplate: the order of the builder, moved with a handle (assistant's reading and proposal)?
 - Can a signal or a command be added twice to the builder?
 - What a symbol or a synoptic can change in the faceplate built by the preset.
 - The input of a signal that is not an enum: fixed by its type (number field, true or false, text field)? Assistant's reading, to confirm.
-- Which preset the Faceplate part shows when it opens, if the part is kept.

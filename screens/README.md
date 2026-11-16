@@ -16,7 +16,7 @@ The rules stay in the pages of each part. When a page changes, the screen that s
 
 | File | Screens |
 | --- | --- |
-| [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its six parts), Units, Enums, Versions. |
+| [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its five parts), Units, Enums, Versions. |
 | [Symbol editor](symbols.md) | The navigation bar, Symbol Libs, the left-hand panel of a Symbol Lib, the symbol editor (layout, floating bars, layers) and its seven modes, the advanced tools. |
 | [Pipes](pipes.md) | The base pipe style, the pipe styles, the end shapes, the dash sequences, the preview, and pipes in a synoptic (part 3, preview). |
 
@@ -40,18 +40,43 @@ block-beta
 
 Decided by the Product Owner on 2026-11-16, for every screen ("il faut que tu appliques cette méthode partout").
 
-- The buttons that add an item to a list (the **+**, "Add a path", "Add a URL"...) always sit **above the list**, never under it.
+- The buttons that add an item to a list always sit **above the list**, never under it.
 - A button under a list moves down as the list grows, and gets harder and harder to reach.
 - It does not change the + shown on hover on each type of the type tree, which creates a child of that type (see [Types](../metadata/01-types.md)).
 
+### A title and a small + on its right
+
+Decided by the Product Owner on 2026-11-16, while reviewing the wireframes ("ça doit être un petit +, une petite icône à côté du titre, et il faut appliquer ça un peu partout"). It makes the rule above precise, for every list and every table.
+
+- Each list and each table has a **title** that names what it holds: "Type tree", "Signals", "Commands", "Links", "Presets", "Enums", "Items"...
+- The button that adds an item is a **small + icon on the line of that title, on its right**. No button with a text ("+ Add a signal"), no button on a line of its own.
+- The title is the title of the list, not of the whole page: the page itself has no big title that repeats it (Product Owner: "Preset, ça ne doit pas être le titre de toute la page. Tu dois juste mettre Preset comme titre de la liste et avoir un petit + à droite"). The room saved goes to the content: the switch of a preset, for example, moves up.
+- When a list takes items of several kinds, there is **one small icon per kind, each with a small +**, side by side on the line of the title, rather than one + that opens a menu: two clicks at most, with no menu to read (Product Owner, 2026-11-16, for the links: "ça va pas rapide, alors que là, tu peux faire clac-clac. C'est beaucoup plus rapide"). For the links: a path icon with a + and a URL icon with a +. For the five elements of the faceplate builder: the same rule, assistant's proposal, to confirm.
+- It is the rule the type tree and the Enums page already followed: a + on the line of their title.
+
 ```mermaid
 block-beta
-    columns 1
-    add["+ Add, above the list"]
-    l1["Item 1"]
-    l2["Item 2"]
-    l3["Item n: the list grows downwards, the button does not move"]
+    columns 2
+    title["Title of the list"] add["+"]
+    l1["Item 1"]:2
+    l2["Item 2"]:2
+    l3["Item n: the list grows downwards, the title and its + do not move"]:2
 ```
+
+### Columns of buttons have no header
+
+Decided by the Product Owner on 2026-11-16, while reviewing the wireframes: "pas besoin de mettre de titre pour les boutons Delete, un peu comme pour les poignées de déplacement".
+
+- In a table, the column of the **delete buttons** has **no header**, like the column of the **handles** that move a line. Everyone knows what the icon does.
+- Both columns take the **least room possible**: the width of their icon.
+
+### Handles to choose the order
+
+Decided by the Product Owner on 2026-11-16 for the signals, then for the commands and the links of the documentation, while reviewing the wireframes ("il faut pouvoir changer de place [...] Les petits trucs de changement de position, c'est super").
+
+- A list or a table whose order the user chooses has a **handle** at the very left of each line: held and dragged, it moves the line; the order is kept.
+- Lines the user cannot change here (the inherited signals and commands) have no handle.
+- Where it holds: the signals, the commands, the links of the documentation, the elements of the faceplate builder (proposed for the builder).
 
 ### Delete with a button and a warning, in Metadata
 
@@ -75,7 +100,7 @@ flowchart LR
 
 ### Tables for the parts of a type
 
-Decided by the Product Owner on 2026-11-16: the signals and the commands of a type are shown in one table each, one line per item and one column per field, taking as much room as possible (see [Signals](../metadata/04-signals.md#the-table-of-signals) and [Commands](../metadata/07-commands.md#the-table-of-commands)). The selected preset is a table of its signals in its mode Values, and a list of elements in its mode Faceplate (see [Presets](../metadata/09-presets.md#two-modes-chosen-by-a-switch)). They replace, for these parts, the panel of the selected item on the right.
+Decided by the Product Owner on 2026-11-16: the signals and the commands of a type are shown in one table each, one line per item and one column per field, taking as much room as possible (see [Signals](../metadata/04-signals.md#the-table-of-signals) and [Commands](../metadata/07-commands.md#the-table-of-commands)). The selected preset is a table of its signals in its mode Values, and a list of elements in its mode Faceplate, the two modes chosen by a switch at the top of the right side (see [Presets](../metadata/09-presets.md#two-modes-chosen-by-a-switch)). They replace, for these parts, the panel of the selected item on the right.
 
 ### Navigation bar on the left
 
@@ -163,8 +188,7 @@ flowchart TD
     MD01 --> MD03["MD-03 Documentation"]
     MD01 --> MD04["MD-04 Signals"]
     MD01 --> MD05["MD-05 Commands"]
-    MD01 --> MD07["MD-07 Presets"]
-    MD01 --> MD06["MD-06 Faceplate, view only"]
+    MD01 --> MD07["MD-07 Presets: Values and Faceplate"]
     MD --> MD08["MD-08 Units"]
     MD --> MD09["MD-09 Enums"]
     MD --> MD11["MD-11 Versions"]

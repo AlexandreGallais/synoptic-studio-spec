@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Types · Next: [Icons](02-icons.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no libraries of types, type tree actions, fixed parent, icon buttons in General, parts listed by name under the tree, a Faceplate part that only shows the faceplate, no Edit or Save step). Reviewing the wireframes later that day, he validated the tree (coloured icon and name, nesting, + on hover and + on the title), put the search behind an icon on the line of the title, removed every right click, moved Delete to General with a warning, and asked for lists of types indented with dashes. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no libraries of types, type tree actions, fixed parent, icon buttons in General, parts listed by name under the tree, a Faceplate part that only shows the faceplate, no Edit or Save step). Reviewing the wireframes later that day, he validated the tree (coloured icon and name, nesting, + on hover and + on the title), put the search behind an icon on the line of the title, removed every right click, moved Delete to General with a warning, and asked for lists of types indented with dashes. At the end of the day he removed the Faceplate part: five parts are left. Open points are listed in [Open questions](12-open-questions.md).
 
 A type is the representation of a symbol at one level of detail. Types form a tree, hence parents and sub-types.
 
@@ -45,7 +45,7 @@ flowchart LR
     W["Wrong parent"] --> D["Delete the type"] --> N["Create it again under the right parent"]
 ```
 
-- The parts of a type are shown in this order (Product Owner, 2026-11-11, then 2026-11-16): General, Documentation, Signals, Commands, Presets, Faceplate. The faceplate is built in the Presets; the Faceplate part only shows it, and may be removed now that the preset has a faceplate builder (asked to the Product Owner; see [Presets](09-presets.md#the-faceplate-part)). They are shown as **a list of their names, in the column of the type tree, fixed under the tree** (proposal B, changed by the Product Owner on 2026-11-16; see [The parts of a type](#the-parts-of-a-type-a-list-fixed-under-the-tree)).
+- The parts of a type are shown in this order (Product Owner, 2026-11-11, then 2026-11-16): General, Documentation, Signals, Commands, Presets. There is **no Faceplate part** (removed by the Product Owner at the end of 2026-11-16): the faceplate is built and seen in the mode Faceplate of a preset (see [Presets](09-presets.md#no-faceplate-part)). They are shown as **a list of their names, in the column of the type tree, fixed under the tree** (proposal B, changed by the Product Owner on 2026-11-16; see [The parts of a type](#the-parts-of-a-type-a-list-fixed-under-the-tree)).
 
 ### The type tree: search, create, delete (Product Owner, 2026-11-16)
 
@@ -128,8 +128,7 @@ flowchart LR
     T --> DO[Documentation]
     T --> P[Signals]
     T --> C[Commands]
-    T --> R[Presets, which set the faceplate]
-    T --> F[Faceplate, shown only]
+    T --> R[Presets: values, and the faceplate they build]
 ```
 
 | Part | File |
@@ -138,18 +137,17 @@ flowchart LR
 | Documentation: description (Markdown), links | [Documentation](03-documentation.md) |
 | Signals | [Signals](04-signals.md) |
 | Commands | [Commands](07-commands.md) |
-| Presets, which set the faceplate | [Presets](09-presets.md) |
-| Faceplate, a view of a preset's faceplate (kept or removed: asked) | [Presets](09-presets.md#the-faceplate-part) |
+| Presets: values, and the faceplate they build | [Presets](09-presets.md) |
 
 ## The parts of a type: a list fixed under the tree
 
 Chosen by the Product Owner on 2026-11-16: **proposal B, the parts written in whole words**, placed in the column of the type tree. It replaces proposal C (a strip of icons), chosen earlier the same day.
 
-- The six parts are listed **with their names in whole words**, one under the other, in the order General, Documentation, Signals, Commands, Presets, Faceplate.
+- The five parts are listed **with their names in whole words**, one under the other, in the order General, Documentation, Signals, Commands, Presets (the Faceplate part, there for a while on 2026-11-16, was removed the same day).
 - They sit **in the same column as the type tree, under it**, not in a column of their own. The list was moved above the tree for a while the same day, then put back under it: above the title "Type tree", it made no sense (Product Owner, 2026-11-16: "ça n'a aucun sens logique").
 - The list is **fixed** at the bottom of that column: it never moves, whatever the length of the tree (Product Owner: "on fixe, et comme ça, ça ne bouge pas … ça bougera jamais"). The tree scrolls above it.
 - Why: whole words are understood at once, icons are not ("il faut faire des mots entiers, sinon ils vont rien comprendre"); and since the column on the left already holds long lines (the names of the types), the names of the parts fit there without taking a column of their own.
-- The same design applies to every screen of a type, General to Faceplate (Product Owner: "il va falloir que t'appliques ce design-là partout").
+- The same design applies to every screen of a type, General to Presets (Product Owner: "il va falloir que t'appliques ce design-là partout").
 
 ```mermaid
 block-beta
@@ -157,7 +155,7 @@ block-beta
     block:left
         columns 1
         tree["Type tree, scrolls"]
-        parts["Parts, fixed: General, Documentation, Signals, Commands, Presets, Faceplate"]
+        parts["Parts, fixed: General, Documentation, Signals, Commands, Presets"]
     end
     editor["Editor of the selected part"]:2
 ```
