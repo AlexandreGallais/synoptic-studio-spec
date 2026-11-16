@@ -316,9 +316,8 @@ block-beta
     columns 4
     list["Presets +, then the list"] sw["Switch, at the top: Values | Faceplate"]:3
     space name["Name of the preset"]:3
-    space head["Title and description of the faceplate"]:3
     space add["Elements, then five small icons with a +: Signal, Command, Title, Description, Group"]:3
-    space items["Elements, in order, a handle on each; a group holds its own title, description and elements"]:3
+    space items["Elements, in order, a handle on each; a group: the same five icons at its top, then its own elements"]:3
 ```
 
 ```mermaid
@@ -341,8 +340,7 @@ mindmap
           Default value
         No command
       Mode Faceplate, the builder
-        Title of the faceplate
-        Description of the faceplate
+        No title nor description by default
         Title Elements, one small icon with a plus per kind
         Signal element
           Signal, by its ID
@@ -355,8 +353,8 @@ mindmap
         Title element
         Description element
         Group element
-          Title, description
-          Its own elements
+          Five small icons with a plus, at its top
+          Its own elements, a group included
         Delete button on each element, warning
 ```
 
@@ -366,8 +364,8 @@ mindmap
 | MD-07.2 | Create a preset | Button (+), small icon | On the right of the title "Presets" of the list; the page has no big title (2026-11-16). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
 | MD-07.2b | Switch of the modes | Switch (two buttons) | At the top of the right side, above the name of the preset: **Values** or **Faceplate** (2026-11-16; labels confirmed at the end of the day). | Decided | [Presets](../metadata/09-presets.md#two-modes-chosen-by-a-switch) |
 | MD-07.3 | Name of the preset | Text field | A preset has a name (2026-11-16). Under the switch, the same in both modes. | Decided | [Presets](../metadata/09-presets.md) |
-| MD-07.4 | Faceplate title | Text field | In the builder, at the top; optional; plain text. Can be changed on each symbol placed in a synoptic. No longer a field next to the name (2026-11-16). | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
-| MD-07.5 | Faceplate description | Text field, multi-line | In the builder, at the top; optional; plain text, line breaks kept. | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
+| MD-07.4 | Faceplate title | — | Removed (2026-11-16): no title by default; a title element is added if wanted ([MD-07.19](#md-07--presets)). | Decided | [Presets](../metadata/09-presets.md#only-elements-in-elements) |
+| MD-07.5 | Faceplate description | — | Removed (2026-11-16): no description by default; a description element is added if wanted ([MD-07.19](#md-07--presets)). | Decided | [Presets](../metadata/09-presets.md#only-elements-in-elements) |
 | MD-07.6 | Show the faceplate | — | Removed (2026-11-16): the faceplate is seen in the mode Faceplate; the Faceplate part ([MD-06](#md-06--faceplate-removed)) was removed too. | Decided | [Presets](../metadata/09-presets.md#no-faceplate-part) |
 | MD-07.7 | Table of values | Table | Mode Values: every signal of the type, own and inherited, in the order of Signals; one line each; no "add an entry"; no command (2026-11-16). | Decided | [Presets](../metadata/09-presets.md#mode-values-one-table-of-the-signals) |
 | MD-07.8 | Shown | — | Removed (2026-11-16): what is in the builder is shown. | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
@@ -380,8 +378,8 @@ mindmap
 | MD-07.10 | Input | Select, in a signal element | In read and in write. Enum: radio on one line, radio on several lines, select. Other types: fixed by the type (number field, true or false, text field), assistant's reading. | Decided (enum), Proposed (others) | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.11 | Read or write | Radio, in a signal element | Write: a person types a value, checked against the bounds. Write is greyed for an output of the model (2026-11-16). | Decided | [Presets](../metadata/09-presets.md#typing-a-value) |
 | MD-07.15 | Command element | Element of the builder | The command, picked by its ID; the name on its button (plain text). | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
-| MD-07.19 | Title element, description element | Text fields | A heading or a paragraph inside the faceplate. | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
-| MD-07.20 | Group element | Element of the builder | Its own title and description, then its own elements (signals, commands, titles, descriptions). A group in a group: open. | Decided (group), Open (depth) | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
+| MD-07.19 | Title element, description element | Text fields | A heading or a paragraph inside the faceplate or a group; the only way to give either a title or a description (2026-11-16). Description: plain text, line breaks kept. | Decided | [Presets](../metadata/09-presets.md#only-elements-in-elements) |
+| MD-07.20 | Group element | Element of the builder | No title nor description of its own. At its top, the five small icons with a + (Signal, Command, Title, Description, Group), then its own elements; a group can hold a group (2026-11-16). | Decided | [Presets](../metadata/09-presets.md#only-elements-in-elements) |
 | MD-07.21 | Delete an element, delete a preset | Button (icon), then a warning | At the far right of the element or of the preset's line (2026-11-16). | Decided | [Layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata) |
 | MD-07.17 | Order | Rule | Mode Values: the order of Signals, no handle, no sort. Mode Faceplate: the order of the builder, moved with a handle (proposed). | Decided (Values), Proposed (builder) | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.16 | Description per signal | — | Removed (2026-11-16): no description per signal or command; the builder has description elements instead. | Decided | [Presets](../metadata/09-presets.md) |
@@ -390,7 +388,7 @@ Gaps:
 
 - Rename and duplicate a preset; what happens to the symbols that use a deleted preset?
 - Does a sub-type see the presets of its parent?
-- Can an element be added twice? What can a symbol or a synoptic change in the built faceplate?
+- Can an element be added twice? What can a symbol or a synoptic change in the built faceplate (the texts of its title and description elements, at least)?
 
 ## MD-08 · Units
 

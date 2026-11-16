@@ -47,7 +47,7 @@ flowchart LR
 
 ### Step 3: how it is used
 
-A symbol picks a type, among all the types of the tree, and a preset. A synoptic uses symbols and can only change their faceplate: the defaults, its title and description (what else it can change in the built faceplate is open). There are no libraries of types (Product Owner, 2026-11-16).
+A symbol picks a type, among all the types of the tree, and a preset. A synoptic uses symbols and can only change their faceplate: the defaults, the texts of its title and description elements (what else it can change in the built faceplate is open). There are no libraries of types (Product Owner, 2026-11-16).
 
 ```mermaid
 flowchart LR

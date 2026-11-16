@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Presets · Previous: [Commands](07-commands.md) · Next: [Versions](13-versions.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16: the faceplate and the presets are **merged** into this one part, always editable; the name people see for each signal is written here (decision 0018, accepted on 2026-11-16, which changes decision 0015). Later that day, a Faceplate part of its own only showed the faceplate of a chosen preset (decision 0021). Last, while reviewing the wireframes, he split the preset into **two modes**, chosen by a switch above its name: the **values** (display unit, decimals, default value of each signal) and the **faceplate builder** (a list of elements, with groups, titles and descriptions, that builds the faceplate), with no "shown" box (decision 0022, accepted on 2026-11-16, which changes a point of decisions 0015 and 0018). At the end of the day he **removed the Faceplate part** (decision 0023, accepted on 2026-11-16, which replaces decision 0021): the faceplate is only the second mode of the preset; he confirmed the labels "Values" and "Faceplate", and made "Presets" the title of the list, with a small + on its right, so that the switch moves up. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16: the faceplate and the presets are **merged** into this one part, always editable; the name people see for each signal is written here (decision 0018, accepted on 2026-11-16, which changes decision 0015). Later that day, a Faceplate part of its own only showed the faceplate of a chosen preset (decision 0021). Last, while reviewing the wireframes, he split the preset into **two modes**, chosen by a switch above its name: the **values** (display unit, decimals, default value of each signal) and the **faceplate builder** (a list of elements, with groups, titles and descriptions, that builds the faceplate), with no "shown" box (decision 0022, accepted on 2026-11-16, which changes a point of decisions 0015 and 0018). At the end of the day he **removed the Faceplate part** (decision 0023, accepted on 2026-11-16, which replaces decision 0021): the faceplate is only the second mode of the preset; he confirmed the labels "Values" and "Faceplate", and made "Presets" the title of the list, with a small + on its right, so that the switch moves up. Later still, he made the builder fully generic: no title nor description by default, neither for the faceplate nor for a group; a title or a description is an element the user adds; a group shows the same small + icons at its top, a group included. Open points are listed in [Open questions](12-open-questions.md).
 
 A preset is made under a type (example: pneumatic positive displacement pump). It holds the defaults of a symbol and **builds its faceplate**, so that a symbol or a synoptic starts well configured. A faceplate is the panel that shows the signals and the commands of a placed symbol: what the user sees and can act on. "Faceplate" is the standard word of supervision software for this panel.
 
@@ -33,7 +33,7 @@ Decided by the Product Owner on 2026-11-16, while reviewing the wireframes: "un 
   - **Faceplate**: the faceplate builder, where the faceplate is put together element by element.
 - The labels are **"Values"** and **"Faceplate"** (proposed by the assistant, confirmed by the Product Owner on 2026-11-16: "que ce soit juste un truc Values et Faceplate").
 - **The faceplate has no part of its own**: it is made and seen only in this second mode of the preset (Product Owner, 2026-11-16, end of the day). Decision 0023 replaces decision 0021, which had made it a part.
-- The title and the description of the faceplate are no longer two fields next to the name: they move into the builder (Product Owner: "Faceplate title et faceplate description, ça, on le dégagerait").
+- The title and the description of the faceplate are no longer two fields next to the name (Product Owner: "Faceplate title et faceplate description, ça, on le dégagerait"). They are not fields of the builder either: a title or a description is an element the user adds, like any other (see [Only elements in elements](#only-elements-in-elements)).
 
 ```mermaid
 flowchart TD
@@ -41,7 +41,7 @@ flowchart TD
     SW --> V["Values: one table, one line per signal"]
     SW --> B["Faceplate: the builder"]
     V --> F["Faceplate and texts of a symbol: display unit, decimals, default value"]
-    B --> F2["Faceplate: title, description, groups, signals, commands, in the order of the builder"]
+    B --> F2["Faceplate: signals, commands, titles, descriptions, groups, in the order of the builder"]
 ```
 
 ### Mode Values: one table of the signals
@@ -74,16 +74,24 @@ block-beta
 Decided by the Product Owner on 2026-11-16: "il ne faut pas juste bêtement avoir la liste des signaux. Il faudrait pouvoir vraiment mettre des sous-groupes."
 
 - The builder is a **list of elements**, read from top to bottom like the faceplate it builds.
-- The faceplate always has a **title** and a **description** for the whole faceplate, at the top of the builder ("Tu as toujours un titre de pop-up, une description pour la pop-up entière. Ça, ça ne change pas"). Both are optional to fill. The description is plain text: no Markdown, no links; line breaks are kept.
 - The list of elements has the title **"Elements"**, with, on its right, **one small icon with a + per kind** of element below; a click adds one element at a time. It applies the rule the Product Owner set for the links (2026-11-16: no menu, "clac-clac"), confirmed by him for the builder the same day (see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)). An element is one of:
 
 | Element | What it holds | Rule |
 | --- | --- | --- |
 | Signal | The signal, picked by its ID; the **name shown**; the **input**; **read or write**. | Name shown: plain text, the name people see in the faceplate, never sent to the model; empty, the ID is shown (decision 0018); it exists only in the builder (decision 0022). Input: for an enum, radio on one line, radio on several lines or select; for the other types, fixed by the type (number field, true or false, text field: assistant's reading, to confirm). Read or write: write lets a person type a value (see [Typing a value](#typing-a-value)); greyed for an output. |
 | Command | The command, picked by its ID; the **name on the button**. | Plain text. The faceplate shows a button that sends the command. |
-| Title | A text. | A heading inside the faceplate. |
-| Description | A text, plain, line breaks kept. | A paragraph inside the faceplate. |
-| Group | Its own title and description, then its own elements: signals, commands, titles, descriptions. | Groups the elements under one heading (Product Owner: "je fais un groupe à l'intérieur: il y a une description, il y a un titre. Là, maintenant, je rajoute une propriété, une commande"). |
+| Title | A text. | A heading inside the faceplate or inside a group. |
+| Description | A text, plain: no Markdown, no links; line breaks kept. | A paragraph inside the faceplate or inside a group. |
+| Group | Only its own elements: signals, commands, titles, descriptions, groups. No title, no description of its own. | Gathers the elements put in it. At its top, the same five small icons with a + as the title "Elements": Signal, Command, Title, Description, Group. |
+
+#### Only elements in elements
+
+Decided by the Product Owner on 2026-11-16: "il ne faut pas donner un titre et une description par défaut à la pop-up. Il faut vraiment glisser en premier un titre et une description si on veut un titre et une description. [...] Comme ça, ce ne sont vraiment que des éléments dans des éléments."
+
+- **No title and no description by default**, neither for the faceplate nor for a group. A faceplate or a group that needs a heading or a text gets a title element or a description element, usually put first. This replaces the earlier rule of a title and a description always at the top of the faceplate and of each group.
+- **A group holds the same elements as the faceplate**, a group included: a group can hold a group ("+, signal, commande, titre, description, groupe en haut"). No limit of depth was given.
+- **The add icons of a group are at its top**, not at its bottom ("C'est mieux de plutôt les mettre en haut du groupe"): the same five small icons with a +, in the same order as on the right of "Elements". A click adds the element inside the group.
+- The builder is thus one generic rule at every level: a list of elements, and a row of small + icons above it.
 
 - **What is in the builder is what the faceplate shows.** There is no "Shown" checkbox any more ("on montrerait ce qu'on veut"): a signal or a command that is not added is not in the faceplate.
 - The name shown and the name on the button exist **only in the builder**: they serve the faceplate alone (Product Owner: "le display name, qui ne sert que pour la pop-up").
@@ -95,10 +103,11 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas juste bêtement avoi
 
 ```mermaid
 flowchart TD
-    FP["Faceplate builder"] --> T["Title of the faceplate"]
-    FP --> D["Description of the faceplate"]
+    FP["Faceplate builder"] --> T["Title: Feed pump"]
+    FP --> D["Description: Pump P-101"]
     FP --> E1["Signal: running, name shown, read"]
-    FP --> G["Group: title Control, description"]
+    FP --> G["Group"]
+    G --> GT["Title: Control"]
     G --> E2["Signal: mode, name shown, radio, write"]
     G --> E3["Command: start, button Start"]
     G --> E4["Command: stop, button Stop"]
@@ -129,7 +138,7 @@ flowchart LR
 
 ### In a symbol and in a synoptic
 
-- The user chooses a preset, then can edit there its default values, display units, decimal places, and the title and description of the faceplate. Example: to see a green pump, the user sets the default colour in the symbol.
+- The user chooses a preset, then can edit there its default values, display units, decimal places, and the title and description of the faceplate. Since the faceplate has no title nor description of its own any more, this now means the texts of its title and description elements (assistant's reading, to confirm with the open question below). Example: to see a green pump, the user sets the default colour in the symbol.
 - In a synoptic, only the faceplate can be edited. A command that is not wanted means a new symbol, because the symbol shows something extra.
 - Decimal places, display units, titles and descriptions never go to the model: they are display only.
 - Open: before the builder, a symbol or a synoptic could tick a line left unticked in the preset. Now that the faceplate is a built list, what can a symbol or a synoptic change in it (add or remove an element, change a group)?
@@ -141,11 +150,11 @@ sequenceDiagram
     participant SY as Symbol
     participant SN as Synoptic
     U->>MD: creates a preset, sets its values (units, decimals, defaults)
-    U->>MD: switches to Faceplate, builds it (title, groups, signals, commands)
+    U->>MD: switches to Faceplate, builds it (signals, commands, titles, descriptions, groups)
     U->>SY: chooses the preset
     U->>SY: edits a default value or a display unit
     U->>SN: chooses the preset
-    U->>SN: edits a default value, the faceplate title
+    U->>SN: edits a default value, the text of a title element
 ```
 
 ## Example
@@ -169,11 +178,13 @@ Mode Faceplate:
 
 | Element | Content |
 | --- | --- |
-| Title of the faceplate | Feed pump |
-| Description of the faceplate | Pump P-101, feeds tank T-3. |
+| Title | Feed pump |
+| Description | Pump P-101, feeds tank T-3. |
 | Signal | `running`, name shown "Running", true or false, read |
 | Signal | `flow`, name shown "Flow", number field, read |
-| Group | Title "Control", description "Local commands" |
+| Group | (no title nor description of its own) |
+| › Title | Control |
+| › Description | Local commands |
 | › Signal | `mode`, name shown "Mode", radio on one line, write |
 | › Signal | `speed_setpoint`, name shown "Speed setpoint", number field, write |
 | › Command | `start`, button "Start" |
@@ -192,11 +203,10 @@ Mode Faceplate:
 | Preset and its name | Metadata, under a type | Symbol and synoptic start from it | Choose one | Choose one |
 | Display unit, decimals, default value | Preset, mode Values, in Metadata | Faceplate of the symbol or synoptic; texts of a symbol that show a value | Edit | Edit |
 | Elements of the faceplate: signals (name shown, input, read or write), commands (name on the button), titles, descriptions, groups | Preset, mode Faceplate, in Metadata | Faceplate of the symbol or synoptic | Open | Open |
-| Faceplate title and description | Preset, mode Faceplate, in Metadata | Faceplate of the symbol or synoptic | Edit | Edit, on each placed symbol |
+| Texts of the title and description elements | Preset, mode Faceplate, in Metadata | Faceplate of the symbol or synoptic | Edit (assistant's reading) | Edit, on each placed symbol (assistant's reading) |
 
 ## Open questions
 
-- Groups: only one level, or a group inside a group?
 - The order of the faceplate: the order of the builder, moved with a handle (assistant's reading and proposal)?
 - Can a signal or a command be added twice to the builder?
 - What a symbol or a synoptic can change in the faceplate built by the preset.

@@ -156,7 +156,7 @@ mindmap
 | SY-03.2 | Tool bar | Floating bar | The tools of the mode; at the bottom of the drawing area (leaning) or at the top. | Decided (place: Open) | [Editor](../symbols/03-editor/README.md) |
 | SY-03.3 | Show the advanced tools | Button (in the tool bar) | Shows or hides the [SY-11](#sy-11--advanced-tools) bar just above. | Decided | [Advanced tools](../symbols/03-editor/expert-menu/README.md) |
 | SY-03.4 | Type | Select, optional | In the right-hand panel; among all the types of Metadata; can be removed. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
-| SY-03.5 | Preset | Select | In the right-hand panel; then its defaults, display units, decimals, and the title and description of the faceplate are edited here. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
+| SY-03.5 | Preset | Select | In the right-hand panel; then its defaults, display units, decimals, and the texts of the title and description elements of the faceplate are edited here (no title nor description by default since 2026-11-16). | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
 | SY-03.6 | Faceplate entries | Checkbox per entry | The full list is always there. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
 | SY-03.7 | Hand | Button (tool) | Moves the view; also the middle button held. In every mode. | Decided | [Hand](../symbols/03-editor/hand.md) |
 | SY-03.8 | Zoom | Number field (%) | Shown in one place (which one: not said); the user can type a value; 100 % is the real size. | Decided | [Editor](../symbols/03-editor/README.md) |
