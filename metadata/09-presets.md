@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Presets · Previous: [Commands](07-commands.md) · Next: [Versions](13-versions.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16: the faceplate and the presets are **merged** into this one part, a preset is one table, always editable, and the faceplate is seen with a button; the name people see for each signal is written here (decision 0018, accepted on 2026-11-16, which changes decision 0015); the lines follow the order of Signals and Commands, with no sort. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16: the faceplate and the presets are **merged** into this one part, a preset is one table, always editable, and the faceplate is seen with a button; the name people see for each signal is written here (decision 0018, accepted on 2026-11-16, which changes decision 0015); the lines follow the order of Signals and Commands, with no sort. Later that day, the button that showed the faceplate became a **Faceplate part** of its own, after Presets, which only shows the faceplate of a chosen preset. Open points are listed in [Open questions](12-open-questions.md).
 
 A preset is made under a type (example: pneumatic positive displacement pump). It holds the defaults of a symbol and **builds its faceplate**, so that a symbol or a synoptic starts well configured. A faceplate is the panel that shows the signals and the commands of a placed symbol: what the user sees and can act on. "Faceplate" is the standard word of supervision software for this panel.
 
@@ -12,7 +12,7 @@ A preset is made under a type (example: pneumatic positive displacement pump). I
 
 Decided by the Product Owner on 2026-11-16: "Faceplate et preset, il faut fusionner ça, parce que les presets ne servent qu'à la faceplate."
 
-- A type has no separate Faceplate part any more. Everything the faceplate shows is set in the preset: which signals and commands are shown, how, and under which title.
+- Everything the faceplate shows is set in the preset: which signals and commands are shown, how, and under which title. The Faceplate part of a type sets nothing: it only shows the result (see [The Faceplate part](#the-faceplate-part-a-view-only)).
 - The display unit and the decimal places of the preset also serve the texts of a symbol that show a value (see [Animation mode](../symbols/08-animation-mode/README.md)): a preset is not only the faceplate, but the faceplate is wholly in the preset.
 - A preset is an override: what it does not change comes from the signal and from the Units page (model unit, default decimals).
 - It stays simple: defaults, nothing more.
@@ -23,11 +23,10 @@ flowchart TD
     R["Preset, under a type"] --> H["Name, faceplate title, faceplate description"]
     R --> S["Table: one line per signal"]
     R --> C["Table: one line per command"]
-    R --> B["Button: show the faceplate"]
     S --> F["Faceplate"]
     C --> F
     H --> F
-    B -->|"opens a preview of"| F
+    V["Faceplate part: pick a preset"] -->|"shows, read only"| F
 ```
 
 ### A type needs a preset
@@ -95,10 +94,20 @@ block-beta
 - The description is plain text only: no Markdown, no formatting, no links. Line breaks are kept. This keeps the faceplate light.
 - They only change what the faceplate shows. They never go to the model.
 
-### Show the faceplate
+### The Faceplate part: a view only
 
-- A button of the preset shows the faceplate as it would look, built from the table (Product Owner, 2026-11-16: "un bouton affiche la pop-up, et puis ça l'affiche"). It lets the user see the result without placing a symbol.
-- The faceplate is not shown all the time beside the table: the button opens it. (The Product Owner first spoke of a preview on the left, then settled on the button.)
+Decided by the Product Owner on 2026-11-16, replacing the button "Show the faceplate" of the same day: the faceplate becomes a part of the type, "une catégorie comme preset", the last one, after Presets.
+
+- The Faceplate part looks like the Presets part: the list of the type's presets on the left, where the user picks one. On the right, in place of the two tables, the faceplate of that preset is shown, as it would look, built from the preset (title, description, lines shown, commands shown, in the order of the lines).
+- Nothing is set there: "sans configuration possible, juste du visuel". Every setting stays in the preset. Nothing can be typed or clicked in the faceplate shown.
+- It lets the user see the result without placing a symbol.
+- (The Product Owner first spoke of a preview on the left of the preset, then of a button in the preset, then settled on this part.)
+
+```mermaid
+block-beta
+    columns 3
+    list["List of presets: pick one"] face["The faceplate of the preset, shown, read only"]:2
+```
 
 ### Typing a value
 
@@ -129,7 +138,7 @@ sequenceDiagram
     participant SY as Symbol
     participant SN as Synoptic
     U->>MD: creates a preset (lines shown, inputs, units, defaults, title)
-    U->>MD: clicks "show the faceplate" to check it
+    U->>MD: opens the Faceplate part, picks the preset to check it
     U->>SY: chooses the preset
     U->>SY: edits a default value, a display unit or a line shown
     U->>SN: chooses the preset
@@ -165,3 +174,4 @@ Preset `default` of `centrifugal_pump`, faceplate title "Feed pump".
 
 - Where the name of a preset is edited: above the table for now, to look at again later (Product Owner, 2026-11-16).
 - The input of a signal that is not an enum: fixed by its type (number field, true or false, text field), as written above? Assistant's reading, to confirm.
+- Which preset the Faceplate part shows when it opens: the first of the list (assistant's proposal), or the one selected last in Presets? To confirm.

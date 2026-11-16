@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Screens](README.md) › Metadata
 
-Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal; then the parts of a type as a strip of icons, delete by right click everywhere, commands to inputs only, whole number enum keys, the type tree kept in full page; last, no Edit or Save step anywhere and a Versions page, the read-only mode of the description kept, the direction first in the table of signals, the name shown of a signal moved to the preset, three kinds of command with an ID; then quantity or difference in the one column Quantity, and the parts of a type listed by name, fixed under the tree, replacing the strip of icons). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
+Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal; then the parts of a type as a strip of icons, delete by right click everywhere, commands to inputs only, whole number enum keys, the type tree kept in full page; last, no Edit or Save step anywhere and a Versions page, the read-only mode of the description kept, the direction first in the table of signals, the name shown of a signal moved to the preset, three kinds of command with an ID; then quantity or difference in the one column Quantity, and the parts of a type listed by name, fixed under the tree, replacing the strip of icons; last, the list moved above the tree, and a Faceplate part, a view only, replacing the button that showed the faceplate). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
 
 ## MD-00 · Navigation bar of Metadata
 
@@ -23,7 +23,7 @@ Gaps:
 
 Path: Metadata › Types.
 
-The tree is on the left, as in a code editor, just right of the navigation bar; the parts of the selected type are listed by name under the tree, in the same column, fixed; the selected part is edited on the right.
+The tree is on the left, as in a code editor, just right of the navigation bar; the parts of the selected type are listed by name above the tree, in the same column, fixed; the selected part is edited on the right.
 
 ```mermaid
 block-beta
@@ -31,8 +31,8 @@ block-beta
     rail["MD-00 bar"]
     block:left
         columns 1
+        parts["Parts, fixed: General, Documentation, Signals, Commands, Presets, Faceplate"]
         tree["Type tree, scrolls"]
-        parts["Parts, fixed: General, Documentation, Signals, Commands, Presets"]
     end
     editor["Editor of the selected part"]:2
 ```
@@ -48,12 +48,13 @@ mindmap
       Select a type
       Right click, Delete
       No rename by double click
-    Parts by name, fixed under the tree, in this order
+    Parts by name, fixed above the tree, in this order
       1 MD-02 General
       2 MD-03 Documentation
       3 MD-04 Signals
       4 MD-05 Commands
-      5 MD-07 Presets and their faceplate
+      5 MD-07 Presets
+      6 MD-06 Faceplate, view only
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
@@ -63,7 +64,7 @@ mindmap
 | MD-01.3 | Create a child type | Button (+), on hover | On the right of each type, shown when the mouse is over it; creates a type under it, with a default name. | Decided | [Types](../metadata/01-types.md) |
 | MD-01.3b | Create a root type | Button (+), always shown | On the title "Type tree". Its look worries the Product Owner; kept. | Decided (look: Open) | [Types](../metadata/01-types.md) |
 | MD-01.4 | Delete a type | Right click › menu › Delete | A menu of options opens on a right click; Delete is one of them. | Decided | [Types](../metadata/01-types.md) |
-| MD-01.5 | Parts of the type | List of names | In the column of the type tree, under it, fixed at the bottom: it never moves when the tree grows. The names in whole words, in this order: General, Documentation, Signals, Commands, Presets (proposal B, 2026-11-16, replacing the strip of icons of proposal C). | Decided | [Types](../metadata/01-types.md#the-parts-of-a-type-a-list-fixed-under-the-tree) |
+| MD-01.5 | Parts of the type | List of names | In the column of the type tree, above its title, fixed at the top: it never moves when the tree grows. The names in whole words, in this order: General, Documentation, Signals, Commands, Presets, Faceplate (proposal B, 2026-11-16, replacing the strip of icons of proposal C; moved from under the tree to above it the same day). | Decided | [Types](../metadata/01-types.md#the-parts-of-a-type-a-list-fixed-above-the-tree) |
 | MD-01.6 | Search | Text field | Under the title "Type tree". | Decided | [Types](../metadata/01-types.md) |
 
 Gaps:
@@ -206,7 +207,7 @@ mindmap
 | MD-04.5 | Edit, Save | — | Removed (2026-11-16): the table is always editable; changes are checked on [MD-11](#md-11--versions). | Decided | [Versions](../metadata/13-versions.md) |
 | MD-04.5b | Colour of a line | Background of the line | One colour for an input, another for an output (2026-11-16). The colours: with the design system. | Decided | [Signals](../metadata/04-signals.md#the-table-of-signals) |
 | MD-04.6 | ID | Column, text field | Second column, after Direction. Model identifier; header "ID" (2026-11-16). A sub-type cannot reuse an inherited ID. | Decided | [Signals](../metadata/04-signals.md) |
-| MD-04.6b | Display name | — | Removed (2026-11-16): the name people see is written in the preset ([MD-07.9b](#md-07--presets-and-their-faceplate)). | Decided | [Presets](../metadata/09-presets.md#the-table-of-a-preset) |
+| MD-04.6b | Display name | — | Removed (2026-11-16): the name people see is written in the preset ([MD-07.9b](#md-07--presets)). | Decided | [Presets](../metadata/09-presets.md#the-table-of-a-preset) |
 | MD-04.7 | Type | Column, select | Integer, real (64-bit double), boolean, text, enum. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.8 | Enum | Column, select | Only for the type enum: an enum of the Enums page, as a link. Empty otherwise. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-04.9 | Quantity | Column, select | Optional, integer and real only. From the read-only catalogue. The same list offers "pressure (quantity)" and "pressure (difference)", in this one column; only the quantities whose conversion changes have the two items (2026-11-16). | Decided | [Units](../metadata/05-units.md#value-or-difference-chosen-in-the-signal) |
@@ -268,20 +269,37 @@ Gaps:
 - Order and inheritance: as for the signals (open).
 - Override an output: who applies it and how it ends, open (see [Commands](../metadata/07-commands.md#open-questions)).
 
-## MD-06 · Faceplate: merged into MD-07
+## MD-06 · Faceplate: a view only
 
-The Faceplate part was merged into the Presets by the Product Owner on 2026-11-16 ("les presets ne servent qu'à la faceplate"). Its controls are now in [MD-07](#md-07--presets-and-their-faceplate). The identifier MD-06 is not reused.
+Path: Metadata › Types › a type › Faceplate, the last part, after Presets.
 
-## MD-07 · Presets and their faceplate
+The settings of the faceplate were merged into the Presets on 2026-11-16 ("les presets ne servent qu'à la faceplate"). Later that day the Product Owner made the Faceplate a part again, but only to **show** it: "sans configuration possible, juste du visuel". It replaces the button "Show the faceplate" of MD-07. The identifier MD-06 keeps its first meaning, the faceplate.
+
+```mermaid
+block-beta
+    columns 3
+    list["List of presets: pick one"] face["The faceplate of the preset, as it would look; read only"]:2
+```
+
+| ID | Element | Kind | Values and behaviour | Status | Source |
+| --- | --- | --- | --- | --- | --- |
+| MD-06.1 | List of presets | List, select one | On the left, like MD-07.1; no +, no delete here: presets are made in MD-07. Which one is selected when the page opens: open. | Decided (list), Open (first selected) | [Presets](../metadata/09-presets.md#the-faceplate-part-a-view-only) |
+| MD-06.2 | Faceplate shown | Faceplate, read only | On the right, in place of the tables of MD-07: title, description, signals and commands shown, in the order of the lines. Nothing can be typed or clicked. | Decided | [Presets](../metadata/09-presets.md#the-faceplate-part-a-view-only) |
+
+Gaps:
+
+- The faceplate itself (its controls, its size) is drawn with the synoptic part.
+
+## MD-07 · Presets
 
 Path: Metadata › Types › a type › Presets.
 
-The list of presets is on the left. The selected preset is on the right: its name, the title and description of its faceplate, a button that shows the faceplate, then **one table** with every signal and every command of the type (Product Owner, 2026-11-16).
+The list of presets is on the left. The selected preset is on the right: its name, the title and description of its faceplate, then **one table** with every signal and every command of the type (Product Owner, 2026-11-16). The faceplate it builds is seen in [MD-06](#md-06--faceplate-a-view-only).
 
 ```mermaid
 block-beta
     columns 4
-    list["List of presets, + above"] head["Faceplate title, description; button Show the faceplate"]:3
+    list["List of presets, + above"] head["Name, faceplate title, description"]:3
     space signals["Table of signals: Shown | Signal | Name shown | Input | Read or write | Display unit | Decimals | Default value"]:3
     space commands["Table of commands: Shown | Command | Name on the button"]:3
 ```
@@ -296,7 +314,6 @@ mindmap
       Name, above the table for now
       Faceplate title, optional
       Faceplate description, plain text
-      Button Show the faceplate
       Table of signals, every signal of the type
         Shown, checkbox
         Signal, its ID
@@ -319,7 +336,7 @@ mindmap
 | MD-07.3 | Name of the preset | Text field | A preset has a name (2026-11-16). Above the table for now ("pas mal"); its place is looked at again later. | Decided (name), Open (place, later) | [Presets](../metadata/09-presets.md) |
 | MD-07.4 | Faceplate title | Text field | Optional; plain text. Can be changed on each symbol placed in a synoptic. | Decided | [Presets](../metadata/09-presets.md#title-and-description-of-the-faceplate) |
 | MD-07.5 | Faceplate description | Text field, multi-line | Optional; plain text, line breaks kept. | Decided | [Presets](../metadata/09-presets.md#title-and-description-of-the-faceplate) |
-| MD-07.6 | Show the faceplate | Button | Opens the faceplate as it would look, built from the table (2026-11-16). | Decided | [Presets](../metadata/09-presets.md#show-the-faceplate) |
+| MD-07.6 | Show the faceplate | — | Removed (2026-11-16): the faceplate is seen in its own part, [MD-06](#md-06--faceplate-a-view-only). | Decided | [Presets](../metadata/09-presets.md#the-faceplate-part-a-view-only) |
 | MD-07.7 | Table of signals | Table | Every signal of the type, own and inherited; one line each; no "add an entry". | Decided | [Presets](../metadata/09-presets.md#the-table-of-a-preset) |
 | MD-07.8 | Shown | Checkbox, per line | Shown in the faceplate at the start; an unticked line stays available in a symbol and a synoptic. | Decided | [Presets](../metadata/09-presets.md#the-table-of-a-preset) |
 | MD-07.9 | Signal | Column, read only | The ID of the signal. | Decided | [Presets](../metadata/09-presets.md#the-table-of-a-preset) |
@@ -338,7 +355,6 @@ Gaps:
 - Rename, duplicate and delete a preset; what happens to the symbols that use a deleted preset?
 - Does a sub-type see the presets of its parent?
 - Groups or separators in the faceplate?
-- Where the faceplate opens when the button is clicked (a floating window, a panel), and how it is closed.
 - Width: what happens when the eight columns do not fit.
 
 ## MD-08 · Units
