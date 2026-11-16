@@ -31,7 +31,7 @@ A signal is what goes between the front and the model: an input or an output of 
 | Type | What kind of value. | Integer, real, boolean, text or enum. A real is a 64-bit double. |
 | Enum | For an enum: the list of values. | An enum picked from the Enums page (see [Enums](06-enums.md)). A link to it, never a copy, and never defined in the signal. |
 | Quantity | What the value measures (volume, flow, pressure...), and whether the value is the quantity itself or a difference of it. | Optional: a signal may have none. Only for integers and reals. Picked from the ready-made catalogue of the Units page, which the user never changes; the user picks the quantity or its difference, told apart by an icon (Product Owner, 2026-11-16), see [Units](05-units.md#value-or-difference-chosen-in-the-signal). |
-| Minimum, maximum | Bounds of an integer or a real. | Metadata of the signal, indicative, written in the model unit of the quantity. They are the zone the model is designed for, not a guarantee. The faceplate refuses a typed value outside them (see [Presets](09-presets.md#typing-a-value)). Kept: to confirm (see [Open questions](#open-questions)). |
+| Minimum, maximum | Bounds of an integer or a real. | Metadata of the signal, indicative, written in the model unit of the quantity. They are the zone the model is designed for, not a guarantee. The faceplate refuses a typed value outside them (see [Presets](09-presets.md#typing-a-value)). Kept on the signal (Product Owner, 2026-11-16). |
 
 ```mermaid
 classDiagram
@@ -152,4 +152,3 @@ flowchart LR
 - Decimal places on the signal itself, so that the model fixes how many decimals an input or an output has? The Product Owner doubts it (2026-11-16, confirmed the same day): the model should give and receive the real value, and decimals are for display only. Not added; to think about.
 - Mouse resting on the enum name of a line: a bubble with its items, or nothing?
 - The header of the column Quantity: "Quantity", or "Quantity / difference"? The Product Owner hesitates (2026-11-16: "faut peut-être mettre quantité/écart, trouver un meilleur nom qu'écart"). "Difference" is the word of the standards for "écart" (research of 2026-11-10).
-- Minimum and maximum: kept on the signal, or also set once outside Metadata like the model unit? When the model unit was removed, the Product Owner spoke of "min max" next to it as possibly redundant (2026-11-16); the assistant's reading is that only the model unit leaves, since bounds differ from one signal to another (a pump's flow, a valve's flow). Kept until the Product Owner says.

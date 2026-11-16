@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Screens](README.md) › Pipes
 
-Status: draft, written by the assistant on 2026-11-11 from the [Pipes](../symbols/pipes/README.md) pages, themselves a draft. It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md).
+Status: draft, written by the assistant on 2026-11-11 from the [Pipes](../symbols/pipes/README.md) pages, themselves a draft; on 2026-11-16 its add buttons follow the layout rule "a title and a small + on its right". It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md).
 
 The pipes are made in a Symbol Lib ([SY-02](symbols.md#sy-02--left-hand-panel-of-a-symbol-lib)) and drawn in a synoptic (part 3, not written). One base pipe style gives the look of every pipe of the library; each pipe style only changes what differs from it.
 
@@ -111,7 +111,7 @@ mindmap
 | PI-02.2 | Body colour | Colour | Shown first: by default, a style only changes the colours. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.3 | Border colour | Colour | Shown first. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.4 | Dashes or not | Toggle | Shown first. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-02.5 | Override another option | not said (button or list) | Any option of [PI-01](#pi-01--base-pipe-style); example: a smaller width for gas pipes. | Decided (control not said) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-02.5 | Override another option | Button (icon with a small +) | On the right of the title of the list of overridden options ([layout rules](README.md#a-title-and-a-small--on-its-right), 2026-11-16); the title's wording is not said. Picks any option of [PI-01](#pi-01--base-pipe-style); example: a smaller width for gas pipes. | Decided (title: not said) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.6 | Overridden options shown | — | The panel shows which options differ from the base. | Proposed | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.7 | Reset to the base | Button | Per overridden option. | Proposed | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.8 | Linked type | Select | Optional; any type of Metadata (no library of types). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
@@ -180,7 +180,8 @@ mindmap
 | PI-04.1 | Segments | List | Repeated along the line: "black 4, transparent 4", "red 4, black 4"... as long as wanted. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-04.2 | Length | Number field (px) | Per segment. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-04.3 | Colour | Colour, with transparent | A gap is a transparent segment. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-04.4 | Add, remove, reorder | not said | — | Implied | — |
+| PI-04.4 | Add a segment | Button (icon with a small +) | On the right of the title "Segments" ([layout rules](README.md#a-title-and-a-small--on-its-right), 2026-11-16). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
+| PI-04.5 | Remove, reorder a segment | not said | — | Implied | — |
 
 Gaps:
 

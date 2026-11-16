@@ -40,7 +40,7 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SY-01.1 | List of Symbol Libs | List | On the left. The user selects one to see it on the right. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-01.2 | Create a Symbol Lib | not said (button) | Asks a name only. | Decided (control not said) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-01.2 | Create a Symbol Lib | Button (icon with a small +) | On the right of the title "Symbol Libs", above the list ([layout rules](README.md#a-title-and-a-small--on-its-right), 2026-11-16). Asks a name only. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-01.3 | Name | Text field | — | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-01.4 | More information | not said | "Une liste mieux faite, avec plus d'infos": which information is not said (number of symbols and pipe styles, broken items, last change?). | Open | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-01.5 | Open | not said (button) | Shows the library in the left-hand panel ([SY-02](#sy-02--left-hand-panel-of-a-symbol-lib)). | Implied | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
@@ -93,7 +93,7 @@ mindmap
 | SY-02.5 | Item of the list | Thumbnail + name | The thumbnail is the symbol, or its outlines only (as Figma's outline view). | Decided (thumbnail: Open) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.6 | List of pipe styles | List | Flat; a click opens the style (see [Pipes](pipes.md)). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.7 | Search the pipe styles | Text field (magnifier) | Filters the list. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-02.8 | Create a pipe style | Button (+) | — | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.8 | Create a pipe style | Button (icon with a small +) | On the right of the title "Pipe styles" ([layout rules](README.md#a-title-and-a-small--on-its-right), 2026-11-16). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.9 | Base pipe style | Item of the list | First item of the pipe styles list. | Proposed | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.10 | Broken mark | — | A small red mark on a broken item. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.11 | Usage counter | — | "Used by 38 pipes", on symbols and styles. | Proposed | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |

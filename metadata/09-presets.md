@@ -75,7 +75,7 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas juste bêtement avoi
 
 - The builder is a **list of elements**, read from top to bottom like the faceplate it builds.
 - The faceplate always has a **title** and a **description** for the whole faceplate, at the top of the builder ("Tu as toujours un titre de pop-up, une description pour la pop-up entière. Ça, ça ne change pas"). Both are optional to fill. The description is plain text: no Markdown, no links; line breaks are kept.
-- The list of elements has the title **"Elements"**, with, on its right, **one small icon with a + per kind** of element below; a click adds one element at a time. It applies the rule the Product Owner set for the links (2026-11-16: no menu, "clac-clac"); for the builder it is the assistant's proposal, to confirm (see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)). An element is one of:
+- The list of elements has the title **"Elements"**, with, on its right, **one small icon with a + per kind** of element below; a click adds one element at a time. It applies the rule the Product Owner set for the links (2026-11-16: no menu, "clac-clac"), confirmed by him for the builder the same day (see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)). An element is one of:
 
 | Element | What it holds | Rule |
 | --- | --- | --- |
@@ -197,7 +197,6 @@ Mode Faceplate:
 ## Open questions
 
 - Groups: only one level, or a group inside a group?
-- The adds of the builder: five small icons with a +, as for the links?
 - The order of the faceplate: the order of the builder, moved with a handle (assistant's reading and proposal)?
 - Can a signal or a command be added twice to the builder?
 - What a symbol or a synoptic can change in the faceplate built by the preset.
