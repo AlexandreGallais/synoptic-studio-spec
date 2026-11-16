@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Types · Next: [Icons](02-icons.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no libraries of types, type tree actions, fixed parent, icon buttons in General, parts shown as a strip of icons, no Edit or Save step, no warning on delete). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no libraries of types, type tree actions, fixed parent, icon buttons in General, parts listed by name under the tree, no Edit or Save step, no warning on delete). Open points are listed in [Open questions](12-open-questions.md).
 
 A type is the representation of a symbol at one level of detail. Types form a tree, hence parents and sub-types.
 
@@ -45,7 +45,7 @@ flowchart LR
     W["Wrong parent"] --> D["Delete the type"] --> N["Create it again under the right parent"]
 ```
 
-- The parts of a type are shown in this order (Product Owner, 2026-11-11): General, Documentation, Signals, Commands, Presets. The Faceplate part is merged into the Presets since 2026-11-16 (see [Presets](09-presets.md)). They are shown as **a strip of icons** in a column between the tree and the editor, the name of each part shown when the mouse is over its icon (proposal C, chosen by the Product Owner on 2026-11-16; see [The parts of a type](#the-parts-of-a-type-a-strip-of-icons)).
+- The parts of a type are shown in this order (Product Owner, 2026-11-11): General, Documentation, Signals, Commands, Presets. The Faceplate part is merged into the Presets since 2026-11-16 (see [Presets](09-presets.md)). They are shown as **a list of their names, in the column of the type tree, fixed under the tree** (proposal B, changed by the Product Owner on 2026-11-16; see [The parts of a type](#the-parts-of-a-type-a-list-fixed-under-the-tree)).
 
 ### The type tree: search, create, delete (Product Owner, 2026-11-16)
 
@@ -94,28 +94,34 @@ flowchart LR
 | Commands | [Commands](07-commands.md) |
 | Presets and their faceplate | [Presets](09-presets.md) |
 
-## The parts of a type: a strip of icons
+## The parts of a type: a list fixed under the tree
 
-Chosen by the Product Owner on 2026-11-16: **proposal C**, a strip of icons.
+Chosen by the Product Owner on 2026-11-16: **proposal B, the parts written in whole words**, placed in the column of the type tree. It replaces proposal C (a strip of icons), chosen earlier the same day.
 
-- A narrow column sits between the type tree and the editor. It holds the five parts, one icon each, one under the other, in the order General, Documentation, Signals, Commands, Presets.
-- The name of a part is shown when the mouse is over its icon.
-- Why: everything is in columns, which saves height and follows the layout rule; the eye gets used to it ("le fait de tout avoir en colonne comme ça, ça habitue son cerveau"). The icons have to be learnt, which the name on hover helps.
-- Its look is still to work on ("faudra le travailler"): the icons themselves are chosen with the design system.
+- The five parts are listed **with their names in whole words**, one under the other, in the order General, Documentation, Signals, Commands, Presets.
+- They sit **in the same column as the type tree, under it**, not in a column of their own.
+- The list is **fixed** at the bottom of that column: it never moves, whatever the length of the tree (Product Owner: "on fixe, et comme ça, ça ne bouge pas … ça bougera jamais"). The tree scrolls above it.
+- Why: whole words are understood at once, icons are not ("il faut faire des mots entiers, sinon ils vont rien comprendre"); and since the column on the left already holds long lines (the names of the types), the names of the parts fit there without taking a column of their own.
+- The same design applies to every screen of a type, General to Presets (Product Owner: "il va falloir que t'appliques ce design-là partout").
 
 ```mermaid
 block-beta
-    columns 4
-    tree["Type tree"] strip["Strip: 5 icons, name on hover"] editor["Editor of the selected part"]:2
+    columns 3
+    block:left
+        columns 1
+        tree["Type tree, scrolls"]
+        parts["Parts, fixed: General, Documentation, Signals, Commands, Presets"]
+    end
+    editor["Editor of the selected part"]:2
 ```
 
-The four proposals drawn before the choice, kept for the record. The Product Owner liked the tabs in a row, easy to use, but they break the rule "columns rather than rows" (see [Layout rules](../screens/README.md#layout-rules)). They are drawn in the Figma file, page "Spec", section "MD-01 · Parts of a type: four proposals". D was refused ("c'est mort"), B takes too much room.
+The four proposals drawn before the choice, kept for the record. The Product Owner liked the tabs in a row, easy to use, but they break the rule "columns rather than rows" (see [Layout rules](../screens/README.md#layout-rules)). They are drawn in the Figma file, page "Spec", section "MD-01 · Parts of a type: four proposals". D was refused ("c'est mort"). C was chosen first, then B, its parts moved under the tree.
 
 | Proposal | What it is | For | Against |
 | --- | --- | --- | --- |
 | A. Tabs in a row | The five parts as tabs above the editor (the current wireframes). | Known by everyone; all the width stays for the part. | A row, against the rule of columns. |
-| B. A column of parts | A narrow column between the tree and the editor lists the five parts, one under the other, with their names. | Follows the rule of columns; the names stay readable. | One more column: less width for the part. |
-| C. A strip of icons (**chosen**) | The same column, reduced to five icons, the name in a tooltip. | Narrow: almost all the width stays for the part. | Icons to learn; the name is hidden until the mouse is over it. |
+| B. A column of parts (**chosen**, placed under the tree) | A narrow column between the tree and the editor lists the five parts, one under the other, with their names. Chosen with the list moved under the tree, in its column, fixed. | Follows the rule of columns; the names stay readable. | Drawn as one more column; moved under the tree, it takes no width. |
+| C. A strip of icons (chosen first, then replaced by B) | The same column, reduced to five icons, the name in a tooltip. | Narrow: almost all the width stays for the part. | Icons to learn; the name is hidden until the mouse is over it. |
 | D. Under the type, in the tree | When a type is selected, its five parts unfold under it in the tree, as the layers of a frame in Figma. | No extra column; the type and its part are read together. | The tree grows and moves; a part is mixed with the types. |
 
 ```mermaid

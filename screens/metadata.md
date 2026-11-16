@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Screens](README.md) › Metadata
 
-Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal; then the parts of a type as a strip of icons, delete by right click everywhere, commands to inputs only, whole number enum keys, the type tree kept in full page; last, no Edit or Save step anywhere and a Versions page, the read-only mode of the description kept, the direction first in the table of signals, the name shown of a signal moved to the preset, three kinds of command with an ID). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
+Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal; then the parts of a type as a strip of icons, delete by right click everywhere, commands to inputs only, whole number enum keys, the type tree kept in full page; last, no Edit or Save step anywhere and a Versions page, the read-only mode of the description kept, the direction first in the table of signals, the name shown of a signal moved to the preset, three kinds of command with an ID; then quantity or difference in the one column Quantity, and the parts of a type listed by name, fixed under the tree, replacing the strip of icons). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
 
 ## MD-00 · Navigation bar of Metadata
 
@@ -23,12 +23,18 @@ Gaps:
 
 Path: Metadata › Types.
 
-The tree is on the left, as in a code editor, just right of the navigation bar; the selected type is edited on the right, its parts in a fixed order.
+The tree is on the left, as in a code editor, just right of the navigation bar; the parts of the selected type are listed by name under the tree, in the same column, fixed; the selected part is edited on the right.
 
 ```mermaid
 block-beta
-    columns 5
-    rail["MD-00 bar"] tree["Type tree"] strip["Strip of 5 icons: General, Documentation, Signals, Commands, Presets"] editor["Editor of the selected part"]:2
+    columns 4
+    rail["MD-00 bar"]
+    block:left
+        columns 1
+        tree["Type tree, scrolls"]
+        parts["Parts, fixed: General, Documentation, Signals, Commands, Presets"]
+    end
+    editor["Editor of the selected part"]:2
 ```
 
 ```mermaid
@@ -42,7 +48,7 @@ mindmap
       Select a type
       Right click, Delete
       No rename by double click
-    Strip of icons, name on hover, in this order
+    Parts by name, fixed under the tree, in this order
       1 MD-02 General
       2 MD-03 Documentation
       3 MD-04 Signals
@@ -57,14 +63,14 @@ mindmap
 | MD-01.3 | Create a child type | Button (+), on hover | On the right of each type, shown when the mouse is over it; creates a type under it, with a default name. | Decided | [Types](../metadata/01-types.md) |
 | MD-01.3b | Create a root type | Button (+), always shown | On the title "Type tree". Its look worries the Product Owner; kept. | Decided (look: Open) | [Types](../metadata/01-types.md) |
 | MD-01.4 | Delete a type | Right click › menu › Delete | A menu of options opens on a right click; Delete is one of them. | Decided | [Types](../metadata/01-types.md) |
-| MD-01.5 | Parts of the type | Strip of icons, in a column | Between the tree and the editor; one icon per part, in this order: General, Documentation, Signals, Commands, Presets; the name shown on hover (proposal C, 2026-11-16). | Decided (look: to work on) | [Types](../metadata/01-types.md#the-parts-of-a-type-a-strip-of-icons) |
+| MD-01.5 | Parts of the type | List of names | In the column of the type tree, under it, fixed at the bottom: it never moves when the tree grows. The names in whole words, in this order: General, Documentation, Signals, Commands, Presets (proposal B, 2026-11-16, replacing the strip of icons of proposal C). | Decided | [Types](../metadata/01-types.md#the-parts-of-a-type-a-list-fixed-under-the-tree) |
 | MD-01.6 | Search | Text field | Under the title "Type tree". | Decided | [Types](../metadata/01-types.md) |
 
 Gaps:
 
 - Which other options the right-click menu holds (duplicate, rename?). No warning on a delete (2026-11-16).
 - Fold arrows on the branches: drawn, never said.
-- The icons of the five parts (to choose with the design system). The wireframes MD-02 to MD-07 still show tabs in a row until they are redrawn with the strip.
+- How the selected part is marked in the list (to choose with the design system).
 
 ## MD-02 · General
 
@@ -203,7 +209,7 @@ mindmap
 | MD-04.6b | Display name | — | Removed (2026-11-16): the name people see is written in the preset ([MD-07.9b](#md-07--presets-and-their-faceplate)). | Decided | [Presets](../metadata/09-presets.md#the-table-of-a-preset) |
 | MD-04.7 | Type | Column, select | Integer, real (64-bit double), boolean, text, enum. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.8 | Enum | Column, select | Only for the type enum: an enum of the Enums page, as a link. Empty otherwise. | Decided | [Enums](../metadata/06-enums.md) |
-| MD-04.9 | Quantity | Column, select | Optional, integer and real only. From the read-only catalogue; the user also says "quantity" or "difference" ("pressure (quantity)", "pressure (difference)"), 2026-11-16. One column "Quantity / difference" or a column of its own: open. | Decided (choice), Open (display) | [Units](../metadata/05-units.md#value-or-difference-chosen-in-the-signal) |
+| MD-04.9 | Quantity | Column, select | Optional, integer and real only. From the read-only catalogue. The same list offers "pressure (quantity)" and "pressure (difference)", in this one column; only the quantities whose conversion changes have the two items (2026-11-16). | Decided | [Units](../metadata/05-units.md#value-or-difference-chosen-in-the-signal) |
 | MD-04.10 | Model unit | Column, select | Only with a quantity. Default: the quantity's model unit; another unit of the same quantity can be chosen. | Decided | [Units](../metadata/05-units.md) |
 | MD-04.11 | Minimum, maximum | Columns, number fields | Integer and real only; indicative; in the model unit. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.12 | Direction | Column, select | First column (2026-11-16). Input or output of the model. | Decided | [Signals](../metadata/04-signals.md) |
@@ -375,7 +381,7 @@ mindmap
 | MD-08.1 | List of quantities | List | Mass, volume, flow... Each difference is shown under its quantity, and stays a quantity of its own. | Decided | [Units](../metadata/05-units.md) |
 | MD-08.2 | Add a quantity, a family, a unit | — | Removed (Product Owner, 2026-11-16): the page is read only; a missing unit is added by a contributor to the catalogue files. | Decided | [Units](../metadata/05-units.md#a-ready-made-catalogue-read-only) |
 | MD-08.3 | Default model unit | Text, read only | From the catalogue. | Decided | [Units](../metadata/05-units.md) |
-| MD-08.4 | Default decimal places | Text, read only | From the catalogue (assistant's reading, to confirm). | Proposed | [Units](../metadata/05-units.md#decimal-places) |
+| MD-08.4 | Default decimal places | Text, read only | Fixed by the catalogue; a preset can change it for a signal (Product Owner, 2026-11-16). | Decided | [Units](../metadata/05-units.md#decimal-places) |
 | MD-08.5 | Reference family | Text, read only | Every other family converts to it and back. | Decided | [Units](../metadata/05-units.md) |
 | MD-08.6 | Families | List | A click opens the family. | Decided | [Units](../metadata/05-units.md) |
 | MD-08.7 | Unit | Text, read only | Name with its variant (US gallon); ratio inside the family. Flat units (`m³/h` is one unit). | Decided | [Units](../metadata/05-units.md) |

@@ -70,7 +70,7 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 | ID | The model identifier (Product Owner, 2026-11-16: "l'ID, qui est le modèle identifiant"). |
 | Type | Integer, real, boolean, text, enum. |
 | Enum | For an enum signal only: the enum it points to. |
-| Quantity | Optional, integers and reals only; with "quantity" or "difference". Shown in this column ("pressure (difference)") or in a column of its own: open. |
+| Quantity | Optional, integers and reals only. One column holds the choice of quantity and of "quantity" or "difference": its list offers "pressure (quantity)" and "pressure (difference)" (Product Owner, 2026-11-16). Only the quantities whose conversion changes (temperature, gauge pressure...) have the two items; the others are offered once (see [Units](05-units.md#value-or-difference-chosen-in-the-signal)). |
 | Model unit | Only with a quantity. |
 | Minimum, maximum | Integers and reals only, in the model unit. |
 
@@ -135,5 +135,4 @@ flowchart LR
 
 - Decimal places on the signal itself, so that the model fixes how many decimals an input or an output has? The Product Owner doubts it (2026-11-16, confirmed the same day): the model should give and receive the real value, and decimals are for display only. Not added; to think about.
 - Mouse resting on the enum name of a line: a bubble with its items, or nothing?
-- Quantity or difference: one column "Quantity / difference" ("pressure (quantity)", "pressure (difference)"), or a column of its own beside the quantity? Raised by the Product Owner on 2026-11-16, not chosen.
 - Order and inheritance: do the inherited signals stay together at the top, in their parent's order, with only the type's own signals moved by their handle? Or can every line be moved, inherited or not, each type keeping its own order?

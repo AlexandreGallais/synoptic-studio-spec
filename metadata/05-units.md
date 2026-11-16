@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Units · Previous: [Signals](04-signals.md) · Next: [Enums](06-enums.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (the units are a ready-made catalogue, read only in the application, kept in files of the software that contributors complete; a signal says whether its value is a quantity or a difference; decision 0020, accepted on 2026-11-16). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (the units are a ready-made catalogue, read only in the application, kept in files of the software that contributors complete; a signal says whether its value is a quantity or a difference; decision 0020, accepted on 2026-11-16; the same day: the choice shown in the one column "Quantity", a difference only where the conversion changes, default decimals fixed by the catalogue). Open points are listed in [Open questions](12-open-questions.md).
 
 A Units page lists quantities (mass, volume, flow, pressure...), with their families and units. A quantity is what a value measures; a unit is one way to count it: the kilogram is a unit of the quantity mass.
 
@@ -114,8 +114,9 @@ Decided by the Product Owner on 2026-11-16: "quand on choisit une quantité, il 
 
 - When the user gives a signal a quantity, they also say whether its value is **the quantity itself** or **a difference** of it. Example: "pressure (quantity)" or "pressure (difference)".
 - The conversion follows this choice: a difference of 25 °C is a difference of 45 °F, a value of 25 °C is 77 °F (see above).
-- Open: how the choice is shown in the table of signals: one column "Quantity / difference" whose items read "pressure (quantity)" and "pressure (difference)", or a column of its own beside the quantity (the Product Owner: "il y aura un truc comme ça à voir"). See [Open questions](#open-questions).
-- Open: whether every quantity offers a difference, or only those where it changes the conversion (an offset, like temperature or gauge pressure).
+- **One column "Quantity"** in the table of signals holds the choice (Product Owner, 2026-11-16): its list offers "pressure (quantity)" and "pressure (difference)" side by side. No column of its own: one column less in a table that is already wide.
+- **Only the quantities whose conversion changes offer a difference** (Product Owner, 2026-11-16): those where a value and a difference are not converted the same way, because of an offset (temperature, gauge pressure...). The other quantities are offered once, without "(quantity)" or "(difference)": their value and their difference convert the same way.
+- Which quantities have a difference is written in the catalogue files, with the difference itself (Product Owner: "ce sera configuré"); the user never decides it.
 
 ## The Units page
 
@@ -142,7 +143,7 @@ flowchart LR
 ## Decimal places
 
 - Decimal places are the number of decimals shown for a value. They are a display matter only.
-- The catalogue gives a default number of decimals per quantity, shown read only on the Units page. It applies everywhere unless a preset overrides it. (Assistant's reading of the read-only rule: the default is no longer set by the user; to confirm.)
+- The catalogue gives a default number of decimals per quantity, written in its files and shown read only on the Units page. It applies everywhere unless a preset overrides it. Confirmed by the Product Owner on 2026-11-16: fixed by the catalogue, and changed in a preset when needed.
 - The preset can override it for each signal, next to its display unit (see [Presets](09-presets.md)). It keeps a minimum of flexibility.
 - The symbol and the synoptic can edit it from the preset, like the display unit.
 
@@ -162,6 +163,3 @@ flowchart LR
 ## Open questions
 
 - Source and licence of the catalogue data (UCUM, QUDT, CLDR, NIST not checked).
-- Value or difference in the table of signals: one column "Quantity / difference", or a column of its own?
-- Does every quantity offer a difference, or only those whose conversion has an offset?
-- Default decimal places: fixed by the catalogue, as written above? Assistant's reading, to confirm.
