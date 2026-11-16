@@ -88,7 +88,7 @@ The commands of a type are shown in **one table**, like the signals (Product Own
 
 - A trigger leaves the target and the value empty.
 - The button that adds a command sits above the table; a command is deleted by a right click on its line (see [Signals](04-signals.md#the-table-of-signals) and the [layout rules](../screens/README.md#add-buttons-above-the-list)).
-- **The user chooses the order of the commands** with the handle at the left of each line, the same way as for the signals (Product Owner, 2026-11-16: "pouvoir trier l'ordre dans les tableaux"). The order is kept, a new command goes at the end, and a change of order is a patch on the [Versions](13-versions.md) page. See [The order of the lines](04-signals.md#the-order-of-the-lines).
+- **The user chooses the order of the commands** with the handle at the left of each line, the same way as for the signals (Product Owner, 2026-11-16: "pouvoir trier l'ordre dans les tableaux"). The order is kept, a new command goes at the end, and a change of order is a patch on the [Versions](13-versions.md) page. See [The order of the lines](04-signals.md#the-order-of-the-lines). Every preset of the type, and so its faceplate, shows the commands in this order, with no sort of its own (see [Presets](09-presets.md#the-order-of-the-lines)).
 
 ## Where it is used
 

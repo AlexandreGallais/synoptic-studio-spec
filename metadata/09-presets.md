@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Presets · Previous: [Commands](07-commands.md) · Next: [Versions](13-versions.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16: the faceplate and the presets are **merged** into this one part, a preset is one table, always editable, and the faceplate is seen with a button; the name people see for each signal is written here (decision 0018, accepted on 2026-11-16, which changes decision 0015). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16: the faceplate and the presets are **merged** into this one part, a preset is one table, always editable, and the faceplate is seen with a button; the name people see for each signal is written here (decision 0018, accepted on 2026-11-16, which changes decision 0015); the lines follow the order of Signals and Commands, with no sort. Open points are listed in [Open questions](12-open-questions.md).
 
 A preset is made under a type (example: pneumatic positive displacement pump). It holds the defaults of a symbol and **builds its faceplate**, so that a symbol or a synoptic starts well configured. A faceplate is the panel that shows the signals and the commands of a placed symbol: what the user sees and can act on. "Faceplate" is the standard word of supervision software for this panel.
 
@@ -62,6 +62,22 @@ The commands of the type follow in their own table, one per line:
 - An enum is always shown by the display texts of its items, never by their keys (see [Enums](06-enums.md)).
 - Ticking a command in the preset only says whether its button is in the faceplate. All the commands of the type stay available to the symbol, which links them to clicks on its parts (see [Commands](07-commands.md)).
 - Unticked lines are only unticked at the start, to save time. In a symbol or a synoptic the full list is still there and the user can tick them by hand. This changes the display only, never the model's inputs and outputs.
+
+### The order of the lines
+
+Decided by the Product Owner on 2026-11-16: "dans Preset, l'ordre, ce serait l'ordre qu'il y a dans Signal et Commandes. [...] il n'y aurait pas de tri".
+
+- The lines of the table of signals come in the order chosen with the handle in the table of [Signals](04-signals.md#the-order-of-the-lines). The lines of the table of commands come in the order chosen in the table of [Commands](07-commands.md).
+- A preset has no handle and no sort: its order cannot be changed here. To change it, the user moves the line in Signals or in Commands, and every preset of the type follows.
+- The faceplate is built from the table, so it shows the signals and the commands in this same order.
+- Where the inherited lines go depends on the question still open in [Signals](04-signals.md#open-questions); the preset follows the answer.
+
+```mermaid
+flowchart LR
+    S["Signals: order chosen with the handle"] --> P["Preset: same order, no sort"]
+    C["Commands: order chosen with the handle"] --> P
+    P --> F["Faceplate: same order"]
+```
 
 ```mermaid
 block-beta
@@ -149,4 +165,3 @@ Preset `default` of `centrifugal_pump`, faceplate title "Feed pump".
 
 - Where the name of a preset is edited: above the table for now, to look at again later (Product Owner, 2026-11-16).
 - The input of a signal that is not an enum: fixed by its type (number field, true or false, text field), as written above? Assistant's reading, to confirm.
-- Order of the lines: the order of the signals, or chosen in the preset?

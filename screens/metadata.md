@@ -324,13 +324,14 @@ mindmap
 | MD-07.13 | Decimals | Column, number field | Integers and reals; starts as the quantity's default. Display only. | Decided | [Units](../metadata/05-units.md#decimal-places) |
 | MD-07.14 | Default value | Column, field of the signal's type | The value the symbol starts with: true or false, a number, a text, or an enum item. | Decided | [Presets](../metadata/09-presets.md) |
 | MD-07.15 | Table of commands | Table | Every command of the type: Shown (checkbox), Command (its ID, read only), Name on the button (text field). | Decided | [Presets](../metadata/09-presets.md#the-table-of-a-preset) |
+| MD-07.17 | Order of the lines | Rule, no control | The lines follow the order chosen with the handle in Signals (MD-04.14) and Commands (MD-05.10); no handle and no sort in the preset; the faceplate shows the same order (2026-11-16). | Decided | [Presets](../metadata/09-presets.md#the-order-of-the-lines) |
 | MD-07.16 | Description per signal | — | Removed (2026-11-16): no description per signal or command. | Decided | [Presets](../metadata/09-presets.md) |
 
 Gaps:
 
 - Rename, duplicate and delete a preset; what happens to the symbols that use a deleted preset?
 - Does a sub-type see the presets of its parent?
-- Order of the lines: the order of the signals, or chosen in the preset? Groups or separators in the faceplate?
+- Groups or separators in the faceplate?
 - Where the faceplate opens when the button is clicked (a floating window, a panel), and how it is closed.
 - Width: what happens when the eight columns do not fit.
 

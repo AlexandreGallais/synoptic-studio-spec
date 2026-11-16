@@ -117,6 +117,7 @@ The user chooses the order of the signals, so that the table looks tidy (Product
 - A new signal goes at the end of the table. Assistant's choice, to confirm.
 - The order is for the people who read the table: it does not go to the model and changes nothing in the contract with it. Assistant's reading, to confirm. On the [Versions](13-versions.md) page, a change of order is a patch.
 - The look of the handle (for example six dots in two columns) is chosen with the design system.
+- Every preset of the type, and so its faceplate, shows the signals in this order: a preset has no sort of its own (Product Owner, 2026-11-16; see [Presets](09-presets.md#the-order-of-the-lines)).
 - Open: how the inherited lines are placed among the type's own lines (see [Open questions](#open-questions)).
 
 ```mermaid
