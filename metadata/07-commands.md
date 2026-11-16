@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Commands · Previous: [Enums](06-enums.md) · Next: [Presets](09-presets.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (a command always sends a fixed value; commands shown in a table, always editable; three kinds: set a signal, trigger, override an output; an ID instead of a name; decision 0019, accepted on 2026-11-16, which completes decision 0014). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (a command always sends a fixed value; commands shown in a table, always editable; three kinds: set a signal, trigger, override an output; an ID instead of a name; decision 0019, accepted on 2026-11-16, which completes decision 0014; a handle on each line to choose the order). Open points are listed in [Open questions](12-open-questions.md).
 
 A command is how the front acts with one click. Three kinds, kept apart because they do not say the same thing (Product Owner, 2026-11-16: "envoyer à une entrée, à un output, ou faire un trigger").
 
@@ -80,13 +80,15 @@ The commands of a type are shown in **one table**, like the signals (Product Own
 
 | Column | Values |
 | --- | --- |
-| Kind | Set a signal, Trigger, or Override an output. |
+| Handle | A small grip at the very left of the line, with no value: it is held and dragged to move the line. |
+| Kind | Set a signal, Trigger, or Override an output. First column of values. |
 | ID | The command's identifier (Product Owner, 2026-11-16: "comme dans les signaux, il vaut mieux mettre l'ID"). |
 | Target signal | For "Set a signal": an input, picked by its ID. For "Override an output": an output, picked by its ID. Empty for a trigger. |
 | Value | For "Set a signal" and "Override an output": the fixed value, of the target signal's type. Empty for a trigger. |
 
 - A trigger leaves the target and the value empty.
 - The button that adds a command sits above the table; a command is deleted by a right click on its line (see [Signals](04-signals.md#the-table-of-signals) and the [layout rules](../screens/README.md#add-buttons-above-the-list)).
+- **The user chooses the order of the commands** with the handle at the left of each line, the same way as for the signals (Product Owner, 2026-11-16: "pouvoir trier l'ordre dans les tableaux"). The order is kept, a new command goes at the end, and a change of order is a patch on the [Versions](13-versions.md) page. See [The order of the lines](04-signals.md#the-order-of-the-lines).
 
 ## Where it is used
 
@@ -101,3 +103,4 @@ A text of a symbol that becomes an input when clicked writes an **input signal**
 ## Open questions
 
 - Override an output: who applies the override (the model, the server, the front), what the model and the other screens see while it holds, and how it ends (a second click, a command that lifts it, a time limit)? If the answer is the server, it must be checked against decision 0001 (proposed): the server only communicates with files.
+- Order and inheritance: the commands are inherited along the tree like the signals (see [Types](01-types.md)); the inherited lines are placed as the signals' answer will say (see [Signals](04-signals.md#open-questions)).

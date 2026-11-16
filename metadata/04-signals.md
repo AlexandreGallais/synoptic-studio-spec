@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Signals · Previous: [Documentation](03-documentation.md) · Next: [Units](05-units.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table, always editable, direction first, line coloured by direction; no display name on the signal, it moved to the preset). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table, always editable, direction first, line coloured by direction; no display name on the signal, it moved to the preset; a handle on each line to choose the order). Open points are listed in [Open questions](12-open-questions.md).
 
 A signal is what goes between the front and the model: an input or an output of the model. Only these are defined here. Values that stay inside the model are not defined in Metadata: the people who write the model name them as they wish, and they are invisible to the application.
 
@@ -65,7 +65,8 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 
 | Column | Values |
 | --- | --- |
-| Direction | Input or output. **First column**, before the ID, so that the line reads in order (Product Owner, 2026-11-16). |
+| Handle | A small grip at the very left of the line, with no value: it is held and dragged to move the line (see [The order of the lines](#the-order-of-the-lines)). |
+| Direction | Input or output. **First column** of values, before the ID, so that the line reads in order (Product Owner, 2026-11-16). |
 | ID | The model identifier (Product Owner, 2026-11-16: "l'ID, qui est le modèle identifiant"). |
 | Type | Integer, real, boolean, text, enum. |
 | Enum | For an enum signal only: the enum it points to. |
@@ -79,7 +80,8 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 - The line of an enum signal shows the name of the enum it points to (Product Owner, 2026-11-11). Open: when the mouse rests on that name (for example `operating_mode`), does a small bubble list its items (0 Off, 1 Manual, 2 Automatic), so that the Enums page need not be opened? The enums themselves are made on their own page (see [Enums](06-enums.md)), never in the table of signals.
 - The table shows the signals of the type and the signals it inherits from its parents. Inherited lines cannot be edited here: they are edited in the type that declares them.
 - The button that adds a signal sits **above the table** (see the [layout rules](../screens/README.md#add-buttons-above-the-list)).
-- No button on each line. Deleting a signal is done by a right click on its line, then Delete: a delete that is always shown invites a click (Product Owner, 2026-11-16, for all of Metadata: see the [layout rules](../screens/README.md#delete-by-right-click-in-metadata)).
+- No button on each line. Deleting a signal is done by a right click on its line, then Delete: a delete that is always shown invites a click (Product Owner, 2026-11-16, for all of Metadata: see the [layout rules](../screens/README.md#delete-by-right-click-in-metadata)). The handle at the left of a line is not a button: it only moves the line.
+
 The block below shows the order of the columns; the two lines have the colours of an input and of an output.
 
 ```mermaid
@@ -106,6 +108,22 @@ block-beta
     style s7 fill:#fef3c7
 ```
 
+## The order of the lines
+
+The user chooses the order of the signals, so that the table looks tidy (Product Owner, 2026-11-16: "un truc tout à gauche, genre une poignée, qui permet de déplacer l'ordre des signaux pour que ça fasse plus propre").
+
+- Each line has a **handle** at its very left. The user holds it and drags the line up or down; the line drops where the mouse is released.
+- The order is kept: the table opens again in the order the user left.
+- A new signal goes at the end of the table. Assistant's choice, to confirm.
+- The order is for the people who read the table: it does not go to the model and changes nothing in the contract with it. Assistant's reading, to confirm. On the [Versions](13-versions.md) page, a change of order is a patch.
+- The look of the handle (for example six dots in two columns) is chosen with the design system.
+- Open: how the inherited lines are placed among the type's own lines (see [Open questions](#open-questions)).
+
+```mermaid
+flowchart LR
+    H["Hold the handle of a line"] --> D["Drag up or down"] --> R["Release: the line takes its new place"] --> K["The order is kept"]
+```
+
 ## Where it is used
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
@@ -116,3 +134,4 @@ block-beta
 
 - Decimal places on the signal itself, so that the model fixes how many decimals an input or an output has? The Product Owner doubts it (2026-11-16, confirmed the same day): the model should give and receive the real value, and decimals are for display only. Not added; to think about.
 - Mouse resting on the enum name of a line: a bubble with its items, or nothing?
+- Order and inheritance: do the inherited signals stay together at the top, in their parent's order, with only the type's own signals moved by their handle? Or can every line be moved, inherited or not, each type keeping its own order?

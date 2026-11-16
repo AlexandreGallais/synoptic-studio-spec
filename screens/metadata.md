@@ -178,6 +178,7 @@ mindmap
       Inherited signals, read only
       Always editable
       Line coloured by direction
+      Handle at the left of each line, drag to reorder
       Columns
         Direction, input or output, first
         ID
@@ -207,10 +208,11 @@ mindmap
 | MD-04.11 | Minimum, maximum | Columns, number fields | Integer and real only; indicative; in the model unit. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.12 | Direction | Column, select | First column (2026-11-16). Input or output of the model. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.13 | Delete a signal | Right click › Delete | No button on the lines ([layout rules](README.md#delete-by-right-click-in-metadata)). | Decided | [Signals](../metadata/04-signals.md#the-table-of-signals) |
+| MD-04.14 | Handle of a line | Grip, dragged | At the very left of each line, before Direction: held and dragged to move the line; the order chosen is kept (2026-11-16). A new signal goes at the end: to confirm. Its look: with the design system. | Decided | [Signals](../metadata/04-signals.md#the-order-of-the-lines) |
 
 Gaps:
 
-- Order of the signals: by creation, by name, or chosen by the user?
+- Order and inheritance: where the inherited lines go, and whether they can be moved (open, see [Signals](../metadata/04-signals.md#open-questions)).
 - Width of the window: what happens when the eight columns do not fit (scroll sideways, narrower columns)?
 
 ## MD-05 · Commands
@@ -224,6 +226,7 @@ mindmap
   root((MD-05 Commands))
     Plus above the table
     Table, one line per command, always editable
+      Handle at the left of each line, drag to reorder
       Kind
         Set a signal
         Trigger
@@ -252,9 +255,11 @@ mindmap
 | MD-05.7 | Value | Column, field of the target signal's type | Fixed, written in Metadata: a number, true or false, a text, or an item of the enum. Empty for a trigger. | Decided | [Commands](../metadata/07-commands.md#the-value-is-always-fixed) |
 | MD-05.8 | Typed value | — | Removed (2026-11-16): a person types a value in the faceplate, for a signal set to write in the preset. | Decided | [Presets](../metadata/09-presets.md#typing-a-value) |
 | MD-05.9 | Delete a command | Right click › Delete | No button on the lines ([layout rules](README.md#delete-by-right-click-in-metadata)). | Decided | [Commands](../metadata/07-commands.md#the-table-of-commands) |
+| MD-05.10 | Handle of a line | Grip, dragged | At the very left of each line, before Kind; same behaviour as [MD-04.14](#md-04--signals) (2026-11-16). | Decided | [Commands](../metadata/07-commands.md#the-table-of-commands) |
 
 Gaps:
 
+- Order and inheritance: as for the signals (open).
 - Override an output: who applies it and how it ends, open (see [Commands](../metadata/07-commands.md#open-questions)).
 
 ## MD-06 · Faceplate: merged into MD-07

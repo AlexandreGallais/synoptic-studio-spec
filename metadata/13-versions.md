@@ -37,7 +37,7 @@ Proposed by the assistant from the rules of these specs, to confirm. The number 
 | --- | --- | --- |
 | Major | A change that breaks the contract with the model. | A type, a signal or a command removed or renamed; the type, direction, enum, quantity or model unit of a signal changed; an enum key changed or removed; a conversion of a unit changed. |
 | Minor | Something added to the contract, nothing broken. | A new type, signal, command, enum, enum item, quantity or unit. |
-| Patch | Nothing the model sees. | Documentation, icon and colour, presets (lines shown, name shown, input, display unit, decimals, default value, faceplate title), display texts of enum items, bounds. |
+| Patch | Nothing the model sees. | Documentation, icon and colour, order of the signals and of the commands, presets (lines shown, name shown, input, display unit, decimals, default value, faceplate title), display texts of enum items, bounds. |
 
 Bounds are in the patch line because they are indicative (see [Signals](04-signals.md#fields)): to confirm with the rest.
 
