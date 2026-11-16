@@ -16,7 +16,7 @@ The rules stay in the pages of each part. When a page changes, the screen that s
 
 | File | Screens |
 | --- | --- |
-| [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its five parts), Units, Enums. |
+| [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its six parts), Units, Enums, Versions. |
 | [Symbol editor](symbols.md) | The navigation bar, Symbol Libs, the left-hand panel of a Symbol Lib, the symbol editor (layout, floating bars, layers) and its seven modes, the advanced tools. |
 | [Pipes](pipes.md) | The base pipe style, the pipe styles, the end shapes, the dash sequences, the preview, and pipes in a synoptic (part 3, preview). |
 
@@ -53,17 +53,29 @@ block-beta
     l3["Item n: the list grows downwards, the button does not move"]
 ```
 
-### Delete by right click, in Metadata
+### Delete with a button and a warning, in Metadata
 
-Decided by the Product Owner on 2026-11-16: a preference first said with a doubt, then confirmed the same day ("la suppression par clic droit s'applique partout, à tout Metadata").
+Decided by the Product Owner on 2026-11-16, while reviewing the wireframes. It replaces the delete by right click decided earlier the same day.
 
-- In Metadata, deleting is never a button always shown on the screen: an option seen at once invites a click.
-- Deleting is done by a right click on the item, then **Delete** in the menu that opens, as for the types (decided for the types on 2026-11-16).
-- So the tables and lists of Metadata have no delete button on their lines: types, links, signals, commands, presets, quantities and units, enums and their items.
+- **No right click in Metadata.** Its menu held only Delete, and deleting is "une option un peu vénère": it must not hide behind a right click.
+- Deleting is done with a **delete button** (an icon):
+  - on a line of a table or a list, in the **last column, on the far right**: links of the documentation, signals, commands, presets, elements of the faceplate builder, enums and their items;
+  - for a **type**, in its **General** part, not in the tree.
+- A click on the button opens a **warning message** that asks to confirm. Nothing is deleted before the user confirms. So deleting is never "aussi simple que ça".
+- The same warning everywhere, for a type as for a line.
+- What is deleted shows on the [Versions](../metadata/13-versions.md) page, where it can be undone before a version is made.
+- The wording of the warning, and whether it says what the delete breaks (symbols that lose their type, presets that lose a line): to settle.
+
+```mermaid
+flowchart LR
+    B["Delete button: far right of a line, or General of a type"] --> W["Warning message"]
+    W -->|"confirm"| D["Deleted; seen on the Versions page, can be undone"]
+    W -->|"cancel"| K["Nothing changes"]
+```
 
 ### Tables for the parts of a type
 
-Decided by the Product Owner on 2026-11-16: the signals and the commands of a type are shown in one table each, one line per item and one column per field, taking as much room as possible (see [Signals](../metadata/04-signals.md#the-table-of-signals) and [Commands](../metadata/07-commands.md#the-table-of-commands)). The selected preset is also a table, one line per signal and per command (see [Presets](../metadata/09-presets.md#the-table-of-a-preset)). They replace, for these parts, the panel of the selected item on the right.
+Decided by the Product Owner on 2026-11-16: the signals and the commands of a type are shown in one table each, one line per item and one column per field, taking as much room as possible (see [Signals](../metadata/04-signals.md#the-table-of-signals) and [Commands](../metadata/07-commands.md#the-table-of-commands)). The selected preset is a table of its signals in its mode Values, and a list of elements in its mode Faceplate (see [Presets](../metadata/09-presets.md#two-modes-chosen-by-a-switch)). They replace, for these parts, the panel of the selected item on the right.
 
 ### Navigation bar on the left
 

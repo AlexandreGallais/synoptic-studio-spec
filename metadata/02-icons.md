@@ -28,6 +28,7 @@ flowchart LR
 - If a parent type chooses an icon and/or a colour, all its children take the same.
 - A child can override the icon and/or the colour with its own choice. Its own children then follow the child.
 - A child that overrides can reset: a reset action, available when choosing the icon or the colour, makes it follow its parent again. It is an icon button, without a text label (Product Owner, 2026-11-16).
+- In General, the icons and the colours are shown as two lists, each with its reset button (validated by the Product Owner on 2026-11-16). Each list may take more than one line; where the reset button goes then is to find with the design.
 - A type with no choice anywhere up its branch uses the default icon and the default colour.
 
 ```mermaid
@@ -47,3 +48,4 @@ flowchart TD
 ## Open questions
 
 - To define with the design system: the contents of the palette, the list of icons at the start, and the default icon and colour are not decided here. They are defined when the design system is defined.
+- Where the reset buttons go when the list of icons or of colours takes several lines.

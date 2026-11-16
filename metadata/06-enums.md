@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Enums · Previous: [Units](05-units.md) · Next: [Commands](07-commands.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers; the + that creates an enum is an icon on the line of the title). No open question.
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers; the + that creates an enum is an icon on the line of the title; delete with a button and a warning). No open question.
 
 An Enums page lists the enums of the application, like the Units page lists the quantities. A signal of the type enum does not hold its own list of values: it points to an enum of this page.
 
@@ -18,6 +18,7 @@ An Enums page lists the enums of the application, like the Units page lists the 
 - Unlike the units, which are a read-only catalogue (see [Units](05-units.md#a-ready-made-catalogue-read-only)), enums are made by the user: each has its name, and the user builds its items (Product Owner, 2026-11-16: "Les enums, par contre, il faut pouvoir en créer").
 - The button that creates an enum is a small **+ icon on the line of the title "Enums"**, above the list (Product Owner, 2026-11-16: "il faut qu'il soit au niveau des enums pour que ça fasse joli avec une icône"). It follows the rule of the add buttons above the list (see the [layout rules](../screens/README.md#add-buttons-above-the-list)).
 - A new enum goes into the list of the Enums page. The list can be filled in advance, before any signal uses it.
+- An enum, or an item of an enum, is deleted with the delete button at the far right of its line, then a warning that asks to confirm; there is no right click in Metadata (Product Owner, 2026-11-16; see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
 - A signal of the type enum picks one enum of the list. It is a link to the existing enum, never a copy.
 - Several signals can point to the same enum.
 - Changing an enum changes it for every signal that points to it: that is the point of a link.
@@ -52,4 +53,4 @@ flowchart LR
 | --- | --- | --- | --- | --- |
 | Enum, its items (key and display text) | Enums page | Signal: picks one as a link | No | No |
 
-The preset chooses how an enum is shown in the faceplate (radio on one line, radio on several lines, select), see [Presets](09-presets.md#the-table-of-a-preset).
+The faceplate builder of a preset chooses how an enum is shown in the faceplate (radio on one line, radio on several lines, select), see [Presets](09-presets.md#mode-faceplate-the-faceplate-builder).

@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Documentation · Previous: [Icons](02-icons.md) · Next: [Signals](04-signals.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no Edit step, read-only mode kept, full page button with the type tree kept, add buttons above the links, the description shown on this page only). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no Edit step, read-only mode kept, full page button with the type tree kept, add buttons above the links, the description shown on this page only); reviewing the wireframes later that day, he set the formatting tool bar in both modes, with the full page button in it, and a delete button with a warning on each link. Open points are listed in [Open questions](12-open-questions.md).
 
 A type has a documentation page, where people put what explains the type: a description and links to documents and sources.
 
@@ -39,6 +39,20 @@ flowchart TD
 | Markdown | The raw text, for those who write Markdown faster. | When the user switches to it. |
 
 - Switching to Visual or Markdown is not an Edit button: there is nothing to save or to confirm when going back to read only.
+- The application holds its own **Markdown editor** (Product Owner, 2026-11-16: "il faudra faire un éditeur Markdown"), with its two ways to type:
+  - **Markdown**: the raw text shows its marks, for example the `#` of a heading;
+  - **Visual**: the text is laid out, "comme un éditeur de texte Word".
+
+### The formatting tool bar
+
+Said by the Product Owner on 2026-11-16, while reviewing the wireframes.
+
+- The **formatting tool bar** is there **in both modes**, Visual and Markdown ("disponible dans les deux, dans tous les cas"). In Markdown, a button writes the marks into the text; in Visual, it lays the text out.
+- It works "un peu comme Word": the user picks what to apply, among **what Markdown can write**: the level of a heading, lists, tables, and the rest of Markdown ("tous les trucs Markdown").
+- Proposed content, to confirm (the marks of CommonMark and of GitHub's Markdown): heading levels, bold, italic, strikethrough, bulleted list, numbered list, checklist, quote, inline code, code block, table, link, horizontal line.
+- **No text colour**: Markdown has no mark for a colour (only raw HTML could), so the tool bar offers none. The Product Owner asked whether it could ("je sais pas si, en Markdown, on peut choisir la couleur de texte"); assistant's answer, to confirm.
+- The **full page** button is part of the tool bar (Product Owner, 2026-11-16).
+- The buttons Read only, Visual, Markdown sit on its right, on the same line (see above).
 - The buttons that switch between the modes sit **on the right of the formatting tool bar**, on the same line (Product Owner, 2026-11-16).
 - The tool bar also has a **full page** button (Product Owner, 2026-11-16):
   - the description takes the whole page of the documentation, and the links are no longer shown, so the user only types text, calmly;
@@ -63,6 +77,8 @@ flowchart LR
 - A URL is typed or pasted.
 - The buttons that add a path or a URL sit **above the list of links**, never under it (see the [layout rules](../screens/README.md#add-buttons-above-the-list)).
 - Each link has a description: a short text in plain text (not Markdown) that says what is attached. It is a description, not a name.
+- The list of links is **always editable**: its fields are changed in place, like everything in Metadata (validated by the Product Owner on 2026-11-16: "on ajoute un path ou une URL. Donc ça, c'est très bien").
+- **Deleting a link:** a delete button (an icon) in the **last column of its line, on the far right**; a click opens a warning that asks to confirm (Product Owner, 2026-11-16: "Tu me rajoutes un bouton de suppression [...] il y a un message de warning quand on clique sur Supprimer"). No right click (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
 - A link to a file or a folder can be opened directly, so the user does not lose time. Opening **always opens a folder, never a file** (Product Owner, 2026-11-11):
   - a link to a file opens the folder that contains the file;
   - a link to a folder opens that folder.
@@ -92,3 +108,5 @@ flowchart TD
 ## Open questions
 
 - Which mode opens first: read only, or visual?
+- The content of the formatting tool bar (proposed above) and no text colour: to confirm.
+- How a link is edited in place, and whether links can be reordered.

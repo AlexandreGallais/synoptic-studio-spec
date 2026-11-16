@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Who changes what · Previous: [Versions](13-versions.md) · Next: [Open questions](12-open-questions.md)
 
-Status: validated by the Product Owner on 2026-11-11; the faceplate merged into the presets on 2026-11-16, the name shown of a signal moved to the preset and versions added the same day. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; the faceplate merged into the presets on 2026-11-16, the name shown of a signal moved to the preset and versions added the same day; the preset split into two modes, Values and Faceplate (the builder), later that day. Open points are listed in [Open questions](12-open-questions.md).
 
 Rule of the Product Owner: no duplicate ways to change the same thing. Each thing has one place where it is created and changed.
 
@@ -17,16 +17,16 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 | Enum and its values | Enums page | No | No |
 | Command | Metadata | Link a command to a click | No |
 | Preset and its name | Metadata | Choose one | Choose one |
-| Lines of the faceplate shown, name shown, input, read or write, display unit, decimals, default value | Preset, in Metadata | Edit | Edit |
-| Commands shown in the faceplate, text of their button | Preset, in Metadata | Edit | Edit |
-| Faceplate title and description | Preset, in Metadata | Edit | Edit, on each placed symbol |
+| Display unit, decimals, default value of each signal | Preset, mode Values, in Metadata | Edit | Edit |
+| Elements of the faceplate: signals (name shown, input, read or write), commands (text of their button), titles, descriptions, groups | Preset, mode Faceplate (the builder), in Metadata | Open | Open |
+| Faceplate title and description | Preset, mode Faceplate, in Metadata | Edit | Edit, on each placed symbol |
 | Version of Metadata, its number and change log | Versions page of Metadata | No | No |
 
 ```mermaid
 flowchart LR
     M[Metadata] -->|"types, signals, commands, presets"| S[Symbol]
-    S -->|"choose a preset, edit its values and the lines shown, link a command to a click"| Y[Synoptic]
-    Y -->|"choose a preset, edit its values, the lines shown, the faceplate title"| Y
+    S -->|"choose a preset, edit its values, link a command to a click"| Y[Synoptic]
+    Y -->|"choose a preset, edit its values, the faceplate title"| Y
 ```
 
 ## Details

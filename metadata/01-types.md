@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Types · Next: [Icons](02-icons.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no libraries of types, type tree actions, fixed parent, icon buttons in General, parts listed by name under the tree, a Faceplate part that only shows the faceplate, no Edit or Save step, no warning on delete). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no libraries of types, type tree actions, fixed parent, icon buttons in General, parts listed by name under the tree, a Faceplate part that only shows the faceplate, no Edit or Save step). Reviewing the wireframes later that day, he validated the tree (coloured icon and name, nesting, + on hover and + on the title), put the search behind an icon on the line of the title, removed every right click, moved Delete to General with a warning, and asked for lists of types indented with dashes. Open points are listed in [Open questions](12-open-questions.md).
 
 A type is the representation of a symbol at one level of detail. Types form a tree, hence parents and sub-types.
 
@@ -34,7 +34,7 @@ flowchart LR
 - The type tree is on the **left** of the screen, as in a code editor (IDE), where every tree sits on the left (Product Owner, 2026-11-11). It sits just right of the navigation bar of Metadata (see [Screens](../screens/README.md#layout-rules)).
 - There are no libraries of types: every type of the tree can be chosen everywhere (Product Owner, 2026-11-16).
 - The name is changed in the General part only. Double-clicking an item in the tree does not rename it: hidden options are avoided.
-- **The parent never changes** (Product Owner, 2026-11-16). It is set when the type is created, by the + of the type under which it is created (or the + of the title, for a root type). General shows it, read only: its name with its icon.
+- **The parent never changes** (Product Owner, 2026-11-16; decision 0013; asked again after the review of the wireframes, see [A list of types shows the tree](#a-list-of-types-shows-the-tree-indented)). It is set when the type is created, by the + of the type under which it is created (or the + of the title, for a root type). General shows it, read only: its name with its icon.
   - Why: moving a type to another parent changes the signals it inherits and breaks what uses it. No signal goes from one parent to another "aussi bêtement que ça". Metadata must stay strict ("ça doit être carré").
   - A type created under the wrong parent is deleted and created again under the right one; it is never moved.
 
@@ -45,23 +45,68 @@ flowchart LR
     W["Wrong parent"] --> D["Delete the type"] --> N["Create it again under the right parent"]
 ```
 
-- The parts of a type are shown in this order (Product Owner, 2026-11-11, then 2026-11-16): General, Documentation, Signals, Commands, Presets, Faceplate. The faceplate is set in the Presets; the Faceplate part only shows it (see [Presets](09-presets.md#the-faceplate-part-a-view-only)). They are shown as **a list of their names, in the column of the type tree, fixed under the tree** (proposal B, changed by the Product Owner on 2026-11-16; see [The parts of a type](#the-parts-of-a-type-a-list-fixed-under-the-tree)).
+- The parts of a type are shown in this order (Product Owner, 2026-11-11, then 2026-11-16): General, Documentation, Signals, Commands, Presets, Faceplate. The faceplate is built in the Presets; the Faceplate part only shows it, and may be removed now that the preset has a faceplate builder (asked to the Product Owner; see [Presets](09-presets.md#the-faceplate-part)). They are shown as **a list of their names, in the column of the type tree, fixed under the tree** (proposal B, changed by the Product Owner on 2026-11-16; see [The parts of a type](#the-parts-of-a-type-a-list-fixed-under-the-tree)).
 
 ### The type tree: search, create, delete (Product Owner, 2026-11-16)
 
-- A **search field** sits under the title "Type tree".
-- **Create:** each type of the tree has a **+** on its right, shown when the mouse is over the type. It creates a new type **under** it (a child). The new type starts with a default name, changed afterwards in General.
-- A **+** on the title "Type tree" creates a type at the root. It is always shown, so that creating a type is never hidden. The Product Owner fears it looks bad ("ça va être dégueulasse … s'il le faut"): kept, its look is for the design.
-- **Delete:** a right click on a type opens a menu of options; **Delete** is one of them. No warning that symbols lose their type (Product Owner, 2026-11-16: "ça ne sert à rien … il ne faut pas faire ça"). The delete shows on the [Versions](13-versions.md) page, where it can be undone before a version is made.
+Validated by the Product Owner on 2026-11-16, while reviewing the wireframes ("cette partie-là, on peut la valider").
+
+- Each type of the tree shows **its icon, in its colour, and its name**. Types nest: a type can hold types, at any depth.
+- **Create a child:** each type of the tree has a **+** on its right, **shown when the mouse is over the type** ("sinon on va les voir tout le temps et ça va être imbuvable"). It creates a new type **inside** it (a child): "le truc le plus logique". The new type starts with a default name, changed afterwards in General.
+  - The Product Owner thought for a moment of showing these + all the time, in a light colour, so that nothing is hidden; then dropped it: one more mark on every line "va faire beaucoup trop surchargé". They stay on hover.
+- **Create a root type:** a **+** on the line of the title "Type tree", always on the far right. It is always shown, so that creating a type is never hidden.
+- **Search:** a **search icon** sits on the line of the title, just left of the +.
+  - A click on it turns the title into a **search field**: the words "Type tree" disappear and the field takes their place.
+  - Typing filters the tree.
+  - While searching, the **+ becomes a cross (×)**, which closes the search: the field goes, the title "Type tree" and the + come back.
+  - It replaces the search field always shown under the title, drawn earlier the same day.
+- **No double click:** double-clicking a type does not rename it; hidden options are avoided.
+- **No right click** in the tree, nor anywhere in Metadata (Product Owner, 2026-11-16: "on ne peut juste pas avoir de clic droit du tout"). Its menu held only Delete, and a delete must not be that easy to reach.
+- **Delete:** a **Delete button in the General part** of the type. A click opens a **warning message** that asks to confirm, as for every delete of Metadata (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)). It replaces the right click and the "no warning" decided earlier the same day. The delete also shows on the [Versions](13-versions.md) page, where it can be undone before a version is made.
 
 ```mermaid
 flowchart LR
     H["Mouse over a type"] --> P["+ on its right"] -->|"click"| C["New child type, default name"]
-    T["+ on the title Type tree, always shown"] -->|"click"| R["New type at the root, default name"]
-    RC["Right click on a type"] --> M["Menu of options"] --> D["Delete"]
+    T["+ on the line of the title, always shown"] -->|"click"| R["New type at the root, default name"]
+    S["Search icon, left of the +"] -->|"click"| F["Search field in place of the title; the + becomes ×"]
+    F -->|"typing"| FI["The tree is filtered"]
+    F -->|"×"| T
+    G["General of the type"] --> D["Delete button"] --> W["Warning, confirm"] --> X["Deleted"]
 ```
 
-- The General part holds only the name, the parent, the icon and the colour. Nothing more is needed (Product Owner, 2026-11-11, confirmed on 2026-11-16).
+The line of the title, out of search and in search:
+
+```mermaid
+block-beta
+    columns 2
+    t1["Type tree"] b1["search icon, +"]
+    t2["Search field, typing filters"] b2["×"]
+```
+
+- The General part holds the name, the parent, the icon and the colour, and the **Delete button** of the type (Product Owner, 2026-11-11, confirmed on 2026-11-16; the Delete button added the same day).
+- Open: should the field of the name be labelled "Name" or "ID", as for the signals and the commands? The Product Owner hesitates (2026-11-16: "Je ne sais pas s'il faut mettre vraiment un nom ou plutôt un ID").
+
+### A list of types shows the tree, indented
+
+Said by the Product Owner on 2026-11-16, for the list of the parent in General.
+
+- When a list of types opens (a select), it shows **the whole type tree**, each type with its icon and its name.
+- The level of a type is shown by **small dashes before the icon**, one per level, each taking a wide square of space, so that the indentation reads as in the tree ("des petits tirets, mais qui prennent un gros carré d'espacement"). Example: `Pump`, then `— Centrifugal pump`, then `— — …`.
+- Assistant's proposal, to confirm: the same display wherever a type is picked in a list, for example when a symbol picks its type.
+
+```mermaid
+block-beta
+    columns 1
+    a["[icon] pump"]
+    b["— [icon] centrifugal_pump"]
+    c["— [icon] positive_displacement_pump"]
+    d["— — [icon] pneumatic_positive_displacement_pump"]
+    e["[icon] valve"]
+```
+
+À trancher: the Product Owner described the parent in General as "une liste qu'il faut choisir". Decision 0013 (accepted on 2026-11-16) says the parent is fixed at creation and shown read only. Asked to the Product Owner whether the parent becomes changeable through this list; until the answer, the rule above (fixed parent) holds.
+
+- **Icon and colour:** a list of icons and a list of colours, each with its reset button, validated (Product Owner, 2026-11-16). The colours, and the icons, may take more than one line: where the reset button goes then is to find with the design ("il faudra trouver une autre disposition, mais dans le général, là, ça suffit").
 - In General, the name is **always editable**: no Edit or Save button (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps"). The resets to the parent (icon, colour) are **icon buttons**, without a text label.
 - No virtual links between types of the tree. Duplicates are accepted: a change in one type must not change another silently, so nothing has to be retested everywhere. It also lets each type be versioned alone later. The documentary research (2026-11-10) finds this rule defensible: neither FMI, OPC UA nor AutomationML requires or forbids it.
 
@@ -94,7 +139,7 @@ flowchart LR
 | Signals | [Signals](04-signals.md) |
 | Commands | [Commands](07-commands.md) |
 | Presets, which set the faceplate | [Presets](09-presets.md) |
-| Faceplate, a view of a preset's faceplate | [Presets](09-presets.md#the-faceplate-part-a-view-only) |
+| Faceplate, a view of a preset's faceplate (kept or removed: asked) | [Presets](09-presets.md#the-faceplate-part) |
 
 ## The parts of a type: a list fixed under the tree
 
@@ -179,4 +224,11 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Type (name, parent) | Metadata: the name in General, the parent at creation only | Signal and command inheritance | Chosen among all the types, only here | No |
+| Type (name, parent) | Metadata: the name in General, the parent at creation only; deleted in General, with a warning | Signal and command inheritance | Chosen among all the types, only here | No |
+
+## Open questions
+
+- The label of the name in General: "Name" or "ID"?
+- The parent: fixed at creation (decision 0013), or chosen in a list of the whole tree, indented with dashes, as described during the review of the wireframes?
+- The search: does the filtered tree keep the parents of a type that matches, so that its place is seen?
+- Where the reset buttons of the icon and the colour go when their lists take several lines.
