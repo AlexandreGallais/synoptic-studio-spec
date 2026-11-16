@@ -61,7 +61,7 @@ flowchart LR
 
 Changed by the Product Owner on 2026-11-16, at the end of the day: "il faut, pour un même type de quantité, qu'il faille tout le temps la même unité, pour les différences pareil, partout. Comme ça, au moins, t'as pas de trucs chelous de conversion."
 
-- **One model unit per quantity, the same everywhere**: every signal of a quantity is handled by the model in that unit. A difference has its own model unit, the same everywhere too.
+- **One model unit per quantity, the same everywhere** (decision 0024, accepted on 2026-11-16): every signal of a quantity is handled by the model in that unit. A difference has its own model unit, the same everywhere too.
 - A signal takes a quantity, not a unit: a signal is "volume", not "m³/h". **The signal never chooses its model unit**: the override per signal of 2026-11-11 is removed, and the column Model unit with it (see [Signals](04-signals.md)).
 - **The model unit is not set in Metadata** ("ça va pas dans la définition de la metadata. Ça va plutôt après"). Two places are possible, not chosen yet:
   - once and for good, in the catalogue files of the software: then it is the model unit the catalogue already gives each quantity, shown read only on the Units page;
