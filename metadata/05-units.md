@@ -66,7 +66,7 @@ Changed by the Product Owner on 2026-11-16, at the end of the day: "il faut, pou
 - **The model unit is not set in Metadata** ("ça va pas dans la définition de la metadata. Ça va plutôt après"). Two places are possible, not chosen yet:
   - once and for good, in the catalogue files of the software: then it is the model unit the catalogue already gives each quantity, shown read only on the Units page;
   - once per project, in a configuration file of the project.
-- À trancher : where the model unit is set (the catalogue for good, or the project). Until then, the Units page keeps showing the catalogue's model unit of each quantity.
+- À trancher : where the model unit is set. The Product Owner leans towards the catalogue of the software (2026-11-16), but has not settled it: "On verra ça plus tard car potentiellement dans une page annexe mais il faut que j'y réfléchisse". A third place is now possible: an annex page, not described yet. Until then, the Units page keeps showing the catalogue's model unit of each quantity.
 - A display unit is any unit of the same quantity, in any family. It is chosen in a preset, and can be edited in a symbol or a synoptic.
 - The value is converted for display only. The model value stays the same.
 
@@ -166,10 +166,10 @@ flowchart LR
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Quantity, families, reference family, conversions, default model unit, default decimals | Catalogue files of the software, completed by contributors; read only on the Units page | Signal (quantity, value or difference), preset (display unit, decimals) | No | No |
-| Model unit of a quantity, the same everywhere | Outside Metadata: the catalogue for good, or a configuration file of the project (open) | Every signal of the quantity, its bounds, the conversions for display | No | No |
+| Model unit of a quantity, the same everywhere | Outside Metadata: the catalogue for good (leaning), a configuration file of the project, or an annex page (open) | Every signal of the quantity, its bounds, the conversions for display | No | No |
 | Display unit, decimal places | Preset, in Metadata | Faceplate, texts of a symbol that show a value | Edit | Edit |
 
 ## Open questions
 
 - Source and licence of the catalogue data (UCUM, QUDT, CLDR, NIST not checked).
-- Where the model unit of each quantity is set: once and for good in the catalogue, or once per project in a configuration file (Product Owner, 2026-11-16: "Je sais pas où on va le mettre encore").
+- Where the model unit of each quantity is set: once and for good in the catalogue, once per project in a configuration file, or on an annex page (Product Owner, 2026-11-16: "Je sais pas où on va le mettre encore"; later the same day, leaning towards the catalogue, "il faut que j'y réfléchisse").

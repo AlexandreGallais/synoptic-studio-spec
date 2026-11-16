@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Enums · Previous: [Units](05-units.md) · Next: [Commands](07-commands.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers; the + that creates an enum is an icon on the line of the title; delete with a button and a warning; at the end of the day, a description for each item). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers; the + that creates an enum is an icon on the line of the title; delete with a button and a warning; at the end of the day, an optional description for each item, shown on the Enums page only). No question is open on this page.
 
 An Enums page lists the enums of the application, like the Units page lists the quantities. A signal of the type enum does not hold its own list of values: it points to an enum of this page.
 
@@ -10,7 +10,7 @@ An Enums page lists the enums of the application, like the Units page lists the 
 
 - An enum is a named list of items. **Each item is a pair: a key and a display text** (Product Owner, 2026-11-11, replacing the "value alone" rule written earlier the same day):
   - the **key** is what the model receives: **always a whole number** (0, 1, 2...; Product Owner, 2026-11-16, replacing "a number or a string, chosen for the whole enum": "les enums, c'est tout le temps des entiers"); keys are unique in the enum;
-  - the **description** explains what the item means, for the people who make the types and the symbols (Product Owner, 2026-11-16, end of the day: "il faut pouvoir décrire quand même ce que vaut l'enum [...] une description, c'est peut-être pas mal pour avoir des explications sur les enums"); plain text; it never goes to the model; optional and shown only on the Enums page (assistant's reading, to confirm);
+  - the **description** explains what the item means, for the people who make the types and the symbols (Product Owner, 2026-11-16, end of the day: "il faut pouvoir décrire quand même ce que vaut l'enum [...] une description, c'est peut-être pas mal pour avoir des explications sur les enums"); plain text; it never goes to the model; **optional, and shown only on the Enums page**: the faceplate never shows it (Product Owner, 2026-11-16);
   - the **display text** is what people read: the faceplate, a text of a symbol and the test values show it, never the key.
 - The items are shown in a table whose columns come in this order: **Key, Description, Display text** (Product Owner, 2026-11-16: "il faudrait la key, après une description, et après le display text"; decision 0025, accepted on 2026-11-16, which completes decision 0009), then the delete button, with no header.
 - No string keys (Product Owner, 2026-11-16). Why: every enum can be checked in one place, the Enums page, and the configuration files are generated from it; so the model never needs a readable key, and the display text is enough for people.
@@ -64,7 +64,3 @@ flowchart LR
 | Enum, its items (key, description, display text) | Enums page | Signal: picks one as a link | No | No |
 
 The faceplate builder of a preset chooses how an enum is shown in the faceplate (radio on one line, radio on several lines, select), see [Presets](09-presets.md#mode-faceplate-the-faceplate-builder).
-
-## Open questions
-
-- The description of an item: optional, and shown only on the Enums page, or also as a help in the faceplate (a bubble on the display text)? Assistant's reading: optional, Enums page only.
