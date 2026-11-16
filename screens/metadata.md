@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Screens](README.md) › Metadata
 
-Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal; then the parts of a type as a strip of icons, delete by right click everywhere, commands to inputs only, whole number enum keys, the type tree kept in full page; last, no Edit or Save step anywhere and a Versions page, the read-only mode of the description kept, the direction first in the table of signals, the name shown of a signal moved to the preset, three kinds of command with an ID; then quantity or difference in the one column Quantity, and the parts of a type listed by name, fixed under the tree, replacing the strip of icons; last, the list moved above the tree, and a Faceplate part, a view only, replacing the button that showed the faceplate). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
+Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal; then the parts of a type as a strip of icons, delete by right click everywhere, commands to inputs only, whole number enum keys, the type tree kept in full page; last, no Edit or Save step anywhere and a Versions page, the read-only mode of the description kept, the direction first in the table of signals, the name shown of a signal moved to the preset, three kinds of command with an ID; then quantity or difference in the one column Quantity, and the parts of a type listed by name, fixed under the tree, replacing the strip of icons; last, the list moved above the tree then back under it, and a Faceplate part, a view only, replacing the button that showed the faceplate). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
 
 ## MD-00 · Navigation bar of Metadata
 
@@ -23,7 +23,7 @@ Gaps:
 
 Path: Metadata › Types.
 
-The tree is on the left, as in a code editor, just right of the navigation bar; the parts of the selected type are listed by name above the tree, in the same column, fixed; the selected part is edited on the right.
+The tree is on the left, as in a code editor, just right of the navigation bar; the parts of the selected type are listed by name under the tree, in the same column, fixed; the selected part is edited on the right.
 
 ```mermaid
 block-beta
@@ -31,8 +31,8 @@ block-beta
     rail["MD-00 bar"]
     block:left
         columns 1
-        parts["Parts, fixed: General, Documentation, Signals, Commands, Presets, Faceplate"]
         tree["Type tree, scrolls"]
+        parts["Parts, fixed: General, Documentation, Signals, Commands, Presets, Faceplate"]
     end
     editor["Editor of the selected part"]:2
 ```
@@ -48,7 +48,7 @@ mindmap
       Select a type
       Right click, Delete
       No rename by double click
-    Parts by name, fixed above the tree, in this order
+    Parts by name, fixed under the tree, in this order
       1 MD-02 General
       2 MD-03 Documentation
       3 MD-04 Signals
@@ -64,7 +64,7 @@ mindmap
 | MD-01.3 | Create a child type | Button (+), on hover | On the right of each type, shown when the mouse is over it; creates a type under it, with a default name. | Decided | [Types](../metadata/01-types.md) |
 | MD-01.3b | Create a root type | Button (+), always shown | On the title "Type tree". Its look worries the Product Owner; kept. | Decided (look: Open) | [Types](../metadata/01-types.md) |
 | MD-01.4 | Delete a type | Right click › menu › Delete | A menu of options opens on a right click; Delete is one of them. | Decided | [Types](../metadata/01-types.md) |
-| MD-01.5 | Parts of the type | List of names | In the column of the type tree, above its title, fixed at the top: it never moves when the tree grows. The names in whole words, in this order: General, Documentation, Signals, Commands, Presets, Faceplate (proposal B, 2026-11-16, replacing the strip of icons of proposal C; moved from under the tree to above it the same day). | Decided | [Types](../metadata/01-types.md#the-parts-of-a-type-a-list-fixed-above-the-tree) |
+| MD-01.5 | Parts of the type | List of names | In the column of the type tree, under it, fixed at the bottom: it never moves when the tree grows. The names in whole words, in this order: General, Documentation, Signals, Commands, Presets, Faceplate (proposal B, 2026-11-16, replacing the strip of icons of proposal C; moved above the tree for a while the same day, then back under it). | Decided | [Types](../metadata/01-types.md#the-parts-of-a-type-a-list-fixed-under-the-tree) |
 | MD-01.6 | Search | Text field | Under the title "Type tree". | Decided | [Types](../metadata/01-types.md) |
 
 Gaps:
