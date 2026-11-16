@@ -203,7 +203,7 @@ mindmap
 | MD-04.6b | Display name | — | Removed (2026-11-16): the name people see is written in the preset ([MD-07.9b](#md-07--presets-and-their-faceplate)). | Decided | [Presets](../metadata/09-presets.md#the-table-of-a-preset) |
 | MD-04.7 | Type | Column, select | Integer, real (64-bit double), boolean, text, enum. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.8 | Enum | Column, select | Only for the type enum: an enum of the Enums page, as a link. Empty otherwise. | Decided | [Enums](../metadata/06-enums.md) |
-| MD-04.9 | Quantity | Column, select | Optional, integer and real only. A quantity or a difference (a difference sits under its quantity). | Decided | [Units](../metadata/05-units.md) |
+| MD-04.9 | Quantity | Column, select | Optional, integer and real only. From the read-only catalogue; the user also says "quantity" or "difference" ("pressure (quantity)", "pressure (difference)"), 2026-11-16. One column "Quantity / difference" or a column of its own: open. | Decided (choice), Open (display) | [Units](../metadata/05-units.md#value-or-difference-chosen-in-the-signal) |
 | MD-04.10 | Model unit | Column, select | Only with a quantity. Default: the quantity's model unit; another unit of the same quantity can be chosen. | Decided | [Units](../metadata/05-units.md) |
 | MD-04.11 | Minimum, maximum | Columns, number fields | Integer and real only; indicative; in the model unit. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.12 | Direction | Column, select | First column (2026-11-16). Input or output of the model. | Decided | [Signals](../metadata/04-signals.md) |
@@ -341,6 +341,8 @@ Path: Metadata › Units (navigation bar).
 
 The page goes from the list of quantities to a quantity, then to a family. Following the [layout rules](README.md#layout-rules), they sit in columns from left to right: the list, the selected quantity, the selected family.
 
+**The whole page is read only** (Product Owner, 2026-11-16): the catalogue ships with the software, and contributors complete its files; no +, no field to change, no delete.
+
 ```mermaid
 flowchart LR
     L["List of quantities, each difference under its quantity"] -->|"click"| Q["A quantity"]
@@ -371,22 +373,21 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | MD-08.1 | List of quantities | List | Mass, volume, flow... Each difference is shown under its quantity, and stays a quantity of its own. | Decided | [Units](../metadata/05-units.md) |
-| MD-08.2 | Add a quantity, a family, a unit | Button (+) | Above each list ([layout rules](README.md#add-buttons-above-the-list)). The user can add and change quantities, families and units. | Decided | [Units](../metadata/05-units.md) |
-| MD-08.3 | Default model unit | Select | Among the units of the quantity. | Decided | [Units](../metadata/05-units.md) |
-| MD-08.4 | Default decimal places | Number field | The global setting for display. | Decided | [Units](../metadata/05-units.md) |
-| MD-08.5 | Reference family | Select | Every other family converts to it and back. | Decided | [Units](../metadata/05-units.md) |
+| MD-08.2 | Add a quantity, a family, a unit | — | Removed (Product Owner, 2026-11-16): the page is read only; a missing unit is added by a contributor to the catalogue files. | Decided | [Units](../metadata/05-units.md#a-ready-made-catalogue-read-only) |
+| MD-08.3 | Default model unit | Text, read only | From the catalogue. | Decided | [Units](../metadata/05-units.md) |
+| MD-08.4 | Default decimal places | Text, read only | From the catalogue (assistant's reading, to confirm). | Proposed | [Units](../metadata/05-units.md#decimal-places) |
+| MD-08.5 | Reference family | Text, read only | Every other family converts to it and back. | Decided | [Units](../metadata/05-units.md) |
 | MD-08.6 | Families | List | A click opens the family. | Decided | [Units](../metadata/05-units.md) |
-| MD-08.7 | Unit | Text field + number field | Name with its variant (US gallon); ratio inside the family. Flat units (`m³/h` is one unit). | Decided | [Units](../metadata/05-units.md) |
-| MD-08.8 | Conversion form | not said (select) | Proportional, affine, inverse, logarithmic, or a pair of free expressions (going and back). | Decided | [Units](../metadata/05-units.md) |
-| MD-08.9 | Parameters of the form | Number fields | a, b, k, x₀, base, depending on the form. | Implied | [Units](../metadata/05-units.md) |
-| MD-08.10 | Round-trip check | — | The application checks that a pair of expressions comes back. | Decided | [Units](../metadata/05-units.md) |
-| MD-08.11 | Ready-made catalogue | — | Loaded at the first launch; source and licence open. | Decided, licence Open | [Units](../metadata/05-units.md) |
+| MD-08.7 | Unit | Text, read only | Name with its variant (US gallon); ratio inside the family. Flat units (`m³/h` is one unit). | Decided | [Units](../metadata/05-units.md) |
+| MD-08.8 | Conversion | Text, read only | Its form (proportional, affine, inverse, logarithmic, or a pair of expressions) and its parameters, going and back. | Decided | [Units](../metadata/05-units.md) |
+| MD-08.9 | Parameters of the form | — | Merged into MD-08.8: shown, never typed. | Decided | [Units](../metadata/05-units.md) |
+| MD-08.10 | Round-trip check | — | Done on the catalogue files, not by the user. | Decided | [Units](../metadata/05-units.md) |
+| MD-08.11 | Ready-made catalogue | — | Every unit that can be imagined, in files of the software; source and licence open. | Decided, licence Open | [Units](../metadata/05-units.md#source-of-the-catalogue) |
 
 Gaps:
 
-- How is a difference created: from its quantity ("add a difference"), or as any quantity then attached?
-- What does the user see when the round-trip check fails?
-- Delete a quantity or a unit that signals use.
+- With every unit imaginable, the list is long: how does the user find a quantity or a unit (a search field)?
+- How the catalogue files are checked when a contributor adds a unit (round trip, duplicates): to settle with the architecture.
 
 ## MD-09 · Enums
 
@@ -408,7 +409,7 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | MD-09.1 | List of enums | List | A page of its own, not part of the signals. Enums can be made before any signal uses them. | Decided | [Enums](../metadata/06-enums.md) |
-| MD-09.2 | Add an enum | Button (+) | Above the list of enums ([layout rules](README.md#add-buttons-above-the-list)). | Decided (place), Implied (button) | [Enums](../metadata/06-enums.md) |
+| MD-09.2 | Add an enum | Icon button (+) | On the line of the title "Enums", above the list (Product Owner, 2026-11-16: "au niveau des enums [...] avec une icône"; [layout rules](README.md#add-buttons-above-the-list)). | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.3 | Name | Text field | — | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.4 | Kind of key | — | Removed (Product Owner, 2026-11-16): a key is always a number, there are no string keys. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.5 | Items | List | Each item a key and a display text. | Decided | [Enums](../metadata/06-enums.md) |

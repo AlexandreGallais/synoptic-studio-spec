@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Signals · Previous: [Documentation](03-documentation.md) · Next: [Units](05-units.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table, always editable, direction first, line coloured by direction; no display name on the signal, it moved to the preset; a handle on each line to choose the order). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table, always editable, direction first, line coloured by direction; no display name on the signal, it moved to the preset; a handle on each line to choose the order; the quantity says "quantity" or "difference"). Open points are listed in [Open questions](12-open-questions.md).
 
 A signal is what goes between the front and the model: an input or an output of the model. Only these are defined here. Values that stay inside the model are not defined in Metadata: the people who write the model name them as they wish, and they are invisible to the application.
 
@@ -29,7 +29,7 @@ A signal is what goes between the front and the model: an input or an output of 
 | ID | The signal's name for the model. | Its variable identifier, set once. Shown as "ID" in the table. |
 | Type | What kind of value. | Integer, real, boolean, text or enum. A real is a 64-bit double. |
 | Enum | For an enum: the list of values. | An enum picked from the Enums page (see [Enums](06-enums.md)). A link to it, never a copy, and never defined in the signal. |
-| Quantity | What the value measures (volume, flow, pressure, a temperature difference...). | Optional: a signal may have none. Only for integers and reals. Picked from the Units page, where a difference sits next to its quantity (see [Units](05-units.md)). |
+| Quantity | What the value measures (volume, flow, pressure...), and whether the value is the quantity itself or a difference of it. | Optional: a signal may have none. Only for integers and reals. Picked from the ready-made catalogue of the Units page, which the user never changes; the user says "quantity" or "difference", for example "pressure (quantity)" or "pressure (difference)" (Product Owner, 2026-11-16), see [Units](05-units.md#value-or-difference-chosen-in-the-signal). |
 | Model unit | The unit in which the model handles the value. | Only when a quantity is chosen. By default the model unit of the quantity; can be overridden here with another unit of the same quantity. |
 | Minimum, maximum | Bounds of an integer or a real. | Metadata of the signal, indicative, written in the model unit. They are the zone the model is designed for, not a guarantee. The faceplate refuses a typed value outside them (see [Presets](09-presets.md#typing-a-value)). |
 
@@ -70,7 +70,7 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 | ID | The model identifier (Product Owner, 2026-11-16: "l'ID, qui est le modèle identifiant"). |
 | Type | Integer, real, boolean, text, enum. |
 | Enum | For an enum signal only: the enum it points to. |
-| Quantity | Optional, integers and reals only. |
+| Quantity | Optional, integers and reals only; with "quantity" or "difference". Shown in this column ("pressure (difference)") or in a column of its own: open. |
 | Model unit | Only with a quantity. |
 | Minimum, maximum | Integers and reals only, in the model unit. |
 
@@ -135,4 +135,5 @@ flowchart LR
 
 - Decimal places on the signal itself, so that the model fixes how many decimals an input or an output has? The Product Owner doubts it (2026-11-16, confirmed the same day): the model should give and receive the real value, and decimals are for display only. Not added; to think about.
 - Mouse resting on the enum name of a line: a bubble with its items, or nothing?
+- Quantity or difference: one column "Quantity / difference" ("pressure (quantity)", "pressure (difference)"), or a column of its own beside the quantity? Raised by the Product Owner on 2026-11-16, not chosen.
 - Order and inheritance: do the inherited signals stay together at the top, in their parent's order, with only the type's own signals moved by their handle? Or can every line be moved, inherited or not, each type keeping its own order?

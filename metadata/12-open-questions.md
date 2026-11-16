@@ -12,7 +12,7 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | --- | --- | --- |
 | Palette, icon list and default icon and colour | [Icons](02-icons.md) | To define with the design system. |
 | Folder, generated files and conflicts between people | [Files and conflicts](../storage/files-and-conflicts.md) | Open, not about metadata. |
-| Source and licence of the ready-made catalogue of units | [Units](05-units.md) | Open: the licences of UCUM, QUDT, CLDR and NIST were not checked; to settle before release. |
+| Source and licence of the ready-made catalogue of units; quantity or difference shown in one column or two; which quantities offer a difference; default decimals fixed by the catalogue | [Units](05-units.md) | Licences of UCUM, QUDT, CLDR and NIST not checked, to settle before release. The units became a read-only catalogue on 2026-11-16, with the choice of quantity or difference in the signal. |
 | Place of the name of a preset (later); input of a signal that is not an enum fixed by its type | [Presets](09-presets.md) | Raised when the faceplate was merged into the presets (2026-11-16); the name shown per signal and the order of the lines (that of Signals and Commands, no sort) settled the same day. |
 | Which mode of the description opens first: read only or visual | [Documentation](03-documentation.md) | Raised when the read-only mode came back (2026-11-16). |
 | Table of signals: a bubble listing the items of an enum; decimal places on the signal itself; where the inherited lines go when the order is chosen by hand | [Signals](04-signals.md) | Decimals: the Product Owner doubts it, not added (2026-11-16). Order by a handle on each line: decided the same day. |

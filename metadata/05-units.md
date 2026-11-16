@@ -2,11 +2,31 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Units · Previous: [Signals](04-signals.md) · Next: [Enums](06-enums.md)
 
-Status: validated by the Product Owner on 2026-11-11. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (the units are a ready-made catalogue, read only in the application, kept in files of the software that contributors complete; a signal says whether its value is a quantity or a difference). Open points are listed in [Open questions](12-open-questions.md).
 
-A Units page lists quantities (mass, volume, flow, pressure...), created by the user. A quantity is what a value measures; a unit is one way to count it: the kilogram is a unit of the quantity mass.
+A Units page lists quantities (mass, volume, flow, pressure...), with their families and units. A quantity is what a value measures; a unit is one way to count it: the kilogram is a unit of the quantity mass.
 
 ## Rules
+
+### A ready-made catalogue, read only
+
+Decided by the Product Owner on 2026-11-16: "il n'y a pas d'édition possible. Tout est préfait, avec tous les noms [...] Il n'y aurait jamais d'écriture ou de modification ici, et puis basta."
+
+- The units are known and documented worldwide: there is nothing for the user to decide. So the application ships every quantity, family, unit and conversion ready made, with their names.
+- The aim is the whole catalogue at once: every unit that can be imagined is in it from the first launch (Product Owner: "toutes les unités possibles, imaginables, on peut viser juste pour toutes les mettre à l'intérieur instantanément").
+- **The Units page is read only.** The user browses the quantities, families and units and reads their conversions; there is no + button, no field to change, nothing to delete. It replaces the rule of 2026-11-11 by which the user could add and change quantities, families and units.
+- The catalogue is kept in **files of the software itself**, delivered with the application. Synoptic Studio is open source: when a unit or a quantity is missing, a contributor adds it to these files, and it comes to everyone with the next version of the software (Product Owner: "s'il manque des unités, des quantités, il faudrait pouvoir venir les rajouter").
+- The format of these files and the repository that holds them are chosen with the architecture, not in these specs.
+- Since the user never changes the units, a change of the units is never a difference on the [Versions](13-versions.md) page of Metadata.
+
+```mermaid
+flowchart LR
+    C["Contributor of the open source project"] -->|"adds a missing unit or quantity"| F["Catalogue files, in the software"]
+    F -->|"delivered with each version of the application"| P["Units page: read only"]
+    P -->|"quantities and units to choose from"| S["Signals and presets"]
+```
+
+### Quantities, families and conversions
 
 ```mermaid
 flowchart TD
@@ -39,7 +59,7 @@ flowchart LR
 
 ## Model unit and display unit
 
-- The Units page gives each quantity a default model unit. Example: quantity "volume", default model unit centilitre.
+- The catalogue gives each quantity a default model unit, shown on the Units page. Example: quantity "volume", default model unit centilitre.
 - A signal takes a quantity, not a unit: a signal is "volume", not "m³/h". By default it uses the model unit of its quantity.
 - A signal can override it: in its definition, the user picks another unit of the same quantity as the model unit of that signal. The model then handles this signal in that unit.
 - So the model unit is not one for all models: the quantity gives the default, the signal can change it.
@@ -86,10 +106,20 @@ All of it stays in pure JavaScript.
 - A conversion is one of the closed forms. A pair of free expressions, going and back, is the last resort. The application checks that the pair is a round trip.
 - The user types a value in the display unit, so the back conversion (display unit to model unit) is also needed. The model value is still the only one stored.
 - A temperature and a temperature difference are not converted the same way: 25 °C is 77 °F, but a difference of 25 °C is a difference of 45 °F (a heating rate in °C/min is a difference). A difference is its own quantity ("temperature difference"), with its own units and a proportional conversion. This needs no new mechanism, and it keeps the rule that a conversion only exists inside a quantity.
-- On the Units page, a difference is shown **in the same place as its quantity**, attached to it (Product Owner, 2026-11-11): the user finds "temperature difference" right under "temperature", not elsewhere in the list. It stays a quantity of its own for the conversions and for the choice of a signal.
+- On the Units page, a difference is shown **in the same place as its quantity**, attached to it (Product Owner, 2026-11-11): the user finds "temperature difference" right under "temperature", not elsewhere in the list. It stays a quantity of its own for the conversions.
+
+### Value or difference, chosen in the signal
+
+Decided by the Product Owner on 2026-11-16: "quand on choisit une quantité, il faudrait pouvoir choisir si c'est une quantité ou si c'est un écart."
+
+- When the user gives a signal a quantity, they also say whether its value is **the quantity itself** or **a difference** of it. Example: "pressure (quantity)" or "pressure (difference)".
+- The conversion follows this choice: a difference of 25 °C is a difference of 45 °F, a value of 25 °C is 77 °F (see above).
+- Open: how the choice is shown in the table of signals: one column "Quantity / difference" whose items read "pressure (quantity)" and "pressure (difference)", or a column of its own beside the quantity (the Product Owner: "il y aura un truc comme ça à voir"). See [Open questions](#open-questions).
+- Open: whether every quantity offers a difference, or only those where it changes the conversion (an offset, like temperature or gauge pressure).
 
 ## The Units page
 
+- The page is read only (see [A ready-made catalogue, read only](#a-ready-made-catalogue-read-only)).
 - The page lists the quantities. Each difference is shown under its quantity.
 - A click on a quantity opens it: its families, its reference family, its default model unit and its default decimal places.
 - A click on a family opens its table of units and its conversion to the reference family and back.
@@ -105,21 +135,20 @@ flowchart LR
 - When a conversion is not defined (logarithm of zero), the display says so instead of showing a wrong number.
 - Floating point does not round-trip exactly (12 997 of 100 000 values do not come back unchanged from °C to °F to °C): display rounding hides it. A value typed in the display unit is converted back to the model unit, then rounded to 12 significant digits before it goes to the model, which removes the floating-point noise (100.03999999999999 becomes 100.04) and keeps the real precision of a 64-bit double (about 15 digits).
 
-## Ready-made units
+## Source of the catalogue
 
-- The application ships with a catalogue of ready-made quantities and units, so that there is base data from the first launch and nobody has to type the usual units by hand. The user can still add and change quantities, families and units.
-- Open: the source of this data and its licence. The licences of UCUM, QUDT, CLDR and NIST were not checked, and must be before the application is released (see [Open questions](12-open-questions.md)).
+- Open: the source of the catalogue data and its licence. The licences of UCUM, QUDT, CLDR and NIST were not checked, and must be before the application is released (see [Open questions](#open-questions)). It matters more now that the whole catalogue ships with the software.
 
 ## Decimal places
 
 - Decimal places are the number of decimals shown for a value. They are a display matter only.
-- The Units page gives a default number of decimals per quantity. It is the global setting: one choice, applied everywhere, which suits a company that wants the same display for all.
+- The catalogue gives a default number of decimals per quantity, shown read only on the Units page. It applies everywhere unless a preset overrides it. (Assistant's reading of the read-only rule: the default is no longer set by the user; to confirm.)
 - The preset can override it for each signal, next to its display unit (see [Presets](09-presets.md)). It keeps a minimum of flexibility.
 - The symbol and the synoptic can edit it from the preset, like the display unit.
 
 ```mermaid
 flowchart LR
-    U["Units page: default decimals per quantity"] -->|"applies unless overridden"| P["Preset: decimals per signal"]
+    U["Catalogue: default decimals per quantity"] -->|"applies unless overridden"| P["Preset: decimals per signal"]
     P -->|"editable"| S["Symbol and synoptic"]
 ```
 
@@ -127,5 +156,12 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Quantity, families, reference family, conversions, default model unit, default decimals | Units page | Signal (quantity, model unit), preset (display unit, decimals) | No | No |
+| Quantity, families, reference family, conversions, default model unit, default decimals | Catalogue files of the software, completed by contributors; read only on the Units page | Signal (quantity, value or difference, model unit), preset (display unit, decimals) | No | No |
 | Display unit, decimal places | Preset, in Metadata | Faceplate, texts of a symbol that show a value | Edit | Edit |
+
+## Open questions
+
+- Source and licence of the catalogue data (UCUM, QUDT, CLDR, NIST not checked).
+- Value or difference in the table of signals: one column "Quantity / difference", or a column of its own?
+- Does every quantity offer a difference, or only those whose conversion has an offset?
+- Default decimal places: fixed by the catalogue, as written above? Assistant's reading, to confirm.

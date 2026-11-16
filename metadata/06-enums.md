@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Enums · Previous: [Units](05-units.md) · Next: [Commands](07-commands.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers). No open question.
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers; the + that creates an enum is an icon on the line of the title). No open question.
 
 An Enums page lists the enums of the application, like the Units page lists the quantities. A signal of the type enum does not hold its own list of values: it points to an enum of this page.
 
@@ -15,6 +15,8 @@ An Enums page lists the enums of the application, like the Units page lists the 
 - When the user picks an item, the signal receives exactly its key.
 - It is the pair (name, value) the research found in FMI, SSP and OPC UA.
 - Enums are created and changed on the Enums page only, never inside a signal, a symbol or a synoptic.
+- Unlike the units, which are a read-only catalogue (see [Units](05-units.md#a-ready-made-catalogue-read-only)), enums are made by the user: each has its name, and the user builds its items (Product Owner, 2026-11-16: "Les enums, par contre, il faut pouvoir en créer").
+- The button that creates an enum is a small **+ icon on the line of the title "Enums"**, above the list (Product Owner, 2026-11-16: "il faut qu'il soit au niveau des enums pour que ça fasse joli avec une icône"). It follows the rule of the add buttons above the list (see the [layout rules](../screens/README.md#add-buttons-above-the-list)).
 - A new enum goes into the list of the Enums page. The list can be filled in advance, before any signal uses it.
 - A signal of the type enum picks one enum of the list. It is a link to the existing enum, never a copy.
 - Several signals can point to the same enum.

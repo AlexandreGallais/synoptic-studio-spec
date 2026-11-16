@@ -10,7 +10,8 @@ Metadata is always editable, and versions keep it from breaking: the user edits 
 
 ### Everything is editable all the time
 
-- No Edit button, no Save button, no edit mode to enter and validate, anywhere in Metadata: General, documentation, signals, commands, presets, units, enums (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps, rapidement, et puis basta … tout reste ultra simple").
+- No Edit button, no Save button, no edit mode to enter and validate, anywhere in Metadata: General, documentation, signals, commands, presets, enums (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps, rapidement, et puis basta … tout reste ultra simple").
+- The units are not in this list: they are a read-only catalogue that the user never changes (Product Owner, 2026-11-16; see [Units](05-units.md#a-ready-made-catalogue-read-only)). A change of the units never shows on the Versions page.
 - It replaces every Edit and Save step decided before (the name of a type, the whole signal, the tables).
 - The read-only mode of the description stays: it is a way to read, not a lock (see [Documentation](03-documentation.md#the-description)).
 
@@ -24,7 +25,7 @@ Metadata is always editable, and versions keep it from breaking: the user edits 
 
 ```mermaid
 flowchart LR
-    E["Edit freely: types, signals, commands, presets, units, enums"] --> V["Versions page: added, removed, changed"]
+    E["Edit freely: types, signals, commands, presets, enums"] --> V["Versions page: added, removed, changed"]
     V -->|"a mistake"| U["Undo the change"] --> V
     V -->|"finished"| N["Make a version: number and change log"]
 ```
@@ -35,8 +36,8 @@ Proposed by the assistant from the rules of these specs, to confirm. The number 
 
 | Level | When | Examples |
 | --- | --- | --- |
-| Major | A change that breaks the contract with the model. | A type, a signal or a command removed or renamed; the type, direction, enum, quantity or model unit of a signal changed; an enum key changed or removed; a conversion of a unit changed. |
-| Minor | Something added to the contract, nothing broken. | A new type, signal, command, enum, enum item, quantity or unit. |
+| Major | A change that breaks the contract with the model. | A type, a signal or a command removed or renamed; the type, direction, enum, quantity (or its choice of quantity or difference) or model unit of a signal changed; an enum key changed or removed. |
+| Minor | Something added to the contract, nothing broken. | A new type, signal, command, enum or enum item. |
 | Patch | Nothing the model sees. | Documentation, icon and colour, order of the signals and of the commands, presets (lines shown, name shown, input, display unit, decimals, default value, faceplate title), display texts of enum items, bounds. |
 
 Bounds are in the patch line because they are indicative (see [Signals](04-signals.md#fields)): to confirm with the rest.
