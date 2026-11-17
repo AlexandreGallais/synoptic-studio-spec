@@ -21,7 +21,7 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | Override an output: who applies it, what is seen while it holds, how it ends | [Commands](07-commands.md), [Presets](09-presets.md#typing-a-value) | The kind is decided (2026-11-16); its mechanism is open. Since 2026-11-17, a signal element of the faceplate set to "override" also overrides an output; the Product Owner leaves it to what is behind the faceplate. |
 | A group of the faceplate builder: the five add icons at its top, or none, its elements dragged in | [Presets](09-presets.md#only-elements-in-elements) | Reopened by the Product Owner on 2026-11-17 ("je sais pas trop, à voir ça"); the icons stay until he chooses. |
 | One version for all of Metadata or per type; level computed or chosen; undo and going back; what is written between two versions; what symbols see | [Versions](13-versions.md) | Raised when versions replaced Edit and Save (2026-11-16). |
-| A description per flag; rename and delete; rules of an ID and order; inheritance by sub-types | [Flags](14-flags.md) | Name "Flag" and place (a part of the type, flags per type) settled by the Product Owner on 2026-11-17; the rest is not asked, kept for his next pass on the page. |
+| Description optional and kept out of the configuration files; rename and delete; rules of an ID and order; inheritance by sub-types | [Flags](14-flags.md) | Name "Flag", place (a part of the type, flags per type) and content (an ID and a description) settled by the Product Owner on 2026-11-17; the rest is not asked, kept for his next pass on the page. |
 | Every control the specs need but never describe (create, delete, order...) | [Screens of Metadata](../screens/metadata.md) | Listed as gaps, screen by screen. |
 
 ```mermaid

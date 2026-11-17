@@ -524,7 +524,7 @@ Gaps:
 
 ## MD-12 · Flags, a part of the type
 
-Path: Metadata › Types › a type › Flags, fifth part of the type, between Commands and Presets. Described by the Product Owner on 2026-11-17; name and place given by him the same day ("flag, ça me va très bien"; "la page, elle fait partie des types"). The wireframe is drawn in Figma with the other parts of the type.
+Path: Metadata › Types › a type › Flags, fifth part of the type, between Commands and Presets. Described by the Product Owner on 2026-11-17; name and place given by him the same day ("flag, ça me va très bien"; "la page, elle fait partie des types"). An ID and a description per flag given by him the same day. The wireframe is the frame "MD-12 · Flags" of the page Spec in Figma (drawn on 2026-11-17).
 
 ```mermaid
 mindmap
@@ -533,18 +533,20 @@ mindmap
     List of the flags of the type
       Inherited flags first, as for signals
       ID of each flag
+      Description of each flag
       Delete button, far right, no header, warning
     Ticked in the synoptic, part 3
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-12.1 | List of flags | List | The flags of the selected type, one line per flag: its ID only (2026-11-17). Inherited flags first, read only, as for signals: assistant's reading. | Decided (IDs only, in the type), Proposed (inheritance) | [Flags](../metadata/14-flags.md) |
+| MD-12.1 | List of flags | Table | The flags of the selected type, one line per flag. Columns in this order: ID, Description, then the delete button with no header (2026-11-17, "un [ID de] flag et une description"). Inherited flags first, read only, as for signals: assistant's reading. | Decided (ID and description, in the type), Proposed (inheritance) | [Flags](../metadata/14-flags.md) |
 | MD-12.2 | Add a flag | Button (+), small icon | On the right of the title "Flags" ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Implied | [Flags](../metadata/14-flags.md) |
 | MD-12.3 | ID | Text field | Always editable, as everything in Metadata. Its rules (characters, unique): open. | Implied | [Flags](../metadata/14-flags.md#open-questions) |
+| MD-12.5 | Description | Text field | After the ID: what the flag is for, plain text, as the description of an enum item ([MD-09.9](#md-09--enums)) (2026-11-17). Optional and never written in the configuration files: assistant's reading, to confirm. | Decided (field), Proposed (optional, not in the files) | [Flags](../metadata/14-flags.md) |
 | MD-12.4 | Delete a flag | Button (icon), then a warning | At the far right of the line, with no header ([layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). What the warning says when symbols have the flag on: open. | Implied | [Flags](../metadata/14-flags.md#open-questions) |
 
 Gaps:
 
-- The order of the list (a handle?), a description per flag, inheritance: see [Flags](../metadata/14-flags.md#open-questions).
+- The order of the list (a handle?), whether the description is optional and kept out of the files, inheritance: see [Flags](../metadata/14-flags.md#open-questions).
 - The panel of the synoptic where the flags of a placed symbol are ticked: described with part 3.
