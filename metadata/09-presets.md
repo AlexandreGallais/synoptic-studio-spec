@@ -124,7 +124,7 @@ flowchart TD
 
 - A signal set to **write** in the builder is the only way for a person to type a value for the model: a command always sends a fixed value (see [Commands](07-commands.md#the-value-is-always-fixed)).
 - Only an **input** of the model can be set to write; for an output, write is greyed. It follows the Product Owner's rule for commands (2026-11-16): sending a value to an output makes no sense, the model computes it; overriding an output is another mechanism, a command of its own with a fixed value (see [Commands](07-commands.md)).
-- **Bounds: suspended** (2026-11-17). Until then, the faceplate checked a typed value against the minimum and the maximum of the signal and refused a value outside them. The Product Owner removed both fields: a bound is now a signal of its own (decision 0026; see [Signals](04-signals.md#open-questions)). Whether the faceplate checks a typed value against a bound signal, and how, is open; until it is settled, no check against bounds is written.
+- **Bounds: suspended** (2026-11-17). Until then, the faceplate checked a typed value against the minimum and the maximum of the signal and refused a value outside them. The Product Owner removed both fields: a bound is now a plain signal of its own, usually an input, with no tie to the signal it bounds (decision 0026; see [Signals](04-signals.md#rules)). Whether the faceplate checks a typed value against a bound signal, and how, waits for the Product Owner's review of the faceplates, where a big change may come (2026-11-17: "on verra après, quand on repassera sur les faceplates"); until then, no check against bounds is written.
 - An integer signal accepts whole numbers only. An enum signal accepts only the items of its enum: the user picks a display text, the model receives its key.
 - A value that passes is converted back to the model unit and rounded to 12 significant digits before it goes to the model (see [Units](05-units.md)).
 
@@ -206,6 +206,7 @@ Mode Faceplate:
 
 ## Open questions
 
+- The column Decimals of the mode Values: is it kept? On 2026-11-17 the Product Owner said that decimals, if they must be set, are set once for the whole project, outside Metadata, "pour avoir le même nombre de décimales partout". Said about the signal; whether it also removes the decimals of the preset (and the default decimals of the catalogue, see [Units](05-units.md#decimal-places)) is asked.
 - The order of the faceplate: the order of the builder, moved with a handle (assistant's reading and proposal)?
 - Can a signal or a command be added twice to the builder?
 - What a symbol or a synoptic can change in the faceplate built by the preset.

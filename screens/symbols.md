@@ -422,6 +422,7 @@ mindmap
 | SY-08.2 | Signal | Select | Output signals of the type only. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.3 | Property | Select | Rotation, position, opacity, visibility, fill or border colour, fill level, blink (proposed list). | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.4 | Mapping | Select + fields | Bounded linear (input range, output range), by ranges (table), two values (boolean), state table (enum). | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
+| SY-08.4b | Input range of a bounded linear | Two fields: minimum, maximum | Each a signal of the type, input or output, or a number typed (the number: to confirm); the value animated stays an output (Product Owner, 2026-11-17). | Decided (signal in or out), Proposed (number) | [Animation mode](../symbols/08-animation-mode/README.md#the-input-range-of-a-bounded-linear-animation) |
 | SY-08.5 | Transition | Radio + number field | None, or a short linear duration. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.6 | Pivot | 9-point grid or a point | Centre by default. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.7 | Text: what it shows | Radio | Written text, the value of a signal, or the unit of a signal only. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
@@ -460,7 +461,7 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-09.1 | Test value of a number | Number field or Slider | Any value: a signal has no bounds of its own since 2026-11-17 (a bound is a signal). The range of the slider: open. | Decided (field), Open (slider range) | [Run mode](../symbols/09-run-mode/README.md) |
+| SY-09.1 | Test value of a number | Number field or Slider | Any value: a signal has no bounds of its own since 2026-11-17 (a bound is a plain signal). Where the slider takes its left and right ends (typed, the input range of the animation, or no slider): open. The list also shows the signals used as a minimum or a maximum of an animation, inputs included (proposed). | Decided (field), Open (ends of the slider), Proposed (bound signals listed) | [Run mode](../symbols/09-run-mode/README.md#open-questions) |
 | SY-09.2 | Test value of an enum | Select | The display texts of the enum. | Decided | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.3 | Test value of a boolean | Toggle | — | Proposed | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.4 | Quality of a signal | Select | Good, uncertain, bad. | Proposed | [Run mode](../symbols/09-run-mode/README.md) |

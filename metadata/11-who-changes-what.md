@@ -1,6 +1,6 @@
 # Who changes what, and where
 
-> [Home](../README.md) › [Metadata](README.md) › Who changes what · Previous: [Versions](13-versions.md) · Next: [Open questions](12-open-questions.md)
+> [Home](../README.md) › [Metadata](README.md) › Who changes what · Previous: [Flags](14-flags.md) · Next: [Open questions](12-open-questions.md)
 
 Status: validated by the Product Owner on 2026-11-11; the faceplate merged into the presets on 2026-11-16, the name shown of a signal moved to the preset and versions added the same day; the preset split into two modes, Values and Faceplate (the builder), later that day; at the end of the day the model unit left the signal and the Faceplate part was removed. Open points are listed in [Open questions](12-open-questions.md).
 

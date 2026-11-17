@@ -68,6 +68,7 @@ flowchart LR
 | [Commands](07-commands.md) | The three kinds of command: set a signal, trigger, override an output (always a fixed value); the table of commands, each with an ID. |
 | [Presets](09-presets.md) | Two modes per preset, chosen by a switch: Values (display unit, decimals, default value of each signal) and the faceplate builder (title, description, signals with their name shown, input, read or write, commands with their button, titles, descriptions, groups); the check of typed values. |
 | [Versions](13-versions.md) | Everything editable all the time; the Versions page: differences, change log, undo, semantic version. |
+| [Flags](14-flags.md) | Draft (2026-11-17), name and place to confirm: a list of keys, only IDs, that each symbol placed in a synoptic has on or off; the application does nothing with them but write them in the configuration files, for customisation outside it. |
 | [Who changes what](11-who-changes-what.md) | The table of where each thing is created and changed. |
 | [Open questions](12-open-questions.md) | Every open question in one place. |
 
@@ -77,10 +78,11 @@ flowchart LR
 2. The model side: [Signals](04-signals.md), [Units](05-units.md), [Enums](06-enums.md).
 3. The front side: [Commands](07-commands.md), [Presets](09-presets.md).
 4. How it is kept safe: [Versions](13-versions.md).
-5. How it is used: [Who changes what](11-who-changes-what.md).
-6. What is left to decide: [Open questions](12-open-questions.md).
+5. Keys for customisation outside the application: [Flags](14-flags.md) (draft).
+6. How it is used: [Who changes what](11-who-changes-what.md).
+7. What is left to decide: [Open questions](12-open-questions.md).
 
-The page numbers jump: page 08 held the faceplates, merged into the presets on 2026-11-16, and page 10 the libraries of types, removed the same day. Versions, added the same day, took the next free number, 13, rather than reuse one.
+The page numbers jump: page 08 held the faceplates, merged into the presets on 2026-11-16, and page 10 the libraries of types, removed the same day. Versions, added the same day, took the next free number, 13, rather than reuse one; Flags, added on 2026-11-17, took 14.
 
 ## Page layout
 

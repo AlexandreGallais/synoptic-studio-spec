@@ -10,7 +10,9 @@ The mode of the [editor](../03-editor/README.md) in which the user tries the sym
 
 - Tool bar: [Hand](../03-editor/hand.md) only. Right-hand panel: the test values, and the simulated screen.
 - There is no model. The Run mode is simply a mode with a menu on the right (or elsewhere) that lists all the output signals of the model that animate the symbol. What the model does does not matter: the mode only shows what can happen.
-- The user gives each signal a value (see [Signals](../../metadata/04-signals.md)). A signal has no bounds of its own since 2026-11-17: a bound is a signal of its own, given a value like the others. The control depends on the type (decided by the Product Owner, 2026-11-11):
+- The user gives each signal a value (see [Signals](../../metadata/04-signals.md)). A signal has no bounds of its own since 2026-11-17: a bound is a plain signal, given a value like the others.
+- Since a bounded linear animation can take its minimum or its maximum from an input signal (Product Owner, 2026-11-17, see [Animation mode](../08-animation-mode/README.md#the-input-range-of-a-bounded-linear-animation)), the list also shows **the signals used as a minimum or a maximum**, inputs included: without a test value for them, the animation could not be tried. Assistant's reading, to confirm.
+- The control depends on the type (decided by the Product Owner, 2026-11-11):
 
 | Signal | Control |
 | --- | --- |
@@ -62,4 +64,5 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.15,
 ## Open questions
 
 - Name: Test mode, to confirm.
+- **The two ends of the slider.** A slider is a bar with a cursor that the user drags from one end to the other; to draw it, the editor must know the value at its left end and at its right end (for example 0 and 3 000 rpm for `speed`). Until 2026-11-17 it took the minimum and the maximum of the signal; a signal has none now. Where does the slider take its two ends: typed by the user next to the slider, taken from the input range of the animation that uses the signal, or no slider at all (a number field only)? Rewritten more plainly on 2026-11-17, the Product Owner not having understood the first wording.
 - The form of the simulation log and of the simulated faceplate (where the log is shown, what a line says, whether the faceplate shows the test values). See [Open questions](../10-open-questions.md).

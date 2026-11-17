@@ -12,11 +12,19 @@ This folder is the **inventory of the screens and menus** of Synoptic Studio. Fo
 
 The rules stay in the pages of each part. When a page changes, the screen that shows it changes here too.
 
+## The wireframes in Figma
+
+The screens are also drawn as wireframes on the page **"Spec"** of the Figma file of the design system, one frame per screen, named by its identifier (`MD-04 · Signals`).
+
+- **Every decision that changes a screen changes, in the same go, the pages of the part, this inventory and the wireframe in Figma** (Product Owner, 2026-11-17: "à chaque décision qui change un écran [...] faut changer les specs et les écrans sur Figma"). Never one without the others.
+- The change in Figma is checked on a capture of the frame before it is said done.
+- The texts of the wireframes are in English, like these specs; their notes cite the decision and its date.
+
 ## What it contains
 
 | File | Screens |
 | --- | --- |
-| [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its five parts), Units, Enums, Versions. |
+| [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its five parts), Units, Enums, Versions, and Flags (proposed). |
 | [Symbol editor](symbols.md) | The navigation bar, Symbol Libs, the left-hand panel of a Symbol Lib, the symbol editor (layout, floating bars, layers) and its seven modes, the advanced tools. |
 | [Pipes](pipes.md) | The base pipe style, the pipe styles, the end shapes, the dash sequences, the preview, and pipes in a synoptic (part 3, preview). |
 
@@ -114,7 +122,7 @@ Decided by the Product Owner on 2026-11-16: the signals and the commands of a ty
 
 Decided by the Product Owner on 2026-11-16. From left to right:
 
-1. The **logo**: a valve, like the logo already in the Figma file (Product Owner, 2026-11-16). The word "Epipasta" heard earlier was a transcription error.
+1. The **logo**: a valve, like the logo already in the Figma file (Product Owner, 2026-11-16). The word "Epipasta" heard earlier was a transcription error; the wireframes say "Logo · a valve" since 2026-11-17.
 2. Three icons, one per part: **Metadata**, **Symbols**, **Synoptic** (part 3, not written yet).
 3. On the right, the window buttons **minimise, maximise, close**, as in Windows.
 
@@ -193,6 +201,7 @@ flowchart TD
     MD --> MD08["MD-08 Units"]
     MD --> MD09["MD-09 Enums"]
     MD --> MD11["MD-11 Versions"]
+    MD -.-> MD12["MD-12 Flags, proposed"]
 
     SY --> SY01["SY-01 Symbol Libs"]
     SY01 --> SY02["SY-02 Left-hand panel of a Symbol Lib"]

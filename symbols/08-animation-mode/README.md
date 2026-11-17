@@ -10,7 +10,7 @@ The mode of the [editor](../03-editor/README.md) in which the signals are linked
 
 - Tool bar: [Select](../03-editor/select.md) and [Hand](../03-editor/hand.md). Right-hand panel: the animations of the selected part.
 - The user selects a signal, then says what it animates: a shape, a layer, a text.
-- Only the output signals of the type are offered for an animation. An output is what the model sends, and the model computes what the symbol shows. An input is what the model receives and is never animated.
+- Only the output signals of the type are offered for an animation. An output is what the model sends, and the model computes what the symbol shows. An input is what the model receives and is never animated; it can only serve as the minimum or the maximum of a bounded linear animation (Product Owner, 2026-11-17, see [below](#the-input-range-of-a-bounded-linear-animation)).
 - A value ordered and a value obtained are two signals for the model. Example: `opening_order` (input, what the user asks) and `opening` (output, what the model computes). The symbol animates `opening`. The faceplate can show both (see [Presets](../../metadata/09-presets.md)).
 - Only a symbol with a type has animations. A symbol without a type has no signal to animate (see [Libraries and symbols](../01-libraries-and-symbols.md)).
 
@@ -106,7 +106,7 @@ Transform and opacity, animated by CSS or by the animation interface of the brow
 
 | Shape | For | Opinion of the report |
 | --- | --- | --- |
-| Bounded linear: an input range becomes an output range; outside it, the output stays at its bound | Integer, real | Offer; the default input range is open since a signal has no bounds any more (2026-11-17, see [Signals](../../metadata/04-signals.md#open-questions)) |
+| Bounded linear: an input range becomes an output range; outside it, the output stays at its bound | Integer, real | Offer; the input range is chosen by the user (below) |
 | By ranges (thresholds): a table of non-overlapping ranges, each with a value (as in WinCC Unified, which flags overlaps) | Integer, real | Offer |
 | Two values | Boolean | Offer |
 | State table | Enum | Offer (below) |
@@ -114,6 +114,25 @@ Transform and opacity, animated by CSS or by the animation interface of the brow
 | Curve, expression, script | — | Refuse: against "for everyone" |
 
 Confidence: low (one tool read).
+
+### The input range of a bounded linear animation
+
+Decided by the Product Owner on 2026-11-17, since a signal has no bounds of its own (a bound is a plain signal, see [Signals](../../metadata/04-signals.md#rules)).
+
+- The user chooses the **minimum** and the **maximum** of the input range.
+- Each of the two can be **a signal of the type**, an input or an output (Product Owner: "pour les bornes, on pourra choisir soit un in, soit un out"). Example: the maximum taken from `speed_setpoint_max`, an input.
+- Each can also be a **number typed** by the user. Assistant's reading of "on va pouvoir choisir le min et le max", to confirm.
+- The minimum and the maximum are chosen separately: one can be a number and the other a signal.
+- **The value that drives the animation is always an output** of the model (Product Owner: "il n'y a que la valeur qui change qui devrait être obligatoirement out"), as for every animation.
+- The output range (for example 0 to 360 degrees) is typed, as before.
+
+```mermaid
+flowchart LR
+    V["Value: an output signal"] --> A["Bounded linear"]
+    MIN["Minimum: a number, or a signal in or out"] --> A
+    MAX["Maximum: a number, or a signal in or out"] --> A
+    A --> P["Property of the drawing, within the output range"]
+```
 
 ### Enum: a state table
 

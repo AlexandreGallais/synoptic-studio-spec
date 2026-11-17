@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Signals · Previous: [Documentation](03-documentation.md) · Next: [Units](05-units.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table, always editable, direction first, line coloured by direction; no display name on the signal, it moved to the preset; a handle on each line to choose the order; the quantity says "quantity" or "difference"). Reviewing the wireframes later that day, he confirmed the ID and the removal of the display name, put the inherited signals first, read only, from the top of the tree down, marked a quantity and a difference by two icons, and replaced the delete by right click by a delete button with a warning. At the end of the day he removed the model unit from the signal (it is one per quantity, set outside Metadata), kept only the icons in the column Quantity, and left the columns of the handle and of the delete button without a header. On 2026-11-17 he removed the minimum and the maximum from the signal: a bound is a signal of its own. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table, always editable, direction first, line coloured by direction; no display name on the signal, it moved to the preset; a handle on each line to choose the order; the quantity says "quantity" or "difference"). Reviewing the wireframes later that day, he confirmed the ID and the removal of the display name, put the inherited signals first, read only, from the top of the tree down, marked a quantity and a difference by two icons, and replaced the delete by right click by a delete button with a warning. At the end of the day he removed the model unit from the signal (it is one per quantity, set outside Metadata), kept only the icons in the column Quantity, and left the columns of the handle and of the delete button without a header. On 2026-11-17 he removed the minimum and the maximum from the signal: a bound is a signal of its own. Later that day he made a bound a plain signal with no tie to the one it bounds (usually an input), named the column "Quantity / Difference", kept decimal places out of Metadata, and refused the bubble on an enum name. Open points are listed in [Open questions](12-open-questions.md).
 
 A signal is what goes between the front and the model: an input or an output of the model. Only these are defined here. Values that stay inside the model are not defined in Metadata: the people who write the model name them as they wish, and they are invisible to the application.
 
@@ -21,7 +21,13 @@ A signal is what goes between the front and the model: an input or an output of 
 - A signal has no description (Product Owner, 2026-11-16).
 - **The line of a signal is coloured by its direction** (Product Owner, 2026-11-16): an input line and an output line have two different colours, so that the two are told apart at a glance. The colours are chosen with the design system.
 - **A signal has no model unit** (Product Owner, 2026-11-16, end of the day: "« model unit », ça, on enlève. C'est pas ici qu'il faut mettre ça"). For one quantity, and for one difference, the model always uses **the same unit, everywhere**, so that there are no odd conversions. That unit is set once, outside Metadata (see [Units](05-units.md#model-unit-and-display-unit)). It replaces the model unit chosen per signal (decision 0024, accepted on 2026-11-16).
-- **A signal has no minimum and no maximum** (Product Owner, 2026-11-17: "le min et le max, ça doit être un signal à part entière et pas une propriété de ce signal-là [...] comme ça, ça simplifie"). A bound is **a signal of its own**, declared in the table like any other, with its direction, ID, type and quantity. It replaces the bounds kept on the signal on 2026-11-16 (decision 0026, accepted on 2026-11-17). What this changes elsewhere (the check of a typed value, the default range of an animation) is listed under [Open questions](#open-questions).
+- **A signal has no minimum and no maximum** (Product Owner, 2026-11-17: "le min et le max, ça doit être un signal à part entière et pas une propriété de ce signal-là [...] comme ça, ça simplifie"). A bound is **a signal of its own**, declared in the table like any other, with its direction, ID, type and quantity. It replaces the bounds kept on the signal on 2026-11-16 (decision 0026, accepted on 2026-11-17).
+- **A bound is a plain signal** (Product Owner, 2026-11-17: "c'est un signal ordinaire"): it has **no tie** to the signal it bounds. `speed_setpoint_max` is a signal like any other; its name is only a convention of the people who write it, and the application reads nothing in it.
+- **Its direction is chosen like any signal's**, input or output. In practice a bound is **an input**: it is given to the model, to tell it the range its data will be bounded with (Product Owner, 2026-11-17: "on dit littéralement au modèle ce qu'il va avoir [...] dans la logique, c'est donné au modèle").
+- Where a bound is used:
+  - in a symbol, the bounded linear animation can take its minimum or its maximum from any signal of the type, input or output (see [Animation mode](../symbols/08-animation-mode/README.md#shapes-of-mapping));
+  - the faceplate no longer checks a typed value against bounds, until the Product Owner reviews the faceplates (see [Presets](09-presets.md#typing-a-value)).
+- **No decimal places on the signal** (Product Owner, 2026-11-17: "le modèle, il doit pouvoir tout bouffer"): the model gives and receives the whole value. If a number of decimals must be set, it is set once for the whole project, in a place for project settings, outside Metadata, so that every value of the project has the same decimals (Product Owner: "c'est pas dans les métadatas [...] avoir le même nombre de décimales partout"). That place is not described yet. What this means for the decimals of the presets and of the catalogue of units is asked (see [Open questions](12-open-questions.md)).
 
 ## Fields
 
@@ -33,7 +39,7 @@ A signal is what goes between the front and the model: an input or an output of 
 | Enum | For an enum: the list of values. | An enum picked from the Enums page (see [Enums](06-enums.md)). A link to it, never a copy, and never defined in the signal. |
 | Quantity | What the value measures (volume, flow, pressure...), and whether the value is the quantity itself or a difference of it. | Optional: a signal may have none. Only for integers and reals. Picked from the ready-made catalogue of the Units page, which the user never changes; the user picks the quantity or its difference, told apart by an icon (Product Owner, 2026-11-16), see [Units](05-units.md#value-or-difference-chosen-in-the-signal). |
 
-There is no field Minimum or Maximum (Product Owner, 2026-11-17): a bound is a signal of its own.
+There is no field Minimum or Maximum (Product Owner, 2026-11-17): a bound is a plain signal of its own. There is no field Decimals either (Product Owner, 2026-11-17).
 
 ```mermaid
 classDiagram
@@ -63,11 +69,12 @@ In the column Quantity, ● stands for the icon of a quantity and Δ for the ico
 | `pump`, read only | output | `flow` | real |  | ● flow |
 | own | input | `mode` | enum | `operating_mode` (0 Off, 1 Manual, 2 Automatic) |  |
 | own | input | `speed_setpoint` | integer |  | ● rotational speed |
+| own | input | `speed_setpoint_max` | integer |  | ● rotational speed |
 | own | output | `inlet_pressure` | real |  | ● pressure |
 | own | output | `pressure_rise` | real |  | Δ pressure |
 | own | output | `bearing_temperature` | real |  | ● temperature |
 
-A bound, such as a maximum speed, would be one more line of its own in this table. The example adds none: its direction and its link to the signal it bounds are open (see [Open questions](#open-questions)).
+`speed_setpoint_max` is a bound: a plain input signal, given to the model, with no tie to `speed_setpoint` (Product Owner, 2026-11-17). A minimum would be one more line, the same way.
 
 Flow and rotational speed have no difference in the list: their value and their difference convert the same way.
 
@@ -82,17 +89,18 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 | ID | The model identifier (Product Owner, 2026-11-16: "l'ID, qui est le modèle identifiant"). |
 | Type | Integer, real, boolean, text, enum. |
 | Enum | For an enum signal only: the enum it points to. |
-| Quantity | Optional, integers and reals only. One column holds the choice of the quantity or of its difference: its list offers the pressure and the pressure difference (Product Owner, 2026-11-16). Only the quantities whose conversion changes (temperature, gauge pressure...) have the two items; the others are offered once (see [Units](05-units.md#value-or-difference-chosen-in-the-signal)). **An icon before the name** says which it is: one icon for a quantity, another for a difference, so that the two are told apart at a glance (Product Owner, 2026-11-16: "on met un symbole, une icône. Comme ça, c'est beaucoup plus simple à reconnaître"). **The icon alone**: no "(quantity)" or "(difference)" after the name (Product Owner, 2026-11-16: "pas besoin de mettre (quantité) ou (différence) [...] quand on connaît les icônes"). The icons are chosen with the design system. |
+| Quantity / Difference | Header **"Quantity / Difference"** (Product Owner, 2026-11-17: "quantity, c'est le rond, et différence, c'est le petit triangle. Du coup, c'est quantity/différence"). Optional, integers and reals only. One column holds the choice of the quantity or of its difference: its list offers the pressure and the pressure difference (Product Owner, 2026-11-16). Only the quantities whose conversion changes (temperature, gauge pressure...) have the two items; the others are offered once (see [Units](05-units.md#value-or-difference-chosen-in-the-signal)). **An icon before the name** says which it is: one icon for a quantity, another for a difference, so that the two are told apart at a glance (Product Owner, 2026-11-16: "on met un symbole, une icône. Comme ça, c'est beaucoup plus simple à reconnaître"). **The icon alone**: no "(quantity)" or "(difference)" after the name (Product Owner, 2026-11-16: "pas besoin de mettre (quantité) ou (différence) [...] quand on connaît les icônes"). The icons are chosen with the design system. |
 | Delete | A delete button (an icon), in the last column, on the far right, with **no header**; a click opens a warning before anything is deleted (Product Owner, 2026-11-16). Not on the inherited lines. |
 
 - **No column Model unit** (Product Owner, 2026-11-16, end of the day): the model unit is one per quantity, set outside Metadata (see [Units](05-units.md#model-unit-and-display-unit)).
-- **No column Min or Max** (Product Owner, 2026-11-17): a bound is a signal of its own, on a line of its own.
+- **No column Min or Max** (Product Owner, 2026-11-17): a bound is a plain signal of its own, on a line of its own.
+- **No column Decimals** (Product Owner, 2026-11-17): decimals are not set in Metadata.
 - The columns of the handle and of the delete button have no header and take the least room possible (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
 
 - Every line is always editable: a field is changed in place, with no Edit or Save step (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps, rapidement"). The changes are checked on the [Versions](13-versions.md) page before a version is made.
 - An input line and an output line have two different colours.
 - The fields that do not apply to a line stay empty (no enum for a real, no quantity for a boolean).
-- The line of an enum signal shows the name of the enum it points to (Product Owner, 2026-11-11). Open: when the mouse rests on that name (for example `operating_mode`), does a small bubble list its items (0 Off, 1 Manual, 2 Automatic), so that the Enums page need not be opened? The enums themselves are made on their own page (see [Enums](06-enums.md)), never in the table of signals.
+- The line of an enum signal shows the name of the enum it points to (Product Owner, 2026-11-11). **No bubble** lists its items when the mouse rests on that name (Product Owner, 2026-11-17: "je vois pas où tu pourrais mettre l'info-bulle pour l'instant. Fais pas ça"). The enums themselves are made on their own page (see [Enums](06-enums.md)), never in the table of signals.
 - The table shows the signals of the type and the signals it inherits from its parents. Inherited lines cannot be edited here: they are edited in the type that declares them.
 - **The inherited lines come first, read only** (Product Owner, 2026-11-16), in this order:
   1. the signals of the first parent, at the top of the tree;
@@ -107,7 +115,7 @@ The block below shows the order of the columns; the two lines have the colours o
 ```mermaid
 block-beta
     columns 7
-    h0[" "] h8["Direction"] h1["ID"] h2["Type"] h3["Enum"] h4["Quantity"] h9[" "]
+    h0[" "] h8["Direction"] h1["ID"] h2["Type"] h3["Enum"] h4["Quantity / Difference"] h9[" "]
     r0["handle"] r8["input"] r1["running"] r2["boolean"] r3["-"] r4["-"] r9["bin icon"]
     s0["handle"] s8["output"] s1["flow"] s2["real"] s3["-"] s4["● flow"] s9["bin icon"]
     style r8 fill:#dbeafe
@@ -147,11 +155,4 @@ flowchart LR
 
 ## Open questions
 
-- Decimal places on the signal itself, so that the model fixes how many decimals an input or an output has? The Product Owner doubts it (2026-11-16, confirmed the same day): the model should give and receive the real value, and decimals are for display only. Not added; to think about.
-- Mouse resting on the enum name of a line: a bubble with its items, or nothing?
-- The header of the column Quantity: "Quantity", or "Quantity / difference"? The Product Owner hesitates (2026-11-16: "faut peut-être mettre quantité/écart, trouver un meilleur nom qu'écart"). "Difference" is the word of the standards for "écart" (research of 2026-11-10).
-- Bounds as signals of their own (2026-11-17), left open on purpose, the Product Owner being away:
-  - Is a bound signal tied to the signal it bounds (for example `speed_setpoint_max` to `speed_setpoint`), or is it a plain signal like the others?
-  - What is its direction: sent by the model, or given to it?
-  - Does the faceplate still check a typed value against it? Until this is settled, the check against the bounds described in [Presets](09-presets.md#typing-a-value) has nothing to read and is suspended.
-  - The default input range of an animation took the bounds of the signal (see [Animation mode](../symbols/08-animation-mode/README.md)): what does it take now?
+- Does the faceplate check a typed value against bound signals? The Product Owner will settle it when he reviews the faceplates, where a big change may come (2026-11-17: "on verra après, quand on repassera sur les faceplates"). Until then, no check against bounds is written (see [Presets](09-presets.md#typing-a-value)).

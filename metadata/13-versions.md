@@ -1,6 +1,6 @@
 # Versions of Metadata
 
-> [Home](../README.md) › [Metadata](README.md) › Versions · Previous: [Presets](09-presets.md) · Next: [Who changes what](11-who-changes-what.md)
+> [Home](../README.md) › [Metadata](README.md) › Versions · Previous: [Presets](09-presets.md) · Next: [Flags](14-flags.md)
 
 Status: draft, written on 2026-11-16 from the Product Owner's words. The principle (always editable, versions instead of Edit and Save) is decision 0017, accepted on 2026-11-16, which changes decision 0009; the details below are not validated. Open points are listed in [Open questions](12-open-questions.md).
 

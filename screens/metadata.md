@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Screens](README.md) › Metadata
 
-Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal; then the parts of a type as a strip of icons, delete by right click everywhere, commands to inputs only, whole number enum keys, the type tree kept in full page; last, no Edit or Save step anywhere and a Versions page, the read-only mode of the description kept, the direction first in the table of signals, the name shown of a signal moved to the preset, three kinds of command with an ID; then quantity or difference in the one column Quantity, and the parts of a type listed by name, fixed under the tree, replacing the strip of icons; last, the list moved above the tree then back under it, and a Faceplate part, a view only, replacing the button that showed the faceplate; at the end of the day, the tree validated with its search behind an icon, no right click anywhere (a delete button with a warning), inherited lines first, icons for a quantity and a difference, the formatting tool bar in both modes, and a preset in two modes, Values and the faceplate builder; last, the Faceplate part removed, the model unit removed from the signals, an icon alone for a quantity or a difference, a description for each enum item, handles on the links and the commands, a small + on the right of the title of each list, and no header on the columns of buttons). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
+Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal; then the parts of a type as a strip of icons, delete by right click everywhere, commands to inputs only, whole number enum keys, the type tree kept in full page; last, no Edit or Save step anywhere and a Versions page, the read-only mode of the description kept, the direction first in the table of signals, the name shown of a signal moved to the preset, three kinds of command with an ID; then quantity or difference in the one column Quantity, and the parts of a type listed by name, fixed under the tree, replacing the strip of icons; last, the list moved above the tree then back under it, and a Faceplate part, a view only, replacing the button that showed the faceplate; at the end of the day, the tree validated with its search behind an icon, no right click anywhere (a delete button with a warning), inherited lines first, icons for a quantity and a difference, the formatting tool bar in both modes, and a preset in two modes, Values and the faceplate builder; last, the Faceplate part removed, the model unit removed from the signals, an icon alone for a quantity or a difference, a description for each enum item, handles on the links and the commands, a small + on the right of the title of each list, and no header on the columns of buttons); on 2026-11-17, the minimum and the maximum removed from the signal (a bound is a plain signal, usually an input), the header "Quantity / Difference", no decimals on the signal and no bubble on an enum name. It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
 
 ## MD-00 · Navigation bar of Metadata
 
@@ -14,6 +14,7 @@ Path: on the far left of every screen of Metadata (Product Owner, 2026-11-16).
 | MD-00.2 | Units | Button (icon) | Opens [MD-08](#md-08--units). | Decided | [Layout rules](README.md#layout-rules) |
 | MD-00.3 | Enums | Button (icon) | Opens [MD-09](#md-09--enums). | Decided | [Layout rules](README.md#layout-rules) |
 | MD-00.4 | Versions | Button (icon) | Opens [MD-11](#md-11--versions). After Enums (2026-11-16). | Decided | [Versions](../metadata/13-versions.md) |
+| MD-00.5 | Flags | Button (icon) | Opens [MD-12](#md-12--flags-proposed). A new page (2026-11-17); its name and its place here, after Versions, are proposed. | Proposed | [Flags](../metadata/14-flags.md) |
 
 Gaps:
 
@@ -181,10 +182,10 @@ The signals are shown in **one table** that takes as much room as possible: one 
 block-beta
     columns 2
     title["Signals"] add["+"]
-    table["Table: (handle) | Direction | ID | Type | Enum | Quantity | (delete); inherited signals first, from the top of the tree, then own ones; a colour per direction; no header over the handle and the delete button"]:2
+    table["Table: (handle) | Direction | ID | Type | Enum | Quantity / Difference | (delete); inherited signals first, from the top of the tree, then own ones; a colour per direction; no header over the handle and the delete button"]:2
 ```
 
-How the fields depend on each other: the type decides which fields exist. There is no model unit on the signal: it is one per quantity, set outside Metadata (2026-11-16). There is no minimum or maximum on the signal: a bound is a signal of its own, on a line of its own (2026-11-17).
+How the fields depend on each other: the type decides which fields exist. There is no model unit on the signal: it is one per quantity, set outside Metadata (2026-11-16). There is no minimum or maximum on the signal: a bound is a plain signal of its own, on a line of its own, usually an input (2026-11-17). There are no decimals on the signal (2026-11-17).
 
 ```mermaid
 flowchart LR
@@ -210,17 +211,19 @@ mindmap
         ID
         Type
         Enum, for an enum
-        Quantity, optional, the icon alone says quantity or difference
+        Quantity / Difference, optional, the icon alone says which
         Delete button, last, no header, warning
     No model unit
-    No minimum or maximum, a bound is a signal
+    No minimum or maximum, a bound is a plain signal
+    No decimals
+    No bubble on an enum name
     No right click
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | MD-04.1 | Table of signals | Table | One line per signal, one column per field; takes as much room as possible. Own and inherited signals (2026-11-16). | Decided | [Signals](../metadata/04-signals.md#the-table-of-signals) |
-| MD-04.2 | Enum on a signal line | — | The line shows the enum's name. A bubble listing its items when the mouse rests on the name: open. | Decided (bubble: Open) | [Signals](../metadata/04-signals.md) |
+| MD-04.2 | Enum on a signal line | — | The line shows the enum's name. No bubble listing its items when the mouse rests on the name (2026-11-17). | Decided | [Signals](../metadata/04-signals.md#the-table-of-signals) |
 | MD-04.3 | Inherited signals | Lines of the table | First, read only: the signals of the first parent at the top of the tree, then of the next parent, then the type's own (2026-11-16). Edited in the type that declares them. Their look (greyed, with the parent's name) is not said. | Decided (order), Open (look) | [Signals](../metadata/04-signals.md#the-table-of-signals) |
 | MD-04.4 | Add a signal | Button (+), small icon | On the right of the title "Signals", above the table (2026-11-16). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
 | MD-04.5 | Edit, Save | — | Removed (2026-11-16): the table is always editable; changes are checked on [MD-11](#md-11--versions). | Decided | [Versions](../metadata/13-versions.md) |
@@ -229,9 +232,10 @@ mindmap
 | MD-04.6b | Display name | — | Removed (2026-11-16), confirmed while reviewing the wireframes: the name people see is written in the faceplate builder of the preset ([MD-07](#md-07--presets)). | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
 | MD-04.7 | Type | Column, select | Integer, real (64-bit double), boolean, text, enum. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.8 | Enum | Column, select | Only for the type enum: an enum of the Enums page, as a link. Empty otherwise. | Decided | [Enums](../metadata/06-enums.md) |
-| MD-04.9 | Quantity | Column, select | Optional, integer and real only. From the read-only catalogue. The same list offers the pressure and the pressure difference, in this one column; only the quantities whose conversion changes have the two items (2026-11-16). An icon before the name, one for a quantity, one for a difference, and **the icon alone**: no "(quantity)" or "(difference)" written (2026-11-16). Header "Quantity" or "Quantity / difference": open. | Decided (icons), Open (header) | [Units](../metadata/05-units.md#value-or-difference-chosen-in-the-signal) |
+| MD-04.9 | Quantity | Column, select | Optional, integer and real only. From the read-only catalogue. The same list offers the pressure and the pressure difference, in this one column; only the quantities whose conversion changes have the two items (2026-11-16). An icon before the name, one for a quantity, one for a difference, and **the icon alone**: no "(quantity)" or "(difference)" written (2026-11-16). Header **"Quantity / Difference"** (2026-11-17). | Decided | [Units](../metadata/05-units.md#value-or-difference-chosen-in-the-signal) |
 | MD-04.10 | Model unit | — | Removed (2026-11-16, end of the day): one model unit per quantity, the same everywhere, set outside Metadata (the catalogue or the project: open). | Decided | [Units](../metadata/05-units.md#model-unit-and-display-unit) |
-| MD-04.11 | Minimum, maximum | — | Removed (2026-11-17): a bound is a signal of its own, on a line of its own. Its direction and its tie to the signal it bounds: open. | Decided (removal), Open (tie) | [Signals](../metadata/04-signals.md#open-questions) |
+| MD-04.11 | Minimum, maximum | — | Removed (2026-11-17): a bound is a plain signal of its own, on a line of its own, with no tie to the signal it bounds; its direction is chosen as for any signal, usually an input (example: `speed_setpoint_max`). | Decided | [Signals](../metadata/04-signals.md#rules) |
+| MD-04.15 | Decimals | — | None (2026-11-17): the model takes the whole value; decimals, if needed, are set once for the project, outside Metadata. | Decided | [Signals](../metadata/04-signals.md#rules) |
 | MD-04.12 | Direction | Column, select | First column (2026-11-16). Input or output of the model. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.13 | Delete a signal | Button (icon), then a warning | Last column, on the far right of each own line, with no header and the least width; a click opens a warning (2026-11-16). No right click ([layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). | Decided | [Signals](../metadata/04-signals.md#the-table-of-signals) |
 | MD-04.14 | Handle of a line | Grip, dragged, no header | At the very left of each own line, before Direction: held and dragged to move the line; the order chosen is kept (2026-11-16). Inherited lines have none. A new signal goes at the end: to confirm. Its look: with the design system. | Decided | [Signals](../metadata/04-signals.md#the-order-of-the-lines) |
@@ -516,3 +520,29 @@ Gaps:
 
 - Where the list of past versions is shown, and whether one can be opened or restored.
 - How a difference points back to the screen where the thing is edited.
+
+## MD-12 · Flags (proposed)
+
+Path: Metadata › Flags (navigation bar), described by the Product Owner on 2026-11-17. The name and the place are proposed, to confirm; the wireframe is drawn in Figma once they are.
+
+```mermaid
+mindmap
+  root((MD-12 Flags))
+    Title Flags, small plus on its right
+    List of flags
+      ID of each flag
+      Delete button, far right, no header, warning
+    Ticked in the synoptic, part 3
+```
+
+| ID | Element | Kind | Values and behaviour | Status | Source |
+| --- | --- | --- | --- | --- | --- |
+| MD-12.1 | List of flags | List | One line per flag: its ID only (2026-11-17). | Decided (IDs only), Proposed (name of the page) | [Flags](../metadata/14-flags.md) |
+| MD-12.2 | Add a flag | Button (+), small icon | On the right of the title "Flags" ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Implied | [Flags](../metadata/14-flags.md) |
+| MD-12.3 | ID | Text field | Always editable, as everything in Metadata. Its rules (characters, unique): open. | Implied | [Flags](../metadata/14-flags.md#open-questions) |
+| MD-12.4 | Delete a flag | Button (icon), then a warning | At the far right of the line, with no header ([layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). What the warning says when symbols have the flag on: open. | Implied | [Flags](../metadata/14-flags.md#open-questions) |
+
+Gaps:
+
+- The order of the list (a handle?), a description per flag, every flag on every symbol or per type: see [Flags](../metadata/14-flags.md#open-questions).
+- The panel of the synoptic where the flags of a placed symbol are ticked: described with part 3.
