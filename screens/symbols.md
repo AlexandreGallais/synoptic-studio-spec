@@ -421,7 +421,8 @@ mindmap
 | SY-08.1 | Animations of the part | List | The part is a shape, a layer or a text. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.2 | Signal | Select | Output signals of the type only. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.3 | Property | Select | Rotation, position, opacity, visibility, fill or border colour, fill level, blink (proposed list). | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
-| SY-08.4 | Mapping | Select + fields | Bounded linear (input range, output range), by ranges (table), two values (boolean), state table (enum). | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
+| SY-08.4 | Mapping | Select + fields | Bounded linear (input range, output range), by ranges (table), two values (boolean). | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
+| SY-08.4c | Column of the enum | Select | For an enum signal: a column added to its enum on the Enums page of the Symbol Lib ([SY-12](#sy-12--enums-of-a-symbol-lib)); the property takes that column's value for the current item (2026-11-17). Only columns whose kind fits the property (assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#used-by-an-animation) |
 | SY-08.4b | Input range of a bounded linear | Two fields: minimum, maximum | Each a signal of the type, input or output, or a number typed (the number: to confirm); the value animated stays an output (Product Owner, 2026-11-17). | Decided (signal in or out), Proposed (number) | [Animation mode](../symbols/08-animation-mode/README.md#the-input-range-of-a-bounded-linear-animation) |
 | SY-08.5 | Transition | Radio + number field | None, or a short linear duration. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.6 | Pivot | 9-point grid or a point | Centre by default. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
@@ -537,3 +538,46 @@ Gaps:
 
 - How the reference of a duplication is picked (a point and a radius, a line): with the mouse, in fields, or both?
 - Preview of the copies before they are made?
+
+## SY-12 · Enums of a Symbol Lib
+
+Path: Symbols › a Symbol Lib › Enums (where the entry sits: open). Product Owner, 2026-11-17.
+
+Following the layout rules, the list of enums is on the left and the selected enum on the right, as on [MD-09](metadata.md#md-09--enums).
+
+```mermaid
+mindmap
+  root((SY-12 Enums of a Symbol Lib))
+    List of enums, from Metadata
+      Global enums
+      Templates
+    An enum
+      Columns from Metadata, read only
+        Key
+        Display text
+        Description
+      Added columns
+        Title Columns, small plus on its right
+        Title of the column
+        Kind of value
+          Colour
+          Text
+          Number
+        A value per item, global enum only
+```
+
+| ID | Element | Kind | Values and behaviour | Status | Source |
+| --- | --- | --- | --- | --- | --- |
+| SY-12.1 | Entry of the page | not said | One Enums page per Symbol Lib. From the left-hand panel ([SY-02](#sy-02--left-hand-panel-of-a-symbol-lib)) or the navigation bar: open. | Decided (page), Open (entry) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.2 | List of enums | List | Every enum of Metadata, global and template; none is made here. | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.3 | Key, Display text, Description | Read-only columns | From Metadata, in the order of decision 0032; changed in Metadata only. A template has no items, so no lines. | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.4 | Add a column | Button (+), small icon | As many columns as needed; the place of the + follows the [layout rules](README.md#a-title-and-a-small--on-its-right) (assistant's reading). | Decided (add), Proposed (place) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.5 | Title of a column | Text field | Chosen by the user: `color`, `display text short`... | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.6 | Kind of value of a column | Select | Colour, text, number; the full list is open. | Decided (list: Open) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.7 | Value of a column for an item | Field of the kind (colour picker, text field, number field) | Global enum only: one per item. For a template, filled with its items for each placed symbol (to confirm). | Decided (global), Open (template) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+
+Gaps:
+
+- Delete or rename a column, and what it breaks in the animations.
+- Order of the added columns (a handle?).
+- How a template is told apart from a global enum in the list.

@@ -2,9 +2,34 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Enums · Previous: [Units](05-units.md) · Next: [Commands](07-commands.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers; the + that creates an enum is an icon on the line of the title; delete with a button and a warning; at the end of the day, an optional description for each item, shown on the Enums page only); reviewed by him on 2026-11-17 (the display text before the description, no change of order of the items). No question is open on this page.
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers; the + that creates an enum is an icon on the line of the title; delete with a button and a warning; at the end of the day, an optional description for each item, shown on the Enums page only); reviewed by him on 2026-11-17 (the display text before the description, no change of order of the items); changed by him later on 2026-11-17 (two kinds of enum: global and template, see [Global enums and templates](#global-enums-and-templates)). Open points are listed in [Open questions](#open-questions).
 
 An Enums page lists the enums of the application, like the Units page lists the quantities. A signal of the type enum does not hold its own list of values: it points to an enum of this page.
+
+## Global enums and templates
+
+Decided by the Product Owner on 2026-11-17. The Enums page holds **two kinds of enum**:
+
+| Kind | What it is | Its items | Example |
+| --- | --- | --- | --- |
+| **Global** | An enum that is true everywhere: the same items for every symbol and every synoptic that uses it. | Written on the Enums page, as below. | `alarm_level`: "normalement, tu as la même alarm level partout". |
+| **Template** | An enum that is not defined in advance: only its name is made on the Enums page. Its items belong to **one placed symbol** and can change from one symbol to the next. | Not written on the Enums page: no keys, no display texts, no descriptions yet ("des displays qui ne sont pas encore faits, des descriptions qui ne sont pas encore faites"). | The positions of a switch: switch `ID 123` has its own list, another switch another one ("un commutateur, il a plusieurs sélections, mais ça change à chaque fois"). |
+
+- Why (Product Owner): some enums are shared, others depend on the very object ("le pump mode, ça dépend des pompes potentiellement"). A template lets people work with an enum signal before its items exist ("comme ça, au moins, on se permet de travailler quand même avec les choses").
+- **The user chooses the kind** when making an enum on the Enums page ("dans la page enum, il faut pouvoir créer des enums globaux et des templates").
+- **A signal of the type enum points to a global enum or to a template**, picked in the same list ("pouvoir choisir dans la liste « enum unique » ou un truc du genre"). The Product Owner first said "enum unique", then "template"; the name is the working name "template", to confirm (it is also a word the research found taken in OPC UA and AutomationML).
+- **The items of a template are written for each placed symbol**, where that symbol is (assistant's reading of "lié à un seul symbole", "il faut lui éditer ses valeurs"; the synoptic, part 3, is not written yet): to confirm.
+- **The screen must make the difference explicit**: a global enum is the same everywhere, a template changes with each symbol. How it is shown is not settled: the Product Owner asked the assistant to note it, not to explain it on the page itself ("il ne faut pas l'expliquer, mais toi, il faut que tu te le notes : il faudra trouver un moyen d'expliquer ça explicitement"). For the design system.
+- A Symbol Lib can add its own columns to a template as to a global enum (see [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md)).
+
+```mermaid
+flowchart LR
+    P["Enums page"] --> G["Global enum: items written here, the same everywhere"]
+    P --> T["Template: a name only, no items here"]
+    S1["Signal of type enum"] -->|"link"| G
+    S2["Signal of type enum"] -->|"link"| T
+    T -->|"items written for each placed symbol"| X["Switch ID 123: its own items"]
+```
 
 ## Rules
 
@@ -17,7 +42,7 @@ An Enums page lists the enums of the application, like the Units page lists the 
 - No string keys (Product Owner, 2026-11-16). Why: every enum can be checked in one place, the Enums page, and the configuration files are generated from it; so the model never needs a readable key, and the display text is enough for people.
 - When the user picks an item, the signal receives exactly its key.
 - It is the pair (name, value) the research found in FMI, SSP and OPC UA.
-- Enums are created and changed on the Enums page only, never inside a signal, a symbol or a synoptic.
+- Enums are created and changed on the Enums page only, never inside a signal, a symbol or a synoptic. Exception since 2026-11-17: the items of a **template** are written for each placed symbol (see [Global enums and templates](#global-enums-and-templates)); the template itself, its name, is made on the Enums page.
 - Unlike the units, which are a read-only catalogue (see [Units](05-units.md#a-ready-made-catalogue-read-only)), enums are made by the user: each has its name, and the user builds its items (Product Owner, 2026-11-16: "Les enums, par contre, il faut pouvoir en créer").
 - The button that creates an enum is a small **+ icon on the line of the title "Enums"**, on its right, above the list (Product Owner, 2026-11-16: "il faut qu'il soit au niveau des enums pour que ça fasse joli avec une icône", then, reviewing the wireframes: "ça doit être un petit +, une petite icône à côté du titre"). The same for the items: a small + on the right of the title "Items" (see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)).
 - A new enum goes into the list of the Enums page. The list can be filled in advance, before any signal uses it.
@@ -62,6 +87,17 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Enum, its items (key, display text, description) | Enums page | Signal: picks one as a link | No | No |
+| Global enum, its items (key, display text, description) | Enums page | Signal: picks one as a link | Its columns added by the Symbol Lib, used by animations | No |
+| Template (a name, no items) | Enums page | Signal: picks one as a link | Its columns added by the Symbol Lib, used by animations | Its items, written for each placed symbol (to confirm) |
 
 The faceplate builder of a preset chooses how an enum is shown in the faceplate (radio on one line, radio on several lines, select), see [Presets](09-presets.md#mode-faceplate-the-faceplate-builder).
+
+## Open questions
+
+Raised on 2026-11-17, when the templates were added:
+
+- The name "template": kept, or another word ("enum unique" was the first one said; the research found "template" taken in OPC UA and AutomationML)?
+- Where the items of a template are written: on each placed symbol in the synoptic (assistant's reading), or elsewhere?
+- How the screen makes the difference between a global enum and a template explicit: for the design system.
+- Can an enum change kind (global to template, or back) once signals point to it, and what breaks then?
+- The keys of a template are part of the contract with the model for that placed symbol only: how are they written in the configuration files? To settle with [Storage](../storage/README.md).

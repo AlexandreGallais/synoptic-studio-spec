@@ -25,7 +25,7 @@ The screens are also drawn as wireframes on the page **"Spec"** of the Figma fil
 | File | Screens |
 | --- | --- |
 | [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its five parts), Units, Enums, Versions; Flags is a part of the type editor. |
-| [Symbol editor](symbols.md) | The navigation bar, Symbol Libs, the left-hand panel of a Symbol Lib, the symbol editor (layout, floating bars, layers) and its seven modes, the advanced tools. |
+| [Symbol editor](symbols.md) | The navigation bar, Symbol Libs, the left-hand panel of a Symbol Lib, the symbol editor (layout, floating bars, layers) and its seven modes, the advanced tools, the Enums page of a Symbol Lib. |
 | [Pipes](pipes.md) | The base pipe style, the pipe styles, the end shapes, the dash sequences, the preview, and pipes in a synoptic (part 3, preview). |
 
 ## Layout rules
@@ -215,6 +215,8 @@ flowchart TD
     SY02 --> SY03["SY-03 Symbol editor"]
     SY03 --> SY04["SY-04 to SY-10: the seven modes"]
     SY03 --> SY11["SY-11 Advanced tools"]
+    SY02 -.-> SY12["SY-12 Enums of a Symbol Lib, entry open"]
+    MD09 -.->|"enums read only"| SY12
     SY02 --> PI01["PI-01 Base pipe style"]
     SY02 --> PI02["PI-02 Pipe style"]
     PI01 --> PI03["PI-03 End shape editor"]

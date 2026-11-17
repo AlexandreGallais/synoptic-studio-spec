@@ -22,6 +22,7 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | Override an output: who applies it, what is seen while it holds, how it ends | [Commands](07-commands.md), [Presets](09-presets.md#typing-a-value) | The kind is decided (2026-11-16); its mechanism is open. Since 2026-11-17, a signal element of the faceplate set to "override" also overrides an output; the Product Owner leaves it to what is behind the faceplate. |
 | One version for all of Metadata or per type; level computed or chosen; undo and going back; what is written between two versions; what symbols see | [Versions](13-versions.md) | Raised when versions replaced Edit and Save (2026-11-16). |
 | An ID unique in the type and its tree; the description kept out of the configuration files | [Flags](14-flags.md) | Settled by the Product Owner on 2026-11-17: the description optional, an internal identifier, no warning on delete, no rule on how an ID is written, the order by handle, the inheritance. |
+| Name "template"; where the items of a template are written; how the screen shows global against template; changing the kind of an enum; the keys of a template in the configuration files | [Enums](06-enums.md#open-questions) | Raised on 2026-11-17, when the Product Owner split the enums into global enums and templates. |
 | Every control the specs need but never describe (create, delete, order...) | [Screens of Metadata](../screens/metadata.md) | Listed as gaps, screen by screen. |
 
 ```mermaid

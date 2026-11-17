@@ -12,6 +12,7 @@ A **Symbol Lib** holds symbols. It is the only kind of library: there are no lib
 
 - It holds two flat lists, never a tree: its **symbols**, then its **pipe styles**. It also has one base pipe style, the global look of its pipes, that the pipe styles override. Junctions, crossings and start and end shapes are parts of the styles (decided by the Product Owner, 2026-11-11; see [Pipe styles](pipes/pipe-styles.md)). A pipe style can be linked to a type, chosen among all the types of Metadata.
 - **One list of symbols only** (Product Owner, 2026-11-15). There is no "static" or "dynamic" kind: every symbol is the same kind of object, and a symbol simply has a type or not yet. The Product Owner settled it so that the software is simpler to understand at first.
+- It has a small **Enums** page: the enums of Metadata, read only, with the columns the library adds to them for the animations (Product Owner, 2026-11-17; see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)).
 - It has a name. Nothing else: the lists above are its content, not settings.
 - Every symbol is in one Symbol Lib, and only one. No symbol lives outside a library.
 - In symbol mode, the user selects a Symbol Lib, sees its symbols, then opens one or creates one.
@@ -96,6 +97,7 @@ Several symbols can share a type, with different drawings and presets: a centrif
 | A signal changes direction, input or output | Becoming an input breaks its animations, because only outputs animate. Becoming an output breaks the commands that set it. |
 | A command changes kind (set a signal, trigger) | The interactions that send it. |
 | A signal loses its quantity | The texts that show its unit. |
+| A column added to an enum in the Symbol Lib is deleted (not Metadata, to confirm) | The animations that use that column (see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)). |
 
 What never breaks a link:
 

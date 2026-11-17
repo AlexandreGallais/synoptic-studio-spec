@@ -27,7 +27,7 @@ flowchart LR
 | --- | --- | --- |
 | Real or integer | `opening` from 0 to 1 | A range of values becomes a range of a property of the drawing: 0 to 1 becomes a rotation of 0 to 90 degrees. |
 | Boolean | `running` | A value gives a state: when `true`, an element blinks. |
-| Enum | `mode` | To settle: a look per value. |
+| Enum | `mode` | A property of the drawing takes the value of a column added to the enum in the Symbol Lib, for the current item: `mode` = 1 gives the colour of the column `color` for item 1 (Product Owner, 2026-11-17; see [Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md#used-by-an-animation)). |
 
 The properties of a part of the drawing that an animation can drive (rotation, position, size, colour, opacity, visibility, blinking...) are to list.
 
@@ -138,6 +138,8 @@ flowchart LR
 
 For each value of the enum, the values of a few properties (colour, visible layers, text), plus a default row for an unknown value. No state machine: the enum already carries the state, and transitions are the model's business. Code a state by brightness and a word, never by colour alone. Keep the word "Animation" ("dynamization" at Siemens). Confidence: low.
 
+Decided by the Product Owner on 2026-11-17: the table is not written in each animation but **once per Symbol Lib**, as columns added to the enum on the [Enums page of the Symbol Lib](../11-enums-of-a-symbol-lib.md). An animation picks the column it uses. The default row for an unknown value is still open there.
+
 ### Transition, pivot, conflicts, blinking
 
 | Subject | Opinion of the report | Confidence |
@@ -167,7 +169,7 @@ Ignition classes quality as Good, Uncertain, Bad, Error, and shows an overlay on
 ## To decide by the Product Owner
 
 1. The list of animatable properties and the shapes of mapping above?
-2. The state table for an enum?
+2. The state table for an enum: settled on 2026-11-17, as columns of the Symbol Lib (see above).
 3. Blinking bounded under three flashes per second, with a global stop?
 4. Quality of a value shown by default: needs a quality in the contract with the model.
 5. Text that becomes an input: an HTML field laid over the text instead of a `foreignObject`? Proposed in decision 0006, settled after the POC P12.
