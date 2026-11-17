@@ -18,7 +18,7 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 | Command | Metadata | Link a command to a click | No |
 | Preset and its name | Metadata | Choose one | Choose one |
 | Display unit, decimals, default value of each signal | Preset, mode Values, in Metadata | Edit | Edit |
-| Elements of the faceplate: signals (name shown, input, read or override), commands (text of their button), titles, descriptions, groups | Preset, mode Faceplate (the builder), in Metadata | Open | Open |
+| Elements of the faceplate: signals (name shown, input and its bounds, read or write, read or override), commands (text of their button), titles, descriptions, groups | Preset, mode Faceplate (the builder), in Metadata | Open | Open |
 | Texts of the title and description elements of the faceplate (no title nor description by default, 2026-11-16) | Preset, mode Faceplate, in Metadata | Edit (assistant's reading) | Edit, on each placed symbol (assistant's reading) |
 | Version of Metadata, its number and change log | Versions page of Metadata | No | No |
 

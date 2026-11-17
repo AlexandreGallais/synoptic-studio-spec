@@ -4,11 +4,11 @@
 
 Status: draft, written by the assistant on 2026-11-11 from the [Pipes](../symbols/pipes/README.md) pages, themselves a draft; on 2026-11-16 its add buttons follow the layout rule "a title and a small + on its right". It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md).
 
-The pipes are made in a Symbol Lib ([SY-02](symbols.md#sy-02--left-hand-panel-of-a-symbol-lib)) and drawn in a synoptic (part 3, not written). One base pipe style gives the look of every pipe of the library; each pipe style only changes what differs from it.
+The pipes are made in a Symbol Lib, on its page Pipes ([SY-00.4](symbols.md#sy-00--navigation-bar-of-the-symbol-mode), end of 2026-11-17) and drawn in a synoptic (part 3, not written). One base pipe style gives the look of every pipe of the library; each pipe style only changes what differs from it.
 
 ```mermaid
 flowchart LR
-    LIB["SY-02 Symbol Lib"] --> BASE["PI-01 Base pipe style"]
+    LIB["Symbol Lib, page Pipes"] --> BASE["PI-01 Base pipe style"]
     LIB --> STY["PI-02 Pipe styles: Water, Gas, Steam..."]
     BASE --> END["PI-03 End shape editor"]
     BASE --> DASH["PI-04 Dash sequence editor"]

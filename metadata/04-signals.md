@@ -26,7 +26,7 @@ A signal is what goes between the front and the model: an input or an output of 
 - **Its direction is chosen like any signal's**, input or output. In practice a bound is **an input**: it is given to the model, to tell it the range its data will be bounded with (Product Owner, 2026-11-17: "on dit littéralement au modèle ce qu'il va avoir [...] dans la logique, c'est donné au modèle").
 - Where a bound is used:
   - in a symbol, the bounded linear animation can take its minimum or its maximum from any signal of the type, input or output (see [Animation mode](../symbols/08-animation-mode/README.md#shapes-of-mapping));
-  - the faceplate no longer checks a typed value against bounds, until the Product Owner reviews the faceplates (see [Presets](09-presets.md#typing-a-value)).
+  - in the faceplate, the minimum and the maximum of a number field are each typed by hand or taken from a signal of the type (Product Owner, end of 2026-11-17; see [Presets](09-presets.md#bounds-of-a-number-field)).
 - **No decimal places on the signal** (Product Owner, 2026-11-17: "le modèle, il doit pouvoir tout bouffer"): the model gives and receives the whole value. If a number of decimals must be set, it is set once for the whole project, in a place for project settings, outside Metadata, so that every value of the project has the same decimals (Product Owner: "c'est pas dans les métadatas [...] avoir le même nombre de décimales partout"). That place is not described yet. What this means for the decimals of the presets and of the catalogue of units is asked (see [Open questions](12-open-questions.md)).
 
 ## Fields
@@ -151,8 +151,4 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Signal (direction, ID, type, enum, quantity) | Metadata | Lines of a preset and its faceplate (read, or write to type a value), commands that set it | No | No |
-
-## Open questions
-
-- Does the faceplate check a typed value against bound signals? The Product Owner will settle it when he reviews the faceplates, where a big change may come (2026-11-17: "on verra après, quand on repassera sur les faceplates"). Until then, no check against bounds is written (see [Presets](09-presets.md#typing-a-value)).
+| Signal (direction, ID, type, enum, quantity) | Metadata | Lines of a preset and its faceplate (read, write for an input, override for an output), bounds of a number field of the faceplate, commands that set it | No | No |

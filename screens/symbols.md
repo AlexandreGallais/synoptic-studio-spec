@@ -2,70 +2,66 @@
 
 > [Home](../README.md) › [Screens](README.md) › Symbol editor
 
-Status: draft, written by the assistant on 2026-11-11 from the [Symbols](../symbols/README.md) pages, themselves a draft, then updated with the Product Owner's review of 2026-11-15 (one list of symbols, left-hand panel, layers, floating bars, precise move) and of 2026-11-16 (no libraries of types, navigation bar). It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md). The pipes are in [Pipes](pipes.md).
+Status: draft, written by the assistant on 2026-11-11 from the [Symbols](../symbols/README.md) pages, themselves a draft, then updated with the Product Owner's review of 2026-11-15 (one list of symbols, left-hand panel, layers, floating bars, precise move), of 2026-11-16 (no libraries of types, navigation bar) and of the end of 2026-11-17 (pages of a Symbol Lib in the navigation bar, columns of the Enums page). It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md). The pipes are in [Pipes](pipes.md).
 
 ## SY-00 · Navigation bar of the symbol mode
 
-Path: Symbols. On the far left of every screen of the symbol mode (Product Owner, 2026-11-16).
+Path: Symbols. On the far left of every screen of the symbol mode (Product Owner, 2026-11-16; changed by him at the end of 2026-11-17).
+
+```mermaid
+block-beta
+    columns 1
+    plus["Small +: create a Symbol Lib"]
+    libs["Every Symbol Lib, one item each"]
+    sep["Separator"]
+    pages["Pages of the selected Symbol Lib: General, Enums, Symbols, Pipes"]
+```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-00.1 | Libraries | Button (icon), at the top | A kind of "home": opens [SY-01](#sy-01--symbol-libs), the full list of the Symbol Libs with more information. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-00.2 | Separator | — | Between the Libraries button and the list. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-00.3 | Symbol Libs | List (one item each) | Every Symbol Lib, directly: one click changes the library shown in the left-hand panel. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-00.1 | Create a Symbol Lib | Button (small +), at the top | Replaces the Libraries button and its page SY-01 (end of 2026-11-17). Asks a name only. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
+| SY-00.3 | Symbol Libs | List (one item each) | Every Symbol Lib, directly: the libraries are listed here only. One click selects a library. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
+| SY-00.2 | Separator | — | Between the list of the Symbol Libs and the pages of the selected one (end of 2026-11-17: "un divider"). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
+| SY-00.4 | Pages of the selected Symbol Lib | Buttons, at the bottom of the bar | In this order: General ([SY-01](#sy-01--general-page-of-a-symbol-lib)), Enums ([SY-12](#sy-12--enums-of-a-symbol-lib)), Symbols ([SY-02](#sy-02--left-hand-panel-of-the-pages-symbols-and-pipes)), Pipes ([Pipes](pipes.md)). Shown only once a Symbol Lib is selected (end of 2026-11-17). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
 
 Gaps:
 
 - How a Symbol Lib looks in the bar (icon, initials, name on hover).
 - Going from the symbol mode to Metadata is done in the top bar (see the [guide](README.md#top-bar-of-the-window)).
 
-## SY-01 · Symbol Libs
+## SY-01 · General page of a Symbol Lib
 
-Path: Symbols › Libraries (the button at the top of the navigation bar).
+Path: Symbols › a Symbol Lib › General (first page of the library, end of 2026-11-17).
 
-The page is the full list of the Symbol Libs, with more information than the navigation bar. Following the layout rules, the list is on the left and the selected library on the right.
-
-```mermaid
-mindmap
-  root((SY-01 Symbol Libs))
-    List of Symbol Libs, on the left
-    Create a Symbol Lib
-      Name
-    A Symbol Lib, on the right
-      Name
-      More information, not said
-      Open it
-```
+The former page of all the Symbol Libs is gone: the libraries are listed in the navigation bar only, and what that page showed of one library (its name and settings) is now its first page.
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-01.1 | List of Symbol Libs | List | On the left. The user selects one to see it on the right. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-01.2 | Create a Symbol Lib | Button (icon with a small +) | On the right of the title "Symbol Libs", above the list ([layout rules](README.md#a-title-and-a-small--on-its-right), 2026-11-16). Asks a name only. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-01.3 | Name | Text field | — | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-01.4 | More information | not said | "Une liste mieux faite, avec plus d'infos": which information is not said (number of symbols and pipe styles, broken items, last change?). | Open | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-01.5 | Open | not said (button) | Shows the library in the left-hand panel ([SY-02](#sy-02--left-hand-panel-of-a-symbol-lib)). | Implied | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-01.1 | List of Symbol Libs | — | Removed (end of 2026-11-17): the list is in the navigation bar ([SY-00.3](#sy-00--navigation-bar-of-the-symbol-mode)). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
+| SY-01.2 | Create a Symbol Lib | — | Moved to the small + of the navigation bar ([SY-00.1](#sy-00--navigation-bar-of-the-symbol-mode)). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
+| SY-01.3 | Name | Text field | The name of the library. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-01.4 | More information | not said | What else the page shows of the library is not said. | Open | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-01.5 | Open | — | Removed: selecting the library in the bar opens it. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
 
 Gaps:
 
-- Rename, duplicate (to change a look over time, the user creates a new Symbol Lib: is it a copy of the old one?), delete.
-- Which information the full list shows on each library.
+- Duplicate (to change a look over time, the user creates a new Symbol Lib: is it a copy of the old one?), delete.
 
-## SY-02 · Left-hand panel of a Symbol Lib
+## SY-02 · Left-hand panel of the pages Symbols and Pipes
 
-Path: Symbols › a Symbol Lib. The panel stays on the left while a symbol is open in the editor.
+Path: Symbols › a Symbol Lib › Symbols, or › Pipes. Since the end of 2026-11-17 the symbols and the pipe styles are two pages of the navigation bar, no longer two zones of one panel. On the page Symbols, the panel stays on the left while a symbol is open in the editor.
 
 ```mermaid
 block-beta
-    columns 1
-    sym["Symbols: magnifier, +, list"]
-    pip["Pipe styles: magnifier, +, list"]
-    lay["Layers of the open symbol (SY-03)"]
+    columns 2
+    sym["Page Symbols: magnifier, +, list, then the layers of the open symbol (SY-03)"]
+    pip["Page Pipes: magnifier, +, list of pipe styles"]
 ```
 
 ```mermaid
 mindmap
   root((SY-02 Left-hand panel))
-    Symbols
+    Page Symbols
       Search
       Create a symbol
         Type, optional
@@ -73,12 +69,12 @@ mindmap
       List, one kind of symbol
         Thumbnail
         Name
-    Pipe styles
+      Layers, see SY-03
+    Page Pipes
       Search
       Create a style
       List
         Base pipe style first, proposed
-    Layers, see SY-03
     Proposed
       Usage counter
       Named colours
@@ -91,7 +87,7 @@ mindmap
 | SY-02.3 | Create a symbol | Button (+) | The type and preset can be chosen here, never imposed. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.4 | Type, at creation | Select, optional | All the types of Metadata (no library of types). How the choice stays quick in a big tree: open. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.5 | Item of the list | Thumbnail + name | The thumbnail is the symbol, or its outlines only (as Figma's outline view). | Decided (thumbnail: Open) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-02.6 | List of pipe styles | List | Flat; a click opens the style (see [Pipes](pipes.md)). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.6 | List of pipe styles | List | On the page Pipes (end of 2026-11-17). Flat; a click opens the style (see [Pipes](pipes.md)). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.7 | Search the pipe styles | Text field (magnifier) | Filters the list. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.8 | Create a pipe style | Button (icon with a small +) | On the right of the title "Pipe styles" ([layout rules](README.md#a-title-and-a-small--on-its-right), 2026-11-16). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.9 | Base pipe style | Item of the list | First item of the pipe styles list. | Proposed | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
@@ -115,7 +111,7 @@ The layout is decided (Product Owner, 2026-11-15), except the place of the tool 
 block-beta
     columns 4
     rail["Navigation bar SY-00"]
-    left["Left-hand panel: SY-02 symbols and pipe styles, then the layers"] canvas["Drawing area: modes menu floating top left; advanced tools bar above the tool bar; tool bar floating at the bottom"] panel["Right-hand panel: options of the selection, type and preset of the symbol"]
+    left["Left-hand panel: SY-02 symbols, then the layers"] canvas["Drawing area: modes menu floating top left; advanced tools bar above the tool bar; tool bar floating at the bottom"] panel["Right-hand panel: options of the selection, type and preset of the symbol"]
 ```
 
 ```mermaid
@@ -541,7 +537,7 @@ Gaps:
 
 ## SY-12 · Enums of a Symbol Lib
 
-Path: Symbols › a Symbol Lib › Enums (where the entry sits: open). Product Owner, 2026-11-17.
+Path: Symbols › a Symbol Lib › Enums, second page of the library in the navigation bar ([SY-00.4](#sy-00--navigation-bar-of-the-symbol-mode)). Product Owner, 2026-11-17.
 
 Following the layout rules, the list of enums is on the left and the selected enum on the right, as on [MD-09](metadata.md#md-09--enums).
 
@@ -558,26 +554,28 @@ mindmap
         Description
       Added columns
         Title Columns, small plus on its right
-        Title of the column
+        Name of the column, a field always visible in its header
         Kind of value
-          Colour
-          Text
-          Number
+          Global enum, set by the first value
+          Template, a small icon in the header
         A value per item, global enum only
+        Delete a column
+        No change of order
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-12.1 | Entry of the page | not said | One Enums page per Symbol Lib. From the left-hand panel ([SY-02](#sy-02--left-hand-panel-of-a-symbol-lib)) or the navigation bar: open. | Decided (page), Open (entry) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.1 | Entry of the page | Button of the navigation bar | Enums, second page of the selected Symbol Lib ([SY-00.4](#sy-00--navigation-bar-of-the-symbol-mode), end of 2026-11-17). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
 | SY-12.2 | List of enums | List | Every enum of Metadata, global and template; none is made here. | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.3 | Key, Display text, Description | Read-only columns | From Metadata, in the order of decision 0032; changed in Metadata only. A template has no items, so no lines: its name and its description are shown instead, read only (end of 2026-11-17). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
-| SY-12.4 | Add a column | Button (+), small icon | As many columns as needed; the place of the + follows the [layout rules](README.md#a-title-and-a-small--on-its-right) (assistant's reading). | Decided (add), Proposed (place) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
-| SY-12.5 | Title of a column | Text field | Chosen by the user: `color`, `display text short`... | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
-| SY-12.6 | Kind of value of a column | Select | Colour, text, number; the full list is open. | Decided (list: Open) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.4 | Add a column | Button (+), small icon | As many columns as needed. Creates an empty column with a default name (end of 2026-11-17). The place of the + follows the [layout rules](README.md#a-title-and-a-small--on-its-right) (assistant's reading). | Decided (add), Proposed (place) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
+| SY-12.5 | Name of a column | Text field, always visible in the header of the column | Edited at any time (end of 2026-11-17): `color`, `display text short`... | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
+| SY-12.6 | Kind of value of a column | Global enum: set by the first value; template: small icon in the header | Global enum: the first value typed in the column chooses its kind (colour, text, number...), and the other values of the column follow it. Template: it has no values, so a small icon in the header of the column chooses its kind (end of 2026-11-17). The full list of kinds is open. | Decided (list: Open) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.7 | Value of a column for an item | Field of the kind (colour picker, text field, number field) | Global enum only: one per item. For a template, filled with its items on each placed symbol, in the synoptic (end of 2026-11-17; the columns with the items: assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.8 | Delete a column | not said (button) | A column can be deleted (end of 2026-11-17). | Decided (control: not said) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
+| SY-12.9 | Order of the columns | — | Not changed: no handle (end of 2026-11-17: "Est-ce qu'il faut pouvoir le modifier ? Non, je pense pas"). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 
 Gaps:
 
-- Delete or rename a column, and what it breaks in the animations.
-- Order of the added columns (a handle?).
-- How a template is told apart from a global enum in the list.
+- What a deleted column breaks in the animations.
+- How a template is told apart from a global enum in the list: for the design system.

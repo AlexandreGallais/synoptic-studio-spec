@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Libraries and symbols · Next: [Type, preset and faceplate](02-type-and-faceplate.md)
 
-Status: draft, from the Product Owner's description of 2026-11-11, reviewed on 2026-11-15 (one list of symbols, type optional, the left-hand panel) and on 2026-11-16 (no libraries of types, a navigation bar on the left with the list of the Symbol Libs). Not validated.
+Status: draft, from the Product Owner's description of 2026-11-11, reviewed on 2026-11-15 (one list of symbols, type optional, the left-hand panel), on 2026-11-16 (no libraries of types, a navigation bar on the left with the list of the Symbol Libs) and at the end of 2026-11-17 (a small + instead of the Libraries button; the pages General, Enums, Symbols, Pipes of the selected library in the bar). Not validated.
 
 A **Symbol Lib** holds symbols. It is the only kind of library: there are no libraries of types (Product Owner, 2026-11-16). This page is about the Symbol Lib, how a symbol is created, and what happens to a symbol when Metadata changes.
 
@@ -13,9 +13,9 @@ A **Symbol Lib** holds symbols. It is the only kind of library: there are no lib
 - It holds two flat lists, never a tree: its **symbols**, then its **pipe styles**. It also has one base pipe style, the global look of its pipes, that the pipe styles override. Junctions, crossings and start and end shapes are parts of the styles (decided by the Product Owner, 2026-11-11; see [Pipe styles](pipes/pipe-styles.md)). A pipe style can be linked to a type, chosen among all the types of Metadata.
 - **One list of symbols only** (Product Owner, 2026-11-15). There is no "static" or "dynamic" kind: every symbol is the same kind of object, and a symbol simply has a type or not yet. The Product Owner settled it so that the software is simpler to understand at first.
 - It has a small **Enums** page: the enums of Metadata, read only, with the columns the library adds to them for the animations (Product Owner, 2026-11-17; see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)).
-- It has a name. Nothing else: the lists above are its content, not settings.
+- It has a name, set on its **General** page. Nothing else: the lists above are its content, not settings.
 - Every symbol is in one Symbol Lib, and only one. No symbol lives outside a library.
-- In symbol mode, the user selects a Symbol Lib, sees its symbols, then opens one or creates one.
+- In symbol mode, the user selects a Symbol Lib in the navigation bar, then one of its pages: General, Enums, Symbols or Pipes.
 - Why several Symbol Libs: a software or a factory needs its own look for the same objects. To change a look over time, the user creates a new Symbol Lib instead of editing the old one.
 
 ### No library of types
@@ -26,28 +26,32 @@ A **Symbol Lib** holds symbols. It is the only kind of library: there are no lib
 
 ### Navigation bar of the symbol mode
 
-The symbol mode has a navigation bar on the far left too, like the one of Metadata (see [Layout rules](../screens/README.md#layout-rules)). Decided by the Product Owner on 2026-11-16.
+The symbol mode has a navigation bar on the far left, like the one of Metadata (see [Layout rules](../screens/README.md#layout-rules)). Decided by the Product Owner on 2026-11-16, changed by him on 2026-11-17 (end of the day): the pages of a Symbol Lib move into the bar, and the pipes are separated from the symbols.
 
-- At the top, a **Libraries** button, a kind of "home" button: it opens the page of the Symbol Libs ([SY-01](../screens/symbols.md#sy-01--symbol-libs)), a better list with more information on each library.
-- Under it, a **separator**.
-- Then the list of **every Symbol Lib**, directly, so that the user changes library in one click.
-- The left-hand panel next to the bar then shows the content of the Symbol Lib chosen in the bar.
+- At the top, a **small +** that creates a Symbol Lib. It replaces the Libraries button and its page of all the Symbol Libs ("au lieu d'avoir le bouton Lib, on met un petit bouton +").
+- Then the list of **every Symbol Lib**: the libraries are listed on the left only.
+- At the bottom of the bar, after a **separator** ("un divider"), the **pages of the selected Symbol Lib**, in this order ("comme ça, là, ça a plus de sens"):
+  1. **General**: the name of the library and the rest of its settings; it is the former page of a Symbol Lib, now its first page ("ça devient une page de la bibliothèque, puis ça devient la première");
+  2. **Enums**: see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md);
+  3. **Symbols**: the symbols and the editor;
+  4. **Pipes**: the pipe styles (see [Pipes](pipes/README.md)).
+- These four buttons **show only once a Symbol Lib is selected** ("que ça n'apparaisse que quand on a sélectionné une bibliothèque").
+- Why (Product Owner): the pipes are no longer mixed with the symbols, the libraries are only on the left, and the pages sit under them; "c'est plutôt simple à comprendre".
 
 ```mermaid
 block-beta
     columns 4
-    rail["Navigation bar: Libraries button, separator, one item per Symbol Lib"] panel["Left-hand panel of the chosen Symbol Lib"] canvas["Symbol editor"]:2
+    rail["Navigation bar: small +, one item per Symbol Lib, separator, then General, Enums, Symbols, Pipes of the selected one"] panel["Left-hand panel of the page chosen"] canvas["Editor or page"]:2
 ```
 
 ### The left-hand panel of the symbol mode
 
-Once a Symbol Lib is chosen, the left-hand panel shows, from top to bottom (Product Owner, 2026-11-15):
+What the left-hand panel shows depends on the page chosen in the bar. Since 2026-11-17 (end of the day), the symbols and the pipe styles are on two pages, no longer two zones of one panel.
 
-| Zone | What it holds |
+| Page | Left-hand panel, from top to bottom |
 | --- | --- |
-| Symbols | A search field (a small magnifier), a **+** button to create a symbol, then the list. A click on an item opens the symbol in the editor. |
-| Pipe styles | The same: a magnifier, a **+** button to create a style, then the list. A click on an item opens the style. |
-| Layers | The layers of the open symbol: see [Layers](03-editor/layers.md). |
+| Symbols | A search field (a small magnifier), a **+** button to create a symbol, then the list; a click on an item opens the symbol in the editor. Under it, the **layers** of the open symbol: see [Layers](03-editor/layers.md) (Product Owner, 2026-11-15). |
+| Pipes | The same for the pipe styles: a magnifier, a **+** button to create a style, then the list; a click on an item opens the style. |
 
 - An item of the symbol list shows a **thumbnail** and the **name** of the symbol.
 - The thumbnail is the symbol itself, or, as Figma does for its outline view, the symbol drawn with the outline of every shape only, without fills. Which one is kept is open.
@@ -55,11 +59,9 @@ Once a Symbol Lib is chosen, the left-hand panel shows, from top to bottom (Prod
 
 ```mermaid
 block-beta
-    columns 1
-    lib["Symbol Lib chosen"]
-    sym["Symbols: magnifier, +, list (thumbnail and name)"]
-    pip["Pipe styles: magnifier, +, list (base style first)"]
-    lay["Layers of the open symbol: magnifier, unfold all, fold all, tree"]
+    columns 2
+    sym["Page Symbols: magnifier, +, list (thumbnail and name), then the layers of the open symbol"]
+    pip["Page Pipes: magnifier, +, list (base style first)"]
 ```
 
 ### Creating a symbol

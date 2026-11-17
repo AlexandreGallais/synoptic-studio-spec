@@ -380,8 +380,9 @@ mindmap
         Signal element
           Signal, by its ID
           Name shown
-          Input
-          Read or override
+          Input, number field with a minimum and a maximum
+          Read or write, for an input
+          Read or override, for an output
         Command element
           Command, by its ID
           Name on the button
@@ -409,14 +410,15 @@ mindmap
 | MD-07.13 | Decimals | Column, number field | Mode Values. Integers and reals; starts as the quantity's default. Display only. Kept by the Product Owner on 2026-11-17. | Decided | [Units](../metadata/05-units.md#decimal-places) |
 | MD-07.14 | Default value | Column, field of the signal's type | Mode Values. For an input, the first value sent to the model; for an input and an output, the value shown before the model sends anything (2026-11-17). True or false, a number, a text, or an enum item. | Decided | [Presets](../metadata/09-presets.md#mode-values-one-table-of-the-signals) |
 | MD-07.18 | Add an element | Buttons (small icons with a +) | Mode Faceplate, on the right of the title "Elements": one icon per kind, a signal, a command, a title, a description, a group, no menu (2026-11-16, the rule of the links, confirmed by the Product Owner the same day). | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
-| MD-07.9b | Signal element | Element of the builder | The signal, picked by its ID; its name shown (plain text, never sent to the model; empty: the ID is shown); its input; read or override. | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
-| MD-07.10 | Input | Select, in a signal element | In read and in write. Enum: radio on one line, radio on several lines, select; its items in the order of the handles of [MD-09.12](#md-09--enums) (end of 2026-11-17). Other types: fixed by the type (number field, true or false, text field), assistant's reading. | Decided (enum), Proposed (others) | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
-| MD-07.11 | Read or override | Radio, in a signal element | Override: a person types a value, for an input and for an output alike; what the model side does with it is up to it (2026-11-17, replaces "read or write" and the greyed write of an output). The check against the bounds is suspended while bounds as signals are open (2026-11-17). | Decided | [Presets](../metadata/09-presets.md#typing-a-value) |
+| MD-07.9b | Signal element | Element of the builder | The signal, picked by its ID; its name shown (plain text, never sent to the model; empty: the ID is shown); read or write (input) or read or override (output); its input. | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
+| MD-07.10 | Input | Select, in a signal element | Chosen in the builder (end of 2026-11-17: "on met input number, par exemple"). Enum: radio on one line, radio on several lines, select; its items in the order of the handles of [MD-09.12](#md-09--enums) (end of 2026-11-17). Number: a number field, with its bounds ([MD-07.22](#md-07--presets)). | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
+| MD-07.11 | Read or write, read or override | Radio, in a signal element | Input: read or write. Output: read or override (end of 2026-11-17: "c'est read write pour un input et read override pour un output"; corrects the single "read or override" written earlier that day). Write or override: a person types a value; what the model side does with it is up to it. | Decided | [Presets](../metadata/09-presets.md#typing-a-value) |
+| MD-07.22 | Minimum, maximum of a number field | Number field each, with a small icon inside to pick a signal | Each typed by hand, or taken from a signal of the type through the small icon in the field, as Figma's "Apply variable" (end of 2026-11-17). A value outside them is refused (assistant's reading). | Decided (refusal: Proposed) | [Presets](../metadata/09-presets.md#bounds-of-a-number-field) |
 | MD-07.15 | Command element | Element of the builder | The command, picked by its ID; the name on its button (plain text). | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.19 | Title element, description element | Text fields | A heading or a paragraph inside the faceplate or a group; the only way to give either a title or a description (2026-11-16). Description: plain text, line breaks kept. | Decided | [Presets](../metadata/09-presets.md#only-elements-in-elements) |
 | MD-07.20 | Group element | Element of the builder | No title nor description of its own (confirmed 2026-11-17). At its top, the five small icons with a + (Signal, Command, Title, Description, Group), then its own elements; a group can hold a group (2026-11-16). The icons confirmed on 2026-11-17, after a doubt the same day: they save time. | Decided | [Presets](../metadata/09-presets.md#only-elements-in-elements) |
 | MD-07.21 | Delete an element, delete a preset | Button (icon), then a warning | At the far right of the element or of the preset's line (2026-11-16). | Decided | [Layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata) |
-| MD-07.17 | Order | Rule | Mode Values: the order of Signals, no handle, no sort. Mode Faceplate: the order of the builder, moved with a handle (proposed). | Decided (Values), Proposed (builder) | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
+| MD-07.17 | Order | Rule | Mode Values: the order of Signals, no handle, no sort. Mode Faceplate: the order of the builder, moved with a handle (end of 2026-11-17: "il y a déjà les poignées là"). | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.16 | Description per signal | — | Removed (2026-11-16): no description per signal or command; the builder has description elements instead. | Decided | [Presets](../metadata/09-presets.md) |
 
 Gaps:
@@ -500,8 +502,8 @@ mindmap
       Title Enums, small plus on its right
     An enum
       Name
-      Kind, Global or Template
-      Description, template only
+      Kind, Global or Template, changed at any time
+      Description of the enum
       Items, global only
         Title Items, small plus on its right
         Key, a whole number picked by the user, sent to the model
@@ -516,8 +518,8 @@ mindmap
 | MD-09.1 | List of enums | List | A page of its own, not part of the signals. Enums can be made before any signal uses them. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.2 | Add an enum | Button (+), small icon | On the right of the title "Enums", above the list (Product Owner, 2026-11-16: "au niveau des enums [...] avec une icône", then "un petit +, une petite icône à côté du titre"). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
 | MD-09.3 | Name | Text field | — | Decided | [Enums](../metadata/06-enums.md) |
-| MD-09.10 | Kind: Global or Template | Choice when the enum is made (control not said) | Global: the items are written here, the same everywhere. Template: a name and a description only, no items here; the items are completed on each placed symbol, in the synoptic, with a small warning until they are (end of 2026-11-17). The difference must be explicit on screen; how is for the design system (2026-11-17). | Decided (control: Open) | [Enums](../metadata/06-enums.md#global-enums-and-templates) |
-| MD-09.11 | Description of a template | Text field (several lines) | Template only: what the enum is about as a whole, since it has no items to explain it (Product Owner, end of 2026-11-17). Plain text, never sent to the model. For a global enum: open. | Decided (template), Open (global) | [Enums](../metadata/06-enums.md#global-enums-and-templates) |
+| MD-09.10 | Kind: Global or Template | Choice when the enum is made (control not said) | Global: the items are written here, the same everywhere. Template: a name and a description only, no items here; the items are completed on each placed symbol, in the synoptic, with a small warning until they are (end of 2026-11-17). The difference must be explicit on screen; how is for the design system (2026-11-17). The kind can be changed at any time, signals or not, with no warning; going back to global brings back its items (end of 2026-11-17). | Decided (control: Open) | [Enums](../metadata/06-enums.md#global-enums-and-templates) |
+| MD-09.11 | Description of the enum | Text field (several lines) | What the enum is about as a whole, for a template and for a global enum alike (Product Owner, end of 2026-11-17). Plain text, never sent to the model. | Decided | [Enums](../metadata/06-enums.md#global-enums-and-templates) |
 | MD-09.4 | Kind of key | — | Removed (Product Owner, 2026-11-16): a key is always a number, there are no string keys. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.5 | Items | Table | Columns in this order: the handle with no header, Key, Display text, Description, then the delete button with no header (2026-11-17: the short field first, the long one last; replaces Key, Description, Display text of 2026-11-16). A new line takes its place by key, smallest first (end of 2026-11-17: "un tri automatique pour que ça aille dans l'ordre"); then the handle moves it to the order of meaning, without changing its key, and the order is kept (questionnaire, end of 2026-11-17: "Tri par clé, puis poignées"; decision 0038). Once items were moved, a new line goes right after the item with the next smaller key (questionnaire, end of 2026-11-17: "Juste après l'item de clé inférieure"; decision 0039). | Decided | [Enums](../metadata/06-enums.md#rules) |
 | MD-09.12 | Handle of an item | Grip, dragged, no header | At the very left of each item: moves it; the key does not change (end of 2026-11-17, decision 0038). Same behaviour as [MD-04.14](#md-04--signals). | Decided | [Layout rules](README.md#handles-to-choose-the-order) |
@@ -530,7 +532,6 @@ Gaps:
 
 - Must the display texts be unique too?
 - Changing a key is breaking: no Edit or Save step (2026-11-16); it shows on [MD-11](#md-11--versions) and makes the version a major one.
-- Order of the items: placed by key, then moved by handle (end of 2026-11-17). An item added or a key changed after a move: by key, or kept where it is? Is it also the order of the menu in the faceplate?
 - Which signals use an enum: is it shown (a usage counter)?
 
 ## MD-10 · Libraries: removed

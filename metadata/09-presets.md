@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Presets · Previous: [Commands](07-commands.md) · Next: [Versions](13-versions.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16: the faceplate and the presets are **merged** into this one part, always editable; the name people see for each signal is written here (decision 0018, accepted on 2026-11-16, which changes decision 0015). Later that day, a Faceplate part of its own only showed the faceplate of a chosen preset (decision 0021). Last, while reviewing the wireframes, he split the preset into **two modes**, chosen by a switch above its name: the **values** (display unit, decimals, default value of each signal) and the **faceplate builder** (a list of elements, with groups, titles and descriptions, that builds the faceplate), with no "shown" box (decision 0022, accepted on 2026-11-16, which changes a point of decisions 0015 and 0018). At the end of the day he **removed the Faceplate part** (decision 0023, accepted on 2026-11-16, which replaces decision 0021): the faceplate is only the second mode of the preset; he confirmed the labels "Values" and "Faceplate", and made "Presets" the title of the list, with a small + on its right, so that the switch moves up. Later still, he made the builder fully generic: no title nor description by default, neither for the faceplate nor for a group; a title or a description is an element the user adds; a group shows the same small + icons at its top, a group included. On 2026-11-17, reviewing the wireframes again, he kept the display unit, the decimals and the default value; asked for an icon telling an input from an output in the table of values; said what the default value is for; replaced "read or write" by **"read or override"**, for an input and for an output alike; and confirmed that neither the faceplate nor a group has a title or a description of its own. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16: the faceplate and the presets are **merged** into this one part, always editable; the name people see for each signal is written here (decision 0018, accepted on 2026-11-16, which changes decision 0015). Later that day, a Faceplate part of its own only showed the faceplate of a chosen preset (decision 0021). Last, while reviewing the wireframes, he split the preset into **two modes**, chosen by a switch above its name: the **values** (display unit, decimals, default value of each signal) and the **faceplate builder** (a list of elements, with groups, titles and descriptions, that builds the faceplate), with no "shown" box (decision 0022, accepted on 2026-11-16, which changes a point of decisions 0015 and 0018). At the end of the day he **removed the Faceplate part** (decision 0023, accepted on 2026-11-16, which replaces decision 0021): the faceplate is only the second mode of the preset; he confirmed the labels "Values" and "Faceplate", and made "Presets" the title of the list, with a small + on its right, so that the switch moves up. Later still, he made the builder fully generic: no title nor description by default, neither for the faceplate nor for a group; a title or a description is an element the user adds; a group shows the same small + icons at its top, a group included. On 2026-11-17, reviewing the wireframes again, he kept the display unit, the decimals and the default value; asked for an icon telling an input from an output in the table of values; said what the default value is for; replaced "read or write" by "read or override"; and confirmed that neither the faceplate nor a group has a title or a description of its own. At the end of 2026-11-17 he corrected it: **read or write for an input, read or override for an output**; and he settled the handles of the builder, the input chosen in the builder, and the bounds of a number field, typed or taken from a signal. Open points are listed in [Open questions](12-open-questions.md).
 
 A preset is made under a type (example: pneumatic positive displacement pump). It holds the defaults of a symbol and **builds its faceplate**, so that a symbol or a synoptic starts well configured. A faceplate is the panel that shows the signals and the commands of a placed symbol: what the user sees and can act on. "Faceplate" is the standard word of supervision software for this panel.
 
@@ -77,7 +77,7 @@ sequenceDiagram
 ```
 
 - **No command in this table** (Product Owner: "Dans les commandes, tu ne les verrais même pas dans preset"): a command has no value to set here. Commands are only placed in the builder.
-- No "Shown", no "Name shown", no "Input", no "Read or override" here: they belong to the builder, since they only say how the faceplate shows a signal.
+- No "Shown", no "Name shown", no "Input", no "Read or write", no "Read or override" here: they belong to the builder, since they only say how the faceplate shows a signal.
 - There is no "add an entry": the whole list is always there.
 - The lines come in the order of the table of [Signals](04-signals.md#the-order-of-the-lines): inherited signals first, then the type's own; no handle and no sort here.
 
@@ -99,7 +99,7 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas juste bêtement avoi
 
 | Element | What it holds | Rule |
 | --- | --- | --- |
-| Signal | The signal, picked by its ID; the **name shown**; the **input**; **read or override**. | Name shown: plain text, the name people see in the faceplate, never sent to the model; empty, the ID is shown (decision 0018); it exists only in the builder (decision 0022). Input: for an enum, radio on one line, radio on several lines or select, its items in the order chosen with the handles on the Enums page (Product Owner, end of 2026-11-17: "Oui, l'ordre des poignées"); for the other types, fixed by the type (number field, true or false, text field: assistant's reading, to confirm). Read or override: override lets a person type a value, for an input and for an output alike (Product Owner, 2026-11-17; see [Typing a value](#typing-a-value)). |
+| Signal | The signal, picked by its ID; the **name shown**; **read or write** for an input, **read or override** for an output; the **input**. | Name shown: plain text, the name people see in the faceplate, never sent to the model; empty, the ID is shown (decision 0018); it exists only in the builder (decision 0022). Read or write, read or override: see [Typing a value](#typing-a-value). Input: chosen in the builder (Product Owner, end of 2026-11-17: "on le choisit : on met input number, par exemple"); for an enum, radio on one line, radio on several lines or select, its items in the order chosen with the handles on the Enums page (Product Owner, end of 2026-11-17: "Oui, l'ordre des poignées"); for a number, a number field, with its [bounds](#bounds-of-a-number-field). |
 | Command | The command, picked by its ID; the **name on the button**. | Plain text. The faceplate shows a button that sends the command. |
 | Title | A text. | A heading inside the faceplate or inside a group. |
 | Description | A text, plain: no Markdown, no links; line breaks kept. | A paragraph inside the faceplate or inside a group. |
@@ -118,8 +118,7 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas donner un titre et u
 
 - **What is in the builder is what the faceplate shows.** There is no "Shown" checkbox any more ("on montrerait ce qu'on veut"): a signal or a command that is not added is not in the faceplate.
 - The name shown and the name on the button exist **only in the builder**: they serve the faceplate alone (Product Owner: "le display name, qui ne sert que pour la pop-up").
-- The **order of the faceplate is the order of the builder**: it no longer follows the order of the table of Signals. Assistant's reading of a list built element by element; to confirm.
-- Moving an element inside the builder: a handle at its left, as in the tables of Metadata. Assistant's proposal, to confirm.
+- The **order of the faceplate is the order of the builder**: it no longer follows the order of the table of Signals. An element is moved with a **handle** at its left, as in the tables of Metadata and as on the wireframes (Product Owner, end of 2026-11-17: "il y a déjà les poignées là").
 - Deleting an element: a delete button at its right, with a warning, as everywhere in Metadata (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
 - All the commands of the type stay available to the symbol, which links them to clicks on its parts, whether or not the builder holds them (see [Commands](07-commands.md)).
 - An enum is always shown by the display texts of its items, never by their keys (see [Enums](06-enums.md)).
@@ -131,7 +130,7 @@ flowchart TD
     FP --> E1["Signal: running, name shown, read"]
     FP --> G["Group"]
     G --> GT["Title: Control"]
-    G --> E2["Signal: mode, name shown, radio, override"]
+    G --> E2["Signal: mode, name shown, radio, write"]
     G --> E3["Command: start, button Start"]
     G --> E4["Command: stop, button Stop"]
     FP --> E5["Title: Measures"]
@@ -145,11 +144,18 @@ flowchart TD
 
 ### Typing a value
 
-- A signal element offers **read or override** (Product Owner, 2026-11-17: "au lieu de faire lecture et écriture, là, ce serait lecture ou surcharge, enfin override"). It replaces "read or write": for an output, "write" would make no sense.
-- A signal set to **override** in the builder is the only way for a person to type a value: a command always sends a fixed value (see [Commands](07-commands.md#the-value-is-always-fixed)).
-- **An input and an output can both be set to override, in exactly the same way** (Product Owner, 2026-11-17: "c'est des outputs, faut pouvoir les mettre en write aussi, exactement de la même façon"). It replaces the rule of 2026-11-16, which greyed write for an output (decision 0030, accepted on 2026-11-17, which changes decisions 0014 and 0022 on this point).
+- A signal element offers **read or write for an input**, and **read or override for an output** (Product Owner, end of 2026-11-17: "c'est read write pour un input et read override pour un output"). It corrects the single "read or override" written earlier on 2026-11-17 for both directions.
+- A signal set to **write** or to **override** in the builder is the only way for a person to type a value: a command always sends a fixed value (see [Commands](07-commands.md#the-value-is-always-fixed)).
+- **An input and an output can both be typed in, in the same way** (Product Owner, 2026-11-17: "c'est des outputs, faut pouvoir les mettre en write aussi, exactement de la même façon"); only the word changes: write for an input, override for an output. It replaces the rule of 2026-11-16, which greyed write for an output (decision 0030, accepted on 2026-11-17, which changes decisions 0014 and 0022 on this point).
 - What happens to the typed value is **left to what is behind** the faceplate (Product Owner: "c'est à ce qui passe derrière de se débrouiller, parce que ça peut devenir une valeur, ça peut devenir un override"): for an input it becomes the value the model receives; for an output, an override of that output. How an override of an output is applied, and how it ends, is the open question already asked for the command "Override an output" (see [Commands](07-commands.md#open-questions)).
-- **Bounds: suspended** (2026-11-17). Until then, the faceplate checked a typed value against the minimum and the maximum of the signal and refused a value outside them. The Product Owner removed both fields: a bound is now a plain signal of its own, usually an input, with no tie to the signal it bounds (decision 0026; see [Signals](04-signals.md#rules)). Whether the faceplate checks a typed value against a bound signal, and how, waits for the Product Owner's review of the faceplates, where a big change may come (2026-11-17: "on verra après, quand on repassera sur les faceplates"); until then, no check against bounds is written.
+
+#### Bounds of a number field
+
+Said by the Product Owner at the end of 2026-11-17. A signal has no bounds of its own: a bound is a plain signal (decision 0026; see [Signals](04-signals.md#rules)).
+
+- A **number field** of the builder can have a **minimum** and a **maximum**.
+- Each is **typed by hand, or taken from a signal of the type**, picked in the field itself: a small icon inside the field chooses the signal, as Figma's "Apply variable" in its fields ("dans l'input même de sélection du min/max, on puisse mettre un truc à la main ou alors choisir une variable").
+- A typed value outside them is refused, as the faceplate did before bounds became signals (assistant's reading).
 - An integer signal accepts whole numbers only. An enum signal accepts only the items of its enum: the user picks a display text, the model receives its key.
 - A value that passes is converted back to the model unit and rounded to 12 significant digits before it goes to the model (see [Units](05-units.md)).
 
@@ -174,7 +180,7 @@ sequenceDiagram
     participant SY as Symbol
     participant SN as Synoptic
     U->>MD: creates a preset, sets its values (units, decimals, defaults)
-    U->>MD: switches to Faceplate, builds it, sets each signal to read or override (signals, commands, titles, descriptions, groups)
+    U->>MD: switches to Faceplate, builds it, sets each input to read or write and each output to read or override (signals, commands, titles, descriptions, groups)
     U->>SY: chooses the preset
     U->>SY: edits a default value or a display unit
     U->>SN: chooses the preset
@@ -212,8 +218,8 @@ Mode Faceplate:
 | Group | (no title nor description of its own) |
 | › Title | Control |
 | › Description | Local commands |
-| › Signal | `mode`, name shown "Mode", radio on one line, override |
-| › Signal | `speed_setpoint`, name shown "Speed setpoint", number field, override |
+| › Signal | `mode`, name shown "Mode", radio on one line, write |
+| › Signal | `speed_setpoint`, name shown "Speed setpoint", number field, write, minimum 0 typed, maximum the signal `speed_setpoint_max` |
 | › Command | `start`, button "Start" |
 | › Command | `stop`, button "Stop" |
 | Title | Measures |
@@ -229,13 +235,13 @@ Mode Faceplate:
 | --- | --- | --- | --- | --- |
 | Preset and its name | Metadata, under a type | Symbol and synoptic start from it | Choose one | Choose one |
 | Display unit, decimals, default value | Preset, mode Values, in Metadata | Faceplate of the symbol or synoptic; texts of a symbol that show a value | Edit | Edit |
-| Elements of the faceplate: signals (name shown, input, read or override), commands (name on the button), titles, descriptions, groups | Preset, mode Faceplate, in Metadata | Faceplate of the symbol or synoptic | Open | Open |
+| Elements of the faceplate: signals (name shown, input and its bounds, read or write, read or override), commands (name on the button), titles, descriptions, groups | Preset, mode Faceplate, in Metadata | Faceplate of the symbol or synoptic | Open | Open |
 | Texts of the title and description elements | Preset, mode Faceplate, in Metadata | Faceplate of the symbol or synoptic | Edit (assistant's reading) | Edit, on each placed symbol (assistant's reading) |
 
 ## Open questions
 
+Noted, not to be asked again in the chat (Product Owner, end of 2026-11-17).
+
 - The default value is typed in the display unit of the line, then converted to the model unit (assistant's reading)?
-- The order of the faceplate: the order of the builder, moved with a handle (assistant's reading and proposal)?
 - Can a signal or a command be added twice to the builder?
 - What a symbol or a synoptic can change in the faceplate built by the preset.
-- The input of a signal that is not an enum: fixed by its type (number field, true or false, text field)? Assistant's reading, to confirm.

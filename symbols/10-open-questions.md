@@ -22,7 +22,7 @@ This file is the index of the open questions. A question sits in the file it con
 | Boolean operations and duplication rules. | [Boolean operations](03-editor/expert-menu/boolean-operations.md), [Placement and duplication](03-editor/expert-menu/placement-and-duplication.md) | Four operations; polar, along a path, grid. |
 | Gesture list; names Interaction, Gesture, Effect; feedback, "disabled when", confirmation, keyboard. | [Interaction mode](07-interaction-mode/README.md) | Short list; those names; write them here. |
 | Animatable properties, shapes of mapping, blinking bounded, quality of a value, number format. (Enum: the columns of the Symbol Lib replace the state table, 2026-11-17.) | [Animation mode](08-animation-mode/README.md) | See the page. |
-| Where the Enums page of a Symbol Lib opens from; kinds of value of a column; an item without value; a deleted column; a value or a named colour. | [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md) | Not researched (2026-11-17). |
+| Kinds of value of a column; an item without value; a deleted column; a value or a named colour. (Where the page opens from and how a column is added, named and typed: settled at the end of 2026-11-17.) | [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md) | Not researched (2026-11-17). |
 | **Text that becomes an input: HTML field laid over the text instead of a `foreignObject`.** The text writes an input signal directly, without a command (decision 0014). | [Animation mode](08-animation-mode/README.md) | HTML field over the text: proposed in decision 0006, settled after POC P12. |
 | Do the signals carry a quality in the contract with the model? | [Animation mode](08-animation-mode/README.md) | Yes, shown by default. |
 | Name "Test mode"; form of the simulation log and of the simulated faceplate; the signals used as bounds of an animation listed with the test values. | [Run mode](09-run-mode/README.md) | Test mode; a log line: time, place, gesture, effect, value; bound signals listed, inputs included. |
@@ -48,7 +48,7 @@ This file is the index of the open questions. A question sits in the file it con
 
 | Question | Page | Proposal of the assistant |
 | --- | --- | --- |
-| How a Symbol Lib looks in the navigation bar (the bar itself is decided: Libraries button, separator, every Symbol Lib). | [Libraries and symbols](01-libraries-and-symbols.md) | Initials in a square, the name on hover. |
+| How a Symbol Lib looks in the navigation bar (the bar itself is decided: a small +, every Symbol Lib, a separator, then the pages General, Enums, Symbols, Pipes of the selected one). | [Libraries and symbols](01-libraries-and-symbols.md) | Initials in a square, the name on hover. |
 | Type choice among all the types: how it stays quick when the tree grows. | [Libraries and symbols](01-libraries-and-symbols.md) | A tree with a search field, as in Metadata. |
 
 ## Still open, not researched
