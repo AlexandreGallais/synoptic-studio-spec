@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Enums of a Symbol Lib · Previous: [Open questions](10-open-questions.md)
 
-Status: draft, from the Product Owner's description of 2026-11-17, completed at the end of the day (templates completed on each placed symbol). Not validated. Open points are listed in [Open questions](#open-questions).
+Status: draft, from the Product Owner's description of 2026-11-17, completed at the end of the day (templates completed on each placed symbol). The page and its added columns are carried by decision 0036 (accepted on 2026-11-17); the assistant's readings below stay to confirm. Not validated. Open points are listed in [Open questions](#open-questions).
 
 Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, read only, and lets the user add **columns** to them: a colour, a short text, a number... The animations of the symbols of this library then use these columns: when an enum signal changes value, a property of the drawing takes the value of the chosen column for that item.
 

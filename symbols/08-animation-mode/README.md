@@ -138,7 +138,7 @@ flowchart LR
 
 For each value of the enum, the values of a few properties (colour, visible layers, text), plus a default row for an unknown value. No state machine: the enum already carries the state, and transitions are the model's business. Code a state by brightness and a word, never by colour alone. Keep the word "Animation" ("dynamization" at Siemens). Confidence: low.
 
-Decided by the Product Owner on 2026-11-17: the table is not written in each animation but **once per Symbol Lib**, as columns added to the enum on the [Enums page of the Symbol Lib](../11-enums-of-a-symbol-lib.md). An animation picks the column it uses. The default row for an unknown value is still open there.
+Decided by the Product Owner on 2026-11-17 (decision 0036, accepted on 2026-11-17): the table is not written in each animation but **once per Symbol Lib**, as columns added to the enum on the [Enums page of the Symbol Lib](../11-enums-of-a-symbol-lib.md). An animation picks the column it uses. The default row for an unknown value is still open there.
 
 ### Transition, pivot, conflicts, blinking
 
