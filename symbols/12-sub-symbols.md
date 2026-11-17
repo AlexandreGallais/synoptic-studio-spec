@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Sub-symbols · Previous: [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)
 
-Status: draft, from the Product Owner's description of 2026-11-18 and his answers the same day (the changes of the parent reach the sub-symbols; a sub-symbol only adds; its type is the parent's or a sub-type of it). Not validated. Open points are listed in [Open questions](#open-questions).
+Status: draft, from the Product Owner's description of 2026-11-18 and his answers the same day (the changes of the parent reach the sub-symbols; a sub-symbol only adds; its type is the parent's or a sub-type of it; decision 0044, accepted on 2026-11-18). Not validated. Open points are listed in [Open questions](#open-questions).
 
 A symbol can have a **parent symbol**, as a type of Metadata has a parent type (see [Types](../metadata/01-types.md)). A **sub-symbol** starts from everything made for its parent, and the user adds more on top of it (Product Owner, 2026-11-18: "t'as un symbole parent et tu peux créer un sous-symbole [...] ça prend [ce] qui a été fait pour le symbole, et tu peux rajouter [...] en plus").
 

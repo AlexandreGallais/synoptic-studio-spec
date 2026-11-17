@@ -155,7 +155,7 @@ flowchart LR
 
 ## No text signal
 
-Decided by the Product Owner on 2026-11-18.
+Decided by the Product Owner on 2026-11-18 (decision 0043, accepted on 2026-11-18).
 
 - **A signal is never a text.** Its type is integer, real, boolean or enum.
 - Why: a simulation model exchanges numbers and states. A word shown on screen is the state of something, so it goes through an enum, whose display texts are the words shown (Product Owner: "si on fait afficher une string, c'est sa représentation d'un état, mais du coup ça passe via un enum").

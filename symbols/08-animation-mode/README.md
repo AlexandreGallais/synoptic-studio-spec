@@ -161,7 +161,7 @@ Ignition classes quality as Good, Uncertain, Bad, Error, and shows an overlay on
 ### A text that becomes an input: a gap with a validated page
 
 - `foreignObject` is supported everywhere since 2015, but **WebKit misplaces HTML content inside it** as soon as it gets a layer (opacity, transform, relative or absolute position): bug opened in 2009, still open (changed 2026-09-11). An `<input>` in it is badly scaled and the buttons of a number field are shifted.
-- Opinion of the report: do not put the input in the SVG. On click, lay an HTML field over the text, outside the SVG. Decision 0014 (accepted) makes the text write an input signal of the type directly, without a command; decision 0006 (proposed) carries the HTML field instead of an SVG `foreignObject` and waits for POC P12. POC **P12**: an input in a `foreignObject` against an HTML field laid over it, in Chromium, Firefox and WebKit, with zoom and rotation of the symbol. Confidence: high.
+- Opinion of the report: do not put the input in the SVG. On click, lay an HTML field over the text, outside the SVG. Decision 0014 (accepted) makes the text write an input signal of the type directly, without a command; decision 0006 (proposed) carries the HTML field instead of an SVG `foreignObject`, in two forms only, a number or an enum item (no text, decision 0043), and waits for POC P12. POC **P12**: an input in a `foreignObject` against an HTML field laid over it, in Chromium, Firefox and WebKit, with zoom and rotation of the symbol. Confidence: high.
 - Pitfalls of the input: Enter validates, Escape cancels, losing the focus cancels; the value shown is frozen while typing; decimal comma by language; checks and conversion follow the faceplate rules of Metadata.
 
 ## To decide by the Product Owner
