@@ -500,7 +500,9 @@ mindmap
       Title Enums, small plus on its right
     An enum
       Name
-      Items
+      Kind, Global or Template
+      Description, template only
+      Items, global only
         Title Items, small plus on its right
         Key, a whole number, sent to the model
         Display text, shown to people
@@ -514,7 +516,8 @@ mindmap
 | MD-09.1 | List of enums | List | A page of its own, not part of the signals. Enums can be made before any signal uses them. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.2 | Add an enum | Button (+), small icon | On the right of the title "Enums", above the list (Product Owner, 2026-11-16: "au niveau des enums [...] avec une icône", then "un petit +, une petite icône à côté du titre"). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
 | MD-09.3 | Name | Text field | — | Decided | [Enums](../metadata/06-enums.md) |
-| MD-09.10 | Kind: Global or Template | Choice when the enum is made (control not said) | Global: the items are written here, the same everywhere. Template: a name only, no items here; the items are written for each placed symbol (to confirm). The difference must be explicit on screen; how is for the design system (2026-11-17). | Decided (control: Open) | [Enums](../metadata/06-enums.md#global-enums-and-templates) |
+| MD-09.10 | Kind: Global or Template | Choice when the enum is made (control not said) | Global: the items are written here, the same everywhere. Template: a name and a description only, no items here; the items are completed on each placed symbol, in the synoptic, with a small warning until they are (end of 2026-11-17). The difference must be explicit on screen; how is for the design system (2026-11-17). | Decided (control: Open) | [Enums](../metadata/06-enums.md#global-enums-and-templates) |
+| MD-09.11 | Description of a template | Text field (several lines) | Template only: what the enum is about as a whole, since it has no items to explain it (Product Owner, end of 2026-11-17). Plain text, never sent to the model. For a global enum: open. | Decided (template), Open (global) | [Enums](../metadata/06-enums.md#global-enums-and-templates) |
 | MD-09.4 | Kind of key | — | Removed (Product Owner, 2026-11-16): a key is always a number, there are no string keys. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.5 | Items | Table | Columns in this order: Key, Display text, Description, then the delete button with no header (2026-11-17: the short field first, the long one last; replaces Key, Description, Display text of 2026-11-16). No handle: the order of the items is not changed (2026-11-17). | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.6 | Key | Whole number field | Unique; what the model receives; whole numbers only (2026-11-16). Changing it is breaking for the model. | Decided | [Enums](../metadata/06-enums.md) |

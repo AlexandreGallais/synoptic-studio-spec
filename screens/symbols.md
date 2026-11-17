@@ -570,11 +570,11 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | SY-12.1 | Entry of the page | not said | One Enums page per Symbol Lib. From the left-hand panel ([SY-02](#sy-02--left-hand-panel-of-a-symbol-lib)) or the navigation bar: open. | Decided (page), Open (entry) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.2 | List of enums | List | Every enum of Metadata, global and template; none is made here. | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
-| SY-12.3 | Key, Display text, Description | Read-only columns | From Metadata, in the order of decision 0032; changed in Metadata only. A template has no items, so no lines. | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.3 | Key, Display text, Description | Read-only columns | From Metadata, in the order of decision 0032; changed in Metadata only. A template has no items, so no lines: its name and its description are shown instead, read only (end of 2026-11-17). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.4 | Add a column | Button (+), small icon | As many columns as needed; the place of the + follows the [layout rules](README.md#a-title-and-a-small--on-its-right) (assistant's reading). | Decided (add), Proposed (place) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.5 | Title of a column | Text field | Chosen by the user: `color`, `display text short`... | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.6 | Kind of value of a column | Select | Colour, text, number; the full list is open. | Decided (list: Open) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
-| SY-12.7 | Value of a column for an item | Field of the kind (colour picker, text field, number field) | Global enum only: one per item. For a template, filled with its items for each placed symbol (to confirm). | Decided (global), Open (template) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.7 | Value of a column for an item | Field of the kind (colour picker, text field, number field) | Global enum only: one per item. For a template, filled with its items on each placed symbol, in the synoptic (end of 2026-11-17; the columns with the items: assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 
 Gaps:
 

@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Enums of a Symbol Lib · Previous: [Open questions](10-open-questions.md)
 
-Status: draft, from the Product Owner's description of 2026-11-17. Not validated. Open points are listed in [Open questions](#open-questions).
+Status: draft, from the Product Owner's description of 2026-11-17, completed at the end of the day (templates completed on each placed symbol). Not validated. Open points are listed in [Open questions](#open-questions).
 
 Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, read only, and lets the user add **columns** to them: a colour, a short text, a number... The animations of the symbols of this library then use these columns: when an enum signal changes value, a property of the drawing takes the value of the chosen column for that item.
 
@@ -15,7 +15,7 @@ Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, rea
   - a **title**, chosen by the user ("on donne le titre qu'on veut"): `color`, `display text short`...;
   - a **kind of value**, chosen in a list: colour, text, number (the Product Owner's examples; "peu importe", the full list is open).
 - **For a global enum, the user fills one value per item** in each added column: for `pump_mode`, 0 → orange, 1 → yellow, 2 → blue in the column `color`.
-- **For a template, the user adds the columns the same way**, without items, since a template has none in advance ("on va pas définir en avance, mais au moins, on va pouvoir définir les colonnes qu'on veut en plus par rapport au template"). The values of these columns are then filled where the items of the template are written, for each placed symbol (assistant's reading, to confirm).
+- **For a template, the user adds the columns the same way**, without items, since a template has none in advance ("on va pas définir en avance, mais au moins, on va pouvoir définir les colonnes qu'on veut en plus par rapport au template"). The items of a template are completed on each placed symbol, in the synoptic, with a small warning until they are (Product Owner, end of 2026-11-17, see [Enums](../metadata/06-enums.md#global-enums-and-templates)). The values of these columns are filled there too, with the items (assistant's reading: the question asked both together). Here, a template shows its name and its description, read only, instead of items.
 - **The columns belong to the Symbol Lib**, not to Metadata: two Symbol Libs can give the same enum different colours, as they give the same objects a different look (see [Libraries and symbols](01-libraries-and-symbols.md#symbol-lib)). Assistant's reading of "dans chaque lib", to confirm.
 - Added columns never go to the model: they only serve the drawing.
 
@@ -52,13 +52,13 @@ In the symbol of a pump, an animation gives the body of the pump the colour of t
 | Key, display text, description of an item | Metadata, Enums page | Shown read only here | No | No |
 | Added column (title, kind of value) | Enums page of a Symbol Lib | Animations of the symbols of this library | Chosen by an animation | No |
 | Value of an added column, global enum | Enums page of a Symbol Lib | Animations | Shown through the animation | No |
-| Value of an added column, template | Where the items of the template are written (to confirm) | Animations | Shown through the animation | Filled for each placed symbol (to confirm) |
+| Name and description of a template | Metadata, Enums page | Shown read only here | No | No |
+| Value of an added column, template | On each placed symbol, with the items of the template | Animations | Shown through the animation | Filled for each placed symbol; a small warning until the template is completed |
 
 ## Open questions
 
 - Where the page opens from: a zone "Enums" in the left-hand panel of the Symbol Lib, an item of the navigation bar, or elsewhere?
 - The full list of the kinds of value of a column: colour, text, number; and boolean, icon, a layer to show?
-- For a template, are the values of the added columns filled for each placed symbol, with its items?
 - An item added later in Metadata: its added columns are empty; what does the animation show then (a default value per column)?
 - Deleting a column used by an animation breaks it, with the small red mark (see [What breaks a link](01-libraries-and-symbols.md#what-breaks-a-link)): to confirm.
 - Does a column hold a value, or a link to a named colour of the Symbol Lib (proposed by the research, see [Fill and border](04-drawing-mode/fill-and-border.md))?
