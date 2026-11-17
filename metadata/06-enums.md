@@ -98,13 +98,10 @@ flowchart LR
 | Global enum, its items (key, display text, description) | Enums page | Signal: picks one as a link | Its columns added by the Symbol Lib, used by animations | No |
 | Template (a name and a description, no items) | Enums page | Signal: picks one as a link | Its columns added by the Symbol Lib, used by animations | Its items, completed on each placed symbol; a small warning until they are |
 
-The faceplate builder of a preset chooses how an enum is shown in the faceplate (radio on one line, radio on several lines, select), see [Presets](09-presets.md#mode-faceplate-the-faceplate-builder).
+The faceplate builder of a preset chooses how an enum is shown in the faceplate (radio on one line, radio on several lines, select), see [Presets](09-presets.md#mode-faceplate-the-faceplate-builder). **The radio buttons and the select show the items in the order chosen with the handles** on the Enums page, not sorted by key (Product Owner, end of 2026-11-17, answering the questionnaire asked again in plain words: "Oui, l'ordre des poignées").
 
 ## Open questions
 
-Raised at the end of 2026-11-17, with the handles and the keys that can change:
-
-- In the faceplate, a signal of the type enum shows its items as radio buttons or a select (see [Presets](09-presets.md#mode-faceplate-the-faceplate-builder)): do they come in the order chosen with the handles? The Product Owner answered "Oui, le même ordre" on 2026-11-17 while saying the question was unclear to him ("y a pas d'enum dans le faceplate"): written as yes, to confirm with the question asked again in plain words.
 Raised on 2026-11-17, when the templates were added:
 
 - Does a global enum also get a description of the enum as a whole, like a template, besides the descriptions of its items?
