@@ -62,6 +62,7 @@ Said by the Product Owner on 2026-11-17, who asked that it be written as it is: 
 - **For an input**, the default value is **the first value sent to the model**.
 - **For an input and for an output**, it is **the value shown before the model sends anything**: once the model sends a value, that value is shown instead.
 - This is why the table shows the direction of each signal: the same field means more for an input than for an output.
+- Written in decision 0030 (accepted on 2026-11-17).
 - The default value is in the units of the display unit of the line, like any value the user types (assistant's reading, to confirm); before it goes to the model, it is converted back to the model unit, as in [Typing a value](#typing-a-value).
 
 ```mermaid
@@ -145,7 +146,7 @@ flowchart TD
 
 - A signal element offers **read or override** (Product Owner, 2026-11-17: "au lieu de faire lecture et écriture, là, ce serait lecture ou surcharge, enfin override"). It replaces "read or write": for an output, "write" would make no sense.
 - A signal set to **override** in the builder is the only way for a person to type a value: a command always sends a fixed value (see [Commands](07-commands.md#the-value-is-always-fixed)).
-- **An input and an output can both be set to override, in exactly the same way** (Product Owner, 2026-11-17: "c'est des outputs, faut pouvoir les mettre en write aussi, exactement de la même façon"). It replaces the rule of 2026-11-16, which greyed write for an output.
+- **An input and an output can both be set to override, in exactly the same way** (Product Owner, 2026-11-17: "c'est des outputs, faut pouvoir les mettre en write aussi, exactement de la même façon"). It replaces the rule of 2026-11-16, which greyed write for an output (decision 0030, accepted on 2026-11-17, which changes decisions 0014 and 0022 on this point).
 - What happens to the typed value is **left to what is behind** the faceplate (Product Owner: "c'est à ce qui passe derrière de se débrouiller, parce que ça peut devenir une valeur, ça peut devenir un override"): for an input it becomes the value the model receives; for an output, an override of that output. How an override of an output is applied, and how it ends, is the open question already asked for the command "Override an output" (see [Commands](07-commands.md#open-questions)).
 - **Bounds: suspended** (2026-11-17). Until then, the faceplate checked a typed value against the minimum and the maximum of the signal and refused a value outside them. The Product Owner removed both fields: a bound is now a plain signal of its own, usually an input, with no tie to the signal it bounds (decision 0026; see [Signals](04-signals.md#rules)). Whether the faceplate checks a typed value against a bound signal, and how, waits for the Product Owner's review of the faceplates, where a big change may come (2026-11-17: "on verra après, quand on repassera sur les faceplates"); until then, no check against bounds is written.
 - An integer signal accepts whole numbers only. An enum signal accepts only the items of its enum: the user picks a display text, the model receives its key.
