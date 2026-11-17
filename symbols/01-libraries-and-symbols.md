@@ -81,6 +81,7 @@ Several symbols can share a type, with different drawings and presets: a centrif
 - A change of the interface can **break a link**: what it points to is gone, or can no longer be used the same way (the list is below).
 - A broken item is shown as broken, with a small red mark. How it looks is for the design, later; it may say why, later too. The animation itself is not changed: it just cannot work the same way any more.
 - There is no tool and no automatic repair. The item only warns that it is broken, and the user redoes the mapping properly, on the symbol side, never in Metadata.
+- **Metadata never warns about what a change breaks**; the symbol mode and the synoptic mode show **a list of what is broken** (Product Owner, 2026-11-17: "si ça casse, ça ne dit pas forcément, parce que sinon ça va le dire tout le temps et ça ne sert à rien. Par contre, une fois qu'on est en mode synoptique ou symbole, là, il y a une liste des choses cassées"). Where this list sits and what each line says: not described yet.
 - The same rules apply when the type of a symbol is changed, and when a type is chosen again for a symbol that had lost it.
 
 #### What breaks a link

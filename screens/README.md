@@ -85,7 +85,14 @@ Decided by the Product Owner on 2026-11-16 for the signals, then for the command
 
 - A list or a table whose order the user chooses has a **handle** at the very left of each line: held and dragged, it moves the line; the order is kept.
 - Lines the user cannot change here (the inherited signals and commands) have no handle.
-- Where it holds: the signals, the commands, the links of the documentation, the elements of the faceplate builder (proposed for the builder).
+- Where it holds: the signals, the commands, the links of the documentation, the flags (2026-11-17), the elements of the faceplate builder (proposed for the builder).
+- Where it does not: the items of an enum (Product Owner, 2026-11-17: "On peut pas changer l'ordre, ça me chante pas").
+
+### Tables take the whole width
+
+Asked by the Product Owner on 2026-11-17, while reviewing the wireframes ("ces tableaux ne prennent jamais l'entièreté de la page").
+
+- A table fills the **whole width of the panel** that holds it. The column of text that can be long (a description) takes the room left; the others take the width of their content; the columns of handles and of delete buttons take the width of their icon.
 
 ### Delete with a button and a warning, in Metadata
 
@@ -98,7 +105,7 @@ Decided by the Product Owner on 2026-11-16, while reviewing the wireframes. It r
 - A click on the button opens a **warning message** that asks to confirm. Nothing is deleted before the user confirms. So deleting is never "aussi simple que ça".
 - The same warning everywhere, for a type as for a line.
 - What is deleted shows on the [Versions](../metadata/13-versions.md) page, where it can be undone before a version is made.
-- The wording of the warning, and whether it says what the delete breaks (symbols that lose their type, presets that lose a line): to settle.
+- **The warning never says what the delete breaks** (Product Owner, 2026-11-17: "c'est à la personne de savoir qu'elle supprime quelque chose et qu'il faut faire attention [...] sinon ça va le dire tout le temps et ça ne sert à rien"). What is broken is listed in the symbol mode and in the synoptic mode (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#when-metadata-changes)). The wording of the warning itself: to settle.
 
 ```mermaid
 flowchart LR
@@ -123,7 +130,7 @@ Decided by the Product Owner on 2026-11-16: the signals and the commands of a ty
 Decided by the Product Owner on 2026-11-16. From left to right:
 
 1. The **logo**: a valve, like the logo already in the Figma file (Product Owner, 2026-11-16). The word "Epipasta" heard earlier was a transcription error; the wireframes said "Logo · a valve" until the Product Owner pointed to the logo of the page "Cover" (2026-11-17); since then every top bar of the wireframes holds an instance of its component "App mark", size 24.
-2. Three icons, one per part: **Metadata**, **Symbols**, **Synoptic** (part 3, not written yet).
+2. Three icons, one per part: **Metadata**, **Symbols**, **Synoptic** (part 3, not written yet), **right after the logo, with the normal gap of the bar**: no wide empty space between the logo and the three parts (Product Owner, 2026-11-17: "il y a un espace de taré, ça fait ultra moche").
 3. On the right, the window buttons **minimise, maximise, close**, as in Windows.
 
 ```mermaid

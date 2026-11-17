@@ -103,7 +103,7 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas juste bêtement avoi
 | Command | The command, picked by its ID; the **name on the button**. | Plain text. The faceplate shows a button that sends the command. |
 | Title | A text. | A heading inside the faceplate or inside a group. |
 | Description | A text, plain: no Markdown, no links; line breaks kept. | A paragraph inside the faceplate or inside a group. |
-| Group | Only its own elements: signals, commands, titles, descriptions, groups. No title, no description of its own (confirmed by the Product Owner on 2026-11-17: "ça, faut les enlever, le title et la description"). | Gathers the elements put in it. At its top, the same five small icons with a + as the title "Elements": Signal, Command, Title, Description, Group (decided 2026-11-16; reopened 2026-11-17, see [Only elements in elements](#only-elements-in-elements)). |
+| Group | Only its own elements: signals, commands, titles, descriptions, groups. No title, no description of its own (confirmed by the Product Owner on 2026-11-17: "ça, faut les enlever, le title et la description"). | Gathers the elements put in it. At its top, the same five small icons with a + as the title "Elements": Signal, Command, Title, Description, Group (decided 2026-11-16; confirmed 2026-11-17, see [Only elements in elements](#only-elements-in-elements)). |
 
 #### Only elements in elements
 
@@ -112,7 +112,7 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas donner un titre et u
 - **No title and no description by default**, neither for the faceplate nor for a group. A faceplate or a group that needs a heading or a text gets a title element or a description element, usually put first. This replaces the earlier rule of a title and a description always at the top of the faceplate and of each group.
 - **A group holds the same elements as the faceplate**, a group included: a group can hold a group ("+, signal, commande, titre, description, groupe en haut"). No limit of depth was given.
 - **The add icons of a group are at its top**, not at its bottom ("C'est mieux de plutôt les mettre en haut du groupe"): the same five small icons with a +, in the same order as on the right of "Elements". A click adds the element inside the group.
-- **Reopened on 2026-11-17**, not settled: the Product Owner wonders whether a group should have no add icons at all, the user adding elements with the icons of "Elements" and moving them into the group by drag and drop ("si les gens, ils se débrouillent avec les boutons qui sont au-dessus. Après, ils font du drag and drop, et puis basta. Peut-être plus simple même. [...] je sais pas trop, à voir ça"). Until he chooses, the icons at the top of the group stay.
+- **Confirmed on 2026-11-17**, after a doubt the same day (a group with no add icons, its elements dragged in): the five + icons stay at the top of each group (Product Owner: "les boutons « + » là, directement dans le groupe [...] c'est OK, donc tu peux garder ça. Comme ça, ça fera gagner du temps et sera moins chiant").
 - The builder is thus one generic rule at every level: a list of elements, and a row of small + icons above it.
 
 - **What is in the builder is what the faceplate shows.** There is no "Shown" checkbox any more ("on montrerait ce qu'on veut"): a signal or a command that is not added is not in the faceplate.
@@ -233,7 +233,6 @@ Mode Faceplate:
 
 ## Open questions
 
-- A group: the five add icons at its top (decided 2026-11-16), or no icons, the elements being dragged into it (reopened by the Product Owner on 2026-11-17)?
 - The default value is typed in the display unit of the line, then converted to the model unit (assistant's reading)?
 - The order of the faceplate: the order of the builder, moved with a handle (assistant's reading and proposal)?
 - Can a signal or a command be added twice to the builder?

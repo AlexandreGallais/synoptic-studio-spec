@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Units · Previous: [Signals](04-signals.md) · Next: [Enums](06-enums.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (the units are a ready-made catalogue, read only in the application, kept in files of the software that contributors complete; a signal says whether its value is a quantity or a difference; decision 0020, accepted on 2026-11-16; the same day: the choice shown in the one column "Quantity", a difference only where the conversion changes, default decimals fixed by the catalogue; at the end of the day, one model unit per quantity, the same everywhere, no longer chosen per signal). Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (the units are a ready-made catalogue, read only in the application, kept in files of the software that contributors complete; a signal says whether its value is a quantity or a difference; decision 0020, accepted on 2026-11-16; the same day: the choice shown in the one column "Quantity", a difference only where the conversion changes, default decimals fixed by the catalogue; at the end of the day, one model unit per quantity, the same everywhere, no longer chosen per signal); the page reviewed by him on 2026-11-17 (default unit and default decimals, a converter, the formula of each unit in the table, families named after their system). Open points are listed in [Open questions](12-open-questions.md).
 
 A Units page lists quantities (mass, volume, flow, pressure...), with their families and units. A quantity is what a value measures; a unit is one way to count it: the kilogram is a unit of the quantity mass.
 
@@ -39,17 +39,18 @@ flowchart TD
 ```
 
 - A quantity holds one or more unit families.
-- A family is a table of units, like the school ladder: kilogram, hectogram, decagram, gram, decigram, centigram, milligram. Each unit has its ratio to the others in the family.
-- A quantity can hold several families. Example: quantity "mass" has the family "gram" (the metric ladder) and the family "pound" (pound, ounce...).
+- A family is a table of units of one system, like the school ladder: kilogram, hectogram, decagram, gram, decigram, centigram, milligram. A family is named after its system: **Metric**, **Imperial**, US customary... (as in the wireframes the Product Owner reviewed on 2026-11-17; it replaces the names "gram" and "pound" used for the families until then).
+- A quantity can hold several families. Example: quantity "mass" has the family "Metric" (kilogram, gram, milligram...) and the family "Imperial" (pound, ounce...).
 - Each quantity has a reference family. Every other family is converted to it and from it, never pairwise. Formulas are not limited to a factor, so cases like temperature are covered.
+- À trancher (asked on 2026-11-17): the reference family is a way to store the conversions, made for a user who typed them; since the catalogue is ready made, it means nothing on screen (Product Owner: "Référence family metric, ça, je pas forcément compris"). Proposed: every unit is defined against the base unit of its quantity (as UCUM and Pint do), the families only group the units for reading, and the reference family disappears from the catalogue and from the screen.
 
 ```mermaid
 flowchart LR
     subgraph Mass[Quantity: mass]
-        subgraph G[Family: gram, the reference]
+        subgraph G[Family: Metric, the reference]
             kg[kilogram] --- g[gram] --- mg[milligram]
         end
-        subgraph P[Family: pound]
+        subgraph P[Family: Imperial]
             lb[pound] --- oz[ounce]
         end
         P -- "to the reference" --> G
@@ -128,16 +129,35 @@ Decided by the Product Owner on 2026-11-16: "quand on choisit une quantité, il 
 
 ## The Units page
 
-- The page is read only (see [A ready-made catalogue, read only](#a-ready-made-catalogue-read-only)).
+Reviewed by the Product Owner on 2026-11-17, on the wireframe of the mass. What he asked: the name of the quantity said once, the words "by default", the conversions shown in the table instead of ratios, and a field to try a value.
+
+- The page is read only (see [A ready-made catalogue, read only](#a-ready-made-catalogue-read-only)): nothing typed there changes the catalogue.
 - The page lists the quantities. Each difference is shown under its quantity.
-- A click on a quantity opens it: its families, its reference family, its default model unit and its default decimal places.
-- A click on a family opens its table of units and its conversion to the reference family and back.
+- A click on a quantity opens it. **Its name is its title, and is not written again under it** (Product Owner, 2026-11-17: "Tu mets déjà quantité, masse. Ça sert à rien de remettre le nom juste en dessous [...] vu que c'est redondant"). Under the title:
+  - **Default unit**: the model unit of the quantity, which is also the display unit until a preset chooses another (Product Owner, 2026-11-17: "Le modèle unit : faudrait mettre unité par défaut"; see [Model unit and display unit](#model-unit-and-display-unit)).
+  - **Default decimal places** (Product Owner: "Pareil, decimal place par défaut").
+  - **Families**: the list of its families; a click opens one (kept by the Product Owner on 2026-11-17: "ça fait sens").
+- A click on a family opens, on the right, **a converter and the table of its units** (Product Owner, 2026-11-17):
+  - **A number field at the top, in the default unit** of the quantity, 1 to start with (assistant's reading). Typing a value there converts it into every unit of the table: "je mets 1 kg et, avec 1 kg, je vois combien de pounds ça fait et combien d'ounces ça fait". It only tries a value: nothing is kept.
+  - **The table of the units**, one line per unit, taking the whole width: **Unit** (its name, with its variant), **Symbol**, **Value** (the value of the field, converted into this unit), **Formula** (how this unit is computed from the default unit, e.g. `lb = kg ÷ 0.45359237`, `°F = °C × 9/5 + 32`).
+  - **The formula is in the table, on the line of its unit**, never in a line under the table (Product Owner: "il faudra que ce soit dans le tableau, le calcul. Il faudrait dire que le kilogramme se calcule de telle manière").
+  - **No ratio column**: the ratio of each unit inside its family (pound 1, ounce 1/16) is no longer shown (Product Owner: "C'est présenté de la pire des manières").
+- How the converted value is rounded: assistant's reading, rounded to 12 significant digits, as a typed value (see the last rule below), so that the table reads as a reference; not the default decimals, which would show 1 kg as 0.001 long ton instead of 0.000984207.
+- The line of the default unit is marked in its family; its formula is the unit itself (assistant's reading).
 
 ```mermaid
 flowchart LR
-    L["List of quantities, each difference under its quantity"] -->|"click a quantity"| Q["Quantity: families, reference family, default model unit, default decimals"]
-    Q -->|"click a family"| F["Family: units and ratios, conversion to the reference and back"]
+    L["List of quantities, each difference under its quantity"] -->|"click a quantity"| Q["Quantity, its name as title: default unit, default decimal places, families"]
+    Q -->|"click a family"| F["Family: a field in the default unit, then the table Unit, Symbol, Value, Formula"]
 ```
+
+Example, the mass, family Imperial, with 1 typed in the field (default unit: kilogram):
+
+| Unit | Symbol | Value | Formula |
+| --- | --- | --- | --- |
+| Pound | lb | 2.20462262185 | lb = kg ÷ 0.45359237 |
+| Ounce | oz | 35.2739619496 | oz = kg ÷ 0.028349523125 |
+| Stone | st | 0.157473044418 | st = kg ÷ 6.35029318 |
 
 - Unit names carry their variant (US gallon, thermochemical calorie), because one name hides several values.
 - Units are flat: "m³/h" is one unit with its own factor, nothing is deduced from its parts.
@@ -171,6 +191,7 @@ flowchart LR
 
 ## Open questions
 
+- The reference family (asked on 2026-11-17): kept, or replaced by a base unit per quantity against which every unit is defined, the families only grouping the units for reading (proposed)? Until answered, the wireframe no longer shows it.
 - Source and licence of the catalogue data (UCUM, QUDT, CLDR, NIST not checked).
 - The default decimals of each quantity: kept in the catalogue, or replaced by one number of decimals for the whole project, set outside Metadata (Product Owner, 2026-11-17, about the signal: "avoir le même nombre de décimales partout")? Not asked yet. Going over the presets on 2026-11-17, the Product Owner kept their column Decimals ("les décimales ici servent"), which starts from this default (see [Presets](09-presets.md#mode-values-one-table-of-the-signals)).
 - Where the model unit of each quantity is set: once and for good in the catalogue, once per project in a configuration file, or on an annex page (Product Owner, 2026-11-16: "Je sais pas où on va le mettre encore"; later the same day, leaning towards the catalogue, "il faut que j'y réfléchisse").

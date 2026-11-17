@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Screens](README.md) › Metadata
 
-Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal; then the parts of a type as a strip of icons, delete by right click everywhere, commands to inputs only, whole number enum keys, the type tree kept in full page; last, no Edit or Save step anywhere and a Versions page, the read-only mode of the description kept, the direction first in the table of signals, the name shown of a signal moved to the preset, three kinds of command with an ID; then quantity or difference in the one column Quantity, and the parts of a type listed by name, fixed under the tree, replacing the strip of icons; last, the list moved above the tree then back under it, and a Faceplate part, a view only, replacing the button that showed the faceplate; at the end of the day, the tree validated with its search behind an icon, no right click anywhere (a delete button with a warning), inherited lines first, icons for a quantity and a difference, the formatting tool bar in both modes, and a preset in two modes, Values and the faceplate builder; last, the Faceplate part removed, the model unit removed from the signals, an icon alone for a quantity or a difference, a description for each enum item, handles on the links and the commands, a small + on the right of the title of each list, and no header on the columns of buttons); on 2026-11-17, the minimum and the maximum removed from the signal (a bound is a plain signal, usually an input), the header "Quantity / Difference", no decimals on the signal and no bubble on an enum name. It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
+Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal; then the parts of a type as a strip of icons, delete by right click everywhere, commands to inputs only, whole number enum keys, the type tree kept in full page; last, no Edit or Save step anywhere and a Versions page, the read-only mode of the description kept, the direction first in the table of signals, the name shown of a signal moved to the preset, three kinds of command with an ID; then quantity or difference in the one column Quantity, and the parts of a type listed by name, fixed under the tree, replacing the strip of icons; last, the list moved above the tree then back under it, and a Faceplate part, a view only, replacing the button that showed the faceplate; at the end of the day, the tree validated with its search behind an icon, no right click anywhere (a delete button with a warning), inherited lines first, icons for a quantity and a difference, the formatting tool bar in both modes, and a preset in two modes, Values and the faceplate builder; last, the Faceplate part removed, the model unit removed from the signals, an icon alone for a quantity or a difference, a description for each enum item, handles on the links and the commands, a small + on the right of the title of each list, and no header on the columns of buttons); on 2026-11-17, the minimum and the maximum removed from the signal (a bound is a plain signal, usually an input), the header "Quantity / Difference", no decimals on the signal and no bubble on an enum name; later the same day, the Units page reviewed (default unit, converter, formula per unit), the display text before the description of an enum item, the Flags page completed and moved after Commands, and the icons at the top of a group of the faceplate builder confirmed. It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
 
 ## MD-00 · Navigation bar of Metadata
 
@@ -68,7 +68,7 @@ mindmap
 | MD-01.3 | Create a child type | Button (+), on hover | On the right of each type, shown when the mouse is over it; creates a type inside it, with a default name. Always shown in a light colour: thought of, then dropped as too loaded (2026-11-16). | Decided | [Types](../metadata/01-types.md) |
 | MD-01.3b | Create a root type | Button (+), always shown | On the line of the title "Type tree", always on the far right. | Decided | [Types](../metadata/01-types.md) |
 | MD-01.4 | Delete a type | — | Removed from the tree (2026-11-16): no right click in Metadata; the type is deleted in General ([MD-02.8](#md-02--general)). | Decided | [Types](../metadata/01-types.md) |
-| MD-01.5 | Parts of the type | List of names | In the column of the type tree, under it, fixed at the bottom: it never moves when the tree grows. The names in whole words, in this order: General, Documentation, Signals, Commands, Presets (proposal B, 2026-11-16, replacing the strip of icons of proposal C; moved above the tree for a while the same day, then back under it). No Faceplate part (removed at the end of 2026-11-16). | Decided | [Types](../metadata/01-types.md#the-parts-of-a-type-a-list-fixed-under-the-tree) |
+| MD-01.5 | Parts of the type | List of names | In the column of the type tree, under it, fixed at the bottom: it never moves when the tree grows. The names in whole words, in this order: General, Documentation, Signals, Commands, Flags, Presets (Flags added on 2026-11-17; proposal B, 2026-11-16, replacing the strip of icons of proposal C; moved above the tree for a while the same day, then back under it). No Faceplate part (removed at the end of 2026-11-16). | Decided | [Types](../metadata/01-types.md#the-parts-of-a-type-a-list-fixed-under-the-tree) |
 | MD-01.6 | Search | Button (icon) on the line of the title, left of the + | A click turns the title into a search field; typing filters the tree; the + becomes a cross that closes the search and brings the title back (2026-11-16). It replaces the field under the title. | Decided | [Types](../metadata/01-types.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
 | MD-01.6b | Search field | Text field | In place of the title "Type tree", while searching. | Decided | [Types](../metadata/01-types.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
 | MD-01.6c | Close the search | Button (×) | In place of the + while searching. | Decided | [Types](../metadata/01-types.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
@@ -294,6 +294,37 @@ Gaps:
 
 - Override an output: who applies it and how it ends, open (see [Commands](../metadata/07-commands.md#open-questions)).
 
+## MD-12 · Flags, a part of the type
+
+Path: Metadata › Types › a type › Flags, fifth part of the type, between Commands and Presets. Described by the Product Owner on 2026-11-17; name and place given by him the same day ("flag, ça me va très bien"; "la page, elle fait partie des types"). An ID and a description per flag given by him the same day, then the rest of the page (description optional, internal identifier, no rule on an ID, handles, inheritance). Placed here, in the order of the parts, though its number comes after MD-07 (Product Owner, 2026-11-17: "c'est juste pour que, visuellement, ce soit plus simple"). The wireframe is the frame "MD-12 · Flags" of the page Spec in Figma, placed between MD-05 and MD-07.
+
+```mermaid
+mindmap
+  root((MD-12 Flags))
+    Title Flags, small plus on its right
+    Table of the flags of the type, whole width
+      Inherited flags first, read only, no handle
+      Handle, own lines
+      ID, no rule on how it is written
+      Description, optional
+      Delete button, far right, no header, warning
+    Ticked in the synoptic, part 3
+```
+
+| ID | Element | Kind | Values and behaviour | Status | Source |
+| --- | --- | --- | --- | --- | --- |
+| MD-12.1 | Table of flags | Table, whole width | The flags of the selected type, one line per flag. Columns in this order: the handle with no header, ID, Description, then the delete button with no header (2026-11-17). Inherited flags first, read only, with no handle, as for signals (inheritance confirmed 2026-11-17). | Decided | [Flags](../metadata/14-flags.md) |
+| MD-12.2 | Add a flag | Button (+), small icon | On the right of the title "Flags" ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Implied | [Flags](../metadata/14-flags.md) |
+| MD-12.6 | Handle of a line | Grip, dragged, no header | At the very left of each own line: the users sort the flags as they want (2026-11-17). | Decided | [Layout rules](README.md#handles-to-choose-the-order) |
+| MD-12.3 | ID | Text field | Always editable, as everything in Metadata. No rule on how it is written: the users name it as they want (2026-11-17). Followed through an internal identifier when renamed (2026-11-17). Unique or not: open. | Decided (no rule, internal identifier), Open (unique) | [Flags](../metadata/14-flags.md) |
+| MD-12.5 | Description | Text field, takes the room left | After the ID: what the flag is for, plain text, optional (2026-11-17). Shown when editing a synoptic; kept out of the configuration files: assistant's reading. | Decided (optional), Proposed (not in the files) | [Flags](../metadata/14-flags.md) |
+| MD-12.4 | Delete a flag | Button (icon), then a warning | At the far right of the line, with no header ([layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). The warning never says which synoptics have the flag on (2026-11-17); the synoptic mode lists what is broken. | Decided | [Flags](../metadata/14-flags.md) |
+
+Gaps:
+
+- Must an ID be unique in the type and its tree? See [Flags](../metadata/14-flags.md#open-questions).
+- The panel of the synoptic where the flags of a placed symbol are ticked: described with part 3.
+
 ## MD-06 · Faceplate: removed
 
 The Faceplate part, a view of the faceplate of a chosen preset, was removed by the Product Owner at the end of 2026-11-16: the faceplate is the mode Faceplate of a preset ([MD-07](#md-07--presets)). The identifier MD-06 is not reused. The faceplate itself (its controls, its size) is drawn with the synoptic part.
@@ -383,7 +414,7 @@ mindmap
 | MD-07.11 | Read or override | Radio, in a signal element | Override: a person types a value, for an input and for an output alike; what the model side does with it is up to it (2026-11-17, replaces "read or write" and the greyed write of an output). The check against the bounds is suspended while bounds as signals are open (2026-11-17). | Decided | [Presets](../metadata/09-presets.md#typing-a-value) |
 | MD-07.15 | Command element | Element of the builder | The command, picked by its ID; the name on its button (plain text). | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.19 | Title element, description element | Text fields | A heading or a paragraph inside the faceplate or a group; the only way to give either a title or a description (2026-11-16). Description: plain text, line breaks kept. | Decided | [Presets](../metadata/09-presets.md#only-elements-in-elements) |
-| MD-07.20 | Group element | Element of the builder | No title nor description of its own (confirmed 2026-11-17). At its top, the five small icons with a + (Signal, Command, Title, Description, Group), then its own elements; a group can hold a group (2026-11-16). Reopened 2026-11-17: or no icons, the elements dragged into the group. | Decided (no title), Open (icons) | [Presets](../metadata/09-presets.md#only-elements-in-elements) |
+| MD-07.20 | Group element | Element of the builder | No title nor description of its own (confirmed 2026-11-17). At its top, the five small icons with a + (Signal, Command, Title, Description, Group), then its own elements; a group can hold a group (2026-11-16). The icons confirmed on 2026-11-17, after a doubt the same day: they save time. | Decided | [Presets](../metadata/09-presets.md#only-elements-in-elements) |
 | MD-07.21 | Delete an element, delete a preset | Button (icon), then a warning | At the far right of the element or of the preset's line (2026-11-16). | Decided | [Layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata) |
 | MD-07.17 | Order | Rule | Mode Values: the order of Signals, no handle, no sort. Mode Faceplate: the order of the builder, moved with a handle (proposed). | Decided (Values), Proposed (builder) | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.16 | Description per signal | — | Removed (2026-11-16): no description per signal or command; the builder has description elements instead. | Decided | [Presets](../metadata/09-presets.md) |
@@ -400,7 +431,9 @@ Path: Metadata › Units (navigation bar).
 
 The page goes from the list of quantities to a quantity, then to a family. Following the [layout rules](README.md#layout-rules), they sit in columns from left to right: the list, the selected quantity, the selected family.
 
-**The whole page is read only** (Product Owner, 2026-11-16): the catalogue ships with the software, and contributors complete its files; no +, no field to change, no delete.
+**The whole page is read only** (Product Owner, 2026-11-16): the catalogue ships with the software, and contributors complete its files; no +, no field that changes the catalogue, no delete. The only field is the converter of a family, which tries a value and keeps nothing (2026-11-17).
+
+Reviewed by the Product Owner on 2026-11-17 on the wireframe of the mass: the name said once, "Default unit" and "Default decimal places", a converter, the formula of each unit in the table, no ratio.
 
 ```mermaid
 flowchart LR
@@ -417,15 +450,18 @@ mindmap
       Mass
       Flow
     A quantity
-      Name
-      Default model unit
+      Its name as title, not repeated
+      Default unit
       Default decimal places
-      Reference family
       Families
     A family
-      Name
-      Units and their ratio
-      Conversion to the reference and back
+      Its name as title
+      Converter, a field in the default unit
+      Table of units, whole width
+        Unit
+        Symbol
+        Value, converted from the field
+        Formula, from the default unit
     Ready-made catalogue
 ```
 
@@ -433,13 +469,16 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | MD-08.1 | List of quantities | List | Mass, volume, flow... Each difference is shown under its quantity, and stays a quantity of its own. | Decided | [Units](../metadata/05-units.md) |
 | MD-08.2 | Add a quantity, a family, a unit | — | Removed (Product Owner, 2026-11-16): the page is read only; a missing unit is added by a contributor to the catalogue files. | Decided | [Units](../metadata/05-units.md#a-ready-made-catalogue-read-only) |
-| MD-08.3 | Model unit | Text, read only | The model unit of the quantity, the same for every signal (2026-11-16). From the catalogue; whether a project can set its own: open. | Decided (one per quantity), Open (where set) | [Units](../metadata/05-units.md#model-unit-and-display-unit) |
-| MD-08.4 | Default decimal places | Text, read only | Fixed by the catalogue; a preset can change it for a signal (Product Owner, 2026-11-16). | Decided | [Units](../metadata/05-units.md#decimal-places) |
-| MD-08.5 | Reference family | Text, read only | Every other family converts to it and back. | Decided | [Units](../metadata/05-units.md) |
-| MD-08.6 | Families | List | A click opens the family. | Decided | [Units](../metadata/05-units.md) |
-| MD-08.7 | Unit | Text, read only | Name with its variant (US gallon); ratio inside the family. Flat units (`m³/h` is one unit). | Decided | [Units](../metadata/05-units.md) |
-| MD-08.8 | Conversion | Text, read only | Its form (proportional, affine, inverse, logarithmic, or a pair of expressions) and its parameters, going and back. | Decided | [Units](../metadata/05-units.md) |
-| MD-08.9 | Parameters of the form | — | Merged into MD-08.8: shown, never typed. | Decided | [Units](../metadata/05-units.md) |
+| MD-08.12 | Name of the quantity | Title | The title of the quantity's column; not written again under it (2026-11-17: "ça sert à rien de remettre le nom juste en dessous"). | Decided | [Units](../metadata/05-units.md#the-units-page) |
+| MD-08.3 | Default unit | Text, read only | Labelled "Default unit" (2026-11-17, replaces "Model unit"): the model unit of the quantity, the same for every signal (2026-11-16), and the display unit until a preset chooses another. From the catalogue; whether a project can set its own: open. | Decided (label, one per quantity), Open (where set) | [Units](../metadata/05-units.md#model-unit-and-display-unit) |
+| MD-08.4 | Default decimal places | Text, read only | Labelled "Default decimal places" (2026-11-17). Fixed by the catalogue; a preset can change it for a signal (Product Owner, 2026-11-16). | Decided | [Units](../metadata/05-units.md#decimal-places) |
+| MD-08.5 | Reference family | — | Not shown any more (2026-11-17): the Product Owner did not see what it was for, and the formulas now go from the default unit. Kept or removed from the catalogue: asked. | Proposed | [Units](../metadata/05-units.md#quantities-families-and-conversions) |
+| MD-08.6 | Families | List | Named after their system: Metric, Imperial... (2026-11-17). A click opens the family (kept 2026-11-17). | Decided | [Units](../metadata/05-units.md) |
+| MD-08.13 | Converter | Number field | At the top of the family, in the default unit of the quantity, 1 to start with (assistant's reading). Its value is converted on every line of the table; nothing is kept (2026-11-17: "je mets 1 kg et [...] je vois combien de pounds ça fait et combien d'ounces"). | Decided (field), Proposed (starts at 1) | [Units](../metadata/05-units.md#the-units-page) |
+| MD-08.7 | Table of units | Table, read only, whole width | One line per unit. Columns: Unit (name with its variant: US gallon), Symbol, Value, Formula. Flat units (`m³/h` is one unit). No ratio column (2026-11-17: the ratio "1/16" is "présenté de la pire des manières"). The line of the default unit is marked (assistant's reading). | Decided | [Units](../metadata/05-units.md#the-units-page) |
+| MD-08.14 | Value | Column, read only | The value of the converter in this unit, rounded to 12 significant digits (assistant's reading). | Decided (column), Proposed (rounding) | [Units](../metadata/05-units.md#the-units-page) |
+| MD-08.8 | Formula | Column, read only | How this unit is computed from the default unit, on its own line, never in a line under the table (2026-11-17): `lb = kg ÷ 0.45359237`, `°F = °C × 9/5 + 32`. It replaces the conversion of the family to the reference family, shown going and back. | Decided | [Units](../metadata/05-units.md#the-units-page) |
+| MD-08.9 | Parameters of the form | — | Merged into the formula: shown, never typed. | Decided | [Units](../metadata/05-units.md) |
 | MD-08.10 | Round-trip check | — | Done on the catalogue files, not by the user. | Decided | [Units](../metadata/05-units.md) |
 | MD-08.11 | Ready-made catalogue | — | Every unit that can be imagined, in files of the software; source and licence open. | Decided, licence Open | [Units](../metadata/05-units.md#source-of-the-catalogue) |
 
@@ -464,9 +503,10 @@ mindmap
       Items
         Title Items, small plus on its right
         Key, a whole number, sent to the model
-        Description, what the item means
         Display text, shown to people
+        Description, what the item means
         Delete button, no header
+        No handle, the order is not changed
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
@@ -475,17 +515,17 @@ mindmap
 | MD-09.2 | Add an enum | Button (+), small icon | On the right of the title "Enums", above the list (Product Owner, 2026-11-16: "au niveau des enums [...] avec une icône", then "un petit +, une petite icône à côté du titre"). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
 | MD-09.3 | Name | Text field | — | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.4 | Kind of key | — | Removed (Product Owner, 2026-11-16): a key is always a number, there are no string keys. | Decided | [Enums](../metadata/06-enums.md) |
-| MD-09.5 | Items | Table | Columns in this order: Key, Description, Display text, then the delete button with no header (2026-11-16). | Decided | [Enums](../metadata/06-enums.md) |
+| MD-09.5 | Items | Table | Columns in this order: Key, Display text, Description, then the delete button with no header (2026-11-17: the short field first, the long one last; replaces Key, Description, Display text of 2026-11-16). No handle: the order of the items is not changed (2026-11-17). | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.6 | Key | Whole number field | Unique; what the model receives; whole numbers only (2026-11-16). Changing it is breaking for the model. | Decided | [Enums](../metadata/06-enums.md) |
-| MD-09.9 | Description | Text field | Between the key and the display text: what the item means, plain text, never sent to the model (2026-11-16). Optional and shown on this page only: assistant's reading, to confirm. | Decided (field), Proposed (optional, here only) | [Enums](../metadata/06-enums.md) |
-| MD-09.7 | Display text | Text field | What the faceplate, the symbol texts and the test values show. Not breaking. | Decided | [Enums](../metadata/06-enums.md) |
+| MD-09.7 | Display text | Text field | After the key. What the faceplate, the symbol texts and the test values show. Not breaking. | Decided | [Enums](../metadata/06-enums.md) |
+| MD-09.9 | Description | Text field | Last, after the display text (2026-11-17): what the item means, plain text, never sent to the model (2026-11-16). Optional, shown on this page only (2026-11-16). | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.8 | Add, delete an item | Button (+), delete button (icon) | The small + on the right of the title "Items"; the delete button at the far right of an item, with no header, then a warning (2026-11-16; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). An enum is deleted the same way. | Decided | [Enums](../metadata/06-enums.md) |
 
 Gaps:
 
 - Must the display texts be unique too?
 - Changing a key is breaking: no Edit or Save step (2026-11-16); it shows on [MD-11](#md-11--versions) and makes the version a major one (proposed).
-- Order of the items: is it the order of the menu in the faceplate?
+- Order of the items: never changed by the user (2026-11-17); is it the order of creation, and the order of the menu in the faceplate?
 - Which signals use an enum: is it shown (a usage counter)?
 
 ## MD-10 · Libraries: removed
@@ -521,32 +561,3 @@ Gaps:
 
 - Where the list of past versions is shown, and whether one can be opened or restored.
 - How a difference points back to the screen where the thing is edited.
-
-## MD-12 · Flags, a part of the type
-
-Path: Metadata › Types › a type › Flags, fifth part of the type, between Commands and Presets. Described by the Product Owner on 2026-11-17; name and place given by him the same day ("flag, ça me va très bien"; "la page, elle fait partie des types"). An ID and a description per flag given by him the same day. The wireframe is the frame "MD-12 · Flags" of the page Spec in Figma (drawn on 2026-11-17).
-
-```mermaid
-mindmap
-  root((MD-12 Flags))
-    Title Flags, small plus on its right
-    List of the flags of the type
-      Inherited flags first, as for signals
-      ID of each flag
-      Description of each flag
-      Delete button, far right, no header, warning
-    Ticked in the synoptic, part 3
-```
-
-| ID | Element | Kind | Values and behaviour | Status | Source |
-| --- | --- | --- | --- | --- | --- |
-| MD-12.1 | List of flags | Table | The flags of the selected type, one line per flag. Columns in this order: ID, Description, then the delete button with no header (2026-11-17, "un [ID de] flag et une description"). Inherited flags first, read only, as for signals: assistant's reading. | Decided (ID and description, in the type), Proposed (inheritance) | [Flags](../metadata/14-flags.md) |
-| MD-12.2 | Add a flag | Button (+), small icon | On the right of the title "Flags" ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Implied | [Flags](../metadata/14-flags.md) |
-| MD-12.3 | ID | Text field | Always editable, as everything in Metadata. Its rules (characters, unique): open. | Implied | [Flags](../metadata/14-flags.md#open-questions) |
-| MD-12.5 | Description | Text field | After the ID: what the flag is for, plain text, as the description of an enum item ([MD-09.9](#md-09--enums)) (2026-11-17). Optional and never written in the configuration files: assistant's reading, to confirm. | Decided (field), Proposed (optional, not in the files) | [Flags](../metadata/14-flags.md) |
-| MD-12.4 | Delete a flag | Button (icon), then a warning | At the far right of the line, with no header ([layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). What the warning says when symbols have the flag on: open. | Implied | [Flags](../metadata/14-flags.md#open-questions) |
-
-Gaps:
-
-- The order of the list (a handle?), whether the description is optional and kept out of the files, inheritance: see [Flags](../metadata/14-flags.md#open-questions).
-- The panel of the synoptic where the flags of a placed symbol are ticked: described with part 3.
