@@ -49,7 +49,7 @@ flowchart LR
 
 Decided by the Product Owner (2026-11-11). A text can be set at the size the user needs, and it can turn into an input when the user clicks it, if an input signal is linked to it. It makes quick entries: no separate panel is opened.
 
-- Since commands always send a fixed value (2026-11-16, see [Commands](../../metadata/07-commands.md#the-value-is-always-fixed)), this text **writes an input signal of the type directly**, with the same checks as a write entry of the faceplate: bounds, conversion from the display unit, enum item (Product Owner, 2026-11-16, accepting the assistant's proposal). No command is used.
+- Since commands always send a fixed value (2026-11-16, see [Commands](../../metadata/07-commands.md#the-value-is-always-fixed)), this text **writes an input signal of the type directly**, with the same checks as a write entry of the faceplate: conversion from the display unit, enum item (the check against bounds is suspended since a bound became a signal of its own, 2026-11-17) (Product Owner, 2026-11-16, accepting the assistant's proposal). No command is used.
 - Only an input signal can be linked: an output is computed by the model.
 
 | What the text shows | What a click does |
@@ -106,7 +106,7 @@ Transform and opacity, animated by CSS or by the animation interface of the brow
 
 | Shape | For | Opinion of the report |
 | --- | --- | --- |
-| Bounded linear: an input range becomes an output range; outside it, the output stays at its bound | Integer, real | Offer; the input range takes the bounds of the signal by default |
+| Bounded linear: an input range becomes an output range; outside it, the output stays at its bound | Integer, real | Offer; the default input range is open since a signal has no bounds any more (2026-11-17, see [Signals](../../metadata/04-signals.md#open-questions)) |
 | By ranges (thresholds): a table of non-overlapping ranges, each with a value (as in WinCC Unified, which flags overlaps) | Integer, real | Offer |
 | Two values | Boolean | Offer |
 | State table | Enum | Offer (below) |
@@ -137,13 +137,13 @@ Ignition classes quality as Good, Uncertain, Bad, Error, and shows an overlay on
 
 - The browser formats a number by language (decimal comma), with or without thousand separators, leading zeros, decimals or significant digits, standard, scientific or engineering notation, sign always or never.
 - Opinion of the report: no free format string. In the preset: the decimals (already). Per text: thousand separator (off by default), sign, leading zeros, notation. The language of the application sets the decimal comma.
-- Missing value: a long dash and the quality mark. Out of bounds: the value as it is (the bounds are indicative). Too long for a fixed box: "####", never truncated digits. Confidence: very low.
+- Missing value: a long dash and the quality mark. Out of range: the value as it is (a signal has no bounds of its own since 2026-11-17). Too long for a fixed box: "####", never truncated digits. Confidence: very low.
 
 ### A text that becomes an input: a gap with a validated page
 
 - `foreignObject` is supported everywhere since 2015, but **WebKit misplaces HTML content inside it** as soon as it gets a layer (opacity, transform, relative or absolute position): bug opened in 2009, still open (changed 2026-09-11). An `<input>` in it is badly scaled and the buttons of a number field are shifted.
 - Opinion of the report: do not put the input in the SVG. On click, lay an HTML field over the text, outside the SVG. Decision 0014 (accepted) makes the text write an input signal of the type directly, without a command; decision 0006 (proposed) carries the HTML field instead of an SVG `foreignObject` and waits for POC P12. POC **P12**: an input in a `foreignObject` against an HTML field laid over it, in Chromium, Firefox and WebKit, with zoom and rotation of the symbol. Confidence: high.
-- Pitfalls of the input: Enter validates, Escape cancels, losing the focus cancels; the value shown is frozen while typing; decimal comma by language; bounds and conversion follow the faceplate rules of Metadata.
+- Pitfalls of the input: Enter validates, Escape cancels, losing the focus cancels; the value shown is frozen while typing; decimal comma by language; checks and conversion follow the faceplate rules of Metadata.
 
 ## To decide by the Product Owner
 

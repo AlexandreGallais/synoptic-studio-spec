@@ -166,7 +166,7 @@ flowchart LR
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Quantity, families, reference family, conversions, default model unit, default decimals | Catalogue files of the software, completed by contributors; read only on the Units page | Signal (quantity, value or difference), preset (display unit, decimals) | No | No |
-| Model unit of a quantity, the same everywhere | Outside Metadata: the catalogue for good (leaning), a configuration file of the project, or an annex page (open) | Every signal of the quantity, its bounds, the conversions for display | No | No |
+| Model unit of a quantity, the same everywhere | Outside Metadata: the catalogue for good (leaning), a configuration file of the project, or an annex page (open) | Every signal of the quantity, the conversions for display | No | No |
 | Display unit, decimal places | Preset, in Metadata | Faceplate, texts of a symbol that show a value | Edit | Edit |
 
 ## Open questions

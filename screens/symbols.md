@@ -460,7 +460,7 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-09.1 | Test value of a number | Number field or Slider | Within the bounds of the signal. | Decided | [Run mode](../symbols/09-run-mode/README.md) |
+| SY-09.1 | Test value of a number | Number field or Slider | Any value: a signal has no bounds of its own since 2026-11-17 (a bound is a signal). The range of the slider: open. | Decided (field), Open (slider range) | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.2 | Test value of an enum | Select | The display texts of the enum. | Decided | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.3 | Test value of a boolean | Toggle | — | Proposed | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.4 | Quality of a signal | Select | Good, uncertain, bad. | Proposed | [Run mode](../symbols/09-run-mode/README.md) |

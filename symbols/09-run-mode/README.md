@@ -10,7 +10,7 @@ The mode of the [editor](../03-editor/README.md) in which the user tries the sym
 
 - Tool bar: [Hand](../03-editor/hand.md) only. Right-hand panel: the test values, and the simulated screen.
 - There is no model. The Run mode is simply a mode with a menu on the right (or elsewhere) that lists all the output signals of the model that animate the symbol. What the model does does not matter: the mode only shows what can happen.
-- The user gives each signal a value, within its bounds when it has some (see [Signals](../../metadata/04-signals.md)). The control depends on the type (decided by the Product Owner, 2026-11-11):
+- The user gives each signal a value (see [Signals](../../metadata/04-signals.md)). A signal has no bounds of its own since 2026-11-17: a bound is a signal of its own, given a value like the others. The control depends on the type (decided by the Product Owner, 2026-11-11):
 
 | Signal | Control |
 | --- | --- |

@@ -62,7 +62,7 @@ flowchart LR
 | [Types](01-types.md) | The type tree, its two identifiers (name for the model, internal one for the app), inheritance, and the link between a type and a symbol. |
 | [Icons](02-icons.md) | The icon and colour of a type, from a predefined SVG list. |
 | [Documentation](03-documentation.md) | The documentation page of a type: Markdown description and links to files, folders and URLs. |
-| [Signals](04-signals.md) | The model's inputs and outputs: direction, ID, type, bounds; a table always editable, a colour per direction. |
+| [Signals](04-signals.md) | The model's inputs and outputs: direction, ID, type, quantity (a bound is a signal of its own); a table always editable, a colour per direction. |
 | [Units](05-units.md) | Quantities, families, reference family, conversions, one model unit per quantity and the display unit, ready-made units. |
 | [Enums](06-enums.md) | The Enums page: named lists of values, picked by a signal as a link, never copied. |
 | [Commands](07-commands.md) | The three kinds of command: set a signal, trigger, override an output (always a fixed value); the table of commands, each with an ID. |

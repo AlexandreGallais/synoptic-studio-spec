@@ -181,16 +181,15 @@ The signals are shown in **one table** that takes as much room as possible: one 
 block-beta
     columns 2
     title["Signals"] add["+"]
-    table["Table: (handle) | Direction | ID | Type | Enum | Quantity | Min | Max | (delete); inherited signals first, from the top of the tree, then own ones; a colour per direction; no header over the handle and the delete button"]:2
+    table["Table: (handle) | Direction | ID | Type | Enum | Quantity | (delete); inherited signals first, from the top of the tree, then own ones; a colour per direction; no header over the handle and the delete button"]:2
 ```
 
-How the fields depend on each other: the type decides which fields exist. There is no model unit on the signal: it is one per quantity, set outside Metadata (2026-11-16).
+How the fields depend on each other: the type decides which fields exist. There is no model unit on the signal: it is one per quantity, set outside Metadata (2026-11-16). There is no minimum or maximum on the signal: a bound is a signal of its own, on a line of its own (2026-11-17).
 
 ```mermaid
 flowchart LR
     T["Type"] -->|"enum"| E["Enum: a link to the Enums page"]
     T -->|"integer or real"| Q["Quantity: none, a quantity, or a difference, told by an icon"]
-    T -->|"integer or real"| B["Minimum and maximum, in the model unit of the quantity"]
     T -->|"boolean or text"| N["No other field"]
 ```
 
@@ -212,9 +211,9 @@ mindmap
         Type
         Enum, for an enum
         Quantity, optional, the icon alone says quantity or difference
-        Minimum and maximum
         Delete button, last, no header, warning
     No model unit
+    No minimum or maximum, a bound is a signal
     No right click
 ```
 
@@ -232,7 +231,7 @@ mindmap
 | MD-04.8 | Enum | Column, select | Only for the type enum: an enum of the Enums page, as a link. Empty otherwise. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-04.9 | Quantity | Column, select | Optional, integer and real only. From the read-only catalogue. The same list offers the pressure and the pressure difference, in this one column; only the quantities whose conversion changes have the two items (2026-11-16). An icon before the name, one for a quantity, one for a difference, and **the icon alone**: no "(quantity)" or "(difference)" written (2026-11-16). Header "Quantity" or "Quantity / difference": open. | Decided (icons), Open (header) | [Units](../metadata/05-units.md#value-or-difference-chosen-in-the-signal) |
 | MD-04.10 | Model unit | — | Removed (2026-11-16, end of the day): one model unit per quantity, the same everywhere, set outside Metadata (the catalogue or the project: open). | Decided | [Units](../metadata/05-units.md#model-unit-and-display-unit) |
-| MD-04.11 | Minimum, maximum | Columns, number fields | Integer and real only; indicative; in the model unit of the quantity. Kept on the signal (2026-11-16). | Decided | [Signals](../metadata/04-signals.md) |
+| MD-04.11 | Minimum, maximum | — | Removed (2026-11-17): a bound is a signal of its own, on a line of its own. Its direction and its tie to the signal it bounds: open. | Decided (removal), Open (tie) | [Signals](../metadata/04-signals.md#open-questions) |
 | MD-04.12 | Direction | Column, select | First column (2026-11-16). Input or output of the model. | Decided | [Signals](../metadata/04-signals.md) |
 | MD-04.13 | Delete a signal | Button (icon), then a warning | Last column, on the far right of each own line, with no header and the least width; a click opens a warning (2026-11-16). No right click ([layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). | Decided | [Signals](../metadata/04-signals.md#the-table-of-signals) |
 | MD-04.14 | Handle of a line | Grip, dragged, no header | At the very left of each own line, before Direction: held and dragged to move the line; the order chosen is kept (2026-11-16). Inherited lines have none. A new signal goes at the end: to confirm. Its look: with the design system. | Decided | [Signals](../metadata/04-signals.md#the-order-of-the-lines) |
@@ -376,7 +375,7 @@ mindmap
 | MD-07.18 | Add an element | Buttons (small icons with a +) | Mode Faceplate, on the right of the title "Elements": one icon per kind, a signal, a command, a title, a description, a group, no menu (2026-11-16, the rule of the links, confirmed by the Product Owner the same day). | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.9b | Signal element | Element of the builder | The signal, picked by its ID; its name shown (plain text, never sent to the model; empty: the ID is shown); its input; read or write. | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.10 | Input | Select, in a signal element | In read and in write. Enum: radio on one line, radio on several lines, select. Other types: fixed by the type (number field, true or false, text field), assistant's reading. | Decided (enum), Proposed (others) | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
-| MD-07.11 | Read or write | Radio, in a signal element | Write: a person types a value, checked against the bounds. Write is greyed for an output of the model (2026-11-16). | Decided | [Presets](../metadata/09-presets.md#typing-a-value) |
+| MD-07.11 | Read or write | Radio, in a signal element | Write: a person types a value. The check against the bounds is suspended while bounds as signals are open (2026-11-17). Write is greyed for an output of the model (2026-11-16). | Decided | [Presets](../metadata/09-presets.md#typing-a-value) |
 | MD-07.15 | Command element | Element of the builder | The command, picked by its ID; the name on its button (plain text). | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.19 | Title element, description element | Text fields | A heading or a paragraph inside the faceplate or a group; the only way to give either a title or a description (2026-11-16). Description: plain text, line breaks kept. | Decided | [Presets](../metadata/09-presets.md#only-elements-in-elements) |
 | MD-07.20 | Group element | Element of the builder | No title nor description of its own. At its top, the five small icons with a + (Signal, Command, Title, Description, Group), then its own elements; a group can hold a group (2026-11-16). | Decided | [Presets](../metadata/09-presets.md#only-elements-in-elements) |

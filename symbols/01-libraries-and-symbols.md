@@ -102,7 +102,7 @@ What never breaks a link:
 - a new signal, a new command, a new enum value;
 - a change of description, documentation, icon or colour;
 - a change in a preset (defaults, display units, decimals, names, entries shown);
-- a change of the bounds of a signal, or of its quantity, when it still has one: the link still works, the mapping is the user's.
+- a change of the quantity of a signal, when it still has one: the link still works, the mapping is the user's.
 
 ```mermaid
 flowchart TD
