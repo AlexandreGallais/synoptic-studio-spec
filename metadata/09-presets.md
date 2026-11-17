@@ -53,7 +53,7 @@ A table with **every signal of the type**, own and inherited, one per line (Prod
 | Signal | An icon of its direction, then the signal's ID, read only | Which signal the line is about (see [Signals](04-signals.md)). The icon says whether it is an input or an output of the model (Product Owner, 2026-11-17: "il faudrait qu'on puisse savoir si c'est un input ou un output [...] ça donne juste une icône"), so that the default value is read right. |
 | Display unit | Select | Only with a quantity. Among the units of the signal's quantity; starts as the model unit of the quantity. Kept (Product Owner, 2026-11-17: "Display unit pareil"). |
 | Decimals | Number field | Integers and reals only. Starts as the default of the quantity on the Units page (see [Units](05-units.md)). Display only. Kept (Product Owner, 2026-11-17: "les décimales ici servent"). |
-| Default value | Field of the signal's type | See [The default value](#the-default-value) below. A boolean: true or false. An integer or a real: a number, typed. A text: a text, typed. An enum: an item, picked by its display text (Product Owner, 2026-11-16: "si c'est un nombre, on peut écrire une valeur par défaut, et puis basta"). |
+| Default value | Field of the signal's type | See [The default value](#the-default-value) below. A boolean: true or false. An integer or a real: a number, typed. An enum: an item, picked by its display text (Product Owner, 2026-11-16: "si c'est un nombre, on peut écrire une valeur par défaut, et puis basta"). |
 
 #### The default value
 
@@ -195,7 +195,7 @@ Mode Values (inherited signals first, as in Signals):
 
 | Signal (icon, ID) | Display unit | Decimals | Default value |
 | --- | --- | --- | --- |
-| output · `fault_message` |  |  | "" (empty text) |
+| output · `fault` |  |  | None |
 | input · `running` |  |  | false |
 | output · `flow` | m³/h | 1 | 0 |
 | input · `mode` |  |  | Automatic |

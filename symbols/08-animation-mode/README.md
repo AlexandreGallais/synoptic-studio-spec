@@ -55,20 +55,18 @@ Decided by the Product Owner (2026-11-11). A text can be set at the size the use
 | What the text shows | What a click does |
 | --- | --- |
 | A number | The text turns into a **number input**, right there. This is the main case. |
-| A text | The text can turn into a **text input**. Less common than the number. |
 | An enum | A **selection menu** opens, with the whole list of the enum, and the user picks one item. |
 
-- The user chooses, in the editor, which of these a text does: number input, text input, or selection menu.
+- The user chooses, in the editor, which of these a text does: number input or selection menu.
+- **No text input** (Product Owner, 2026-11-18): a signal is never a text (see [Signals](../../metadata/04-signals.md#no-text-signal)).
 - An enum is shown by the display text of its item, never by its key (see [Enums](../../metadata/06-enums.md)). A click on it opens the menu of the display texts; the input signal receives the key of the item picked.
 - What the user picks or types is checked, converted to the model unit, then written to the input signal.
 
 ```mermaid
 flowchart LR
     T["Text shown"] -->|"number: click"| N["Number input"]
-    T -->|"text: click"| X["Text input"]
     T -->|"enum: click"| M["Menu with the whole list"]
     N --> K["Checked and converted, as in the faceplate"]
-    X --> K
     M --> K
     K --> S["Input signal written, sent to the model"]
 ```

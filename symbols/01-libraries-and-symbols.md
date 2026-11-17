@@ -73,7 +73,7 @@ block-beta
 
 Several symbols can share a type, with different drawings and presets: a centrifugal pump can have a manual symbol and a motorised one, with no change in Metadata.
 
-A symbol can also be created as a **sub-symbol** of another one: it takes what was made for its parent and adds more (Product Owner, 2026-11-18; see [Sub-symbols](12-sub-symbols.md)).
+A symbol can also be created as a **sub-symbol** of another one: it takes what was made for its parent, read only, follows its changes, and adds more; its type is the parent's or a sub-type of it (Product Owner, 2026-11-18; see [Sub-symbols](12-sub-symbols.md)).
 
 ### Removing the type of a symbol
 
@@ -96,7 +96,7 @@ A symbol can also be created as a **sub-symbol** of another one: it takes what w
 | A type is deleted | The symbol keeps existing but has no type: its animations and interactions are broken until the user chooses a type. |
 | A signal is deleted, also one inherited from a parent | Its animations, the texts that show its value or its unit, its test value. |
 | A command is deleted | The interactions that send it. |
-| The value type of a signal changes (integer, real, boolean, text, enum) | Its animations and its texts, mapped for the old type. |
+| The value type of a signal changes (integer, real, boolean, enum) | Its animations and its texts, mapped for the old type. |
 | The enum of an enum signal is replaced by another enum, or a value used by the symbol is removed from it | Its animations and its texts. |
 | A signal changes direction, input or output | Becoming an input breaks its animations, because only outputs animate. Becoming an output breaks the commands that set it. |
 | A command changes kind (set a signal, trigger) | The interactions that send it. |

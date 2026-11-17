@@ -22,7 +22,6 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | One version for all of Metadata or per type; level computed or chosen; undo and going back; what is written between two versions; what symbols see | [Versions](13-versions.md) | Raised when versions replaced Edit and Save (2026-11-16). |
 | An ID unique in the type and its tree; the description kept out of the configuration files | [Flags](14-flags.md) | Settled by the Product Owner on 2026-11-17: the description optional, an internal identifier, no warning on delete, no rule on how an ID is written, the order by handle, the inheritance. |
 | Left for later: the warning of an uncompleted template (part 3); how the screen shows global against template (design system); the keys of a template in the configuration files | [Enums](06-enums.md#left-for-later) | Noted, not to be asked again (Product Owner, end of 2026-11-17). The description of a global enum, the change of kind and the place of the smallest key were settled the same evening. |
-| The type text of a signal: kept, or removed because a word shown is the state of something, carried by an enum | [Signals](04-signals.md#open-questions) | Raised by the Product Owner on 2026-11-18 ("est-ce que les signaux en simulation, ça fait sens d'avoir une string ?"), not settled. |
 | Every control the specs need but never describe (create, delete, order...) | [Screens of Metadata](../screens/metadata.md) | Listed as gaps, screen by screen. |
 
 ```mermaid

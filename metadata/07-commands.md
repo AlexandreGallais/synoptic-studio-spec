@@ -49,7 +49,6 @@ Decided by the Product Owner on 2026-11-16. It replaces the "typed value" of 202
 | --- | --- |
 | Integer, real | A number, typed. |
 | Boolean | True or false. |
-| Text | A text, typed. |
 | Enum | An item of the enum, picked by its display text; the model receives its key. |
 
 - To let a person **type a value**, a command is not used: a signal of the preset is set to **write**, which puts an input in the faceplate (see [Presets](09-presets.md#typing-a-value)). The person types the value there; it is checked, converted and sent to the model.
@@ -100,7 +99,7 @@ The commands of `centrifugal_pump`, with every kind and every type of value (Pro
 
 | From | Kind | ID | Target signal | Value |
 | --- | --- | --- | --- | --- |
-| `equipment`, read only | Override an output | `clear_message` | `fault_message` (text output) | "" (empty text) |
+| `equipment`, read only | Override an output | `clear_fault` | `fault` (enum output) | None (key 0) |
 | `pump`, read only | Set a signal | `start` | `running` (boolean input) | true |
 | `pump`, read only | Set a signal | `stop` | `running` (boolean input) | false |
 | `pump`, read only | Override an output | `force_flow_zero` | `flow` (real output) | 0 |

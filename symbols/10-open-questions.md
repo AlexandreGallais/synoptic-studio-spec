@@ -55,7 +55,7 @@ This file is the index of the open questions. A question sits in the file it con
 
 | Question | Page | Proposal of the assistant |
 | --- | --- | --- |
-| Sub-symbols: does a change of the parent reach them; can they change what they take or only add; which type; a tree or a flat list; a parent in another Symbol Lib; how one is created. | [Sub-symbols](12-sub-symbols.md) | Asked to the Product Owner on 2026-11-18. |
+| Sub-symbols: a tree or a flat list; a parent in another Symbol Lib; how one is created; a parent without a type, or that changes type; preset and connection points taken or not; deleting a parent. (A change of the parent reaches them, they only add, their type is the parent's or a sub-type: decided 2026-11-18.) | [Sub-symbols](12-sub-symbols.md) | A parent without a type leaves the type free. |
 
 ## Still open, not researched
 

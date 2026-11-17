@@ -76,6 +76,9 @@ The items of `operating_mode`:
 | --- | --- |
 | `operating_mode` | 0: Off, 1: Manual, 2: Automatic |
 | `speed` | 0: Low speed, 1: High speed |
+| `fault_state` | 0: None, 1: Overheating, 2: Dry running |
+
+A word the model gives to show, a fault message for example, is an enum like `fault_state`: a signal is never a text (Product Owner, 2026-11-18, see [Signals](04-signals.md#no-text-signal)).
 
 ```mermaid
 flowchart LR

@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Signals · Previous: [Documentation](03-documentation.md) · Next: [Units](05-units.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table, always editable, direction first, line coloured by direction; no display name on the signal, it moved to the preset; a handle on each line to choose the order; the quantity says "quantity" or "difference"). Reviewing the wireframes later that day, he confirmed the ID and the removal of the display name, put the inherited signals first, read only, from the top of the tree down, marked a quantity and a difference by two icons, and replaced the delete by right click by a delete button with a warning. At the end of the day he removed the model unit from the signal (it is one per quantity, set outside Metadata), kept only the icons in the column Quantity, and left the columns of the handle and of the delete button without a header. On 2026-11-17 he removed the minimum and the maximum from the signal: a bound is a signal of its own. Later that day he made a bound a plain signal with no tie to the one it bounds (usually an input), named the column "Quantity / Difference", kept decimal places out of Metadata, and refused the bubble on an enum name. Open points are listed in [Open questions](12-open-questions.md).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table, always editable, direction first, line coloured by direction; no display name on the signal, it moved to the preset; a handle on each line to choose the order; the quantity says "quantity" or "difference"). Reviewing the wireframes later that day, he confirmed the ID and the removal of the display name, put the inherited signals first, read only, from the top of the tree down, marked a quantity and a difference by two icons, and replaced the delete by right click by a delete button with a warning. At the end of the day he removed the model unit from the signal (it is one per quantity, set outside Metadata), kept only the icons in the column Quantity, and left the columns of the handle and of the delete button without a header. On 2026-11-17 he removed the minimum and the maximum from the signal: a bound is a signal of its own. Later that day he made a bound a plain signal with no tie to the one it bounds (usually an input), named the column "Quantity / Difference", kept decimal places out of Metadata, and refused the bubble on an enum name. On 2026-11-18 he removed the type text: a word shown goes through an enum. Open points are listed in [Open questions](12-open-questions.md).
 
 A signal is what goes between the front and the model: an input or an output of the model. Only these are defined here. Values that stay inside the model are not defined in Metadata: the people who write the model name them as they wish, and they are invisible to the application.
 
@@ -35,7 +35,7 @@ A signal is what goes between the front and the model: an input or an output of 
 | --- | --- | --- |
 | Direction | Input or output of the model. | Belongs to the signal. Seen from the model: an input is what the model receives, an output is what it sends. First column of the table. |
 | ID | The signal's name for the model. | Its variable identifier, set once. Shown as "ID" in the table. |
-| Type | What kind of value. | Integer, real, boolean, text or enum. A real is a 64-bit double. |
+| Type | What kind of value. | Integer, real, boolean or enum. A real is a 64-bit double. No text (Product Owner, 2026-11-18, see [No text signal](#no-text-signal)). |
 | Enum | For an enum: the list of values. | An enum picked from the Enums page (see [Enums](06-enums.md)): a global enum or a template (2026-11-17, see [Global enums and templates](06-enums.md#global-enums-and-templates)). A link to it, never a copy, and never defined in the signal. |
 | Quantity | What the value measures (volume, flow, pressure...), and whether the value is the quantity itself or a difference of it. | Optional: a signal may have none. Only for integers and reals. Picked from the ready-made catalogue of the Units page, which the user never changes; the user picks the quantity or its difference, told apart by an icon (Product Owner, 2026-11-16), see [Units](05-units.md#value-or-difference-chosen-in-the-signal). |
 
@@ -58,13 +58,13 @@ classDiagram
 
 ## Example
 
-The signals of `centrifugal_pump`, a child of `pump`, itself a child of `equipment`. The example shows every kind of line: both directions, every type, a quantity offered once, a quantity and a difference, inherited lines first (Product Owner, 2026-11-16: "complète le tableau [...] pour qu'on comprenne mieux avec un peu toutes les options").
+The signals of `centrifugal_pump`, a child of `pump`, itself a child of `equipment`. The example shows every kind of line: both directions, every type (no text since 2026-11-18), a quantity offered once, a quantity and a difference, inherited lines first (Product Owner, 2026-11-16: "complète le tableau [...] pour qu'on comprenne mieux avec un peu toutes les options").
 
 In the column Quantity, ● stands for the icon of a quantity and Δ for the icon of a difference: both are placeholders, the icons are chosen with the design system.
 
 | From | Direction | ID | Type | Enum | Quantity |
 | --- | --- | --- | --- | --- | --- |
-| `equipment`, read only | output | `fault_message` | text |  |  |
+| `equipment`, read only | output | `fault` | enum | `fault_state` (0 None, 1 Overheating, 2 Dry running) |  |
 | `pump`, read only | input | `running` | boolean |  |  |
 | `pump`, read only | output | `flow` | real |  | ● flow |
 | own | input | `mode` | enum | `operating_mode` (0 Off, 1 Manual, 2 Automatic) |  |
@@ -87,7 +87,7 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 | Handle | A small grip at the very left of the line, with no value and **no header**: it is held and dragged to move the line (see [The order of the lines](#the-order-of-the-lines)). |
 | Direction | Input or output. **First column** of values, before the ID, so that the line reads in order (Product Owner, 2026-11-16). |
 | ID | The model identifier (Product Owner, 2026-11-16: "l'ID, qui est le modèle identifiant"). |
-| Type | Integer, real, boolean, text, enum. |
+| Type | Integer, real, boolean, enum. |
 | Enum | For an enum signal only: the enum it points to. |
 | Quantity / Difference | Header **"Quantity / Difference"** (Product Owner, 2026-11-17: "quantity, c'est le rond, et différence, c'est le petit triangle. Du coup, c'est quantity/différence"). Optional, integers and reals only. One column holds the choice of the quantity or of its difference: its list offers the pressure and the pressure difference (Product Owner, 2026-11-16). Only the quantities whose conversion changes (temperature, gauge pressure...) have the two items; the others are offered once (see [Units](05-units.md#value-or-difference-chosen-in-the-signal)). **An icon before the name** says which it is: one icon for a quantity, another for a difference, so that the two are told apart at a glance (Product Owner, 2026-11-16: "on met un symbole, une icône. Comme ça, c'est beaucoup plus simple à reconnaître"). **The icon alone**: no "(quantity)" or "(difference)" after the name (Product Owner, 2026-11-16: "pas besoin de mettre (quantité) ou (différence) [...] quand on connaît les icônes"). The icons are chosen with the design system. |
 | Delete | A delete button (an icon), in the last column, on the far right, with **no header**; a click opens a warning before anything is deleted (Product Owner, 2026-11-16). Not on the inherited lines. |
@@ -153,6 +153,14 @@ flowchart LR
 | --- | --- | --- | --- | --- |
 | Signal (direction, ID, type, enum, quantity) | Metadata | Lines of a preset and its faceplate (read, write for an input, override for an output), bounds of a number field of the faceplate, commands that set it | No | No |
 
-## Open questions
+## No text signal
 
-- **Does a signal still need the type text?** The Product Owner raised it on 2026-11-18: a number or an enum makes sense for a model, a string less so; a word shown on screen is the state of something, so it goes through an enum ("si on fait afficher une string, c'est sa représentation d'un état, mais du coup ça passe via un enum"). Not settled. Removing it would change the example above (`fault_message`), the text input of the faceplate and the text input of a symbol.
+Decided by the Product Owner on 2026-11-18.
+
+- **A signal is never a text.** Its type is integer, real, boolean or enum.
+- Why: a simulation model exchanges numbers and states. A word shown on screen is the state of something, so it goes through an enum, whose display texts are the words shown (Product Owner: "si on fait afficher une string, c'est sa représentation d'un état, mais du coup ça passe via un enum").
+- What follows from it:
+  - a fault message becomes an enum output: `fault_message` (text) of the example became `fault` (enum `fault_state`);
+  - a command never carries a text value (see [Commands](07-commands.md#the-value-is-always-fixed));
+  - a default value of a preset is never a text (see [Presets](09-presets.md));
+  - a text of a symbol that becomes an input is a number input or an enum menu, never a text input (see [Animation mode](../symbols/08-animation-mode/README.md#a-text-that-becomes-an-input)).
