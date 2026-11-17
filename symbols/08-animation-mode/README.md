@@ -117,7 +117,7 @@ Confidence: low (one tool read).
 
 ### The input range of a bounded linear animation
 
-Decided by the Product Owner on 2026-11-17, since a signal has no bounds of its own (a bound is a plain signal, see [Signals](../../metadata/04-signals.md#rules)).
+Decided by the Product Owner on 2026-11-17 (decision 0027, accepted on 2026-11-17), since a signal has no bounds of its own (a bound is a plain signal, see [Signals](../../metadata/04-signals.md#rules)).
 
 - The user chooses the **minimum** and the **maximum** of the input range.
 - Each of the two can be **a signal of the type**, an input or an output (Product Owner: "pour les bornes, on pourra choisir soit un in, soit un out"). Example: the maximum taken from `speed_setpoint_max`, an input.
