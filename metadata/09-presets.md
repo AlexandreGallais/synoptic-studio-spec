@@ -114,6 +114,7 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas donner un titre et u
 - **The add icons of a group are at its top**, not at its bottom ("C'est mieux de plutôt les mettre en haut du groupe"): the same five small icons with a +, in the same order as on the right of "Elements". A click adds the element inside the group.
 - **Confirmed on 2026-11-17**, after a doubt the same day (a group with no add icons, its elements dragged in): the five + icons stay at the top of each group (Product Owner: "les boutons « + » là, directement dans le groupe [...] c'est OK, donc tu peux garder ça. Comme ça, ça fera gagner du temps et sera moins chiant").
 - The builder is thus one generic rule at every level: a list of elements, and a row of small + icons above it.
+- Written in decision 0034 (accepted on 2026-11-17), which changes decision 0022 on these points.
 
 - **What is in the builder is what the faceplate shows.** There is no "Shown" checkbox any more ("on montrerait ce qu'on veut"): a signal or a command that is not added is not in the faceplate.
 - The name shown and the name on the button exist **only in the builder**: they serve the faceplate alone (Product Owner: "le display name, qui ne sert que pour la pop-up").
