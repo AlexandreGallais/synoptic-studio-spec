@@ -24,7 +24,7 @@ The screens are also drawn as wireframes on the page **"Spec"** of the Figma fil
 
 | File | Screens |
 | --- | --- |
-| [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its five parts), Units, Enums, Versions, and Flags (proposed). |
+| [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its five parts), Units, Enums, Versions; Flags is a part of the type editor. |
 | [Symbol editor](symbols.md) | The navigation bar, Symbol Libs, the left-hand panel of a Symbol Lib, the symbol editor (layout, floating bars, layers) and its seven modes, the advanced tools. |
 | [Pipes](pipes.md) | The base pipe style, the pipe styles, the end shapes, the dash sequences, the preview, and pipes in a synoptic (part 3, preview). |
 
@@ -197,11 +197,11 @@ flowchart TD
     MD01 --> MD03["MD-03 Documentation"]
     MD01 --> MD04["MD-04 Signals"]
     MD01 --> MD05["MD-05 Commands"]
+    MD01 --> MD12["MD-12 Flags"]
     MD01 --> MD07["MD-07 Presets: Values and Faceplate"]
     MD --> MD08["MD-08 Units"]
     MD --> MD09["MD-09 Enums"]
     MD --> MD11["MD-11 Versions"]
-    MD -.-> MD12["MD-12 Flags, proposed"]
 
     SY --> SY01["SY-01 Symbol Libs"]
     SY01 --> SY02["SY-02 Left-hand panel of a Symbol Lib"]

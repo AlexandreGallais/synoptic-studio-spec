@@ -68,7 +68,7 @@ flowchart LR
 | [Commands](07-commands.md) | The three kinds of command: set a signal, trigger, override an output (always a fixed value); the table of commands, each with an ID. |
 | [Presets](09-presets.md) | Two modes per preset, chosen by a switch: Values (display unit, decimals, default value of each signal) and the faceplate builder (title, description, signals with their name shown, input, read or write, commands with their button, titles, descriptions, groups); the check of typed values. |
 | [Versions](13-versions.md) | Everything editable all the time; the Versions page: differences, change log, undo, semantic version. |
-| [Flags](14-flags.md) | Draft (2026-11-17), name and place to confirm: a list of keys, only IDs, that each symbol placed in a synoptic has on or off; the application does nothing with them but write them in the configuration files, for customisation outside it. |
+| [Flags](14-flags.md) | Draft (2026-11-17), a part of the type, after Commands: the type's list of keys, only IDs, that each symbol of that type placed in a synoptic has on or off; the application does nothing with them but write them in the configuration files, for customisation outside it. |
 | [Who changes what](11-who-changes-what.md) | The table of where each thing is created and changed. |
 | [Open questions](12-open-questions.md) | Every open question in one place. |
 

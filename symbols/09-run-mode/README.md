@@ -64,5 +64,4 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.15,
 ## Open questions
 
 - Name: Test mode, to confirm.
-- **The two ends of the slider.** A slider is a bar with a cursor that the user drags from one end to the other; to draw it, the editor must know the value at its left end and at its right end (for example 0 and 3 000 rpm for `speed`). Until 2026-11-17 it took the minimum and the maximum of the signal; a signal has none now. Where does the slider take its two ends: typed by the user next to the slider, taken from the input range of the animation that uses the signal, or no slider at all (a number field only)? Rewritten more plainly on 2026-11-17, the Product Owner not having understood the first wording.
 - The form of the simulation log and of the simulated faceplate (where the log is shown, what a line says, whether the faceplate shows the test values). See [Open questions](../10-open-questions.md).

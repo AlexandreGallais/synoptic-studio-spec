@@ -14,7 +14,7 @@ Path: on the far left of every screen of Metadata (Product Owner, 2026-11-16).
 | MD-00.2 | Units | Button (icon) | Opens [MD-08](#md-08--units). | Decided | [Layout rules](README.md#layout-rules) |
 | MD-00.3 | Enums | Button (icon) | Opens [MD-09](#md-09--enums). | Decided | [Layout rules](README.md#layout-rules) |
 | MD-00.4 | Versions | Button (icon) | Opens [MD-11](#md-11--versions). After Enums (2026-11-16). | Decided | [Versions](../metadata/13-versions.md) |
-| MD-00.5 | Flags | Button (icon) | Opens [MD-12](#md-12--flags-proposed). A new page (2026-11-17); its name and its place here, after Versions, are proposed. | Proposed | [Flags](../metadata/14-flags.md) |
+| MD-00.5 | Flags | — | Removed (2026-11-17): flags are a part of the type, not a page of the bar (see [MD-12](#md-12--flags-a-part-of-the-type)). | Decided | [Flags](../metadata/14-flags.md) |
 
 Gaps:
 
@@ -33,7 +33,7 @@ block-beta
     block:left
         columns 1
         tree["Type tree, scrolls"]
-        parts["Parts, fixed: General, Documentation, Signals, Commands, Presets"]
+        parts["Parts, fixed: General, Documentation, Signals, Commands, Flags, Presets"]
     end
     editor["Editor of the selected part"]:2
 ```
@@ -57,7 +57,8 @@ mindmap
       2 MD-03 Documentation
       3 MD-04 Signals
       4 MD-05 Commands
-      5 MD-07 Presets, with its modes Values and Faceplate
+      5 MD-12 Flags
+      6 MD-07 Presets, with its modes Values and Faceplate
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
@@ -521,15 +522,16 @@ Gaps:
 - Where the list of past versions is shown, and whether one can be opened or restored.
 - How a difference points back to the screen where the thing is edited.
 
-## MD-12 · Flags (proposed)
+## MD-12 · Flags, a part of the type
 
-Path: Metadata › Flags (navigation bar), described by the Product Owner on 2026-11-17. The name and the place are proposed, to confirm; the wireframe is drawn in Figma once they are.
+Path: Metadata › Types › a type › Flags, fifth part of the type, between Commands and Presets. Described by the Product Owner on 2026-11-17; name and place given by him the same day ("flag, ça me va très bien"; "la page, elle fait partie des types"). The wireframe is drawn in Figma with the other parts of the type.
 
 ```mermaid
 mindmap
   root((MD-12 Flags))
     Title Flags, small plus on its right
-    List of flags
+    List of the flags of the type
+      Inherited flags first, as for signals
       ID of each flag
       Delete button, far right, no header, warning
     Ticked in the synoptic, part 3
@@ -537,12 +539,12 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-12.1 | List of flags | List | One line per flag: its ID only (2026-11-17). | Decided (IDs only), Proposed (name of the page) | [Flags](../metadata/14-flags.md) |
+| MD-12.1 | List of flags | List | The flags of the selected type, one line per flag: its ID only (2026-11-17). Inherited flags first, read only, as for signals: assistant's reading. | Decided (IDs only, in the type), Proposed (inheritance) | [Flags](../metadata/14-flags.md) |
 | MD-12.2 | Add a flag | Button (+), small icon | On the right of the title "Flags" ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Implied | [Flags](../metadata/14-flags.md) |
 | MD-12.3 | ID | Text field | Always editable, as everything in Metadata. Its rules (characters, unique): open. | Implied | [Flags](../metadata/14-flags.md#open-questions) |
 | MD-12.4 | Delete a flag | Button (icon), then a warning | At the far right of the line, with no header ([layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). What the warning says when symbols have the flag on: open. | Implied | [Flags](../metadata/14-flags.md#open-questions) |
 
 Gaps:
 
-- The order of the list (a handle?), a description per flag, every flag on every symbol or per type: see [Flags](../metadata/14-flags.md#open-questions).
+- The order of the list (a handle?), a description per flag, inheritance: see [Flags](../metadata/14-flags.md#open-questions).
 - The panel of the synoptic where the flags of a placed symbol are ticked: described with part 3.

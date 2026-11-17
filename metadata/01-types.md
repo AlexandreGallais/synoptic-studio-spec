@@ -128,6 +128,7 @@ flowchart LR
     T --> DO[Documentation]
     T --> P[Signals]
     T --> C[Commands]
+    T --> F[Flags]
     T --> R[Presets: values, and the faceplate they build]
 ```
 
@@ -137,13 +138,14 @@ flowchart LR
 | Documentation: description (Markdown), links | [Documentation](03-documentation.md) |
 | Signals | [Signals](04-signals.md) |
 | Commands | [Commands](07-commands.md) |
+| Flags: keys written in the configuration files, for customisation outside the application (2026-11-17) | [Flags](14-flags.md) |
 | Presets: values, and the faceplate they build | [Presets](09-presets.md) |
 
 ## The parts of a type: a list fixed under the tree
 
 Chosen by the Product Owner on 2026-11-16: **proposal B, the parts written in whole words**, placed in the column of the type tree. It replaces proposal C (a strip of icons), chosen earlier the same day.
 
-- The five parts are listed **with their names in whole words**, one under the other, in the order General, Documentation, Signals, Commands, Presets (the Faceplate part, there for a while on 2026-11-16, was removed the same day).
+- The six parts are listed **with their names in whole words**, one under the other, in the order General, Documentation, Signals, Commands, Flags, Presets (the Faceplate part, there for a while on 2026-11-16, was removed the same day; Flags added after Commands on 2026-11-17, Product Owner: "général, documentation, signal, commande, flag").
 - They sit **in the same column as the type tree, under it**, not in a column of their own. The list was moved above the tree for a while the same day, then put back under it: above the title "Type tree", it made no sense (Product Owner, 2026-11-16: "ça n'a aucun sens logique").
 - The list is **fixed** at the bottom of that column: it never moves, whatever the length of the tree (Product Owner: "on fixe, et comme ça, ça ne bouge pas … ça bougera jamais"). The tree scrolls above it.
 - Why: whole words are understood at once, icons are not ("il faut faire des mots entiers, sinon ils vont rien comprendre"); and since the column on the left already holds long lines (the names of the types), the names of the parts fit there without taking a column of their own.
@@ -155,7 +157,7 @@ block-beta
     block:left
         columns 1
         tree["Type tree, scrolls"]
-        parts["Parts, fixed: General, Documentation, Signals, Commands, Presets"]
+        parts["Parts, fixed: General, Documentation, Signals, Commands, Flags, Presets"]
     end
     editor["Editor of the selected part"]:2
 ```
