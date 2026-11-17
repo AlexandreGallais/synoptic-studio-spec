@@ -117,7 +117,7 @@ The commands of `centrifugal_pump`, with every kind and every type of value (Pro
 
 ## A text that becomes an input does not use a command
 
-A text of a symbol that becomes an input when clicked writes an **input signal** of the type directly, with the same checks as a write entry of the faceplate (conversion from the display unit, enum item; the check against bounds is suspended since a bound became a signal of its own, 2026-11-17). No command is used (Product Owner, 2026-11-16, accepting the assistant's proposal). See [Animation mode](../symbols/08-animation-mode/README.md#a-text-that-becomes-an-input).
+A text of a symbol that becomes an input when clicked writes an **input signal** of the type directly, with the same checks as a write entry of the faceplate (conversion from the display unit, enum item, and the bounds of the number field, typed by hand or taken from a signal: see [Presets](09-presets.md#bounds-of-a-number-field), decision 0041). No command is used (Product Owner, 2026-11-16, accepting the assistant's proposal). See [Animation mode](../symbols/08-animation-mode/README.md#a-text-that-becomes-an-input).
 
 ## Open questions
 

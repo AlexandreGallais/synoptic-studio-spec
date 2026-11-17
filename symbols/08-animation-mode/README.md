@@ -49,7 +49,7 @@ flowchart LR
 
 Decided by the Product Owner (2026-11-11). A text can be set at the size the user needs, and it can turn into an input when the user clicks it, if an input signal is linked to it. It makes quick entries: no separate panel is opened.
 
-- Since commands always send a fixed value (2026-11-16, see [Commands](../../metadata/07-commands.md#the-value-is-always-fixed)), this text **writes an input signal of the type directly**, with the same checks as a write entry of the faceplate: conversion from the display unit, enum item (the check against bounds is suspended since a bound became a signal of its own, 2026-11-17) (Product Owner, 2026-11-16, accepting the assistant's proposal). No command is used.
+- Since commands always send a fixed value (2026-11-16, see [Commands](../../metadata/07-commands.md#the-value-is-always-fixed)), this text **writes an input signal of the type directly**, with the same checks as a write entry of the faceplate: conversion from the display unit, enum item, and the bounds of the number field, typed by hand or taken from a signal (see [Presets](../../metadata/09-presets.md#bounds-of-a-number-field), decision 0041) (Product Owner, 2026-11-16, accepting the assistant's proposal). No command is used.
 - Only an input signal can be linked: an output is computed by the model.
 
 | What the text shows | What a click does |
