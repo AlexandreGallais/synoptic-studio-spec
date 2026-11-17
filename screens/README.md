@@ -122,7 +122,7 @@ Decided by the Product Owner on 2026-11-16: the signals and the commands of a ty
 
 Decided by the Product Owner on 2026-11-16. From left to right:
 
-1. The **logo**: a valve, like the logo already in the Figma file (Product Owner, 2026-11-16). The word "Epipasta" heard earlier was a transcription error; the wireframes say "Logo · a valve" since 2026-11-17.
+1. The **logo**: a valve, like the logo already in the Figma file (Product Owner, 2026-11-16). The word "Epipasta" heard earlier was a transcription error; the wireframes said "Logo · a valve" until the Product Owner pointed to the logo of the page "Cover" (2026-11-17); since then every top bar of the wireframes holds an instance of its component "App mark", size 24.
 2. Three icons, one per part: **Metadata**, **Symbols**, **Synoptic** (part 3, not written yet).
 3. On the right, the window buttons **minimise, maximise, close**, as in Windows.
 

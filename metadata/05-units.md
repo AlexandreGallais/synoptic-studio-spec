@@ -172,5 +172,5 @@ flowchart LR
 ## Open questions
 
 - Source and licence of the catalogue data (UCUM, QUDT, CLDR, NIST not checked).
-- The default decimals of each quantity: kept in the catalogue, or replaced by one number of decimals for the whole project, set outside Metadata (Product Owner, 2026-11-17, about the signal: "avoir le même nombre de décimales partout")? Not asked: left as it is until the Product Owner goes over the presets entirely (2026-11-17), see [Presets](09-presets.md#open-questions).
+- The default decimals of each quantity: kept in the catalogue, or replaced by one number of decimals for the whole project, set outside Metadata (Product Owner, 2026-11-17, about the signal: "avoir le même nombre de décimales partout")? Not asked yet. Going over the presets on 2026-11-17, the Product Owner kept their column Decimals ("les décimales ici servent"), which starts from this default (see [Presets](09-presets.md#mode-values-one-table-of-the-signals)).
 - Where the model unit of each quantity is set: once and for good in the catalogue, once per project in a configuration file, or on an annex page (Product Owner, 2026-11-16: "Je sais pas où on va le mettre encore"; later the same day, leaning towards the catalogue, "il faut que j'y réfléchisse").

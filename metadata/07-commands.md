@@ -122,3 +122,4 @@ A text of a symbol that becomes an input when clicked writes an **input signal**
 ## Open questions
 
 - Override an output: who applies the override (the model, the server, the front), what the model and the other screens see while it holds, and how it ends (a second click, a command that lifts it, a time limit)? If the answer is the server, it must be checked against decision 0001 (proposed): the server only communicates with files.
+- Since 2026-11-17 an output can also be overridden by a value a person types in the faceplate, when its signal element is set to "override" (see [Presets](09-presets.md#typing-a-value)). The same answer will serve both ways.
