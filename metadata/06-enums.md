@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Enums · Previous: [Units](05-units.md) · Next: [Commands](07-commands.md)
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers; the + that creates an enum is an icon on the line of the title; delete with a button and a warning; at the end of the day, an optional description for each item, shown on the Enums page only); reviewed by him on 2026-11-17 (the display text before the description, no change of order of the items); changed by him later on 2026-11-17 (two kinds of enum: global and template, see [Global enums and templates](#global-enums-and-templates)); completed by him at the end of 2026-11-17 (the items of a template are completed on each placed symbol in the synoptic, with a warning until they are; a template has a description); changed by him again at the end of 2026-11-17 (the user picks the number of each key, gaps allowed; the items are sorted by key; the name "template" kept). Open points are listed in [Open questions](#open-questions).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers; the + that creates an enum is an icon on the line of the title; delete with a button and a warning; at the end of the day, an optional description for each item, shown on the Enums page only); reviewed by him on 2026-11-17 (the display text before the description, no change of order of the items); changed by him later on 2026-11-17 (two kinds of enum: global and template, see [Global enums and templates](#global-enums-and-templates)); completed by him at the end of 2026-11-17 (the items of a template are completed on each placed symbol in the synoptic, with a warning until they are; a template has a description); changed by him again at the end of 2026-11-17 (the user picks the number of each key, gaps allowed; the items are sorted by key; the name "template" kept); answered by him on the questionnaire at the end of 2026-11-17 (handles after the sort by key; a key can change, the Versions page shows it). Open points are listed in [Open questions](#open-questions).
 
 An Enums page lists the enums of the application, like the Units page lists the quantities. A signal of the type enum does not hold its own list of values: it points to an enum of this page.
 
@@ -41,10 +41,10 @@ flowchart LR
   - **the user picks the number of each key**, with gaps if they want: an enum can have the keys 0, 2, 4 (Product Owner, end of 2026-11-17: "il faut pouvoir mettre le chiffre qu'on veut. Il faut laisser le choix de rajouter une ligne et de choisir son numéro [...] un enum où c'est 0, 2, 4"). The same for a global enum and for the items of a template ("que ce soit un template ou un enum"). Decision 0037, accepted on 2026-11-17;
   - the **description** explains what the item means, for the people who make the types and the symbols (Product Owner, 2026-11-16, end of the day: "il faut pouvoir décrire quand même ce que vaut l'enum [...] une description, c'est peut-être pas mal pour avoir des explications sur les enums"); plain text; it never goes to the model; **optional, and shown only on the Enums page**: the faceplate never shows it (Product Owner, 2026-11-16);
   - the **display text** is what people read: the faceplate, a text of a symbol and the test values show it, never the key.
-- The items are shown in a table whose columns come in this order: **Key, Display text, Description**, then the delete button, with no header (Product Owner, 2026-11-17, reviewing the wireframes: "Faudrait peut-être inverser la description et le display name [...] le display name, il est assez court. La description, elle est plutôt grande, donc la description, elle irait après"). The short field first, the long one last. It replaces the order Key, Description, Display text of 2026-11-16 (decision 0032, accepted on 2026-11-17, which changes decision 0025 on this point).
+- The items are shown in a table whose columns come in this order: the handle with no header (end of 2026-11-17, see below), **Key, Display text, Description**, then the delete button, with no header (Product Owner, 2026-11-17, reviewing the wireframes: "Faudrait peut-être inverser la description et le display name [...] le display name, il est assez court. La description, elle est plutôt grande, donc la description, elle irait après"). The short field first, the long one last. It replaces the order Key, Description, Display text of 2026-11-16 (decision 0032, accepted on 2026-11-17, which changes decision 0025 on this point).
 - **The items are sorted by key automatically**, from the smallest key to the largest: a line added with the key 3 goes between 2 and 4 (Product Owner, end of 2026-11-17: "en fonction des chiffres qu'on met, il y ait un tri automatique pour que ça aille dans l'ordre quand même. Il ne faut pas déconner"). It replaces "a new item goes at the end" (assistant's reading of the same day; decision 0037, which changes decision 0032 on this point).
-- À trancher (Product Owner, end of 2026-11-17, said with a doubt): **handles to put the items in the order of their meaning**, without changing their keys ("tu mets des petites poignées pour bouger les numéros comme on veut. Comme ça, on peut le mettre dans l'ordre qu'on veut au niveau du sens"). Earlier the same day he had refused any handle ("On peut pas changer l'ordre, ça me chante pas"). The question matters because a key, once given, may not change: an item added later gets a free key, maybe not where its meaning puts it. Asked; until answered, no handle.
-- À trancher (Product Owner, end of 2026-11-17, said with a doubt): **can a key change once it is given?** ("la clé, c'est la clé. Si elle était définie à un moment, elle ne peut pas forcément changer après. Donc, s'il y a des choses qui se rajoutent, c'est comme ça"). Changing a key is already breaking for the model (see below); what is open is whether the screen forbids it, or allows it and the [Versions](13-versions.md) page shows the break. Asked.
+- **Then handles put the items in the order of their meaning, without changing their keys** (Product Owner, end of 2026-11-17, answering the questionnaire: "Tri par clé, puis poignées"). A new item takes its place by key; the user can then move any item with its handle, at the very left of its line, and the order chosen is kept. Example: the key 6 "Maintenance", added later, goes after 2 by key; its handle moves it between Off and Manual, and its key stays 6. Only the order shown changes: the model still receives the keys. It replaces the refusal of handles said earlier the same day ("On peut pas changer l'ordre, ça me chante pas") and decision 0032 on that point.
+- **A key can still be changed once given**; the [Versions](13-versions.md) page shows the change, which is breaking for the model and makes the version a major one (Product Owner, end of 2026-11-17, answering the questionnaire: "Oui, la page Versions le signale"). The screen does not forbid it.
 - No string keys (Product Owner, 2026-11-16). Why: every enum can be checked in one place, the Enums page, and the configuration files are generated from it; so the model never needs a readable key, and the display text is enough for people.
 - When the user picks an item, the signal receives exactly its key.
 - It is the pair (name, value) the research found in FMI, SSP and OPC UA.
@@ -84,7 +84,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A["Create an enum on the Enums page"] --> B["Add its items: a whole number key picked by the user, display text, description; sorted by key"]
+    A["Create an enum on the Enums page"] --> B["Add its items: a whole number key picked by the user, display text, description; placed by key, then moved by handle if needed"]
     B --> C["On a signal of type enum, pick the enum"]
     C --> D["The signal follows the enum: no copy"]
 ```
@@ -100,10 +100,11 @@ The faceplate builder of a preset chooses how an enum is shown in the faceplate 
 
 ## Open questions
 
-Raised at the end of 2026-11-17, with the keys picked by the user:
+Raised at the end of 2026-11-17, with the handles and the keys that can change:
 
-- Handles to put the items in the order of their meaning, besides the sort by key (see [Rules](#rules)).
-- Can a key change once it is given, or is it fixed (see [Rules](#rules))?
+- An item added after the user moved items with handles: does it still take its place by key among the moved items, or go at the end?
+- A key changed on an item moved by handle: does the item stay where the user put it, or go back to its place by key?
+- Is the order chosen by handle also the order of the menu in the faceplate?
 
 Raised on 2026-11-17, when the templates were added:
 
