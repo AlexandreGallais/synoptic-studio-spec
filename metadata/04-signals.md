@@ -152,3 +152,7 @@ flowchart LR
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Signal (direction, ID, type, enum, quantity) | Metadata | Lines of a preset and its faceplate (read, write for an input, override for an output), bounds of a number field of the faceplate, commands that set it | No | No |
+
+## Open questions
+
+- **Does a signal still need the type text?** The Product Owner raised it on 2026-11-18: a number or an enum makes sense for a model, a string less so; a word shown on screen is the state of something, so it goes through an enum ("si on fait afficher une string, c'est sa représentation d'un état, mais du coup ça passe via un enum"). Not settled. Removing it would change the example above (`fault_message`), the text input of the faceplate and the text input of a symbol.

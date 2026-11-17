@@ -73,6 +73,8 @@ block-beta
 
 Several symbols can share a type, with different drawings and presets: a centrifugal pump can have a manual symbol and a motorised one, with no change in Metadata.
 
+A symbol can also be created as a **sub-symbol** of another one: it takes what was made for its parent and adds more (Product Owner, 2026-11-18; see [Sub-symbols](12-sub-symbols.md)).
+
 ### Removing the type of a symbol
 
 - Removing the type of a symbol hides everything linked to it (preset, faceplate entries, animations, interactions). Nothing is deleted (rule kept from the former "dynamic to static" switch; to confirm).

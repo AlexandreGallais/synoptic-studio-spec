@@ -51,6 +51,12 @@ This file is the index of the open questions. A question sits in the file it con
 | How a Symbol Lib looks in the navigation bar (the bar itself is decided: a small +, every Symbol Lib, a separator, then the pages General, Enums, Symbols, Pipes of the selected one). | [Libraries and symbols](01-libraries-and-symbols.md) | Initials in a square, the name on hover. |
 | Type choice among all the types: how it stays quick when the tree grows. | [Libraries and symbols](01-libraries-and-symbols.md) | A tree with a search field, as in Metadata. |
 
+## Raised on 2026-11-18
+
+| Question | Page | Proposal of the assistant |
+| --- | --- | --- |
+| Sub-symbols: does a change of the parent reach them; can they change what they take or only add; which type; a tree or a flat list; a parent in another Symbol Lib; how one is created. | [Sub-symbols](12-sub-symbols.md) | Asked to the Product Owner on 2026-11-18. |
+
 ## Still open, not researched
 
 | Question | Page | Written as |

@@ -55,6 +55,7 @@ The only kind of library is the **Symbol Lib**, which sorts symbols. There are n
 | [Pipes](pipes/README.md) | Connection points of a symbol, and the pipe styles kept in the Symbol Lib, each with its junctions, crossings and ends. |
 | [Open questions](10-open-questions.md) | Every open question in one place. |
 | [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md) | The Enums page of each Symbol Lib: the enums of Metadata read only, and the columns the user adds to them (colour, text, number) for the animations. |
+| [Sub-symbols](12-sub-symbols.md) | A symbol created from a parent symbol: it takes what was made for the parent and adds more (valve, motorised valve, motorised valve with command). |
 | [Research brief](research-brief.md) | The questions sent to the documentary research, and where the answers are. |
 
 One folder per mode, with its tools inside. What several modes share is in the editor folder (selection, hand, layers, precise move, anchors, advanced tools).

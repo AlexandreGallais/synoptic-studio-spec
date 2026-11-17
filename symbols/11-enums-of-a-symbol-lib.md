@@ -1,6 +1,6 @@
 # Enums of a Symbol Lib
 
-> [Home](../README.md) › [Symbols](README.md) › Enums of a Symbol Lib · Previous: [Open questions](10-open-questions.md)
+> [Home](../README.md) › [Symbols](README.md) › Enums of a Symbol Lib · Previous: [Open questions](10-open-questions.md) · Next: [Sub-symbols](12-sub-symbols.md)
 
 Status: draft, from the Product Owner's description of 2026-11-17, completed at the end of the day (templates completed on each placed symbol; the page in the navigation bar; how a column is added, named, typed and deleted). The page and its added columns are carried by decision 0036 (accepted on 2026-11-17); the assistant's readings below stay to confirm. Not validated. Open points are listed in [Open questions](#open-questions).
 
