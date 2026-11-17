@@ -475,7 +475,7 @@ mindmap
 | MD-08.5 | Reference family | — | Not shown any more (2026-11-17): the Product Owner did not see what it was for, and the formulas now go from the default unit. Kept or removed from the catalogue: asked. | Proposed | [Units](../metadata/05-units.md#quantities-families-and-conversions) |
 | MD-08.6 | Families | List | Named after their system: Metric, Imperial... (2026-11-17). A click opens the family (kept 2026-11-17). | Decided | [Units](../metadata/05-units.md) |
 | MD-08.13 | Converter | Number field | At the top of the family, in the default unit of the quantity, 1 to start with (assistant's reading). Its value is converted on every line of the table; nothing is kept (2026-11-17: "je mets 1 kg et [...] je vois combien de pounds ça fait et combien d'ounces"). | Decided (field), Proposed (starts at 1) | [Units](../metadata/05-units.md#the-units-page) |
-| MD-08.7 | Table of units | Table, read only, whole width | One line per unit. Columns: Unit (name with its variant: US gallon), Symbol, Value, Formula. Flat units (`m³/h` is one unit). No ratio column (2026-11-17: the ratio "1/16" is "présenté de la pire des manières"). The line of the default unit is marked (assistant's reading). | Decided | [Units](../metadata/05-units.md#the-units-page) |
+| MD-08.7 | Table of units | Table, read only, whole width | One line per unit. Columns: Unit (name with its variant: US gallon), Symbol, Value, Formula. Flat units (`m³/h` is one unit). No ratio column (2026-11-17: the ratio "1/16" is "présenté de la pire des manières"). Units from the largest to the smallest: stone, pound, ounce, like kilogram, gram, milligram (2026-11-17: "faut de la cohérence"). The line of the default unit is marked (assistant's reading). | Decided | [Units](../metadata/05-units.md#the-units-page) |
 | MD-08.14 | Value | Column, read only | The value of the converter in this unit, rounded to 12 significant digits (assistant's reading). | Decided (column), Proposed (rounding) | [Units](../metadata/05-units.md#the-units-page) |
 | MD-08.8 | Formula | Column, read only | How this unit is computed from the default unit, on its own line, never in a line under the table (2026-11-17): `lb = kg ÷ 0.45359237`, `°F = °C × 9/5 + 32`. It replaces the conversion of the family to the reference family, shown going and back. | Decided | [Units](../metadata/05-units.md#the-units-page) |
 | MD-08.9 | Parameters of the form | — | Merged into the formula: shown, never typed. | Decided | [Units](../metadata/05-units.md) |
@@ -504,11 +504,11 @@ mindmap
       Description, template only
       Items, global only
         Title Items, small plus on its right
-        Key, a whole number, sent to the model
+        Key, a whole number picked by the user, sent to the model
         Display text, shown to people
         Description, what the item means
         Delete button, no header
-        No handle, the order is not changed
+        Sorted by key, handles asked
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
@@ -519,8 +519,8 @@ mindmap
 | MD-09.10 | Kind: Global or Template | Choice when the enum is made (control not said) | Global: the items are written here, the same everywhere. Template: a name and a description only, no items here; the items are completed on each placed symbol, in the synoptic, with a small warning until they are (end of 2026-11-17). The difference must be explicit on screen; how is for the design system (2026-11-17). | Decided (control: Open) | [Enums](../metadata/06-enums.md#global-enums-and-templates) |
 | MD-09.11 | Description of a template | Text field (several lines) | Template only: what the enum is about as a whole, since it has no items to explain it (Product Owner, end of 2026-11-17). Plain text, never sent to the model. For a global enum: open. | Decided (template), Open (global) | [Enums](../metadata/06-enums.md#global-enums-and-templates) |
 | MD-09.4 | Kind of key | — | Removed (Product Owner, 2026-11-16): a key is always a number, there are no string keys. | Decided | [Enums](../metadata/06-enums.md) |
-| MD-09.5 | Items | Table | Columns in this order: Key, Display text, Description, then the delete button with no header (2026-11-17: the short field first, the long one last; replaces Key, Description, Display text of 2026-11-16). No handle: the order of the items is not changed (2026-11-17). | Decided | [Enums](../metadata/06-enums.md) |
-| MD-09.6 | Key | Whole number field | Unique; what the model receives; whole numbers only (2026-11-16). Changing it is breaking for the model. | Decided | [Enums](../metadata/06-enums.md) |
+| MD-09.5 | Items | Table | Columns in this order: Key, Display text, Description, then the delete button with no header (2026-11-17: the short field first, the long one last; replaces Key, Description, Display text of 2026-11-16). The lines are sorted by key automatically, smallest first (end of 2026-11-17: "un tri automatique pour que ça aille dans l'ordre"). Handles to order them by meaning: asked (refused earlier on 2026-11-17, brought back with a doubt at the end of the day). | Decided (sort), Open (handles) | [Enums](../metadata/06-enums.md#rules) |
+| MD-09.6 | Key | Whole number field | Typed by the user, any whole number, gaps allowed (0, 2, 4), for a global enum and for the items of a template (end of 2026-11-17). Unique; what the model receives (2026-11-16). Changing it is breaking for the model; whether it can still be changed once given: asked. | Decided (free number), Open (fixed once given) | [Enums](../metadata/06-enums.md#rules) |
 | MD-09.7 | Display text | Text field | After the key. What the faceplate, the symbol texts and the test values show. Not breaking. | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.9 | Description | Text field | Last, after the display text (2026-11-17): what the item means, plain text, never sent to the model (2026-11-16). Optional, shown on this page only (2026-11-16). | Decided | [Enums](../metadata/06-enums.md) |
 | MD-09.8 | Add, delete an item | Button (+), delete button (icon) | The small + on the right of the title "Items"; the delete button at the far right of an item, with no header, then a warning (2026-11-16; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). An enum is deleted the same way. | Decided | [Enums](../metadata/06-enums.md) |
@@ -529,7 +529,7 @@ Gaps:
 
 - Must the display texts be unique too?
 - Changing a key is breaking: no Edit or Save step (2026-11-16); it shows on [MD-11](#md-11--versions) and makes the version a major one (proposed).
-- Order of the items: never changed by the user (2026-11-17); is it the order of creation, and the order of the menu in the faceplate?
+- Order of the items: sorted by key (end of 2026-11-17), with or without handles (asked); is it also the order of the menu in the faceplate?
 - Which signals use an enum: is it shown (a usage counter)?
 
 ## MD-10 · Libraries: removed

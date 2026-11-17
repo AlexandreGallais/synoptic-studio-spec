@@ -40,7 +40,7 @@ flowchart TD
 
 - A quantity holds one or more unit families.
 - A family is a table of units of one system, like the school ladder: kilogram, hectogram, decagram, gram, decigram, centigram, milligram. A family is named after its system: **Metric**, **Imperial**, US customary... (as in the wireframes the Product Owner reviewed on 2026-11-17; it replaces the names "gram" and "pound" used for the families until then).
-- A quantity can hold several families. Example: quantity "mass" has the family "Metric" (kilogram, gram, milligram...) and the family "Imperial" (pound, ounce...).
+- A quantity can hold several families. Example: quantity "mass" has the family "Metric" (kilogram, gram, milligram...) and the family "Imperial" (stone, pound, ounce...).
 - Each quantity has a reference family. Every other family is converted to it and from it, never pairwise. Formulas are not limited to a factor, so cases like temperature are covered.
 - À trancher (asked on 2026-11-17): the reference family is a way to store the conversions, made for a user who typed them; since the catalogue is ready made, it means nothing on screen (Product Owner: "Référence family metric, ça, je pas forcément compris"). Proposed: every unit is defined against the base unit of its quantity (as UCUM and Pint do), the families only group the units for reading, and the reference family disappears from the catalogue and from the screen.
 
@@ -51,7 +51,7 @@ flowchart LR
             kg[kilogram] --- g[gram] --- mg[milligram]
         end
         subgraph P[Family: Imperial]
-            lb[pound] --- oz[ounce]
+            st[stone] --- lb[pound] --- oz[ounce]
         end
         P -- "to the reference" --> G
         G -- "and back" --> P
@@ -155,9 +155,11 @@ Example, the mass, family Imperial, with 1 typed in the field (default unit: kil
 
 | Unit | Symbol | Value | Formula |
 | --- | --- | --- | --- |
+| Stone | st | 0.157473044418 | st = kg ÷ 6.35029318 |
 | Pound | lb | 2.20462262185 | lb = kg ÷ 0.45359237 |
 | Ounce | oz | 35.2739619496 | oz = kg ÷ 0.028349523125 |
-| Stone | st | 0.157473044418 | st = kg ÷ 6.35029318 |
+
+- **The units of a family are listed from the largest to the smallest**, like the metric ladder (kilogram, then gram, then milligram): stone (14 lb), then pound, then ounce (Product Owner, 2026-11-17, on the wireframe that listed pound, ounce, stone: "les pierres [...] faut le mettre avant les pounds [...] faut de la cohérence dans ce que t'affiches").
 
 - Unit names carry their variant (US gallon, thermochemical calorie), because one name hides several values.
 - Units are flat: "m³/h" is one unit with its own factor, nothing is deduced from its parts.
