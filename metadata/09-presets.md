@@ -118,7 +118,7 @@ flowchart TD
 ### No Faceplate part
 
 - Earlier on 2026-11-16, a Faceplate part, last of the parts of a type, only showed the faceplate of a chosen preset (decision 0021).
-- At the end of the day, the Product Owner **removed it** from the parts of the type ("Tu ne m'as pas enlevé la page Faceplate [...] de la liste de part of the type"): the faceplate is the mode Faceplate of the preset, nothing else (decision 0023). The parts of a type are General, Documentation, Signals, Commands, Presets (see [Types](01-types.md)).
+- At the end of the day, the Product Owner **removed it** from the parts of the type ("Tu ne m'as pas enlevé la page Faceplate [...] de la liste de part of the type"): the faceplate is the mode Faceplate of the preset, nothing else (decision 0023). Since 2026-11-17, the parts of a type are General, Documentation, Signals, Commands, Flags, Presets (decision 0028; see [Types](01-types.md)).
 
 ### Typing a value
 
