@@ -4,7 +4,7 @@
 
 Status: draft, from the Product Owner's description of 2026-11-18 (the type, its links, signals, commands and flags, as tables linked by internal identifiers). Not validated. The presets are left out: the Product Owner is not ready to describe them yet ("je ne suis pas prêt à le faire"). Open points are listed in [Open questions](#open-questions).
 
-This page is the logical representation of Metadata: the objects, their fields, and how they point to each other. It says what is stored, not how (files, database): the format of the files is settled with [Storage](../storage/README.md).
+This page is the logical representation of Metadata: the objects, their fields, and how they point to each other. The Product Owner leans towards saving it as JSON files, with no database: [As JSON](#as-json) shows what that means for the schema. The folder and the conflicts are settled with [Storage](../storage/README.md).
 
 ## Rules
 
@@ -205,6 +205,95 @@ These tables are pointed to by the type and its parts. The Product Owner did not
 - "Palettes" in the plural is the Product Owner's word on 2026-11-18 ("comme ça, on peut faire des palettes et tout"); [Icons](02-icons.md) still says one fixed palette. How many palettes there are is left to the design system.
 - The items of a template enum are completed on each placed symbol, in the synoptic (see [Enums](06-enums.md#global-enums-and-templates)): their table comes with part 3.
 
+## As JSON
+
+Status: a leaning of the Product Owner, not a decision (2026-11-18: "On va peut-être tout faire en JSON pour pas faire compliqué"). Everything below marked "proposal" is the assistant's, to confirm.
+
+### Each kind of value in JSON
+
+Every field of the schema has a JSON equivalent; the links between objects stay by internal ID.
+
+| In the schema | In JSON | Rule |
+| --- | --- | --- |
+| UUID (internal ID) | String | Lower case, 36 characters with the dashes. |
+| Text, Markdown | String | The Markdown stays plain text in the string. |
+| Integer (an enum key) | Number, without a fraction | Exact in JavaScript up to 9 007 199 254 740 991: a key beyond it is refused. |
+| Real | Number | JSON has no "not a number" nor infinity: a bound left open is `null`, never infinity. |
+| Boolean | `true` or `false` |  |
+| A choice of the software (direction, kind) | A fixed string | `"input"`, `"output"`, `"path"`, `"url"`... in English, never translated. |
+| Ordered list of internal IDs | Array of strings | The place in the array is the place on the screen. |
+| Colour value | String `"#rrggbb"` |  |
+| Empty field ("follows the parent", no parent) | `null` | Proposal: written `null`, never left out, so that a file read by hand shows every field. |
+
+- **The value of a command** is a number, a boolean, or the internal ID of an enum item (a string). What it is comes from the type of the target signal, never from the JSON value itself.
+- **What the software ships is never copied into the user's files**: an icon's drawing and the catalogue of quantities stay with the program; the files hold their internal IDs only.
+- **Each file starts with the version of its format** (proposal: `"format": 1`), so that a later Synoptic Studio can still read an older file.
+
+### Two shapes for a type
+
+Every line of links, signals, commands and flags belongs to one type (decision 0047 for the links; for the signals, the assistant's reading, to confirm). So a type can hold its lines **inside** itself, instead of pointing to separate tables.
+
+|  | A · Lines nested in their type (proposal) | B · Separate tables, as the schema |
+| --- | --- | --- |
+| Shape | A type is one object; its links, signals, commands and flags are arrays of objects inside it | One array per table; the type holds lists of internal IDs |
+| Order on the screen | The order of the array, nothing more | A list of IDs beside the table |
+| Delete a type | Its lines go with it | Its lines must be found and deleted in each table |
+| Read by hand, compared in Git | One block per type, easy | The type and its lines far apart |
+| Find a signal by its internal ID | An index built when the files are read (little data) | Direct |
+| What changes in the schema | The `*_ids` lists disappear: the array is the list. The internal IDs stay on every line | Nothing |
+
+Enum items follow the same rule in A: nested in their enum.
+
+An example of shape A, with made-up identifiers:
+
+```json
+{
+  "format": 1,
+  "internalId": "6f1c2a90-0000-4000-8000-000000000001",
+  "id": "centrifugal_pump",
+  "parentInternalId": "6f1c2a90-0000-4000-8000-000000000000",
+  "iconInternalId": null,
+  "colourInternalId": null,
+  "description": "A **centrifugal** pump.",
+  "links": [
+    {
+      "internalId": "6f1c2a90-0000-4000-8000-000000000010",
+      "kind": "path",
+      "target": "W:/datasheets/pumps",
+      "description": "Datasheets"
+    }
+  ],
+  "signals": [
+    {
+      "internalId": "6f1c2a90-0000-4000-8000-000000000020",
+      "direction": "input",
+      "id": "speed_setpoint",
+      "type": "real",
+      "enumInternalId": null,
+      "quantityInternalId": "6f1c2a90-0000-4000-8000-000000000900"
+    }
+  ],
+  "commands": [
+    {
+      "internalId": "6f1c2a90-0000-4000-8000-000000000030",
+      "kind": "trigger",
+      "id": "start",
+      "targetSignalInternalId": null,
+      "value": null
+    }
+  ],
+  "flags": []
+}
+```
+
+### Files
+
+- **Proposal: one file per type, and one per global enum**, named by internal ID (`types/<internal ID>.json`), never by ID: renaming an ID must break nothing.
+  - The check before saving works file by file (see [Files and conflicts](../storage/files-and-conflicts.md)): two people who change two types never collide.
+  - A change in Git shows one small file.
+  - Checking that an ID is unique in the whole tree (decision 0047) needs every type read: they all are, when Metadata opens.
+- The other way: one file for all of Metadata. Simpler to copy, but two people who change two different types collide.
+
 ## The names of the two identifiers
 
 - The Product Owner leans towards **"ID"** for the public identifier, and **"internal ID"** for the UUID (2026-11-18). He asked for a documentary research before settling it.
@@ -222,3 +311,5 @@ These tables are pointed to by the type and its parts. The Product Owner did not
 
 - The words "ID" and "internal ID": to settle with the documentary research.
 - The presets: their tables, when the Product Owner describes them.
+- JSON files instead of a database: a leaning of the Product Owner (2026-11-18, "peut-être"), not settled.
+- If JSON: lines nested in their type (A) or separate tables (B); one file per type or one for all of Metadata; `null` for an empty field; the format version in each file.
