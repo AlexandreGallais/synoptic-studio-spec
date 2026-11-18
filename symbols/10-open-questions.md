@@ -55,7 +55,8 @@ This file is the index of the open questions. A question sits in the file it con
 
 | Question | Page | Proposal of the assistant |
 | --- | --- | --- |
-| Sub-symbols: a tree or a flat list; a parent in another Symbol Lib; how one is created; a parent without a type, or that changes type; preset and connection points taken or not; deleting a parent. (A change of the parent reaches them, they only add, their type is the parent's or a sub-type: decided 2026-11-18.) | [Sub-symbols](12-sub-symbols.md) | A parent without a type leaves the type free. |
+| Sub-symbols: what becomes of them when their parent is deleted; where the + sits in the editor. (Decided 2026-11-18: a tree, the parent in the same Symbol Lib, a small + in the tree and in the editor, any type under a parent without a type, every sub-symbol in fault when the parent changes or loses its type, preset and connection points taken, a parent can be deleted.) | [Sub-symbols](12-sub-symbols.md) | Into fault, as for a change of type. |
+| The list of faults of the application: what puts a symbol in fault, how it shows, how it is repaired (Product Owner, 2026-11-18). | [Sub-symbols](12-sub-symbols.md) | Start from the small red mark of a broken link. |
 
 ## Still open, not researched
 

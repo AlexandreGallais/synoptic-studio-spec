@@ -8,11 +8,11 @@ Status: draft, written from the Product Owner's oral description of 2026-11-11. 
 
 ## The big picture
 
-The user picks a Symbol Lib, sees the flat list of its symbols, and creates or opens a symbol. In the symbol editor, the user draws, then links the drawing to the type's signals (animation) and commands (interactions).
+The user picks a Symbol Lib, sees the tree of its symbols (a sub-symbol under its parent), and creates or opens a symbol. In the symbol editor, the user draws, then links the drawing to the type's signals (animation) and commands (interactions).
 
 ```mermaid
 flowchart LR
-    L["Symbol Lib: flat lists of symbols and of styles"] --> S["Symbol"]
+    L["Symbol Lib: a tree of symbols, a flat list of styles"] --> S["Symbol"]
     L --> L2
     S --> D["Drawing: shapes, text, pen, layers"]
     S --> T["Type and preset, from Metadata"]

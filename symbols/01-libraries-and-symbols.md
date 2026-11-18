@@ -10,7 +10,7 @@ A **Symbol Lib** holds symbols. It is the only kind of library: there are no lib
 
 ### Symbol Lib
 
-- It holds two flat lists, never a tree: its **symbols**, then its **pipe styles**. It also has one base pipe style, the global look of its pipes, that the pipe styles override. Junctions, crossings and start and end shapes are parts of the styles (decided by the Product Owner, 2026-11-11; see [Pipe styles](pipes/pipe-styles.md)). A pipe style can be linked to a type, chosen among all the types of Metadata.
+- It holds two lists: its **symbols**, a **tree** where a sub-symbol sits under its parent, as in Metadata (Product Owner, 2026-11-18, which replaces the flat list of 2026-11-11; see [Sub-symbols](12-sub-symbols.md)), then its **pipe styles**, a flat list. It also has one base pipe style, the global look of its pipes, that the pipe styles override. Junctions, crossings and start and end shapes are parts of the styles (decided by the Product Owner, 2026-11-11; see [Pipe styles](pipes/pipe-styles.md)). A pipe style can be linked to a type, chosen among all the types of Metadata.
 - **One list of symbols only** (Product Owner, 2026-11-15). There is no "static" or "dynamic" kind: every symbol is the same kind of object, and a symbol simply has a type or not yet. The Product Owner settled it so that the software is simpler to understand at first.
 - It has a small **Enums** page: the enums of Metadata, read only, with the columns the library adds to them for the animations (Product Owner, 2026-11-17; see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)).
 - It has a name, set on its **General** page. Nothing else: the lists above are its content, not settings.
@@ -73,7 +73,7 @@ block-beta
 
 Several symbols can share a type, with different drawings and presets: a centrifugal pump can have a manual symbol and a motorised one, with no change in Metadata.
 
-A symbol can also be created as a **sub-symbol** of another one: it takes what was made for its parent, read only, follows its changes, and adds more; its type is the parent's or a sub-type of it (Product Owner, 2026-11-18; see [Sub-symbols](12-sub-symbols.md)).
+A symbol can also be created as a **sub-symbol** of another one, of the same Symbol Lib, by the small + of its parent, in the tree or in the editor: it takes what was made for its parent, read only, preset and connection points included, follows its changes, and adds more; its type is the parent's or a sub-type of it (Product Owner, 2026-11-18; see [Sub-symbols](12-sub-symbols.md)).
 
 ### Removing the type of a symbol
 
