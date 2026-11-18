@@ -13,19 +13,20 @@ This page is the logical representation of Metadata: the objects, their fields, 
   - an **ID**, the public identifier: a text, written by the user, sent everywhere (the model, the configuration files). It is what the pages already call the ID of a signal, of a command and of a flag, and the name of a type.
 - **The words "internal ID" and "ID" are the Product Owner's leaning, not a decision** (Product Owner, 2026-11-18: "je pense que c'est mieux de juste l'appeler ID [...] peut-être, j'ai peut-être tort"). The other pair he named is "internal identifier" and "public identifier". A documentary research checks the words first (see [The names of the two identifiers](#the-names-of-the-two-identifiers)).
 - **An object points to another by its internal ID, never by its ID or by a copy** (Product Owner, 2026-11-18): the parent of a type, its icon, its colour, the enum and the quantity of a signal, the target of a command. So renaming an ID breaks nothing in the application (see [Types](01-types.md)).
-- **An ordered list is a list of internal IDs**: the place of an internal ID in the list is the place of the object on the screen (Product Owner, 2026-11-18: "en fonction de l'ordre de la liste, ça donne l'ordre"). It is how the handles of the tables keep their order: the objects themselves hold no position.
+- **The order of a list is the order on the screen** (Product Owner, 2026-11-18: "en fonction de l'ordre de la liste, ça donne l'ordre"). It is how the handles of the tables keep their order: the objects themselves hold no position.
+- **The links, signals, commands and flags of a type are nested in it, not kept in tables of their own** (Product Owner, 2026-11-18, answering the questionnaire: "Tout imbriqué dans le type"), if Metadata is saved as JSON (see [As JSON](#as-json)). Each line keeps its internal ID; the type holds them in ordered lists of lines, not lists of internal IDs. So a line belongs to one type and is never shared.
 - A type holds **its own lines only**; the inherited ones are read from its parents, up the branch (see [Signals](04-signals.md#the-table-of-signals)).
 
 ```mermaid
 flowchart LR
     O["Any object"] --> I["Internal ID: UUID, set by the software, never changes, app only"]
     O --> P["ID: text, written by the user, sent to the model and the configuration files"]
-    I -->|"used by"| L["Every link between objects, every ordered list"]
+    I -->|"used by"| L["Every link between objects"]
 ```
 
 ## The schema
 
-The diagram below shows every table and how they point to each other; each line reads from the table that holds the internal ID to the table it points to. `uuid_list` is an ordered list of internal IDs.
+The diagram below shows every object and how they point to each other. A line marked "holds" is a nested list: the links, signals, commands and flags are written inside their type, the items inside their enum. Every other line reads from the object that holds the internal ID to the object it points to. `uuid_list` is an ordered list of internal IDs.
 
 ```mermaid
 erDiagram
@@ -36,10 +37,10 @@ erDiagram
         uuid icon_internal_id FK "empty: follows the parent"
         uuid colour_internal_id FK "empty: follows the parent"
         markdown description "plain text holding Markdown"
-        uuid_list link_ids "ordered, own links only"
-        uuid_list signal_ids "ordered, own signals only"
-        uuid_list command_ids "ordered, own commands only"
-        uuid_list flag_ids "ordered, own flags only"
+        line_list links "ordered, nested, own links only"
+        line_list signals "ordered, nested, own signals only"
+        line_list commands "ordered, nested, own commands only"
+        line_list flags "ordered, nested, own flags only"
     }
     LINK {
         uuid internal_id PK
@@ -84,7 +85,7 @@ erDiagram
         text id
         enum_kind kind "global or template"
         text description
-        uuid_list item_ids "ordered, global enums only"
+        line_list items "ordered, nested, global enums only"
     }
     ENUM_ITEM {
         uuid internal_id PK
@@ -101,10 +102,10 @@ erDiagram
     TYPE }o--o| ICON : "shows"
     TYPE }o--o| COLOUR : "shows"
     PALETTE ||--|{ COLOUR : "holds"
-    TYPE ||--o{ LINK : "lists"
-    TYPE ||--o{ SIGNAL : "declares"
-    TYPE ||--o{ COMMAND : "declares"
-    TYPE ||--o{ FLAG : "declares"
+    TYPE ||--o{ LINK : "holds"
+    TYPE ||--o{ SIGNAL : "holds"
+    TYPE ||--o{ COMMAND : "holds"
+    TYPE ||--o{ FLAG : "holds"
     SIGNAL }o--o| ENUM : "points to"
     SIGNAL }o--o| QUANTITY : "measures"
     ENUM ||--o{ ENUM_ITEM : "holds"
@@ -124,10 +125,10 @@ Said by the Product Owner on 2026-11-18.
 | Icon | Internal ID of an icon | Empty: the type follows its parent's icon (see [Icons](02-icons.md#icon-and-colour-are-inherited)). |
 | Colour | Internal ID of a colour | Empty: the type follows its parent's colour. A colour of a palette is pointed to by its internal ID, never by its colour code, so a palette that changes changes every type that uses it ("si jamais la palette change, c'est plus simple"). |
 | Description | Text, holding Markdown | Plain text, not a binary object: the Markdown is read when it is shown (Product Owner: "ce n'est peut-être pas un blob, mais du texte [...] qui sera du Markdown, mais du texte brut"). |
-| Links | Ordered list of internal IDs of links | See [The links](#the-links). |
-| Signals | Ordered list of internal IDs of signals | Its own signals only. |
-| Commands | Ordered list of internal IDs of commands | Its own commands only. |
-| Flags | Ordered list of internal IDs of flags | Its own flags only. |
+| Links | Ordered list of links, nested | See [The links](#the-links). |
+| Signals | Ordered list of signals, nested | Its own signals only. |
+| Commands | Ordered list of commands, nested | Its own commands only. |
+| Flags | Ordered list of flags, nested | Its own flags only. |
 | Presets | Not described yet | Left out by the Product Owner on 2026-11-18. |
 
 - Empty for "follows the parent" is how the reset of the icon and of the colour is kept: the reset empties the field. Assistant's reading, to confirm.
@@ -136,25 +137,25 @@ Said by the Product Owner on 2026-11-18.
 
 Said by the Product Owner on 2026-11-18.
 
-- **One table of links, common to every type** ("une table commune pour tout le monde").
-- A link has a **kind**, path or URL; a **target**, the path or the URL itself; and a **description** (see [Documentation](03-documentation.md#the-links)).
-- **The type holds the ordered list of the internal IDs of its links**; the order of the list is the order on the screen.
-- **A line of the table belongs to one type: links are never shared** (Product Owner, 2026-11-18, decision 0047, replacing "the table holds only unique links" said earlier the same day: "je retire ce que j'ai dit dans la table des liens [...] on rajoute une ligne à chaque fois, et puis basta"). Two types that point to the same path have two lines; the same path is written twice. Few links are expected, so the duplicates cost little ("ça se peut pas beaucoup non plus, parce qu'il y a pas énormément de données").
-- **Adding a link adds a line to the table**, and its internal ID to the type's list.
-- **Changing a link changes its line**: only one type uses it, so no other type changes.
-- **Deleting a link deletes its line from the table**, and its internal ID from the type's list ("quand on supprime la ligne, c'est supprimé de la table, et puis basta"). It replaces "the line stays in the table", said earlier the same day.
+- **The links are nested in their type** (Product Owner, 2026-11-18, answering the questionnaire: "Tout imbriqué dans le type"). It replaces "one table of links, common to every type", said earlier the same day ("une table commune pour tout le monde").
+- A link has an **internal ID**, a **kind**, path or URL; a **target**, the path or the URL itself; and a **description** (see [Documentation](03-documentation.md#the-links)).
+- **The order of the type's list of links is the order on the screen.**
+- **A link belongs to one type: links are never shared** (Product Owner, 2026-11-18, decision 0047: "on rajoute une ligne à chaque fois, et puis basta"). Two types that point to the same path have two links; the same path is written twice. Few links are expected, so the duplicates cost little ("ça se peut pas beaucoup non plus, parce qu'il y a pas énormément de données").
+- **Adding a link adds it to the type's list.**
+- **Changing a link changes it in its type only**: no other type changes.
+- **Deleting a link removes it from the type's list**, and nothing is left elsewhere ("c'est supprimé [...] et puis basta").
 
 ```mermaid
 flowchart LR
     T1["Type pump: links L1, L2"] --> L1["L1: path W:/datasheets/pumps, 'Datasheets'"]
     T1 --> L2["L2: URL of the standard"]
     T2["Type valve: links L3"] --> L3["L3: path W:/datasheets/pumps, 'Datasheets'"]
-    D["Delete L3 from valve"] --> R["valve: no links; L3 deleted from the table; L1 untouched"]
+    D["Delete L3 from valve"] --> R["valve: no links; L3 gone; L1 untouched"]
 ```
 
 ## The signals
 
-Said by the Product Owner on 2026-11-18: a table of their own, pointed to by internal ID, as the links.
+Said by the Product Owner on 2026-11-18: nested in their type, as the links, each with its internal ID.
 
 | Field | Kind of value | Rule |
 | --- | --- | --- |
@@ -165,7 +166,7 @@ Said by the Product Owner on 2026-11-18: a table of their own, pointed to by int
 | Enum | Internal ID of an enum | For an enum signal only. |
 | Quantity / Difference | Internal ID of a quantity or of a difference | Optional; integers and reals only. Each quantity and each difference of the catalogue has its own internal ID (see [Units](05-units.md#value-or-difference-chosen-in-the-signal)). |
 
-- A signal belongs to one type, like a link: two types never share a signal line. Sharing one would change two types at once, a virtual link the rule of [Types](01-types.md) refuses. Assistant's reading, to confirm.
+- **A signal belongs to one type, like a link**: two types never share a signal. Sharing one would change two types at once, a virtual link the rule of [Types](01-types.md) refuses. Confirmed by the Product Owner choosing lines nested in their type (2026-11-18). The same holds for commands and flags.
 
 ## The commands
 
@@ -229,22 +230,17 @@ Every field of the schema has a JSON equivalent; the links between objects stay 
 - **What the software ships is never copied into the user's files**: an icon's drawing and the catalogue of quantities stay with the program; the files hold their internal IDs only.
 - **Each file starts with the version of its format** (proposal: `"format": 1`), so that a later Synoptic Studio can still read an older file.
 
-### Two shapes for a type
+### A type nested in one object
 
-Every line of links, signals, commands and flags belongs to one type (decision 0047 for the links; for the signals, the assistant's reading, to confirm). So a type can hold its lines **inside** itself, instead of pointing to separate tables.
+**A type is one JSON object; its links, signals, commands and flags are arrays of objects inside it** (Product Owner, 2026-11-18, answering the questionnaire: "Tout imbriqué dans le type"). Separate tables, with lists of internal IDs in the type, were the other way; not chosen.
 
-|  | A · Lines nested in their type (proposal) | B · Separate tables, as the schema |
-| --- | --- | --- |
-| Shape | A type is one object; its links, signals, commands and flags are arrays of objects inside it | One array per table; the type holds lists of internal IDs |
-| Order on the screen | The order of the array, nothing more | A list of IDs beside the table |
-| Delete a type | Its lines go with it | Its lines must be found and deleted in each table |
-| Read by hand, compared in Git | One block per type, easy | The type and its lines far apart |
-| Find a signal by its internal ID | An index built when the files are read (little data) | Direct |
-| What changes in the schema | The `*_ids` lists disappear: the array is the list. The internal IDs stay on every line | Nothing |
+- The order of an array is the order on the screen, nothing more.
+- Deleting a type deletes its lines with it: nothing is left behind.
+- Each line keeps its internal ID: a command still points to its target signal, a symbol to a signal, by internal ID.
+- Finding a line by its internal ID uses an index the software builds when it reads the files. Assistant's reading: there is little data, so it costs little.
+- Enum items follow the same rule: nested in their enum. Assistant's reading, to confirm.
 
-Enum items follow the same rule in A: nested in their enum.
-
-An example of shape A, with made-up identifiers:
+An example, with made-up identifiers:
 
 ```json
 {
@@ -288,11 +284,12 @@ An example of shape A, with made-up identifiers:
 
 ### Files
 
-- **Proposal: one file per type, and one per global enum**, named by internal ID (`types/<internal ID>.json`), never by ID: renaming an ID must break nothing.
-  - The check before saving works file by file (see [Files and conflicts](../storage/files-and-conflicts.md)): two people who change two types never collide.
+- **One file per type** (Product Owner, 2026-11-18, answering the questionnaire: "Un fichier par type"). One file for all of Metadata was the other way; not chosen.
+  - The check before saving works file by file (see [Files and conflicts](../storage/files-and-conflicts.md)): two people who change two different types never collide.
   - A change in Git shows one small file.
   - Checking that an ID is unique in the whole tree (decision 0047) needs every type read: they all are, when Metadata opens.
-- The other way: one file for all of Metadata. Simpler to copy, but two people who change two different types collide.
+- **Proposal: the file is named by internal ID** (`types/<internal ID>.json`), never by ID: renaming an ID must break nothing.
+- **Proposal: one file per global enum too**, for the same reasons (`enums/<internal ID>.json`).
 
 ## The names of the two identifiers
 
@@ -312,4 +309,4 @@ An example of shape A, with made-up identifiers:
 - The words "ID" and "internal ID": to settle with the documentary research.
 - The presets: their tables, when the Product Owner describes them.
 - JSON files instead of a database: a leaning of the Product Owner (2026-11-18, "peut-être"), not settled.
-- If JSON: lines nested in their type (A) or separate tables (B); one file per type or one for all of Metadata; `null` for an empty field; the format version in each file.
+- If JSON: the file named by internal ID; one file per global enum; enum items nested in their enum; `null` for an empty field; the format version in each file. Settled: lines nested in their type, one file per type (2026-11-18).
