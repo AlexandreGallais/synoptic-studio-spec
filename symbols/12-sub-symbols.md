@@ -19,7 +19,7 @@ A symbol can have a **parent symbol**, as a type of Metadata has a parent type (
 
 ### The list of symbols becomes a tree
 
-- **The list of symbols of a Symbol Lib is a tree, as in Metadata** (Product Owner, 2026-11-18): a sub-symbol sits under its parent. It replaces the flat list decided on 2026-11-11. The list of pipe styles stays flat.
+- **The list of symbols of a Symbol Lib is a tree, as in Metadata** (Product Owner, 2026-11-18): a sub-symbol sits under its parent. It replaces the flat list decided on 2026-11-11 (decision 0045, accepted on 2026-11-18, which changes decision 0010). The list of pipe styles stays flat.
 - **The parent is always in the same Symbol Lib** as its sub-symbol (Product Owner, 2026-11-18: "un parent peut-il être dans une autre Symbol Lib ? Non").
 
 ### Creating a sub-symbol
