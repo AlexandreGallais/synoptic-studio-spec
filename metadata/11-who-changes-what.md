@@ -1,6 +1,6 @@
 # Who changes what, and where
 
-> [Home](../README.md) › [Metadata](README.md) › Who changes what · Previous: [Flags](14-flags.md) · Next: [Open questions](12-open-questions.md)
+> [Home](../README.md) › [Metadata](README.md) › Who changes what · Previous: [Identifiers](16-identifiers.md) · Next: [Open questions](12-open-questions.md)
 
 Status: validated by the Product Owner on 2026-11-11; the faceplate merged into the presets on 2026-11-16, the name shown of a signal moved to the preset and versions added the same day; the preset split into two modes, Values and Faceplate (the builder), later that day; at the end of the day the model unit left the signal and the Faceplate part was removed. Open points are listed in [Open questions](12-open-questions.md).
 
@@ -20,6 +20,8 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 | Display unit, decimals, default value of each signal | Preset, mode Values, in Metadata | Edit | Edit |
 | Elements of the faceplate: signals (name shown, input and its bounds, read or write, read or override), commands (text of their button), titles, descriptions, groups | Preset, mode Faceplate (the builder), in Metadata | Open | Open |
 | Texts of the title and description elements of the faceplate (no title nor description by default, 2026-11-16) | Preset, mode Faceplate, in Metadata | Edit (assistant's reading) | Edit, on each placed symbol (assistant's reading) |
+| Fixed text or variable (an identifier or a signal) of a title or description element (2026-11-18) | Preset, mode Faceplate, in Metadata, through the small icon of the field | No (assistant's reading) | No |
+| Identifier: ID, display name, description, order (2026-11-18, working name) | Identifiers page of Metadata | No (assistant's reading) | Its text, filled on each placed symbol (part 3) |
 | Version of Metadata, its number and change log | Versions page of Metadata | No | No |
 
 ```mermaid

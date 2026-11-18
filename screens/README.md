@@ -24,7 +24,7 @@ The screens are also drawn as wireframes on the page **"Spec"** of the Figma fil
 
 | File | Screens |
 | --- | --- |
-| [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its five parts), Units, Enums, Versions; Flags is a part of the type editor. |
+| [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its five parts), Units, Enums, Versions, Identifiers; Flags is a part of the type editor. |
 | [Symbol editor](symbols.md) | The navigation bar, Symbol Libs, the left-hand panel of a Symbol Lib, the symbol editor (layout, floating bars, layers) and its seven modes, the advanced tools, the Enums page of a Symbol Lib. |
 | [Pipes](pipes.md) | The base pipe style, the pipe styles, the end shapes, the dash sequences, the preview, and pipes in a synoptic (part 3, preview). |
 

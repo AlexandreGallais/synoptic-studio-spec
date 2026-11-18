@@ -1,6 +1,6 @@
 # Data model
 
-> [Home](../README.md) › [Metadata](README.md) › Data model · Previous: [Flags](14-flags.md) · Next: [Who changes what](11-who-changes-what.md)
+> [Home](../README.md) › [Metadata](README.md) › Data model · Previous: [Flags](14-flags.md) · Next: [Identifiers](16-identifiers.md)
 
 Status: draft, from the Product Owner's description of 2026-11-18 (the type, its links, signals, commands and flags, as tables linked by internal identifiers). Not validated. The presets are left out: the Product Owner is not ready to describe them yet ("je ne suis pas prêt à le faire"). Open points are listed in [Open questions](#open-questions).
 
@@ -97,6 +97,12 @@ erDiagram
         uuid internal_id PK
         quantity_kind kind "quantity or difference"
         text id
+    }
+    IDENTIFIER {
+        uuid internal_id PK
+        text id "the key"
+        text display_name
+        text description "plain text"
     }
     TYPE |o--o{ TYPE : "parent of"
     TYPE }o--o| ICON : "shows"
@@ -202,6 +208,10 @@ These tables are pointed to by the type and its parts. The Product Owner did not
 | Palette, colour | The design system | A palette holds an ordered list of colours; a colour has an internal ID and its value | [Icons](02-icons.md) |
 | Enum, enum item | The user, on the Enums page | An enum: internal ID, ID, kind (global or template), description, ordered list of its items. An item: internal ID, key (a whole number), display text, description | [Enums](06-enums.md) |
 | Quantity, difference | The catalogue of the software, read only | Internal ID, ID, kind (quantity or difference) | [Units](05-units.md) |
+| Identifier (working name, 2026-11-18) | The user, on the Identifiers page | Internal ID, ID, display name, description; no value, no default value. One ordered list, the order on the screen | [Identifiers](16-identifiers.md) |
+
+- The identifiers are pointed to by the title and description elements of the faceplate builder (a field holds a fixed text, or the internal ID of an identifier or of a signal): their table comes with the presets, not described yet. Their text, filled on each placed symbol, comes with part 3.
+- If JSON: one file for the whole ordered list of identifiers (proposal, `identifiers.json`), since the order of the list is the order on the screen.
 
 - "Palettes" in the plural is the Product Owner's word on 2026-11-18 ("comme ça, on peut faire des palettes et tout"); [Icons](02-icons.md) still says one fixed palette. How many palettes there are is left to the design system.
 - The items of a template enum are completed on each placed symbol, in the synoptic (see [Enums](06-enums.md#global-enums-and-templates)): their table comes with part 3.

@@ -15,6 +15,7 @@ Path: on the far left of every screen of Metadata (Product Owner, 2026-11-16).
 | MD-00.3 | Enums | Button (icon) | Opens [MD-09](#md-09--enums). | Decided | [Layout rules](README.md#layout-rules) |
 | MD-00.4 | Versions | Button (icon) | Opens [MD-11](#md-11--versions). After Enums (2026-11-16). | Decided | [Versions](../metadata/13-versions.md) |
 | MD-00.5 | Flags | — | Removed (2026-11-17): flags are a part of the type, not a page of the bar (see [MD-12](#md-12--flags-a-part-of-the-type)). | Decided | [Flags](../metadata/14-flags.md) |
+| MD-00.6 | Identifiers | Button (icon) | Opens [MD-13](#md-13--identifiers). A page of the bar, like Units, Enums and Versions (2026-11-18: "C'est une page de type unit enum version"). After Enums, before Versions: assistant's reading. Working name. | Decided (page of the bar), Proposed (place, name) | [Identifiers](../metadata/16-identifiers.md) |
 
 Gaps:
 
@@ -416,6 +417,7 @@ mindmap
 | MD-07.22 | Minimum, maximum of a number field | Number field each, with a small icon inside to pick a signal | Each typed by hand, or taken from a signal of the type through the small icon in the field, as Figma's "Apply variable" (end of 2026-11-17). A value outside them is refused (assistant's reading). | Decided (refusal: Proposed) | [Presets](../metadata/09-presets.md#bounds-of-a-number-field) |
 | MD-07.15 | Command element | Element of the builder | The command, picked by its ID; the name on its button (plain text). | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.19 | Title element, description element | Text fields | A heading or a paragraph inside the faceplate or a group; the only way to give either a title or a description (2026-11-16). Description: plain text, line breaks kept. | Decided | [Presets](../metadata/09-presets.md#only-elements-in-elements) |
+| MD-07.23 | Fixed text or variable | Small icon, on the right of the text field of a title or description element | As Figma's "Apply variable" (2026-11-18): a fixed text typed by the user, or a variable, an identifier of [MD-13](#md-13--identifiers) or a signal of the type. An identifier is filled on each placed symbol, in the synoptic. One variable alone in the field, never mixed with text: assistant's reading. | Decided (icon, identifier or signal), Proposed (one variable, whole) | [Presets](../metadata/09-presets.md#fixed-text-or-a-variable) |
 | MD-07.20 | Group element | Element of the builder | No title nor description of its own (confirmed 2026-11-17). At its top, the five small icons with a + (Signal, Command, Title, Description, Group), then its own elements; a group can hold a group (2026-11-16). The icons confirmed on 2026-11-17, after a doubt the same day: they save time. | Decided | [Presets](../metadata/09-presets.md#only-elements-in-elements) |
 | MD-07.21 | Delete an element, delete a preset | Button (icon), then a warning | At the far right of the element or of the preset's line (2026-11-16). | Decided | [Layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata) |
 | MD-07.17 | Order | Rule | Mode Values: the order of Signals, no handle, no sort. Mode Faceplate: the order of the builder, moved with a handle (end of 2026-11-17: "il y a déjà les poignées là"). | Decided | [Presets](../metadata/09-presets.md#mode-faceplate-the-faceplate-builder) |
@@ -567,3 +569,37 @@ Gaps:
 
 - Where the list of past versions is shown, and whether one can be opened or restored.
 - How a difference points back to the screen where the thing is edited.
+
+## MD-13 · Identifiers
+
+Path: Metadata › Identifiers (navigation bar, [MD-00.6](#md-00--navigation-bar-of-metadata)). Described by the Product Owner on 2026-11-18; "Identifiers" is a working name. The wireframe is the frame "MD-13 · Identifiers" of the page Spec in Figma, after MD-11; the entry "Identifiers" was added to the navigation bar of every Metadata frame, and the icon MD-07.23 to the frame of the faceplate builder, the same day.
+
+```mermaid
+mindmap
+  root((MD-13 Identifiers))
+    Title Identifiers, small plus on its right
+    Table of identifiers, whole width
+      Handle, no header
+      ID
+      Display name
+      Description
+      Delete button, far right, no header, warning
+    Picked in a title or description of the faceplate builder
+    Filled on each placed symbol, part 3
+```
+
+| ID | Element | Kind | Values and behaviour | Status | Source |
+| --- | --- | --- | --- | --- | --- |
+| MD-13.1 | Table of identifiers | Table, whole width | One line per identifier (2026-11-18: "faire un tableau"). Columns in this order: the handle with no header, ID, Display name, Description, then the delete button with no header (order: assistant's reading). No default value (2026-11-18). | Decided (table, fields), Proposed (column order) | [Identifiers](../metadata/16-identifiers.md) |
+| MD-13.2 | Add an identifier | Button (+), small icon | On the right of the title "Identifiers" ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Implied | [Identifiers](../metadata/16-identifiers.md) |
+| MD-13.3 | Handle of a line | Grip, dragged, no header | The user chooses the order (2026-11-18: "Il faut pouvoir leur donner un ordre"). | Decided | [Layout rules](README.md#handles-to-choose-the-order) |
+| MD-13.4 | ID | Text field | The key. Always editable, followed through its internal ID when renamed (assistant's reading of the general rule). Unique on the page: open. | Decided (field), Open (unique) | [Identifiers](../metadata/16-identifiers.md) |
+| MD-13.5 | Display name | Text field | The name people read where the identifier is picked and filled (assistant's reading). | Decided (field) | [Identifiers](../metadata/16-identifiers.md) |
+| MD-13.6 | Description | Text field, takes the room left | What the identifier is (2026-11-18: "expliquer ce que c'est"). Optional: assistant's reading. | Decided (field), Proposed (optional) | [Identifiers](../metadata/16-identifiers.md) |
+| MD-13.7 | Delete an identifier | Button (icon), then a warning | At the far right of the line, with no header (2026-11-18: "et les supprimer"; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). | Decided | [Identifiers](../metadata/16-identifiers.md) |
+
+Gaps:
+
+- What a faceplate shows when its title is bound to a deleted identifier.
+- The panel of the synoptic where the text of each identifier is filled: described with part 3.
+- The open questions of [Identifiers](../metadata/16-identifiers.md#open-questions).
