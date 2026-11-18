@@ -37,7 +37,7 @@ A symbol can have a **parent symbol**, as a type of Metadata has a parent type (
 ### Deleting a parent
 
 - **A parent that has sub-symbols can be deleted** (Product Owner, 2026-11-18: "oui, on peut").
-- **Its sub-symbols are deleted with it**, at every level below it (Product Owner, 2026-11-18, answer to the questionnaire: "supprimés avec lui"). In the example, deleting the valve deletes the motorised valve and the motorised valve with command.
+- **Its sub-symbols are deleted with it**, at every level below it (Product Owner, 2026-11-18, answer to the questionnaire: "supprimés avec lui"; decision 0046, accepted on 2026-11-18). In the example, deleting the valve deletes the motorised valve and the motorised valve with command.
 
 ```mermaid
 flowchart LR
