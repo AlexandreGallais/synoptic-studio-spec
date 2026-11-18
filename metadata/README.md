@@ -69,7 +69,7 @@ flowchart LR
 | [Presets](09-presets.md) | Two modes per preset, chosen by a switch: Values (display unit, decimals, default value of each signal) and the faceplate builder (signals with their name shown, input and its bounds, read or write for an input, read or override for an output, commands with their button, titles, descriptions, groups); what the default value is for; the check of typed values. |
 | [Versions](13-versions.md) | Everything editable all the time; the Versions page: differences, change log, undo, semantic version. |
 | [Flags](14-flags.md) | Draft (2026-11-17), a part of the type, after Commands: the type's list of keys, each an ID and a description, that each symbol of that type placed in a synoptic has on or off; the application does nothing with them but write them in the configuration files, for customisation outside it. |
-| [Data model](15-data-model.md) | Draft (2026-11-18): the tables of Metadata and how they point to each other; every object has an internal ID (UUID) and an ID (public); ordered lists of internal IDs; one common table of unique links. The presets are left out for now. |
+| [Data model](15-data-model.md) | Draft (2026-11-18): the tables of Metadata and how they point to each other; every object has an internal ID (UUID) and an ID (public); ordered lists of internal IDs; one common table of links, each line owned by one type. The presets are left out for now. |
 | [Who changes what](11-who-changes-what.md) | The table of where each thing is created and changed. |
 | [Open questions](12-open-questions.md) | Every open question in one place. |
 

@@ -36,7 +36,7 @@ erDiagram
         uuid icon_internal_id FK "empty: follows the parent"
         uuid colour_internal_id FK "empty: follows the parent"
         markdown description "plain text holding Markdown"
-        uuid_list link_ids "ordered"
+        uuid_list link_ids "ordered, own links only"
         uuid_list signal_ids "ordered, own signals only"
         uuid_list command_ids "ordered, own commands only"
         uuid_list flag_ids "ordered, own flags only"
@@ -101,7 +101,7 @@ erDiagram
     TYPE }o--o| ICON : "shows"
     TYPE }o--o| COLOUR : "shows"
     PALETTE ||--|{ COLOUR : "holds"
-    TYPE }o--o{ LINK : "lists"
+    TYPE ||--o{ LINK : "lists"
     TYPE ||--o{ SIGNAL : "declares"
     TYPE ||--o{ COMMAND : "declares"
     TYPE ||--o{ FLAG : "declares"
@@ -119,7 +119,7 @@ Said by the Product Owner on 2026-11-18.
 | Field | Kind of value | Rule |
 | --- | --- | --- |
 | Internal ID | UUID | Set by the software, never changes. |
-| ID | Text | The public identifier, sent to the model. Today called the name of the type (see [Types](01-types.md)). |
+| ID | Text | The public identifier, sent to the model. Today called the name of the type (see [Types](01-types.md)). **Unique in the whole tree of types** (Product Owner, 2026-11-18, answering the questionnaire: "Oui, unique dans tout l'arbre"): the model knows a type by its ID, so two types with the same ID would be mixed up. |
 | Parent | Internal ID of a type | Empty for a root type. The screen shows the parent's ID and icon, read from it ("côté UI, montrer juste le parent"). Fixed at creation (decision 0013). |
 | Icon | Internal ID of an icon | Empty: the type follows its parent's icon (see [Icons](02-icons.md#icon-and-colour-are-inherited)). |
 | Colour | Internal ID of a colour | Empty: the type follows its parent's colour. A colour of a palette is pointed to by its internal ID, never by its colour code, so a palette that changes changes every type that uses it ("si jamais la palette change, c'est plus simple"). |
@@ -139,19 +139,18 @@ Said by the Product Owner on 2026-11-18.
 - **One table of links, common to every type** ("une table commune pour tout le monde").
 - A link has a **kind**, path or URL; a **target**, the path or the URL itself; and a **description** (see [Documentation](03-documentation.md#the-links)).
 - **The type holds the ordered list of the internal IDs of its links**; the order of the list is the order on the screen.
-- **The table holds only unique links**: two types that point to exactly the same link point to the same line, and no new line is made ("t'es pas obligé de créer une nouvelle ligne").
-- **Deleting a link from a type removes its internal ID from the type's list only**; the line stays in the table of links ("ça ne le supprime pas de la table links").
+- **A line of the table belongs to one type: links are never shared** (Product Owner, 2026-11-18, replacing "the table holds only unique links" said earlier the same day: "je retire ce que j'ai dit dans la table des liens [...] on rajoute une ligne à chaque fois, et puis basta"). Two types that point to the same path have two lines; the same path is written twice. Few links are expected, so the duplicates cost little ("ça se peut pas beaucoup non plus, parce qu'il y a pas énormément de données").
+- **Adding a link adds a line to the table**, and its internal ID to the type's list.
+- **Changing a link changes its line**: only one type uses it, so no other type changes.
+- **Deleting a link deletes its line from the table**, and its internal ID from the type's list ("quand on supprime la ligne, c'est supprimé de la table, et puis basta"). It replaces "the line stays in the table", said earlier the same day.
 
 ```mermaid
 flowchart LR
     T1["Type pump: links L1, L2"] --> L1["L1: path W:/datasheets/pumps, 'Datasheets'"]
     T1 --> L2["L2: URL of the standard"]
-    T2["Type valve: links L1"] --> L1
-    D["Delete L1 from valve"] --> R["valve: no links; L1 stays in the table, still used by pump"]
+    T2["Type valve: links L3"] --> L3["L3: path W:/datasheets/pumps, 'Datasheets'"]
+    D["Delete L3 from valve"] --> R["valve: no links; L3 deleted from the table; L1 untouched"]
 ```
-
-- Assistant's reading, to confirm: since a line is shared, it never changes. Changing the target or the description of a link in a type points that type to the line that holds the new values, found or made; the other types keep the old line. Otherwise a change in one type would change another silently, against the rule of no virtual link (see [Types](01-types.md)).
-- Which fields make two links "the same" is asked (see [Open questions](#open-questions)).
 
 ## The signals
 
@@ -166,7 +165,7 @@ Said by the Product Owner on 2026-11-18: a table of their own, pointed to by int
 | Enum | Internal ID of an enum | For an enum signal only. |
 | Quantity / Difference | Internal ID of a quantity or of a difference | Optional; integers and reals only. Each quantity and each difference of the catalogue has its own internal ID (see [Units](05-units.md#value-or-difference-chosen-in-the-signal)). |
 
-- A signal belongs to one type, unlike a link: two types never share a signal line. Sharing one would change two types at once, a virtual link the rule of [Types](01-types.md) refuses. Assistant's reading, to confirm.
+- A signal belongs to one type, like a link: two types never share a signal line. Sharing one would change two types at once, a virtual link the rule of [Types](01-types.md) refuses. Assistant's reading, to confirm.
 
 ## The commands
 
@@ -180,7 +179,7 @@ Said by the Product Owner on 2026-11-18.
 | Target signal | Internal ID of a signal | An input for "set a signal", an output for "override an output", empty for a trigger. |
 | Value | A number, a boolean, or an item of an enum | Fixed, of the type of the target signal; empty for a trigger. Never a text (decision 0043; Product Owner: "ça fait number, booléen ou enum"). |
 
-- For an enum target, the value points to the item by its internal ID, so that a key changed later is followed. Assistant's proposal, which needs an internal ID on each enum item (asked, see [Open questions](#open-questions)).
+- For an enum target, the value points to the item by its internal ID, so that a key changed later is followed: **each enum item has its own internal ID** (Product Owner, 2026-11-18, answering the questionnaire: "Oui, un internal ID par item").
 
 ## The flags
 
@@ -200,7 +199,7 @@ These tables are pointed to by the type and its parts. The Product Owner did not
 | --- | --- | --- | --- |
 | Icon | The program: a list of SVG files shipped with it | Internal ID, the SVG drawing | [Icons](02-icons.md) |
 | Palette, colour | The design system | A palette holds an ordered list of colours; a colour has an internal ID and its value | [Icons](02-icons.md) |
-| Enum, enum item | The user, on the Enums page | An enum: internal ID, ID, kind (global or template), description, ordered list of its items. An item: key (a whole number), display text, description | [Enums](06-enums.md) |
+| Enum, enum item | The user, on the Enums page | An enum: internal ID, ID, kind (global or template), description, ordered list of its items. An item: internal ID, key (a whole number), display text, description | [Enums](06-enums.md) |
 | Quantity, difference | The catalogue of the software, read only | Internal ID, ID, kind (quantity or difference) | [Units](05-units.md) |
 
 - "Palettes" in the plural is the Product Owner's word on 2026-11-18 ("comme ça, on peut faire des palettes et tout"); [Icons](02-icons.md) still says one fixed palette. How many palettes there are is left to the design system.
@@ -221,8 +220,5 @@ These tables are pointed to by the type and its parts. The Product Owner did not
 
 ## Open questions
 
-- Which fields make two links the same line of the table: the kind, the target and the description, or the kind and the target only (the description then kept in the type's list)?
-- Must each enum item have an internal ID, so that a command's value and a preset follow a key changed later?
-- Must the ID of a type be unique in the whole tree?
 - The words "ID" and "internal ID": to settle with the documentary research.
 - The presets: their tables, when the Product Owner describes them.
