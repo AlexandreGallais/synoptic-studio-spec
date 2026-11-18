@@ -145,6 +145,7 @@ Said by the Product Owner on 2026-11-18, with the page [Identifiers](16-identifi
 - The icon chooses what fills the field: **a fixed text** typed by the user, or **a variable**: an **identifier** of the page [Identifiers](16-identifiers.md), or a **signal** ("qui pourrait être ces identifiants-là ou alors un signal").
 - An identifier is filled with its own text on each placed symbol, in the synoptic: one preset shows "P-101" on one pump and "P-102" on the next ("La pop-up va pouvoir être remplie grâce à ces identifiants-là").
 - The field holds a fixed text or one variable, whole: assistant's reading, from the Figma principle. The rest is open, listed in [Identifiers](16-identifiers.md#open-questions).
+- Written in decision 0048 (accepted on 2026-11-18), with the page Identifiers.
 
 ### No Faceplate part
 

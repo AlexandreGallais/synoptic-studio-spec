@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Identifiers · Previous: [Data model](15-data-model.md) · Next: [Who changes what](11-who-changes-what.md)
 
-Status: draft, from the Product Owner's description of 2026-11-18. Not validated. He asked not to be asked questions on it for now ("Ça ne sert à rien de me poser des questions"): what he did not say is written as the assistant's reading, and listed in [Open questions](#open-questions).
+Status: draft, from the Product Owner's description of 2026-11-18. Not validated. He asked not to be asked questions on it for now ("Ça ne sert à rien de me poser des questions"): what he did not say is written as the assistant's reading, and listed in [Open questions](#open-questions). What he said is written in decision 0048 (accepted on 2026-11-18); "Identifiers" stays a working name there too, and the assistant's readings stay open.
 
 An identifier is a named key that each placed symbol fills with its own text in the synoptic: the tag of a pump, for example `P-101`. A faceplate can then show that text in a title or a description, so that one preset builds the faceplate of every pump, each with its own tag.
 
