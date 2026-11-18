@@ -69,6 +69,7 @@ flowchart LR
 | [Presets](09-presets.md) | Two modes per preset, chosen by a switch: Values (display unit, decimals, default value of each signal) and the faceplate builder (signals with their name shown, input and its bounds, read or write for an input, read or override for an output, commands with their button, titles, descriptions, groups); what the default value is for; the check of typed values. |
 | [Versions](13-versions.md) | Everything editable all the time; the Versions page: differences, change log, undo, semantic version. |
 | [Flags](14-flags.md) | Draft (2026-11-17), a part of the type, after Commands: the type's list of keys, each an ID and a description, that each symbol of that type placed in a synoptic has on or off; the application does nothing with them but write them in the configuration files, for customisation outside it. |
+| [Data model](15-data-model.md) | Draft (2026-11-18): the tables of Metadata and how they point to each other; every object has an internal ID (UUID) and an ID (public); ordered lists of internal IDs; one common table of unique links. The presets are left out for now. |
 | [Who changes what](11-who-changes-what.md) | The table of where each thing is created and changed. |
 | [Open questions](12-open-questions.md) | Every open question in one place. |
 
@@ -79,10 +80,11 @@ flowchart LR
 3. The front side: [Commands](07-commands.md), [Presets](09-presets.md).
 4. How it is kept safe: [Versions](13-versions.md).
 5. Keys for customisation outside the application: [Flags](14-flags.md) (draft).
-6. How it is used: [Who changes what](11-who-changes-what.md).
-7. What is left to decide: [Open questions](12-open-questions.md).
+6. How it is stored, logically: [Data model](15-data-model.md) (draft).
+7. How it is used: [Who changes what](11-who-changes-what.md).
+8. What is left to decide: [Open questions](12-open-questions.md).
 
-The page numbers jump: page 08 held the faceplates, merged into the presets on 2026-11-16, and page 10 the libraries of types, removed the same day. Versions, added the same day, took the next free number, 13, rather than reuse one; Flags, added on 2026-11-17, took 14.
+The page numbers jump: page 08 held the faceplates, merged into the presets on 2026-11-16, and page 10 the libraries of types, removed the same day. Versions, added the same day, took the next free number, 13, rather than reuse one; Flags, added on 2026-11-17, took 14; Data model, added on 2026-11-18, took 15.
 
 ## Page layout
 

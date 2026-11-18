@@ -77,7 +77,9 @@ flowchart LR
 
 ## Open questions
 
+Left for the review of the Symbols part: the Product Owner settles them then, and they are not asked before (Product Owner, 2026-11-18: "on verra ça après, quand je passerai sur la page symbole"). The assistant's reading of "l'IA" also waits for that review.
+
 - **The list of faults.** A sub-symbol goes into fault when its parent changes type or loses it (Product Owner, 2026-11-18: "il faudra faire une liste des défauts"). The list of every fault of the application is to write: what puts a symbol in fault, how it shows (the small red mark of a broken link?), how it is repaired.
 - **Deleting a parent:** does the delete warn first and name the sub-symbols it deletes with it, as the deletes of Metadata warn? Not said yet.
 - **The + in the editor:** where it sits.
-- Two dictated sentences the assistant could not read: "Un parent peut-il être ? Non." and "Un symbole, ça représente sa bibliothèque pipe en bas." Asked again to the Product Owner.
+- Two dictated sentences the assistant could not read: "Un parent peut-il être ? Non." and "Un symbole, ça représente sa bibliothèque pipe en bas." The Product Owner answered "Dans la librairie, un symbole" (2026-11-18): read as the rule already written, the parent is in the same Symbol Lib. Assistant's reading, kept for the review of the Symbols part.

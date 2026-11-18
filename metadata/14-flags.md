@@ -1,6 +1,6 @@
 # Flags
 
-> [Home](../README.md) › [Metadata](README.md) › Flags · Previous: [Versions](13-versions.md) · Next: [Who changes what](11-who-changes-what.md)
+> [Home](../README.md) › [Metadata](README.md) › Flags · Previous: [Versions](13-versions.md) · Next: [Data model](15-data-model.md)
 
 Status: draft, from the Product Owner's description of 2026-11-17, then his answers of the same day (the name, the place, an ID and a description per flag; then the description optional, an internal identifier, no warning on delete, no rule on an ID, the order by handle, the inheritance). Not validated. Open points are listed in [Open questions](#open-questions).
 

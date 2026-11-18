@@ -84,7 +84,7 @@ block-beta
 ```
 
 - The General part holds the name, the parent, the icon and the colour, and the **Delete button** of the type (Product Owner, 2026-11-11, confirmed on 2026-11-16; the Delete button added the same day).
-- Open: should the field of the name be labelled "Name" or "ID", as for the signals and the commands? The Product Owner hesitates (2026-11-16: "Je ne sais pas s'il faut mettre vraiment un nom ou plutôt un ID").
+- Open: should the field of the name be labelled "Name" or "ID", as for the signals and the commands? The Product Owner hesitates (2026-11-16: "Je ne sais pas s'il faut mettre vraiment un nom ou plutôt un ID"). On 2026-11-18 he leans towards "ID" for the public identifier and "internal ID" for the UUID, to settle with a documentary research (see [Data model](15-data-model.md#the-names-of-the-two-identifiers)).
 
 ### A list of types shows the tree, indented
 
