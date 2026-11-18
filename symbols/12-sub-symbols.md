@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Sub-symbols · Previous: [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)
 
-Status: draft, from the Product Owner's description of 2026-11-18 and his answers the same day (the changes of the parent reach the sub-symbols; a sub-symbol only adds; its type is the parent's or a sub-type of it; decision 0044, accepted on 2026-11-18), then his answers to the open questions, later the same day (a tree, the same Symbol Lib, a small +, the type, the faults, the preset and connection points, deleting a parent). Not validated. Open points are listed in [Open questions](#open-questions).
+Status: draft, from the Product Owner's description of 2026-11-18 and his answers the same day (the changes of the parent reach the sub-symbols; a sub-symbol only adds; its type is the parent's or a sub-type of it; decision 0044, accepted on 2026-11-18), then his answers to the open questions, later the same day (a tree, the same Symbol Lib, a small +, the type, the faults, the preset and connection points, deleting a parent), and his questionnaire answer the same day (the sub-symbols are deleted with their parent). Not validated. Open points are listed in [Open questions](#open-questions).
 
 A symbol can have a **parent symbol**, as a type of Metadata has a parent type (see [Types](../metadata/01-types.md)). A **sub-symbol** starts from everything made for its parent, and the user adds more on top of it (Product Owner, 2026-11-18: "t'as un symbole parent et tu peux créer un sous-symbole [...] ça prend [ce] qui a été fait pour le symbole, et tu peux rajouter [...] en plus").
 
@@ -36,7 +36,14 @@ A symbol can have a **parent symbol**, as a type of Metadata has a parent type (
 
 ### Deleting a parent
 
-- **A parent that has sub-symbols can be deleted** (Product Owner, 2026-11-18: "oui, on peut"). What becomes of its sub-symbols is open.
+- **A parent that has sub-symbols can be deleted** (Product Owner, 2026-11-18: "oui, on peut").
+- **Its sub-symbols are deleted with it**, at every level below it (Product Owner, 2026-11-18, answer to the questionnaire: "supprimés avec lui"). In the example, deleting the valve deletes the motorised valve and the motorised valve with command.
+
+```mermaid
+flowchart LR
+    D["Delete the valve"] --> M["Motorised valve: deleted"]
+    M --> C["Motorised valve with command: deleted"]
+```
 
 ```mermaid
 flowchart TD
@@ -71,6 +78,6 @@ flowchart LR
 ## Open questions
 
 - **The list of faults.** A sub-symbol goes into fault when its parent changes type or loses it (Product Owner, 2026-11-18: "il faudra faire une liste des défauts"). The list of every fault of the application is to write: what puts a symbol in fault, how it shows (the small red mark of a broken link?), how it is repaired.
-- **Deleting a parent:** what becomes of its sub-symbols: deleted with it, into fault, or kept on their own with what they took?
+- **Deleting a parent:** does the delete warn first and name the sub-symbols it deletes with it, as the deletes of Metadata warn? Not said yet.
 - **The + in the editor:** where it sits.
 - Two dictated sentences the assistant could not read: "Un parent peut-il être ? Non." and "Un symbole, ça représente sa bibliothèque pipe en bas." Asked again to the Product Owner.

@@ -100,7 +100,7 @@ mindmap
 Gaps:
 
 - What an item shows besides its thumbnail and name.
-- Duplicate, rename and delete a symbol or a pipe style.
+- Duplicate, rename and delete a symbol or a pipe style. Settled: deleting a symbol deletes its sub-symbols with it (2026-11-18, see [Sub-symbols](../symbols/12-sub-symbols.md#deleting-a-parent)); the control is still open.
 - Sort of the lists (by name, by creation)?
 
 ## SY-03 · Symbol editor: what every mode shares
