@@ -20,7 +20,7 @@ flowchart TD
 - The name is the type's identifier for the model, like a signal's name. No second label. It must be readable and exact, because model authors use it to know what the type is (example: `centrifugal_pump`). Where a standard already names things, the type takes that name.
 - A type also has an internal identifier, set by the software, that never changes. It exists on the application side only and never goes to the model. It is needed to define the parent and for symbols to point to the type, so renaming a type breaks nothing in the application.
 - So there are two identifiers: the name (seen by the model, meaningful) and the internal one (seen by the application only, meaningless).
-- **The name (the public ID) of a type is unique in the whole tree** (Product Owner, 2026-11-18, answering the questionnaire: "Oui, unique dans tout l'arbre"): the model knows a type by it, so two types with the same name would be mixed up (see [Data model](15-data-model.md#the-type)).
+- **The name (the public ID) of a type is unique in the whole tree** (Product Owner, 2026-11-18, decision 0047, answering the questionnaire: "Oui, unique dans tout l'arbre"): the model knows a type by it, so two types with the same name would be mixed up (see [Data model](15-data-model.md#the-type)).
 
 ```mermaid
 flowchart LR

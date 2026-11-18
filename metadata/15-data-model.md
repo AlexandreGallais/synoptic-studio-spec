@@ -119,7 +119,7 @@ Said by the Product Owner on 2026-11-18.
 | Field | Kind of value | Rule |
 | --- | --- | --- |
 | Internal ID | UUID | Set by the software, never changes. |
-| ID | Text | The public identifier, sent to the model. Today called the name of the type (see [Types](01-types.md)). **Unique in the whole tree of types** (Product Owner, 2026-11-18, answering the questionnaire: "Oui, unique dans tout l'arbre"): the model knows a type by its ID, so two types with the same ID would be mixed up. |
+| ID | Text | The public identifier, sent to the model. Today called the name of the type (see [Types](01-types.md)). **Unique in the whole tree of types** (Product Owner, 2026-11-18, decision 0047, answering the questionnaire: "Oui, unique dans tout l'arbre"): the model knows a type by its ID, so two types with the same ID would be mixed up. |
 | Parent | Internal ID of a type | Empty for a root type. The screen shows the parent's ID and icon, read from it ("côté UI, montrer juste le parent"). Fixed at creation (decision 0013). |
 | Icon | Internal ID of an icon | Empty: the type follows its parent's icon (see [Icons](02-icons.md#icon-and-colour-are-inherited)). |
 | Colour | Internal ID of a colour | Empty: the type follows its parent's colour. A colour of a palette is pointed to by its internal ID, never by its colour code, so a palette that changes changes every type that uses it ("si jamais la palette change, c'est plus simple"). |
@@ -139,7 +139,7 @@ Said by the Product Owner on 2026-11-18.
 - **One table of links, common to every type** ("une table commune pour tout le monde").
 - A link has a **kind**, path or URL; a **target**, the path or the URL itself; and a **description** (see [Documentation](03-documentation.md#the-links)).
 - **The type holds the ordered list of the internal IDs of its links**; the order of the list is the order on the screen.
-- **A line of the table belongs to one type: links are never shared** (Product Owner, 2026-11-18, replacing "the table holds only unique links" said earlier the same day: "je retire ce que j'ai dit dans la table des liens [...] on rajoute une ligne à chaque fois, et puis basta"). Two types that point to the same path have two lines; the same path is written twice. Few links are expected, so the duplicates cost little ("ça se peut pas beaucoup non plus, parce qu'il y a pas énormément de données").
+- **A line of the table belongs to one type: links are never shared** (Product Owner, 2026-11-18, decision 0047, replacing "the table holds only unique links" said earlier the same day: "je retire ce que j'ai dit dans la table des liens [...] on rajoute une ligne à chaque fois, et puis basta"). Two types that point to the same path have two lines; the same path is written twice. Few links are expected, so the duplicates cost little ("ça se peut pas beaucoup non plus, parce qu'il y a pas énormément de données").
 - **Adding a link adds a line to the table**, and its internal ID to the type's list.
 - **Changing a link changes its line**: only one type uses it, so no other type changes.
 - **Deleting a link deletes its line from the table**, and its internal ID from the type's list ("quand on supprime la ligne, c'est supprimé de la table, et puis basta"). It replaces "the line stays in the table", said earlier the same day.
@@ -179,7 +179,7 @@ Said by the Product Owner on 2026-11-18.
 | Target signal | Internal ID of a signal | An input for "set a signal", an output for "override an output", empty for a trigger. |
 | Value | A number, a boolean, or an item of an enum | Fixed, of the type of the target signal; empty for a trigger. Never a text (decision 0043; Product Owner: "ça fait number, booléen ou enum"). |
 
-- For an enum target, the value points to the item by its internal ID, so that a key changed later is followed: **each enum item has its own internal ID** (Product Owner, 2026-11-18, answering the questionnaire: "Oui, un internal ID par item").
+- For an enum target, the value points to the item by its internal ID, so that a key changed later is followed: **each enum item has its own internal ID** (Product Owner, 2026-11-18, decision 0047, answering the questionnaire: "Oui, un internal ID par item").
 
 ## The flags
 
