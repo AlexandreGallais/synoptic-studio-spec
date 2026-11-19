@@ -4,7 +4,7 @@
 
 Status: draft, from the Product Owner's description of 2026-11-18 and his answers the same day (the changes of the parent reach the sub-symbols; a sub-symbol only adds; its type is the parent's or a sub-type of it; decision 0044, accepted on 2026-11-18), then his answers to the open questions, later the same day (a tree, the same Symbol Lib, a small +, the type, the faults, the preset and connection points, deleting a parent), and his questionnaire answer the same day (the sub-symbols are deleted with their parent). Not validated. Open points are listed in [Open questions](#open-questions).
 
-A symbol can have a **parent symbol**, as a type of Metadata has a parent type (see [Types](../metadata/01-types.md)). A **sub-symbol** starts from everything made for its parent, and the user adds more on top of it (Product Owner, 2026-11-18: "t'as un symbole parent et tu peux créer un sous-symbole [...] ça prend [ce] qui a été fait pour le symbole, et tu peux rajouter [...] en plus").
+A symbol can have a **parent symbol**, as a type of Metadata has a parent type (see [Types](../metadata/draft.md#types)). A **sub-symbol** starts from everything made for its parent, and the user adds more on top of it (Product Owner, 2026-11-18: "t'as un symbole parent et tu peux créer un sous-symbole [...] ça prend [ce] qui a été fait pour le symbole, et tu peux rajouter [...] en plus").
 
 ## Rules
 
@@ -12,7 +12,7 @@ A symbol can have a **parent symbol**, as a type of Metadata has a parent type (
 - A sub-symbol takes what was made for its parent symbol, then the user adds to it: shapes, and the links of these shapes to the signals and commands (Product Owner, 2026-11-18).
 - A sub-symbol can itself have sub-symbols: the example below has three levels (Product Owner, 2026-11-18).
 - **The changes of the parent reach its sub-symbols** (Product Owner, 2026-11-18): a sub-symbol is linked to its parent, never a copy made once. The valve is corrected once, and the motorised valve and the motorised valve with command follow. It is the inheritance of Metadata, applied to symbols.
-- **A sub-symbol only adds** (Product Owner, 2026-11-18): what it takes from its parent is read only in it, as the inherited signals of a type are (see [Signals](../metadata/04-signals.md#the-table-of-signals)). It cannot change it, move it or hide it. To change it, the user opens the parent.
+- **A sub-symbol only adds** (Product Owner, 2026-11-18): what it takes from its parent is read only in it, as the inherited signals of a type are (see [Signals](../metadata/draft.md#the-table-of-signals)). It cannot change it, move it or hide it. To change it, the user opens the parent.
 - **Its type is the type of its parent, or a sub-type of it** (Product Owner, 2026-11-18). So the animations and interactions taken from the parent keep their signals and commands. In the example, the motorised valve with command can have a sub-type of the valve's type that adds the commands open and close.
 - **It takes everything from its parent** (Product Owner, 2026-11-18: "oui, tout pareil"): the drawing, the animations, the interactions, the **preset** and the **connection points** of its pipes. "If the parent already has a type, the sub-symbol can only take the same type or a sub-type, and it takes the same connections, animations and so on. It can only add things."
 - Assistant's reading, to confirm: the dictated message says "ça prend l'IA qui a été faite pour le symbole"; "l'IA" is read as what was made for the symbol, its drawing and what is linked to it.
@@ -24,7 +24,7 @@ A symbol can have a **parent symbol**, as a type of Metadata has a parent type (
 
 ### Creating a sub-symbol
 
-- With a **small +**, on the same principle as the types of Metadata (Product Owner, 2026-11-18: "le même principe avec un petit +"; see [Types](../metadata/01-types.md)):
+- With a **small +**, on the same principle as the types of Metadata (Product Owner, 2026-11-18: "le même principe avec un petit +"; see [Types](../metadata/draft.md#types)):
   - **from the list**: the + on the right of a symbol, when the mouse is over it, creates a sub-symbol of it;
   - **from the parent open in the editor**: a + creates a sub-symbol of the open symbol (where it sits in the editor: open).
 

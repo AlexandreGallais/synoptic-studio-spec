@@ -4,14 +4,14 @@
 
 Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
 
-The mode of the [editor](../03-editor/README.md) in which the signals are linked to the drawing. Animating a symbol means that the value of a signal changes a part of the drawing. The change of scale or of range (0 to 1 turned into 0 to 90 degrees) is done here, not in Metadata: Metadata only states the contract with the model (see [Signals](../../metadata/04-signals.md)).
+The mode of the [editor](../03-editor/README.md) in which the signals are linked to the drawing. Animating a symbol means that the value of a signal changes a part of the drawing. The change of scale or of range (0 to 1 turned into 0 to 90 degrees) is done here, not in Metadata: Metadata only states the contract with the model (see [Signals](../../metadata/draft.md#signals)).
 
 ## Rules
 
 - Tool bar: [Select](../03-editor/select.md) and [Hand](../03-editor/hand.md). Right-hand panel: the animations of the selected part.
 - The user selects a signal, then says what it animates: a shape, a layer, a text.
 - Only the output signals of the type are offered for an animation. An output is what the model sends, and the model computes what the symbol shows. An input is what the model receives and is never animated; it can only serve as the minimum or the maximum of a bounded linear animation (Product Owner, 2026-11-17, see [below](#the-input-range-of-a-bounded-linear-animation)).
-- A value ordered and a value obtained are two signals for the model. Example: `opening_order` (input, what the user asks) and `opening` (output, what the model computes). The symbol animates `opening`. The faceplate can show both (see [Presets](../../metadata/09-presets.md)).
+- A value ordered and a value obtained are two signals for the model. Example: `opening_order` (input, what the user asks) and `opening` (output, what the model computes). The symbol animates `opening`. The faceplate can show both (see [Presets](../../metadata/draft.md#presets-and-their-faceplate)).
 - Only a symbol with a type has animations. A symbol without a type has no signal to animate (see [Libraries and symbols](../01-libraries-and-symbols.md)).
 
 ```mermaid
@@ -35,7 +35,7 @@ The properties of a part of the drawing that an animation can drive (rotation, p
 
 A text of the symbol can be linked to a signal that has a quantity (a volume, a flow...).
 
-- The text shows the signal's value, converted to the display unit and rounded to the decimal places set in the preset (see [Units](../../metadata/05-units.md)).
+- The text shows the signal's value, converted to the display unit and rounded to the decimal places set in the preset (see [Units](../../metadata/draft.md#units)).
 - The user chooses whether the text shows the unit or not.
 - Another text can hold only the unit of the signal, in the display unit. This lets the user put the value in one place and the unit in another, and the unit follows the display unit.
 
@@ -49,7 +49,7 @@ flowchart LR
 
 Decided by the Product Owner (2026-11-11). A text can be set at the size the user needs, and it can turn into an input when the user clicks it, if an input signal is linked to it. It makes quick entries: no separate panel is opened.
 
-- Since commands always send a fixed value (2026-11-16, see [Commands](../../metadata/07-commands.md#the-value-is-always-fixed)), this text **writes an input signal of the type directly**, with the same checks as a write entry of the faceplate: conversion from the display unit, enum item, and the bounds of the number field, typed by hand or taken from a signal (see [Presets](../../metadata/09-presets.md#bounds-of-a-number-field), decision 0041) (Product Owner, 2026-11-16, accepting the assistant's proposal). No command is used.
+- Since commands always send a fixed value (2026-11-16, see [Commands](../../metadata/draft.md#the-value-is-always-fixed)), this text **writes an input signal of the type directly**, with the same checks as a write entry of the faceplate: conversion from the display unit, enum item, and the bounds of the number field, typed by hand or taken from a signal (see [Presets](../../metadata/draft.md#bounds-of-a-number-field), decision 0041) (Product Owner, 2026-11-16, accepting the assistant's proposal). No command is used.
 - Only an input signal can be linked: an output is computed by the model.
 
 | What the text shows | What a click does |
@@ -58,8 +58,8 @@ Decided by the Product Owner (2026-11-11). A text can be set at the size the use
 | An enum | A **selection menu** opens, with the whole list of the enum, and the user picks one item. |
 
 - The user chooses, in the editor, which of these a text does: number input or selection menu.
-- **No text input** (Product Owner, 2026-11-18): a signal is never a text (see [Signals](../../metadata/04-signals.md#no-text-signal)).
-- An enum is shown by the display text of its item, never by its key (see [Enums](../../metadata/06-enums.md)). A click on it opens the menu of the display texts; the input signal receives the key of the item picked.
+- **No text input** (Product Owner, 2026-11-18): a signal is never a text (see [Signals](../../metadata/draft.md#no-text-signal)).
+- An enum is shown by the display text of its item, never by its key (see [Enums](../../metadata/draft.md#enums)). A click on it opens the menu of the display texts; the input signal receives the key of the item picked.
 - What the user picks or types is checked, converted to the model unit, then written to the input signal.
 
 ```mermaid
@@ -115,7 +115,7 @@ Confidence: low (one tool read).
 
 ### The input range of a bounded linear animation
 
-Decided by the Product Owner on 2026-11-17 (decision 0027, accepted on 2026-11-17), since a signal has no bounds of its own (a bound is a plain signal, see [Signals](../../metadata/04-signals.md#rules)).
+Decided by the Product Owner on 2026-11-17 (decision 0027, accepted on 2026-11-17), since a signal has no bounds of its own (a bound is a plain signal, see [Signals](../../metadata/draft.md#rules-3)).
 
 - The user chooses the **minimum** and the **maximum** of the input range.
 - Each of the two can be **a signal of the type**, an input or an output (Product Owner: "pour les bornes, on pourra choisir soit un in, soit un out"). Example: the maximum taken from `speed_setpoint_max`, an input.

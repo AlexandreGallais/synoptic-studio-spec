@@ -10,7 +10,7 @@ The mode of the [editor](../03-editor/README.md) in which the user tries the sym
 
 - Tool bar: [Hand](../03-editor/hand.md) only. Right-hand panel: the test values, and the simulated screen.
 - There is no model. The Run mode is simply a mode with a menu on the right (or elsewhere) that lists all the output signals of the model that animate the symbol. What the model does does not matter: the mode only shows what can happen.
-- The user gives each signal a value (see [Signals](../../metadata/04-signals.md)). A signal has no bounds of its own since 2026-11-17: a bound is a plain signal, given a value like the others.
+- The user gives each signal a value (see [Signals](../../metadata/draft.md#signals)). A signal has no bounds of its own since 2026-11-17: a bound is a plain signal, given a value like the others.
 - Since a bounded linear animation can take its minimum or its maximum from an input signal (Product Owner, 2026-11-17, see [Animation mode](../08-animation-mode/README.md#the-input-range-of-a-bounded-linear-animation)), the list also shows **the signals used as a minimum or a maximum**, inputs included: without a test value for them, the animation could not be tried. Assistant's reading, to confirm.
 - The control depends on the type (decided by the Product Owner, 2026-11-11):
 

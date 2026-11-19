@@ -9,13 +9,13 @@ Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, rea
 ## Rules
 
 - **One Enums page in each Symbol Lib** (Product Owner, 2026-11-17: "dans chaque lib, tu auras une petite page enum"). It opens from the navigation bar, as the second page of the selected library, after General (Product Owner, end of 2026-11-17; see [Libraries and symbols](01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode)).
-- **It lists every enum of Metadata**, the global enums and the templates (see [Enums](../metadata/06-enums.md#global-enums-and-templates)).
+- **It lists every enum of Metadata**, the global enums and the templates (see [Enums](../metadata/draft.md#global-enums-and-templates)).
 - **What comes from Metadata is read only**: the key, the display text and the description of each item, "pour qu'on puisse comprendre". They are changed in Metadata only. Same columns, same order as on the Enums page of Metadata: Key, Display text, Description (decision 0032).
 - **The user adds columns, as many as needed** ("pas un peu, à l'infini"). Each column has:
   - a **title**, chosen by the user ("on donne le titre qu'on veut"): `color`, `display text short`...;
   - a **kind of value**, chosen in a list: colour, text, number (the Product Owner's examples; "peu importe", the full list is open).
 - **For a global enum, the user fills one value per item** in each added column: for `pump_mode`, 0 → orange, 1 → yellow, 2 → blue in the column `color`.
-- **For a template, the user adds the columns the same way**, without items, since a template has none in advance ("on va pas définir en avance, mais au moins, on va pouvoir définir les colonnes qu'on veut en plus par rapport au template"). The items of a template are completed on each placed symbol, in the synoptic, with a small warning until they are (Product Owner, end of 2026-11-17, see [Enums](../metadata/06-enums.md#global-enums-and-templates)). The values of these columns are filled there too, with the items (assistant's reading: the question asked both together). Here, a template shows its name and its description, read only, instead of items.
+- **For a template, the user adds the columns the same way**, without items, since a template has none in advance ("on va pas définir en avance, mais au moins, on va pouvoir définir les colonnes qu'on veut en plus par rapport au template"). The items of a template are completed on each placed symbol, in the synoptic, with a small warning until they are (Product Owner, end of 2026-11-17, see [Enums](../metadata/draft.md#global-enums-and-templates)). The values of these columns are filled there too, with the items (assistant's reading: the question asked both together). Here, a template shows its name and its description, read only, instead of items.
 - **The columns belong to the Symbol Lib**, not to Metadata: two Symbol Libs can give the same enum different colours, as they give the same objects a different look (see [Libraries and symbols](01-libraries-and-symbols.md#symbol-lib)). Assistant's reading of "dans chaque lib", to confirm.
 - Added columns never go to the model: they only serve the drawing.
 

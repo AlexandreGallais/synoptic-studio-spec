@@ -37,4 +37,4 @@ sequenceDiagram
 
 - Are the check and the refresh options, or always on? Open.
 - What does the application do on a conflict: warn and stop, or offer to reload? Open.
-- Which files are generated and under which names and sub-folders? To be specified. The Product Owner leans towards JSON files, with no database (2026-11-18, "peut-être"); for Metadata, see [Data model](../metadata/15-data-model.md#as-json).
+- Which files are generated and under which names and sub-folders? To be specified. The Product Owner leans towards JSON files, with no database (2026-11-18, "peut-être"); for Metadata, see [Data model](../metadata/draft.md#as-json).

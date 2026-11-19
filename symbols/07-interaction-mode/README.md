@@ -14,7 +14,7 @@ The mode of the [editor](../03-editor/README.md) in which the user says what hap
 - The places offered for an interaction are: the zones the user drew, the bounding box of the whole symbol, and a layer. A layer is clickable as its real shape, not as the square around it, and stays clickable when its fill is transparent (see [Select](../03-editor/select.md)). Example: a button drawn on its own layer can be the place.
 - Several gestures are possible on a place: left click, right click, double click, and others (the Product Owner wants more than these three; the list is to settle).
 - Each interaction links a place, a gesture and what happens. What happens is one of two things:
-  - a command of the type (see [Commands](../../metadata/07-commands.md)): a command that sets a signal, or a trigger;
+  - a command of the type (see [Commands](../../metadata/draft.md#commands)): a command that sets a signal, or a trigger;
   - **opening the faceplate** of the element (decided by the Product Owner, 2026-11-11): the user says "this opens the faceplate of the element" (see [Type, preset and faceplate](../02-type-and-faceplate.md)).
 - What the opened faceplate allows (display only, or display with commands) is **not** decided in the symbol editor. It is set later, once the symbol is placed, in the synoptic part (not written yet).
 - A symbol uses only the commands it links: a preset never chooses commands.

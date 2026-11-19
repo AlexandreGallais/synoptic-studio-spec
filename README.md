@@ -50,13 +50,13 @@ flowchart TD
 | [`controls/`](controls/README.md) | The controls shared by every screen: one number field, one text field, with the same behaviour everywhere. Draft. | [Number and text fields](controls/number-and-text-fields.md) |
 | [`screens/`](screens/README.md) | The inventory of the screens and menus: for each screen, a map, every button, field and list with its status, and what is missing. | [Map of the screens](screens/README.md) |
 
-Metadata pages, in reading order:
+Metadata is being written again, one file per theme (2026-11-19): the first is the [Data model](metadata/data-model.md), its schema to validate. Until each theme is done, the earlier pages are gathered in the [whole draft](metadata/draft.md), in this reading order:
 
-1. What a type is: [Types](metadata/01-types.md), [Icons](metadata/02-icons.md), [Documentation](metadata/03-documentation.md).
-2. The model side: [Signals](metadata/04-signals.md), [Units](metadata/05-units.md), [Enums](metadata/06-enums.md).
-3. The front side: [Commands](metadata/07-commands.md), [Presets and their faceplate](metadata/09-presets.md).
-4. How it is used: [Who changes what](metadata/11-who-changes-what.md).
-5. What is left to decide: [Open questions](metadata/12-open-questions.md).
+1. What a type is: [Types](metadata/draft.md#types), [Icons](metadata/draft.md#type-icons), [Documentation](metadata/draft.md#type-documentation).
+2. The model side: [Signals](metadata/draft.md#signals), [Units](metadata/draft.md#units), [Enums](metadata/draft.md#enums).
+3. The front side: [Commands](metadata/draft.md#commands), [Presets and their faceplate](metadata/draft.md#presets-and-their-faceplate).
+4. How it is used: [Who changes what](metadata/draft.md#who-changes-what-and-where).
+5. What is left to decide: [Open questions](metadata/draft.md#metadata-open-questions).
 
 ## What it does not contain
 

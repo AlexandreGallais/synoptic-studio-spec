@@ -50,7 +50,7 @@ Decided by the Product Owner on 2026-11-16, for every screen ("il faut que tu ap
 
 - The buttons that add an item to a list always sit **above the list**, never under it.
 - A button under a list moves down as the list grows, and gets harder and harder to reach.
-- It does not change the + shown on hover on each type of the type tree, which creates a child of that type (see [Types](../metadata/01-types.md)).
+- It does not change the + shown on hover on each type of the type tree, which creates a child of that type (see [Types](../metadata/draft.md#types)).
 
 ### A title and a small + on its right
 
@@ -104,7 +104,7 @@ Decided by the Product Owner on 2026-11-16, while reviewing the wireframes. It r
   - for a **type**, in its **General** part, not in the tree.
 - A click on the button opens a **warning message** that asks to confirm. Nothing is deleted before the user confirms. So deleting is never "aussi simple que ça".
 - The same warning everywhere, for a type as for a line.
-- What is deleted shows on the [Versions](../metadata/13-versions.md) page, where it can be undone before a version is made.
+- What is deleted shows on the [Versions](../metadata/draft.md#versions-of-metadata) page, where it can be undone before a version is made.
 - **The warning never says what the delete breaks** (Product Owner, 2026-11-17: "c'est à la personne de savoir qu'elle supprime quelque chose et qu'il faut faire attention [...] sinon ça va le dire tout le temps et ça ne sert à rien"). What is broken is listed in the symbol mode and in the synoptic mode (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#when-metadata-changes)). The wording of the warning itself: to settle.
 
 ```mermaid
@@ -116,12 +116,12 @@ flowchart LR
 
 ### Tables for the parts of a type
 
-Decided by the Product Owner on 2026-11-16: the signals and the commands of a type are shown in one table each, one line per item and one column per field, taking as much room as possible (see [Signals](../metadata/04-signals.md#the-table-of-signals) and [Commands](../metadata/07-commands.md#the-table-of-commands)). The selected preset is a table of its signals in its mode Values, and a list of elements in its mode Faceplate, the two modes chosen by a switch at the top of the right side (see [Presets](../metadata/09-presets.md#two-modes-chosen-by-a-switch)). They replace, for these parts, the panel of the selected item on the right.
+Decided by the Product Owner on 2026-11-16: the signals and the commands of a type are shown in one table each, one line per item and one column per field, taking as much room as possible (see [Signals](../metadata/draft.md#the-table-of-signals) and [Commands](../metadata/draft.md#the-table-of-commands)). The selected preset is a table of its signals in its mode Values, and a list of elements in its mode Faceplate, the two modes chosen by a switch at the top of the right side (see [Presets](../metadata/draft.md#two-modes-chosen-by-a-switch)). They replace, for these parts, the panel of the selected item on the right.
 
 ### Navigation bar on the left
 
 - A narrow bar of icons sits on the far left of the window (a "rail").
-- In Metadata, it holds one icon per page: **Types**, **Units**, **Enums** (decided), then **Versions** (Product Owner, 2026-11-16; see [Versions](../metadata/13-versions.md)). The Product Owner first named an icon for the libraries too, then removed the libraries of types in the same review.
+- In Metadata, it holds one icon per page: **Types**, **Units**, **Enums** (decided), then **Versions** (Product Owner, 2026-11-16; see [Versions](../metadata/draft.md#versions-of-metadata)). The Product Owner first named an icon for the libraries too, then removed the libraries of types in the same review.
 - In the symbol mode, it holds a **Libraries** button (a kind of "home"), a separator, then the list of every Symbol Lib (decided): see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode).
 - There is one bar per part. Going from one part to another is done in the top bar (below).
 
@@ -239,4 +239,4 @@ These gaps come back on several screens; each file lists its own.
 ## See also
 
 - [Metadata](../metadata/README.md) and [Symbols](../symbols/README.md): the rules behind every line of these tables.
-- [Symbols: open questions](../symbols/10-open-questions.md) and [Metadata: open questions](../metadata/12-open-questions.md).
+- [Symbols: open questions](../symbols/10-open-questions.md) and [Metadata: open questions](../metadata/draft.md#metadata-open-questions).
