@@ -8,6 +8,7 @@ Status: schema only, being written (2026-11-19). The descriptions come once the 
 - `id`: the public identifier, written by the user.
 - A box without `internal_id` is a part of its owner (a nested object in the JSON), never pointed to.
 - `has`: one nested object; `holds`: an ordered list inside its owner.
+- Field order in each box: `internal_id`, then the links (FK), then the kind, then `id` or the name, then the values, then the texts.
 
 ## The schema
 
@@ -15,8 +16,8 @@ Status: schema only, being written (2026-11-19). The descriptions come once the 
 erDiagram
     TYPE {
         uuid internal_id PK
-        text id
         uuid parent FK
+        text id
     }
     APPEARANCE {
         uuid icon FK
@@ -33,18 +34,18 @@ erDiagram
     }
     SIGNAL {
         uuid internal_id PK
-        text id
         direction direction "input or output"
+        text id
     }
     VALUE_TYPE {
-        value_kind kind "integer, real, boolean or enum"
         uuid enum FK
         uuid quantity FK
+        value_kind kind "integer, real, boolean or enum"
     }
     COMMAND {
         uuid internal_id PK
-        text id
         command_kind kind "set a signal, trigger or override"
+        text id
     }
     COMMAND_TARGET {
         uuid signal FK
@@ -73,27 +74,27 @@ erDiagram
     }
     SIGNAL_FIELD {
         uuid signal FK
-        text name_shown
         access access "read, write or override"
         input_kind input
+        text name_shown
     }
     BOUND {
-        real value
         uuid signal FK
+        real value
     }
     COMMAND_BUTTON {
         uuid command FK
         text button_text
     }
     TEXT_CONTENT {
-        text text
         uuid identifier FK
         uuid signal FK
+        text text
     }
     ENUM {
         uuid internal_id PK
-        text id
         enum_kind kind "global or template"
+        text id
         text description
     }
     ENUM_ITEM {
@@ -110,10 +111,10 @@ erDiagram
     }
     QUANTITY {
         uuid internal_id PK
-        text id
-        quantity_kind kind "quantity or difference"
         uuid difference_of FK
         uuid model_unit FK
+        quantity_kind kind "quantity or difference"
+        text id
         integer default_decimals
     }
     FAMILY {
