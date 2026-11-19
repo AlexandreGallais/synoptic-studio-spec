@@ -112,13 +112,16 @@ erDiagram
     ICON {
         uuid internal_id PK
         svg drawing
+        text description
     }
     PALETTE {
         uuid internal_id PK
+        text name
     }
     COLOUR {
         uuid internal_id PK
         rgb value
+        text description "shown on hover"
     }
     TYPE |o--o{ TYPE : "parent of"
     TYPE ||--o{ LINK : holds
@@ -154,3 +157,7 @@ erDiagram
 - The texts filled on each placed symbol: with the synoptic.
 - The versions of Metadata.
 - How a unit converts (against a reference family or a base unit).
+
+## Open
+
+- The name of the short text that names a colour or an icon: `description` for now.
