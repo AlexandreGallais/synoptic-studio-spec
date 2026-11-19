@@ -6,7 +6,8 @@ Status: schema only, being written (2026-11-19). The descriptions come once the 
 
 - `internal_id`: the UUID set by the software; every FK holds one.
 - `id`: the public identifier, written by the user.
-- `holds`: an ordered list inside its owner.
+- A box without `internal_id` is a part of its owner (a nested object in the JSON), never pointed to.
+- `has`: one nested object; `holds`: an ordered list inside its owner.
 
 ## The schema
 
@@ -16,8 +17,12 @@ erDiagram
         uuid internal_id PK
         text id
         uuid parent FK
+    }
+    APPEARANCE {
         uuid icon FK
         uuid colour FK
+    }
+    DOCUMENTATION {
         markdown description
     }
     LINK {
@@ -28,17 +33,21 @@ erDiagram
     }
     SIGNAL {
         uuid internal_id PK
-        direction direction "input or output"
         text id
-        value_type type "integer, real, boolean or enum"
+        direction direction "input or output"
+    }
+    VALUE_TYPE {
+        value_kind kind "integer, real, boolean or enum"
         uuid enum FK
         uuid quantity FK
     }
     COMMAND {
         uuid internal_id PK
-        command_kind kind "set a signal, trigger or override"
         text id
-        uuid target FK
+        command_kind kind "set a signal, trigger or override"
+    }
+    COMMAND_TARGET {
+        uuid signal FK
         typed_value value
     }
     FLAG {
@@ -52,26 +61,34 @@ erDiagram
     }
     PRESET_VALUE {
         uuid signal FK
-        uuid display_unit FK
-        integer decimals
         typed_value default_value
     }
-    ELEMENT {
+    DISPLAY {
+        uuid unit FK
+        integer decimals
+    }
+    FACEPLATE_ELEMENT {
         uuid internal_id PK
         element_kind kind "signal, command, title, description or group"
+    }
+    SIGNAL_FIELD {
         uuid signal FK
         text name_shown
         access access "read, write or override"
         input_kind input
-        real min
-        uuid min_signal FK
-        real max
-        uuid max_signal FK
+    }
+    BOUND {
+        real value
+        uuid signal FK
+    }
+    COMMAND_BUTTON {
         uuid command FK
         text button_text
+    }
+    TEXT_CONTENT {
         text text
-        uuid text_identifier FK
-        uuid text_signal FK
+        uuid identifier FK
+        uuid signal FK
     }
     ENUM {
         uuid internal_id PK
@@ -124,28 +141,40 @@ erDiagram
         text description "shown on hover"
     }
     TYPE |o--o{ TYPE : "parent of"
-    TYPE ||--o{ LINK : holds
+    TYPE ||--|| APPEARANCE : has
+    TYPE ||--|| DOCUMENTATION : has
+    DOCUMENTATION ||--o{ LINK : holds
     TYPE ||--o{ SIGNAL : holds
     TYPE ||--o{ COMMAND : holds
     TYPE ||--o{ FLAG : holds
     TYPE ||--o{ PRESET : holds
-    TYPE }o--o| ICON : shows
-    TYPE }o--o| COLOUR : shows
+    APPEARANCE }o--o| ICON : shows
+    APPEARANCE }o--o| COLOUR : shows
     PALETTE ||--|{ COLOUR : holds
-    SIGNAL }o--o| ENUM : "points to"
-    SIGNAL }o--o| QUANTITY : measures
+    SIGNAL ||--|| VALUE_TYPE : has
+    VALUE_TYPE }o--o| ENUM : "points to"
+    VALUE_TYPE }o--o| QUANTITY : measures
     ENUM ||--o{ ENUM_ITEM : holds
-    COMMAND }o--o| SIGNAL : targets
-    COMMAND }o--o| ENUM_ITEM : sends
+    COMMAND ||--o| COMMAND_TARGET : has
+    COMMAND_TARGET }o--|| SIGNAL : targets
+    COMMAND_TARGET }o--o| ENUM_ITEM : sends
     PRESET ||--|{ PRESET_VALUE : holds
     PRESET_VALUE }o--|| SIGNAL : "value of"
-    PRESET_VALUE }o--o| UNIT : "shown in"
+    PRESET_VALUE ||--|| DISPLAY : has
+    DISPLAY }o--o| UNIT : "shown in"
     PRESET_VALUE }o--o| ENUM_ITEM : "default item"
-    PRESET ||--o{ ELEMENT : holds
-    ELEMENT |o--o{ ELEMENT : "a group holds"
-    ELEMENT }o--o| SIGNAL : shows
-    ELEMENT }o--o| COMMAND : "button of"
-    ELEMENT }o--o| IDENTIFIER : "text from"
+    PRESET ||--o{ FACEPLATE_ELEMENT : holds
+    FACEPLATE_ELEMENT |o--o{ FACEPLATE_ELEMENT : "a group holds"
+    FACEPLATE_ELEMENT ||--o| SIGNAL_FIELD : has
+    FACEPLATE_ELEMENT ||--o| COMMAND_BUTTON : has
+    FACEPLATE_ELEMENT ||--o| TEXT_CONTENT : has
+    SIGNAL_FIELD }o--|| SIGNAL : shows
+    SIGNAL_FIELD ||--o| BOUND : min
+    SIGNAL_FIELD ||--o| BOUND : max
+    BOUND }o--o| SIGNAL : "taken from"
+    COMMAND_BUTTON }o--|| COMMAND : "button of"
+    TEXT_CONTENT }o--o| IDENTIFIER : "text from"
+    TEXT_CONTENT }o--o| SIGNAL : "text from"
     QUANTITY ||--|{ FAMILY : holds
     FAMILY ||--|{ UNIT : holds
     QUANTITY |o--o| QUANTITY : "difference of"
@@ -161,3 +190,4 @@ erDiagram
 ## Open
 
 - The name of the short text that names a colour or an icon: `description` for now.
+- The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `COMMAND_TARGET`, `DISPLAY`, `SIGNAL_FIELD`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`) and of `FACEPLATE_ELEMENT`: working names.
