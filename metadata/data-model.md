@@ -115,8 +115,8 @@ erDiagram
         uuid internal_id PK
         uuid default_unit FK
         text name
-        boolean offers_difference
-        integer default_decimals
+        boolean offers_difference "a signal of it may hold a difference"
+        integer default_decimals "shown on screen, a preset can change it"
     }
     FAMILY {
         uuid internal_id PK
@@ -128,8 +128,8 @@ erDiagram
         text symbol
     }
     CONVERSION {
-        expression from_default "this unit from x, in the default unit"
-        expression to_default "the default unit from x, in this unit"
+        expression to_default "x in this unit gives the default unit"
+        expression from_default "x in the default unit gives this unit"
     }
     ICON {
         uuid internal_id PK
@@ -181,7 +181,7 @@ erDiagram
     TEXT_CONTENT }o--o| IDENTIFIER : "text from"
     TEXT_CONTENT }o--o| SIGNAL : "text from"
     QUANTITY ||--|{ FAMILY : holds
-    FAMILY ||--|{ UNIT : holds
+    FAMILY ||--|{ UNIT : "holds, sorted by size"
     QUANTITY }o--|| UNIT : "default unit"
     UNIT ||--o| CONVERSION : "of a value"
     UNIT ||--o| CONVERSION : "of a difference"
@@ -198,6 +198,15 @@ Asked by the Product Owner on 2026-11-19, while reading the schema; the three po
 - **A difference is no longer a quantity of its own** (assistant's proposal, chosen by the Product Owner on 2026-11-19: "une lecture de la grandeur"; no table of its own): the signal says whether its value is the quantity or a difference of it (`measure`, as decision 0020 already says), and the units of a quantity whose conversion changes (`offers_difference`, temperature, gauge pressure...) carry a second conversion, for a difference. It removes the quantity that points to another quantity (`difference_of`, `kind`), which read badly. It is what FMI does with its flag `relativeQuantity` (research T2, section 3.8).
 - **`integer` stays a value kind** beside `real`, `boolean` and `enum` (Product Owner, 2026-11-19: "Garder integer"), as decisions 0003 and 0043 already say: the model receives an exact whole number, and the input refuses decimals. FMI and SSP keep integers apart from reals (research T2, section 3.1).
 
+## Read again on 2026-11-19 (afternoon)
+
+The Product Owner read the quantity part again and found it right (`measure`: "ça, c'est vraiment bien"; families: metric or imperial "c'est juste ça"; units: name and symbol).
+
+- **The units of a family are sorted by the software, never by hand** (Product Owner: "Oui, go faire ça. C'est plus simple comme ça"): smallest first, by the size of one step in the default unit, `to_default(1) − to_default(0)`; equal sizes by name. The catalogue writes them in any order. A quantity whose formulas give no finite step (an inverse such as l/100 km, a logarithm such as dB) keeps the order the catalogue writes.
+- **The two expressions of a conversion are named by where `x` goes**: `to_default` takes `x` in this unit and gives the default unit; `from_default` takes `x` in the default unit and gives this unit. The labels of the schema said it the wrong way round.
+- **What a difference is, said for the Product Owner** (the assistant's explanation, not a new rule): a value is a point on the scale ("it is 20 °C"), a difference is a gap between two points ("it rose by 20 °C"). Most conversions only multiply (litres to decalitres, kilograms to pounds): a value and a difference then convert the same way, so a quantity like volume needs nothing more. A conversion that also shifts the zero (°C to °F: `x × 9/5 + 32`; gauge to absolute pressure) converts them differently: 20 °C is 68 °F, but a rise of 20 °C is a rise of 36 °F, because the `+ 32` cancels out in a gap. `offers_difference` marks these quantities, as decision 0020 says.
+- **`default_decimals` is for the screen, never for the model**: the model always gets the full value; the decimals only round what is shown, and a preset starts from them and can change them (decision 0020). The Product Owner is not sure the field is needed: see Open.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -207,6 +216,8 @@ Asked by the Product Owner on 2026-11-19, while reading the schema; the three po
 
 - The default unit is also the model unit while the model unit stays in the catalogue (decision 0024 leans that way). If it moves to a configuration of the project, the default unit stays the unit the formulas are written against, and the model unit becomes a field of its own.
 - The symbol of a unit for a difference: the same (`°C`) or marked (`Δ°C`)?
+- The second pair of expressions, for a difference (decision 0049): written by the catalogue, or computed by the software as `to_default(x) − to_default(0)`, which is exact for every conversion that multiplies then shifts? Computing it would remove the conversion "of a difference" from the schema and change decision 0049. Asked to the Product Owner on 2026-11-19.
+- `default_decimals` on the quantity (decision 0020): kept, or each preset chooses its decimals from nothing? The Product Owner is not sure ("peut-être qu'il faut pouvoir, mais je sais pas"). Asked on 2026-11-19.
 - The syntax of the expressions (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
 - The name of the short text that names a colour or an icon: `description` for now.
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `COMMAND_TARGET`, `DISPLAY`, `SIGNAL_FIELD`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
