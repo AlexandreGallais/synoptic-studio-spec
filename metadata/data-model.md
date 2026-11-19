@@ -9,6 +9,8 @@ Status: schema only, being written (2026-11-19). The descriptions come once the 
 - A choice of the software (`kind`, `direction`, `measure`...) is written in the JSON as an English word (`"input"`, `"difference"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
 - A box without `internal_id` is a part of its owner (a nested object in the JSON), never pointed to.
 - `has`: one nested object; `holds`: an ordered list inside its owner.
+- Every other link is a FK, labelled by the field that holds it (`signal`, `default_unit`...), so that the reader knows which field points where.
+- A link or a field that only exists in some cases says when, always in the same words: `when kind is enum`, `when the signal has a quantity`.
 - Field order in each box: `internal_id`, then the links (FK), then the kind, then `id` or the name, then the values, then the texts.
 
 ## The schema
@@ -39,7 +41,7 @@ erDiagram
         text id
     }
     VALUE_TYPE {
-        uuid enum FK "enum only"
+        uuid enum FK "when kind is enum"
         value_kind kind "integer, real, boolean or enum"
     }
     MEASUREMENT {
@@ -53,7 +55,7 @@ erDiagram
     }
     COMMAND_TARGET {
         uuid signal FK
-        typed_value value "a number, a boolean, or the internal_id of an enum item"
+        typed_value value "a number, a boolean, or the internal_id of an item of the signal's enum"
     }
     FLAG {
         uuid internal_id PK
@@ -66,10 +68,10 @@ erDiagram
     }
     PRESET_VALUE {
         uuid signal FK
-        typed_value default_value "a number, a boolean, or the internal_id of an enum item"
+        typed_value default_value "a number, a boolean, or the internal_id of an item of the signal's enum"
     }
     DISPLAY {
-        uuid unit FK "only when the signal has a quantity"
+        uuid unit FK "when the signal has a quantity"
         integer decimals
     }
     FACEPLATE_ELEMENT {
@@ -83,19 +85,19 @@ erDiagram
         text name_shown
     }
     BOUND {
-        uuid signal FK "signal only"
+        uuid signal FK "when source is signal"
         bound_source source "typed or signal"
-        real value "typed only"
+        real value "when source is typed"
     }
     COMMAND_BUTTON {
         uuid command FK
         text button_text
     }
     TEXT_CONTENT {
-        uuid identifier FK "identifier only"
-        uuid signal FK "signal only"
+        uuid identifier FK "when source is identifier"
+        uuid signal FK "when source is signal"
         text_source source "fixed, identifier or signal"
-        text text "fixed only"
+        text text "when source is fixed"
     }
     ENUM {
         uuid internal_id PK
@@ -148,46 +150,46 @@ erDiagram
         rgb value
         text description "shown on hover"
     }
-    TYPE |o--o{ TYPE : "parent of"
-    TYPE ||--|| APPEARANCE : has
-    TYPE ||--|| DOCUMENTATION : has
-    DOCUMENTATION ||--o{ LINK : holds
-    TYPE ||--o{ SIGNAL : holds
-    TYPE ||--o{ COMMAND : holds
-    TYPE ||--o{ FLAG : holds
-    TYPE ||--o{ PRESET : holds
-    APPEARANCE }o--o| ICON : shows
-    APPEARANCE }o--o| COLOUR : shows
-    PALETTE ||--|{ COLOUR : holds
-    SIGNAL ||--|| VALUE_TYPE : has
-    VALUE_TYPE }o--o| ENUM : "points to"
-    VALUE_TYPE ||--o| MEASUREMENT : "has, integer or real only"
-    MEASUREMENT }o--|| QUANTITY : measures
-    ENUM ||--o{ ENUM_ITEM : holds
-    COMMAND ||--o| COMMAND_TARGET : has
-    COMMAND_TARGET }o--|| SIGNAL : targets
-    COMMAND_TARGET }o--o| ENUM_ITEM : sends
-    PRESET ||--|{ PRESET_VALUE : holds
-    PRESET_VALUE }o--|| SIGNAL : "value of"
-    PRESET_VALUE ||--o| DISPLAY : "has, integer or real only"
-    DISPLAY }o--o| UNIT : "shown in"
-    PRESET_VALUE }o--o| ENUM_ITEM : "default item"
-    PRESET ||--o{ FACEPLATE_ELEMENT : holds
-    FACEPLATE_ELEMENT |o--o{ FACEPLATE_ELEMENT : "a group holds"
-    FACEPLATE_ELEMENT ||--o| SIGNAL_FIELD : has
-    FACEPLATE_ELEMENT ||--o| COMMAND_BUTTON : has
-    FACEPLATE_ELEMENT ||--o| TEXT_CONTENT : has
-    SIGNAL_FIELD }o--|| SIGNAL : shows
-    SIGNAL_FIELD ||--o| BOUND : min
-    SIGNAL_FIELD ||--o| BOUND : max
-    BOUND }o--o| SIGNAL : "taken from"
-    COMMAND_BUTTON }o--|| COMMAND : "button of"
-    TEXT_CONTENT }o--o| IDENTIFIER : "text from"
-    TEXT_CONTENT }o--o| SIGNAL : "text from"
-    QUANTITY ||--|{ FAMILY : holds
+    TYPE |o--o{ TYPE : "parent"
+    TYPE ||--|| APPEARANCE : "has"
+    TYPE ||--|| DOCUMENTATION : "has"
+    DOCUMENTATION ||--o{ LINK : "holds"
+    TYPE ||--o{ SIGNAL : "holds"
+    TYPE ||--o{ COMMAND : "holds"
+    TYPE ||--o{ FLAG : "holds"
+    TYPE ||--o{ PRESET : "holds"
+    APPEARANCE }o--o| ICON : "icon"
+    APPEARANCE }o--o| COLOUR : "colour"
+    PALETTE ||--|{ COLOUR : "holds"
+    SIGNAL ||--|| VALUE_TYPE : "has"
+    VALUE_TYPE }o--o| ENUM : "enum, when kind is enum"
+    VALUE_TYPE ||--o| MEASUREMENT : "has, when kind is integer or real"
+    MEASUREMENT }o--|| QUANTITY : "quantity"
+    ENUM ||--o{ ENUM_ITEM : "holds"
+    COMMAND ||--o| COMMAND_TARGET : "has, when kind is set a signal or override"
+    COMMAND_TARGET }o--|| SIGNAL : "signal"
+    COMMAND_TARGET }o--o| ENUM_ITEM : "value, when the signal is an enum"
+    PRESET ||--o{ PRESET_VALUE : "holds, one per signal of the type"
+    PRESET_VALUE }o--|| SIGNAL : "signal"
+    PRESET_VALUE }o--o| ENUM_ITEM : "default_value, when the signal is an enum"
+    PRESET_VALUE ||--o| DISPLAY : "has, when the signal is an integer or a real"
+    DISPLAY }o--o| UNIT : "unit, when the signal has a quantity"
+    PRESET ||--o{ FACEPLATE_ELEMENT : "holds"
+    FACEPLATE_ELEMENT |o--o{ FACEPLATE_ELEMENT : "holds, when kind is group"
+    FACEPLATE_ELEMENT ||--o| SIGNAL_FIELD : "has, when kind is signal"
+    FACEPLATE_ELEMENT ||--o| COMMAND_BUTTON : "has, when kind is command"
+    FACEPLATE_ELEMENT ||--o| TEXT_CONTENT : "has, when kind is title or description"
+    SIGNAL_FIELD }o--|| SIGNAL : "signal"
+    SIGNAL_FIELD ||--o| BOUND : "min, when input is a number field"
+    SIGNAL_FIELD ||--o| BOUND : "max, when input is a number field"
+    BOUND }o--o| SIGNAL : "signal, when source is signal"
+    COMMAND_BUTTON }o--|| COMMAND : "command"
+    TEXT_CONTENT }o--o| IDENTIFIER : "identifier, when source is identifier"
+    TEXT_CONTENT }o--o| SIGNAL : "signal, when source is signal"
+    QUANTITY ||--|{ FAMILY : "holds"
     FAMILY ||--|{ UNIT : "holds, sorted by size"
-    QUANTITY }o--|| UNIT : "default unit"
-    UNIT ||--o| CONVERSION : has
+    QUANTITY }o--|| UNIT : "default_unit"
+    UNIT ||--o| CONVERSION : "has, except the default unit"
 ```
 
 ## Changed on 2026-11-19
@@ -239,6 +241,28 @@ The Product Owner read the signals, the commands and the flags and found them ri
 - **Flags**: an `id` and a description, "faut pas plus".
 - Next: the presets, after a break.
 
+## Read again on 2026-11-19 (presets)
+
+The Product Owner read the preset, its values and their display. The preset (a name) and its values (a signal, a default value) are right ("ça fait sens"). He found the links to the enums and the signals unclear, and left the fix to the assistant ("je te laisse faire"), with a pass over the whole schema to make it even.
+
+- **The "default item" and "sends" links were not fields of their own**: they are the typed value itself (`default_value`, `value`) when the signal is an enum, as decision 0047 says. They are now labelled by that field: `default_value, when the signal is an enum`, `value, when the signal is an enum`. The item is always one of the signal's enum.
+- **Every FK link is labelled by its field**, all over the schema (`signal`, `quantity`, `default_unit`, `icon`...), instead of a verb (`targets`, `value of`, `shown in`, `measures`). `has` and `holds` stay for nested parts.
+- **Every condition is said the same way**, `when ...`, on the fields and on the links: it replaces `enum only`, `signal only`, `typed only`, `integer or real only`, `a group holds`.
+- **The parts of a faceplate element say when they exist**: a signal field for a signal element, a command button for a command element, a text content for a title or a description, the children for a group.
+- **A command target exists for "set a signal" and for "override"**: the section above said "a command that sets a signal" only; an override targets an output the same way (draft, Commands).
+- **A preset holds one value per signal of the type**, own and inherited, so none for a type without signals: `o{` instead of `|{`.
+- **A unit has a conversion except the default unit**: said on the link, as the section of the morning already said.
+
+### Can a number have no quantity? Checked on 2026-11-19
+
+Asked by the Product Owner, who thinks a real always has a quantity or a difference ("il faut que tu fasses une recherche"). A fact to find, checked in the standard and in a catalogue of units, not a documentary research of its own.
+
+- **FMI allows a number without unit**: "Variables without unit must not have a `unit` attribute" ([FMI 3.0.1](https://fmi-standard.org/docs/3.0.1/), section 2.4.7.5, table 21, read on 2026-11-19). A display unit needs a unit: "If `displayUnit` is defined a `unit` must also be defined" (same document, section 2.4.4, table 15). AutomationML also makes the unit optional (research T2, `research/t2-recherche-documentaire-unique-modeles-de-donnees/rapport.md`, section 3.1, source S8).
+- **Such numbers exist in models**: a ratio, an efficiency, a valve opening from 0 to 1, a count. Paraphrase, assistant's examples.
+- **A catalogue of units gives them a quantity anyway**: QUDT puts the percent and the per mille under the quantity "DimensionlessRatio" (percent = 0.01), and a count under the quantity "Count", whose unit is "unitless" ([QUDT, percent](https://qudt.org/vocab/unit/PERCENT), [QUDT, count](https://qudt.org/vocab/quantitykind/Count), read on 2026-11-19 through a search summary, pages not opened one by one).
+- **What it changes in `DISPLAY`**: the unit and the decimals do not always go together. A real with no quantity still needs decimals, but has no unit to show. An integer needs decimals only when it is shown in another unit than its default unit (1450 rpm is 24.17 rps).
+- À trancher, asked in the questionnaire: either every integer and real has a quantity (the catalogue gets "ratio" with 1, %, ‰, ppm, and "count"), and `DISPLAY` keeps its unit and its decimals together; or a number may have no quantity, and the decimals leave `DISPLAY` to stand on their own. Until the answer, the schema is unchanged on this point.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -248,6 +272,8 @@ The Product Owner read the signals, the commands and the flags and found them ri
 
 - The default unit is also the model unit while the model unit stays in the catalogue (decision 0024 leans that way). If it moves to a configuration of the project, the default unit stays the unit the formulas are written against, and the model unit becomes a field of its own.
 - The symbol of a unit for a difference: the same (`°C`) or marked (`Δ°C`)?
+- Whether every integer and real has a quantity, or the decimals of a preset stand apart from its display unit (see [Can a number have no quantity?](#can-a-number-have-no-quantity-checked-on-2026-11-19)).
+- The unit of a typed number (a default value, the value of a command): kept in the default unit of the quantity, whatever the display unit (assistant's advice: changing the display unit then never changes the value), or in the display unit of the preset?
 - The default number of decimals of a preset: 2 or 3 (Product Owner, 2026-11-19: "qui serait de 2 ou de 3"), and whether it is fixed by the software or set for the project.
 - The syntax of the expressions (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
 - The name of the short text that names a colour or an icon: `description` for now.
