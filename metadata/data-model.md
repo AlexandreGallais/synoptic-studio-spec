@@ -229,6 +229,16 @@ The Product Owner read the enums and found them right (enum: kind, `id`, descrip
 - **A typed value says what it holds**: a number, a boolean, or the internal ID of an enum item (decision 0047), in `COMMAND_TARGET` and `PRESET_VALUE`.
 - The screen of an enum showed "Name": it is the `id`, as the Product Owner said ("ça devrait être ID"), in `screens/metadata.md`, MD-09.3.
 
+## Read again on 2026-11-19 (signals, commands, flags)
+
+The Product Owner read the signals, the commands and the flags and found them right; nothing changes in the schema.
+
+- **Signals**: right ("j'ai l'impression que c'est bon, en tout cas pour moi").
+- **Commands** ("C'est propre, je trouve"): a type holds its commands; a command has its `id` and its kind (set a signal, trigger or override); a command that sets a signal has a `COMMAND_TARGET`, the signal and the value sent; it is used by a command button of a faceplate element.
+- **The typed value is not checked by its own field** (Product Owner: "en fonction de l'UID, on est censé savoir ce que c'est [...] tout est censé parser en fonction de la foreign key"): the field accepts a number, a boolean or the internal ID of an enum item, and it is read by the value type of the signal it targets. An integer signal reads a whole number, a boolean signal a boolean, an enum signal the internal ID of one of its items.
+- **Flags**: an `id` and a description, "faut pas plus".
+- Next: the presets, after a break.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
