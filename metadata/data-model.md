@@ -10,7 +10,8 @@ Status: schema only, being written (2026-11-19). The descriptions come once the 
 - A box without `internal_id` is a part of its owner (a nested object in the JSON), never pointed to.
 - `has`: one nested object; `holds`: an ordered list inside its owner.
 - Every other link is a FK, labelled by the field that holds it (`signal`, `default_unit`...), so that the reader knows which field points where.
-- A link or a field that only exists in some cases says when, always in the same words: `when kind is enum`, `when the signal has a quantity`.
+- A link or a field that only exists in some cases says when, always in the same words: `when kind is enum`, `when the signal is an enum`.
+- A number typed in Metadata (a default value, the value of a command, a typed bound) is kept in the default unit of its signal's quantity, whatever unit the screen shows it in (decision 0051).
 - Field order in each box: `internal_id`, then the links (FK), then the kind, then `id` or the name, then the values, then the texts.
 
 ## The schema
@@ -55,7 +56,7 @@ erDiagram
     }
     COMMAND_TARGET {
         uuid signal FK
-        typed_value value "a number, a boolean, or the internal_id of an item of the signal's enum"
+        typed_value value "a number in the default unit, a boolean, or the internal_id of an item of the signal's enum"
     }
     FLAG {
         uuid internal_id PK
@@ -68,10 +69,10 @@ erDiagram
     }
     PRESET_VALUE {
         uuid signal FK
-        typed_value default_value "a number, a boolean, or the internal_id of an item of the signal's enum"
+        typed_value default_value "a number in the default unit, a boolean, or the internal_id of an item of the signal's enum"
     }
     DISPLAY {
-        uuid unit FK "when the signal has a quantity"
+        uuid unit FK
         integer decimals
     }
     FACEPLATE_ELEMENT {
@@ -87,7 +88,7 @@ erDiagram
     BOUND {
         uuid signal FK "when source is signal"
         bound_source source "typed or signal"
-        real value "when source is typed"
+        real value "when source is typed, in the default unit"
     }
     COMMAND_BUTTON {
         uuid command FK
@@ -173,7 +174,7 @@ erDiagram
     PRESET_VALUE }o--|| SIGNAL : "signal"
     PRESET_VALUE }o--o| ENUM_ITEM : "default_value, when the signal is an enum"
     PRESET_VALUE ||--o| DISPLAY : "has, when the signal is an integer or a real"
-    DISPLAY }o--o| UNIT : "unit, when the signal has a quantity"
+    DISPLAY }o--|| UNIT : "unit"
     PRESET ||--o{ FACEPLATE_ELEMENT : "holds"
     FACEPLATE_ELEMENT |o--o{ FACEPLATE_ELEMENT : "holds, when kind is group"
     FACEPLATE_ELEMENT ||--o| SIGNAL_FIELD : "has, when kind is signal"
@@ -261,7 +262,19 @@ Asked by the Product Owner, who thinks a real always has a quantity or a differe
 - **Such numbers exist in models**: a ratio, an efficiency, a valve opening from 0 to 1, a count. Paraphrase, assistant's examples.
 - **A catalogue of units gives them a quantity anyway**: QUDT puts the percent and the per mille under the quantity "DimensionlessRatio" (percent = 0.01), and a count under the quantity "Count", whose unit is "unitless" ([QUDT, percent](https://qudt.org/vocab/unit/PERCENT), [QUDT, count](https://qudt.org/vocab/quantitykind/Count), read on 2026-11-19 through a search summary, pages not opened one by one).
 - **What it changes in `DISPLAY`**: the unit and the decimals do not always go together. A real with no quantity still needs decimals, but has no unit to show. An integer needs decimals only when it is shown in another unit than its default unit (1450 rpm is 24.17 rps).
-- À trancher, asked in the questionnaire: either every integer and real has a quantity (the catalogue gets "ratio" with 1, %, ‰, ppm, and "count"), and `DISPLAY` keeps its unit and its decimals together; or a number may have no quantity, and the decimals leave `DISPLAY` to stand on their own. Until the answer, the schema is unchanged on this point.
+- Asked in the questionnaire: either every integer and real has a quantity, or a number may have no quantity and the decimals leave `DISPLAY`. Settled the same day, see below.
+
+## Settled on 2026-11-19 (night)
+
+The Product Owner answered the two questions of the presets in the questionnaire, with the option the assistant advised each time. Decision 0051 (accepted, 2026-11-19) records them: it changes the rule of the draft by which the quantity of a signal is optional (`draft.md`, Signals; screen MD-04.9), and extends decision 0024 (the bounds of a signal written in the model unit of its quantity) to every number typed in Metadata.
+
+- **Every integer and real signal has a quantity** (Product Owner: "Quantité obligatoire"). A number that measures nothing physical gets one from the catalogue, as QUDT does (see above): a **ratio** (units 1, %, ‰, ppm; default unit 1) for a rate, an efficiency or a valve opening from 0 to 1, and a **count** (unit 1) for a number of things. Working names, as the other quantities of the catalogue. In the schema:
+  - `MEASUREMENT` is always there for an integer or a real, and its `quantity` is required (it already was on the link);
+  - `DISPLAY` keeps its unit and its decimals together; its `unit` is required and no longer says "when the signal has a quantity";
+  - the rule of the head of the file gives another example of a condition.
+- **A number typed in Metadata is kept in the default unit of its quantity** (Product Owner: "Unité par défaut"): the default value of a preset, the value of a command, a typed bound of a signal field. Changing the display unit of a preset never changes a stored value: the screen converts it with `from_default` to show it, and what the user types in the display unit is turned back with `to_default` before it is kept. A difference is turned the way decision 0050 says.
+  - The bound is the assistant's reading: the question named the default value and the value of a command; a typed bound is the same kind of number, so the same rule applies.
+  - It answers the gap the research T2 found: the conversion back of the values typed (`research/t2-recherche-documentaire-unique-modeles-de-donnees/rapport.md`, short answer, point 4).
 
 ## Not in the schema yet
 
@@ -272,8 +285,8 @@ Asked by the Product Owner, who thinks a real always has a quantity or a differe
 
 - The default unit is also the model unit while the model unit stays in the catalogue (decision 0024 leans that way). If it moves to a configuration of the project, the default unit stays the unit the formulas are written against, and the model unit becomes a field of its own.
 - The symbol of a unit for a difference: the same (`°C`) or marked (`Δ°C`)?
-- Whether every integer and real has a quantity, or the decimals of a preset stand apart from its display unit (see [Can a number have no quantity?](#can-a-number-have-no-quantity-checked-on-2026-11-19)).
-- The unit of a typed number (a default value, the value of a command): kept in the default unit of the quantity, whatever the display unit (assistant's advice: changing the display unit then never changes the value), or in the display unit of the preset?
+- An integer signal shown in another unit than its default unit: a number typed there may not give a whole number in the default unit (24.17 rps is 1450.2 rpm). Rounded to the nearest whole number, or refused?
+- The names of the two quantities added for numbers that measure nothing physical: "ratio" and "count" for now.
 - The default number of decimals of a preset: 2 or 3 (Product Owner, 2026-11-19: "qui serait de 2 ou de 3"), and whether it is fixed by the software or set for the project.
 - The syntax of the expressions (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
 - The name of the short text that names a colour or an icon: `description` for now.
