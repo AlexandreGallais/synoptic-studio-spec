@@ -39,9 +39,11 @@ erDiagram
         text id
     }
     VALUE_TYPE {
-        uuid enum FK
-        uuid quantity FK
+        uuid enum FK "enum only"
         value_kind kind "integer, real, boolean or enum"
+    }
+    MEASUREMENT {
+        uuid quantity FK
         measure measure "value or difference"
     }
     COMMAND {
@@ -51,7 +53,7 @@ erDiagram
     }
     COMMAND_TARGET {
         uuid signal FK
-        typed_value value
+        typed_value value "a number, a boolean, or the internal_id of an enum item"
     }
     FLAG {
         uuid internal_id PK
@@ -64,10 +66,10 @@ erDiagram
     }
     PRESET_VALUE {
         uuid signal FK
-        typed_value default_value
+        typed_value default_value "a number, a boolean, or the internal_id of an enum item"
     }
     DISPLAY {
-        uuid unit FK
+        uuid unit FK "only when the signal has a quantity"
         integer decimals
     }
     FACEPLATE_ELEMENT {
@@ -81,17 +83,19 @@ erDiagram
         text name_shown
     }
     BOUND {
-        uuid signal FK
-        real value
+        uuid signal FK "signal only"
+        bound_source source "typed or signal"
+        real value "typed only"
     }
     COMMAND_BUTTON {
         uuid command FK
         text button_text
     }
     TEXT_CONTENT {
-        uuid identifier FK
-        uuid signal FK
-        text text
+        uuid identifier FK "identifier only"
+        uuid signal FK "signal only"
+        text_source source "fixed, identifier or signal"
+        text text "fixed only"
     }
     ENUM {
         uuid internal_id PK
@@ -157,14 +161,15 @@ erDiagram
     PALETTE ||--|{ COLOUR : holds
     SIGNAL ||--|| VALUE_TYPE : has
     VALUE_TYPE }o--o| ENUM : "points to"
-    VALUE_TYPE }o--o| QUANTITY : measures
+    VALUE_TYPE ||--o| MEASUREMENT : "has, integer or real only"
+    MEASUREMENT }o--|| QUANTITY : measures
     ENUM ||--o{ ENUM_ITEM : holds
     COMMAND ||--o| COMMAND_TARGET : has
     COMMAND_TARGET }o--|| SIGNAL : targets
     COMMAND_TARGET }o--o| ENUM_ITEM : sends
     PRESET ||--|{ PRESET_VALUE : holds
     PRESET_VALUE }o--|| SIGNAL : "value of"
-    PRESET_VALUE ||--|| DISPLAY : has
+    PRESET_VALUE ||--o| DISPLAY : "has, integer or real only"
     DISPLAY }o--o| UNIT : "shown in"
     PRESET_VALUE }o--o| ENUM_ITEM : "default item"
     PRESET ||--o{ FACEPLATE_ELEMENT : holds
@@ -214,6 +219,16 @@ The Product Owner answered the two questions of the afternoon in the questionnai
   - Hence one rule of the catalogue, checked by its tests: a quantity with `offers_difference` has only conversions that multiply then shift (`to_default(x) − to_default(0)` proportional to `x`).
 - **No `default_decimals` on the quantity** (Product Owner: "les décimales à montrer, c'est vraiment selon les presets [...] il faut l'enlever de l'objet quantité"): the decimals shown are set in the presets only, which start from one default number of decimals, the same everywhere. The assistant agrees: the right number of decimals depends on the unit shown, not on the quantity (2 decimals show 10 g in kilograms, but 0.01 g in grams), so a default per quantity would be wrong as soon as a preset shows another unit.
 
+## Read again on 2026-11-19 (enums)
+
+The Product Owner read the enums and found them right (enum: kind, `id`, description, "faut pas plus"; item: key, display text, description, and its place in the list). The Product Owner then asked why `VALUE_TYPE` holds `measure` beside `enum`, when a signal does not always have a quantity. The question was right: `measure` only means something when there is a quantity, and the box did not say it. The fix is a rule for the whole schema, not only for this box (assistant's proposal, asked by the Product Owner: "corriger tous les endroits où il y aura des problèmes comme ça").
+
+- **Fields that only exist together go in a part of their own.** The quantity and `measure` move to `MEASUREMENT`, which a value type has for an integer or a real only. The enum stays a single field of `VALUE_TYPE`: it has nothing else that goes with it, so it needs no part.
+- **A part that only exists for some signals says so on its link.** `DISPLAY` (unit and decimals) is there for an integer or a real only, never for a boolean or an enum; its unit only when the signal has a quantity.
+- **A choice between alternatives says which one it is**, as `VALUE_TYPE.kind` does, instead of leaving the reader to guess from the field that is filled. `BOUND` gets `source` (typed or signal), `TEXT_CONTENT` gets `source` (fixed, identifier or signal); each other field says when it is filled.
+- **A typed value says what it holds**: a number, a boolean, or the internal ID of an enum item (decision 0047), in `COMMAND_TARGET` and `PRESET_VALUE`.
+- The screen of an enum showed "Name": it is the `id`, as the Product Owner said ("ça devrait être ID"), in `screens/metadata.md`, MD-09.3.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -226,4 +241,4 @@ The Product Owner answered the two questions of the afternoon in the questionnai
 - The default number of decimals of a preset: 2 or 3 (Product Owner, 2026-11-19: "qui serait de 2 ou de 3"), and whether it is fixed by the software or set for the project.
 - The syntax of the expressions (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
 - The name of the short text that names a colour or an icon: `description` for now.
-- The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `COMMAND_TARGET`, `DISPLAY`, `SIGNAL_FIELD`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
+- The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `MEASUREMENT`, `COMMAND_TARGET`, `DISPLAY`, `SIGNAL_FIELD`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.

@@ -503,7 +503,7 @@ mindmap
     List of enums
       Title Enums, small plus on its right
     An enum
-      Name
+      ID
       Kind, Global or Template, changed at any time
       Description of the enum
       Items, global only
@@ -519,8 +519,8 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | MD-09.1 | List of enums | List | A page of its own, not part of the signals. Enums can be made before any signal uses them. | Decided | [Enums](../metadata/draft.md#enums) |
 | MD-09.2 | Add an enum | Button (+), small icon | On the right of the title "Enums", above the list (Product Owner, 2026-11-16: "au niveau des enums [...] avec une icône", then "un petit +, une petite icône à côté du titre"). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
-| MD-09.3 | Name | Text field | — | Decided | [Enums](../metadata/draft.md#enums) |
-| MD-09.10 | Kind: Global or Template | Choice when the enum is made (control not said) | Global: the items are written here, the same everywhere. Template: a name and a description only, no items here; the items are completed on each placed symbol, in the synoptic, with a small warning until they are (end of 2026-11-17). The difference must be explicit on screen; how is for the design system (2026-11-17). The kind can be changed at any time, signals or not, with no warning; going back to global brings back its items (end of 2026-11-17). | Decided (control: Open) | [Enums](../metadata/draft.md#global-enums-and-templates) |
+| MD-09.3 | ID | Text field | The public identifier of the enum, as the ID of a signal (Product Owner, 2026-11-19: "ça devrait être ID"; replaces "Name"). | Decided | [Data model](../metadata/data-model.md) |
+| MD-09.10 | Kind: Global or Template | Choice when the enum is made (control not said) | Global: the items are written here, the same everywhere. Template: an ID and a description only, no items here; the items are completed on each placed symbol, in the synoptic, with a small warning until they are (end of 2026-11-17). The difference must be explicit on screen; how is for the design system (2026-11-17). The kind can be changed at any time, signals or not, with no warning; going back to global brings back its items (end of 2026-11-17). | Decided (control: Open) | [Enums](../metadata/draft.md#global-enums-and-templates) |
 | MD-09.11 | Description of the enum | Text field (several lines) | What the enum is about as a whole, for a template and for a global enum alike (Product Owner, end of 2026-11-17). Plain text, never sent to the model. | Decided | [Enums](../metadata/draft.md#global-enums-and-templates) |
 | MD-09.4 | Kind of key | — | Removed (Product Owner, 2026-11-16): a key is always a number, there are no string keys. | Decided | [Enums](../metadata/draft.md#enums) |
 | MD-09.5 | Items | Table | Columns in this order: the handle with no header, Key, Display text, Description, then the delete button with no header (2026-11-17: the short field first, the long one last; replaces Key, Description, Display text of 2026-11-16). A new line takes its place by key, smallest first (end of 2026-11-17: "un tri automatique pour que ça aille dans l'ordre"); then the handle moves it to the order of meaning, without changing its key, and the order is kept (questionnaire, end of 2026-11-17: "Tri par clé, puis poignées"; decision 0038). Once items were moved, a new line goes right after the item with the next smaller key (questionnaire, end of 2026-11-17: "Juste après l'item de clé inférieure"; decision 0039). | Decided | [Enums](../metadata/draft.md#rules-5) |
