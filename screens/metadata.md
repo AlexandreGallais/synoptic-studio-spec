@@ -184,7 +184,7 @@ The signals are shown in **one table** that takes as much room as possible: one 
 block-beta
     columns 2
     title["Signals"] add["+"]
-    table["Table: (handle) | Direction | ID | Type | Enum | Quantity / Difference | (delete); inherited signals first, from the top of the tree, then own ones; a colour per direction; no header over the handle and the delete button"]:2
+    table["Table: (handle) | Direction | ID | Type | Enum | Quantity / Difference | Description | (delete); inherited signals first, from the top of the tree, then own ones; a colour per direction; no header over the handle and the delete button"]:2
 ```
 
 How the fields depend on each other: the type decides which fields exist. There is no model unit on the signal: it is one per quantity, set outside Metadata (2026-11-16). There is no minimum or maximum on the signal: a bound is a plain signal of its own, on a line of its own, usually an input (2026-11-17). There are no decimals on the signal (2026-11-17).
@@ -193,7 +193,7 @@ How the fields depend on each other: the type decides which fields exist. There 
 flowchart LR
     T["Type"] -->|"enum"| E["Enum: a link to the Enums page"]
     T -->|"integer or real"| Q["Quantity, required: a quantity or a difference, told by an icon"]
-    T -->|"boolean or text"| N["No other field"]
+    T -->|"boolean"| N["No other field"]
 ```
 
 ```mermaid
@@ -214,6 +214,7 @@ mindmap
         Type
         Enum, for an enum
         Quantity / Difference, required for an integer or a real, the icon alone says which
+        Description, for the model author, takes the room left
         Delete button, last, no header, warning
     No model unit
     No minimum or maximum, a bound is a plain signal
@@ -241,6 +242,7 @@ mindmap
 | MD-04.12 | Direction | Column, select | First column (2026-11-16). Input or output of the model. | Decided | [Signals](../metadata/draft.md#signals) |
 | MD-04.13 | Delete a signal | Button (icon), then a warning | Last column, on the far right of each own line, with no header and the least width; a click opens a warning (2026-11-16). No right click ([layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). | Decided | [Signals](../metadata/draft.md#the-table-of-signals) |
 | MD-04.14 | Handle of a line | Grip, dragged, no header | At the very left of each own line, before Direction: held and dragged to move the line; the order chosen is kept (2026-11-16). Inherited lines have none. A new signal goes at the end: to confirm. Its look: with the design system. | Decided | [Signals](../metadata/draft.md#the-order-of-the-lines) |
+| MD-04.16 | Description | Column, text field, takes the room left | What the signal means, for the person who writes the model (2026-11-20, decision 0052). After Quantity / Difference, before the delete button: the long field last, as for flags and enum items (assistant's reading). Plain text: assistant's reading. Optional or required: open. | Decided (field), Proposed (place, plain text) | [Signals](../metadata/draft.md#rules-3) |
 
 Gaps:
 
@@ -271,25 +273,26 @@ mindmap
       Value, fixed, of the target's type
         Number typed
         True or false
-        Text typed
         Enum item picked
+      Description, for the model author, takes the room left
       Delete button, last, no header, warning
     No right click
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-05.1 | Table of commands | Table | One line per command; kind, ID, target signal, value; always editable (2026-11-16). | Decided | [Commands](../metadata/draft.md#the-table-of-commands) |
+| MD-05.1 | Table of commands | Table | One line per command; kind, ID, target signal, value, description (2026-11-20); always editable (2026-11-16). | Decided | [Commands](../metadata/draft.md#the-table-of-commands) |
 | MD-05.2 | Add a command | Button (+), small icon | On the right of the title "Commands", above the table (2026-11-16). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
 | MD-05.3 | ID | Column, text field | The command's identifier, called ID as for the signals, never "name" (2026-11-16). For a trigger, all it has. Symbols follow a change (internal identifier). | Decided | [Commands](../metadata/draft.md#commands) |
 | MD-05.4 | Kind | Column, select | First column. Set a signal, Trigger, or Override an output (2026-11-16). | Decided | [Commands](../metadata/draft.md#commands) |
 | MD-05.5 | Target signal | Column, select | Picked by its ID. "Set a signal": the inputs of the model only; "Override an output": the outputs only (2026-11-16); empty for a trigger. | Decided | [Commands](../metadata/draft.md#commands) |
 | MD-05.6 | Value: fixed or typed | — | Removed (2026-11-16): the value is always fixed. | Decided | [Commands](../metadata/draft.md#the-value-is-always-fixed) |
-| MD-05.7 | Value | Column, field of the target signal's type | Fixed, written in Metadata: a number, true or false, a text, or an item of the enum. Empty for a trigger. A number is typed and kept in the default unit of the target signal's quantity (2026-11-19, decision 0051). | Decided | [Commands](../metadata/draft.md#the-value-is-always-fixed) |
+| MD-05.7 | Value | Column, field of the target signal's type | Fixed, written in Metadata: a number, true or false, or an item of the enum; never a text (2026-11-18, decision 0043). Empty for a trigger. A number is typed and kept in the default unit of the target signal's quantity (2026-11-19, decision 0051). | Decided | [Commands](../metadata/draft.md#the-value-is-always-fixed) |
 | MD-05.8 | Typed value | — | Removed (2026-11-16): a person types a value in the faceplate, for a signal set to write in the preset. | Decided | [Presets](../metadata/draft.md#typing-a-value) |
 | MD-05.9 | Delete a command | Button (icon), then a warning | Last column, on the far right of each own line, with no header; a click opens a warning (2026-11-16). No right click. | Decided | [Commands](../metadata/draft.md#the-table-of-commands) |
 | MD-05.10 | Handle of a line | Grip, dragged, no header | At the very left of each own line, before Kind; same behaviour as [MD-04.14](#md-04--signals) (2026-11-16, confirmed at the end of the day). | Decided | [Commands](../metadata/draft.md#the-table-of-commands) |
 | MD-05.11 | Inherited commands | Lines of the table | First, read only, from the first parent at the top of the tree down; then the type's own (2026-11-16, as for the signals). | Decided | [Commands](../metadata/draft.md#the-table-of-commands) |
+| MD-05.12 | Description | Column, text field, takes the room left | What the command means, for the person who writes the model; for a trigger, what the model is expected to do (2026-11-20, decision 0052). After Value, before the delete button, as on [MD-04.16](#md-04--signals) (assistant's reading). Optional or required: open. | Decided (field), Proposed (place, plain text) | [Commands](../metadata/draft.md#commands) |
 
 Gaps:
 
@@ -421,7 +424,7 @@ mindmap
 | MD-07.20 | Group element | Element of the builder | No title nor description of its own (confirmed 2026-11-17). At its top, the five small icons with a + (Signal, Command, Title, Description, Group), then its own elements; a group can hold a group (2026-11-16). The icons confirmed on 2026-11-17, after a doubt the same day: they save time. | Decided | [Presets](../metadata/draft.md#only-elements-in-elements) |
 | MD-07.21 | Delete an element, delete a preset | Button (icon), then a warning | At the far right of the element or of the preset's line (2026-11-16). | Decided | [Layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata) |
 | MD-07.17 | Order | Rule | Mode Values: the order of Signals, no handle, no sort. Mode Faceplate: the order of the builder, moved with a handle (end of 2026-11-17: "il y a déjà les poignées là"). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
-| MD-07.16 | Description per signal | — | Removed (2026-11-16): no description per signal or command; the builder has description elements instead. | Decided | [Presets](../metadata/draft.md#presets-and-their-faceplate) |
+| MD-07.16 | Description per signal | — | Removed (2026-11-16): no description per signal or command in the faceplate; the builder has description elements instead. The description a signal and a command got in Metadata on 2026-11-20 ([MD-04.16](#md-04--signals), [MD-05.12](#md-05--commands)) is for the model author and is not shown in the faceplate: assistant's reading. | Decided | [Presets](../metadata/draft.md#presets-and-their-faceplate) |
 
 Gaps:
 

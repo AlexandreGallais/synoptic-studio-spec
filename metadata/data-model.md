@@ -40,6 +40,7 @@ erDiagram
         uuid internal_id PK
         direction direction "input or output"
         text id
+        text description
     }
     VALUE_TYPE {
         uuid enum FK "when kind is enum"
@@ -53,6 +54,7 @@ erDiagram
         uuid internal_id PK
         command_kind kind "set a signal, trigger or override"
         text id
+        text description
     }
     COMMAND_TARGET {
         uuid signal FK
@@ -276,6 +278,14 @@ The Product Owner answered the two questions of the presets in the questionnaire
   - The bound is the assistant's reading: the question named the default value and the value of a command; a typed bound is the same kind of number, so the same rule applies.
   - It answers the gap the research T2 found: the conversion back of the values typed (`research/t2-recherche-documentaire-unique-modeles-de-donnees/rapport.md`, short answer, point 4).
 
+## Changed on 2026-11-20 (descriptions)
+
+The Product Owner found that the signals and the commands had no description ("il manque un champ description [...] c'est essentiel parce qu'il faut pouvoir expliquer ce qu'on veut dire au modeleur"). Decision 0052 (accepted, 2026-11-20) records it: it replaces the rule of the draft "a signal has no description" (2026-11-16).
+
+- **A signal and a command each get a `description`**: a text that says what the line means, for the person who writes the model.
+- Checked against the rest of the schema, as he listed it: the type has its description in `DOCUMENTATION`; a flag, an enum, an enum item and an identifier already have one. Nothing else changes.
+- Plain text, like the description of a flag or of an enum item, never Markdown: assistant's reading.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -290,4 +300,5 @@ The Product Owner answered the two questions of the presets in the questionnaire
 - The default number of decimals of a preset: 2 or 3 (Product Owner, 2026-11-19: "qui serait de 2 ou de 3"), and whether it is fixed by the software or set for the project.
 - The syntax of the expressions (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
 - The name of the short text that names a colour or an icon: `description` for now.
+- The description of a signal and of a command: optional or required? Written in the configuration files sent with the model, or kept in Metadata only? It is there to explain the line to the person who writes the model.
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `MEASUREMENT`, `COMMAND_TARGET`, `DISPLAY`, `SIGNAL_FIELD`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.

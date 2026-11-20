@@ -477,7 +477,7 @@ flowchart TD
 
 ## Signals
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table, always editable, direction first, line coloured by direction; no display name on the signal, it moved to the preset; a handle on each line to choose the order; the quantity says "quantity" or "difference"). Reviewing the wireframes later that day, he confirmed the ID and the removal of the display name, put the inherited signals first, read only, from the top of the tree down, marked a quantity and a difference by two icons, and replaced the delete by right click by a delete button with a warning. At the end of the day he removed the model unit from the signal (it is one per quantity, set outside Metadata), kept only the icons in the column Quantity, and left the columns of the handle and of the delete button without a header. On 2026-11-17 he removed the minimum and the maximum from the signal: a bound is a signal of its own. Later that day he made a bound a plain signal with no tie to the one it bounds (usually an input), named the column "Quantity / Difference", kept decimal places out of Metadata, and refused the bubble on an enum name. On 2026-11-18 he removed the type text: a word shown goes through an enum. Open points are listed in [Open questions](#metadata-open-questions).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table, always editable, direction first, line coloured by direction; no display name on the signal, it moved to the preset; a handle on each line to choose the order; the quantity says "quantity" or "difference"). Reviewing the wireframes later that day, he confirmed the ID and the removal of the display name, put the inherited signals first, read only, from the top of the tree down, marked a quantity and a difference by two icons, and replaced the delete by right click by a delete button with a warning. At the end of the day he removed the model unit from the signal (it is one per quantity, set outside Metadata), kept only the icons in the column Quantity, and left the columns of the handle and of the delete button without a header. On 2026-11-17 he removed the minimum and the maximum from the signal: a bound is a signal of its own. Later that day he made a bound a plain signal with no tie to the one it bounds (usually an input), named the column "Quantity / Difference", kept decimal places out of Metadata, and refused the bubble on an enum name. On 2026-11-18 he removed the type text: a word shown goes through an enum. On 2026-11-20 he gave the signal a description (decision 0052). Open points are listed in [Open questions](#metadata-open-questions).
 
 A signal is what goes between the front and the model: an input or an output of the model. Only these are defined here. Values that stay inside the model are not defined in Metadata: the people who write the model name them as they wish, and they are invisible to the application.
 
@@ -493,7 +493,7 @@ A signal is what goes between the front and the model: an input or an output of 
 - A signal also has an internal identifier, set by the software, that never changes, like a type's (see [Types](#types)). It exists on the application side only and never goes to the model. Symbols link to a signal through it, so renaming a signal does not break them (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md)).
 - A signal has an **ID**: its name for the model, the identifier above, set once (Product Owner, 2026-11-16).
 - **A signal has no display name** (Product Owner, 2026-11-16, later the same day): since the faceplate is built by the preset, the name people see is written in the preset, one per signal, in its faceplate builder (see [Presets](#mode-faceplate-the-faceplate-builder)). It replaces the display name on the signal decided earlier that day. Confirmed while reviewing the wireframes: "Dans Signal, le display name ne sert à rien. Je te le dis très clairement."
-- A signal has no description (Product Owner, 2026-11-16).
+- **A signal has a description** (Product Owner, 2026-11-20: "il faut pouvoir expliquer ce qu'on veut dire au modeleur"; decision 0052): it says what the signal means, for the person who writes the model. It replaces "a signal has no description" (2026-11-16). Plain text: assistant's reading. Whether it is optional, and whether it goes in the configuration files, is open.
 - **The line of a signal is coloured by its direction** (Product Owner, 2026-11-16): an input line and an output line have two different colours, so that the two are told apart at a glance. The colours are chosen with the design system.
 - **A signal has no model unit** (Product Owner, 2026-11-16, end of the day: "« model unit », ça, on enlève. C'est pas ici qu'il faut mettre ça"). For one quantity, and for one difference, the model always uses **the same unit, everywhere**, so that there are no odd conversions. That unit is set once, outside Metadata (see [Units](#model-unit-and-display-unit)). It replaces the model unit chosen per signal (decision 0024, accepted on 2026-11-16).
 - **A signal has no minimum and no maximum** (Product Owner, 2026-11-17: "le min et le max, ça doit être un signal à part entière et pas une propriété de ce signal-là [...] comme ça, ça simplifie"). A bound is **a signal of its own**, declared in the table like any other, with its direction, ID, type and quantity. It replaces the bounds kept on the signal on 2026-11-16 (decision 0026, accepted on 2026-11-17).
@@ -513,6 +513,7 @@ A signal is what goes between the front and the model: an input or an output of 
 | Type | What kind of value. | Integer, real, boolean or enum. A real is a 64-bit double. No text (Product Owner, 2026-11-18, see [No text signal](#no-text-signal)). |
 | Enum | For an enum: the list of values. | An enum picked from the Enums page (see [Enums](#enums)): a global enum or a template (2026-11-17, see [Global enums and templates](#global-enums-and-templates)). A link to it, never a copy, and never defined in the signal. |
 | Quantity | What the value measures (volume, flow, pressure...), and whether the value is the quantity itself or a difference of it. | Optional: a signal may have none. Only for integers and reals. Picked from the ready-made catalogue of the Units page, which the user never changes; the user picks the quantity or its difference, told apart by an icon (Product Owner, 2026-11-16), see [Units](#value-or-difference-chosen-in-the-signal). |
+| Description | What the signal means, for the person who writes the model. | Plain text (assistant's reading). Last column of the table (2026-11-20, decision 0052). |
 
 There is no field Minimum or Maximum (Product Owner, 2026-11-17): a bound is a plain signal of its own. There is no field Decimals either (Product Owner, 2026-11-17).
 
@@ -524,6 +525,7 @@ classDiagram
         type
         enum
         quantity
+        description
     }
     class Quantity
     class Enum
@@ -537,17 +539,17 @@ The signals of `centrifugal_pump`, a child of `pump`, itself a child of `equipme
 
 In the column Quantity, ● stands for the icon of a quantity and Δ for the icon of a difference: both are placeholders, the icons are chosen with the design system.
 
-| From | Direction | ID | Type | Enum | Quantity |
-| --- | --- | --- | --- | --- | --- |
-| `equipment`, read only | output | `fault` | enum | `fault_state` (0 None, 1 Overheating, 2 Dry running) |  |
-| `pump`, read only | input | `running` | boolean |  |  |
-| `pump`, read only | output | `flow` | real |  | ● flow |
-| own | input | `mode` | enum | `operating_mode` (0 Off, 1 Manual, 2 Automatic) |  |
-| own | input | `speed_setpoint` | integer |  | ● rotational speed |
-| own | input | `speed_setpoint_max` | integer |  | ● rotational speed |
-| own | output | `inlet_pressure` | real |  | ● pressure |
-| own | output | `pressure_rise` | real |  | Δ pressure |
-| own | output | `bearing_temperature` | real |  | ● temperature |
+| From | Direction | ID | Type | Enum | Quantity | Description |
+| --- | --- | --- | --- | --- | --- | --- |
+| `equipment`, read only | output | `fault` | enum | `fault_state` (0 None, 1 Overheating, 2 Dry running) |  | The fault the equipment is in, if any. |
+| `pump`, read only | input | `running` | boolean |  |  | True to run the pump, false to stop it. |
+| `pump`, read only | output | `flow` | real |  | ● flow | Flow through the pump. |
+| own | input | `mode` | enum | `operating_mode` (0 Off, 1 Manual, 2 Automatic) |  | How the pump is driven. |
+| own | input | `speed_setpoint` | integer |  | ● rotational speed | Speed asked of the motor. |
+| own | input | `speed_setpoint_max` | integer |  | ● rotational speed | Highest speed that may be asked. |
+| own | output | `inlet_pressure` | real |  | ● pressure | Pressure at the inlet. |
+| own | output | `pressure_rise` | real |  | Δ pressure | Pressure gained between inlet and outlet. |
+| own | output | `bearing_temperature` | real |  | ● temperature | Temperature of the motor bearing. |
 
 `speed_setpoint_max` is a bound: a plain input signal, given to the model, with no tie to `speed_setpoint` (Product Owner, 2026-11-17). A minimum would be one more line, the same way.
 
@@ -565,6 +567,7 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 | Type | Integer, real, boolean, enum. |
 | Enum | For an enum signal only: the enum it points to. |
 | Quantity / Difference | Header **"Quantity / Difference"** (Product Owner, 2026-11-17: "quantity, c'est le rond, et différence, c'est le petit triangle. Du coup, c'est quantity/différence"). Optional, integers and reals only. One column holds the choice of the quantity or of its difference: its list offers the pressure and the pressure difference (Product Owner, 2026-11-16). Only the quantities whose conversion changes (temperature, gauge pressure...) have the two items; the others are offered once (see [Units](#value-or-difference-chosen-in-the-signal)). **An icon before the name** says which it is: one icon for a quantity, another for a difference, so that the two are told apart at a glance (Product Owner, 2026-11-16: "on met un symbole, une icône. Comme ça, c'est beaucoup plus simple à reconnaître"). **The icon alone**: no "(quantity)" or "(difference)" after the name (Product Owner, 2026-11-16: "pas besoin de mettre (quantité) ou (différence) [...] quand on connaît les icônes"). The icons are chosen with the design system. |
+| Description | What the signal means, for the person who writes the model (Product Owner, 2026-11-20, decision 0052). Last column of values: the short fields first and the long one last, as for the enum items and the flags (assistant's reading). It takes the room left. |
 | Delete | A delete button (an icon), in the last column, on the far right, with **no header**; a click opens a warning before anything is deleted (Product Owner, 2026-11-16). Not on the inherited lines. |
 
 - **No column Model unit** (Product Owner, 2026-11-16, end of the day): the model unit is one per quantity, set outside Metadata (see [Units](#model-unit-and-display-unit)).
@@ -589,20 +592,22 @@ The block below shows the order of the columns; the two lines have the colours o
 
 ```mermaid
 block-beta
-    columns 7
-    h0[" "] h8["Direction"] h1["ID"] h2["Type"] h3["Enum"] h4["Quantity / Difference"] h9[" "]
-    r0["handle"] r8["input"] r1["running"] r2["boolean"] r3["-"] r4["-"] r9["bin icon"]
-    s0["handle"] s8["output"] s1["flow"] s2["real"] s3["-"] s4["● flow"] s9["bin icon"]
+    columns 8
+    h0[" "] h8["Direction"] h1["ID"] h2["Type"] h3["Enum"] h4["Quantity / Difference"] h5["Description"] h9[" "]
+    r0["handle"] r8["input"] r1["running"] r2["boolean"] r3["-"] r4["-"] r5["True to run the pump"] r9["bin icon"]
+    s0["handle"] s8["output"] s1["flow"] s2["real"] s3["-"] s4["● flow"] s5["Flow through the pump"] s9["bin icon"]
     style r8 fill:#dbeafe
     style r1 fill:#dbeafe
     style r2 fill:#dbeafe
     style r3 fill:#dbeafe
     style r4 fill:#dbeafe
+    style r5 fill:#dbeafe
     style s8 fill:#fef3c7
     style s1 fill:#fef3c7
     style s2 fill:#fef3c7
     style s3 fill:#fef3c7
     style s4 fill:#fef3c7
+    style s5 fill:#fef3c7
 ```
 
 ### The order of the lines
@@ -626,7 +631,7 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Signal (direction, ID, type, enum, quantity) | Metadata | Lines of a preset and its faceplate (read, write for an input, override for an output), bounds of a number field of the faceplate, commands that set it | No | No |
+| Signal (direction, ID, type, enum, quantity, description) | Metadata | Lines of a preset and its faceplate (read, write for an input, override for an output), bounds of a number field of the faceplate, commands that set it | No | No |
 
 ### No text signal
 
@@ -956,21 +961,21 @@ Noted, not to be asked again (Product Owner, end of 2026-11-17): each is settled
 
 ## Commands
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (a command always sends a fixed value; commands shown in a table, always editable; three kinds: set a signal, trigger, override an output; an ID instead of a name; decision 0019, accepted on 2026-11-16, which completes decision 0014; a handle on each line to choose the order). Reviewing the wireframes later that day, he confirmed the three kinds and the ID, asked for an example with every option, and replaced the delete by right click by a delete button with a warning; the inherited commands come first, like the inherited signals. At the end of the day he confirmed the handle on each own command ("En gros, faut le rajouter pour les commandes"), and set the small + on the right of the title and the columns of buttons without a header. Open points are listed in [Open questions](#metadata-open-questions).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (a command always sends a fixed value; commands shown in a table, always editable; three kinds: set a signal, trigger, override an output; an ID instead of a name; decision 0019, accepted on 2026-11-16, which completes decision 0014; a handle on each line to choose the order). Reviewing the wireframes later that day, he confirmed the three kinds and the ID, asked for an example with every option, and replaced the delete by right click by a delete button with a warning; the inherited commands come first, like the inherited signals. At the end of the day he confirmed the handle on each own command ("En gros, faut le rajouter pour les commandes"), and set the small + on the right of the title and the columns of buttons without a header. On 2026-11-20 he gave the command a description (decision 0052). Open points are listed in [Open questions](#metadata-open-questions).
 
 A command is how the front acts with one click. Three kinds, kept apart because they do not say the same thing (Product Owner, 2026-11-16: "envoyer à une entrée, à un output, ou faire un trigger").
 
 | Kind | Meaning | What the user edits |
 | --- | --- | --- |
-| Set a signal | "This input must take this value". | Its ID, the signal targeted (an input of the model, picked by its ID in the list of signals), and the value sent, fixed in Metadata. |
-| Trigger | "This happened, deal with it". | Its ID only, defined by the user. It targets nothing: the model decides what to do. |
-| Override an output | "I want this output to show this value instead of the model's". | Its ID, the signal targeted (an output of the model, picked by its ID in the list of signals), and the value, fixed in Metadata. |
+| Set a signal | "This input must take this value". | Its ID, the signal targeted (an input of the model, picked by its ID in the list of signals), the value sent, fixed in Metadata, and its description. |
+| Trigger | "This happened, deal with it". | Its ID and its description, defined by the user. It targets nothing: the model decides what to do. |
+| Override an output | "I want this output to show this value instead of the model's". | Its ID, the signal targeted (an output of the model, picked by its ID in the list of signals), the value, fixed in Metadata, and its description. |
 
-A command has an **ID** and a kind (Product Owner, 2026-11-16: the column is called ID, as for the signals, never "name").
+A command has an **ID** and a kind (Product Owner, 2026-11-16: the column is called ID, as for the signals, never "name"), and a **description** (Product Owner, 2026-11-20: "commande, pareil"; decision 0052): what the command means, for the person who writes the model. It matters most for a trigger, whose ID is all the model gets. Plain text: assistant's reading. Whether it is optional, and whether it goes in the configuration files, is open.
 
 ```mermaid
 flowchart TD
-    C["Command: an ID and a kind"] --> S[Set a signal]
+    C["Command: an ID, a kind and a description"] --> S[Set a signal]
     C --> E[Trigger]
     C --> O[Override an output]
     S --> TS["Target: an input, picked by its ID"]
@@ -1038,9 +1043,10 @@ The commands of a type are shown in **one table**, like the signals (Product Own
 | ID | The command's identifier (Product Owner, 2026-11-16: "comme dans les signaux, il vaut mieux mettre l'ID"). |
 | Target signal | For "Set a signal": an input, picked by its ID. For "Override an output": an output, picked by its ID. Empty for a trigger. |
 | Value | For "Set a signal" and "Override an output": the fixed value, of the target signal's type. Empty for a trigger. |
+| Description | What the command means, for the person who writes the model (Product Owner, 2026-11-20, decision 0052). Last column of values, as for the signals (assistant's reading). It takes the room left. |
 | Delete | A delete button (an icon), in the last column, on the far right, with no header; a click opens a warning before anything is deleted (Product Owner, 2026-11-16). Not on the inherited lines. |
 
-- A trigger leaves the target and the value empty.
+- A trigger leaves the target and the value empty; its description says what the model is expected to do with it.
 - The button that adds a command is a small **+ icon on the right of the title "Commands"**, above the table (see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)).
 - The columns of the handle and of the delete button have no header and take the least room possible (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
 - A command is deleted with the delete button of its line, then a warning that asks to confirm; there is no right click in Metadata (Product Owner, 2026-11-16; see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
@@ -1051,22 +1057,22 @@ The commands of a type are shown in **one table**, like the signals (Product Own
 
 The commands of `centrifugal_pump`, with every kind and every type of value (Product Owner, 2026-11-16: "complète le tableau des commandes avec le + d'options"). The signals are those of the [example of Signals](#example).
 
-| From | Kind | ID | Target signal | Value |
-| --- | --- | --- | --- | --- |
-| `equipment`, read only | Override an output | `clear_fault` | `fault` (enum output) | None (key 0) |
-| `pump`, read only | Set a signal | `start` | `running` (boolean input) | true |
-| `pump`, read only | Set a signal | `stop` | `running` (boolean input) | false |
-| `pump`, read only | Override an output | `force_flow_zero` | `flow` (real output) | 0 |
-| own | Set a signal | `auto_mode` | `mode` (enum input) | Automatic (key 2) |
-| own | Set a signal | `nominal_speed` | `speed_setpoint` (integer input) | 1450 |
-| own | Trigger | `reset_fault` |  |  |
-| own | Trigger | `request_maintenance` |  |  |
+| From | Kind | ID | Target signal | Value | Description |
+| --- | --- | --- | --- | --- | --- |
+| `equipment`, read only | Override an output | `clear_fault` | `fault` (enum output) | None (key 0) | Shows no fault, whatever the model says. |
+| `pump`, read only | Set a signal | `start` | `running` (boolean input) | true | Starts the pump. |
+| `pump`, read only | Set a signal | `stop` | `running` (boolean input) | false | Stops the pump. |
+| `pump`, read only | Override an output | `force_flow_zero` | `flow` (real output) | 0 | Shows a flow of zero, whatever the model says. |
+| own | Set a signal | `auto_mode` | `mode` (enum input) | Automatic (key 2) | Hands the pump to the automatic control. |
+| own | Set a signal | `nominal_speed` | `speed_setpoint` (integer input) | 1450 | Asks the nominal speed of the motor. |
+| own | Trigger | `reset_fault` |  |  | Asks the model to clear the fault if its cause is gone. |
+| own | Trigger | `request_maintenance` |  |  | Tells the model a maintenance was asked. |
 
 ### Where it is used
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Command (set a signal, trigger, override an output) | Metadata | Button of the faceplate (ticked in the preset), click on a part of a symbol | Link a command to a click | No |
+| Command (set a signal, trigger, override an output; ID, description) | Metadata | Button of the faceplate (ticked in the preset), click on a part of a symbol | Link a command to a click | No |
 
 ### A text that becomes an input does not use a command
 
@@ -1372,7 +1378,7 @@ Proposed by the assistant from the rules of these specs, to confirm. The number 
 | --- | --- | --- |
 | Major | A change that breaks the contract with the model. | A type, a signal or a command removed or renamed; the type, direction, enum or quantity (or its choice of quantity or difference) of a signal changed; an enum key changed or removed. |
 | Minor | Something added to the contract, nothing broken. | A new type, signal, command, enum or enum item. |
-| Patch | Nothing the model sees. | Documentation, icon and colour, order of the signals and of the commands, presets (display unit, decimals, default value; the elements of the faceplate builder: signals with their name shown, input and its bounds, read or write and read or override, commands with their button, titles, descriptions, groups), display texts of enum items. |
+| Patch | Nothing the model sees. | Documentation, icon and colour, order of the signals and of the commands, descriptions of the signals and of the commands (while they stay out of what the model receives: open, decision 0052), presets (display unit, decimals, default value; the elements of the faceplate builder: signals with their name shown, input and its bounds, read or write and read or override, commands with their button, titles, descriptions, groups), display texts of enum items. |
 
 A bound is a signal of its own since 2026-11-17 (see [Signals](#signals)): adding, removing or changing one follows the rules of any signal above.
 
@@ -1641,6 +1647,7 @@ erDiagram
         value_type type "integer, real, boolean or enum"
         uuid enum_internal_id FK "enum signals only"
         uuid quantity_internal_id FK "a quantity or a difference, optional"
+        text description "plain text, since 2026-11-20"
     }
     COMMAND {
         uuid internal_id PK
@@ -1648,6 +1655,7 @@ erDiagram
         text id "public, sent to the model"
         uuid target_signal_internal_id FK "empty for a trigger"
         fixed_value value "number, boolean or enum item"
+        text description "plain text, since 2026-11-20"
     }
     FLAG {
         uuid internal_id PK
@@ -1757,6 +1765,7 @@ Said by the Product Owner on 2026-11-18: nested in their type, as the links, eac
 | Type | Enum: integer, real, boolean or enum | No text (decision 0043). |
 | Enum | Internal ID of an enum | For an enum signal only. |
 | Quantity / Difference | Internal ID of a quantity or of a difference | Optional; integers and reals only. Each quantity and each difference of the catalogue has its own internal ID (see [Units](#value-or-difference-chosen-in-the-signal)). |
+| Description | Text | Plain text, for the person who writes the model (2026-11-20, decision 0052). |
 
 - **A signal belongs to one type, like a link**: two types never share a signal. Sharing one would change two types at once, a virtual link the rule of [Types](#types) refuses. Confirmed by the Product Owner choosing lines nested in their type (2026-11-18). The same holds for commands and flags.
 
@@ -1771,6 +1780,7 @@ Said by the Product Owner on 2026-11-18.
 | ID | Text | The public identifier. |
 | Target signal | Internal ID of a signal | An input for "set a signal", an output for "override an output", empty for a trigger. |
 | Value | A number, a boolean, or an item of an enum | Fixed, of the type of the target signal; empty for a trigger. Never a text (decision 0043; Product Owner: "ça fait number, booléen ou enum"). |
+| Description | Text | Plain text, for the person who writes the model (2026-11-20, decision 0052). |
 
 - For an enum target, the value points to the item by its internal ID, so that a key changed later is followed: **each enum item has its own internal ID** (Product Owner, 2026-11-18, decision 0047, answering the questionnaire: "Oui, un internal ID par item").
 
@@ -1862,7 +1872,8 @@ An example, with made-up identifiers:
       "id": "speed_setpoint",
       "type": "real",
       "enumInternalId": null,
-      "quantityInternalId": "6f1c2a90-0000-4000-8000-000000000900"
+      "quantityInternalId": "6f1c2a90-0000-4000-8000-000000000900",
+      "description": "Speed asked of the motor."
     }
   ],
   "commands": [
@@ -1871,7 +1882,8 @@ An example, with made-up identifiers:
       "kind": "trigger",
       "id": "start",
       "targetSignalInternalId": null,
-      "value": null
+      "value": null,
+      "description": "Asks the model to start the pump."
     }
   ],
   "flags": []
@@ -1917,12 +1929,12 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 | --- | --- | --- | --- |
 | Type (name, parent, icon) | Metadata, General (the parent: set at creation, never changed) | Choose its type among all the types (only here) | No |
 | Type documentation | Metadata | No | No |
-| Signal, its direction and ID | Metadata | No | No |
+| Signal, its direction, ID and description | Metadata | No | No |
 | Quantity, families, reference family, conversions, default model unit, default decimals | Nowhere in the application: catalogue files of the software, completed by contributors; read only on the Units page | No | No |
 | Quantity of a signal, and whether its value is the quantity or a difference | Signal, in Metadata | No | No |
 | Model unit of a quantity, the same for every signal (no longer chosen per signal, 2026-11-16) | Outside Metadata: the catalogue for good, or a configuration file of the project (open) | No | No |
 | Enum and its items (key, description, display text) | Enums page | No | No |
-| Command | Metadata | Link a command to a click | No |
+| Command, its ID and description | Metadata | Link a command to a click | No |
 | Preset and its name | Metadata | Choose one | Choose one |
 | Display unit, decimals, default value of each signal | Preset, mode Values, in Metadata | Edit | Edit |
 | Elements of the faceplate: signals (name shown, input and its bounds, read or write, read or override), commands (text of their button), titles, descriptions, groups | Preset, mode Faceplate (the builder), in Metadata | Open | Open |
@@ -1965,6 +1977,7 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | An element twice; what a symbol or a synoptic changes in the built faceplate | [Presets](#presets-and-their-faceplate) | Raised when the preset was split into Values and the faceplate builder (2026-11-16). The order by handle, the input chosen in the builder, the bounds of a number field and read or write (input) against read or override (output) were settled at the end of 2026-11-17. Not to be asked again in the chat. |
 | Which mode of the description opens first; content of the formatting tool bar and no text colour; editing of a link in place, now that a click on it opens it | [Documentation](#type-documentation) | Raised when the read-only mode came back, then while reviewing the wireframes (2026-11-16). The order of the links (a handle), the two add icons and the click that opens were decided at the end of the day. |
 | Default decimals of the catalogue, now that decimals may be set once for the project, outside Metadata | [Units](#units) | The decimals of the preset are kept (Product Owner, 2026-11-17, reviewing the presets: "les décimales ici servent"). The catalogue's default stays as it is until asked. |
+| The description of a signal and of a command: optional or required; written in the configuration files sent with the model, or kept in Metadata | [Signals](#rules-3), [Commands](#commands), [Data model](data-model.md#open) | Raised when the description was added (2026-11-20, decision 0052). |
 | Override an output: who applies it, what is seen while it holds, how it ends | [Commands](#commands), [Presets](#typing-a-value) | The kind is decided (2026-11-16); its mechanism is open. Since 2026-11-17, a signal element of the faceplate set to "override" also overrides an output; the Product Owner leaves it to what is behind the faceplate. |
 | One version for all of Metadata or per type; level computed or chosen; undo and going back; what is written between two versions; what symbols see | [Versions](#versions-of-metadata) | Raised when versions replaced Edit and Save (2026-11-16). |
 | An ID unique in the type and its tree; the description kept out of the configuration files | [Flags](#flags) | Settled by the Product Owner on 2026-11-17: the description optional, an internal identifier, no warning on delete, no rule on how an ID is written, the order by handle, the inheritance. |
