@@ -1256,7 +1256,7 @@ flowchart LR
 #### In a symbol and in a synoptic
 
 - The user chooses a preset, then can edit there its default values, display units, decimal places, and the title and description of the faceplate. Since the faceplate has no title nor description of its own any more, this now means the texts of its title and description elements (assistant's reading, to confirm with the open question below). Example: to see a green pump, the user sets the default colour in the symbol.
-- In a synoptic, only the faceplate can be edited. A command that is not wanted means a new symbol, because the symbol shows something extra.
+- In a synoptic, for one placed symbol, the user can edit the default values, display units, decimal places and the texts of the title and description elements of the faceplate, kept as changes from the preset with a way back to it (Product Owner, 2026-11-20; see [Panel of a placed symbol](../synoptics/04-placed-symbol-panel.md#preset)). A command that is not wanted means a new symbol, because the symbol shows something extra.
 - Decimal places, display units, titles and descriptions never go to the model: they are display only.
 - Open: before the builder, a symbol or a synoptic could tick a line left unticked in the preset. Now that the faceplate is a built list, what can a symbol or a synoptic change in it (add or remove an element, change a group)?
 

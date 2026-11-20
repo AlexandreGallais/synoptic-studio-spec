@@ -45,7 +45,6 @@ flowchart TD
 - Under the select, a table of the values this placed symbol changes: signal, default value, display unit, decimals, then the texts. Proposed (the table).
 - A changed value shows a dot, and a **Reset to the preset** button on its line (decided on 2026-11-20); the dot is proposed, like the overrides of a pipe style.
 - A value typed is kept in the default unit of its quantity, as every number typed in Metadata (decision 0051); the screen shows it in the display unit. Proposed: the same rule here.
-- Still to align: the [Metadata draft](../metadata/draft.md#in-a-symbol-and-in-a-synoptic) says "in a synoptic, only the faceplate can be edited". This page follows the Product Owner's answer of 2026-11-20; the sentence of Metadata is left as it is until Metadata may be changed.
 
 ### Flags
 

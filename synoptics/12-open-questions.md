@@ -39,4 +39,3 @@ These change the data model; to settle first.
 | 22 | Scenarios of the Test mode: in the synoptic file or apart? | In the synoptic file. | [Test mode](09-test-mode.md#open-questions) |
 | 23 | Format of the connection graph: the project's own, or SSP? | The project's own first; SSP to study. | [Outputs](10-outputs.md#open-questions) |
 | 24 | A pipe whose style is linked to a type: does a branch have its own values? (Already asked in Pipes.) | Its own values. | [Pipes](05-pipes.md#a-pipe-whose-style-is-linked-to-a-type) |
-| 25 | The [Metadata draft](../metadata/draft.md#in-a-symbol-and-in-a-synoptic) still says "in a synoptic, only the faceplate can be edited", against the answer of 2026-11-20. | Align it when Metadata may be changed. | [Panel of a placed symbol](04-placed-symbol-panel.md#preset) |
