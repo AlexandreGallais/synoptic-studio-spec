@@ -64,15 +64,16 @@ flowchart LR
     C["From scratch"] --> B
 ```
 
+Decided on 2026-11-20: a summary view is a synoptic of its own, saved as its own file, never stored inside the installation file. Its placed symbols **reference** those of the installation: they share their identity, so `P-101` is wired once (see [Synoptics and views](../synoptics/01-synoptics-and-views.md#two-kinds-installation-and-view)).
+
 ## Scope
 
 These specs cover only the open source desktop application.
 
 ## Open questions
 
-- **The third part** of the application: extrapolated by the assistant on 2026-11-20 ([Synoptics](../synoptics/README.md)), to review with the Product Owner. It proposes answers to the questions on the summary view and on simulation below, none decided.
+- **The third part** of the application: extrapolated by the assistant on 2026-11-20 ([Synoptics](../synoptics/README.md)), to review with the Product Owner. It proposes an answer to the question on simulation below, not decided.
 - **Runtime.** It is not one of the 7 validated projects. Option advised: note it apart, specify the editor first and the view file format the runtime will read.
 - **The "big drawing"** mentioned by the Product Owner was not received (the message held only text).
-- **Summary view.** Is a summary view a separate file, or a view stored inside the installation file? Not asked yet.
 - **Symbol types.** Who defines them: a built-in library, the user, or both? Partly answered by the Metadata part (the user creates types in a tree; there are no libraries of types since 2026-11-16); a built-in set of types is still to confirm.
 - **Simulation.** What exactly does the editor do for it: describe the circuit only, or run something? Not asked yet.

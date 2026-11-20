@@ -80,12 +80,12 @@ Path: Canvas › Build › a placed symbol. The right-hand panel, top half.
 | SN-03.1 | Symbol | Thumbnail + text | Symbol Lib › symbol. | Proposed | [Panel](../synoptics/04-placed-symbol-panel.md#symbol) |
 | SN-03.2 | Type | Text, read only | Never changed in a synoptic. | Decided | [Type and symbol](../metadata/draft.md#type-and-symbol) |
 | SN-03.3 | Open the symbol, Replace | Buttons | Replace: same type only. | Proposed | [Panel](../synoptics/04-placed-symbol-panel.md#symbol) |
-| SN-03.4 | Reference | Text + link + button | In a view: from which installation; Make it its own. | Proposed | idem |
-| SN-03.5 | Instance ID | Text field | Set by the software, changed by the user, unique. Name: waits for T5. | Proposed | [Panel](../synoptics/04-placed-symbol-panel.md#identity) |
+| SN-03.4 | Reference | Text + link | In a view: from which installation, a link that opens the placed symbol there; the sections below edit the shared identity. | Decided (shared identity, 2026-11-20), Proposed (link) | idem |
+| SN-03.5 | Instance ID | Text field | The key of the placed symbol, a field of its own, never the tag. Set by the software, changed by the user, unique. Name: waits for T5. | Decided (own key, 2026-11-20), Proposed (default value) | [Panel](../synoptics/04-placed-symbol-panel.md#identity) |
 | SN-03.6 | Identifiers | Text field each | Those used by the preset's faceplate. | Decided (list to fill), Proposed (which ones) | [Identifiers](../metadata/draft.md#identifiers) |
 | SN-03.7 | Duplicate text mark | Mark in the field | Warning, never a refusal. | Proposed | [Panel](../synoptics/04-placed-symbol-panel.md#identity) |
 | SN-03.8 | Preset | Select | Among the presets of the type. | Decided | [Type and symbol](../metadata/draft.md#type-and-symbol) |
-| SN-03.9 | Values changed | Table | Signal, default value, unit, decimals; texts of title and description elements; a dot and Reset per line. | Decided (edit), Proposed (table, reset) | [In a symbol and in a synoptic](../metadata/draft.md#in-a-symbol-and-in-a-synoptic) |
+| SN-03.9 | Values changed | Table | Signal, default value, unit, decimals; texts of title and description elements; kept as changes from the preset, Reset per line; a dot on a changed line. | Decided (what changes, changes kept, Reset, 2026-11-20), Proposed (table, dot) | [Panel](../synoptics/04-placed-symbol-panel.md#preset) |
 | SN-03.10 | Rotate, mirror | Buttons in the tool bar | Quarter turns; connection points follow. | Proposed | [Placed symbols](../synoptics/03-placed-symbols.md#rotation-mirror-size) |
 
 ## SN-04 · Panel of a placed symbol · flags, template enums, placement
@@ -183,7 +183,7 @@ Path: Canvas of an installation › selection › Create a view from the selecti
 | --- | --- | --- | --- | --- | --- |
 | SN-11.1 | Name of the view | Text field | — | Proposed | [Synoptics and views](../synoptics/01-synoptics-and-views.md#creating-a-view-from-an-installation) |
 | SN-11.2 | Keep the pipes | Toggle | Between the selected symbols. | Proposed | idem |
-| SN-11.3 | References or copies | Radio | References advised. | Proposed | idem |
+| SN-11.3 | References | Text | "The selected symbols become references: their identity stays in this installation." No choice of copies. | Decided (2026-11-20) | idem |
 | SN-11.4 | Create, Cancel | Buttons | — | Proposed | idem |
 
 ## SN-12 · Publish
@@ -200,4 +200,4 @@ Path: General › Publish, or the top of the editor. A dialog.
 
 Gaps:
 
-- Everything here waits for the Product Owner's review: the whole part is an extrapolation.
+- Everything here waits for the Product Owner's review: the whole part is an extrapolation, except the lines marked Decided.

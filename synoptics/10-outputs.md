@@ -23,7 +23,7 @@ Proposed:
 | --- | --- | --- | --- |
 | **Synoptic file** | The editor | The source: everything of the [data model](11-data-model.md). Saved at each save. | JSON |
 | **Published view** | The runtime | One file per view, self-contained: the drawings of the symbols used, their animations and interactions, the pipes already computed, the faceplates, and the address of every signal. The runtime needs nothing else. | JSON with SVG inside |
-| **Configuration file** | The software outside (controllers, gateway, model) | One entry per placed symbol: instance ID, type `id`, preset values (in the default unit), flags ticked, identifier texts, template items. | JSON |
+| **Configuration file** | The software outside (controllers, gateway, model) | One entry per placed symbol, references counted once: instance ID, type `id`, preset values with the changes of the synoptic (in the default unit), flags ticked, identifier texts, template items. | JSON |
 | **Signal list** | Whoever wires the controllers or the model | One line per placed symbol and signal: address `P-101.speed`, direction, value kind, quantity and default unit, enum. | CSV and JSON |
 | **Connection graph** | Those who simulate a circuit | Which placed symbol is connected to which, through which pipes and connection points. | JSON |
 
@@ -44,9 +44,9 @@ flowchart LR
 
 ### The address of a signal
 
-- A signal of a placed symbol is addressed by the **instance ID** of the placed symbol and the `id` of the signal: `pump_p101.speed`. Proposed.
+- A signal of a placed symbol is addressed by the **instance ID** of the placed symbol and the `id` of the signal: `pump_p101.speed`. Decided on 2026-11-20: the instance ID is the key of a placed symbol, never the tag.
 - The runtime receives values and sends commands by these addresses; how they travel (WebSocket, OPC UA gateway...) is outside the editor. Proposed.
-- A reference in a view uses the address of the placed symbol it points to, so `P-101` is wired once. Proposed.
+- A reference in a view uses the address of the placed symbol it points to, so `P-101` is wired once (decided on 2026-11-20: a reference shares the identity).
 - Renaming an instance ID changes its addresses: as for the `id` of a signal in Metadata, "renaming is breaking, on purpose". Proposed.
 
 ### The connection graph
@@ -78,4 +78,3 @@ Signal list of `P-101`, extract:
 
 - Does the runtime read the synoptic file and the Symbol Libs, or a published view (advised)?
 - Which format for the connection graph: one of the project, or SSP?
-- Is the address built on the instance ID (advised) or on an identifier such as the tag?

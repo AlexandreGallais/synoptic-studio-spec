@@ -25,8 +25,8 @@ A **placed symbol** is a symbol of a Symbol Lib put in a synoptic. It shows the 
 | --- | --- |
 | Position, rotation, mirror, size | Drawing, layers |
 | Order in the stack, folder, hidden, locked | Animations, interactions |
-| Identity: identifier texts, flags, template items | Connection points |
-| Preset chosen, values changed from the preset | Type |
+| Identity: instance ID, identifier texts, flags, template items | Connection points |
+| Preset chosen, and its default values, units, decimals and faceplate texts changed from it | Type |
 | Pipe it is connected to, and where | Faceplate (from the preset) |
 
 ### Placing a symbol

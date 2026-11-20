@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Synoptics](README.md) › Synoptics and views · Next: [Synoptic editor](02-synoptic-editor.md)
 
-Status: extrapolated by the assistant on 2026-11-20, from the [introduction](../overview/introduction.md) (two modes: full installation, summary view) and the layout rules. Not validated.
+Status: extrapolated by the assistant on 2026-11-20, from the [introduction](../overview/introduction.md) (two modes: full installation, summary view) and the layout rules. The Product Owner settled the references of a view the same day; the rest is not validated.
 
 A **synoptic** is one drawing of the installation, saved as one file in the folder of the application. There are two kinds: the **installation**, where every object is placed once, and the **view**, a summary made for operators.
 
@@ -16,17 +16,17 @@ A **synoptic** is one drawing of the installation, saved as one file in the fold
 
 ### Two kinds: installation and view
 
-The introduction names two modes: the full installation, and a more digestible summary view, made from scratch or from the installation. The assistant proposes to make them two kinds of synoptic.
+The introduction names two modes: the full installation, and a more digestible summary view, made from scratch or from the installation. They are two kinds of synoptic, each saved as its own file (decided on 2026-11-20).
 
 | Kind | What it holds | Who reads it |
 | --- | --- | --- |
-| **Installation** | Every object of the installation, placed once: each placed symbol has its own identity (identifiers, flags, template items, preset values). | Those who model, specify or simulate the installation. |
-| **View** | A summary: some placed symbols, laid out for a screen. A placed symbol of a view can be a **reference** to a placed symbol of an installation: it shares its identity, and only its position and look are its own. | Operators, through the runtime. |
+| **Installation** | Every object of the installation, placed once: each placed symbol has its own identity (instance ID, identifiers, flags, template items, preset values). | Those who model, specify or simulate the installation. |
+| **View** | A summary: some placed symbols, laid out for a screen. A placed symbol of a view taken from an installation is a **reference** to it: it shares its identity, and only its position and look are its own. | Operators, through the runtime. |
 
-- **Proposed: a reference shares the identity, never copies it.** Pump `P-101` is wired once, in the installation. The overview view and the pumping view show the same `P-101`: its tag, its flags and its values are the same everywhere. Changing its tag in one place changes it everywhere.
-- A view can also hold **its own placed symbols**, which are not in any installation (a view made from scratch). They have their own identity, as in an installation. Proposed.
+- **Decided on 2026-11-20: a reference shares the identity, never copies it.** Pump `P-101` is wired once, in the installation. The overview view and the pumping view show the same `P-101`: its instance ID, its tag, its flags and its values are the same everywhere. Changing its tag in one place changes it everywhere.
+- **Decided on 2026-11-20: a view is never a copy, nor a layout stored inside the installation file.** It is a synoptic of its own whose placed symbols point to those of the installation.
+- A view can also hold **its own placed symbols**, which are not in any installation (a view made from scratch, a legend, a clock). They have their own identity, as in an installation. Proposed.
 - A reference shows the **same symbol**, or another symbol **of the same type** (a simpler drawing for an overview). Proposed; the type stays fixed, as Metadata decided for every placed symbol.
-- Option not advised: a view is a plain copy of the installation's objects. Simpler, but `P-101` would then be wired twice, and the two copies would drift apart.
 
 ```mermaid
 flowchart LR
@@ -38,7 +38,7 @@ flowchart LR
 ### Creating a view from an installation
 
 - In an installation, the user selects objects, then **Create a view from the selection**. Proposed.
-- A dialog asks the name of the view, whether to keep the pipes between the selected symbols, and whether the placed symbols become references (advised) or copies. Proposed.
+- A dialog asks the name of the view and whether to keep the pipes between the selected symbols. Proposed. The selected placed symbols always become references (decided on 2026-11-20): the dialog offers no copy.
 - The view opens with the selection at the same relative positions; the user then rearranges it.
 
 ### Navigation bar of the synoptic mode
@@ -91,12 +91,11 @@ block-beta
 | Thing | Created and changed in | In a symbol | In a synoptic |
 | --- | --- | --- | --- |
 | Synoptic, its kind and frame | Synoptic mode, General page | No | Create, edit |
-| Reference to a placed symbol of an installation | Create a view from the selection, or placing from the installation | No | Create, move, change its drawing |
+| Reference to a placed symbol of an installation | Create a view from the selection, or placing from the installation | No | Create, move, change its drawing; its identity is edited in the installation or through the reference, the same everywhere |
 | Symbol Libs used by a synoptic | General page | No | Choose |
 
 ## Open questions
 
-- Is the summary view a kind of synoptic with references (advised), a plain copy, or a view stored inside the installation file? (It answers the open question of the introduction.)
 - Is the frame fixed (a target screen, advised) or is the canvas infinite, with the runtime fitting what is drawn?
 - Can a synoptic change kind once created?
 - Is there one installation per folder, or several (one per building)?
