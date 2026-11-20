@@ -242,7 +242,7 @@ mindmap
 | MD-04.12 | Direction | Column, select | First column (2026-11-16). Input or output of the model. | Decided | [Signals](../metadata/draft.md#signals) |
 | MD-04.13 | Delete a signal | Button (icon), then a warning | Last column, on the far right of each own line, with no header and the least width; a click opens a warning (2026-11-16). No right click ([layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). | Decided | [Signals](../metadata/draft.md#the-table-of-signals) |
 | MD-04.14 | Handle of a line | Grip, dragged, no header | At the very left of each own line, before Direction: held and dragged to move the line; the order chosen is kept (2026-11-16). Inherited lines have none. A new signal goes at the end: to confirm. Its look: with the design system. | Decided | [Signals](../metadata/draft.md#the-order-of-the-lines) |
-| MD-04.16 | Description | Column, text field, takes the room left | What the signal means, for the person who writes the model (2026-11-20, decision 0052). After Quantity / Difference, before the delete button: the long field last, as for flags and enum items (assistant's reading). Plain text: assistant's reading. Optional or required: open. | Decided (field), Proposed (place, plain text) | [Signals](../metadata/draft.md#rules-3) |
+| MD-04.16 | Description | Column, text field, takes the room left | What the signal means, for the person who writes the model (2026-11-20, decision 0052). After Quantity / Difference, before the delete button: the long field last, as for flags and enum items (assistant's reading). Plain text: assistant's reading. Optional; written in the configuration files sent with the model (2026-11-20). | Decided (field, optional, in the files), Proposed (place, plain text) | [Signals](../metadata/draft.md#rules-3) |
 
 Gaps:
 
@@ -292,7 +292,7 @@ mindmap
 | MD-05.9 | Delete a command | Button (icon), then a warning | Last column, on the far right of each own line, with no header; a click opens a warning (2026-11-16). No right click. | Decided | [Commands](../metadata/draft.md#the-table-of-commands) |
 | MD-05.10 | Handle of a line | Grip, dragged, no header | At the very left of each own line, before Kind; same behaviour as [MD-04.14](#md-04--signals) (2026-11-16, confirmed at the end of the day). | Decided | [Commands](../metadata/draft.md#the-table-of-commands) |
 | MD-05.11 | Inherited commands | Lines of the table | First, read only, from the first parent at the top of the tree down; then the type's own (2026-11-16, as for the signals). | Decided | [Commands](../metadata/draft.md#the-table-of-commands) |
-| MD-05.12 | Description | Column, text field, takes the room left | What the command means, for the person who writes the model; for a trigger, what the model is expected to do (2026-11-20, decision 0052). After Value, before the delete button, as on [MD-04.16](#md-04--signals) (assistant's reading). Optional or required: open. | Decided (field), Proposed (place, plain text) | [Commands](../metadata/draft.md#commands) |
+| MD-05.12 | Description | Column, text field, takes the room left | What the command means, for the person who writes the model; for a trigger, what the model is expected to do (2026-11-20, decision 0052). After Value, before the delete button, as on [MD-04.16](#md-04--signals) (assistant's reading). Optional; written in the configuration files sent with the model (2026-11-20). | Decided (field, optional, in the files), Proposed (place, plain text) | [Commands](../metadata/draft.md#commands) |
 
 Gaps:
 
@@ -546,6 +546,8 @@ The libraries of types (Type Libs) were removed by the Product Owner on 2026-11-
 ## MD-11 · Versions
 
 Path: Metadata › Versions (navigation bar), added by the Product Owner on 2026-11-16.
+
+In doubt since 2026-11-20: the Product Owner may leave the versions to Git, on clean JSON files, and remove this screen ([Versions](../metadata/draft.md#versions-of-metadata)). Kept until he decides. No description written by the user on a version: the change log is enough (2026-11-20).
 
 ```mermaid
 mindmap

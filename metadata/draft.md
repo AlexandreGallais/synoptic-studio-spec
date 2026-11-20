@@ -493,7 +493,7 @@ A signal is what goes between the front and the model: an input or an output of 
 - A signal also has an internal identifier, set by the software, that never changes, like a type's (see [Types](#types)). It exists on the application side only and never goes to the model. Symbols link to a signal through it, so renaming a signal does not break them (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md)).
 - A signal has an **ID**: its name for the model, the identifier above, set once (Product Owner, 2026-11-16).
 - **A signal has no display name** (Product Owner, 2026-11-16, later the same day): since the faceplate is built by the preset, the name people see is written in the preset, one per signal, in its faceplate builder (see [Presets](#mode-faceplate-the-faceplate-builder)). It replaces the display name on the signal decided earlier that day. Confirmed while reviewing the wireframes: "Dans Signal, le display name ne sert à rien. Je te le dis très clairement."
-- **A signal has a description** (Product Owner, 2026-11-20: "il faut pouvoir expliquer ce qu'on veut dire au modeleur"; decision 0052): it says what the signal means, for the person who writes the model. It replaces "a signal has no description" (2026-11-16). Plain text: assistant's reading. Whether it is optional, and whether it goes in the configuration files, is open.
+- **A signal has a description** (Product Owner, 2026-11-20: "il faut pouvoir expliquer ce qu'on veut dire au modeleur"; decision 0052): it says what the signal means, for the person who writes the model. It replaces "a signal has no description" (2026-11-16). Plain text: assistant's reading. **Optional**, as for the flags and the enum items (Product Owner, 2026-11-20). **Written in the configuration files sent with the model**, but edited in Metadata only (Product Owner, 2026-11-20: "on ne peut la modifier que dans la metadata").
 - **The line of a signal is coloured by its direction** (Product Owner, 2026-11-16): an input line and an output line have two different colours, so that the two are told apart at a glance. The colours are chosen with the design system.
 - **A signal has no model unit** (Product Owner, 2026-11-16, end of the day: "« model unit », ça, on enlève. C'est pas ici qu'il faut mettre ça"). For one quantity, and for one difference, the model always uses **the same unit, everywhere**, so that there are no odd conversions. That unit is set once, outside Metadata (see [Units](#model-unit-and-display-unit)). It replaces the model unit chosen per signal (decision 0024, accepted on 2026-11-16).
 - **A signal has no minimum and no maximum** (Product Owner, 2026-11-17: "le min et le max, ça doit être un signal à part entière et pas une propriété de ce signal-là [...] comme ça, ça simplifie"). A bound is **a signal of its own**, declared in the table like any other, with its direction, ID, type and quantity. It replaces the bounds kept on the signal on 2026-11-16 (decision 0026, accepted on 2026-11-17).
@@ -512,8 +512,8 @@ A signal is what goes between the front and the model: an input or an output of 
 | ID | The signal's name for the model. | Its variable identifier, set once. Shown as "ID" in the table. |
 | Type | What kind of value. | Integer, real, boolean or enum. A real is a 64-bit double. No text (Product Owner, 2026-11-18, see [No text signal](#no-text-signal)). |
 | Enum | For an enum: the list of values. | An enum picked from the Enums page (see [Enums](#enums)): a global enum or a template (2026-11-17, see [Global enums and templates](#global-enums-and-templates)). A link to it, never a copy, and never defined in the signal. |
-| Quantity | What the value measures (volume, flow, pressure...), and whether the value is the quantity itself or a difference of it. | Optional: a signal may have none. Only for integers and reals. Picked from the ready-made catalogue of the Units page, which the user never changes; the user picks the quantity or its difference, told apart by an icon (Product Owner, 2026-11-16), see [Units](#value-or-difference-chosen-in-the-signal). |
-| Description | What the signal means, for the person who writes the model. | Plain text (assistant's reading). Last column of the table (2026-11-20, decision 0052). |
+| Quantity | What the value measures (volume, flow, pressure...), and whether the value is the quantity itself or a difference of it. | Required for an integer or a real, never for a boolean or an enum (decision 0051, 2026-11-19): a number that measures nothing physical takes the ratio or the count of the catalogue. Picked from the ready-made catalogue of the Units page, which the user never changes; the user picks the quantity or its difference, told apart by an icon (Product Owner, 2026-11-16), see [Units](#value-or-difference-chosen-in-the-signal). |
+| Description | What the signal means, for the person who writes the model. | Plain text (assistant's reading). Optional. Written in the configuration files sent with the model, edited in Metadata only. Last column of the table (2026-11-20, decision 0052). |
 
 There is no field Minimum or Maximum (Product Owner, 2026-11-17): a bound is a plain signal of its own. There is no field Decimals either (Product Owner, 2026-11-17).
 
@@ -971,7 +971,7 @@ A command is how the front acts with one click. Three kinds, kept apart because 
 | Trigger | "This happened, deal with it". | Its ID and its description, defined by the user. It targets nothing: the model decides what to do. |
 | Override an output | "I want this output to show this value instead of the model's". | Its ID, the signal targeted (an output of the model, picked by its ID in the list of signals), the value, fixed in Metadata, and its description. |
 
-A command has an **ID** and a kind (Product Owner, 2026-11-16: the column is called ID, as for the signals, never "name"), and a **description** (Product Owner, 2026-11-20: "commande, pareil"; decision 0052): what the command means, for the person who writes the model. It matters most for a trigger, whose ID is all the model gets. Plain text: assistant's reading. Whether it is optional, and whether it goes in the configuration files, is open.
+A command has an **ID** and a kind (Product Owner, 2026-11-16: the column is called ID, as for the signals, never "name"), and a **description** (Product Owner, 2026-11-20: "commande, pareil"; decision 0052): what the command means, for the person who writes the model. It matters most for a trigger, whose ID is all the model gets. Plain text: assistant's reading. Optional, written in the configuration files sent with the model and edited in Metadata only, as for the signals (Product Owner, 2026-11-20).
 
 ```mermaid
 flowchart TD
@@ -1344,6 +1344,8 @@ Noted, not to be asked again in the chat (Product Owner, end of 2026-11-17).
 
 Status: draft, written on 2026-11-16 from the Product Owner's words. The principle (always editable, versions instead of Edit and Save) is decision 0017, accepted on 2026-11-16, which changes decision 0009; the details below are not validated. Open points are listed in [Open questions](#metadata-open-questions).
 
+**In doubt since 2026-11-20.** The Product Owner is no longer sure to keep the versions in the application ("je suis même pas sûr de mettre le versioning"). He leans towards very clean JSON files for the types, which Git versions well, so that the free application stays simple; versions kept by the application on files are easy to corrupt ("avec les fichiers, ça fait vite fait chier"). Nothing below is removed until he decides; decision 0017 stands meanwhile. Settled the same day: a version has **no description written by the user**, the change log written by the application is enough.
+
 Metadata is always editable, and versions keep it from breaking: the user edits freely, then sees every difference, undoes what is wrong, and makes a version with a number that says how much changed (Product Owner, 2026-11-16: "comme ça, tu n'aurais jamais rien de cassé, et on arrête de mettre des edits validés partout").
 
 ### Rules
@@ -1378,7 +1380,7 @@ Proposed by the assistant from the rules of these specs, to confirm. The number 
 | --- | --- | --- |
 | Major | A change that breaks the contract with the model. | A type, a signal or a command removed or renamed; the type, direction, enum or quantity (or its choice of quantity or difference) of a signal changed; an enum key changed or removed. |
 | Minor | Something added to the contract, nothing broken. | A new type, signal, command, enum or enum item. |
-| Patch | Nothing the model sees. | Documentation, icon and colour, order of the signals and of the commands, descriptions of the signals and of the commands (while they stay out of what the model receives: open, decision 0052), presets (display unit, decimals, default value; the elements of the faceplate builder: signals with their name shown, input and its bounds, read or write and read or override, commands with their button, titles, descriptions, groups), display texts of enum items. |
+| Patch | Nothing the model sees. | Documentation, icon and colour, order of the signals and of the commands, descriptions of the signals and of the commands (written in the configuration files, but they change nothing the model reads: decision 0052), presets (display unit, decimals, default value; the elements of the faceplate builder: signals with their name shown, input and its bounds, read or write and read or override, commands with their button, titles, descriptions, groups), display texts of enum items. |
 
 A bound is a signal of its own since 2026-11-17 (see [Signals](#signals)): adding, removing or changing one follows the rules of any signal above.
 
@@ -1399,6 +1401,7 @@ flowchart TD
 
 ### Open questions
 
+- Versions in the application at all, or none: the JSON files of Metadata, versioned with Git by the user, and the Versions page removed (Product Owner, 2026-11-20, in doubt)? If they go, decision 0017 is changed by a new decision, and the major, minor and patch levels go with them.
 - One version for all of Metadata, or one per type? Written here as one for all of it, since the page sits in the navigation bar next to Types, Units and Enums: assistant's reading, to confirm.
 - The level of a version: computed by the application from the table above and only shown, or proposed and changeable by the user?
 - Undo: one change at a time, all the changes since the last version, or both? Can the user go back to an older version, not only undo the changes not yet versioned?
@@ -1764,8 +1767,8 @@ Said by the Product Owner on 2026-11-18: nested in their type, as the links, eac
 | ID | Text | The public identifier, sent to the model. |
 | Type | Enum: integer, real, boolean or enum | No text (decision 0043). |
 | Enum | Internal ID of an enum | For an enum signal only. |
-| Quantity / Difference | Internal ID of a quantity or of a difference | Optional; integers and reals only. Each quantity and each difference of the catalogue has its own internal ID (see [Units](#value-or-difference-chosen-in-the-signal)). |
-| Description | Text | Plain text, for the person who writes the model (2026-11-20, decision 0052). |
+| Quantity / Difference | Internal ID of a quantity or of a difference | Required for integers and reals, none for the others (decision 0051). Each quantity and each difference of the catalogue has its own internal ID (see [Units](#value-or-difference-chosen-in-the-signal)). |
+| Description | Text | Plain text, for the person who writes the model; optional; written in the configuration files sent with the model (2026-11-20, decision 0052). |
 
 - **A signal belongs to one type, like a link**: two types never share a signal. Sharing one would change two types at once, a virtual link the rule of [Types](#types) refuses. Confirmed by the Product Owner choosing lines nested in their type (2026-11-18). The same holds for commands and flags.
 
@@ -1780,7 +1783,7 @@ Said by the Product Owner on 2026-11-18.
 | ID | Text | The public identifier. |
 | Target signal | Internal ID of a signal | An input for "set a signal", an output for "override an output", empty for a trigger. |
 | Value | A number, a boolean, or an item of an enum | Fixed, of the type of the target signal; empty for a trigger. Never a text (decision 0043; Product Owner: "ça fait number, booléen ou enum"). |
-| Description | Text | Plain text, for the person who writes the model (2026-11-20, decision 0052). |
+| Description | Text | Plain text, for the person who writes the model; optional; written in the configuration files sent with the model (2026-11-20, decision 0052). |
 
 - For an enum target, the value points to the item by its internal ID, so that a key changed later is followed: **each enum item has its own internal ID** (Product Owner, 2026-11-18, decision 0047, answering the questionnaire: "Oui, un internal ID par item").
 
@@ -1977,9 +1980,8 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | An element twice; what a symbol or a synoptic changes in the built faceplate | [Presets](#presets-and-their-faceplate) | Raised when the preset was split into Values and the faceplate builder (2026-11-16). The order by handle, the input chosen in the builder, the bounds of a number field and read or write (input) against read or override (output) were settled at the end of 2026-11-17. Not to be asked again in the chat. |
 | Which mode of the description opens first; content of the formatting tool bar and no text colour; editing of a link in place, now that a click on it opens it | [Documentation](#type-documentation) | Raised when the read-only mode came back, then while reviewing the wireframes (2026-11-16). The order of the links (a handle), the two add icons and the click that opens were decided at the end of the day. |
 | Default decimals of the catalogue, now that decimals may be set once for the project, outside Metadata | [Units](#units) | The decimals of the preset are kept (Product Owner, 2026-11-17, reviewing the presets: "les décimales ici servent"). The catalogue's default stays as it is until asked. |
-| The description of a signal and of a command: optional or required; written in the configuration files sent with the model, or kept in Metadata | [Signals](#rules-3), [Commands](#commands), [Data model](data-model.md#open) | Raised when the description was added (2026-11-20, decision 0052). |
 | Override an output: who applies it, what is seen while it holds, how it ends | [Commands](#commands), [Presets](#typing-a-value) | The kind is decided (2026-11-16); its mechanism is open. Since 2026-11-17, a signal element of the faceplate set to "override" also overrides an output; the Product Owner leaves it to what is behind the faceplate. |
-| One version for all of Metadata or per type; level computed or chosen; undo and going back; what is written between two versions; what symbols see | [Versions](#versions-of-metadata) | Raised when versions replaced Edit and Save (2026-11-16). |
+| Versions in the application at all, or clean JSON files versioned with Git; then one version for all of Metadata or per type; level computed or chosen; undo and going back; what is written between two versions; what symbols see | [Versions](#versions-of-metadata) | Raised when versions replaced Edit and Save (2026-11-16). On 2026-11-20 the Product Owner was no longer sure to keep the versions; no description written by the user, the change log is enough. |
 | An ID unique in the type and its tree; the description kept out of the configuration files | [Flags](#flags) | Settled by the Product Owner on 2026-11-17: the description optional, an internal identifier, no warning on delete, no rule on how an ID is written, the order by handle, the inheritance. |
 | Left for later: the warning of an uncompleted template (part 3); how the screen shows global against template (design system); the keys of a template in the configuration files | [Enums](#left-for-later) | Noted, not to be asked again (Product Owner, end of 2026-11-17). The description of a global enum, the change of kind and the place of the smallest key were settled the same evening. |
 | The words "ID" and "internal ID" (documentary research); the tables of the presets; JSON files instead of a database, the names of the files and the enums | [Data model](#open-questions-9) | Raised when the Product Owner described the tables on 2026-11-18; the presets left out by him the same day. Settled the same day: one line of links per type, deleted with it; an internal ID on each enum item; a type's ID unique in the whole tree; if JSON, lines nested in their type and one file per type. |

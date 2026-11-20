@@ -39,3 +39,9 @@ These change the data model; to settle first.
 | 22 | Scenarios of the Test mode: in the synoptic file or apart? | In the synoptic file. | [Test mode](09-test-mode.md#open-questions) |
 | 23 | Format of the connection graph: the project's own, or SSP? | The project's own first; SSP to study. | [Outputs](10-outputs.md#open-questions) |
 | 24 | A pipe whose style is linked to a type: does a branch have its own values? (Already asked in Pipes.) | Its own values. | [Pipes](05-pipes.md#a-pipe-whose-style-is-linked-to-a-type) |
+
+## Left for later
+
+Ideas of the Product Owner, not to be asked now.
+
+- **A read-only way in for model authors** (Product Owner, 2026-11-20: "les modeleurs [...] vont avoir les vues synoptiques en mode readonly. Quand ils cliqueront sur un symbole, ils auront les informations, des fiches récapitulatives en fonction des symboles [...] on verra ça plus tard"): the synoptic views opened without editing, and a click on a placed symbol shows a summary sheet of its type (signals, commands and their descriptions). Whether it is a mode of the application, what the sheet holds, and whether it is in these specs: not described.
