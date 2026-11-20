@@ -25,7 +25,7 @@ The Product Owner splits the application in three parts.
 | --- | --- | --- |
 | Metadata | The data and documentation a symbol can be attached to: type tree, icons, documentation, signals, units, enums, commands, faceplates, presets. | [Metadata](../metadata/README.md) |
 | Symbols | Creating symbols: symbol libraries, drawing, animation by signals, interactions with commands. Draft. | [Symbols](../symbols/README.md) |
-| Third part | Not described yet. | To come. |
+| Synoptics | Building synoptics: placing symbols, drawing pipes, giving each placed symbol its identity, faults, test, outputs. Extrapolated by the assistant on 2026-11-20, to review. | [Synoptics](../synoptics/README.md) |
 
 How the files of every part are read and written is described in [Storage](../storage/README.md).
 
@@ -70,7 +70,7 @@ These specs cover only the open source desktop application.
 
 ## Open questions
 
-- **The third part** of the application: to describe with the Product Owner (the second, Symbols, is a draft).
+- **The third part** of the application: extrapolated by the assistant on 2026-11-20 ([Synoptics](../synoptics/README.md)), to review with the Product Owner. It proposes answers to the questions on the summary view and on simulation below, none decided.
 - **Runtime.** It is not one of the 7 validated projects. Option advised: note it apart, specify the editor first and the view file format the runtime will read.
 - **The "big drawing"** mentioned by the Product Owner was not received (the message held only text).
 - **Summary view.** Is a summary view a separate file, or a view stored inside the installation file? Not asked yet.

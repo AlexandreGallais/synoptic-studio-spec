@@ -19,6 +19,7 @@ The screens are also drawn as wireframes on the page **"Spec"** of the Figma fil
 - **Every decision that changes a screen changes, in the same go, the pages of the part, this inventory and the wireframe in Figma** (Product Owner, 2026-11-17: "à chaque décision qui change un écran [...] faut changer les specs et les écrans sur Figma"). Never one without the others.
 - The change in Figma is checked on a capture of the frame before it is said done.
 - The texts of the wireframes are in English, like these specs; their notes cite the decision and its date.
+- Two sections were added on 2026-11-20, at the Product Owner's request: **"Synoptic · SN-00 to SN-12"**, the screens of [Synoptic](synoptics.md), extrapolated by the assistant; and **"Symbol editor · ideas"** (SY-I1 to SY-I8), ideas for the symbol mode drawn in Figma only, which change none of the pages of [Symbols](../symbols/README.md).
 
 ## What it contains
 
@@ -27,6 +28,7 @@ The screens are also drawn as wireframes on the page **"Spec"** of the Figma fil
 | [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its five parts), Units, Enums, Versions, Identifiers; Flags is a part of the type editor. |
 | [Symbol editor](symbols.md) | The navigation bar, Symbol Libs, the left-hand panel of a Symbol Lib, the symbol editor (layout, floating bars, layers) and its seven modes, the advanced tools, the Enums page of a Symbol Lib. |
 | [Pipes](pipes.md) | The base pipe style, the pipe styles, the end shapes, the dash sequences, the preview, and pipes in a synoptic (part 3, preview). |
+| [Synoptic](synoptics.md) | The navigation bar, General, the editor and its modes (Build, Pipes, Annotate, Links, Test), the panel of a placed symbol, Faults, Placed symbols, Create a view, Publish. Extrapolated by the assistant on 2026-11-20. |
 
 ## Layout rules
 
@@ -130,7 +132,7 @@ Decided by the Product Owner on 2026-11-16: the signals and the commands of a ty
 Decided by the Product Owner on 2026-11-16. From left to right:
 
 1. The **logo**: a valve, like the logo already in the Figma file (Product Owner, 2026-11-16). The word "Epipasta" heard earlier was a transcription error; the wireframes said "Logo · a valve" until the Product Owner pointed to the logo of the page "Cover" (2026-11-17); since then every top bar of the wireframes holds an instance of its component "App mark", size 24.
-2. Three icons, one per part: **Metadata**, **Symbols**, **Synoptic** (part 3, not written yet), **right after the logo, with the normal gap of the bar**: no wide empty space between the logo and the three parts (Product Owner, 2026-11-17: "il y a un espace de taré, ça fait ultra moche").
+2. Three icons, one per part: **Metadata**, **Symbols**, **Synoptic** (part 3, extrapolated on 2026-11-20, see [Synoptic](synoptics.md)), **right after the logo, with the normal gap of the bar**: no wide empty space between the logo and the three parts (Product Owner, 2026-11-17: "il y a un espace de taré, ça fait ultra moche").
 3. On the right, the window buttons **minimise, maximise, close**, as in Windows.
 
 ```mermaid
@@ -191,13 +193,13 @@ The gaps of each screen are mostly the "Implied" and "Open" lines: they are what
 
 ## Map of the screens
 
-How the user goes from one screen to another. Part 3 (the synoptic) is not written yet: only what the pipes pages already say about it is shown, dotted.
+How the user goes from one screen to another. Part 3 (the synoptic) is an extrapolation of the assistant (2026-11-20): it is shown dotted, its screens are in [Synoptic](synoptics.md).
 
 ```mermaid
 flowchart TD
     APP["Synoptic Studio: a folder is open; top bar: logo, Metadata, Symbols, Synoptic"] --> MD["Metadata: navigation bar MD-00"]
     APP --> SY["Symbols: navigation bar SY-00"]
-    APP -.-> P3["Part 3: synoptic, not written"]
+    APP -.-> P3["Synoptic: navigation bar SN-00, extrapolated; SN-01 to SN-12"]
 
     MD --> MD01["MD-01 Types: tree and type editor"]
     MD01 --> MD02["MD-02 General"]
