@@ -27,7 +27,7 @@ Status: everything written around the schema of the [Data model](data-model.md) 
 
 ## How the schema becomes JSON
 
-Asked by the Product Owner on 2026-11-21 ("que tu me construises juste en dessous du schéma l'objet JSON [...] qui représente un peu tout ce qu'il pourrait avoir"). One made-up type that uses every box of a type at least once, without trying every combination; then a global enum and a quantity of the catalogue, which live in files of their own. The identifiers, the icons and the palettes are left out. The internal IDs are made up, and only their last digits differ, to read them easily.
+Asked by the Product Owner on 2026-11-21 ("que tu me construises juste en dessous du schéma l'objet JSON [...] qui représente un peu tout ce qu'il pourrait avoir"). One made-up type that uses every box of a type at least once, without trying every combination; then a global enum and a quantity of the catalogue, which live in files of their own. The identifiers, the icons and the palettes are left out; the file of the identifiers is in [Identifier](objects/01-identifier.md) since 2026-11-21. The internal IDs are made up, and only their last digits differ, to read them easily.
 
 How the boxes become JSON, one rule for each, with no exception (the names of the lists confirmed by the Product Owner on 2026-11-21, decision 0057):
 
@@ -50,7 +50,7 @@ What the example of a type shows, beyond the fields themselves:
 - **The texts of a boolean are in the preset** (decision 0058): `running` shows "Running" or "Stopped" with the preset `Standard`; another preset of the same type may say "On" and "Off".
 - **`display_name: null`**: the field of `speed` shows the signal's `id`.
 - **A difference**: `bearing_temperature_rise` holds a gap of temperature, shown in °C (`…912`), kept in kelvins.
-- The title shows the identifier `…800` (`tag`, say `P-101`) of each placed symbol; the identifiers have their file of their own (draft, Identifiers).
+- The title shows the identifier `…800` (`tag`, say `P-101`) of each placed symbol; the identifiers have their file of their own ([Identifier](objects/01-identifier.md)).
 
 ### What the quantity shows
 
