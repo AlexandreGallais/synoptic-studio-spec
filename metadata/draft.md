@@ -512,6 +512,7 @@ A signal is what goes between the front and the model: an input or an output of 
 | ID | The signal's name for the model. | Its variable identifier, set once. Shown as "ID" in the table. |
 | Type | What kind of value. | Integer, real, boolean or enum. A real is a 64-bit double. No text (Product Owner, 2026-11-18, see [No text signal](#no-text-signal)). |
 | Enum | For an enum: the list of values. | An enum picked from the Enums page (see [Enums](#enums)): a global enum or a template (2026-11-17, see [Global enums and templates](#global-enums-and-templates)). A link to it, never a copy, and never defined in the signal. |
+| True / False | For a boolean: the text shown for each state ("Open" and "Closed", "Running" and "Stopped"). | Two short texts, typed on the line (Product Owner, 2026-11-21: "Deux mots choisis par signal", decision 0054). Shown in the faceplate for a signal in read and for a title or a description bound to the signal. Never sent to the model, which gets true or false; empty, "true" and "false" are shown (assistant's reading, to confirm). |
 | Quantity | What the value measures (volume, flow, pressure...), and whether the value is the quantity itself or a difference of it. | Required for an integer or a real, never for a boolean or an enum (decision 0051, 2026-11-19): a number that measures nothing physical takes the ratio or the count of the catalogue. Picked from the ready-made catalogue of the Units page, which the user never changes; the user picks the quantity or its difference, told apart by an icon (Product Owner, 2026-11-16), see [Units](#value-or-difference-chosen-in-the-signal). |
 | Description | What the signal means, for the person who writes the model. | Plain text (assistant's reading). Optional. Written in the configuration files sent with the model, edited in Metadata only. Last column of the table (2026-11-20, decision 0052). |
 
@@ -524,6 +525,7 @@ classDiagram
         ID
         type
         enum
+        true and false texts
         quantity
         description
     }
@@ -539,17 +541,17 @@ The signals of `centrifugal_pump`, a child of `pump`, itself a child of `equipme
 
 In the column Quantity, ● stands for the icon of a quantity and Δ for the icon of a difference: both are placeholders, the icons are chosen with the design system.
 
-| From | Direction | ID | Type | Enum | Quantity | Description |
-| --- | --- | --- | --- | --- | --- | --- |
-| `equipment`, read only | output | `fault` | enum | `fault_state` (0 None, 1 Overheating, 2 Dry running) |  | The fault the equipment is in, if any. |
-| `pump`, read only | input | `running` | boolean |  |  | True to run the pump, false to stop it. |
-| `pump`, read only | output | `flow` | real |  | ● flow | Flow through the pump. |
-| own | input | `mode` | enum | `operating_mode` (0 Off, 1 Manual, 2 Automatic) |  | How the pump is driven. |
-| own | input | `speed_setpoint` | integer |  | ● rotational speed | Speed asked of the motor. |
-| own | input | `speed_setpoint_max` | integer |  | ● rotational speed | Highest speed that may be asked. |
-| own | output | `inlet_pressure` | real |  | ● pressure | Pressure at the inlet. |
-| own | output | `pressure_rise` | real |  | Δ pressure | Pressure gained between inlet and outlet. |
-| own | output | `bearing_temperature` | real |  | ● temperature | Temperature of the motor bearing. |
+| From | Direction | ID | Type | Enum | True / False | Quantity | Description |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `equipment`, read only | output | `fault` | enum | `fault_state` (0 None, 1 Overheating, 2 Dry running) |  |  | The fault the equipment is in, if any. |
+| `pump`, read only | input | `running` | boolean |  | Running / Stopped |  | True to run the pump, false to stop it. |
+| `pump`, read only | output | `flow` | real |  |  | ● flow | Flow through the pump. |
+| own | input | `mode` | enum | `operating_mode` (0 Off, 1 Manual, 2 Automatic) |  |  | How the pump is driven. |
+| own | input | `speed_setpoint` | integer |  |  | ● rotational speed | Speed asked of the motor. |
+| own | input | `speed_setpoint_max` | integer |  |  | ● rotational speed | Highest speed that may be asked. |
+| own | output | `inlet_pressure` | real |  |  | ● pressure | Pressure at the inlet. |
+| own | output | `pressure_rise` | real |  |  | Δ pressure | Pressure gained between inlet and outlet. |
+| own | output | `bearing_temperature` | real |  |  | ● temperature | Temperature of the motor bearing. |
 
 `speed_setpoint_max` is a bound: a plain input signal, given to the model, with no tie to `speed_setpoint` (Product Owner, 2026-11-17). A minimum would be one more line, the same way.
 
@@ -566,6 +568,7 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 | ID | The model identifier (Product Owner, 2026-11-16: "l'ID, qui est le modèle identifiant"). |
 | Type | Integer, real, boolean, enum. |
 | Enum | For an enum signal only: the enum it points to. |
+| True / False | For a boolean signal only: two short text fields, the text of the true state and of the false state (2026-11-21, decision 0054). Header "True / False" and its place after Enum: assistant's reading. |
 | Quantity / Difference | Header **"Quantity / Difference"** (Product Owner, 2026-11-17: "quantity, c'est le rond, et différence, c'est le petit triangle. Du coup, c'est quantity/différence"). Optional, integers and reals only. One column holds the choice of the quantity or of its difference: its list offers the pressure and the pressure difference (Product Owner, 2026-11-16). Only the quantities whose conversion changes (temperature, gauge pressure...) have the two items; the others are offered once (see [Units](#value-or-difference-chosen-in-the-signal)). **An icon before the name** says which it is: one icon for a quantity, another for a difference, so that the two are told apart at a glance (Product Owner, 2026-11-16: "on met un symbole, une icône. Comme ça, c'est beaucoup plus simple à reconnaître"). **The icon alone**: no "(quantity)" or "(difference)" after the name (Product Owner, 2026-11-16: "pas besoin de mettre (quantité) ou (différence) [...] quand on connaît les icônes"). The icons are chosen with the design system. |
 | Description | What the signal means, for the person who writes the model (Product Owner, 2026-11-20, decision 0052). Last column of values: the short fields first and the long one last, as for the enum items and the flags (assistant's reading). It takes the room left. |
 | Delete | A delete button (an icon), in the last column, on the far right, with **no header**; a click opens a warning before anything is deleted (Product Owner, 2026-11-16). Not on the inherited lines. |
@@ -1235,7 +1238,7 @@ Said by the Product Owner on 2026-11-18, with the page [Identifiers](#identifier
 #### Typing a value
 
 - A signal element offers **read or write for an input**, and **read or override for an output** (Product Owner, end of 2026-11-17: "c'est read write pour un input et read override pour un output"). It corrects the single "read or override" written earlier on 2026-11-17 for both directions (decision 0040, accepted on 2026-11-17, which changes decision 0030).
-- A signal set to **read** shows **the text of its value alone**, no field drawn, not even greyed (Product Owner, 2026-11-21: "Le texte de la valeur seul"): in the display unit and with the decimals of the preset, an enum by the display text of its item, as a title bound to a signal shows it. It has no input to choose and no bounds.
+- A signal set to **read** shows **the text of its value alone**, no field drawn, not even greyed (Product Owner, 2026-11-21: "Le texte de la valeur seul"): in the display unit and with the decimals of the preset, an enum by the display text of its item, a boolean by the text of its state set on the signal (Product Owner, 2026-11-21: "Deux mots choisis par signal"; see [Signals](#fields)), as a title bound to a signal shows it. It has no input to choose and no bounds (decision 0054).
 - A signal set to **write** or to **override** in the builder is the only way for a person to type a value: a command always sends a fixed value (see [Commands](#the-value-is-always-fixed)).
 - **An input and an output can both be typed in, in the same way** (Product Owner, 2026-11-17: "c'est des outputs, faut pouvoir les mettre en write aussi, exactement de la même façon"); only the word changes: write for an input, override for an output. It replaces the rule of 2026-11-16, which greyed write for an output (decision 0030, accepted on 2026-11-17, which changes decisions 0014 and 0022 on this point).
 - What happens to the typed value is **left to what is behind** the faceplate (Product Owner: "c'est à ce qui passe derrière de se débrouiller, parce que ça peut devenir une valeur, ça peut devenir un override"): for an input it becomes the value the model receives; for an output, an override of that output. How an override of an output is applied, and how it ends, is the open question already asked for the command "Override an output" (see [Commands](#open-questions-4)).
@@ -1336,7 +1339,7 @@ Noted, not to be asked again in the chat (Product Owner, end of 2026-11-17).
 
 - Can a signal or a command be added twice to the builder?
 - What a symbol or a synoptic can change in the faceplate built by the preset.
-- The text of a boolean shown as text (a signal in read, a title bound to a signal): "true" and "false", or words set on the signal ("Open" and "Closed")?
+- The two texts of a boolean signal: required, or "true" and "false" when empty? Does the switch show the text of its state beside it (assistant's reading)?
 
 ## Always editable, no versions
 
@@ -1738,6 +1741,7 @@ Said by the Product Owner on 2026-11-18: nested in their type, as the links, eac
 | ID | Text | The public identifier, sent to the model. |
 | Type | Enum: integer, real, boolean or enum | No text (decision 0043). |
 | Enum | Internal ID of an enum | For an enum signal only. |
+| True / False | Two texts | For a boolean signal only: the text of each state, shown in the faceplate (2026-11-21, decision 0054). |
 | Quantity / Difference | Internal ID of a quantity or of a difference | Required for integers and reals, none for the others (decision 0051). Each quantity and each difference of the catalogue has its own internal ID (see [Units](#value-or-difference-chosen-in-the-signal)). |
 | Description | Text | Plain text, for the person who writes the model; optional; written in the configuration files sent with the model (2026-11-20, decision 0052). |
 

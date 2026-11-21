@@ -51,6 +51,10 @@ erDiagram
         uuid quantity FK
         measure measure "value or difference"
     }
+    BOOLEAN_TEXTS {
+        text true_text "shown when the value is true"
+        text false_text "shown when the value is false"
+    }
     COMMAND {
         uuid internal_id PK
         command_kind kind "set a signal, trigger or override"
@@ -168,6 +172,7 @@ erDiagram
     SIGNAL ||--|| VALUE_TYPE : "has"
     VALUE_TYPE }o--o| ENUM : "enum, when kind is enum"
     VALUE_TYPE ||--o| MEASUREMENT : "has, when kind is integer or real"
+    VALUE_TYPE ||--o| BOOLEAN_TEXTS : "has, when kind is boolean"
     MEASUREMENT }o--|| QUANTITY : "quantity"
     ENUM ||--o{ ENUM_ITEM : "holds"
     COMMAND ||--o| COMMAND_TARGET : "has, when kind is set a signal or override"
@@ -258,7 +263,7 @@ The text a title or a description element shows, and where it comes from. The sm
 | `source` | `typed`: a text typed in the builder. `identifier`: the text filled for an identifier on each placed symbol. `signal`: the value of a signal, written as text. | Always. |
 | `typed_text` | The text. A description keeps its line breaks; neither takes Markdown. | When `source` is typed. |
 | `identifier` | The identifier whose text is shown: `tag` shows `P-101` on one pump and `P-102` on the next. | When `source` is identifier. |
-| `signal` | The signal whose value is shown, as the faceplate shows it: in the display unit and with the decimals of the preset, an enum by the display text of its item. | When `source` is signal. |
+| `signal` | The signal whose value is shown, as the faceplate shows it: in the display unit and with the decimals of the preset, an enum by the display text of its item, a boolean by the text of its state (`BOOLEAN_TEXTS`). | When `source` is signal. |
 
 **A signal in a text is not a signal element.** A signal element (`SIGNAL_FIELD`) is a field with a label, that can be typed in. A text bound to a signal is the value alone, read only, inside a title or a paragraph: for example a title that shows the mode, "Automatic". The Product Owner asked for this on 2026-11-18 ("qui pourrait être ces identifiants-là ou alors un signal").
 
@@ -407,7 +412,9 @@ The Product Owner read the preset, its values and the faceplate again. The value
 The Product Owner answered the two questions of the faceplate in the questionnaire, with the option the assistant advised each time.
 
 - **A boolean signal is typed with a switch** (Product Owner: "Interrupteur (switch)"): `switch` is added to `input_kind`, for a boolean only. One click turns it on or off, and its state reads at a glance.
-- **A signal field in read shows the text of the value alone** (Product Owner: "Le texte de la valeur seul"), as a text bound to a signal does: in the display unit and with the decimals of the preset, an enum by the display text of its item. No field is drawn, not even greyed.
+- **A signal field in read shows the text of the value alone** (Product Owner: "Le texte de la valeur seul"), as a text bound to a signal does: in the display unit and with the decimals of the preset, an enum by the display text of its item, a boolean by the text of its state. No field is drawn, not even greyed.
+- **A boolean signal has two texts of its own** (Product Owner, in a third question: "Deux mots choisis par signal"): `true_text` and `false_text` ("Open" and "Closed", "Running" and "Stopped"), in a part `BOOLEAN_TEXTS` that a value type has for a boolean only, as `MEASUREMENT` for a number. They are typed in the table of signals. Assistant's reading, to confirm: they never go to the model, which gets `true` or `false`; empty, the faceplate shows "true" and "false"; the switch shows the text of its state beside it.
+- Decision 0054 (accepted, 2026-11-21) records the three answers.
 - **So `input_kind` only exists in write or override**: it says how a value is typed, and nothing is typed in read. The builder may keep the last choice while the access changes, so that going back to write finds it: assistant's reading, a matter of the screen, not of the file.
 - The bounds follow: `min` and `max` exist only for a number field, so never in read.
 
@@ -424,5 +431,5 @@ The Product Owner answered the two questions of the faceplate in the questionnai
 - The default number of decimals of a preset: 2 or 3 (Product Owner, 2026-11-19: "qui serait de 2 ou de 3"), and whether it is fixed by the software or set for the project.
 - The syntax of the expressions (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
 - The name of the short text that names a colour or an icon: `description` for now.
-- The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `MEASUREMENT`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
-- The text of a boolean shown as text (a signal field in read, a title bound to a signal): "true" and "false", or words set on the signal ("Open" and "Closed")?
+- The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `MEASUREMENT`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
+- The two texts of a boolean: required, or "true" and "false" when empty (assistant's reading)? And are they written in the configuration files sent with the model, as the description is?
