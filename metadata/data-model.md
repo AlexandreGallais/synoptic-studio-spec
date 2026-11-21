@@ -110,8 +110,8 @@ erDiagram
     IDENTIFIER {
         uuid internal_id PK
         text id
+        boolean required "true: its text must be filled on every placed symbol"
         text description
-        boolean required "true: its text must be filled on each placed symbol"
     }
     QUANTITY {
         uuid internal_id PK

@@ -560,8 +560,8 @@ mindmap
     Table of identifiers, whole width
       Handle, no header
       ID
-      Description
       Required, checkbox
+      Description
       Delete button, far right, no header, warning
     Picked in a title or description of the faceplate builder
     Filled on each placed symbol, part 3
@@ -569,13 +569,13 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-13.1 | Table of identifiers | Table, whole width | One line per identifier (2026-11-18: "faire un tableau"). Columns in this order: the handle with no header, ID, Description, Required, then the delete button with no header (order: assistant's reading; Required after Description, the Product Owner's order, 2026-11-21). No default value (2026-11-18). No display name (2026-11-21): the ID is shown. | Decided (table, fields), Proposed (column order) | [Identifiers](../metadata/draft.md#identifiers) |
+| MD-13.1 | Table of identifiers | Table, whole width | One line per identifier (2026-11-18: "faire un tableau"). Columns in this order: the handle with no header, ID, Required, Description, then the delete button with no header (order: assistant's reading; the order of the fields of an identifier, the long Description last, 2026-11-21). No default value (2026-11-18). No display name (2026-11-21): the ID is shown. | Decided (table, fields), Proposed (column order) | [Identifiers](../metadata/draft.md#identifiers) |
 | MD-13.2 | Add an identifier | Button (+), small icon | On the right of the title "Identifiers" ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Implied | [Identifiers](../metadata/draft.md#identifiers) |
 | MD-13.3 | Handle of a line | Grip, dragged, no header | The user chooses the order (2026-11-18: "Il faut pouvoir leur donner un ordre"). | Decided | [Layout rules](README.md#handles-to-choose-the-order) |
 | MD-13.4 | ID | Text field | The key. Always editable, followed through its internal ID when renamed (assistant's reading of the general rule). Unique on the page: open. | Decided (field), Open (unique) | [Identifiers](../metadata/draft.md#identifiers) |
 | MD-13.5 | Display name | — | Removed (2026-11-21: "on va dégager display name [...] on voit que l'ID"): the ID is shown where the identifier is picked and filled. | Decided | [Identifier](../metadata/entities/01-identifier.md) |
 | MD-13.6 | Description | Text field, takes the room left | What the identifier is (2026-11-18: "expliquer ce que c'est"). Optional: assistant's reading. | Decided (field), Proposed (optional) | [Identifiers](../metadata/draft.md#identifiers) |
-| MD-13.8 | Required | Checkbox, narrow column | Checked: each placed symbol must have the text of this identifier (a control ID); unchecked: it may stay empty (a location). Product Owner, 2026-11-21: "j'ai complètement besoin de dire si c'est required ou non". A checkbox, not a switch, since a table shows several lines: assistant's reading. Unchecked for a new identifier: proposal. | Decided (field), Proposed (control, default) | [Identifier](../metadata/entities/01-identifier.md) |
+| MD-13.8 | Required | Checkbox, narrow column, between ID and Description | Checked: every placed symbol must have the text of this identifier (a control ID), whether or not its faceplate shows it; left empty, a warning, never a block. Unchecked: it may stay empty (a location). Product Owner, 2026-11-21: "j'ai complètement besoin de dire si c'est required ou non". A checkbox, not a switch, since a table shows several lines: assistant's reading. Unchecked for a new identifier: proposal. | Decided (field), Proposed (control, default) | [Identifier](../metadata/entities/01-identifier.md) |
 | MD-13.7 | Delete an identifier | Button (icon), then a warning | At the far right of the line, with no header (2026-11-18: "et les supprimer"; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). | Decided | [Identifiers](../metadata/draft.md#identifiers) |
 
 Gaps:

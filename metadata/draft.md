@@ -1479,8 +1479,8 @@ An identifier is a named key that each placed symbol fills with its own text in 
 | Field | What it is | Rule |
 | --- | --- | --- |
 | ID | The key | Written by the user. The public identifier, as for every object of Metadata (see [Data model](#rules-11)). Also what people read, where the identifier is picked and where its text is filled. |
+| Required | Whether its text must be filled | Yes: every placed symbol must have its text (a control ID), whether or not its faceplate shows it; left empty, a warning, never a block. No: it may stay empty (a location, for context). Product Owner, 2026-11-21: "j'ai complètement besoin de dire si c'est required ou non"; "Sur tous les symboles placés", "Avertir sans bloquer". |
 | Description | What the identifier is | Plain text, to explain it (Product Owner: "expliquer ce que c'est"). Optional, like the description of a flag: assistant's reading. |
-| Required | Whether its text must be filled | Yes: each placed symbol must have its text (a control ID). No: it may stay empty (a location, for context). Product Owner, 2026-11-21: "j'ai complètement besoin de dire si c'est required ou non". |
 
 - **Usually three identifiers, four at most** (Product Owner, 2026-11-21: "trois, quatre grands max"): an order of size, not a limit.
 - **No display name** (Product Owner, 2026-11-21: "on va dégager display name [...] on voit que l'ID [...] Par contre, faut laisser la description"): it was a third field from 2026-11-18; the ID is shown instead.
@@ -1496,12 +1496,12 @@ An identifier is a named key that each placed symbol fills with its own text in 
 - **The user chooses their order** (Product Owner: "Il faut pouvoir leur donner un ordre"), with a handle at the very left of each line, as everywhere in Metadata (see the [layout rules](../screens/README.md#handles-to-choose-the-order)).
 - **An identifier can be deleted** (Product Owner: "et les supprimer"): the delete button at the far right of its line, then a warning, as everywhere in Metadata (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
 - A new identifier is added with the small + on the right of the title "Identifiers" (the [layout rule](../screens/README.md#a-title-and-a-small--on-its-right) of every list of Metadata): assistant's reading.
-- Columns, in this order: the handle with no header, ID, Description, Required, then the delete button with no header. The short fields first and the long one last, as for the enum items (see [Enums](#rules-5)): assistant's reading.
+- Columns, in this order: the handle with no header, ID, Required, Description, then the delete button with no header. The short fields first and the long one last, as for the enum items (see [Enums](#rules-5)): assistant's reading.
 - Identifiers are part of Metadata, so they are always editable, with no Edit or Save step (see [Always editable, no versions](#always-editable-no-versions)).
 
 ```mermaid
 flowchart LR
-    P["Identifiers page: ID, description, required; ordered, deleted"] -->|"picked in a text field of the faceplate"| F["Preset, mode Faceplate: title or description bound to an identifier"]
+    P["Identifiers page: ID, required, description; ordered, deleted"] -->|"picked in a text field of the faceplate"| F["Preset, mode Faceplate: title or description bound to an identifier"]
     P -->|"to fill, on each placed symbol"| S["Synoptic: pump P-101 gets the text 'P-101'"]
     S -->|"the text shown in"| F2["Faceplate of that pump"]
     F --> F2
@@ -1533,10 +1533,10 @@ flowchart TD
 
 The page Identifiers of a plant. The IDs and texts are made up for the example.
 
-| ID | Description | Required |
+| ID | Required | Description |
 | --- | --- | --- |
-| `tag` | The tag of the equipment, as on the plant drawings. | Yes |
-| `location` | The room or the zone where the equipment stands. | No |
+| `tag` | Yes | The tag of the equipment, as on the plant drawings. |
+| `location` | No | The room or the zone where the equipment stands. |
 
 The preset `default` of `centrifugal_pump` has a title element bound to the identifier `tag`, and a description element bound to `location`. In the synoptic "Line 1", the first pump is filled with `tag` = `P-101` and `location` = `Hall 2`; the second with `P-102` and `Hall 3`. Their faceplates show the title "P-101" and "P-102", each with its own location, from one preset.
 
@@ -1557,7 +1557,7 @@ Assistant's opinion: the word could be added to the documentary research on the 
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Identifier (ID, description, required), its order | Identifiers page of Metadata | Text fields of the title and description elements of the faceplate builder | No (assistant's reading) | Its text filled on each placed symbol; the panel is described with part 3 |
+| Identifier (ID, required, description), its order | Identifiers page of Metadata | Text fields of the title and description elements of the faceplate builder | No (assistant's reading) | Its text filled on each placed symbol; the panel is described with part 3 |
 | Fixed text or variable of a title or description element | Preset, mode Faceplate, in Metadata | Faceplate of the symbol or synoptic | No (assistant's reading) | The faceplate shows the text of the identifier |
 
 ### Open questions
@@ -1566,7 +1566,7 @@ Not asked in the chat: the Product Owner asked not to be asked on this page for 
 
 - The name of the page and of the concept (see [The name](#the-name-1)).
 - Is the uniqueness of the text checked by the application, a warning, or left to the user? Unique in one synoptic or in all of them?
-- Does each placed symbol get every identifier of the page to fill, or only those its faceplate uses?
+- Does each placed symbol get every identifier of the page to fill, or only those its faceplate uses? Settled for a required identifier (2026-11-21): every placed symbol. Open for the others.
 - Does the text of an identifier go out in the configuration files of the synoptic, as the flags do?
 - Must an ID be unique on the page?
 - One variable alone in a field, or a fixed text and variables mixed (`Pump {tag}`)?
@@ -1677,8 +1677,8 @@ erDiagram
     IDENTIFIER {
         uuid internal_id PK
         text id "the key"
-        text description "plain text"
         boolean required
+        text description "plain text"
     }
     TYPE |o--o{ TYPE : "parent of"
     TYPE }o--o| ICON : "shows"
@@ -1786,7 +1786,7 @@ These tables are pointed to by the type and its parts. The Product Owner did not
 | Palette, colour | The design system | A palette holds an ordered list of colours; a colour has an internal ID and its value | [Icons](#type-icons) |
 | Enum, enum item | The user, on the Enums page | An enum: internal ID, ID, kind (global or template), description, ordered list of its items. An item: internal ID, key (a whole number), display name, description | [Enums](#enums) |
 | Quantity, difference | The catalogue of the software, read only | Internal ID, ID, kind (quantity or difference) | [Units](#units) |
-| Identifier (working name, 2026-11-18) | The user, on the Identifiers page | Internal ID, ID, description, required; no value, no default value. One ordered list, the order on the screen | [Identifiers](#identifiers) |
+| Identifier (working name, 2026-11-18) | The user, on the Identifiers page | Internal ID, ID, required, description; no value, no default value. One ordered list, the order on the screen | [Identifiers](#identifiers) |
 
 - The identifiers are pointed to by the title and description elements of the faceplate builder (a field holds a fixed text, or the internal ID of an identifier or of a signal): their table comes with the presets, not described yet. Their text, filled on each placed symbol, comes with part 3.
 - If JSON: one file for the whole ordered list of identifiers (proposal, `identifiers.json`), since the order of the list is the order on the screen.
@@ -1924,7 +1924,7 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 | Elements of the faceplate: signals (display name, input and its bounds, read or write, read or override), commands (display name of their button), titles, descriptions, groups | Preset, mode Faceplate (the builder), in Metadata | Open | Open |
 | Texts of the title and description elements of the faceplate (no title nor description by default, 2026-11-16) | Preset, mode Faceplate, in Metadata | Edit (assistant's reading) | Edit, on each placed symbol (assistant's reading) |
 | Fixed text or variable (an identifier; a signal until 2026-11-21) of a title or description element (2026-11-18) | Preset, mode Faceplate, in Metadata, through the small icon of the field | No (assistant's reading) | No |
-| Identifier: ID, description, required, order (2026-11-18, working name; no display name and required since 2026-11-21) | Identifiers page of Metadata | No (assistant's reading) | Its text, filled on each placed symbol (part 3) |
+| Identifier: ID, required, description, order (2026-11-18, working name; no display name and required since 2026-11-21) | Identifiers page of Metadata | No (assistant's reading) | Its text, filled on each placed symbol (part 3) |
 
 ```mermaid
 flowchart LR

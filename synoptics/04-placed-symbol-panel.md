@@ -34,7 +34,10 @@ flowchart TD
 ### Identity
 
 - **Instance ID**: the key of the placed symbol in the configuration files and in the signal list (`pump_p101.speed`). Decided on 2026-11-20: every placed symbol has an instance ID of its own, a field apart from the identifiers of Metadata; the tag is never the key. Proposed: set by the software from the type's `id` and a number (`centrifugal_pump_3`), changed by the user, unique in the folder. Its name waits for the research on the names of identifiers (task T5), the same question as in Metadata.
-- **Identifiers**: one text field per identifier of Metadata **used by the faceplate of the preset** (decided: "the identifiers used give the synoptic its list to fill"), in the order of the Identifiers page, labelled by their ID (an identifier has no display name since 2026-11-21). A required identifier is marked as such; what happens when its text stays empty is open (see [Identifier](../metadata/entities/01-identifier.md#open-questions)). Proposed: the identifiers not used by the preset are not shown.
+- **Identifiers**: one text field per identifier of Metadata, in the order of the Identifiers page, labelled by their ID (an identifier has no display name since 2026-11-21).
+  - **Every required identifier** is shown on every placed symbol, whether or not the faceplate of its preset uses it, and marked as required (Product Owner, 2026-11-21: "Sur tous les symboles placés").
+  - **A required text left empty warns, never blocks** (Product Owner, 2026-11-21: "Avertir sans bloquer"): the field is marked, the section shows the small warning mark, the placed symbol is listed in the [faults](08-faults.md) as a warning, and the synoptic is saved anyway.
+  - **An identifier that is not required** is shown when the faceplate of the preset uses it (decided: "the identifiers used give the synoptic its list to fill"). Proposed: the others are not shown.
 - **Uniqueness**: a text already used by another placed symbol, for the same identifier, is marked at once in the field, and listed in the faults as a warning. It is never refused: the user may be in the middle of renaming. Proposed; Metadata left open whether it is checked.
 
 ### Preset
@@ -97,5 +100,5 @@ flowchart TD
 ## Open questions
 
 - The name of the instance ID: waits for task T5.
-- Show only the identifiers used by the preset (advised), or all of them?
+- For an identifier that is not required: show only those used by the preset (advised), or all of them? (A required one is always shown, 2026-11-21.)
 - Is a duplicate identifier text a warning (advised) or refused?
