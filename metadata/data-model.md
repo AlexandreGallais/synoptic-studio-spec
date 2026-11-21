@@ -9,11 +9,12 @@ Status: schema being read again with the Product Owner (2026-11-19 to 2026-11-21
 - `name`: a label people read, for a thing that has no `id`: nothing points to it and it never goes to the model. What the software ships (quantities, families, units), the name of a preset (see [Read again on 2026-11-21](#read-again-on-2026-11-21-presets-and-faceplate)), the name of a palette, of an icon or of a colour (decision 0057).
 - `display_name`: a label people read, for a thing that has an `id` or a key: it is shown in place of that `id` or key, and never goes to the model (an enum item, an identifier, a signal field, a command button). Empty, the `id` or the key is shown.
 - `description`: a text that explains, for people; plain text everywhere, Markdown only in `DOCUMENTATION`.
-- A choice of the software (`kind`, `direction`, `access`...) is written in the JSON as an English word (`"input"`, `"difference"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). A value of several words is joined by underscores (`set_signal`, `number_field`), the same in the schema and in the JSON. The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
+- A choice of the software (`kind`, `direction`, `access`...) is written in the JSON as an English word (`"input"`, `"real"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). A value of several words is joined by underscores (`set_signal`, `number_field`), the same in the schema and in the JSON. The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
 - The field that says which alternative a box is: `kind` in general; `source` when it says where a value comes from (typed, or taken from a signal or an identifier); `direction`, `access` and `input_kind` where their own word says more. Never `type`, which already names `TYPE` and `VALUE_TYPE`.
 - A list of choices is named after its field; a field called `kind` or `source`, which several boxes have, takes its box as prefix (`command_kind`, `bound_source`). Every list is in [The choice lists](#the-choice-lists).
 - A value typed in the builder is prefixed `typed_` where it stands beside a value taken elsewhere (`typed_value`, `typed_text`). A value read by the value type of its signal (a number, a boolean or an enum item) has the type `signal_value`.
 - A box without `internal_id` is a part of its owner (a nested object in the JSON), never pointed to.
+- Fields that only exist together go in a part of their own (`RANGE`, `DISPLAY_FORMAT`), with one exception: the `quantity` of a number and its `relative_quantity` stay on `VALUE_TYPE`, in the words of FMI (decision 0059).
 - `has`: one nested object; `holds`: an ordered list inside its owner. When an owner has two parts of the same box, the link says their role (`has, as min`).
 - Every other link is a FK, labelled by the field that holds it, so that the reader knows which field points where. The field is named after the box it points to (`signal`, `quantity`, `unit`), or after its role when the box alone says too little (`parent`, `default_unit`).
 - A link or a field that only exists in some cases says when, always in the same words: `when kind is enum`, `when the signal is an enum`.
@@ -51,11 +52,9 @@ erDiagram
     }
     VALUE_TYPE {
         uuid enum FK "when kind is enum"
+        uuid quantity FK "when kind is integer or real"
         value_type_kind kind "integer, real, boolean or enum"
-    }
-    MEASUREMENT {
-        uuid quantity FK
-        measurement_kind kind "value or difference"
+        boolean relative_quantity "when kind is integer or real: true when the value is a difference"
     }
     COMMAND {
         uuid internal_id PK
@@ -134,7 +133,7 @@ erDiagram
         uuid internal_id PK
         uuid default_unit FK
         text name
-        boolean offers_difference "a signal of it may hold a difference"
+        boolean offers_difference "a signal of it may have relative_quantity true"
     }
     FAMILY {
         uuid internal_id PK
@@ -176,8 +175,7 @@ erDiagram
     PALETTE ||--|{ COLOUR : "holds"
     SIGNAL ||--|| VALUE_TYPE : "has"
     VALUE_TYPE }o--o| ENUM : "enum, when kind is enum"
-    VALUE_TYPE ||--o| MEASUREMENT : "has, when kind is integer or real"
-    MEASUREMENT }o--|| QUANTITY : "quantity"
+    VALUE_TYPE }o--o| QUANTITY : "quantity, when kind is integer or real"
     ENUM ||--o{ ENUM_ITEM : "holds"
     COMMAND ||--o| COMMAND_TARGET : "has, when kind is set_signal or override"
     COMMAND_TARGET }o--|| SIGNAL : "signal"
@@ -213,7 +211,7 @@ Asked by the Product Owner on 2026-11-21 ("que tu me construises juste en dessou
 How the boxes become JSON, one rule for each, with no exception (the names of the lists confirmed by the Product Owner on 2026-11-21, decision 0057):
 
 - A field keeps its name in the schema (`internal_id`, `display_name`, `typed_value`).
-- A part (`has`) is a nested object named after its box, in lower case (`value_type`, `measurement`, `command_target`, `signal_field`); two parts of the same box are named by their role (`min`, `max`).
+- A part (`has`) is a nested object named after its box, in lower case (`value_type`, `display_format`, `command_target`, `signal_field`); two parts of the same box are named by their role (`min`, `max`).
 - A list (`holds`) is an array named after the box it holds, in lower case and in the plural (`signals`, `enum_items`, `preset_values`, `faceplate_elements`, `units`): the same list has the same name everywhere, in a preset and in a group.
 - The field order is the rule of the head of this file; the parts and the lists come after the fields of their box.
 - A field or a part that does not exist in this case (its `when` is false) is left out; one that exists but is empty is `null` (no parent, no colour, no display name).
@@ -249,11 +247,9 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
       "id": "speed_setpoint",
       "description": "Speed asked of the motor.",
       "value_type": {
+        "quantity": "6f1c2a90-0000-4000-8000-000000000900",
         "kind": "real",
-        "measurement": {
-          "quantity": "6f1c2a90-0000-4000-8000-000000000900",
-          "kind": "value"
-        }
+        "relative_quantity": false
       }
     },
     {
@@ -262,11 +258,9 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
       "id": "speed_max",
       "description": "Highest speed the operator may ask for.",
       "value_type": {
+        "quantity": "6f1c2a90-0000-4000-8000-000000000900",
         "kind": "real",
-        "measurement": {
-          "quantity": "6f1c2a90-0000-4000-8000-000000000900",
-          "kind": "value"
-        }
+        "relative_quantity": false
       }
     },
     {
@@ -275,11 +269,9 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
       "id": "speed",
       "description": "Speed of the motor, computed by the model.",
       "value_type": {
+        "quantity": "6f1c2a90-0000-4000-8000-000000000900",
         "kind": "real",
-        "measurement": {
-          "quantity": "6f1c2a90-0000-4000-8000-000000000900",
-          "kind": "value"
-        }
+        "relative_quantity": false
       }
     },
     {
@@ -307,11 +299,9 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
       "id": "bearing_temperature_rise",
       "description": "How much the bearing is warmer than the room.",
       "value_type": {
+        "quantity": "6f1c2a90-0000-4000-8000-000000000910",
         "kind": "real",
-        "measurement": {
-          "quantity": "6f1c2a90-0000-4000-8000-000000000910",
-          "kind": "difference"
-        }
+        "relative_quantity": true
       }
     }
   ],
@@ -664,7 +654,6 @@ Every field whose value is one word from a fixed list. Each is written in the JS
 | `link_kind` | `LINK.kind` | path, url | A path to a file or a folder, or a web address. |
 | `direction` | `SIGNAL.direction` | input, output | The model receives it, or the model sends it. |
 | `value_type_kind` | `VALUE_TYPE.kind` | integer, real, boolean, enum | A whole number, a number, true or false, an item of an enum. |
-| `measurement_kind` | `MEASUREMENT.kind` | value, difference | A point on the scale ("it is 20 °C"), or a gap between two points ("it rose by 20 °C"). |
 | `command_kind` | `COMMAND.kind` | set_signal, trigger, override | Send a fixed value to an input; tell the model something happened; replace the value of an output. |
 | `enum_kind` | `ENUM.kind` | global, template | Items written on the Enums page, the same everywhere; or items completed on each placed symbol. |
 | `faceplate_element_kind` | `FACEPLATE_ELEMENT.kind` | signal, command, title, description, group | See [The faceplate, box by box](#the-faceplate-box-by-box). |
@@ -863,6 +852,17 @@ The Product Owner found `"measurement": { "measure": "value" }` odd in the JSON,
 - **Not `typed`**: in the schema, `typed` means typed by hand in the builder (`typed_value`, `typed_text`), which this is not.
 - **The values stay `value` and `difference`**: a point on the scale or a gap between two points, as decision 0020 says. In the JSON: `"measurement": { "quantity": "…", "kind": "difference" }`.
 - The earlier sections keep `measure`, as written when they were settled.
+- Replaced the same day: the part `MEASUREMENT` is gone, see below.
+
+## Settled on 2026-11-21 (quantity of a number)
+
+The Product Owner asked whether `measurement` was really the best name, and to keep it if it was. It was not: in supervision and simulation a "measurement" is first a value read by a sensor, so an output, and an input setpoint with a `measurement` part read as "this input is a measurement" (assistant's analysis, not sourced). Of the three options of decision 0059, the Product Owner chose the one the assistant advised ("Faire comme FMI, sans partie"). Decision 0059 (accepted, 2026-11-21) records it.
+
+- **The part `MEASUREMENT` is gone**: its two fields go on `VALUE_TYPE`, for an integer or a real only. In the JSON: `"value_type": { "quantity": "…", "kind": "real", "relative_quantity": true }`.
+- **`quantity`**: the FK to the quantity, required for an integer or a real (decision 0051). The word of FMI, OPC UA and CLDR (research T2, sources S1, S3, S16).
+- **`relative_quantity`**: a boolean, `true` when the value is a difference (a gap between two points), `false` when it is a value (a point on the scale). The word of FMI, `relativeQuantity`, whose offset is then ignored (research T2, section 3.8, source S1). It replaces the list `measurement_kind` and its values `value` and `difference`. It may only be `true` when the quantity has `offers_difference`.
+- **The rule of the parts gets one written exception**, at the head of this file: these two fields only exist together, but stay on `VALUE_TYPE`, to keep the words of a standard and one level less in the JSON.
+- The screens do not change: the column Quantity of the table of signals still offers a quantity or its difference, each with its icon (screen MD-04.9); only the file says it with `relative_quantity`.
 
 ## Not in the schema yet
 
@@ -876,5 +876,5 @@ The Product Owner found `"measurement": { "measure": "value" }` odd in the JSON,
 - The names of the two quantities added for numbers that measure nothing physical: "ratio" and "count" for now.
 - The default number of decimals of a preset: 2 or 3 (Product Owner, 2026-11-19: "qui serait de 2 ou de 3"), and whether it is fixed by the software or set for the project.
 - The syntax of the expressions (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
-- The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `MEASUREMENT`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
+- The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
 - The two texts of a boolean, in the preset: required, or "true" and "false" when empty (assistant's reading)? Never in the configuration files sent with the model, since they are display only (assistant's reading, since decision 0058)?
