@@ -10,7 +10,8 @@ Since 2026-11-19, at the Product Owner's request, the documentation of Metadata 
 
 | File | What it holds |
 | --- | --- |
-| [Data model](data-model.md) | Final page, being written: the schema alone (objects, fields, links), to validate before any description is added. |
+| [Data model](data-model.md) | Final page, being written: the schema and its JSON alone, to validate object by object before each one gets its documentation. |
+| [Data model: notes](data-model-notes.md) | Everything written around the schema from 2026-11-19 to 2026-11-21: the rules of the names, the faceplate box by box, the choice lists, the reading notes by date and the open questions. |
 | [Whole draft](draft.md) | Every page written up to 2026-11-18, gathered in one file, content unchanged: types, icons, documentation, signals, units, enums, commands, presets, editing without versions, flags, identifiers, the first data model, who changes what, open questions. The source of the final pages, until each theme replaces its part. |
 
 ## See also

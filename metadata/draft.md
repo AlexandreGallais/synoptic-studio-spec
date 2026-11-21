@@ -819,7 +819,7 @@ Example, the mass, family Imperial, with 1 typed in the field (default unit: kil
 
 - Decimal places are the number of decimals shown for a value. They are a display matter only.
 - **The decimals are set in the presets only**, for each signal, next to its display unit (see [Presets](#presets-and-their-faceplate)). They start from one default number of decimals, the same everywhere; the catalogue gives no decimals per quantity (Product Owner, 2026-11-19: "les décimales à montrer, c'est vraiment selon les presets"; decision 0050, which replaces the default per quantity confirmed on 2026-11-16). The right number depends on the unit shown, not on the quantity.
-- The default number: 2 or 3, fixed by the software or set for the project, is open (see [Data model](data-model.md#open)).
+- The default number: 2 or 3, fixed by the software or set for the project, is open (see [Data model: notes](data-model-notes.md#open)).
 - The symbol and the synoptic can edit it from the preset, like the display unit.
 
 ```mermaid
@@ -1252,7 +1252,7 @@ Said by the Product Owner at the end of 2026-11-17. A signal has no bounds of it
 - **The signal is an input, never an output, for now** (Product Owner, 2026-11-21: "qu'en entrée, jamais en sortie pour l'instant [...] Au moins, le signal, il reste fixe"): an input is set by the user and given to the model, so the range does not move with what the model computes. Decision 0055.
 - **The signal has the same quantity as the signal shown**, an integer or a real (Product Owner, 2026-11-21: "Même grandeur obligatoire"): a speed is bounded by a speed, and both compare in the same default unit. The icon of the field offers only these inputs. Decision 0056.
 - A typed bound is shown and typed in the display unit of the preset, and kept in the default unit of the quantity (decision 0051).
-- The minimum and the maximum together are the **range** of the field (`RANGE` in the [data model](data-model.md#range-the-values-allowed-in-a-number-field)).
+- The minimum and the maximum together are the **range** of the field (`RANGE` in the [data model notes](data-model-notes.md#range-the-values-allowed-in-a-number-field)).
 - A typed value outside them is refused, as the faceplate did before bounds became signals (assistant's reading).
 - An integer signal accepts whole numbers only. An enum signal accepts only the items of its enum: the user picks a display name, the model receives its key.
 - A value that passes is converted back to the model unit and rounded to 12 significant digits before it goes to the model (see [Units](#units)).
