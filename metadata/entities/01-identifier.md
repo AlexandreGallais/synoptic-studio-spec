@@ -2,9 +2,13 @@
 
 > [Home](../../README.md) › [Metadata](../README.md) › [Entities](README.md) › Identifier
 
-Status: draft, written on 2026-11-21 at the Product Owner's request, from the page Identifiers of the [whole draft](../draft.md#identifiers) (decision 0048) and the [Data model](../data-model.md). The head (status and introduction) and the order of the sections are validated by the Product Owner on 2026-11-21; the rest is being read. "Identifier" is still a working name.
+| Version | Date | Status | Change |
+| --- | --- | --- | --- |
+| 1 | 2026-11-21 | Draft | Creation of the file |
 
-**File:** its own, one file for all the identifiers.
+| Tag | Value |
+| --- | --- |
+| File | Its own: one file for all the identifiers |
 
 An identifier is a named key that each placed symbol fills with its own text, in the synoptic: the tag of a pump, for example `P-101`. Metadata only makes the key, never the text. Identifiers are global: they belong to no type, every type can use them, and they are all kept in one file.
 
@@ -75,14 +79,6 @@ erDiagram
   }
 }
 ```
-
-## Where it is used
-
-| Thing | Created and changed in | Used in | In a symbol | In a synoptic |
-| --- | --- | --- | --- | --- |
-| Identifier (`id`, `description`), its order | Page Identifiers of Metadata | `TEXT_CONTENT` of a title or description element of a faceplate | No | Its text, filled on each placed symbol |
-| `required` | Page Identifiers of Metadata | The panel of a placed symbol, which asks for the text; the faults | No | Every placed symbol asks for the text; left empty, a warning, never a block |
-| File `identifiers.json` | The software, at each change on the page Identifiers | Read when Metadata opens | No | No |
 
 ## Open questions
 

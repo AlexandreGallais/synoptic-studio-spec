@@ -2,7 +2,9 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Files
 
-Status: draft, written on 2026-11-21 at the Product Owner's request, from the [Data model: notes](data-model-notes.md#how-the-schema-becomes-json) and the [whole draft](draft.md#files); not validated yet.
+| Version | Date | Status | Change |
+| --- | --- | --- | --- |
+| 1 | 2026-11-21 | Draft | Creation of the file |
 
 The rules every file of Metadata follows. An [entity file](entities/README.md) gives only the JSON Schema of its own file; what holds for every file is written here, never on an entity.
 
