@@ -4,7 +4,7 @@
 
 | Version | Date | Status | Change |
 | --- | --- | --- | --- |
-| 1 | 2026-11-22 | Draft | Creation of the file, as Identifier; renamed Designation (decision 0064); `internal_id` never exported |
+| 1 | 2026-11-22 | Draft | Creation of the file |
 
 | Tag | Value |
 | --- | --- |
