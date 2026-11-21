@@ -11,7 +11,7 @@ Colour of a box's title: orange, the entity has its own page in [Entities](entit
 ```mermaid
 ---
 config:
-  themeCSS: "[id*='entity-IDENTIFIER-'] .outer-path path { fill: #f8b26a !important; }"
+  themeCSS: "[id*='entity-DESIGNATION-'] .outer-path path { fill: #f8b26a !important; }"
 ---
 erDiagram
     TYPE {
@@ -21,7 +21,7 @@ erDiagram
     }
     APPEARANCE {
         uuid icon FK
-        uuid colour FK
+        uuid color FK
     }
     DOCUMENTATION {
         markdown description
@@ -29,7 +29,7 @@ erDiagram
     LINK {
         uuid internal_id PK
         link_kind kind "path or url"
-        text target
+        text address
         text description
     }
     SIGNAL {
@@ -77,12 +77,12 @@ erDiagram
     }
     FACEPLATE_ELEMENT {
         uuid internal_id PK
-        faceplate_element_kind kind "signal, command, title, description or group"
+        faceplate_element_kind kind "signal, command, title, paragraph or group"
     }
     SIGNAL_FIELD {
         uuid signal FK
         access access "read; write for an input; override for an output"
-        input_kind input_kind "when access is write or override: number_field for a number; radio_one_line, radio_several_lines or select for an enum; switch for a boolean"
+        input_kind input_kind "when access is write or override: number_field for a number; radio_horizontal, radio_vertical or select for an enum; switch for a boolean"
         text display_name "empty: the signal's id is shown"
     }
     BOUND {
@@ -95,8 +95,8 @@ erDiagram
         text display_name "empty: the command's id is shown"
     }
     TEXT_CONTENT {
-        text_content_source source "typed or identifier"
-        uuid identifier FK "when source is identifier: its text on each placed symbol"
+        text_content_source source "typed or designation"
+        uuid designation FK "when source is designation: its text on each placed symbol"
         text typed_text "when source is typed"
     }
     ENUM {
@@ -111,7 +111,7 @@ erDiagram
         text display_name "empty: the key is shown"
         text description
     }
-    IDENTIFIER {
+    DESIGNATION {
         uuid internal_id PK
         text id
         boolean required "true: its text must be filled on every placed symbol"
@@ -123,7 +123,7 @@ erDiagram
         text name
         boolean offers_relative_quantity "a signal of it may have relative_quantity true"
     }
-    FAMILY {
+    UNIT_SYSTEM {
         uuid internal_id PK
         text name
     }
@@ -145,7 +145,7 @@ erDiagram
         uuid internal_id PK
         text name
     }
-    COLOUR {
+    COLOR {
         uuid internal_id PK
         text name "shown on hover"
         rgb value
@@ -159,8 +159,8 @@ erDiagram
     TYPE ||--o{ FLAG : "holds"
     TYPE ||--o{ PRESET : "holds"
     APPEARANCE }o--o| ICON : "icon"
-    APPEARANCE }o--o| COLOUR : "colour"
-    PALETTE ||--|{ COLOUR : "holds"
+    APPEARANCE }o--o| COLOR : "color"
+    PALETTE ||--|{ COLOR : "holds"
     SIGNAL ||--|| VALUE_TYPE : "has"
     VALUE_TYPE }o--o| ENUM : "enum, when kind is enum"
     VALUE_TYPE }o--o| QUANTITY : "quantity, when kind is integer or real"
@@ -178,16 +178,16 @@ erDiagram
     FACEPLATE_ELEMENT |o--o{ FACEPLATE_ELEMENT : "holds, when kind is group"
     FACEPLATE_ELEMENT ||--o| SIGNAL_FIELD : "has, when kind is signal"
     FACEPLATE_ELEMENT ||--o| COMMAND_BUTTON : "has, when kind is command"
-    FACEPLATE_ELEMENT ||--o| TEXT_CONTENT : "has, when kind is title or description"
+    FACEPLATE_ELEMENT ||--o| TEXT_CONTENT : "has, when kind is title or paragraph"
     SIGNAL_FIELD }o--|| SIGNAL : "signal"
     SIGNAL_FIELD ||--o| RANGE : "has, when input_kind is number_field"
     RANGE ||--o| BOUND : "has, as min"
     RANGE ||--o| BOUND : "has, as max"
     BOUND }o--o| SIGNAL : "signal, when source is signal: an input of the same quantity"
     COMMAND_BUTTON }o--|| COMMAND : "command"
-    TEXT_CONTENT }o--o| IDENTIFIER : "identifier, when source is identifier"
-    QUANTITY ||--|{ FAMILY : "holds"
-    FAMILY ||--|{ UNIT : "holds, sorted by size"
+    TEXT_CONTENT }o--o| DESIGNATION : "designation, when source is designation"
+    QUANTITY ||--|{ UNIT_SYSTEM : "holds"
+    UNIT_SYSTEM ||--|{ UNIT : "holds, sorted by size"
     QUANTITY }o--|| UNIT : "default_unit"
     UNIT ||--o| CONVERSION : "has, except the default unit"
 ```
@@ -198,13 +198,13 @@ erDiagram
 
 ```json
 {
-  "format": 1,
+  "format_version": 1,
   "internal_id": "01a1f800-0000-7000-8000-000000000001",
   "parent": "01a1f800-0000-7000-8000-000000000000",
   "id": "centrifugal_pump",
   "appearance": {
     "icon": "01a1f800-0000-7000-8000-000000000700",
-    "colour": null
+    "color": null
   },
   "documentation": {
     "description": "A **centrifugal** pump, driven by a variable speed motor.",
@@ -212,7 +212,7 @@ erDiagram
       {
         "internal_id": "01a1f800-0000-7000-8000-000000000010",
         "kind": "url",
-        "target": "https://example.com/datasheets/centrifugal-pump",
+        "address": "https://example.com/datasheets/centrifugal-pump",
         "description": "Datasheet"
       }
     ]
@@ -372,13 +372,13 @@ erDiagram
           "internal_id": "01a1f800-0000-7000-8000-000000000060",
           "kind": "title",
           "text_content": {
-            "source": "identifier",
-            "identifier": "01a1f800-0000-7000-8000-000000000800"
+            "source": "designation",
+            "designation": "01a1f800-0000-7000-8000-000000000800"
           }
         },
         {
           "internal_id": "01a1f800-0000-7000-8000-000000000061",
-          "kind": "description",
+          "kind": "paragraph",
           "text_content": {
             "source": "typed",
             "typed_text": "Feed pump of the main loop."
@@ -434,7 +434,7 @@ erDiagram
           "signal_field": {
             "signal": "01a1f800-0000-7000-8000-000000000024",
             "access": "write",
-            "input_kind": "radio_one_line",
+            "input_kind": "radio_horizontal",
             "display_name": "Mode"
           }
         },
@@ -456,7 +456,7 @@ erDiagram
 
 ```json
 {
-  "format": 1,
+  "format_version": 1,
   "internal_id": "01a1f800-0000-7000-8000-000000000500",
   "kind": "global",
   "id": "operating_mode",
@@ -486,7 +486,7 @@ erDiagram
   "default_unit": "01a1f800-0000-7000-8000-000000000911",
   "name": "temperature",
   "offers_relative_quantity": true,
-  "families": [
+  "unit_systems": [
     {
       "internal_id": "01a1f800-0000-7000-8000-000000000915",
       "name": "metric",

@@ -6,16 +6,17 @@ Status: everything written around the schema of the [Data model](data-model.md) 
 
 ## Rules of the schema
 
-- `internal_id`: the UUID set by the software; every FK holds one.
+- `internal_id`: the UUID set by the software, always a UUID; every FK holds one. It is the surrogate key and never leaves the software (its match in the standards: [Files](files.md#the-two-keys-of-an-entity)).
   - Every UUID of Synoptic Studio is a **UUID version 7** (Product Owner, 2026-11-21: "le format qui a un timestamp [...] ça permettra d'avoir des trucs plus propres si jamais on met ça dans une base de données"). Version 7 starts with the time of its creation, in milliseconds since 1970 (UTC), so that UUIDs sort in the order they were made; RFC 9562 (May 2024, section 5.7) advises it over versions 1 and 6, the other two with a timestamp.
   - Written in lower case, 36 characters with the dashes; the 13th digit is always `7`.
   - The made-up UUIDs of the examples follow this shape (`01a1f800-0000-7000-8000-…`).
-- `id`: the public identifier, written by the user, that leaves the application: sent to the model and written in the configuration files.
-- `name`: a label people read, for a thing that has no `id`: nothing points to it and it never goes to the model. What the software ships (quantities, families, units), the name of a preset (see [Read again on 2026-11-21](#read-again-on-2026-11-21-presets-and-faceplate)), the name of a palette, of an icon or of a colour (decision 0057).
-- `display_name`: a label people read, for a thing that has an `id` or a key: it is shown in place of that `id` or key, and never goes to the model (an enum item, a signal field, a command button). An identifier has none: its `id` is shown (2026-11-21). Empty, the `id` or the key is shown.
+- `id`: the public identifier, written by the user, never a UUID, that leaves the application: sent to the model and written in the configuration files.
+- `name`: a label people read, for a thing that has no `id`: nothing points to it and it never goes to the model. What the software ships (quantities, unit systems, units), the name of a preset (see [Read again on 2026-11-21](#read-again-on-2026-11-21-presets-and-faceplate)), the name of a palette, of an icon or of a color (decision 0057). Unlike FMI, Kubernetes or Google, where `name` identifies a thing, it is only a label here.
+- `display_name`: a label people read, for a thing that has an `id` or a key: it is shown in place of that `id` or key, and never goes to the model (an enum item, a signal field, a command button). A designation has none: its `id` is shown (2026-11-21). Empty, the `id` or the key is shown.
+- `key` of an enum item: the whole number sent to the model, never the item's name (TypeScript calls the names keys; here the key is the number).
 - `description`: a text that explains, for people; plain text everywhere, Markdown only in `DOCUMENTATION`.
 - A choice of the software (`kind`, `direction`, `access`...) is written in the JSON as an English word (`"input"`, `"real"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). A value of several words is joined by underscores (`set_signal`, `number_field`), the same in the schema and in the JSON. The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
-- The field that says which alternative a box is: `kind` when the alternative changes what the thing is (a link is a path or a URL, an element is a signal field or a button); `source` when the thing stays the same and only its value comes from elsewhere (a bound is always a number, typed or read from a signal; a text is always a text, typed or read from an identifier), each value of `source` naming the field that then holds the value (`typed` → `typed_value` or `typed_text`, `signal` → `signal`, `identifier` → `identifier`); `direction`, `access` and `input_kind` where their own word says more. Never `type`, which already names `TYPE` and `VALUE_TYPE`.
+- The field that says which alternative a box is: `kind` when the alternative changes what the thing is (a link is a path or a URL, an element is a signal field or a button); `source` when the thing stays the same and only its value comes from elsewhere (a bound is always a number, typed or read from a signal; a text is always a text, typed or read from a designation), each value of `source` naming the field that then holds the value (`typed` → `typed_value` or `typed_text`, `signal` → `signal`, `designation` → `designation`); `direction`, `access` and `input_kind` where their own word says more. Never `type`, which already names `TYPE` and `VALUE_TYPE`.
 - One idea, one word, across the whole JSON: a value that is a gap between two points is a `relative_quantity` everywhere in the files (`VALUE_TYPE.relative_quantity`, `QUANTITY.offers_relative_quantity`); the screens keep "difference" for people.
 - A list of choices is named after its field; a field called `kind` or `source`, which several boxes have, takes its box as prefix (`command_kind`, `bound_source`). Every list is in [The choice lists](#the-choice-lists).
 - A value typed in the builder is prefixed `typed_` where it stands beside a value taken elsewhere (`typed_value`, `typed_text`). A value read by the value type of its signal (a number, a boolean or an enum item) has the type `signal_value`.
@@ -26,11 +27,11 @@ Status: everything written around the schema of the [Data model](data-model.md) 
 - A link or a field that only exists in some cases says when, always in the same words: `when kind is enum`, `when the signal is an enum`.
 - A number typed in Metadata (a default value, the value of a command, a typed bound) is kept in the default unit of its signal's quantity, whatever unit the screen shows it in (decision 0051).
 - Field order in each box: `internal_id`, then `kind` or `source` (so that the reader knows at once which fields follow, Product Owner, 2026-11-21), then the links (FK), then the other choices (`direction`, `access`, `input_kind`), then `id` or the name, then the values, then the texts.
-- The words `id` and `internal_id` wait for the documentary research T5; every other name follows these rules (see [Names made even on 2026-11-21](#names-made-even-on-2026-11-21)).
+- Every name follows these rules (see [Names made even on 2026-11-21](#names-made-even-on-2026-11-21)) and the research T5 (see [Applied on 2026-11-22 (names, research T5)](#applied-on-2026-11-22-names-research-t5)).
 
 ## How the schema becomes JSON
 
-Asked by the Product Owner on 2026-11-21 ("que tu me construises juste en dessous du schéma l'objet JSON [...] qui représente un peu tout ce qu'il pourrait avoir"). One made-up type that uses every box of a type at least once, without trying every combination; then a global enum and a quantity of the catalogue, which live in files of their own. The identifiers, the icons and the palettes are left out; the file of the identifiers is in [Identifier](entities/01-identifier.md) since 2026-11-21. The internal IDs are made up, and only their last digits differ, to read them easily.
+Asked by the Product Owner on 2026-11-21 ("que tu me construises juste en dessous du schéma l'objet JSON [...] qui représente un peu tout ce qu'il pourrait avoir"). One made-up type that uses every box of a type at least once, without trying every combination; then a global enum and a quantity of the catalogue, which live in files of their own. The designations, the icons and the palettes are left out; the file of the designations is in [Designation](entities/01-designation.md) since 2026-11-21. The internal IDs are made up, and only their last digits differ, to read them easily.
 
 How the boxes become JSON, one rule for each, with no exception (the names of the lists confirmed by the Product Owner on 2026-11-21, decision 0057):
 
@@ -38,9 +39,9 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
 - A part (`has`) is a nested object named after its box, in lower case (`value_type`, `display_format`, `command_target`, `signal_field`); two parts of the same box are named by their role (`min`, `max`).
 - A list (`holds`) is an array named after the box it holds, in lower case and in the plural (`signals`, `enum_items`, `preset_values`, `faceplate_elements`, `units`): the same list has the same name everywhere, in a preset and in a group.
 - The field order is the rule of the head of this file; the parts and the lists come after the fields of their box.
-- A field or a part that does not exist in this case (its `when` is false) is left out; one that exists but is empty is `null` (no parent, no colour, no display name).
-- A choice of several words is joined by underscores: `"set_signal"`, `"number_field"`, `"radio_one_line"`.
-- A file adds one key that no box shows: `"format"`, the version of the file format, first key of the file. It belongs to the file, not to an object, so it is described in the rules of the files only ([Files](draft.md#files)), never in the schema (Product Owner, 2026-11-21, see [Settled on 2026-11-21 (format key)](#settled-on-2026-11-21-format-key)).
+- A field or a part that does not exist in this case (its `when` is false) is left out; one that exists but is empty is `null` (no parent, no color, no display name).
+- A choice of several words is joined by underscores: `"set_signal"`, `"number_field"`, `"radio_horizontal"`.
+- A file adds one key that no box shows: `"format_version"`, the version of the file format, first key of the file. It belongs to the file, not to an object, so it is described in the rules of the files only ([Files](draft.md#files)), never in the schema (Product Owner, 2026-11-21, see [Settled on 2026-11-21 (format key)](#settled-on-2026-11-21-format-key)).
 
 ### What the type shows
 
@@ -53,7 +54,7 @@ What the example of a type shows, beyond the fields themselves:
 - **The texts of a boolean are in the preset** (decision 0058): `running` shows "Running" or "Stopped" with the preset `Standard`; another preset of the same type may say "On" and "Off".
 - **`display_name: null`**: the field of `speed` shows the signal's `id`.
 - **A difference**: `bearing_temperature_rise` holds a gap of temperature, shown in °C (`…912`), kept in kelvins.
-- The title shows the identifier `…800` (`tag`, say `P-101`) of each placed symbol; the identifiers have their file of their own ([Identifier](entities/01-identifier.md)).
+- The title shows the designation `…800` (`tag`, say `P-101`) of each placed symbol; the designations have their file of their own ([Designation](entities/01-designation.md)).
 
 ### What the quantity shows
 
@@ -74,7 +75,7 @@ flowchart LR
     P["Preset"] -->|"holds, in order"| E["Faceplate element: kind"]
     E -->|"kind is signal"| SF["SIGNAL_FIELD: a signal shown, maybe typed in"]
     E -->|"kind is command"| CB["COMMAND_BUTTON: a button that sends a command"]
-    E -->|"kind is title or description"| TC["TEXT_CONTENT: typed, or an identifier"]
+    E -->|"kind is title or paragraph"| TC["TEXT_CONTENT: typed, or a designation"]
     E -->|"kind is group"| G["Its own elements, in order"]
     SF -->|"when input_kind is number_field"| R["RANGE: the values allowed"]
     R -->|"min, max"| B["BOUND: typed, or an input of the same quantity"]
@@ -85,7 +86,7 @@ flowchart LR
 | Field | What it holds | When |
 | --- | --- | --- |
 | `internal_id` | The UUID set by the software. | Always. |
-| `kind` | Signal, command, title, description or group (see [The choice lists](#the-choice-lists)). | Always. |
+| `kind` | Signal, command, title, paragraph or group (see [The choice lists](#the-choice-lists)). | Always. |
 | `faceplate_elements` | The elements inside a group, in order, with the same five kinds; the same name as the list of the preset. | When `kind` is group. |
 
 ### `SIGNAL_FIELD`: a signal shown in the faceplate
@@ -96,7 +97,7 @@ A labelled field that shows the value of one signal, and lets a person type it w
 | --- | --- | --- |
 | `signal` | The signal shown: one of the type, own or inherited. | Always. |
 | `access` | `read`: the field only shows the value, as text alone: in the display unit and with the decimals of the preset, an enum by the display name of its item, a boolean by the text of its state (the `BOOLEAN_TEXTS` of the preset). `write`, for an input: a person types the value the model receives. `override`, for an output: a person types a value that replaces the model's. | Always. Write is offered for an input only, override for an output only (decision 0040). |
-| `input_kind` | How the value is typed: `number_field`, `radio_one_line`, `radio_several_lines`, `select` or `switch` (see [The choice lists](#the-choice-lists)). | When `access` is write or override. The choices depend on the value type of the signal. |
+| `input_kind` | How the value is typed: `number_field`, `radio_horizontal`, `radio_vertical`, `select` or `switch` (see [The choice lists](#the-choice-lists)). | When `access` is write or override. The choices depend on the value type of the signal. |
 | `display_name` | The label beside the field, for people; never sent to the model (decision 0055). | Always; empty, the signal's `id` is shown (decision 0018). |
 | `range` | A `RANGE`: the values a person may type. | When `input_kind` is `number_field`. |
 
@@ -130,15 +131,15 @@ Found right by the Product Owner on 2026-11-21 ("button text, ça, c'est parfait
 | `command` | The command sent by a click, one of the type, own or inherited. | Always. |
 | `display_name` | The text on the button, for people; never sent to the model. | Always; empty, the command's `id` is shown, as for a signal field. |
 
-### `TEXT_CONTENT`: the text of a title or a description
+### `TEXT_CONTENT`: the text of a title or a paragraph
 
-The text a title or a description element shows, and where it comes from. The small icon on the right of its field chooses the source (Product Owner, 2026-11-18, decision 0048).
+The text a title or a paragraph element shows, and where it comes from. The small icon on the right of its field chooses the source (Product Owner, 2026-11-18, decision 0048).
 
 | Field | What it holds | When |
 | --- | --- | --- |
-| `source` | `typed`: a text typed in the builder. `identifier`: the text filled for an identifier on each placed symbol. | Always. |
-| `typed_text` | The text. A description keeps its line breaks; neither takes Markdown. | When `source` is typed. |
-| `identifier` | The identifier whose text is shown: `tag` shows `P-101` on one pump and `P-102` on the next. | When `source` is identifier. |
+| `source` | `typed`: a text typed in the builder. `designation`: the text filled for a designation on each placed symbol. | Always. |
+| `typed_text` | The text. A paragraph keeps its line breaks; neither takes Markdown. | When `source` is typed. |
+| `designation` | The designation whose text is shown: `tag` shows `P-101` on one pump and `P-102` on the next. | When `source` is designation. |
 
 **Never a signal** (Product Owner, 2026-11-21: "ça doit venir que d'un identifiant et jamais d'un signal [...] un signal, on peut l'afficher avec la partie signal"): the value of a signal is shown by a signal element in read. Decision 0055 changes decisions 0048 and 0054 on this point.
 
@@ -148,16 +149,16 @@ Every field whose value is one word from a fixed list. Each is written in the JS
 
 | List | Field | Values | Meaning |
 | --- | --- | --- | --- |
-| `link_kind` | `LINK.kind` | path, url | A path to a file or a folder, or a web address. |
+| `link_kind` | `LINK.kind` | path, url | A path to a file or a folder, or a web address; held in `LINK.address`. |
 | `direction` | `SIGNAL.direction` | input, output | The model receives it, or the model sends it. |
 | `value_type_kind` | `VALUE_TYPE.kind` | integer, real, boolean, enum | A whole number, a number, true or false, an item of an enum. |
 | `command_kind` | `COMMAND.kind` | set_signal, trigger, override | Send a fixed value to an input; tell the model something happened; replace the value of an output. |
 | `enum_kind` | `ENUM.kind` | global, template | Items written on the Enums page, the same everywhere; or items completed on each placed symbol. |
-| `faceplate_element_kind` | `FACEPLATE_ELEMENT.kind` | signal, command, title, description, group | See [The faceplate, box by box](#the-faceplate-box-by-box). |
+| `faceplate_element_kind` | `FACEPLATE_ELEMENT.kind` | signal, command, title, paragraph, group | See [The faceplate, box by box](#the-faceplate-box-by-box). |
 | `access` | `SIGNAL_FIELD.access` | read, write, override | Shown only; typed in, for an input; typed in, for an output. |
-| `input_kind` | `SIGNAL_FIELD.input_kind` | number_field, radio_one_line, radio_several_lines, select, switch | `number_field`: for an integer or a real. `radio_one_line`, `radio_several_lines`, `select`: for an enum, its items in the order of the handles of the Enums page. Switch: for a boolean, one click turns it on or off. |
+| `input_kind` | `SIGNAL_FIELD.input_kind` | number_field, radio_horizontal, radio_vertical, select, switch | `number_field`: for an integer or a real. `radio_horizontal` (the buttons on one line), `radio_vertical` (one button per line), `select`: for an enum, its items in the order of the handles of the Enums page. Switch: for a boolean, one click turns it on or off. |
 | `bound_source` | `BOUND.source` | typed, signal | See `BOUND`. |
-| `text_content_source` | `TEXT_CONTENT.source` | typed, identifier | See `TEXT_CONTENT`. |
+| `text_content_source` | `TEXT_CONTENT.source` | typed, designation | See `TEXT_CONTENT`. |
 
 ## Checked on 2026-11-21 (schema against JSON)
 
@@ -413,7 +414,7 @@ The Product Owner answered the question of the check of the schema against the J
 Asked by the Product Owner on 2026-11-21 ("dans l'identifiant, on va dégager display name [...] on voit que l'ID [...] Pour une première version, ça va rien casser [...] faut laisser la description").
 
 - **`IDENTIFIER.display_name` is removed**: an identifier has its `internal_id`, its `id` and its `description`. Its `id` is shown wherever it is picked or filled. The earlier sections keep the field, as written when they were settled.
-- **The page [Identifier](entities/01-identifier.md) draws the identifier alone**, without `TEXT_CONTENT` (assistant's choice, left to it by the Product Owner: "je te laisse décider"): a text content belongs to the faceplate of a preset, and points to the identifier; it stays drawn in the schema of the [Data model](data-model.md), with its link.
+- **The page Identifier (now [Designation](entities/01-designation.md)) draws the identifier alone**, without `TEXT_CONTENT` (assistant's choice, left to it by the Product Owner: "je te laisse décider"): a text content belongs to the faceplate of a preset, and points to the identifier; it stays drawn in the schema of the [Data model](data-model.md), with its link.
 - Screen MD-13 loses its column Display name; the identifiers of the placed symbol panel are labelled by their `id`.
 - **`IDENTIFIER.required` is added**, a boolean (Product Owner, later the same day: "j'ai complètement besoin de dire si c'est required ou non"). `true`: every placed symbol must have its text (a control ID); `false`: it may stay empty (a location, for context).
 - Settled in the questionnaire the same day: a required text is asked on **every placed symbol**, whether or not its faceplate shows it ("Sur tous les symboles placés"); left empty, it **warns and never blocks** ("Avertir sans bloquer").
@@ -440,6 +441,22 @@ Asked by the Product Owner on 2026-11-21 ("c'est des règles globales").
 - A text is never an empty string: empty is `null`; the JSON Schema says it with `minLength: 1`.
 - The names of every term of the data model go to one research (T5, rewritten).
 
+## Applied on 2026-11-22 (names, research T5)
+
+Asked by the Product Owner on 2026-11-22 ("applique ce que la recherche a trouvé [...] je te dirai si je suis d'accord ou pas"): the advice of the research T5 (`research/t5-recherche-documentaire-les-noms-de-tous/rapport.md`, sections 3.2, 3.3 and 6) is applied, to be reviewed by the Product Owner. Decision 0064 (proposed) records it. The earlier sections keep the old names, as written when they were settled.
+
+- **`id` and `internal_id` stay** (report, 3.2): a readable key written by the user and a surrogate key set by the software, as Home Assistant, Google and Kubernetes do. The risk is the swap with standards where `ID` is the UUID (AutomationML); three rules answer it, written in [Files](files.md#the-two-keys-of-an-entity) and at the head of this file: `id` is never a UUID, `internal_id` always is and every FK holds one, `internal_id` never leaves the software; plus a table of matches for any export.
+- **`IDENTIFIER` becomes `DESIGNATION`** (report, 3.3, confidence low): the word of IEC 81346, which covers the tag (`P-101`) and the location; "identifier" also named `id` and `internal_id` in French, and promised a uniqueness that a location has not. File `designations.json`, value `designation` of `text_content_source`, field `TEXT_CONTENT.designation`; the entity file is now [Designation](entities/01-designation.md).
+- **Six names changed for a precise collision** (report, 6, decision 3):
+  - `colour` → `color`, `COLOUR` → `COLOR`, `colours` → `colors`: the word of design tokens, CSS and SVG;
+  - `LINK.target` → `address`: in HTML, `target` says where a link opens, not where it goes;
+  - `radio_one_line` → `radio_horizontal`, `radio_several_lines` → `radio_vertical`: the orientation of a radio group in a design system;
+  - `FAMILY` → `UNIT_SYSTEM`, `families` → `unit_systems`: a system of units, and "family" also names families of equipment;
+  - the kind of faceplate element `description` → `paragraph`: `"kind": "description"` read like the description of the element;
+  - the file key `format` → `format_version`: `format` is a keyword of JSON Schema.
+- **Kept, with their meaning written**: `ENUM_ITEM.key` (the number sent to the model, at the head of this file), `override` (the same word in `command_kind` and `access`), `default_value`, `name` (a label here, an identifier in FMI), `display_name`, `description` and every other name.
+- The screens and the draft keep their words for people for now; the other parts (synoptics, symbols, screens) still say "identifier": to change once the Product Owner confirms `DESIGNATION`.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -455,5 +472,8 @@ Asked by the Product Owner on 2026-11-21 ("c'est des règles globales").
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
 - The two texts of a boolean, in the preset: required, or "true" and "false" when empty (assistant's reading)? Never in the configuration files sent with the model, since they are display only (assistant's reading, since decision 0058)?
 - `SIGNAL_FIELD` starts with its signal, then `access`: the assistant's reading of the order of the keys, to confirm.
-- The quantity, shown in the JSON without `"format"`: is the catalogue of quantities one file with one `format` at its top, or one file per quantity? It ships with the software (never copied into the user's files), so its form may be the program's own: assistant's reading.
+- The quantity, shown in the JSON without `"format_version"`: is the catalogue of quantities one file with one `format_version` at its top, or one file per quantity? It ships with the software (never copied into the user's files), so its form may be the program's own: assistant's reading.
 - The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `FAMILY`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated.
+- `default_value` of a preset: the value the model gets when it starts (then `start_value`, the word of FMI), or a default for display only? (research T5, open question 1).
+- Is the `name` of a preset, a quantity, a unit, an icon or a color unique in its list? To say on each entity file (research T5, open question 3).
+- `UNIT.symbol` and the symbol of Synoptic Studio (the drawing placed) share a word: a glossary should say both meanings (research T5, 3.8).
