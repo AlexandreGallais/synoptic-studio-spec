@@ -36,7 +36,7 @@ erDiagram
       "readOnly": true
     },
     "name": {
-      "description": "The label shown on hover, to tell the colors apart. Optional: null when the user gives none, a palette being made of values only.",
+      "description": "The label shown on hover, to tell the colors apart. Optional: null when the user gives none, a palette being made of values only. Not unique: two colors of a palette may share it.",
       "type": ["string", "null"],
       "minLength": 1
     },
