@@ -32,4 +32,4 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 
 | File | What it holds | Status |
 | --- | --- | --- |
-| [Designation](01-designation.md) | A named key that each placed symbol fills with its own text; global, all in one file. | Draft |
+| [Designation](01-designation.md) | What identifies the equipment of a placed symbol (its tag, its location): defined once, its text written on each placed symbol; all in one file. | Draft |

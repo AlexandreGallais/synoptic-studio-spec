@@ -10,7 +10,7 @@
 | --- | --- |
 | File | `designations.json` |
 
-A designation is a named key that each placed symbol fills with its own text, in the synoptic: the tag of a pump, for example `P-101`, or where it stands. Metadata only makes the key, never the text. Designations are global: they belong to no type, every type can use them, and they are all kept in one file.
+A designation is what identifies the equipment a placed symbol stands for, such as its tag or its location. Metadata defines it once, by its `id` (`tag`, `location`); its text is written on each placed symbol, in the synoptic: `P-101` for the tag of a pump, `Hall B` for where it stands. A title or a paragraph of a faceplate can show it. Designations belong to no type and are all kept in one file.
 
 ## The entity
 
