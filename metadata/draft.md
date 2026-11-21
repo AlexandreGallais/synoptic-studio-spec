@@ -15,7 +15,7 @@ Status: every page of Metadata written up to 2026-11-18, gathered in this one fi
 - [Enums](#enums)
 - [Commands](#commands)
 - [Presets and their faceplate](#presets-and-their-faceplate)
-- [Versions of Metadata](#versions-of-metadata)
+- [Always editable, no versions](#always-editable-no-versions)
 - [Flags](#flags)
 - [Identifiers](#identifiers)
 - [Data model, first draft](#data-model-first-draft)
@@ -26,7 +26,7 @@ Status: every page of Metadata written up to 2026-11-18, gathered in this one fi
 
 The first part of Synoptic Studio: the data and documentation a symbol can be attached to. It is the model side (what an object is, what goes in and out of it), not the front side (how it looks).
 
-Status: validated by the Product Owner on 2026-11-11, then changed by him the same day while reviewing the [screens](../screens/metadata.md): type tree on the left, order of the parts, three modes for the description, links that only open folders, a signal edited as a whole, enum items as a key and a display text, typed values of any type, differences shown with their quantity. On 2026-11-16, while reviewing the wireframes, he removed the libraries of types and set the layout rules of the [screens](../screens/README.md#layout-rules) (a navigation bar on the left, a list on the left and its panel on the right), made enum keys numbers only, and said how a type is created (a + on hover) and deleted (right click). Later that day he made the parent of a type fixed at creation, the description always editable (no view mode), the add buttons always above the lists, the signals and commands into tables, and the value of a command always fixed (a typed value goes through a write entry of the faceplate). Then he merged the faceplate into the presets (a preset is one table that builds the faceplate, seen with a button) and gave each signal an ID and a display name. Last, he chose a strip of icons for the parts of a type, confirmed delete by right click in all of Metadata, made enum keys whole numbers, kept the type tree in the full page of the description, and limited commands to the inputs of the model (a text that becomes an input writes an input signal directly). Last of all that day, he removed every Edit and Save step (everything is editable all the time) and added the [Versions](#versions-of-metadata) of Metadata (differences, change log, undo, semantic version), kept the read-only mode of the description, put the direction first in the table of signals with a colour per direction, moved the name people see of a signal from the signal to the preset, and gave commands three kinds (set a signal, trigger, override an output) and an ID. Then he replaced the strip of icons by the names of the parts in whole words, fixed under the type tree in its column, put the choice of quantity or difference in the one column Quantity (a difference only where the conversion changes), and confirmed the default decimals fixed by the catalogue of units. Last, he moved that list above the tree, then back under it, and made the Faceplate a part again, after Presets, which only shows the faceplate of a chosen preset (it replaces the button that showed it). Reviewing the wireframes at the end of the day, he validated the type tree, put its search behind an icon, removed every right click of Metadata (a delete button with a warning instead, in General for a type, at the far right of a line elsewhere), put the inherited signals and commands first, marked a quantity and a difference by icons, put the formatting tool bar in both modes of the description, and split a preset into two modes: its values, and a faceplate builder with groups, titles and descriptions. Last, he removed the Faceplate part (the faceplate is the second mode of a preset), removed the model unit from the signal (one model unit per quantity, set outside Metadata), gave each enum item a description, let the links and the commands be reordered by a handle, and set three layout rules: a small + on the right of the title of each list, no header on the columns of buttons, and handles wherever the user chooses the order. The questions still open are listed in [Open questions](#metadata-open-questions).
+Status: validated by the Product Owner on 2026-11-11, then changed by him the same day while reviewing the [screens](../screens/metadata.md): type tree on the left, order of the parts, three modes for the description, links that only open folders, a signal edited as a whole, enum items as a key and a display text, typed values of any type, differences shown with their quantity. On 2026-11-16, while reviewing the wireframes, he removed the libraries of types and set the layout rules of the [screens](../screens/README.md#layout-rules) (a navigation bar on the left, a list on the left and its panel on the right), made enum keys numbers only, and said how a type is created (a + on hover) and deleted (right click). Later that day he made the parent of a type fixed at creation, the description always editable (no view mode), the add buttons always above the lists, the signals and commands into tables, and the value of a command always fixed (a typed value goes through a write entry of the faceplate). Then he merged the faceplate into the presets (a preset is one table that builds the faceplate, seen with a button) and gave each signal an ID and a display name. Last, he chose a strip of icons for the parts of a type, confirmed delete by right click in all of Metadata, made enum keys whole numbers, kept the type tree in the full page of the description, and limited commands to the inputs of the model (a text that becomes an input writes an input signal directly). Last of all that day, he removed every Edit and Save step (everything is editable all the time) and added the Versions of Metadata (differences, change log, undo, semantic version; removed on 2026-11-21, see [Always editable, no versions](#always-editable-no-versions)), kept the read-only mode of the description, put the direction first in the table of signals with a colour per direction, moved the name people see of a signal from the signal to the preset, and gave commands three kinds (set a signal, trigger, override an output) and an ID. Then he replaced the strip of icons by the names of the parts in whole words, fixed under the type tree in its column, put the choice of quantity or difference in the one column Quantity (a difference only where the conversion changes), and confirmed the default decimals fixed by the catalogue of units. Last, he moved that list above the tree, then back under it, and made the Faceplate a part again, after Presets, which only shows the faceplate of a chosen preset (it replaces the button that showed it). Reviewing the wireframes at the end of the day, he validated the type tree, put its search behind an icon, removed every right click of Metadata (a delete button with a warning instead, in General for a type, at the far right of a line elsewhere), put the inherited signals and commands first, marked a quantity and a difference by icons, put the formatting tool bar in both modes of the description, and split a preset into two modes: its values, and a faceplate builder with groups, titles and descriptions. Last, he removed the Faceplate part (the faceplate is the second mode of a preset), removed the model unit from the signal (one model unit per quantity, set outside Metadata), gave each enum item a description, let the links and the commands be reordered by a handle, and set three layout rules: a small + on the right of the title of each list, no header on the columns of buttons, and handles wherever the user chooses the order. The questions still open are listed in [Open questions](#metadata-open-questions).
 
 ### The big picture
 
@@ -140,7 +140,7 @@ Validated by the Product Owner on 2026-11-16, while reviewing the wireframes ("c
   - It replaces the search field always shown under the title, drawn earlier the same day.
 - **No double click:** double-clicking a type does not rename it; hidden options are avoided.
 - **No right click** in the tree, nor anywhere in Metadata (Product Owner, 2026-11-16: "on ne peut juste pas avoir de clic droit du tout"). Its menu held only Delete, and a delete must not be that easy to reach.
-- **Delete:** a **Delete button in the General part** of the type. A click opens a **warning message** that asks to confirm, as for every delete of Metadata (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)). It replaces the right click and the "no warning" decided earlier the same day. The delete also shows on the [Versions](#versions-of-metadata) page, where it can be undone before a version is made.
+- **Delete:** a **Delete button in the General part** of the type. A click opens a **warning message** that asks to confirm, as for every delete of Metadata (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)). It replaces the right click and the "no warning" decided earlier the same day. The application keeps no versions: a delete is taken back only through Git, on the JSON files (see [Always editable, no versions](#always-editable-no-versions)).
 
 ```mermaid
 flowchart LR
@@ -196,7 +196,7 @@ The rule is true between types that have no parent link. Three mechanisms do pro
 - A sub-type cannot declare again a signal name it already inherits. No redefinition: it is the simplest rule, and a name stays one thing along the tree.
 - The values of an enum are part of the contract with the model: changing them is breaking, like a rename (see [Enums](#enums)). Links to an enum or a quantity go through an internal identifier, like symbols do for types.
 
-Versions, the answer of OPC UA's best-practices guide and of Siemens, came on 2026-11-16: Metadata as a whole is versioned (see [Versions](#versions-of-metadata)).
+Versions, the answer of OPC UA's best-practices guide and of Siemens, came on 2026-11-16 (Metadata as a whole versioned), then left the application on 2026-11-21: the JSON files of the types are versioned with Git by the user (see [Always editable, no versions](#always-editable-no-versions)).
 
 ### What a type holds
 
@@ -283,19 +283,19 @@ flowchart LR
     R --> M["Model: its interface definition changed, the model must follow"]
 ```
 
-### How a rename is done: typed in place, checked in the versions
+### How a rename is done: typed in place
 
-Changed by the Product Owner on 2026-11-16. It replaces the Edit and Save buttons of 2026-11-11.
+Changed by the Product Owner on 2026-11-16. It replaces the Edit and Save buttons of 2026-11-11. The Versions page that checked a rename was removed on 2026-11-21 (decision 0053).
 
 - The name is typed in place in General, like every field of Metadata. No Edit or Save button, no warning, no confirmation dialog.
-- What stops a mistake is the [Versions](#versions-of-metadata) page: before a version is made, the rename is shown among the differences, and it can be undone. A rename breaks the model, so it makes the version a major one.
+- Nothing in the application stops a mistake: the rename is written to the JSON file of the type, and the user sees it in the differences of Git, where it can be taken back (see [Always editable, no versions](#always-editable-no-versions)). A rename breaks the model.
 - The consequences for models (see above) are to be explained in a user manual. That manual is not part of the open source version.
 
 ```mermaid
 flowchart LR
-    A["Type the new name in General"] --> B["Versions page: the rename is in the differences"]
-    B -->|"undo"| U["The old name is back"]
-    B -->|"make a version"| V["Major version: the model must follow"]
+    A["Type the new name in General"] --> F["JSON file of the type"]
+    F -->|"if the user versions it"| G["Git: the rename is in the differences"]
+    G -->|"a mistake"| U["Taken back with Git"]
 ```
 
 ### Where it is used
@@ -390,7 +390,7 @@ flowchart TD
 ### The description
 
 - It is stored in Markdown.
-- **No Edit or Save step** (Product Owner, 2026-11-16): what is typed is kept, as everywhere in Metadata, and checked on the [Versions](#versions-of-metadata) page before a version is made.
+- **No Edit or Save step** (Product Owner, 2026-11-16): what is typed is kept, as everywhere in Metadata (see [Always editable, no versions](#always-editable-no-versions)).
 - **The read-only mode stays** (Product Owner, 2026-11-16, correcting what he had said earlier that day: "en fait, si, faut le laisser"). Three modes, and the user switches between them at any time:
 
 | Mode | What the user sees | When |
@@ -489,7 +489,7 @@ A signal is what goes between the front and the model: an input or an output of 
 - Signals are inherited along the tree: "Pneumatic positive displacement pump" has the signals of Pump, of Positive displacement pump and of its own. A sub-type cannot declare again a signal name it already inherits (see [Types](#types)).
 - Signals are created and changed in Metadata only, never in a symbol or a synoptic.
 - A signal's name is part of the model's interface definition: it is set once and is not meant to change. Renaming one is breaking for models, as for types (see [Types](#types)).
-- **The table of signals is always editable** (Product Owner, 2026-11-16): no Edit button, no Save button, no warning. It replaces the Edit and Save of 2026-11-11. A mistake is caught before it reaches anyone by the [Versions](#versions-of-metadata) of Metadata: the changes are seen there as a list of differences before a version is made, and can be undone.
+- **The table of signals is always editable** (Product Owner, 2026-11-16): no Edit button, no Save button, no warning. It replaces the Edit and Save of 2026-11-11. The application keeps no versions: a mistake is seen and taken back with Git, on the JSON files (see [Always editable, no versions](#always-editable-no-versions)).
 - A signal also has an internal identifier, set by the software, that never changes, like a type's (see [Types](#types)). It exists on the application side only and never goes to the model. Symbols link to a signal through it, so renaming a signal does not break them (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md)).
 - A signal has an **ID**: its name for the model, the identifier above, set once (Product Owner, 2026-11-16).
 - **A signal has no display name** (Product Owner, 2026-11-16, later the same day): since the faceplate is built by the preset, the name people see is written in the preset, one per signal, in its faceplate builder (see [Presets](#mode-faceplate-the-faceplate-builder)). It replaces the display name on the signal decided earlier that day. Confirmed while reviewing the wireframes: "Dans Signal, le display name ne sert à rien. Je te le dis très clairement."
@@ -575,7 +575,7 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 - **No column Decimals** (Product Owner, 2026-11-17): decimals are not set in Metadata.
 - The columns of the handle and of the delete button have no header and take the least room possible (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
 
-- Every line is always editable: a field is changed in place, with no Edit or Save step (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps, rapidement"). The changes are checked on the [Versions](#versions-of-metadata) page before a version is made.
+- Every line is always editable: a field is changed in place, with no Edit or Save step (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps, rapidement"). See [Always editable, no versions](#always-editable-no-versions).
 - An input line and an output line have two different colours.
 - The fields that do not apply to a line stay empty (no enum for a real, no quantity for a boolean).
 - The line of an enum signal shows the name of the enum it points to (Product Owner, 2026-11-11). **No bubble** lists its items when the mouse rests on that name (Product Owner, 2026-11-17: "je vois pas où tu pourrais mettre l'info-bulle pour l'instant. Fais pas ça"). The enums themselves are made on their own page (see [Enums](#enums)), never in the table of signals.
@@ -618,7 +618,7 @@ The user chooses the order of the signals, so that the table looks tidy (Product
 - The order is kept: the table opens again in the order the user left.
 - Only the type's own lines have a handle: the inherited lines stay at the top, in the order chosen in the type that declares them (Product Owner, 2026-11-16, see [The table of signals](#the-table-of-signals)).
 - A new signal goes at the end of the table. Assistant's choice, to confirm.
-- The order is for the people who read the table: it does not go to the model and changes nothing in the contract with it. Assistant's reading, to confirm. On the [Versions](#versions-of-metadata) page, a change of order is a patch.
+- The order is for the people who read the table: it does not go to the model and changes nothing in the contract with it. Assistant's reading, to confirm.
 - The look of the handle (for example six dots in two columns) is chosen with the design system.
 - The table of values of every preset of the type shows the signals in this order, with no sort of its own (see [Presets](#mode-values-one-table-of-the-signals)). The faceplate follows the order of its builder.
 
@@ -662,7 +662,6 @@ Decided by the Product Owner on 2026-11-16: "il n'y a pas d'édition possible. T
 - **The Units page is read only.** The user browses the quantities, families and units and reads their conversions; there is no + button, no field to change, nothing to delete. It replaces the rule of 2026-11-11 by which the user could add and change quantities, families and units.
 - The catalogue is kept in **files of the software itself**, delivered with the application. Synoptic Studio is open source: when a unit or a quantity is missing, a contributor adds it to these files, and it comes to everyone with the next version of the software (Product Owner: "s'il manque des unités, des quantités, il faudrait pouvoir venir les rajouter").
 - The format of these files and the repository that holds them are chosen with the architecture, not in these specs (left open by decision 0020).
-- Since the user never changes the units, a change of the units is never a difference on the [Versions](#versions-of-metadata) page of Metadata.
 
 ```mermaid
 flowchart LR
@@ -845,7 +844,7 @@ flowchart LR
 
 ## Enums
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers; the + that creates an enum is an icon on the line of the title; delete with a button and a warning; at the end of the day, an optional description for each item, shown on the Enums page only); reviewed by him on 2026-11-17 (the display text before the description, no change of order of the items); changed by him later on 2026-11-17 (two kinds of enum: global and template, see [Global enums and templates](#global-enums-and-templates)); completed by him at the end of 2026-11-17 (the items of a template are completed on each placed symbol in the synoptic, with a warning until they are; a template has a description); changed by him again at the end of 2026-11-17 (the user picks the number of each key, gaps allowed; the items are sorted by key; the name "template" kept); answered by him on the questionnaire at the end of 2026-11-17 (handles after the sort by key; a key can change, the Versions page shows it); answered by him again (an item added goes right after the item with the next smaller key; an item whose key changes stays where it is); answered by him last (a description for a global enum too; the kind can change at any time, losing nothing). Points left for later are listed in [Left for later](#left-for-later).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers; the + that creates an enum is an icon on the line of the title; delete with a button and a warning; at the end of the day, an optional description for each item, shown on the Enums page only); reviewed by him on 2026-11-17 (the display text before the description, no change of order of the items); changed by him later on 2026-11-17 (two kinds of enum: global and template, see [Global enums and templates](#global-enums-and-templates)); completed by him at the end of 2026-11-17 (the items of a template are completed on each placed symbol in the synoptic, with a warning until they are; a template has a description); changed by him again at the end of 2026-11-17 (the user picks the number of each key, gaps allowed; the items are sorted by key; the name "template" kept); answered by him on the questionnaire at the end of 2026-11-17 (handles after the sort by key; a key can change, then shown by the Versions page, removed on 2026-11-21); answered by him again (an item added goes right after the item with the next smaller key; an item whose key changes stays where it is); answered by him last (a description for a global enum too; the kind can change at any time, losing nothing). Points left for later are listed in [Left for later](#left-for-later).
 
 An Enums page lists the enums of the application, like the Units page lists the quantities. A signal of the type enum does not hold its own list of values: it points to an enum of this page.
 
@@ -894,7 +893,7 @@ flowchart LR
 - **Then handles put the items in the order of their meaning, without changing their keys** (Product Owner, end of 2026-11-17, answering the questionnaire: "Tri par clé, puis poignées"). A new item takes its place by key; the user can then move any item with its handle, at the very left of its line, and the order chosen is kept. Example: the key 6 "Maintenance", added later, goes after 2 by key; its handle moves it between Off and Manual, and its key stays 6. Only the order shown changes: the model still receives the keys. It replaces the refusal of handles said earlier the same day ("On peut pas changer l'ordre, ça me chante pas") and decision 0032 on that point (decision 0038, accepted on 2026-11-17).
 - **An item added once items were moved goes right after the item with the next smaller key**, wherever the handles put that item (Product Owner, end of 2026-11-17, answering the questionnaire: "Juste après l'item de clé inférieure"). Example: Off 0, Maintenance 6, Manual 1, Automatic 2 after a move; a new key 3 goes right after Automatic (key 2). A key smaller than every other one goes first (confirmed by the Product Owner at the end of 2026-11-17: "Oui"). Decision 0039, accepted on 2026-11-17.
 - **An item whose key changes stays where it is**: changing a key never moves the line (Product Owner, end of 2026-11-17, answering the questionnaire: "Il reste où il est"). Decision 0039, accepted on 2026-11-17.
-- **A key can still be changed once given**; the [Versions](#versions-of-metadata) page shows the change, which is breaking for the model and makes the version a major one (Product Owner, end of 2026-11-17, answering the questionnaire: "Oui, la page Versions le signale"). The screen does not forbid it (decision 0038, accepted on 2026-11-17).
+- **A key can still be changed once given**, which is breaking for the model. The screen does not forbid it and does not warn (decision 0038, accepted on 2026-11-17). The Versions page that showed the change (Product Owner, end of 2026-11-17: "Oui, la page Versions le signale") was removed on 2026-11-21 (decision 0053): the change is seen in the differences of Git, on the JSON files.
 - No string keys (Product Owner, 2026-11-16). Why: every enum can be checked in one place, the Enums page, and the configuration files are generated from it; so the model never needs a readable key, and the display text is enough for people.
 - When the user picks an item, the signal receives exactly its key.
 - It is the pair (name, value) the research found in FMI, SSP and OPC UA.
@@ -988,7 +987,7 @@ flowchart TD
 ### Rules
 
 - Commands are created and changed in Metadata only.
-- The table of commands is always editable, with no Edit or Save step, as the signals (Product Owner, 2026-11-16). The changes are checked on the [Versions](#versions-of-metadata) page before a version is made.
+- The table of commands is always editable, with no Edit or Save step, as the signals (Product Owner, 2026-11-16). See [Always editable, no versions](#always-editable-no-versions).
 - A command also has an internal identifier, set by the software, that never changes, like a type's (see [Types](#types)). It exists on the application side only and never goes to the model. Symbols link to a command through it, so changing a command's ID does not break them (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md)).
 - In a symbol, direct commands: the user links a command from Metadata to a click on a part of the symbol.
 - On the front, a command is a button: the user clicks it, and that is all.
@@ -1051,7 +1050,7 @@ The commands of a type are shown in **one table**, like the signals (Product Own
 - The columns of the handle and of the delete button have no header and take the least room possible (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
 - A command is deleted with the delete button of its line, then a warning that asks to confirm; there is no right click in Metadata (Product Owner, 2026-11-16; see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
 - **The inherited commands come first, read only**, from the first parent at the top of the tree down to the type's own commands, as for the signals (Product Owner, 2026-11-16, said for the signals; the commands are inherited the same way; see [The table of signals](#the-table-of-signals)).
-- **The user chooses the order of the type's own commands** with the handle at the left of each line, the same way as for the signals (Product Owner, 2026-11-16: "pouvoir trier l'ordre dans les tableaux"). The order is kept, a new command goes at the end, and a change of order is a patch on the [Versions](#versions-of-metadata) page. See [The order of the lines](#the-order-of-the-lines). The faceplate places its command buttons in the order of its builder (see [Presets](#mode-faceplate-the-faceplate-builder)).
+- **The user chooses the order of the type's own commands** with the handle at the left of each line, the same way as for the signals (Product Owner, 2026-11-16: "pouvoir trier l'ordre dans les tableaux"). The order is kept, a new command goes at the end, and a change of order changes nothing for the model. See [The order of the lines](#the-order-of-the-lines). The faceplate places its command buttons in the order of its builder (see [Presets](#mode-faceplate-the-faceplate-builder)).
 
 #### Example
 
@@ -1098,7 +1097,7 @@ Decided by the Product Owner on 2026-11-16: "Faceplate et preset, il faut fusion
 - Everything the faceplate shows is set in the preset: which signals and commands are shown, how, in which groups, and under which titles.
 - The display unit and the decimal places of the preset also serve the texts of a symbol that show a value (see [Animation mode](../symbols/08-animation-mode/README.md)): a preset is not only the faceplate, but the faceplate is wholly in the preset.
 - A preset is an override: what it does not change comes from the signal and from the units (the model unit of the quantity, the default decimals).
-- The preset is always editable, with no Edit or Save step (Product Owner, 2026-11-16). Its changes are checked on the [Versions](#versions-of-metadata) page before a version is made.
+- The preset is always editable, with no Edit or Save step (Product Owner, 2026-11-16). See [Always editable, no versions](#always-editable-no-versions).
 
 #### A type needs a preset
 
@@ -1340,73 +1339,46 @@ Noted, not to be asked again in the chat (Product Owner, end of 2026-11-17).
 - Can a signal or a command be added twice to the builder?
 - What a symbol or a synoptic can change in the faceplate built by the preset.
 
-## Versions of Metadata
+## Always editable, no versions
 
-Status: draft, written on 2026-11-16 from the Product Owner's words. The principle (always editable, versions instead of Edit and Save) is decision 0017, accepted on 2026-11-16, which changes decision 0009; the details below are not validated. Open points are listed in [Open questions](#metadata-open-questions).
+Status: the principle "always editable" is decision 0017, accepted on 2026-11-16, which changes decision 0009. The Versions page that 0017 added was removed by decision 0053, accepted on 2026-11-21. Open points are listed in [Open questions](#metadata-open-questions).
 
-**In doubt since 2026-11-20.** The Product Owner is no longer sure to keep the versions in the application ("je suis même pas sûr de mettre le versioning"). He leans towards very clean JSON files for the types, which Git versions well, so that the free application stays simple; versions kept by the application on files are easy to corrupt ("avec les fichiers, ça fait vite fait chier"). Nothing below is removed until he decides; decision 0017 stands meanwhile. Settled the same day: a version has **no description written by the user**, the change log written by the application is enough.
-
-Metadata is always editable, and versions keep it from breaking: the user edits freely, then sees every difference, undoes what is wrong, and makes a version with a number that says how much changed (Product Owner, 2026-11-16: "comme ça, tu n'aurais jamais rien de cassé, et on arrête de mettre des edits validés partout").
+Metadata is always editable, and the application keeps no versions of it: the types are clean JSON files, one per type, that the user versions with Git if they want (Product Owner, 2026-11-20: "je suis même pas sûr de mettre le versioning"; 2026-11-21, questionnaire: "Les retirer, Git suffit").
 
 ### Rules
 
 #### Everything is editable all the time
 
-- No Edit button, no Save button, no edit mode to enter and validate, anywhere in Metadata: General, documentation, signals, commands, presets, enums (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps, rapidement, et puis basta … tout reste ultra simple").
-- The units are not in this list: they are a read-only catalogue that the user never changes (Product Owner, 2026-11-16; see [Units](#a-ready-made-catalogue-read-only)). A change of the units never shows on the Versions page.
+- No Edit button, no Save button, no edit mode to enter and validate, anywhere in Metadata: General, documentation, signals, commands, presets, enums, flags, identifiers (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps, rapidement, et puis basta … tout reste ultra simple").
+- The units are not in this list: they are a read-only catalogue that the user never changes (Product Owner, 2026-11-16; see [Units](#a-ready-made-catalogue-read-only)).
 - It replaces every Edit and Save step decided before (the name of a type, the whole signal, the tables).
 - The read-only mode of the description stays: it is a way to read, not a lock (see [Documentation](#the-description)).
+- Each change is written to the files as it is made, since there is no Save button (assistant's reading, to confirm; see [Files and conflicts](../storage/files-and-conflicts.md)).
 
-#### A Versions page
+#### No versions in the application: Git is enough
 
-- The navigation bar of Metadata gets a fourth entry, **Versions**, after Types, Units and Enums (Product Owner, 2026-11-16: "tout à gauche, dans le menu avec Type, Unit, Enum, un truc en mode versionnage").
-- The page shows what changed since the last version, thing by thing: what was **added**, what was **removed**, what was **changed**, with the value before and after (a diff).
-- From these differences the application writes a **change log** by itself: the user does not write it.
-- The user can **undo** a change before making a version ("revenir en arrière avec un revert").
-- When the user has finished ("OK, là, j'ai fini"), they make a version. It gets a number in **semantic versioning**: major, minor, patch (for example `2.4.1`), so that the people who work with Metadata, model authors first, know how much changed.
+- **No Versions page** (decision 0053, 2026-11-21): no list of differences, no change log, no undo before a version, no major, minor or patch number. The navigation bar of Metadata holds Types, Units, Enums and Identifiers.
+- **The types are saved as clean JSON files, one per type** (see [As JSON](#as-json)). The user puts them under Git if they want, outside the application; the application does not run Git.
+- The reason: a free version kept simple; a history kept by the application in files is easy to corrupt ("avec les fichiers, ça fait vite fait chier"), while Git already shows the differences of a clean JSON file and can go back (Product Owner, 2026-11-20).
+- What follows: nothing in the application warns that a change breaks the model (a rename, an enum key changed, a signal removed). The user sees it in the differences of Git. So the JSON files must stay readable and stable, for their differences to be clear.
+- The `"format"` number at the top of each file stays: it is the version of the file format, not a version of Metadata.
 
 ```mermaid
 flowchart LR
-    E["Edit freely: types, signals, commands, presets, enums"] --> V["Versions page: added, removed, changed"]
-    V -->|"a mistake"| U["Undo the change"] --> V
-    V -->|"finished"| N["Make a version: number and change log"]
-```
-
-#### What makes a version major, minor or patch
-
-Proposed by the assistant from the rules of these specs, to confirm. The number follows what the change does to the contract with the model (see [Types](#renaming-is-breaking-on-purpose)).
-
-| Level | When | Examples |
-| --- | --- | --- |
-| Major | A change that breaks the contract with the model. | A type, a signal or a command removed or renamed; the type, direction, enum or quantity (or its choice of quantity or difference) of a signal changed; an enum key changed or removed. |
-| Minor | Something added to the contract, nothing broken. | A new type, signal, command, enum or enum item. |
-| Patch | Nothing the model sees. | Documentation, icon and colour, order of the signals and of the commands, descriptions of the signals and of the commands (written in the configuration files, but they change nothing the model reads: decision 0052), presets (display unit, decimals, default value; the elements of the faceplate builder: signals with their name shown, input and its bounds, read or write and read or override, commands with their button, titles, descriptions, groups), display texts of enum items. |
-
-A bound is a signal of its own since 2026-11-17 (see [Signals](#signals)): adding, removing or changing one follows the rules of any signal above.
-
-```mermaid
-flowchart TD
-    C["A change"] --> Q1{"Breaks the contract with the model?"}
-    Q1 -- "Yes" --> MA["Major"]
-    Q1 -- "No" --> Q2{"Adds to the contract?"}
-    Q2 -- "Yes" --> MI["Minor"]
-    Q2 -- "No" --> PA["Patch"]
+    E["Edit freely: types, signals, commands, presets, enums"] --> F["Clean JSON files, one per type"]
+    F -->|"if the user wants"| G["Git: differences, history, going back"]
 ```
 
 ### Where it is used
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Version of Metadata, its number and change log | Versions page of Metadata | Model authors; anyone who works with Metadata | No | No |
+| JSON file of a type, versioned with Git by the user | Every page of Metadata, written as it is changed | Git, outside the application; model authors | No | No |
 
 ### Open questions
 
-- Versions in the application at all, or none: the JSON files of Metadata, versioned with Git by the user, and the Versions page removed (Product Owner, 2026-11-20, in doubt)? If they go, decision 0017 is changed by a new decision, and the major, minor and patch levels go with them.
-- One version for all of Metadata, or one per type? Written here as one for all of it, since the page sits in the navigation bar next to Types, Units and Enums: assistant's reading, to confirm.
-- The level of a version: computed by the application from the table above and only shown, or proposed and changeable by the user?
-- Undo: one change at a time, all the changes since the last version, or both? Can the user go back to an older version, not only undo the changes not yet versioned?
-- What is written to the files between two versions: every change at once (nothing lost if the application closes), or only when a version is made? See [Files and conflicts](../storage/files-and-conflicts.md).
-- What the symbols and the synoptics see: always the latest version, or the version they were made with?
+- An undo (Ctrl+Z) in Metadata, now that no Versions page takes a mistake back? One change at a time, and how far back?
+- Each change written to the files at once: to confirm (assistant's reading).
 
 ## Flags
 
@@ -1430,7 +1402,7 @@ A flag is a key that a symbol placed in a synoptic has or does not have. Synopti
 - **In the synoptic view, each placed symbol has each flag of its type on or off** (Product Owner: "quand on est sur la vue synoptique, on peut sélectionner ou non les tokens"). Off by default: assistant's reading.
 - **The flags that are on go out in the configuration files** produced by the synoptic (Product Owner: "c'est juste pour pouvoir faire de la personnalisation externe via des clés, vu qu'en toute fin, ça sort des fichiers de config"). Their format there is settled with [Storage](../storage/README.md).
 - **A sub-type inherits the flags of its parent**, as it inherits its signals and commands (see [Types](#types); confirmed by the Product Owner on 2026-11-17: "Oui, les sous-types héritent des flags, exactement"). The inherited flags come first, read only, as the inherited signals.
-- Flags are part of Metadata, so they are part of its [Versions](#versions-of-metadata).
+- Flags are part of Metadata, so they are always editable and saved in the JSON file of their type (see [Always editable, no versions](#always-editable-no-versions)).
 - The panel of the synoptic where the flags are ticked is described with part 3 (the synoptic), not written yet (Product Owner, 2026-11-17: "Il va falloir le faire").
 
 ```mermaid
@@ -1488,11 +1460,11 @@ An identifier is a named key that each placed symbol fills with its own text in 
 
 ### Rules
 
-#### A page of its own, like Units, Enums and Versions
+#### A page of its own, like Units and Enums
 
-- **Identifiers are a page of Metadata, in the navigation bar, like Units, Enums and Versions** (Product Owner, 2026-11-18: "C'est une page de type unit enum version"). They are not part of a type ("Ça n'a rien à faire dans les types"): every type can use them.
+- **Identifiers are a page of Metadata, in the navigation bar, like Units and Enums** (Product Owner, 2026-11-18: "C'est une page de type unit enum version"; the Versions page was removed on 2026-11-21). They are not part of a type ("Ça n'a rien à faire dans les types"): every type can use them.
 - The name "Identifiers" is the Product Owner's word ("Il faut qu'on puisse rajouter des identifiants"), kept as a working name: he does not know what to call it yet ("Je ne sais pas forcément comment l'appeler"). See [The name](#the-name-1).
-- In the navigation bar, the page comes after Enums and before Versions: assistant's reading, to confirm.
+- In the navigation bar, the page comes last, after Enums: assistant's reading, to confirm.
 
 #### What an identifier is
 
@@ -1517,7 +1489,7 @@ An identifier is a named key that each placed symbol fills with its own text in 
 - **An identifier can be deleted** (Product Owner: "et les supprimer"): the delete button at the far right of its line, then a warning, as everywhere in Metadata (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
 - A new identifier is added with the small + on the right of the title "Identifiers" (the [layout rule](../screens/README.md#a-title-and-a-small--on-its-right) of every list of Metadata): assistant's reading.
 - Columns, in this order: the handle with no header, ID, Display name, Description, then the delete button with no header. The short fields first and the long one last, as for the enum items (see [Enums](#rules-5)): assistant's reading.
-- Identifiers are part of Metadata, so they are part of its [Versions](#versions-of-metadata).
+- Identifiers are part of Metadata, so they are always editable, with no Edit or Save step (see [Always editable, no versions](#always-editable-no-versions)).
 
 ```mermaid
 flowchart LR
@@ -1593,7 +1565,7 @@ Not asked in the chat: the Product Owner asked not to be asked on this page for 
 - One variable alone in a field, or a fixed text and variables mixed (`Pump {tag}`)?
 - Other text fields of the builder with the same icon: the name shown of a signal, the name on a command's button?
 - The display name and the description: where each is shown; the description optional.
-- Where the page sits in the navigation bar (after Enums, before Versions: assistant's reading).
+- Where the page sits in the navigation bar (last, after Enums: assistant's reading).
 
 ## Data model, first draft
 
@@ -1924,7 +1896,7 @@ An example, with made-up identifiers:
 
 ## Who changes what, and where
 
-Status: validated by the Product Owner on 2026-11-11; the faceplate merged into the presets on 2026-11-16, the name shown of a signal moved to the preset and versions added the same day; the preset split into two modes, Values and Faceplate (the builder), later that day; at the end of the day the model unit left the signal and the Faceplate part was removed. Open points are listed in [Open questions](#metadata-open-questions).
+Status: validated by the Product Owner on 2026-11-11; the faceplate merged into the presets on 2026-11-16, the name shown of a signal moved to the preset and versions added the same day (removed on 2026-11-21); the preset split into two modes, Values and Faceplate (the builder), later that day; at the end of the day the model unit left the signal and the Faceplate part was removed. Open points are listed in [Open questions](#metadata-open-questions).
 
 Rule of the Product Owner: no duplicate ways to change the same thing. Each thing has one place where it is created and changed.
 
@@ -1944,7 +1916,6 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 | Texts of the title and description elements of the faceplate (no title nor description by default, 2026-11-16) | Preset, mode Faceplate, in Metadata | Edit (assistant's reading) | Edit, on each placed symbol (assistant's reading) |
 | Fixed text or variable (an identifier or a signal) of a title or description element (2026-11-18) | Preset, mode Faceplate, in Metadata, through the small icon of the field | No (assistant's reading) | No |
 | Identifier: ID, display name, description, order (2026-11-18, working name) | Identifiers page of Metadata | No (assistant's reading) | Its text, filled on each placed symbol (part 3) |
-| Version of Metadata, its number and change log | Versions page of Metadata | No | No |
 
 ```mermaid
 flowchart LR
@@ -1958,7 +1929,7 @@ flowchart LR
 - Types: [Types](#types), [Icons](#type-icons), [Documentation](#type-documentation).
 - Model side: [Signals](#signals), [Units](#units), [Enums](#enums).
 - Front side: [Commands](#commands), [Presets](#presets-and-their-faceplate).
-- Versions: [Versions](#versions-of-metadata).
+- Editing and Git: [Always editable, no versions](#always-editable-no-versions).
 
 Each page also has its own "Where it is used" table, the detail of the table above. When one changes, the other must change too.
 
@@ -1981,7 +1952,7 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | Which mode of the description opens first; content of the formatting tool bar and no text colour; editing of a link in place, now that a click on it opens it | [Documentation](#type-documentation) | Raised when the read-only mode came back, then while reviewing the wireframes (2026-11-16). The order of the links (a handle), the two add icons and the click that opens were decided at the end of the day. |
 | Default decimals of the catalogue, now that decimals may be set once for the project, outside Metadata | [Units](#units) | The decimals of the preset are kept (Product Owner, 2026-11-17, reviewing the presets: "les décimales ici servent"). The catalogue's default stays as it is until asked. |
 | Override an output: who applies it, what is seen while it holds, how it ends | [Commands](#commands), [Presets](#typing-a-value) | The kind is decided (2026-11-16); its mechanism is open. Since 2026-11-17, a signal element of the faceplate set to "override" also overrides an output; the Product Owner leaves it to what is behind the faceplate. |
-| Versions in the application at all, or clean JSON files versioned with Git; then one version for all of Metadata or per type; level computed or chosen; undo and going back; what is written between two versions; what symbols see | [Versions](#versions-of-metadata) | Raised when versions replaced Edit and Save (2026-11-16). On 2026-11-20 the Product Owner was no longer sure to keep the versions; no description written by the user, the change log is enough. |
+| An undo (Ctrl+Z) in Metadata; each change written to the files at once | [Always editable, no versions](#always-editable-no-versions) | Raised when the Versions page was removed (decision 0053, 2026-11-21): versions are left to Git on clean JSON files. |
 | An ID unique in the type and its tree; the description kept out of the configuration files | [Flags](#flags) | Settled by the Product Owner on 2026-11-17: the description optional, an internal identifier, no warning on delete, no rule on how an ID is written, the order by handle, the inheritance. |
 | Left for later: the warning of an uncompleted template (part 3); how the screen shows global against template (design system); the keys of a template in the configuration files | [Enums](#left-for-later) | Noted, not to be asked again (Product Owner, end of 2026-11-17). The description of a global enum, the change of kind and the place of the smallest key were settled the same evening. |
 | The words "ID" and "internal ID" (documentary research); the tables of the presets; JSON files instead of a database, the names of the files and the enums | [Data model](#open-questions-9) | Raised when the Product Owner described the tables on 2026-11-18; the presets left out by him the same day. Settled the same day: one line of links per type, deleted with it; an internal ID on each enum item; a type's ID unique in the whole tree; if JSON, lines nested in their type and one file per type. |

@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Screens](README.md) › Metadata
 
-Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal; then the parts of a type as a strip of icons, delete by right click everywhere, commands to inputs only, whole number enum keys, the type tree kept in full page; last, no Edit or Save step anywhere and a Versions page, the read-only mode of the description kept, the direction first in the table of signals, the name shown of a signal moved to the preset, three kinds of command with an ID; then quantity or difference in the one column Quantity, and the parts of a type listed by name, fixed under the tree, replacing the strip of icons; last, the list moved above the tree then back under it, and a Faceplate part, a view only, replacing the button that showed the faceplate; at the end of the day, the tree validated with its search behind an icon, no right click anywhere (a delete button with a warning), inherited lines first, icons for a quantity and a difference, the formatting tool bar in both modes, and a preset in two modes, Values and the faceplate builder; last, the Faceplate part removed, the model unit removed from the signals, an icon alone for a quantity or a difference, a description for each enum item, handles on the links and the commands, a small + on the right of the title of each list, and no header on the columns of buttons); on 2026-11-17, the minimum and the maximum removed from the signal (a bound is a plain signal, usually an input), the header "Quantity / Difference", no decimals on the signal and no bubble on an enum name; later the same day, the Units page reviewed (default unit, converter, formula per unit), the display text before the description of an enum item, the Flags page completed and moved after Commands, and the icons at the top of a group of the faceplate builder confirmed. It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
+Status: draft, written by the assistant on 2026-11-11 from the validated [Metadata](../metadata/README.md) pages, then reviewed with the Product Owner the same day (tree on the left, order of the parts, General complete, description modes, links, signals, commands, enums, units), and on 2026-11-16 from the review of the wireframes (navigation bar, list on the left and panel on the right, libraries of types removed; then icon buttons in General, a fixed parent, a description always editable, add buttons above the lists, signals and commands in tables, commands with a fixed value only; then the faceplate merged into the presets, and an ID and a display name for each signal; then the parts of a type as a strip of icons, delete by right click everywhere, commands to inputs only, whole number enum keys, the type tree kept in full page; last, no Edit or Save step anywhere and a Versions page, the read-only mode of the description kept, the direction first in the table of signals, the name shown of a signal moved to the preset, three kinds of command with an ID; then quantity or difference in the one column Quantity, and the parts of a type listed by name, fixed under the tree, replacing the strip of icons; last, the list moved above the tree then back under it, and a Faceplate part, a view only, replacing the button that showed the faceplate; at the end of the day, the tree validated with its search behind an icon, no right click anywhere (a delete button with a warning), inherited lines first, icons for a quantity and a difference, the formatting tool bar in both modes, and a preset in two modes, Values and the faceplate builder; last, the Faceplate part removed, the model unit removed from the signals, an icon alone for a quantity or a difference, a description for each enum item, handles on the links and the commands, a small + on the right of the title of each list, and no header on the columns of buttons); on 2026-11-17, the minimum and the maximum removed from the signal (a bound is a plain signal, usually an input), the header "Quantity / Difference", no decimals on the signal and no bubble on an enum name; later the same day, the Units page reviewed (default unit, converter, formula per unit), the display text before the description of an enum item, the Flags page completed and moved after Commands, and the icons at the top of a group of the faceplate builder confirmed; on 2026-11-21, the Versions page removed (decision 0053). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
 
 ## MD-00 · Navigation bar of Metadata
 
@@ -13,9 +13,9 @@ Path: on the far left of every screen of Metadata (Product Owner, 2026-11-16).
 | MD-00.1 | Types | Button (icon) | Opens [MD-01](#md-01--types-the-tree-and-the-type-editor). | Decided | [Layout rules](README.md#layout-rules) |
 | MD-00.2 | Units | Button (icon) | Opens [MD-08](#md-08--units). | Decided | [Layout rules](README.md#layout-rules) |
 | MD-00.3 | Enums | Button (icon) | Opens [MD-09](#md-09--enums). | Decided | [Layout rules](README.md#layout-rules) |
-| MD-00.4 | Versions | Button (icon) | Opens [MD-11](#md-11--versions). After Enums (2026-11-16). | Decided | [Versions](../metadata/draft.md#versions-of-metadata) |
+| MD-00.4 | Versions | — | Removed (2026-11-21, decision 0053): no versions in the application, the JSON files are versioned with Git by the user. | Decided | [Always editable, no versions](../metadata/draft.md#always-editable-no-versions) |
 | MD-00.5 | Flags | — | Removed (2026-11-17): flags are a part of the type, not a page of the bar (see [MD-12](#md-12--flags-a-part-of-the-type)). | Decided | [Flags](../metadata/draft.md#flags) |
-| MD-00.6 | Identifiers | Button (icon) | Opens [MD-13](#md-13--identifiers). A page of the bar, like Units, Enums and Versions (2026-11-18: "C'est une page de type unit enum version"). After Enums, before Versions: assistant's reading. Working name. | Decided (page of the bar), Proposed (place, name) | [Identifiers](../metadata/draft.md#identifiers) |
+| MD-00.6 | Identifiers | Button (icon) | Opens [MD-13](#md-13--identifiers). A page of the bar, like Units and Enums (2026-11-18: "C'est une page de type unit enum version"). Last, after Enums: assistant's reading. Working name. | Decided (page of the bar), Proposed (place, name) | [Identifiers](../metadata/draft.md#identifiers) |
 
 Gaps:
 
@@ -106,9 +106,9 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-02.1 | Name | Text field | Always editable (2026-11-16). The model identifier, readable (`centrifugal_pump`). A rename shows on [MD-11](#md-11--versions). | Decided | [Types](../metadata/draft.md#types) |
-| MD-02.2 | Edit | — | Removed (2026-11-16): everything is editable all the time. | Decided | [Versions](../metadata/draft.md#versions-of-metadata) |
-| MD-02.3 | Save | — | Removed (2026-11-16): changes are checked on the Versions page. | Decided | [Versions](../metadata/draft.md#versions-of-metadata) |
+| MD-02.1 | Name | Text field | Always editable (2026-11-16). The model identifier, readable (`centrifugal_pump`). A rename breaks the model; nothing warns, it is seen in Git (2026-11-21). | Decided | [Types](../metadata/draft.md#types) |
+| MD-02.2 | Edit | — | Removed (2026-11-16): everything is editable all the time. | Decided | [Always editable](../metadata/draft.md#always-editable-no-versions) |
+| MD-02.3 | Save | — | Removed (2026-11-16): each change is kept as it is made. | Decided | [Always editable](../metadata/draft.md#always-editable-no-versions) |
 | MD-02.4 | Parent | Read only: name and icon | Set at creation, never changed (2026-11-16, decision 0013). A wrong parent: delete the type and create it again. The Product Owner then described it as a select showing the whole tree, indented with dashes: asked. | Decided (read only), Open (select) | [Types](../metadata/draft.md#a-list-of-types-shows-the-tree-indented) |
 | MD-02.5 | Icon | List of icons | One icon of the predefined SVG list. No import. Validated (2026-11-16). | Decided | [Icons](../metadata/draft.md#type-icons) |
 | MD-02.6 | Colour | Colour (palette only) | One colour of a fixed palette; no free colour. Validated (2026-11-16). | Decided | [Icons](../metadata/draft.md#type-icons) |
@@ -157,7 +157,7 @@ mindmap
 | MD-03.1 | Description, read only | Editor (laid out, read only) | Kept (Product Owner, 2026-11-16, correcting his removal of the same day). Which mode opens first: open. | Decided (mode), Open (first) | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.2 | Description, visual editor | Editor (visual) | A "what you see is what you get" editor with a formatting tool bar. | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.3 | Description, Markdown | Editor (raw text) | For those who write Markdown faster; the user switches between the three modes at any time. | Decided | [Documentation](../metadata/draft.md#type-documentation) |
-| MD-03.4 | Go to edit, Save | — | None: switching mode is not an Edit step, nothing to save or confirm (2026-11-16). | Decided | [Versions](../metadata/draft.md#versions-of-metadata) |
+| MD-03.4 | Go to edit, Save | — | None: switching mode is not an Edit step, nothing to save or confirm (2026-11-16). | Decided | [Always editable](../metadata/draft.md#always-editable-no-versions) |
 | MD-03.4b | Read only, Visual, Markdown | Buttons (switch) | On the right of the formatting tool bar, on the same line (2026-11-16). | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.4d | Formatting tool bar | Buttons | In Visual and in Markdown (2026-11-16). Like a word processor: heading levels, lists, tables and the rest of Markdown (proposed list in [Documentation](../metadata/draft.md#the-formatting-tool-bar)); no text colour. | Decided (both modes), Proposed (content) | [Documentation](../metadata/draft.md#the-formatting-tool-bar) |
 | MD-03.4c | Full page | Button (icon), in the tool bar | The description takes the whole editing part; the links are hidden; the window, the menus of the application and the type tree stay. The same button brings the page back (2026-11-16). | Decided | [Documentation](../metadata/draft.md#type-documentation) |
@@ -229,7 +229,7 @@ mindmap
 | MD-04.2 | Enum on a signal line | — | The line shows the enum's name. No bubble listing its items when the mouse rests on the name (2026-11-17). | Decided | [Signals](../metadata/draft.md#the-table-of-signals) |
 | MD-04.3 | Inherited signals | Lines of the table | First, read only: the signals of the first parent at the top of the tree, then of the next parent, then the type's own (2026-11-16). Edited in the type that declares them. Their look (greyed, with the parent's name) is not said. | Decided (order), Open (look) | [Signals](../metadata/draft.md#the-table-of-signals) |
 | MD-04.4 | Add a signal | Button (+), small icon | On the right of the title "Signals", above the table (2026-11-16). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
-| MD-04.5 | Edit, Save | — | Removed (2026-11-16): the table is always editable; changes are checked on [MD-11](#md-11--versions). | Decided | [Versions](../metadata/draft.md#versions-of-metadata) |
+| MD-04.5 | Edit, Save | — | Removed (2026-11-16): the table is always editable. | Decided | [Always editable](../metadata/draft.md#always-editable-no-versions) |
 | MD-04.5b | Colour of a line | Background of the line | One colour for an input, another for an output (2026-11-16). The colours: with the design system. | Decided | [Signals](../metadata/draft.md#the-table-of-signals) |
 | MD-04.6 | ID | Column, text field | Second column, after Direction. Model identifier; header "ID" (2026-11-16). A sub-type cannot reuse an inherited ID. | Decided | [Signals](../metadata/draft.md#signals) |
 | MD-04.6b | Display name | — | Removed (2026-11-16), confirmed while reviewing the wireframes: the name people see is written in the faceplate builder of the preset ([MD-07](#md-07--presets)). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
@@ -528,7 +528,7 @@ mindmap
 | MD-09.4 | Kind of key | — | Removed (Product Owner, 2026-11-16): a key is always a number, there are no string keys. | Decided | [Enums](../metadata/draft.md#enums) |
 | MD-09.5 | Items | Table | Columns in this order: the handle with no header, Key, Display text, Description, then the delete button with no header (2026-11-17: the short field first, the long one last; replaces Key, Description, Display text of 2026-11-16). A new line takes its place by key, smallest first (end of 2026-11-17: "un tri automatique pour que ça aille dans l'ordre"); then the handle moves it to the order of meaning, without changing its key, and the order is kept (questionnaire, end of 2026-11-17: "Tri par clé, puis poignées"; decision 0038). Once items were moved, a new line goes right after the item with the next smaller key (questionnaire, end of 2026-11-17: "Juste après l'item de clé inférieure"; decision 0039). | Decided | [Enums](../metadata/draft.md#rules-5) |
 | MD-09.12 | Handle of an item | Grip, dragged, no header | At the very left of each item: moves it; the key does not change (end of 2026-11-17, decision 0038). Same behaviour as [MD-04.14](#md-04--signals). | Decided | [Layout rules](README.md#handles-to-choose-the-order) |
-| MD-09.6 | Key | Whole number field | Typed by the user, any whole number, gaps allowed (0, 2, 4), for a global enum and for the items of a template (end of 2026-11-17). Unique; what the model receives (2026-11-16). It can still be changed once given: breaking for the model, it shows on [MD-11](#md-11--versions) (questionnaire, end of 2026-11-17: "Oui, la page Versions le signale"; decision 0038). Changing it never moves the line (questionnaire, end of 2026-11-17: "Il reste où il est"; decision 0039). | Decided | [Enums](../metadata/draft.md#rules-5) |
+| MD-09.6 | Key | Whole number field | Typed by the user, any whole number, gaps allowed (0, 2, 4), for a global enum and for the items of a template (end of 2026-11-17). Unique; what the model receives (2026-11-16). It can still be changed once given: breaking for the model, with no warning (decision 0038); the Versions page that showed it was removed on 2026-11-21 (decision 0053), the change is seen in Git. Changing it never moves the line (questionnaire, end of 2026-11-17: "Il reste où il est"; decision 0039). | Decided | [Enums](../metadata/draft.md#rules-5) |
 | MD-09.7 | Display text | Text field | After the key. What the faceplate, the symbol texts and the test values show. Not breaking. | Decided | [Enums](../metadata/draft.md#enums) |
 | MD-09.9 | Description | Text field | Last, after the display text (2026-11-17): what the item means, plain text, never sent to the model (2026-11-16). Optional, shown on this page only (2026-11-16). | Decided | [Enums](../metadata/draft.md#enums) |
 | MD-09.8 | Add, delete an item | Button (+), delete button (icon) | The small + on the right of the title "Items"; the delete button at the far right of an item, with no header, then a warning (2026-11-16; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). An enum is deleted the same way. | Decided | [Enums](../metadata/draft.md#enums) |
@@ -536,48 +536,19 @@ mindmap
 Gaps:
 
 - Must the display texts be unique too?
-- Changing a key is breaking: no Edit or Save step (2026-11-16); it shows on [MD-11](#md-11--versions) and makes the version a major one.
 - Which signals use an enum: is it shown (a usage counter)?
 
 ## MD-10 · Libraries: removed
 
 The libraries of types (Type Libs) were removed by the Product Owner on 2026-11-16. The identifier MD-10 is not reused.
 
-## MD-11 · Versions
+## MD-11 · Versions: removed
 
-Path: Metadata › Versions (navigation bar), added by the Product Owner on 2026-11-16.
-
-In doubt since 2026-11-20: the Product Owner may leave the versions to Git, on clean JSON files, and remove this screen ([Versions](../metadata/draft.md#versions-of-metadata)). Kept until he decides. No description written by the user on a version: the change log is enough (2026-11-20).
-
-```mermaid
-mindmap
-  root((MD-11 Versions))
-    Changes since the last version
-      Added
-      Removed
-      Changed, before and after
-    Undo a change
-    Change log, written by the application
-    Make a version
-      Number major.minor.patch
-```
-
-| ID | Element | Kind | Values and behaviour | Status | Source |
-| --- | --- | --- | --- | --- | --- |
-| MD-11.1 | Differences | List | Everything added, removed or changed in Metadata since the last version, with the value before and after. | Decided | [Versions](../metadata/draft.md#versions-of-metadata) |
-| MD-11.2 | Undo | Button (not said) | Takes a change back before a version is made. One change or all: open. | Decided (undo), Open (scope) | [Versions](../metadata/draft.md#versions-of-metadata) |
-| MD-11.3 | Change log | Text, read only | Written by the application from the differences. | Decided | [Versions](../metadata/draft.md#versions-of-metadata) |
-| MD-11.4 | Make a version | Button | When the user has finished; gives a number in semantic versioning. | Decided | [Versions](../metadata/draft.md#versions-of-metadata) |
-| MD-11.5 | Level of the version | not said | Major, minor or patch, from what the changes do to the contract with the model. Computed or chosen: open. | Proposed | [Versions](../metadata/draft.md#what-makes-a-version-major-minor-or-patch) |
-
-Gaps:
-
-- Where the list of past versions is shown, and whether one can be opened or restored.
-- How a difference points back to the screen where the thing is edited.
+The Versions page was removed by the Product Owner on 2026-11-21 (decision 0053): the application keeps no versions, the JSON files of the types are versioned with Git by the user (see [Always editable, no versions](../metadata/draft.md#always-editable-no-versions)). The identifier MD-11 is not reused.
 
 ## MD-13 · Identifiers
 
-Path: Metadata › Identifiers (navigation bar, [MD-00.6](#md-00--navigation-bar-of-metadata)). Described by the Product Owner on 2026-11-18; "Identifiers" is a working name. The wireframe is the frame "MD-13 · Identifiers" of the page Spec in Figma, after MD-11; the entry "Identifiers" was added to the navigation bar of every Metadata frame, and the icon MD-07.23 to the frame of the faceplate builder, the same day.
+Path: Metadata › Identifiers (navigation bar, [MD-00.6](#md-00--navigation-bar-of-metadata)). Described by the Product Owner on 2026-11-18; "Identifiers" is a working name. The wireframe is the frame "MD-13 · Identifiers" of the page Spec in Figma, after MD-09; the entry "Identifiers" was added to the navigation bar of every Metadata frame, and the icon MD-07.23 to the frame of the faceplate builder, the same day.
 
 ```mermaid
 mindmap

@@ -25,7 +25,7 @@ The screens are also drawn as wireframes on the page **"Spec"** of the Figma fil
 
 | File | Screens |
 | --- | --- |
-| [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its five parts), Units, Enums, Versions, Identifiers; Flags is a part of the type editor. |
+| [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its five parts), Units, Enums, Identifiers; Flags is a part of the type editor. |
 | [Symbol editor](symbols.md) | The navigation bar, Symbol Libs, the left-hand panel of a Symbol Lib, the symbol editor (layout, floating bars, layers) and its seven modes, the advanced tools, the Enums page of a Symbol Lib. |
 | [Pipes](pipes.md) | The base pipe style, the pipe styles, the end shapes, the dash sequences, the preview, and pipes in a synoptic (part 3, preview). |
 | [Synoptic](synoptics.md) | The navigation bar, General, the editor and its modes (Build, Pipes, Annotate, Links, Test), the panel of a placed symbol, Faults, Placed symbols, Create a view, Publish. Extrapolated by the assistant on 2026-11-20. |
@@ -106,13 +106,13 @@ Decided by the Product Owner on 2026-11-16, while reviewing the wireframes. It r
   - for a **type**, in its **General** part, not in the tree.
 - A click on the button opens a **warning message** that asks to confirm. Nothing is deleted before the user confirms. So deleting is never "aussi simple que ça".
 - The same warning everywhere, for a type as for a line.
-- What is deleted shows on the [Versions](../metadata/draft.md#versions-of-metadata) page, where it can be undone before a version is made.
+- The application keeps no versions: what is deleted is taken back only with Git, on the JSON files (decision 0053; see [Always editable, no versions](../metadata/draft.md#always-editable-no-versions)).
 - **The warning never says what the delete breaks** (Product Owner, 2026-11-17: "c'est à la personne de savoir qu'elle supprime quelque chose et qu'il faut faire attention [...] sinon ça va le dire tout le temps et ça ne sert à rien"). What is broken is listed in the symbol mode and in the synoptic mode (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#when-metadata-changes)). The wording of the warning itself: to settle.
 
 ```mermaid
 flowchart LR
     B["Delete button: far right of a line, or General of a type"] --> W["Warning message"]
-    W -->|"confirm"| D["Deleted; seen on the Versions page, can be undone"]
+    W -->|"confirm"| D["Deleted; taken back only with Git"]
     W -->|"cancel"| K["Nothing changes"]
 ```
 
@@ -123,7 +123,7 @@ Decided by the Product Owner on 2026-11-16: the signals and the commands of a ty
 ### Navigation bar on the left
 
 - A narrow bar of icons sits on the far left of the window (a "rail").
-- In Metadata, it holds one icon per page: **Types**, **Units**, **Enums** (decided), then **Versions** (Product Owner, 2026-11-16; see [Versions](../metadata/draft.md#versions-of-metadata)). The Product Owner first named an icon for the libraries too, then removed the libraries of types in the same review.
+- In Metadata, it holds one icon per page: **Types**, **Units**, **Enums** (decided), then **Identifiers** (2026-11-18, place to confirm). The **Versions** icon added on 2026-11-16 was removed on 2026-11-21 (decision 0053; see [Always editable, no versions](../metadata/draft.md#always-editable-no-versions)). The Product Owner first named an icon for the libraries too, then removed the libraries of types in the same review.
 - In the symbol mode, it holds a **Libraries** button (a kind of "home"), a separator, then the list of every Symbol Lib (decided): see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode).
 - There is one bar per part. Going from one part to another is done in the top bar (below).
 
@@ -146,7 +146,7 @@ block-beta
 ```mermaid
 block-beta
     columns 5
-    rail["Bar: Types, Units, Enums, Versions"] tree["Type tree"] list["List of the part: signals..."] panel["Panel of the selected item"]:2
+    rail["Bar: Types, Units, Enums, Identifiers"] tree["Type tree"] list["List of the part: signals..."] panel["Panel of the selected item"]:2
 ```
 
 ## How to read a screen
@@ -210,7 +210,7 @@ flowchart TD
     MD01 --> MD07["MD-07 Presets: Values and Faceplate"]
     MD --> MD08["MD-08 Units"]
     MD --> MD09["MD-09 Enums"]
-    MD --> MD11["MD-11 Versions"]
+    MD --> MD13["MD-13 Identifiers"]
 
     SY --> SY00["SY-00 Navigation bar: Symbol Libs, then the pages of the selected one"]
     SY00 --> SY01["SY-01 General"]

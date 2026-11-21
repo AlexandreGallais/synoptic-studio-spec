@@ -291,13 +291,20 @@ The Product Owner found that the signals and the commands had no description ("i
 The Product Owner answered the two questions of the morning in the questionnaire, with the option the assistant advised each time. Decision 0052 records them.
 
 - **The description is optional** (Product Owner: "Facultative"), as for the flags and the enum items: an empty description never blocks anything. `description` stays a plain `text` field, which may be empty.
-- **It is written in the configuration files sent with the model** (Product Owner: "Dans les fichiers de configuration"), so that the model author reads it where they work. It is edited in Metadata only (Product Owner: "on ne peut la modifier que dans la metadata"). Changing it changes nothing the model reads: a patch on the Versions page, for as long as the versions are kept (see below).
+- **It is written in the configuration files sent with the model** (Product Owner: "Dans les fichiers de configuration"), so that the model author reads it where they work. It is edited in Metadata only (Product Owner: "on ne peut la modifier que dans la metadata"). Changing it changes nothing the model reads.
 - A way for model authors to read the synoptics without changing them, with a summary sheet when they click a symbol, is an idea of the Product Owner for later ("ça, on verra ça plus tard"): noted in the open questions of the synoptics, nothing written here.
+
+## Settled on 2026-11-21 (no versions)
+
+The Product Owner answered the question of the day before in the questionnaire, with the option the assistant advised ("Les retirer, Git suffit"). Decision 0053 (accepted, 2026-11-21) records it: it changes decision 0017.
+
+- **The schema has no version of Metadata**: no version number, no change log, nothing "not yet versioned". The application keeps no versions; the types are clean JSON files, one per type, that the user versions with Git if they want.
+- So the JSON files must stay readable and stable (one field per line, the same order of keys every time), for the differences of Git to be clear: assistant's reading, to settle with the format of the files.
+- The `"format"` number at the top of each file stays: it is the version of the file format, not of Metadata.
 
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
-- The versions of Metadata. On 2026-11-20 the Product Owner was no longer sure to keep them: he leans towards very clean JSON files for the types, versioned with Git by the user ("je suis même pas sûr de mettre le versioning"). Open; decision 0017 stands meanwhile. If they stay, a version has no description written by the user: the change log is enough (Product Owner, 2026-11-20).
 
 ## Open
 
@@ -308,5 +315,4 @@ The Product Owner answered the two questions of the morning in the questionnaire
 - The default number of decimals of a preset: 2 or 3 (Product Owner, 2026-11-19: "qui serait de 2 ou de 3"), and whether it is fixed by the software or set for the project.
 - The syntax of the expressions (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
 - The name of the short text that names a colour or an icon: `description` for now.
-- The versions of Metadata: kept in the application, or left to Git on clean JSON files (see above).
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `MEASUREMENT`, `COMMAND_TARGET`, `DISPLAY`, `SIGNAL_FIELD`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
