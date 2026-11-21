@@ -5,7 +5,6 @@
 | Version | Date | Status | Change |
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
-| 2 | 2026-11-22 | Draft | `name` optional (decision 0066) |
 
 A color is one color of a [Palette](03-palette.md), picked for the appearance of a type. It exists only inside its palette, never on its own, and is kept in the palette's file. A type points to it by its `internal_id`, never by its value: changing the value in the palette changes every type that uses it.
 
