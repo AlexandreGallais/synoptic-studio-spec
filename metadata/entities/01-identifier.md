@@ -8,31 +8,25 @@ An identifier is a named key that each placed symbol fills with its own text, in
 
 ## The entity
 
-An identifier has its internal ID and three fields, nothing else. A title or a description of a faceplate points to it.
+An identifier has its internal ID and two fields, nothing else.
 
 ```mermaid
 erDiagram
     IDENTIFIER {
         uuid internal_id PK
         text id
-        text display_name "empty: the id is shown"
         text description
     }
-    TEXT_CONTENT {
-        text_content_source source "typed or identifier"
-        uuid identifier FK "when source is identifier: its text on each placed symbol"
-        text typed_text "when source is typed"
-    }
-    TEXT_CONTENT }o--o| IDENTIFIER : "identifier, when source is identifier"
 ```
 
 | Field | What it is | Rule |
 | --- | --- | --- |
 | `internal_id` | The UUID set by the software, version 7 (see [Rules of the schema](../data-model-notes.md#rules-of-the-schema)) | Never changes, never leaves the application. A faceplate points to the identifier through it, so a changed `id` breaks nothing. |
-| `id` | The key | Written by the user. The public identifier, as for every entity of Metadata. |
-| `display_name` | The name people read | Shown in place of the `id`. Empty (`null`): the `id` is shown. |
+| `id` | The key | Written by the user. The public identifier, as for every entity of Metadata. It is also what people read: the identifier has no display name. |
 | `description` | What the identifier is | Plain text, for people. Empty: `null`. |
 
+- **No display name** (Product Owner, 2026-11-21: "on va dégager display name [...] on voit que l'ID [...] Par contre, faut laisser la description"): the `id` is shown everywhere the identifier is picked or filled. Removing it breaks nothing in a first version.
+- The title or description of a faceplate that points to an identifier is a `TEXT_CONTENT` of the preset (see [Data model](../data-model.md)); it belongs to the faceplate, so it is not drawn on this page (assistant's choice, left to it by the Product Owner).
 - No value and no default value: the text in front of the key is filled on each placed symbol, in the synoptic (part 3).
 - The order of the list is the order chosen by the user on the page Identifiers, with the handles.
 
@@ -55,13 +49,11 @@ Two made-up identifiers. The internal IDs are made up too; `…800` is the one t
     {
       "internal_id": "01a1f800-0000-7000-8000-000000000800",
       "id": "tag",
-      "display_name": "Tag",
       "description": "The tag of the equipment, as on the plant drawings."
     },
     {
       "internal_id": "01a1f800-0000-7000-8000-000000000801",
       "id": "location",
-      "display_name": null,
       "description": null
     }
   ]
@@ -93,7 +85,7 @@ The rules of the file, in JSON Schema (draft 2020-12), so that a file can be che
   "$defs": {
     "identifier": {
       "type": "object",
-      "required": ["internal_id", "id", "display_name", "description"],
+      "required": ["internal_id", "id", "description"],
       "additionalProperties": false,
       "properties": {
         "internal_id": {
@@ -104,10 +96,6 @@ The rules of the file, in JSON Schema (draft 2020-12), so that a file can be che
         "id": {
           "description": "The key, written by the user.",
           "type": "string"
-        },
-        "display_name": {
-          "description": "The name people read; null: the id is shown.",
-          "type": ["string", "null"]
         },
         "description": {
           "description": "What the identifier is, plain text; null when empty.",
@@ -123,7 +111,7 @@ The rules of the file, in JSON Schema (draft 2020-12), so that a file can be che
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Identifier (`id`, `display_name`, `description`), its order | Page Identifiers of Metadata | `TEXT_CONTENT` of a title or description element of a faceplate | No | Its text, filled on each placed symbol |
+| Identifier (`id`, `description`), its order | Page Identifiers of Metadata | `TEXT_CONTENT` of a title or description element of a faceplate | No | Its text, filled on each placed symbol |
 | File `identifiers.json` | The software, at each change on the page Identifiers | Read when Metadata opens | No | No |
 
 ## Open questions

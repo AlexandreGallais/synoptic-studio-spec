@@ -12,7 +12,7 @@ Status: everything written around the schema of the [Data model](data-model.md) 
   - The made-up UUIDs of the examples follow this shape (`01a1f800-0000-7000-8000-…`).
 - `id`: the public identifier, written by the user, that leaves the application: sent to the model and written in the configuration files.
 - `name`: a label people read, for a thing that has no `id`: nothing points to it and it never goes to the model. What the software ships (quantities, families, units), the name of a preset (see [Read again on 2026-11-21](#read-again-on-2026-11-21-presets-and-faceplate)), the name of a palette, of an icon or of a colour (decision 0057).
-- `display_name`: a label people read, for a thing that has an `id` or a key: it is shown in place of that `id` or key, and never goes to the model (an enum item, an identifier, a signal field, a command button). Empty, the `id` or the key is shown.
+- `display_name`: a label people read, for a thing that has an `id` or a key: it is shown in place of that `id` or key, and never goes to the model (an enum item, a signal field, a command button). An identifier has none: its `id` is shown (2026-11-21). Empty, the `id` or the key is shown.
 - `description`: a text that explains, for people; plain text everywhere, Markdown only in `DOCUMENTATION`.
 - A choice of the software (`kind`, `direction`, `access`...) is written in the JSON as an English word (`"input"`, `"real"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). A value of several words is joined by underscores (`set_signal`, `number_field`), the same in the schema and in the JSON. The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
 - The field that says which alternative a box is: `kind` when the alternative changes what the thing is (a link is a path or a URL, an element is a signal field or a button); `source` when the thing stays the same and only its value comes from elsewhere (a bound is always a number, typed or read from a signal; a text is always a text, typed or read from an identifier), each value of `source` naming the field that then holds the value (`typed` → `typed_value` or `typed_text`, `signal` → `signal`, `identifier` → `identifier`); `direction`, `access` and `input_kind` where their own word says more. Never `type`, which already names `TYPE` and `VALUE_TYPE`.
@@ -97,7 +97,7 @@ A labelled field that shows the value of one signal, and lets a person type it w
 | `signal` | The signal shown: one of the type, own or inherited. | Always. |
 | `access` | `read`: the field only shows the value, as text alone: in the display unit and with the decimals of the preset, an enum by the display name of its item, a boolean by the text of its state (the `BOOLEAN_TEXTS` of the preset). `write`, for an input: a person types the value the model receives. `override`, for an output: a person types a value that replaces the model's. | Always. Write is offered for an input only, override for an output only (decision 0040). |
 | `input_kind` | How the value is typed: `number_field`, `radio_one_line`, `radio_several_lines`, `select` or `switch` (see [The choice lists](#the-choice-lists)). | When `access` is write or override. The choices depend on the value type of the signal. |
-| `display_name` | The label beside the field, for people; never sent to the model. The same name as the field of an identifier (decision 0055). | Always; empty, the signal's `id` is shown (decision 0018). |
+| `display_name` | The label beside the field, for people; never sent to the model (decision 0055). | Always; empty, the signal's `id` is shown (decision 0018). |
 | `range` | A `RANGE`: the values a person may type. | When `input_kind` is `number_field`. |
 
 ### `RANGE`: the values allowed in a number field
@@ -407,6 +407,14 @@ The Product Owner answered the question of the check of the schema against the J
 - **`"format"` is described in the rules of the files only** ([Files](draft.md#files)): it is the version of the file format, so it belongs to the file, not to an entity. The schema stays the schema of the entities; no box `FILE` is added.
 - The JSON examples keep `"format": 1` at the top of the file of a type and of an enum; nothing else changes.
 - Still open: whether the catalogue of quantities is one file with one `format` at its top, or one file per quantity (see [Open](#open)).
+
+## Changed on 2026-11-21 (identifier)
+
+Asked by the Product Owner on 2026-11-21 ("dans l'identifiant, on va dégager display name [...] on voit que l'ID [...] Pour une première version, ça va rien casser [...] faut laisser la description").
+
+- **`IDENTIFIER.display_name` is removed**: an identifier has its `internal_id`, its `id` and its `description`. Its `id` is shown wherever it is picked or filled. The earlier sections keep the field, as written when they were settled.
+- **The page [Identifier](entities/01-identifier.md) draws the identifier alone**, without `TEXT_CONTENT` (assistant's choice, left to it by the Product Owner: "je te laisse décider"): a text content belongs to the faceplate of a preset, and points to the identifier; it stays drawn in the schema of the [Data model](data-model.md), with its link.
+- Screen MD-13 loses its column Display name; the identifiers of the placed symbol panel are labelled by their `id`.
 
 ## Not in the schema yet
 

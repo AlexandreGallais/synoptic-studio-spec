@@ -560,7 +560,6 @@ mindmap
     Table of identifiers, whole width
       Handle, no header
       ID
-      Display name
       Description
       Delete button, far right, no header, warning
     Picked in a title or description of the faceplate builder
@@ -569,11 +568,11 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-13.1 | Table of identifiers | Table, whole width | One line per identifier (2026-11-18: "faire un tableau"). Columns in this order: the handle with no header, ID, Display name, Description, then the delete button with no header (order: assistant's reading). No default value (2026-11-18). | Decided (table, fields), Proposed (column order) | [Identifiers](../metadata/draft.md#identifiers) |
+| MD-13.1 | Table of identifiers | Table, whole width | One line per identifier (2026-11-18: "faire un tableau"). Columns in this order: the handle with no header, ID, Description, then the delete button with no header (order: assistant's reading). No default value (2026-11-18). No display name (2026-11-21): the ID is shown. | Decided (table, fields), Proposed (column order) | [Identifiers](../metadata/draft.md#identifiers) |
 | MD-13.2 | Add an identifier | Button (+), small icon | On the right of the title "Identifiers" ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Implied | [Identifiers](../metadata/draft.md#identifiers) |
 | MD-13.3 | Handle of a line | Grip, dragged, no header | The user chooses the order (2026-11-18: "Il faut pouvoir leur donner un ordre"). | Decided | [Layout rules](README.md#handles-to-choose-the-order) |
 | MD-13.4 | ID | Text field | The key. Always editable, followed through its internal ID when renamed (assistant's reading of the general rule). Unique on the page: open. | Decided (field), Open (unique) | [Identifiers](../metadata/draft.md#identifiers) |
-| MD-13.5 | Display name | Text field | The name people read where the identifier is picked and filled (assistant's reading). | Decided (field) | [Identifiers](../metadata/draft.md#identifiers) |
+| MD-13.5 | Display name | — | Removed (2026-11-21: "on va dégager display name [...] on voit que l'ID"): the ID is shown where the identifier is picked and filled. | Decided | [Identifier](../metadata/entities/01-identifier.md) |
 | MD-13.6 | Description | Text field, takes the room left | What the identifier is (2026-11-18: "expliquer ce que c'est"). Optional: assistant's reading. | Decided (field), Proposed (optional) | [Identifiers](../metadata/draft.md#identifiers) |
 | MD-13.7 | Delete an identifier | Button (icon), then a warning | At the far right of the line, with no header (2026-11-18: "et les supprimer"; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). | Decided | [Identifiers](../metadata/draft.md#identifiers) |
 

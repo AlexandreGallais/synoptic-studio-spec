@@ -110,7 +110,6 @@ erDiagram
     IDENTIFIER {
         uuid internal_id PK
         text id
-        text display_name "empty: the id is shown"
         text description
     }
     QUANTITY {
