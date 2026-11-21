@@ -20,7 +20,7 @@ Status: schema being read again with the Product Owner (2026-11-19 to 2026-11-21
 - Every other link is a FK, labelled by the field that holds it, so that the reader knows which field points where. The field is named after the box it points to (`signal`, `quantity`, `unit`), or after its role when the box alone says too little (`parent`, `default_unit`).
 - A link or a field that only exists in some cases says when, always in the same words: `when kind is enum`, `when the signal is an enum`.
 - A number typed in Metadata (a default value, the value of a command, a typed bound) is kept in the default unit of its signal's quantity, whatever unit the screen shows it in (decision 0051).
-- Field order in each box: `internal_id`, then the links (FK), then the kind, then `id` or the name, then the values, then the texts.
+- Field order in each box: `internal_id`, then `kind` or `source` (so that the reader knows at once which fields follow, Product Owner, 2026-11-21), then the links (FK), then the other choices (`direction`, `access`, `input_kind`), then `id` or the name, then the values, then the texts.
 - The words `id` and `internal_id` wait for the documentary research T5; every other name follows these rules (see [Names made even on 2026-11-21](#names-made-even-on-2026-11-21)).
 
 ## The schema
@@ -52,9 +52,9 @@ erDiagram
         text description
     }
     VALUE_TYPE {
+        value_type_kind kind "integer, real, boolean or enum"
         uuid enum FK "when kind is enum"
         uuid quantity FK "when kind is integer or real"
-        value_type_kind kind "integer, real, boolean or enum"
         boolean relative_quantity "when kind is integer or real: true when the value is a difference"
     }
     COMMAND {
@@ -99,8 +99,8 @@ erDiagram
         text display_name "empty: the signal's id is shown"
     }
     BOUND {
-        uuid signal FK "when source is signal: an input of the same quantity, its value is the bound"
         bound_source source "typed or signal"
+        uuid signal FK "when source is signal: an input of the same quantity, its value is the bound"
         real typed_value "when source is typed, in the default unit of the quantity of the signal shown"
     }
     COMMAND_BUTTON {
@@ -108,8 +108,8 @@ erDiagram
         text display_name "empty: the command's id is shown"
     }
     TEXT_CONTENT {
-        uuid identifier FK "when source is identifier: its text on each placed symbol"
         text_content_source source "typed or identifier"
+        uuid identifier FK "when source is identifier: its text on each placed symbol"
         text typed_text "when source is typed"
     }
     ENUM {
@@ -248,8 +248,8 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
       "id": "speed_setpoint",
       "description": "Speed asked of the motor.",
       "value_type": {
-        "quantity": "6f1c2a90-0000-4000-8000-000000000900",
         "kind": "real",
+        "quantity": "6f1c2a90-0000-4000-8000-000000000900",
         "relative_quantity": false
       }
     },
@@ -259,8 +259,8 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
       "id": "speed_max",
       "description": "Highest speed the operator may ask for.",
       "value_type": {
-        "quantity": "6f1c2a90-0000-4000-8000-000000000900",
         "kind": "real",
+        "quantity": "6f1c2a90-0000-4000-8000-000000000900",
         "relative_quantity": false
       }
     },
@@ -270,8 +270,8 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
       "id": "speed",
       "description": "Speed of the motor, computed by the model.",
       "value_type": {
-        "quantity": "6f1c2a90-0000-4000-8000-000000000900",
         "kind": "real",
+        "quantity": "6f1c2a90-0000-4000-8000-000000000900",
         "relative_quantity": false
       }
     },
@@ -290,8 +290,8 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
       "id": "mode",
       "description": "How the pump is driven.",
       "value_type": {
-        "enum": "6f1c2a90-0000-4000-8000-000000000500",
-        "kind": "enum"
+        "kind": "enum",
+        "enum": "6f1c2a90-0000-4000-8000-000000000500"
       }
     },
     {
@@ -300,8 +300,8 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
       "id": "bearing_temperature_rise",
       "description": "How much the bearing is warmer than the room.",
       "value_type": {
-        "quantity": "6f1c2a90-0000-4000-8000-000000000910",
         "kind": "real",
+        "quantity": "6f1c2a90-0000-4000-8000-000000000910",
         "relative_quantity": true
       }
     }
@@ -396,8 +396,8 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
           "internal_id": "6f1c2a90-0000-4000-8000-000000000060",
           "kind": "title",
           "text_content": {
-            "identifier": "6f1c2a90-0000-4000-8000-000000000800",
-            "source": "identifier"
+            "source": "identifier",
+            "identifier": "6f1c2a90-0000-4000-8000-000000000800"
           }
         },
         {
@@ -426,8 +426,8 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
                     "typed_value": 0
                   },
                   "max": {
-                    "signal": "6f1c2a90-0000-4000-8000-000000000021",
-                    "source": "signal"
+                    "source": "signal",
+                    "signal": "6f1c2a90-0000-4000-8000-000000000021"
                   }
                 }
               }
@@ -859,7 +859,7 @@ The Product Owner found `"measurement": { "measure": "value" }` odd in the JSON,
 
 The Product Owner asked whether `measurement` was really the best name, and to keep it if it was. It was not: in supervision and simulation a "measurement" is first a value read by a sensor, so an output, and an input setpoint with a `measurement` part read as "this input is a measurement" (assistant's analysis, not sourced). Of the three options of decision 0059, the Product Owner chose the one the assistant advised ("Faire comme FMI, sans partie"). Decision 0059 (accepted, 2026-11-21) records it.
 
-- **The part `MEASUREMENT` is gone**: its two fields go on `VALUE_TYPE`, for an integer or a real only. In the JSON: `"value_type": { "quantity": "…", "kind": "real", "relative_quantity": true }`.
+- **The part `MEASUREMENT` is gone**: its two fields go on `VALUE_TYPE`, for an integer or a real only. In the JSON: `"value_type": { "kind": "real", "quantity": "…", "relative_quantity": true }`.
 - **`quantity`**: the FK to the quantity, required for an integer or a real (decision 0051). The word of FMI, OPC UA and CLDR (research T2, sources S1, S3, S16).
 - **`relative_quantity`**: a boolean, `true` when the value is a difference (a gap between two points), `false` when it is a value (a point on the scale). The word of FMI, `relativeQuantity`, whose offset is then ignored (research T2, section 3.8, source S1). It replaces the list `measurement_kind` and its values `value` and `difference`. It may only be `true` when the quantity has `offers_relative_quantity` (renamed the same day, see below).
 - **The rule of the parts gets one written exception**, at the head of this file: these two fields only exist together, but stay on `VALUE_TYPE`, to keep the words of a standard and one level less in the JSON.
@@ -875,6 +875,15 @@ The Product Owner asked why `TEXT_CONTENT` says `source` and not `kind` "comme p
   - `direction` on `SIGNAL` and `access` on `SIGNAL_FIELD`: their own word says more than `kind`;
   - `input_kind` stays, not `kind`: the Product Owner's word (2026-11-21), and it only exists in write or override, while a `kind` is always there.
 - **`QUANTITY.offers_difference` becomes `offers_relative_quantity`** (assistant's choice, found in the pass): since decision 0059 the signal says `relative_quantity`, and the same idea had two words in the files. The screens keep "difference" for people.
+- **The minimum and the maximum of a range**: the same question (Product Owner: "c'est pareil, c'est source, c'est typed ou signal"), the same answer. A bound is always a number; `source` says whether it is typed or read from an input signal.
+
+## Settled on 2026-11-21 (order of the keys)
+
+The Product Owner answered the question of the pass in the questionnaire, with the option the assistant advised ("Le mettre en premier").
+
+- **`kind` or `source` comes right after `internal_id`**, before the links: the reader learns what the object is, then reads the fields that go with it. `{ "source": "identifier", "identifier": "…" }`, `{ "kind": "enum", "enum": "…" }`.
+- Changed in the schema and the JSON example: `VALUE_TYPE`, `BOUND`, `TEXT_CONTENT`; the other boxes already had it in that place, or have no link before it.
+- `direction`, `access` and `input_kind` keep their place after the links: `SIGNAL_FIELD` starts with the signal it shows (assistant's reading).
 
 ## Not in the schema yet
 
