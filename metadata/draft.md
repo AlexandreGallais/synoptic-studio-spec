@@ -647,7 +647,7 @@ Decided by the Product Owner on 2026-11-18 (decision 0043, accepted on 2026-11-1
 
 ## Units
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (the units are a ready-made catalogue, read only in the application, kept in files of the software that contributors complete; a signal says whether its value is a quantity or a difference; decision 0020, accepted on 2026-11-16; the same day: the choice shown in the one column "Quantity", a difference only where the conversion changes, default decimals fixed by the catalogue; at the end of the day, one model unit per quantity, the same everywhere, no longer chosen per signal); the page reviewed by him on 2026-11-17 (default unit and default decimals, a converter, the formula of each unit in the table, families named after their system). Open points are listed in [Open questions](#metadata-open-questions).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (the units are a ready-made catalogue, read only in the application, kept in files of the software that contributors complete; a signal says whether its value is a quantity or a difference; decision 0020, accepted on 2026-11-16; the same day: the choice shown in the one column "Quantity", a difference only where the conversion changes, default decimals fixed by the catalogue; at the end of the day, one model unit per quantity, the same everywhere, no longer chosen per signal); the page reviewed by him on 2026-11-17 (default unit and default decimals, a converter, the formula of each unit in the table, families named after their system). Decisions 0049, 0050 and 0051 (2026-11-19) changed it again: no reference family, conversions as free formulas to and from the default unit, a difference computed by the software, no decimals per quantity, a quantity for every number; the schema says it in [Data model](data-model.md), and the rest of this section is still to be rewritten from them. Open points are listed in [Open questions](#metadata-open-questions).
 
 A Units page lists quantities (mass, volume, flow, pressure...), with their families and units. A quantity is what a value measures; a unit is one way to count it: the kilogram is a unit of the quantity mass.
 
@@ -817,13 +817,13 @@ Example, the mass, family Imperial, with 1 typed in the field (default unit: kil
 ### Decimal places
 
 - Decimal places are the number of decimals shown for a value. They are a display matter only.
-- The catalogue gives a default number of decimals per quantity, written in its files and shown read only on the Units page. It applies everywhere unless a preset overrides it. Confirmed by the Product Owner on 2026-11-16: fixed by the catalogue, and changed in a preset when needed.
-- The preset can override it for each signal, next to its display unit (see [Presets](#presets-and-their-faceplate)). It keeps a minimum of flexibility.
+- **The decimals are set in the presets only**, for each signal, next to its display unit (see [Presets](#presets-and-their-faceplate)). They start from one default number of decimals, the same everywhere; the catalogue gives no decimals per quantity (Product Owner, 2026-11-19: "les décimales à montrer, c'est vraiment selon les presets"; decision 0050, which replaces the default per quantity confirmed on 2026-11-16). The right number depends on the unit shown, not on the quantity.
+- The default number: 2 or 3, fixed by the software or set for the project, is open (see [Data model](data-model.md#open)).
 - The symbol and the synoptic can edit it from the preset, like the display unit.
 
 ```mermaid
 flowchart LR
-    U["Catalogue: default decimals per quantity"] -->|"applies unless overridden"| P["Preset: decimals per signal"]
+    U["One default number of decimals"] -->|"starts"| P["Preset: decimals per signal"]
     P -->|"editable"| S["Symbol and synoptic"]
 ```
 
@@ -831,15 +831,13 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Quantity, families, reference family, conversions, default model unit, default decimals | Catalogue files of the software, completed by contributors; read only on the Units page | Signal (quantity, value or difference), preset (display unit, decimals) | No | No |
+| Quantity, families, conversions, default unit | Catalogue files of the software, completed by contributors; read only on the Units page | Signal (quantity, value or difference), preset (display unit, decimals) | No | No |
 | Model unit of a quantity, the same everywhere | Outside Metadata: the catalogue for good (leaning), a configuration file of the project, or an annex page (open) | Every signal of the quantity, the conversions for display | No | No |
 | Display unit, decimal places | Preset, in Metadata | Faceplate, texts of a symbol that show a value | Edit | Edit |
 
 ### Open questions
 
-- The reference family (asked on 2026-11-17): kept, or replaced by a base unit per quantity against which every unit is defined, the families only grouping the units for reading (proposed)? Until answered, the wireframe no longer shows it.
 - Source and licence of the catalogue data (UCUM, QUDT, CLDR, NIST not checked).
-- The default decimals of each quantity: kept in the catalogue, or replaced by one number of decimals for the whole project, set outside Metadata (Product Owner, 2026-11-17, about the signal: "avoir le même nombre de décimales partout")? Not asked yet. Going over the presets on 2026-11-17, the Product Owner kept their column Decimals ("les décimales ici servent"), which starts from this default (see [Presets](#mode-values-one-table-of-the-signals)).
 - Where the model unit of each quantity is set: once and for good in the catalogue, once per project in a configuration file, or on an annex page (Product Owner, 2026-11-16: "Je sais pas où on va le mettre encore"; later the same day, leaning towards the catalogue, "il faut que j'y réfléchisse").
 
 ## Enums
@@ -1096,7 +1094,7 @@ Decided by the Product Owner on 2026-11-16: "Faceplate et preset, il faut fusion
 
 - Everything the faceplate shows is set in the preset: which signals and commands are shown, how, in which groups, and under which titles.
 - The display unit and the decimal places of the preset also serve the texts of a symbol that show a value (see [Animation mode](../symbols/08-animation-mode/README.md)): a preset is not only the faceplate, but the faceplate is wholly in the preset.
-- A preset is an override: what it does not change comes from the signal and from the units (the model unit of the quantity, the default decimals).
+- A preset is an override: what it does not change comes from the signal and from the units (the default unit of the quantity, the one default number of decimals; see [Decimal places](#decimal-places)).
 - The preset is always editable, with no Edit or Save step (Product Owner, 2026-11-16). See [Always editable, no versions](#always-editable-no-versions).
 
 #### A type needs a preset
@@ -1134,7 +1132,7 @@ A table with **every signal of the type**, own and inherited, one per line (Prod
 | --- | --- | --- |
 | Signal | An icon of its direction, then the signal's ID, read only | Which signal the line is about (see [Signals](#signals)). The icon says whether it is an input or an output of the model (Product Owner, 2026-11-17: "il faudrait qu'on puisse savoir si c'est un input ou un output [...] ça donne juste une icône"), so that the default value is read right. |
 | Display unit | Select | Only with a quantity. Among the units of the signal's quantity; starts as the model unit of the quantity. Kept (Product Owner, 2026-11-17: "Display unit pareil"). |
-| Decimals | Number field | Integers and reals only. Starts as the default of the quantity on the Units page (see [Units](#units)). Display only. Kept (Product Owner, 2026-11-17: "les décimales ici servent"). |
+| Decimals | Number field | Integers and reals only. Starts as the one default number of decimals (see [Decimal places](#decimal-places)). Display only. Kept (Product Owner, 2026-11-17: "les décimales ici servent"). |
 | Default value | Field of the signal's type | See [The default value](#the-default-value) below. A boolean: true or false. An integer or a real: a number, typed. An enum: an item, picked by its display text (Product Owner, 2026-11-16: "si c'est un nombre, on peut écrire une valeur par défaut, et puis basta"). |
 
 ##### The default value
@@ -1145,7 +1143,7 @@ Said by the Product Owner on 2026-11-17, who asked that it be written as it is: 
 - **For an input and for an output**, it is **the value shown before the model sends anything**: once the model sends a value, that value is shown instead.
 - This is why the table shows the direction of each signal: the same field means more for an input than for an output.
 - Written in decision 0030 (accepted on 2026-11-17).
-- The default value is in the units of the display unit of the line, like any value the user types (assistant's reading, to confirm); before it goes to the model, it is converted back to the model unit, as in [Typing a value](#typing-a-value).
+- The default value is shown and typed in the display unit of the line, and kept in the default unit of the quantity: changing the display unit never changes it (Product Owner, 2026-11-19: "Unité par défaut"; decision 0051).
 
 ```mermaid
 sequenceDiagram
@@ -1335,7 +1333,6 @@ Mode Faceplate:
 
 Noted, not to be asked again in the chat (Product Owner, end of 2026-11-17).
 
-- The default value is typed in the display unit of the line, then converted to the model unit (assistant's reading)?
 - Can a signal or a command be added twice to the builder?
 - What a symbol or a synoptic can change in the faceplate built by the preset.
 
@@ -1905,7 +1902,7 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 | Type (name, parent, icon) | Metadata, General (the parent: set at creation, never changed) | Choose its type among all the types (only here) | No |
 | Type documentation | Metadata | No | No |
 | Signal, its direction, ID and description | Metadata | No | No |
-| Quantity, families, reference family, conversions, default model unit, default decimals | Nowhere in the application: catalogue files of the software, completed by contributors; read only on the Units page | No | No |
+| Quantity, families, conversions, default unit | Nowhere in the application: catalogue files of the software, completed by contributors; read only on the Units page | No | No |
 | Quantity of a signal, and whether its value is the quantity or a difference | Signal, in Metadata | No | No |
 | Model unit of a quantity, the same for every signal (no longer chosen per signal, 2026-11-16) | Outside Metadata: the catalogue for good, or a configuration file of the project (open) | No | No |
 | Enum and its items (key, description, display text) | Enums page | No | No |
@@ -1946,11 +1943,9 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | Label of the name in General ("Name" or "ID"); parent fixed (decision 0013) or chosen in a list of the tree indented with dashes; parents kept in a filtered tree; place of the reset buttons | [Types](#types) | Raised while reviewing the wireframes (2026-11-16); the tree, its + and its search icon validated the same day. |
 | Palette, icon list and default icon and colour; place of the reset buttons when a list takes several lines | [Icons](#type-icons) | To define with the design system. |
 | Folder, generated files and conflicts between people | [Files and conflicts](../storage/files-and-conflicts.md) | Open, not about metadata. |
-| The reference family of a quantity: kept, or replaced by a base unit per quantity, the families only grouping units for reading | [Units](#quantities-families-and-conversions) | Asked on 2026-11-17, after the review of the Units page, where the Product Owner did not see what it was for. |
 | Source and licence of the ready-made catalogue of units; where the model unit of each quantity is set (catalogue for good, a configuration file of the project, or an annex page) | [Units](#units) | Licences of UCUM, QUDT, CLDR and NIST not checked, to settle before release. The model unit left the signal at the end of 2026-11-16: one per quantity, the same everywhere, set outside Metadata; the Product Owner leans towards the catalogue but will think it over. Once settled, it will be decision 0029. |
 | An element twice; what a symbol or a synoptic changes in the built faceplate | [Presets](#presets-and-their-faceplate) | Raised when the preset was split into Values and the faceplate builder (2026-11-16). The order by handle, the input chosen in the builder, the bounds of a number field and read or write (input) against read or override (output) were settled at the end of 2026-11-17. Not to be asked again in the chat. |
 | Which mode of the description opens first; content of the formatting tool bar and no text colour; editing of a link in place, now that a click on it opens it | [Documentation](#type-documentation) | Raised when the read-only mode came back, then while reviewing the wireframes (2026-11-16). The order of the links (a handle), the two add icons and the click that opens were decided at the end of the day. |
-| Default decimals of the catalogue, now that decimals may be set once for the project, outside Metadata | [Units](#units) | The decimals of the preset are kept (Product Owner, 2026-11-17, reviewing the presets: "les décimales ici servent"). The catalogue's default stays as it is until asked. |
 | Override an output: who applies it, what is seen while it holds, how it ends | [Commands](#commands), [Presets](#typing-a-value) | The kind is decided (2026-11-16); its mechanism is open. Since 2026-11-17, a signal element of the faceplate set to "override" also overrides an output; the Product Owner leaves it to what is behind the faceplate. |
 | An undo (Ctrl+Z) in Metadata; each change written to the files at once | [Always editable, no versions](#always-editable-no-versions) | Raised when the Versions page was removed (decision 0053, 2026-11-21): versions are left to Git on clean JSON files. |
 | An ID unique in the type and its tree; the description kept out of the configuration files | [Flags](#flags) | Settled by the Product Owner on 2026-11-17: the description optional, an internal identifier, no warning on delete, no rule on how an ID is written, the order by handle, the inheritance. |

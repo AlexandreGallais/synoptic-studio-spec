@@ -2,10 +2,11 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Data model
 
-Status: schema only, being written (2026-11-19). The descriptions come once the schema is validated by the Product Owner.
+Status: schema being read again with the Product Owner (2026-11-19 to 2026-11-21). The faceplate is described box by box in [The faceplate, box by box](#the-faceplate-box-by-box), and every choice list in [The choice lists](#the-choice-lists); the other descriptions come once the schema is validated.
 
 - `internal_id`: the UUID set by the software; every FK holds one.
-- `id`: the public identifier, written by the user. What the software ships (quantities, families, units) has a `name` instead: the user never writes it.
+- `id`: the public identifier, written by the user, that leaves the application: sent to the model and written in the configuration files.
+- `name`: a label people read, that nothing points to and that never goes to the model: what the software ships (quantities, families, units), and the name of a preset (see [Read again on 2026-11-21](#read-again-on-2026-11-21-presets-and-faceplate)).
 - A choice of the software (`kind`, `direction`, `measure`...) is written in the JSON as an English word (`"input"`, `"difference"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
 - A box without `internal_id` is a part of its owner (a nested object in the JSON), never pointed to.
 - `has`: one nested object; `holds`: an ordered list inside its owner.
@@ -73,8 +74,8 @@ erDiagram
         uuid signal FK
         typed_value default_value "a number in the default unit, a boolean, or the internal_id of an item of the signal's enum"
     }
-    DISPLAY {
-        uuid unit FK
+    DISPLAY_FORMAT {
+        uuid unit FK "the display unit"
         integer decimals
     }
     FACEPLATE_ELEMENT {
@@ -83,24 +84,24 @@ erDiagram
     }
     SIGNAL_FIELD {
         uuid signal FK
-        access access "read, write or override"
-        input_kind input
-        text name_shown
+        access access "read; write for an input; override for an output"
+        input_kind input_kind "number field, radio on one line, radio on several lines or select"
+        text name_shown "empty: the signal's id is shown"
     }
     BOUND {
-        uuid signal FK "when source is signal"
+        uuid signal FK "when source is signal: its value is the bound"
         bound_source source "typed or signal"
-        real value "when source is typed, in the default unit"
+        real typed_value "when source is typed, in the default unit"
     }
     COMMAND_BUTTON {
         uuid command FK
         text button_text
     }
     TEXT_CONTENT {
-        uuid identifier FK "when source is identifier"
-        uuid signal FK "when source is signal"
-        text_source source "fixed, identifier or signal"
-        text text "when source is fixed"
+        uuid identifier FK "when source is identifier: its text on each placed symbol"
+        uuid signal FK "when source is signal: its value, shown as text"
+        text_source source "typed, identifier or signal"
+        text typed_text "when source is typed"
     }
     ENUM {
         uuid internal_id PK
@@ -175,16 +176,16 @@ erDiagram
     PRESET ||--o{ PRESET_VALUE : "holds, one per signal of the type"
     PRESET_VALUE }o--|| SIGNAL : "signal"
     PRESET_VALUE }o--o| ENUM_ITEM : "default_value, when the signal is an enum"
-    PRESET_VALUE ||--o| DISPLAY : "has, when the signal is an integer or a real"
-    DISPLAY }o--|| UNIT : "unit"
+    PRESET_VALUE ||--o| DISPLAY_FORMAT : "has, when the signal is an integer or a real"
+    DISPLAY_FORMAT }o--|| UNIT : "unit"
     PRESET ||--o{ FACEPLATE_ELEMENT : "holds"
     FACEPLATE_ELEMENT |o--o{ FACEPLATE_ELEMENT : "holds, when kind is group"
     FACEPLATE_ELEMENT ||--o| SIGNAL_FIELD : "has, when kind is signal"
     FACEPLATE_ELEMENT ||--o| COMMAND_BUTTON : "has, when kind is command"
     FACEPLATE_ELEMENT ||--o| TEXT_CONTENT : "has, when kind is title or description"
     SIGNAL_FIELD }o--|| SIGNAL : "signal"
-    SIGNAL_FIELD ||--o| BOUND : "min, when input is a number field"
-    SIGNAL_FIELD ||--o| BOUND : "max, when input is a number field"
+    SIGNAL_FIELD ||--o| BOUND : "min, when input_kind is number field"
+    SIGNAL_FIELD ||--o| BOUND : "max, when input_kind is number field"
     BOUND }o--o| SIGNAL : "signal, when source is signal"
     COMMAND_BUTTON }o--|| COMMAND : "command"
     TEXT_CONTENT }o--o| IDENTIFIER : "identifier, when source is identifier"
@@ -194,6 +195,90 @@ erDiagram
     QUANTITY }o--|| UNIT : "default_unit"
     UNIT ||--o| CONVERSION : "has, except the default unit"
 ```
+
+## The faceplate, box by box
+
+Written on 2026-11-21, at the Product Owner's request ("pour la partie faceplate, j'aimerais bien que tu refasses un retravail là-dessus [...] c'est un peu flou"). It says, field by field, what the boxes of the mode Faceplate of a preset hold. The rules are those of [Presets and their faceplate](draft.md#presets-and-their-faceplate); nothing new is decided here.
+
+A preset holds an ordered list of elements. Each element has a kind, and its kind gives it exactly one part, or, for a group, its own list of elements.
+
+```mermaid
+flowchart LR
+    P["Preset"] -->|"holds, in order"| E["Faceplate element: kind"]
+    E -->|"kind is signal"| SF["SIGNAL_FIELD: a signal shown, maybe typed in"]
+    E -->|"kind is command"| CB["COMMAND_BUTTON: a button that sends a command"]
+    E -->|"kind is title or description"| TC["TEXT_CONTENT: where its text comes from"]
+    E -->|"kind is group"| G["Its own elements, in order"]
+    SF -->|"min, max, when input_kind is number field"| B["BOUND: typed or a signal"]
+```
+
+### `FACEPLATE_ELEMENT`: one line of the builder
+
+| Field | What it holds | When |
+| --- | --- | --- |
+| `internal_id` | The UUID set by the software. | Always. |
+| `kind` | Signal, command, title, description or group (see [The choice lists](#the-choice-lists)). | Always. |
+| Its elements | The elements inside a group, in order, with the same five kinds. | When `kind` is group. |
+
+### `SIGNAL_FIELD`: a signal shown in the faceplate
+
+A labelled field that shows the value of one signal, and lets a person type it when its access allows.
+
+| Field | What it holds | When |
+| --- | --- | --- |
+| `signal` | The signal shown: one of the type, own or inherited. | Always. |
+| `access` | `read`: the field only shows the value. `write`, for an input: a person types the value the model receives. `override`, for an output: a person types a value that replaces the model's. | Always. Write is offered for an input only, override for an output only (decision 0040). |
+| `input_kind` | How the value is shown and typed: a number field, radio buttons on one line, radio buttons on several lines, or a select (see [The choice lists](#the-choice-lists)). | Always. The choices depend on the value type of the signal. |
+| `name_shown` | The label beside the field, for people; never sent to the model. | Always; empty, the signal's `id` is shown (decision 0018). |
+| `min`, `max` | Two `BOUND`, each optional. A typed value outside them is refused. | When `input_kind` is number field. |
+
+### `BOUND`: the minimum or the maximum of a number field
+
+| Field | What it holds | When |
+| --- | --- | --- |
+| `source` | `typed`: a number typed in the builder. `signal`: the value of a signal of the type, read at each moment. | Always. |
+| `typed_value` | The number. Kept in the default unit of the signal's quantity, shown and typed in the display unit of the preset (decision 0051). | When `source` is typed. |
+| `signal` | The signal whose value is the bound, picked with the small icon inside the field (decision 0041). | When `source` is signal. |
+
+### `COMMAND_BUTTON`: a button that sends a command
+
+Found right by the Product Owner on 2026-11-21 ("button text, ça, c'est parfait, et la commande associée").
+
+| Field | What it holds | When |
+| --- | --- | --- |
+| `command` | The command sent by a click, one of the type, own or inherited. | Always. |
+| `button_text` | The text on the button. | Always. |
+
+### `TEXT_CONTENT`: the text of a title or a description
+
+The text a title or a description element shows, and where it comes from. The small icon on the right of its field chooses the source (Product Owner, 2026-11-18, decision 0048).
+
+| Field | What it holds | When |
+| --- | --- | --- |
+| `source` | `typed`: a text typed in the builder. `identifier`: the text filled for an identifier on each placed symbol. `signal`: the value of a signal, written as text. | Always. |
+| `typed_text` | The text. A description keeps its line breaks; neither takes Markdown. | When `source` is typed. |
+| `identifier` | The identifier whose text is shown: `tag` shows `P-101` on one pump and `P-102` on the next. | When `source` is identifier. |
+| `signal` | The signal whose value is shown, as the faceplate shows it: in the display unit and with the decimals of the preset, an enum by the display text of its item. | When `source` is signal. |
+
+**A signal in a text is not a signal element.** A signal element (`SIGNAL_FIELD`) is a field with a label, that can be typed in. A text bound to a signal is the value alone, read only, inside a title or a paragraph: for example a title that shows the mode, "Automatic". The Product Owner asked for this on 2026-11-18 ("qui pourrait être ces identifiants-là ou alors un signal").
+
+## The choice lists
+
+Every field whose value is one word from a fixed list. Each is written in the JSON as that word in English (see the head of this file).
+
+| List | Field | Values | Meaning |
+| --- | --- | --- | --- |
+| `link_kind` | `LINK.kind` | path, url | A path to a file or a folder, or a web address. |
+| `direction` | `SIGNAL.direction` | input, output | The model receives it, or the model sends it. |
+| `value_kind` | `VALUE_TYPE.kind` | integer, real, boolean, enum | A whole number, a number, true or false, an item of an enum. |
+| `measure` | `MEASUREMENT.measure` | value, difference | A point on the scale ("it is 20 °C"), or a gap between two points ("it rose by 20 °C"). |
+| `command_kind` | `COMMAND.kind` | set a signal, trigger, override | Send a fixed value to an input; tell the model something happened; replace the value of an output. |
+| `enum_kind` | `ENUM.kind` | global, template | Items written on the Enums page, the same everywhere; or items completed on each placed symbol. |
+| `element_kind` | `FACEPLATE_ELEMENT.kind` | signal, command, title, description, group | See [The faceplate, box by box](#the-faceplate-box-by-box). |
+| `access` | `SIGNAL_FIELD.access` | read, write, override | Shown only; typed in, for an input; typed in, for an output. |
+| `input_kind` | `SIGNAL_FIELD.input_kind` | number field, radio on one line, radio on several lines, select | Number field: for an integer or a real. Radio on one line, radio on several lines, select: for an enum, its items in the order of the handles of the Enums page. A boolean: not settled, see [Open](#open). |
+| `bound_source` | `BOUND.source` | typed, signal | See `BOUND`. |
+| `text_source` | `TEXT_CONTENT.source` | typed, identifier, signal | See `TEXT_CONTENT`. |
 
 ## Changed on 2026-11-19
 
@@ -302,6 +387,21 @@ The Product Owner answered the question of the day before in the questionnaire, 
 - So the JSON files must stay readable and stable (one field per line, the same order of keys every time), for the differences of Git to be clear: assistant's reading, to settle with the format of the files.
 - The `"format"` number at the top of each file stays: it is the version of the file format, not of Metadata.
 
+## Read again on 2026-11-21 (presets and faceplate)
+
+The Product Owner read the preset, its values and the faceplate again. The values are right ("default value", the link to the enum item, the decimals beside the unit: "ça fait sens, c'est cool"); the command button too. He found the rest of the faceplate unclear and asked for it to be reworked, and left two names to the assistant ("à toi de me le dire").
+
+- **The preset keeps a `name`, not an `id`** (assistant's choice, left to it by the Product Owner, who leaned that way: "peut-être que non, c'est mieux là, parce que ça va pas être utilisé comme un ID"). Nothing points to it, every link goes through its `internal_id`, and it never goes to the model: it only tells two presets of a type apart for people. The head of the file now says what `id` and `name` each mean, so that the difference is a rule and not an exception. Screen MD-07.3 already says "Name of the preset".
+- **`DISPLAY` becomes `DISPLAY_FORMAT`, not "display unit"** (assistant's choice, asked by the Product Owner: "Pourquoi pas display unit ?"). The part holds two things that go together, the display unit and the decimals, so "display unit" would name only half of it; "display" alone said too little. Its `unit` field is the display unit, said in the schema.
+- **The faceplate is described box by box**, in [The faceplate, box by box](#the-faceplate-box-by-box): what each field holds and when, with a diagram of which part goes with which kind of element.
+- **Every choice list is described**, in [The choice lists](#the-choice-lists), with its values and their meaning (Product Owner: "Input kind : c'est un enum pour moi, mais du coup, tu décris pas l'enum").
+- **Fields renamed so that they say what they hold** (Product Owner: "Je veux bien que tu repasses sur les noms des propriétés"):
+  - `SIGNAL_FIELD.input` becomes `input_kind`, the Product Owner's own reading, so that it is never mistaken for an input of the model; its values are written in the schema;
+  - `access` says in the schema which value goes with which direction: write for an input, override for an output;
+  - `BOUND.value` becomes `typed_value` and `TEXT_CONTENT.text` becomes `typed_text`: each says it is the typed one, beside the signal or the identifier;
+  - the source of a text says `typed` instead of `fixed`, the same word as for a bound; screen MD-07.19 and the draft keep "fixed text" for the user, which means the same.
+- **Why a title or a description can point to a signal** (Product Owner: "Je comprends pas pourquoi y a un truc signal"): he asked for it on 2026-11-18 (decision 0048). The text then shows the value of the signal alone, read only; it is not a signal element. Said under `TEXT_CONTENT`.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -315,4 +415,6 @@ The Product Owner answered the question of the day before in the questionnaire, 
 - The default number of decimals of a preset: 2 or 3 (Product Owner, 2026-11-19: "qui serait de 2 ou de 3"), and whether it is fixed by the software or set for the project.
 - The syntax of the expressions (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
 - The name of the short text that names a colour or an icon: `description` for now.
-- The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `MEASUREMENT`, `COMMAND_TARGET`, `DISPLAY`, `SIGNAL_FIELD`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
+- The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `MEASUREMENT`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
+- The input of a boolean signal in the faceplate: none of the four `input_kind` fits it (a switch, a checkbox, two radio buttons?). The example of the draft only says "true or false".
+- What `input_kind` means for a signal field in `read`: how the value is shown (radio buttons that cannot be clicked, or the text alone)? Assistant's reading: `input_kind` stays set, so that switching to write keeps it.
