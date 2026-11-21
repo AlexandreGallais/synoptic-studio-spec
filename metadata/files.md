@@ -4,10 +4,7 @@
 
 | Version | Date | Status | Change |
 | --- | --- | --- | --- |
-| 1 | 2026-11-21 | Draft | Creation of the file |
-| 2 | 2026-11-21 | Draft | Entity files give two schemas; shared types to come |
-| 3 | 2026-11-21 | Draft | One schema per version of the file format |
-| 4 | 2026-11-22 | Draft | `format` renamed `format_version`; the two keys of an entity and their match in the standards |
+| 1 | 2026-11-22 | Draft | Creation of the file; entity files give two schemas, shared types to come; one schema per version of the file format; `format` renamed `format_version`; the two keys of an entity and their match in the standards |
 
 The rules every file of Metadata follows. An [entity file](entities/README.md) gives only the JSON Schemas of its entity and of its own file; what holds for every file is written here, never on an entity.
 

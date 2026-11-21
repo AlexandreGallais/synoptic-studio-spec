@@ -4,9 +4,7 @@
 
 | Version | Date | Status | Change |
 | --- | --- | --- | --- |
-| 1 | 2026-11-21 | Draft | Creation of the file, as Identifier |
-| 2 | 2026-11-22 | Draft | Renamed Designation; `internal_id` never exported |
-| 3 | 2026-11-22 | Draft | Name Designation confirmed by the Product Owner (decision 0064) |
+| 1 | 2026-11-22 | Draft | Creation of the file, as Identifier; renamed Designation (decision 0064); `internal_id` never exported |
 
 | Tag | Value |
 | --- | --- |
