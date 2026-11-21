@@ -10,7 +10,7 @@
 | --- | --- |
 | File | `<name>.palette.json` |
 
-A palette is a named, ordered set of [colors](02-color.md): the only place where colors are kept, and the only colors a type can pick. Each palette has a file of its own, named after it (`pompes-bleues.palette.json` for "Pompes bleues"), so that a palette is added or removed with its file; renaming the palette renames its file.
+A palette is a set of [colors](02-color.md): the only colors a type can pick.
 
 ## The entity
 
@@ -33,13 +33,13 @@ erDiagram
   "additionalProperties": false,
   "properties": {
     "internal_id": {
-      "description": "Primary key, unique; surrogate key, never exported. UUID version 7 (RFC 9562), lower case, set by the software.",
+      "description": "Primary key.",
       "type": "string",
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
       "readOnly": true
     },
     "name": {
-      "description": "The label people read to tell the palettes apart. Unique: it gives the name of the palette's file.",
+      "description": "Unique among the palettes.",
       "type": "string",
       "minLength": 1
     },
@@ -65,11 +65,10 @@ erDiagram
   "additionalProperties": false,
   "properties": {
     "format_version": {
-      "description": "Version of the file format.",
       "const": 1
     },
     "palette": {
-      "description": "The palette the file holds, with its colors.",
+      "description": "The palette the file holds.",
       "$ref": "palette.schema.json"
     }
   }

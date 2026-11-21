@@ -10,7 +10,7 @@
 | --- | --- |
 | File | `designations.json` |
 
-A designation is what identifies the equipment a placed symbol stands for, such as its tag or its location. Metadata defines it once, by its `id` (`tag`, `location`); its text is written on each placed symbol, in the synoptic: `P-101` for the tag of a pump, `Hall B` for where it stands. A title or a paragraph of a faceplate can show it. Designations belong to no type and are all kept in one file.
+A designation is what identifies the equipment a placed symbol stands for, such as its tag or its location. Metadata defines it once, by its `id` (`tag`, `location`); its text is written on each placed symbol: `P-101` for the tag of a pump, `Hall B` for where it stands. Designations belong to no type.
 
 ## The entity
 
@@ -34,13 +34,13 @@ erDiagram
   "additionalProperties": false,
   "properties": {
     "internal_id": {
-      "description": "Primary key, unique; surrogate key, never exported. UUID version 7 (RFC 9562), lower case, set by the software.",
+      "description": "Primary key.",
       "type": "string",
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
       "readOnly": true
     },
     "id": {
-      "description": "The key the user gives, never a UUID; shown on screen and written in the configuration files the software makes, in place of internal_id.",
+      "description": "The key of the designation, such as tag or location.",
       "type": "string",
       "minLength": 1
     },
@@ -50,7 +50,7 @@ erDiagram
       "default": false
     },
     "description": {
-      "description": "What the designation is, plain text for people.",
+      "description": "What the designation is, for people.",
       "type": ["string", "null"],
       "minLength": 1
     }
@@ -70,7 +70,6 @@ erDiagram
   "additionalProperties": false,
   "properties": {
     "format_version": {
-      "description": "Version of the file format.",
       "const": 1
     },
     "designations": {

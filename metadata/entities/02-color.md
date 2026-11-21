@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A color is one color of a [Palette](03-palette.md), picked for the appearance of a type. It exists only inside its palette, never on its own, and is kept in the palette's file. A type points to it by its `internal_id`, never by its value: changing the value in the palette changes every type that uses it.
+A color is one color of a [Palette](03-palette.md), picked for the appearance of a type. It exists only inside its palette's file. A type points to it by its `internal_id`: changing its value changes every type that uses it.
 
 ## The entity
 
@@ -14,7 +14,7 @@ A color is one color of a [Palette](03-palette.md), picked for the appearance of
 erDiagram
     COLOR {
         uuid internal_id PK
-        text name "optional"
+        text name
         rgba value
     }
 ```
@@ -29,18 +29,18 @@ erDiagram
   "additionalProperties": false,
   "properties": {
     "internal_id": {
-      "description": "Primary key, unique; surrogate key, never exported. UUID version 7 (RFC 9562), lower case, set by the software.",
+      "description": "Primary key.",
       "type": "string",
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
       "readOnly": true
     },
     "name": {
-      "description": "The label shown on hover, to tell the colors apart. Optional: null when the user gives none, a palette being made of values only. Not unique: two colors of a palette may share it.",
+      "description": "A name for people; two colors of a palette may share it.",
       "type": ["string", "null"],
       "minLength": 1
     },
     "value": {
-      "description": "The color and its opacity, as a hexadecimal sRGB code #rrggbbaa, lower case: ff is opaque, 00 fully transparent.",
+      "description": "The color in sRGB; its last two digits are the opacity, ff opaque, 00 fully transparent.",
       "type": "string",
       "pattern": "^#[0-9a-f]{8}$",
       "examples": ["#1f77b4ff"]
