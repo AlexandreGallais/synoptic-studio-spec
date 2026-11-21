@@ -476,6 +476,7 @@ Said by the Product Owner on 2026-11-22 ("les couleurs sont dans des palettes [.
 - **Every file holds `format_version`, then one object named after what it holds** (answer: "Objet nommé"), the palette as the type and the global enum: the two examples of the [Data model](data-model.md) were rewritten so.
 - **A color has an opacity** (answer: "Avec transparence"): its value is `#rrggbbaa`, always eight digits, `ff` being opaque; the box says `rgba`.
 - `name` is required for a palette and for a color; a palette holds at least one color, as the link `|{` of the schema says.
+- **No table of the fields on an entity file** (Product Owner, same day: "le tableau [...] c'est un doublon du schéma JSON [...] il sert à rien, strictement rien"): an entity file shows its schema, then its JSON Schema, which Arsenal draws as a tree; each field is described once, in its `description`. This replaces the table set on 2026-11-21; the three entity files were changed so.
 
 ## Not in the schema yet
 

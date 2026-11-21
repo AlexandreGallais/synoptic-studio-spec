@@ -23,12 +23,6 @@ erDiagram
     PALETTE ||--|{ COLOR : "holds"
 ```
 
-| Field | Required | Default | What it is |
-| --- | --- | --- | --- |
-| `internal_id` | ✓ |  | The unique identifier inside the software, set by it. It never leaves the software. |
-| `name` | ✓ |  | The label people read to tell the palettes apart; it gives the name of the palette's file, so it is unique. |
-| `colors` | ✓ |  | Its [colors](02-color.md), in the order chosen by the user. |
-
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",

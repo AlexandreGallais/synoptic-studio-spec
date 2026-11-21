@@ -19,12 +19,6 @@ erDiagram
     }
 ```
 
-| Field | Required | Default | What it is |
-| --- | --- | --- | --- |
-| `internal_id` | ✓ |  | The unique identifier inside the software, set by it. It never leaves the software. |
-| `name` | ✓ |  | The label shown on hover, to tell the colors apart. |
-| `value` | ✓ |  | The color itself and its opacity, as a hexadecimal code `#rrggbbaa`: `ff` is opaque, `00` is fully transparent (`#1f77b4ff`). |
-
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -41,12 +35,12 @@ erDiagram
       "readOnly": true
     },
     "name": {
-      "description": "The label shown on hover.",
+      "description": "The label shown on hover, to tell the colors apart.",
       "type": "string",
       "minLength": 1
     },
     "value": {
-      "description": "The color and its opacity, as a hexadecimal sRGB code #rrggbbaa, lower case; ff is opaque.",
+      "description": "The color and its opacity, as a hexadecimal sRGB code #rrggbbaa, lower case: ff is opaque, 00 fully transparent.",
       "type": "string",
       "pattern": "^#[0-9a-f]{8}$",
       "examples": ["#1f77b4ff"]

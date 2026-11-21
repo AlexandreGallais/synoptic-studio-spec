@@ -24,13 +24,6 @@ erDiagram
     }
 ```
 
-| Field | Required | Default | What it is |
-| --- | --- | --- | --- |
-| `internal_id` | ✓ |  | The unique identifier inside the software, set by it. It never leaves the software. |
-| `id` | ✓ |  | The key the user gives. The software shows it and writes it in the configuration files it makes; `internal_id` never appears there. |
-| `required` | ✓ | `false` | Whether its text must be filled on every placed symbol. |
-| `description` |  |  | What the designation is, in plain text for people. |
-
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -47,7 +40,7 @@ erDiagram
       "readOnly": true
     },
     "id": {
-      "description": "The key the user gives, never a UUID; written in the configuration files in place of internal_id.",
+      "description": "The key the user gives, never a UUID; shown on screen and written in the configuration files the software makes, in place of internal_id.",
       "type": "string",
       "minLength": 1
     },
