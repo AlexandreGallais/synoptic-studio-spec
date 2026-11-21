@@ -7,6 +7,9 @@ Status: everything written around the schema of the [Data model](data-model.md) 
 ## Rules of the schema
 
 - `internal_id`: the UUID set by the software; every FK holds one.
+  - Every UUID of Synoptic Studio is a **UUID version 7** (Product Owner, 2026-11-21: "le format qui a un timestamp [...] ça permettra d'avoir des trucs plus propres si jamais on met ça dans une base de données"). Version 7 starts with the time of its creation, in milliseconds since 1970 (UTC), so that UUIDs sort in the order they were made; RFC 9562 (May 2024, section 5.7) advises it over versions 1 and 6, the other two with a timestamp.
+  - Written in lower case, 36 characters with the dashes; the 13th digit is always `7`.
+  - The made-up UUIDs of the examples follow this shape (`01a1f800-0000-7000-8000-…`).
 - `id`: the public identifier, written by the user, that leaves the application: sent to the model and written in the configuration files.
 - `name`: a label people read, for a thing that has no `id`: nothing points to it and it never goes to the model. What the software ships (quantities, families, units), the name of a preset (see [Read again on 2026-11-21](#read-again-on-2026-11-21-presets-and-faceplate)), the name of a palette, of an icon or of a colour (decision 0057).
 - `display_name`: a label people read, for a thing that has an `id` or a key: it is shown in place of that `id` or key, and never goes to the model (an enum item, an identifier, a signal field, a command button). Empty, the `id` or the key is shown.

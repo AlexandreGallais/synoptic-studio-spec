@@ -28,7 +28,7 @@ erDiagram
 
 | Field | What it is | Rule |
 | --- | --- | --- |
-| `internal_id` | The UUID set by the software | Never changes, never leaves the application. A faceplate points to the identifier through it, so a changed `id` breaks nothing. |
+| `internal_id` | The UUID set by the software, version 7 (see [Rules of the schema](../data-model-notes.md#rules-of-the-schema)) | Never changes, never leaves the application. A faceplate points to the identifier through it, so a changed `id` breaks nothing. |
 | `id` | The key | Written by the user. The public identifier, as for every entity of Metadata. |
 | `display_name` | The name people read | Shown in place of the `id`. Empty (`null`): the `id` is shown. |
 | `description` | What the identifier is | Plain text, for people. Empty: `null`. |
@@ -53,13 +53,13 @@ Two made-up identifiers. The internal IDs are made up too; `…800` is the one t
   "format": 1,
   "identifiers": [
     {
-      "internal_id": "6f1c2a90-0000-4000-8000-000000000800",
+      "internal_id": "01a1f800-0000-7000-8000-000000000800",
       "id": "tag",
       "display_name": "Tag",
       "description": "The tag of the equipment, as on the plant drawings."
     },
     {
-      "internal_id": "6f1c2a90-0000-4000-8000-000000000801",
+      "internal_id": "01a1f800-0000-7000-8000-000000000801",
       "id": "location",
       "display_name": null,
       "description": null
@@ -97,9 +97,9 @@ The rules of the file, in JSON Schema (draft 2020-12), so that a file can be che
       "additionalProperties": false,
       "properties": {
         "internal_id": {
-          "description": "UUID set by the software, lower case, never changes.",
+          "description": "UUID version 7 (RFC 9562) set by the software, lower case, never changes.",
           "type": "string",
-          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
         },
         "id": {
           "description": "The key, written by the user.",

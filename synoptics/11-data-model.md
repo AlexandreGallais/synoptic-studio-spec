@@ -8,7 +8,7 @@ Status: a first sketch by the assistant, 2026-11-20. Three of its choices were s
 
 The same as in Metadata:
 
-- `internal_id`: the UUID set by the software; every FK holds one.
+- `internal_id`: the UUID set by the software, version 7 (see [Rules of the schema](../metadata/data-model-notes.md#rules-of-the-schema)); every FK holds one.
 - A box without `internal_id` is a part of its owner (a nested object in the JSON), never pointed to.
 - `has`: one nested object; `holds`: an ordered list inside its owner.
 - Every other link is a FK, labelled by the field that holds it.
