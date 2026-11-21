@@ -432,6 +432,14 @@ Asked by the Product Owner on 2026-11-21 ("c'est des règles globales").
 - **No section Product Owner context** on an entity file or on Files (Product Owner, later the same day: "ça ne sert strictement à rien"): the history stays in these notes.
 - **No Where it is used and no status sentence on an entity file** (Product Owner, same day): a table of versions (version, date, status, change) and a table of tags (`File`) open the file instead.
 
+## Settled on 2026-11-21 (identifier answers)
+
+- `internal_id` is the primary key, so it is unique; `id` is never empty (it is required).
+- The configuration files of a synoptic are always made, even with an empty required text; the software checks each object and lists where the errors are.
+- The file of an entity is named after its list (`identifiers.json`), a name reserved for it; where files are placed is left to the software architecture.
+- A text is never an empty string: empty is `null`; the JSON Schema says it with `minLength: 1`.
+- The names of every term of the data model go to one research (T5, rewritten).
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
