@@ -6,8 +6,8 @@ Status: schema being read again with the Product Owner (2026-11-19 to 2026-11-21
 
 - `internal_id`: the UUID set by the software; every FK holds one.
 - `id`: the public identifier, written by the user, that leaves the application: sent to the model and written in the configuration files.
-- `name`: a label people read, for a thing that has no `id`: nothing points to it and it never goes to the model. What the software ships (quantities, families, units), the name of a preset (see [Read again on 2026-11-21](#read-again-on-2026-11-21-presets-and-faceplate)), the name of a palette.
-- `display_name`: a label people read, for a thing that has an `id` or a key: it is shown in place of that `id` or key, and never goes to the model (an enum item, an identifier, a signal field).
+- `name`: a label people read, for a thing that has no `id`: nothing points to it and it never goes to the model. What the software ships (quantities, families, units), the name of a preset (see [Read again on 2026-11-21](#read-again-on-2026-11-21-presets-and-faceplate)), the name of a palette, of an icon or of a colour (decision 0057).
+- `display_name`: a label people read, for a thing that has an `id` or a key: it is shown in place of that `id` or key, and never goes to the model (an enum item, an identifier, a signal field, a command button). Empty, the `id` or the key is shown.
 - `description`: a text that explains, for people; plain text everywhere, Markdown only in `DOCUMENTATION`.
 - A choice of the software (`kind`, `direction`, `measure`...) is written in the JSON as an English word (`"input"`, `"difference"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). A value of several words is joined by underscores (`set_signal`, `number_field`), the same in the schema and in the JSON. The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
 - The field that says which alternative a box is: `kind` in general; `source` when it says where a value comes from (typed, or taken from a signal or an identifier); `direction`, `measure`, `access` and `input_kind` where their own word says more.
@@ -105,7 +105,7 @@ erDiagram
     }
     COMMAND_BUTTON {
         uuid command FK
-        text button_text
+        text display_name "empty: the command's id is shown"
     }
     TEXT_CONTENT {
         uuid identifier FK "when source is identifier: its text on each placed symbol"
@@ -152,7 +152,7 @@ erDiagram
     ICON {
         uuid internal_id PK
         svg drawing
-        text description
+        text name "shown on hover"
     }
     PALETTE {
         uuid internal_id PK
@@ -161,7 +161,7 @@ erDiagram
     COLOUR {
         uuid internal_id PK
         rgb value
-        text description "shown on hover"
+        text name "shown on hover"
     }
     TYPE |o--o{ TYPE : "parent"
     TYPE ||--|| APPEARANCE : "has"
@@ -210,7 +210,7 @@ erDiagram
 
 Asked by the Product Owner on 2026-11-21 ("que tu me construises juste en dessous du schéma l'objet JSON [...] qui représente un peu tout ce qu'il pourrait avoir"). One made-up type that uses every box of a type at least once, without trying every combination; then a global enum and a quantity of the catalogue, which live in files of their own. The identifiers, the icons and the palettes are left out. The internal IDs are made up, and only their last digits differ, to read them easily.
 
-How the boxes become JSON, one rule for each, with no exception (assistant's reading, to validate with the example):
+How the boxes become JSON, one rule for each, with no exception (the names of the lists confirmed by the Product Owner on 2026-11-21, decision 0057):
 
 - A field keeps its name in the schema (`internal_id`, `display_name`, `typed_value`).
 - A part (`has`) is a nested object named after its box, in lower case (`value_type`, `measurement`, `command_target`, `signal_field`); two parts of the same box are named by their role (`min`, `max`).
@@ -476,7 +476,7 @@ How the boxes become JSON, one rule for each, with no exception (assistant's rea
           "kind": "command",
           "command_button": {
             "command": "6f1c2a90-0000-4000-8000-000000000030",
-            "button_text": "Start"
+            "display_name": "Start"
           }
         }
       ]
@@ -635,12 +635,12 @@ A bound is its own box because it is one of two things, a number or a signal: th
 
 ### `COMMAND_BUTTON`: a button that sends a command
 
-Found right by the Product Owner on 2026-11-21 ("button text, ça, c'est parfait, et la commande associée").
+Found right by the Product Owner on 2026-11-21 ("button text, ça, c'est parfait, et la commande associée"); its text renamed `display_name` the same day, to read like the label of a signal field (decision 0057).
 
 | Field | What it holds | When |
 | --- | --- | --- |
 | `command` | The command sent by a click, one of the type, own or inherited. | Always. |
-| `button_text` | The text on the button. | Always. |
+| `display_name` | The text on the button, for people; never sent to the model. | Always; empty, the command's `id` is shown, as for a signal field. |
 
 ### `TEXT_CONTENT`: the text of a title or a description
 
@@ -834,7 +834,15 @@ Asked by the Product Owner on 2026-11-21 ("voir tout, tout, tout [...] comment c
 - **The JSON keys follow the boxes with no exception**: `command_target` (was `target`, which `LINK.target` already uses), `enum_items` (was `items`), `preset_values` (was `values`), `faceplate_elements` in the preset and in a group (were `faceplate` and `elements`).
 - **`name`, `display_name` and `description` are told apart** at the head of the file: `name` for a thing without `id`, `display_name` shown in place of an `id` or a key, `description` to explain.
 - Checked and unchanged: the FK fields (`parent`, `icon`, `colour`, `enum`, `quantity`, `signal`, `command`, `identifier`, `unit`, `default_unit`), the field order in every box, `has` and `holds`, the conditions in `when`.
-- Left open, because they change words the Product Owner validated or that wait for a research: `id` and `internal_id` (research T5), `button_text`, and the `description` of an icon or a colour (see [Open](#open)).
+- Left open, because they changed words the Product Owner validated or wait for a research: `id` and `internal_id` (research T5), `button_text`, and the `description` of an icon or a colour. The last two were settled the same day, see below.
+
+## Settled on 2026-11-21 (names)
+
+The Product Owner answered the three questions of the names in the questionnaire, with the option the assistant advised each time. Decision 0057 (accepted, 2026-11-21) records them: it changes the field name of a command button found right the same day.
+
+- **The lists of the JSON keep the name of their box, with no exception** (Product Owner: "Nom de la boîte, sans exception"): `enum_items`, `preset_values`, `faceplate_elements` in a preset and in a group, `command_target`. One rule, and `command_target` is never mistaken for `LINK.target`.
+- **`COMMAND_BUTTON.button_text` becomes `display_name`** (Product Owner: "Renommer en display_name"): it is shown in place of the command's `id`, as the label of a signal field is shown in place of the signal's. Empty, the button shows the command's `id`.
+- **The short text that names an icon or a colour becomes `name`** (Product Owner: "Renommer en name"): a label for a thing without `id`, shown on hover; `description` stays for a text that explains.
 
 ## Not in the schema yet
 
@@ -848,7 +856,5 @@ Asked by the Product Owner on 2026-11-21 ("voir tout, tout, tout [...] comment c
 - The names of the two quantities added for numbers that measure nothing physical: "ratio" and "count" for now.
 - The default number of decimals of a preset: 2 or 3 (Product Owner, 2026-11-19: "qui serait de 2 ou de 3"), and whether it is fixed by the software or set for the project.
 - The syntax of the expressions (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
-- The name of the short text that names a colour or an icon: `description` for now. By the rules of the head of this file it is a `name` (a label for a thing without `id`), not a text that explains.
-- `COMMAND_BUTTON.button_text`: by the rules of the head of this file it is a `display_name` (shown in place of the command's `id`). Kept as it is: the Product Owner found it right on 2026-11-21. If it became `display_name`, an empty one would show the command's `id`, as for a signal field.
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `MEASUREMENT`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
 - The two texts of a boolean: required, or "true" and "false" when empty (assistant's reading)? And are they written in the configuration files sent with the model, as the description is?
