@@ -501,7 +501,7 @@ A signal is what goes between the front and the model: an input or an output of 
 - **Its direction is chosen like any signal's**, input or output. In practice a bound is **an input**: it is given to the model, to tell it the range its data will be bounded with (Product Owner, 2026-11-17: "on dit littéralement au modèle ce qu'il va avoir [...] dans la logique, c'est donné au modèle").
 - Where a bound is used:
   - in a symbol, the bounded linear animation can take its minimum or its maximum from any signal of the type, input or output (see [Animation mode](../symbols/08-animation-mode/README.md#shapes-of-mapping));
-  - in the faceplate, the minimum and the maximum of a number field are each typed by hand or taken from a signal of the type (Product Owner, end of 2026-11-17; see [Presets](#bounds-of-a-number-field)).
+  - in the faceplate, the minimum and the maximum of a number field are each typed by hand or taken from an input signal of the type, never an output (Product Owner, end of 2026-11-17, and 2026-11-21 for the input only; see [Presets](#bounds-of-a-number-field)).
 - **No decimal places on the signal** (Product Owner, 2026-11-17: "le modèle, il doit pouvoir tout bouffer"): the model gives and receives the whole value. If a number of decimals must be set, it is set once for the whole project, in a place for project settings, outside Metadata, so that every value of the project has the same decimals (Product Owner: "c'est pas dans les métadatas [...] avoir le même nombre de décimales partout"). That place is not described yet. What this means for the decimals of the presets and of the catalogue of units is asked (see [Open questions](#metadata-open-questions)).
 
 ### Fields
@@ -512,7 +512,7 @@ A signal is what goes between the front and the model: an input or an output of 
 | ID | The signal's name for the model. | Its variable identifier, set once. Shown as "ID" in the table. |
 | Type | What kind of value. | Integer, real, boolean or enum. A real is a 64-bit double. No text (Product Owner, 2026-11-18, see [No text signal](#no-text-signal)). |
 | Enum | For an enum: the list of values. | An enum picked from the Enums page (see [Enums](#enums)): a global enum or a template (2026-11-17, see [Global enums and templates](#global-enums-and-templates)). A link to it, never a copy, and never defined in the signal. |
-| True / False | For a boolean: the text shown for each state ("Open" and "Closed", "Running" and "Stopped"). | Two short texts, typed on the line (Product Owner, 2026-11-21: "Deux mots choisis par signal", decision 0054). Shown in the faceplate for a signal in read and for a title or a description bound to the signal. Never sent to the model, which gets true or false; empty, "true" and "false" are shown (assistant's reading, to confirm). |
+| True / False | For a boolean: the text shown for each state ("Open" and "Closed", "Running" and "Stopped"). | Two short texts, typed on the line (Product Owner, 2026-11-21: "Deux mots choisis par signal", decision 0054). Shown in the faceplate for a signal in read. Never sent to the model, which gets true or false; empty, "true" and "false" are shown (assistant's reading, to confirm). |
 | Quantity | What the value measures (volume, flow, pressure...), and whether the value is the quantity itself or a difference of it. | Required for an integer or a real, never for a boolean or an enum (decision 0051, 2026-11-19): a number that measures nothing physical takes the ratio or the count of the catalogue. Picked from the ready-made catalogue of the Units page, which the user never changes; the user picks the quantity or its difference, told apart by an icon (Product Owner, 2026-11-16), see [Units](#value-or-difference-chosen-in-the-signal). |
 | Description | What the signal means, for the person who writes the model. | Plain text (assistant's reading). Optional. Written in the configuration files sent with the model, edited in Metadata only. Last column of the table (2026-11-20, decision 0052). |
 
@@ -1160,7 +1160,7 @@ sequenceDiagram
 ```
 
 - **No command in this table** (Product Owner: "Dans les commandes, tu ne les verrais même pas dans preset"): a command has no value to set here. Commands are only placed in the builder.
-- No "Shown", no "Name shown", no "Input", no "Read or write", no "Read or override" here: they belong to the builder, since they only say how the faceplate shows a signal.
+- No "Shown", no "Display name", no "Input", no "Read or write", no "Read or override" here: they belong to the builder, since they only say how the faceplate shows a signal.
 - There is no "add an entry": the whole list is always there.
 - The lines come in the order of the table of [Signals](#the-order-of-the-lines): inherited signals first, then the type's own; no handle and no sort here.
 
@@ -1182,10 +1182,10 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas juste bêtement avoi
 
 | Element | What it holds | Rule |
 | --- | --- | --- |
-| Signal | The signal, picked by its ID; the **name shown**; **read or write** for an input, **read or override** for an output; the **input**. | Name shown: plain text, the name people see in the faceplate, never sent to the model; empty, the ID is shown (decision 0018); it exists only in the builder (decision 0022). Read or write, read or override: see [Typing a value](#typing-a-value). Input: chosen in the builder (Product Owner, end of 2026-11-17: "on le choisit : on met input number, par exemple"); for an enum, radio on one line, radio on several lines or select, its items in the order chosen with the handles on the Enums page (Product Owner, end of 2026-11-17: "Oui, l'ordre des poignées"); for a number, a number field, with its [bounds](#bounds-of-a-number-field); for a boolean, a switch (Product Owner, 2026-11-21: "Interrupteur (switch)"). Chosen for write or override only: in read, the value is shown as text (see [Typing a value](#typing-a-value)). |
+| Signal | The signal, picked by its ID; the **display name**; **read or write** for an input, **read or override** for an output; the **input**. | Display name: plain text, the name people see in the faceplate, never sent to the model; empty, the ID is shown (decision 0018); it exists only in the builder (decision 0022). Called "name shown" until 2026-11-21, renamed for the same word as an identifier's (Product Owner: "faudrait homogénéiser ça partout"; decision 0055). Read or write, read or override: see [Typing a value](#typing-a-value). Input: chosen in the builder (Product Owner, end of 2026-11-17: "on le choisit : on met input number, par exemple"); for an enum, radio on one line, radio on several lines or select, its items in the order chosen with the handles on the Enums page (Product Owner, end of 2026-11-17: "Oui, l'ordre des poignées"); for a number, a number field, with its [bounds](#bounds-of-a-number-field); for a boolean, a switch (Product Owner, 2026-11-21: "Interrupteur (switch)"). Chosen for write or override only: in read, the value is shown as text (see [Typing a value](#typing-a-value)). |
 | Command | The command, picked by its ID; the **name on the button**. | Plain text. The faceplate shows a button that sends the command. |
-| Title | A text: fixed, or a variable (an identifier or a signal). | A heading inside the faceplate or inside a group. A small icon on the right of its field chooses a fixed text or a variable (Product Owner, 2026-11-18; see [Fixed text or a variable](#fixed-text-or-a-variable)). |
-| Description | A text, plain: no Markdown, no links; line breaks kept. Fixed, or a variable (an identifier or a signal). | A paragraph inside the faceplate or inside a group. The same small icon as the title (Product Owner, 2026-11-18). |
+| Title | A text: fixed, or a variable (an identifier, never a signal). | A heading inside the faceplate or inside a group. A small icon on the right of its field chooses a fixed text or a variable (Product Owner, 2026-11-18; see [Fixed text or a variable](#fixed-text-or-a-variable)). |
+| Description | A text, plain: no Markdown, no links; line breaks kept. Fixed, or a variable (an identifier, never a signal). | A paragraph inside the faceplate or inside a group. The same small icon as the title (Product Owner, 2026-11-18). |
 | Group | Only its own elements: signals, commands, titles, descriptions, groups. No title, no description of its own (confirmed by the Product Owner on 2026-11-17: "ça, faut les enlever, le title et la description"). | Gathers the elements put in it. At its top, the same five small icons with a + as the title "Elements": Signal, Command, Title, Description, Group (decided 2026-11-16; confirmed 2026-11-17, see [Only elements in elements](#only-elements-in-elements)). |
 
 ##### Only elements in elements
@@ -1200,7 +1200,7 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas donner un titre et u
 - Written in decision 0034 (accepted on 2026-11-17), which changes decision 0022 on these points.
 
 - **What is in the builder is what the faceplate shows.** There is no "Shown" checkbox any more ("on montrerait ce qu'on veut"): a signal or a command that is not added is not in the faceplate.
-- The name shown and the name on the button exist **only in the builder**: they serve the faceplate alone (Product Owner: "le display name, qui ne sert que pour la pop-up").
+- The display name and the name on the button exist **only in the builder**: they serve the faceplate alone (Product Owner: "le display name, qui ne sert que pour la pop-up").
 - The **order of the faceplate is the order of the builder**: it no longer follows the order of the table of Signals. An element is moved with a **handle** at its left, as in the tables of Metadata and as on the wireframes (Product Owner, end of 2026-11-17: "il y a déjà les poignées là").
 - Deleting an element: a delete button at its right, with a warning, as everywhere in Metadata (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
 - All the commands of the type stay available to the symbol, which links them to clicks on its parts, whether or not the builder holds them (see [Commands](#commands)).
@@ -1210,10 +1210,10 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas donner un titre et u
 flowchart TD
     FP["Faceplate builder"] --> T["Title: Feed pump"]
     FP --> D["Description: Pump P-101"]
-    FP --> E1["Signal: running, name shown, read"]
+    FP --> E1["Signal: running, display name, read"]
     FP --> G["Group"]
     G --> GT["Title: Control"]
-    G --> E2["Signal: mode, name shown, radio, write"]
+    G --> E2["Signal: mode, display name, radio, write"]
     G --> E3["Command: start, button Start"]
     G --> E4["Command: stop, button Stop"]
     FP --> E5["Title: Measures"]
@@ -1225,7 +1225,8 @@ flowchart TD
 Said by the Product Owner on 2026-11-18, with the page [Identifiers](#identifiers): the same principle as Figma's "Apply variable", already used for the [bounds of a number field](#bounds-of-a-number-field).
 
 - The text field of a **title** element and of a **description** element has **a small icon on its right**, as in Figma ("quand on a un titre ou une description, pour les inputs texte, il faut qu'à leur droite, il y ait une petite icône, un peu comme sur Figma").
-- The icon chooses what fills the field: **a fixed text** typed by the user, or **a variable**: an **identifier** of the page [Identifiers](#identifiers), or a **signal** ("qui pourrait être ces identifiants-là ou alors un signal").
+- The icon chooses what fills the field: **a fixed text** typed by the user, or **a variable**: an **identifier** of the page [Identifiers](#identifiers).
+- **Never a signal** (Product Owner, 2026-11-21: "ça doit venir que d'un identifiant et jamais d'un signal [...] Puisqu'un signal, on peut l'afficher avec la partie signal"): a signal element in read shows its value. It removes the signal offered on 2026-11-18 ("ou alors un signal"); decision 0055.
 - An identifier is filled with its own text on each placed symbol, in the synoptic: one preset shows "P-101" on one pump and "P-102" on the next ("La pop-up va pouvoir être remplie grâce à ces identifiants-là").
 - The field holds a fixed text or one variable, whole: assistant's reading, from the Figma principle. The rest is open, listed in [Identifiers](#open-questions-8).
 - Written in decision 0048 (accepted on 2026-11-18), with the page Identifiers.
@@ -1238,7 +1239,7 @@ Said by the Product Owner on 2026-11-18, with the page [Identifiers](#identifier
 #### Typing a value
 
 - A signal element offers **read or write for an input**, and **read or override for an output** (Product Owner, end of 2026-11-17: "c'est read write pour un input et read override pour un output"). It corrects the single "read or override" written earlier on 2026-11-17 for both directions (decision 0040, accepted on 2026-11-17, which changes decision 0030).
-- A signal set to **read** shows **the text of its value alone**, no field drawn, not even greyed (Product Owner, 2026-11-21: "Le texte de la valeur seul"): in the display unit and with the decimals of the preset, an enum by the display text of its item, a boolean by the text of its state set on the signal (Product Owner, 2026-11-21: "Deux mots choisis par signal"; see [Signals](#fields)), as a title bound to a signal shows it. It has no input to choose and no bounds (decision 0054).
+- A signal set to **read** shows **the text of its value alone**, no field drawn, not even greyed (Product Owner, 2026-11-21: "Le texte de la valeur seul"): in the display unit and with the decimals of the preset, an enum by the display text of its item, a boolean by the text of its state set on the signal (Product Owner, 2026-11-21: "Deux mots choisis par signal"; see [Signals](#fields)). It has no input to choose and no bounds (decision 0054).
 - A signal set to **write** or to **override** in the builder is the only way for a person to type a value: a command always sends a fixed value (see [Commands](#the-value-is-always-fixed)).
 - **An input and an output can both be typed in, in the same way** (Product Owner, 2026-11-17: "c'est des outputs, faut pouvoir les mettre en write aussi, exactement de la même façon"); only the word changes: write for an input, override for an output. It replaces the rule of 2026-11-16, which greyed write for an output (decision 0030, accepted on 2026-11-17, which changes decisions 0014 and 0022 on this point).
 - What happens to the typed value is **left to what is behind** the faceplate (Product Owner: "c'est à ce qui passe derrière de se débrouiller, parce que ça peut devenir une valeur, ça peut devenir un override"): for an input it becomes the value the model receives; for an output, an override of that output. How an override of an output is applied, and how it ends, is the open question already asked for the command "Override an output" (see [Commands](#open-questions-4)).
@@ -1249,6 +1250,9 @@ Said by the Product Owner at the end of 2026-11-17. A signal has no bounds of it
 
 - A **number field** of the builder can have a **minimum** and a **maximum**.
 - Each is **typed by hand, or taken from a signal of the type**, picked in the field itself: a small icon inside the field chooses the signal, as Figma's "Apply variable" in its fields ("dans l'input même de sélection du min/max, on puisse mettre un truc à la main ou alors choisir une variable").
+- **The signal is an input, never an output, for now** (Product Owner, 2026-11-21: "qu'en entrée, jamais en sortie pour l'instant [...] Au moins, le signal, il reste fixe"): an input is set by the user and given to the model, so the range does not move with what the model computes. Decision 0055. Of the same quantity as the signal shown: assistant's reading.
+- A typed bound is shown and typed in the display unit of the preset, and kept in the default unit of the quantity (decision 0051).
+- The minimum and the maximum together are the **range** of the field (`RANGE` in the [data model](data-model.md#range-the-values-allowed-in-a-number-field)).
 - A typed value outside them is refused, as the faceplate did before bounds became signals (assistant's reading).
 - An integer signal accepts whole numbers only. An enum signal accepts only the items of its enum: the user picks a display text, the model receives its key.
 - A value that passes is converted back to the model unit and rounded to 12 significant digits before it goes to the model (see [Units](#units)).
@@ -1307,19 +1311,19 @@ Mode Faceplate:
 | --- | --- |
 | Title | Feed pump |
 | Description | Pump P-101, feeds tank T-3. |
-| Signal | `running`, name shown "Running", read |
-| Signal | `flow`, name shown "Flow", read |
+| Signal | `running`, display name "Running", read |
+| Signal | `flow`, display name "Flow", read |
 | Group | (no title nor description of its own) |
 | › Title | Control |
 | › Description | Local commands |
-| › Signal | `mode`, name shown "Mode", radio on one line, write |
-| › Signal | `speed_setpoint`, name shown "Speed setpoint", number field, write, minimum 0 typed, maximum the signal `speed_setpoint_max` |
+| › Signal | `mode`, display name "Mode", radio on one line, write |
+| › Signal | `speed_setpoint`, display name "Speed setpoint", number field, write, minimum 0 typed, maximum the signal `speed_setpoint_max` |
 | › Command | `start`, button "Start" |
 | › Command | `stop`, button "Stop" |
 | Title | Measures |
-| Signal | `inlet_pressure`, name shown "Inlet pressure", read |
-| Signal | `pressure_rise`, name shown "Pressure rise", read |
-| Signal | `bearing_temperature`, name shown "Bearing temperature", read |
+| Signal | `inlet_pressure`, display name "Inlet pressure", read |
+| Signal | `pressure_rise`, display name "Pressure rise", read |
+| Signal | `bearing_temperature`, display name "Bearing temperature", read |
 | Description | Alarm above 90 °C. |
 | Command | `reset_fault`, button "Reset fault" |
 
@@ -1329,9 +1333,9 @@ Mode Faceplate:
 | --- | --- | --- | --- | --- |
 | Preset and its name | Metadata, under a type | Symbol and synoptic start from it | Choose one | Choose one |
 | Display unit, decimals, default value | Preset, mode Values, in Metadata | Faceplate of the symbol or synoptic; texts of a symbol that show a value | Edit | Edit |
-| Elements of the faceplate: signals (name shown, input and its bounds, read or write, read or override), commands (name on the button), titles, descriptions, groups | Preset, mode Faceplate, in Metadata | Faceplate of the symbol or synoptic | Open | Open |
+| Elements of the faceplate: signals (display name, input and its bounds, read or write, read or override), commands (name on the button), titles, descriptions, groups | Preset, mode Faceplate, in Metadata | Faceplate of the symbol or synoptic | Open | Open |
 | Texts of the title and description elements | Preset, mode Faceplate, in Metadata | Faceplate of the symbol or synoptic | Edit (assistant's reading) | Edit, on each placed symbol (assistant's reading) |
-| Variable of a title or description element (an identifier or a signal) | Preset, mode Faceplate, in Metadata, through the small icon of the field | Faceplate of the symbol or synoptic | No (assistant's reading) | The text of each identifier filled on each placed symbol (see [Identifiers](#identifiers)) |
+| Variable of a title or description element (an identifier) | Preset, mode Faceplate, in Metadata, through the small icon of the field | Faceplate of the symbol or synoptic | No (assistant's reading) | The text of each identifier filled on each placed symbol (see [Identifiers](#identifiers)) |
 
 ### Open questions
 
@@ -1508,20 +1512,19 @@ Said by the Product Owner on 2026-11-18: it is the same principle as Figma's "Ap
 - **The text field of a title element and of a description element** of the faceplate builder has **a small icon on its right**, as in Figma (Product Owner: "quand on a un titre ou une description, pour les inputs texte, il faut qu'à leur droite, il y ait une petite icône, un peu comme sur Figma").
 - **The icon chooses what fills the field** (Product Owner: "pour pouvoir sélectionner par quoi ça va être rempli"):
   - **a fixed text**, typed by the user (Product Owner: "soit nous qui tapons quelque chose de fixe"), as today;
-  - **a variable** (Product Owner: "soit on dit que c'est un truc de variable"): **an identifier** of this page, **or a signal** (Product Owner: "qui pourrait être ces identifiants-là ou alors un signal. Peu importe").
+  - **a variable** (Product Owner: "soit on dit que c'est un truc de variable"): **an identifier** of this page.
+- **Never a signal** (Product Owner, 2026-11-21: "ça doit venir que d'un identifiant et jamais d'un signal"): the signal offered on 2026-11-18 ("ou alors un signal") is removed, since a signal element in read already shows a value (decision 0055).
 - The icon tells the user that a variable can be chosen there (Product Owner: "Tu peux, à ta droite, sélectionner une variable").
 - **The field holds one or the other, whole**: a fixed text, or one variable. Mixing both in one field (`Pump {tag}`) was not said: open. Assistant's reading, from the Figma principle the Product Owner names, where a variable replaces the whole value.
 - **The faceplate is filled through the identifiers** (Product Owner: "La pop-up va pouvoir être remplie grâce à ces identifiants-là"): a title bound to the identifier `tag` shows `P-101` on the faceplate of the pump P-101, and `P-102` on the next one.
 - **The identifiers used give the synoptic its list to fill** (Product Owner: "ça va permettre d'avoir une liste côté synoptique [...] d'identifiants à remplir"). How that list is shown is for part 3, the synoptic, not written yet.
-- **A signal picked as a variable** is one of the signals of the type, own or inherited, as for the bounds of a number field: assistant's reading. It shows the signal's value as the faceplate shows it: in the display unit and with the decimals of the preset, an enum by the display text of its item (see [Presets](#mode-values-one-table-of-the-signals)). Assistant's reading.
 
 ```mermaid
 flowchart TD
     T["Text field of a title or a description element"] --> I["Small icon, on its right"]
     I --> X["Fixed text: typed by the user"]
-    I --> V["Variable"]
-    V --> ID["An identifier: its text, filled on each placed symbol"]
-    V --> SG["A signal of the type: its value, as the faceplate shows it"]
+    I --> V["Variable: an identifier"]
+    V --> ID["Its text, filled on each placed symbol"]
 ```
 
 ### Example
@@ -1553,7 +1556,7 @@ Assistant's opinion: the word could be added to the documentary research on the 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Identifier (ID, display name, description), its order | Identifiers page of Metadata | Text fields of the title and description elements of the faceplate builder | No (assistant's reading) | Its text filled on each placed symbol; the panel is described with part 3 |
-| Fixed text or variable of a title or description element | Preset, mode Faceplate, in Metadata | Faceplate of the symbol or synoptic | No (assistant's reading) | The faceplate shows the text of the identifier, or the value of the signal |
+| Fixed text or variable of a title or description element | Preset, mode Faceplate, in Metadata | Faceplate of the symbol or synoptic | No (assistant's reading) | The faceplate shows the text of the identifier |
 
 ### Open questions
 
@@ -1565,7 +1568,7 @@ Not asked in the chat: the Product Owner asked not to be asked on this page for 
 - Does the text of an identifier go out in the configuration files of the synoptic, as the flags do?
 - Must an ID be unique on the page?
 - One variable alone in a field, or a fixed text and variables mixed (`Pump {tag}`)?
-- Other text fields of the builder with the same icon: the name shown of a signal, the name on a command's button?
+- Other text fields of the builder with the same icon: the display name of a signal, the name on a command's button?
 - The display name and the description: where each is shown; the description optional.
 - Where the page sits in the navigation bar (last, after Enums: assistant's reading).
 
@@ -1899,7 +1902,7 @@ An example, with made-up identifiers:
 
 ## Who changes what, and where
 
-Status: validated by the Product Owner on 2026-11-11; the faceplate merged into the presets on 2026-11-16, the name shown of a signal moved to the preset and versions added the same day (removed on 2026-11-21); the preset split into two modes, Values and Faceplate (the builder), later that day; at the end of the day the model unit left the signal and the Faceplate part was removed. Open points are listed in [Open questions](#metadata-open-questions).
+Status: validated by the Product Owner on 2026-11-11; the faceplate merged into the presets on 2026-11-16, the display name of a signal moved to the preset and versions added the same day (removed on 2026-11-21); the preset split into two modes, Values and Faceplate (the builder), later that day; at the end of the day the model unit left the signal and the Faceplate part was removed. Open points are listed in [Open questions](#metadata-open-questions).
 
 Rule of the Product Owner: no duplicate ways to change the same thing. Each thing has one place where it is created and changed.
 
@@ -1915,9 +1918,9 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 | Command, its ID and description | Metadata | Link a command to a click | No |
 | Preset and its name | Metadata | Choose one | Choose one |
 | Display unit, decimals, default value of each signal | Preset, mode Values, in Metadata | Edit | Edit |
-| Elements of the faceplate: signals (name shown, input and its bounds, read or write, read or override), commands (text of their button), titles, descriptions, groups | Preset, mode Faceplate (the builder), in Metadata | Open | Open |
+| Elements of the faceplate: signals (display name, input and its bounds, read or write, read or override), commands (text of their button), titles, descriptions, groups | Preset, mode Faceplate (the builder), in Metadata | Open | Open |
 | Texts of the title and description elements of the faceplate (no title nor description by default, 2026-11-16) | Preset, mode Faceplate, in Metadata | Edit (assistant's reading) | Edit, on each placed symbol (assistant's reading) |
-| Fixed text or variable (an identifier or a signal) of a title or description element (2026-11-18) | Preset, mode Faceplate, in Metadata, through the small icon of the field | No (assistant's reading) | No |
+| Fixed text or variable (an identifier; a signal until 2026-11-21) of a title or description element (2026-11-18) | Preset, mode Faceplate, in Metadata, through the small icon of the field | No (assistant's reading) | No |
 | Identifier: ID, display name, description, order (2026-11-18, working name) | Identifiers page of Metadata | No (assistant's reading) | Its text, filled on each placed symbol (part 3) |
 
 ```mermaid
