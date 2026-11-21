@@ -38,8 +38,3 @@ The rules every file of Metadata follows. An [entity file](entities/README.md) g
 - The names and places of the files: proposals above.
 - The catalogue of quantities: one file with one `format` at its top, or one file per quantity.
 - The other open questions on files stay in the [whole draft](draft.md#files).
-
-## Product Owner context
-
-- A file named by internal ID: renaming an `id` breaks nothing.
-- One file per type: two people who change two different types never collide, and a change in Git shows one small file.

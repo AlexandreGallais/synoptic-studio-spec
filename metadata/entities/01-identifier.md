@@ -92,9 +92,3 @@ erDiagram
 - Must an `id` be unique on the page? May it be empty?
 - Are the configuration files of a synoptic made while a required text is empty (proposal: yes, with the warning, since nothing blocks)?
 - The other open questions of the page stay in the [whole draft](../draft.md#open-questions-8).
-
-## Product Owner context
-
-- Usually three or four identifiers per project: a size for the screens, not a limit.
-- `required` is for keys every piece of equipment must have (a control ID); a location stays optional.
-- The display name was removed on 2026-11-21: only the `id` is shown.
