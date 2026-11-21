@@ -1828,7 +1828,7 @@ Every field of the schema has a JSON equivalent; the links between objects stay 
 - Finding a line by its internal ID uses an index the software builds when it reads the files. Assistant's reading: there is little data, so it costs little.
 - Enum items follow the same rule: nested in their enum. Assistant's reading, to confirm.
 
-An example, with made-up identifiers:
+An earlier example, with made-up identifiers. Replaced on 2026-11-21 by [The schema as JSON](data-model.md#the-schema-as-json), which uses the names of the schema (`internal_id`, `parent`, nested parts); this one is kept as a trace only:
 
 ```json
 {

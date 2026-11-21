@@ -2,18 +2,24 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Data model
 
-Status: schema being read again with the Product Owner (2026-11-19 to 2026-11-21). The faceplate is described box by box in [The faceplate, box by box](#the-faceplate-box-by-box), and every choice list in [The choice lists](#the-choice-lists); the other descriptions come once the schema is validated.
+Status: schema being read again with the Product Owner (2026-11-19 to 2026-11-21). The schema is shown as JSON in [The schema as JSON](#the-schema-as-json), the faceplate box by box in [The faceplate, box by box](#the-faceplate-box-by-box), and every choice list in [The choice lists](#the-choice-lists); the other descriptions come once the schema is validated.
 
 - `internal_id`: the UUID set by the software; every FK holds one.
 - `id`: the public identifier, written by the user, that leaves the application: sent to the model and written in the configuration files.
-- `name`: a label people read, that nothing points to and that never goes to the model: what the software ships (quantities, families, units), and the name of a preset (see [Read again on 2026-11-21](#read-again-on-2026-11-21-presets-and-faceplate)).
-- A choice of the software (`kind`, `direction`, `measure`...) is written in the JSON as an English word (`"input"`, `"difference"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
+- `name`: a label people read, for a thing that has no `id`: nothing points to it and it never goes to the model. What the software ships (quantities, families, units), the name of a preset (see [Read again on 2026-11-21](#read-again-on-2026-11-21-presets-and-faceplate)), the name of a palette.
+- `display_name`: a label people read, for a thing that has an `id` or a key: it is shown in place of that `id` or key, and never goes to the model (an enum item, an identifier, a signal field).
+- `description`: a text that explains, for people; plain text everywhere, Markdown only in `DOCUMENTATION`.
+- A choice of the software (`kind`, `direction`, `measure`...) is written in the JSON as an English word (`"input"`, `"difference"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). A value of several words is joined by underscores (`set_signal`, `number_field`), the same in the schema and in the JSON. The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
+- The field that says which alternative a box is: `kind` in general; `source` when it says where a value comes from (typed, or taken from a signal or an identifier); `direction`, `measure`, `access` and `input_kind` where their own word says more.
+- A list of choices is named after its field; a field called `kind` or `source`, which several boxes have, takes its box as prefix (`command_kind`, `bound_source`). Every list is in [The choice lists](#the-choice-lists).
+- A value typed in the builder is prefixed `typed_` where it stands beside a value taken elsewhere (`typed_value`, `typed_text`). A value read by the value type of its signal (a number, a boolean or an enum item) has the type `signal_value`.
 - A box without `internal_id` is a part of its owner (a nested object in the JSON), never pointed to.
-- `has`: one nested object; `holds`: an ordered list inside its owner.
-- Every other link is a FK, labelled by the field that holds it (`signal`, `default_unit`...), so that the reader knows which field points where.
+- `has`: one nested object; `holds`: an ordered list inside its owner. When an owner has two parts of the same box, the link says their role (`has, as min`).
+- Every other link is a FK, labelled by the field that holds it, so that the reader knows which field points where. The field is named after the box it points to (`signal`, `quantity`, `unit`), or after its role when the box alone says too little (`parent`, `default_unit`).
 - A link or a field that only exists in some cases says when, always in the same words: `when kind is enum`, `when the signal is an enum`.
 - A number typed in Metadata (a default value, the value of a command, a typed bound) is kept in the default unit of its signal's quantity, whatever unit the screen shows it in (decision 0051).
 - Field order in each box: `internal_id`, then the links (FK), then the kind, then `id` or the name, then the values, then the texts.
+- The words `id` and `internal_id` wait for the documentary research T5; every other name follows these rules (see [Names made even on 2026-11-21](#names-made-even-on-2026-11-21)).
 
 ## The schema
 
@@ -45,7 +51,7 @@ erDiagram
     }
     VALUE_TYPE {
         uuid enum FK "when kind is enum"
-        value_kind kind "integer, real, boolean or enum"
+        value_type_kind kind "integer, real, boolean or enum"
     }
     MEASUREMENT {
         uuid quantity FK
@@ -57,13 +63,13 @@ erDiagram
     }
     COMMAND {
         uuid internal_id PK
-        command_kind kind "set a signal, trigger or override"
+        command_kind kind "set_signal, trigger or override"
         text id
         text description
     }
     COMMAND_TARGET {
         uuid signal FK
-        typed_value value "a number in the default unit, a boolean, or the internal_id of an item of the signal's enum"
+        signal_value value "a number in the default unit, a boolean, or the internal_id of an item of the signal's enum"
     }
     FLAG {
         uuid internal_id PK
@@ -76,7 +82,7 @@ erDiagram
     }
     PRESET_VALUE {
         uuid signal FK
-        typed_value default_value "a number in the default unit, a boolean, or the internal_id of an item of the signal's enum"
+        signal_value default_value "a number in the default unit, a boolean, or the internal_id of an item of the signal's enum"
     }
     DISPLAY_FORMAT {
         uuid unit FK "the display unit"
@@ -84,12 +90,12 @@ erDiagram
     }
     FACEPLATE_ELEMENT {
         uuid internal_id PK
-        element_kind kind "signal, command, title, description or group"
+        faceplate_element_kind kind "signal, command, title, description or group"
     }
     SIGNAL_FIELD {
         uuid signal FK
         access access "read; write for an input; override for an output"
-        input_kind input_kind "when access is write or override: number field, radio on one line, radio on several lines, select or switch"
+        input_kind input_kind "when access is write or override: number_field, radio_one_line, radio_several_lines, select or switch"
         text display_name "empty: the signal's id is shown"
     }
     BOUND {
@@ -103,7 +109,7 @@ erDiagram
     }
     TEXT_CONTENT {
         uuid identifier FK "when source is identifier: its text on each placed symbol"
-        text_source source "typed or identifier"
+        text_content_source source "typed or identifier"
         text typed_text "when source is typed"
     }
     ENUM {
@@ -174,7 +180,7 @@ erDiagram
     VALUE_TYPE ||--o| BOOLEAN_TEXTS : "has, when kind is boolean"
     MEASUREMENT }o--|| QUANTITY : "quantity"
     ENUM ||--o{ ENUM_ITEM : "holds"
-    COMMAND ||--o| COMMAND_TARGET : "has, when kind is set a signal or override"
+    COMMAND ||--o| COMMAND_TARGET : "has, when kind is set_signal or override"
     COMMAND_TARGET }o--|| SIGNAL : "signal"
     COMMAND_TARGET }o--o| ENUM_ITEM : "value, when the signal is an enum"
     PRESET ||--o{ PRESET_VALUE : "holds, one per signal of the type"
@@ -188,9 +194,9 @@ erDiagram
     FACEPLATE_ELEMENT ||--o| COMMAND_BUTTON : "has, when kind is command"
     FACEPLATE_ELEMENT ||--o| TEXT_CONTENT : "has, when kind is title or description"
     SIGNAL_FIELD }o--|| SIGNAL : "signal"
-    SIGNAL_FIELD ||--o| RANGE : "has, when input_kind is number field"
-    RANGE ||--o| BOUND : "min"
-    RANGE ||--o| BOUND : "max"
+    SIGNAL_FIELD ||--o| RANGE : "has, when input_kind is number_field"
+    RANGE ||--o| BOUND : "has, as min"
+    RANGE ||--o| BOUND : "has, as max"
     BOUND }o--o| SIGNAL : "signal, when source is signal: an input of the same quantity"
     COMMAND_BUTTON }o--|| COMMAND : "command"
     TEXT_CONTENT }o--o| IDENTIFIER : "identifier, when source is identifier"
@@ -199,6 +205,375 @@ erDiagram
     QUANTITY }o--|| UNIT : "default_unit"
     UNIT ||--o| CONVERSION : "has, except the default unit"
 ```
+
+## The schema as JSON
+
+Asked by the Product Owner on 2026-11-21 ("que tu me construises juste en dessous du schéma l'objet JSON [...] qui représente un peu tout ce qu'il pourrait avoir"). One made-up type that uses every box of a type at least once, without trying every combination; then a global enum and a quantity of the catalogue, which live in files of their own. The identifiers, the icons and the palettes are left out. The internal IDs are made up, and only their last digits differ, to read them easily.
+
+How the boxes become JSON, one rule for each, with no exception (assistant's reading, to validate with the example):
+
+- A field keeps its name in the schema (`internal_id`, `display_name`, `typed_value`).
+- A part (`has`) is a nested object named after its box, in lower case (`value_type`, `measurement`, `command_target`, `signal_field`); two parts of the same box are named by their role (`min`, `max`).
+- A list (`holds`) is an array named after the box it holds, in lower case and in the plural (`signals`, `enum_items`, `preset_values`, `faceplate_elements`, `units`): the same list has the same name everywhere, in a preset and in a group.
+- The field order is the rule of the head of this file; the parts and the lists come after the fields of their box.
+- A field or a part that does not exist in this case (its `when` is false) is left out; one that exists but is empty is `null` (no parent, no colour, no display name).
+- A choice of several words is joined by underscores: `"set_signal"`, `"number_field"`, `"radio_one_line"`.
+
+### A type
+
+```json
+{
+  "format": 1,
+  "internal_id": "6f1c2a90-0000-4000-8000-000000000001",
+  "parent": "6f1c2a90-0000-4000-8000-000000000000",
+  "id": "centrifugal_pump",
+  "appearance": {
+    "icon": "6f1c2a90-0000-4000-8000-000000000700",
+    "colour": null
+  },
+  "documentation": {
+    "description": "A **centrifugal** pump, driven by a variable speed motor.",
+    "links": [
+      {
+        "internal_id": "6f1c2a90-0000-4000-8000-000000000010",
+        "kind": "url",
+        "target": "https://example.com/datasheets/centrifugal-pump",
+        "description": "Datasheet"
+      }
+    ]
+  },
+  "signals": [
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000020",
+      "direction": "input",
+      "id": "speed_setpoint",
+      "description": "Speed asked of the motor.",
+      "value_type": {
+        "kind": "real",
+        "measurement": {
+          "quantity": "6f1c2a90-0000-4000-8000-000000000900",
+          "measure": "value"
+        }
+      }
+    },
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000021",
+      "direction": "input",
+      "id": "speed_max",
+      "description": "Highest speed the operator may ask for.",
+      "value_type": {
+        "kind": "real",
+        "measurement": {
+          "quantity": "6f1c2a90-0000-4000-8000-000000000900",
+          "measure": "value"
+        }
+      }
+    },
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000022",
+      "direction": "output",
+      "id": "speed",
+      "description": "Speed of the motor, computed by the model.",
+      "value_type": {
+        "kind": "real",
+        "measurement": {
+          "quantity": "6f1c2a90-0000-4000-8000-000000000900",
+          "measure": "value"
+        }
+      }
+    },
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000023",
+      "direction": "output",
+      "id": "running",
+      "description": "True while the pump turns.",
+      "value_type": {
+        "kind": "boolean",
+        "boolean_texts": {
+          "true_text": "Running",
+          "false_text": "Stopped"
+        }
+      }
+    },
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000024",
+      "direction": "input",
+      "id": "mode",
+      "description": "How the pump is driven.",
+      "value_type": {
+        "enum": "6f1c2a90-0000-4000-8000-000000000500",
+        "kind": "enum"
+      }
+    },
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000025",
+      "direction": "output",
+      "id": "bearing_temperature_rise",
+      "description": "How much the bearing is warmer than the room.",
+      "value_type": {
+        "kind": "real",
+        "measurement": {
+          "quantity": "6f1c2a90-0000-4000-8000-000000000910",
+          "measure": "difference"
+        }
+      }
+    }
+  ],
+  "commands": [
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000030",
+      "kind": "trigger",
+      "id": "start",
+      "description": "Asks the model to start the pump."
+    },
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000031",
+      "kind": "set_signal",
+      "id": "switch_to_auto",
+      "description": "Puts the pump in automatic mode.",
+      "command_target": {
+        "signal": "6f1c2a90-0000-4000-8000-000000000024",
+        "value": "6f1c2a90-0000-4000-8000-000000000502"
+      }
+    },
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000032",
+      "kind": "override",
+      "id": "force_speed",
+      "description": "Replaces the speed computed by the model, for a test.",
+      "command_target": {
+        "signal": "6f1c2a90-0000-4000-8000-000000000022",
+        "value": 151.8436
+      }
+    }
+  ],
+  "flags": [
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000040",
+      "id": "under_maintenance",
+      "description": "The pump is out of service for maintenance."
+    }
+  ],
+  "presets": [
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000050",
+      "name": "Standard",
+      "preset_values": [
+        {
+          "signal": "6f1c2a90-0000-4000-8000-000000000020",
+          "default_value": 0,
+          "display_format": {
+            "unit": "6f1c2a90-0000-4000-8000-000000000902",
+            "decimals": 0
+          }
+        },
+        {
+          "signal": "6f1c2a90-0000-4000-8000-000000000021",
+          "default_value": 157.0796,
+          "display_format": {
+            "unit": "6f1c2a90-0000-4000-8000-000000000902",
+            "decimals": 0
+          }
+        },
+        {
+          "signal": "6f1c2a90-0000-4000-8000-000000000022",
+          "default_value": 0,
+          "display_format": {
+            "unit": "6f1c2a90-0000-4000-8000-000000000902",
+            "decimals": 1
+          }
+        },
+        {
+          "signal": "6f1c2a90-0000-4000-8000-000000000023",
+          "default_value": false
+        },
+        {
+          "signal": "6f1c2a90-0000-4000-8000-000000000024",
+          "default_value": "6f1c2a90-0000-4000-8000-000000000501"
+        },
+        {
+          "signal": "6f1c2a90-0000-4000-8000-000000000025",
+          "default_value": 0,
+          "display_format": {
+            "unit": "6f1c2a90-0000-4000-8000-000000000912",
+            "decimals": 1
+          }
+        }
+      ],
+      "faceplate_elements": [
+        {
+          "internal_id": "6f1c2a90-0000-4000-8000-000000000060",
+          "kind": "title",
+          "text_content": {
+            "identifier": "6f1c2a90-0000-4000-8000-000000000800",
+            "source": "identifier"
+          }
+        },
+        {
+          "internal_id": "6f1c2a90-0000-4000-8000-000000000061",
+          "kind": "description",
+          "text_content": {
+            "source": "typed",
+            "typed_text": "Feed pump of the main loop."
+          }
+        },
+        {
+          "internal_id": "6f1c2a90-0000-4000-8000-000000000062",
+          "kind": "group",
+          "faceplate_elements": [
+            {
+              "internal_id": "6f1c2a90-0000-4000-8000-000000000063",
+              "kind": "signal",
+              "signal_field": {
+                "signal": "6f1c2a90-0000-4000-8000-000000000020",
+                "access": "write",
+                "input_kind": "number_field",
+                "display_name": "Speed setpoint",
+                "range": {
+                  "min": {
+                    "source": "typed",
+                    "typed_value": 0
+                  },
+                  "max": {
+                    "signal": "6f1c2a90-0000-4000-8000-000000000021",
+                    "source": "signal"
+                  }
+                }
+              }
+            },
+            {
+              "internal_id": "6f1c2a90-0000-4000-8000-000000000064",
+              "kind": "signal",
+              "signal_field": {
+                "signal": "6f1c2a90-0000-4000-8000-000000000022",
+                "access": "read",
+                "display_name": null
+              }
+            },
+            {
+              "internal_id": "6f1c2a90-0000-4000-8000-000000000065",
+              "kind": "signal",
+              "signal_field": {
+                "signal": "6f1c2a90-0000-4000-8000-000000000023",
+                "access": "read",
+                "display_name": "State"
+              }
+            }
+          ]
+        },
+        {
+          "internal_id": "6f1c2a90-0000-4000-8000-000000000066",
+          "kind": "signal",
+          "signal_field": {
+            "signal": "6f1c2a90-0000-4000-8000-000000000024",
+            "access": "write",
+            "input_kind": "radio_one_line",
+            "display_name": "Mode"
+          }
+        },
+        {
+          "internal_id": "6f1c2a90-0000-4000-8000-000000000067",
+          "kind": "command",
+          "command_button": {
+            "command": "6f1c2a90-0000-4000-8000-000000000030",
+            "button_text": "Start"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+What the example shows, beyond the fields themselves:
+
+- **Numbers are kept in the default unit** (decision 0051): the speeds are in rad/s, the default unit of the made-up quantity `…900` (angular velocity), while the preset shows them in rpm (`…902`). `157.0796` is 1500 rpm, `151.8436` is 1450 rpm.
+- **A typed value is read by the signal it targets**: `switch_to_auto` sends the internal ID of the item `auto` because `mode` is an enum; `force_speed` sends a number because `speed` is a real.
+- **The maximum of the setpoint is a signal**: `speed_max`, an input of the same quantity (decision 0056); the minimum is typed.
+- **No `input_kind` and no `range` in read**, no `display_format` for the boolean and the enum, no `command_target` for a trigger: their `when` is false.
+- **`display_name: null`**: the field of `speed` shows the signal's `id`.
+- **A difference**: `bearing_temperature_rise` holds a gap of temperature, shown in °C (`…912`), kept in kelvins.
+- The title shows the identifier `…800` (`tag`, say `P-101`) of each placed symbol; the identifiers have their file of their own (draft, Identifiers).
+
+### A global enum
+
+```json
+{
+  "format": 1,
+  "internal_id": "6f1c2a90-0000-4000-8000-000000000500",
+  "kind": "global",
+  "id": "operating_mode",
+  "description": "How a piece of equipment is driven.",
+  "enum_items": [
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000501",
+      "key": 0,
+      "display_name": "Manual",
+      "description": "Driven by the operator."
+    },
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000502",
+      "key": 1,
+      "display_name": "Auto",
+      "description": "Driven by the control loop."
+    }
+  ]
+}
+```
+
+### A quantity of the catalogue
+
+Shipped with the software, never copied into the user's files: they hold the internal IDs only (draft, Data model).
+
+```json
+{
+  "internal_id": "6f1c2a90-0000-4000-8000-000000000910",
+  "default_unit": "6f1c2a90-0000-4000-8000-000000000911",
+  "name": "temperature",
+  "offers_difference": true,
+  "families": [
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000915",
+      "name": "metric",
+      "units": [
+        {
+          "internal_id": "6f1c2a90-0000-4000-8000-000000000911",
+          "name": "kelvin",
+          "symbol": "K"
+        },
+        {
+          "internal_id": "6f1c2a90-0000-4000-8000-000000000912",
+          "name": "degree Celsius",
+          "symbol": "°C",
+          "conversion": {
+            "to_default": "x + 273.15",
+            "from_default": "x - 273.15"
+          }
+        }
+      ]
+    },
+    {
+      "internal_id": "6f1c2a90-0000-4000-8000-000000000916",
+      "name": "imperial",
+      "units": [
+        {
+          "internal_id": "6f1c2a90-0000-4000-8000-000000000913",
+          "name": "degree Fahrenheit",
+          "symbol": "°F",
+          "conversion": {
+            "to_default": "(x + 459.67) * 5 / 9",
+            "from_default": "x * 9 / 5 - 459.67"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+- The kelvin has no `conversion`: it is the default unit.
+- A difference is converted by the software from these two formulas (decision 0050): a rise of 1 °C is 1 K, a rise of 1 °F is 5/9 K.
+- The syntax of the formulas is still open (see [Open](#open)).
 
 ## The faceplate, box by box
 
@@ -213,7 +588,7 @@ flowchart LR
     E -->|"kind is command"| CB["COMMAND_BUTTON: a button that sends a command"]
     E -->|"kind is title or description"| TC["TEXT_CONTENT: typed, or an identifier"]
     E -->|"kind is group"| G["Its own elements, in order"]
-    SF -->|"when input_kind is number field"| R["RANGE: the values allowed"]
+    SF -->|"when input_kind is number_field"| R["RANGE: the values allowed"]
     R -->|"min, max"| B["BOUND: typed, or an input of the same quantity"]
 ```
 
@@ -223,7 +598,7 @@ flowchart LR
 | --- | --- | --- |
 | `internal_id` | The UUID set by the software. | Always. |
 | `kind` | Signal, command, title, description or group (see [The choice lists](#the-choice-lists)). | Always. |
-| Its elements | The elements inside a group, in order, with the same five kinds. | When `kind` is group. |
+| `faceplate_elements` | The elements inside a group, in order, with the same five kinds; the same name as the list of the preset. | When `kind` is group. |
 
 ### `SIGNAL_FIELD`: a signal shown in the faceplate
 
@@ -233,9 +608,9 @@ A labelled field that shows the value of one signal, and lets a person type it w
 | --- | --- | --- |
 | `signal` | The signal shown: one of the type, own or inherited. | Always. |
 | `access` | `read`: the field only shows the value, as text alone: in the display unit and with the decimals of the preset, an enum by the display name of its item, a boolean by the text of its state (`BOOLEAN_TEXTS`). `write`, for an input: a person types the value the model receives. `override`, for an output: a person types a value that replaces the model's. | Always. Write is offered for an input only, override for an output only (decision 0040). |
-| `input_kind` | How the value is typed: a number field, radio buttons on one line, radio buttons on several lines, a select, or a switch (see [The choice lists](#the-choice-lists)). | When `access` is write or override. The choices depend on the value type of the signal. |
+| `input_kind` | How the value is typed: `number_field`, `radio_one_line`, `radio_several_lines`, `select` or `switch` (see [The choice lists](#the-choice-lists)). | When `access` is write or override. The choices depend on the value type of the signal. |
 | `display_name` | The label beside the field, for people; never sent to the model. The same name as the field of an identifier (decision 0055). | Always; empty, the signal's `id` is shown (decision 0018). |
-| `range` | A `RANGE`: the values a person may type. | When `input_kind` is number field. |
+| `range` | A `RANGE`: the values a person may type. | When `input_kind` is `number_field`. |
 
 ### `RANGE`: the values allowed in a number field
 
@@ -287,15 +662,15 @@ Every field whose value is one word from a fixed list. Each is written in the JS
 | --- | --- | --- | --- |
 | `link_kind` | `LINK.kind` | path, url | A path to a file or a folder, or a web address. |
 | `direction` | `SIGNAL.direction` | input, output | The model receives it, or the model sends it. |
-| `value_kind` | `VALUE_TYPE.kind` | integer, real, boolean, enum | A whole number, a number, true or false, an item of an enum. |
+| `value_type_kind` | `VALUE_TYPE.kind` | integer, real, boolean, enum | A whole number, a number, true or false, an item of an enum. |
 | `measure` | `MEASUREMENT.measure` | value, difference | A point on the scale ("it is 20 °C"), or a gap between two points ("it rose by 20 °C"). |
-| `command_kind` | `COMMAND.kind` | set a signal, trigger, override | Send a fixed value to an input; tell the model something happened; replace the value of an output. |
+| `command_kind` | `COMMAND.kind` | set_signal, trigger, override | Send a fixed value to an input; tell the model something happened; replace the value of an output. |
 | `enum_kind` | `ENUM.kind` | global, template | Items written on the Enums page, the same everywhere; or items completed on each placed symbol. |
-| `element_kind` | `FACEPLATE_ELEMENT.kind` | signal, command, title, description, group | See [The faceplate, box by box](#the-faceplate-box-by-box). |
+| `faceplate_element_kind` | `FACEPLATE_ELEMENT.kind` | signal, command, title, description, group | See [The faceplate, box by box](#the-faceplate-box-by-box). |
 | `access` | `SIGNAL_FIELD.access` | read, write, override | Shown only; typed in, for an input; typed in, for an output. |
-| `input_kind` | `SIGNAL_FIELD.input_kind` | number field, radio on one line, radio on several lines, select, switch | Number field: for an integer or a real. Radio on one line, radio on several lines, select: for an enum, its items in the order of the handles of the Enums page. Switch: for a boolean, one click turns it on or off. |
+| `input_kind` | `SIGNAL_FIELD.input_kind` | number_field, radio_one_line, radio_several_lines, select, switch | `number_field`: for an integer or a real. `radio_one_line`, `radio_several_lines`, `select`: for an enum, its items in the order of the handles of the Enums page. Switch: for a boolean, one click turns it on or off. |
 | `bound_source` | `BOUND.source` | typed, signal | See `BOUND`. |
-| `text_source` | `TEXT_CONTENT.source` | typed, identifier | See `TEXT_CONTENT`. |
+| `text_content_source` | `TEXT_CONTENT.source` | typed, identifier | See `TEXT_CONTENT`. |
 
 ## Changed on 2026-11-19
 
@@ -448,6 +823,19 @@ The Product Owner answered the two questions left by decision 0055 in the questi
 - **`ENUM_ITEM.display_text` becomes `display_name`** (Product Owner: "Oui, display_name"): the same word as for an identifier and a signal field, "Display name" on screen. Its rule does not change: what people read, never sent to the model.
 - **The signal of a bound has the same quantity as the signal shown** (Product Owner: "Même grandeur obligatoire"): an input, integer or real, of that quantity, so that a speed is bounded by a speed and both compare in the same default unit. The list of the bound offers only these inputs.
 
+## Names made even on 2026-11-21
+
+Asked by the Product Owner on 2026-11-21 ("voir tout, tout, tout [...] comment c'est nommé, et donc homogénéiser le tout"). Every box, field, link, choice list and value was read again against one set of rules, now written at the head of this file. What changed:
+
+- **Two things had the same name**: `typed_value` was both the type of a value read by its signal (`COMMAND_TARGET.value`, `PRESET_VALUE.default_value`) and the field of a bound typed in the builder. The type becomes `signal_value`; the field keeps `typed_value`, beside `typed_text`.
+- **The choice lists are named by one rule**: their field, with the box as prefix for `kind` and `source`. `value_kind` becomes `value_type_kind`, `element_kind` becomes `faceplate_element_kind`, `text_source` becomes `text_content_source`. The others already followed it.
+- **A value of several words is joined by underscores**, the same in the schema and in the JSON: `set_signal` (was "set a signal"), `number_field`, `radio_one_line`, `radio_several_lines`. The screens and the draft keep their words for people ("Set a signal", "radio on one line").
+- **The two bounds of a range are parts**, so their link says `has, as min` and `has, as max`, not `min` alone, which read like a FK.
+- **The JSON keys follow the boxes with no exception**: `command_target` (was `target`, which `LINK.target` already uses), `enum_items` (was `items`), `preset_values` (was `values`), `faceplate_elements` in the preset and in a group (were `faceplate` and `elements`).
+- **`name`, `display_name` and `description` are told apart** at the head of the file: `name` for a thing without `id`, `display_name` shown in place of an `id` or a key, `description` to explain.
+- Checked and unchanged: the FK fields (`parent`, `icon`, `colour`, `enum`, `quantity`, `signal`, `command`, `identifier`, `unit`, `default_unit`), the field order in every box, `has` and `holds`, the conditions in `when`.
+- Left open, because they change words the Product Owner validated or that wait for a research: `id` and `internal_id` (research T5), `button_text`, and the `description` of an icon or a colour (see [Open](#open)).
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -460,6 +848,7 @@ The Product Owner answered the two questions left by decision 0055 in the questi
 - The names of the two quantities added for numbers that measure nothing physical: "ratio" and "count" for now.
 - The default number of decimals of a preset: 2 or 3 (Product Owner, 2026-11-19: "qui serait de 2 ou de 3"), and whether it is fixed by the software or set for the project.
 - The syntax of the expressions (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
-- The name of the short text that names a colour or an icon: `description` for now.
+- The name of the short text that names a colour or an icon: `description` for now. By the rules of the head of this file it is a `name` (a label for a thing without `id`), not a text that explains.
+- `COMMAND_BUTTON.button_text`: by the rules of the head of this file it is a `display_name` (shown in place of the command's `id`). Kept as it is: the Product Owner found it right on 2026-11-21. If it became `display_name`, an empty one would show the command's `id`, as for a signal field.
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `MEASUREMENT`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
 - The two texts of a boolean: required, or "true" and "false" when empty (assistant's reading)? And are they written in the configuration files sent with the model, as the description is?
