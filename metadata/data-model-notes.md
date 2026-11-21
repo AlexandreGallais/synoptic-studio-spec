@@ -419,6 +419,8 @@ Asked by the Product Owner on 2026-11-21 ("dans l'identifiant, on va dégager di
 - Settled in the questionnaire the same day: a required text is asked on **every placed symbol**, whether or not its faceplate shows it ("Sur tous les symboles placés"); left empty, it **warns and never blocks** ("Avertir sans bloquer").
 - **Field order `internal_id`, `id`, `required`, `description`** (assistant's choice, left to it by the Product Owner: "un ordre le plus logique possible [...] à toi de décider"): what the identifier is, what it asks for, then the text that explains it, last as in every box. It follows the rule of the head of this file.
 - Usually three identifiers, four at most (Product Owner: "trois, quatre grands max"): an order of size, not a limit.
+- **`required` is `false` for a new identifier** (Product Owner, later the same day: "Le booléen required, ce serait genre false").
+- **The schema of an entity page shows only the structure** (Product Owner, same day): type, name, key, required or optional and the default value; what a field means is in the table below it. Written in [Entities](entities/README.md#how-an-entity-file-is-written).
 
 ## Not in the schema yet
 

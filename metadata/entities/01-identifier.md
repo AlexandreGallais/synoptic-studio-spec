@@ -2,29 +2,27 @@
 
 > [Home](../../README.md) › [Metadata](../README.md) › [Entities](README.md) › Identifier
 
-Status: draft, written on 2026-11-21 at the Product Owner's request, from the page Identifiers of the [whole draft](../draft.md#identifiers) (decision 0048) and the [Data model](../data-model.md). Not validated. "Identifier" is still a working name.
+Status: draft, written on 2026-11-21 at the Product Owner's request, from the page Identifiers of the [whole draft](../draft.md#identifiers) (decision 0048) and the [Data model](../data-model.md). The head (status and introduction) and the order of the sections are validated by the Product Owner on 2026-11-21; the rest is being read. "Identifier" is still a working name.
 
 An identifier is a named key that each placed symbol fills with its own text, in the synoptic: the tag of a pump, for example `P-101`. Metadata only makes the key, never the text. Identifiers are global: they belong to no type, every type can use them, and they are all kept in one file.
 
 ## The entity
 
-An identifier has its internal ID and three fields, nothing else.
-
 ```mermaid
 erDiagram
     IDENTIFIER {
-        uuid internal_id PK
-        text id
-        boolean required "true: its text must be filled on every placed symbol"
-        text description
+        uuid internal_id PK "required, generated"
+        text id "required, no default"
+        boolean required "required, default false"
+        text description "optional, no default"
     }
 ```
 
 | Field | What it is | Rule |
 | --- | --- | --- |
-| `internal_id` | The UUID set by the software, version 7 (see [Rules of the schema](../data-model-notes.md#rules-of-the-schema)) | Never changes, never leaves the application. A faceplate points to the identifier through it, so a changed `id` breaks nothing. |
+| `internal_id` | The UUID set by the software, version 7 (see [Rules of the schema](../data-model-notes.md#rules-of-the-schema)) | Generated when the identifier is created. Never changes, never leaves the application. A faceplate points to the identifier through it, so a changed `id` breaks nothing. |
 | `id` | The key | Written by the user. The public identifier, as for every entity of Metadata. It is also what people read: the identifier has no display name. |
-| `required` | Whether its text must be filled | `true`: every placed symbol must have its text (a control ID, the tag of the equipment). `false`: the text may stay empty (a location, given for context). |
+| `required` | Whether its text must be filled | `true`: every placed symbol must have its text (a control ID, the tag of the equipment). `false`: the text may stay empty (a location, given for context). `false` for a new identifier (Product Owner, 2026-11-21). |
 | `description` | What the identifier is | Plain text, for people. Empty: `null`. |
 
 - **Required or not** (Product Owner, 2026-11-21: "j'ai complètement besoin de dire si c'est required ou non [...] des identifiants qui vont forcément être requis, comme un ID [...] un ID qui est la localisation de la chose [...] qui ne serait pas obligatoire").
@@ -34,7 +32,7 @@ erDiagram
 - **A few identifiers per project**: usually three, four at most (Product Owner, 2026-11-21: "Normalement, ils sont censés en avoir trois. Je pense qu'on aura trois, quatre grands max"). An order of size for the screens, not a limit set by the software.
 - **No display name** (Product Owner, 2026-11-21: "on va dégager display name [...] on voit que l'ID [...] Par contre, faut laisser la description"): the `id` is shown everywhere the identifier is picked or filled. Removing it breaks nothing in a first version.
 - The title or description of a faceplate that points to an identifier is a `TEXT_CONTENT` of the preset (see [Data model](../data-model.md)); it belongs to the faceplate, so it is not drawn on this page (assistant's choice, left to it by the Product Owner).
-- No value and no default value: the text in front of the key is filled on each placed symbol, in the synoptic (part 3).
+- No value of its own: the text in front of the key is filled on each placed symbol, in the synoptic (part 3).
 - The order of the list is the order chosen by the user on the page Identifiers, with the handles.
 
 ## The file
@@ -134,6 +132,5 @@ The rules of the file, in JSON Schema (draft 2020-12), so that a file can be che
 - The words `id` and `internal_id`: research T5.
 - The name and the place of the file (`identifiers.json` at the root of Metadata: proposal).
 - Must an `id` be unique on the page? May it be empty?
-- A new identifier: `required` false or true by default (proposal: false)?
 - Are the configuration files of a synoptic made while a required text is empty (proposal: yes, with the warning, since nothing blocks)?
 - The other open questions of the page stay in the [whole draft](../draft.md#open-questions-8).
