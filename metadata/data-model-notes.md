@@ -415,6 +415,8 @@ Asked by the Product Owner on 2026-11-21 ("dans l'identifiant, on va dégager di
 - **`IDENTIFIER.display_name` is removed**: an identifier has its `internal_id`, its `id` and its `description`. Its `id` is shown wherever it is picked or filled. The earlier sections keep the field, as written when they were settled.
 - **The page [Identifier](entities/01-identifier.md) draws the identifier alone**, without `TEXT_CONTENT` (assistant's choice, left to it by the Product Owner: "je te laisse décider"): a text content belongs to the faceplate of a preset, and points to the identifier; it stays drawn in the schema of the [Data model](data-model.md), with its link.
 - Screen MD-13 loses its column Display name; the identifiers of the placed symbol panel are labelled by their `id`.
+- **`IDENTIFIER.required` is added**, a boolean, after `description` (Product Owner, later the same day: "j'ai complètement besoin de dire si c'est required ou non [...] Ça ferait internal ID, ID, description, requis, avec le booléen"). `true`: each placed symbol must have its text (a control ID); `false`: it may stay empty (a location, for context). What a required text left empty does is open ([Identifier](entities/01-identifier.md#open-questions)).
+- Usually three identifiers, four at most (Product Owner: "trois, quatre grands max"): an order of size, not a limit.
 
 ## Not in the schema yet
 

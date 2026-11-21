@@ -111,6 +111,7 @@ erDiagram
         uuid internal_id PK
         text id
         text description
+        boolean required "true: its text must be filled on each placed symbol"
     }
     QUANTITY {
         uuid internal_id PK

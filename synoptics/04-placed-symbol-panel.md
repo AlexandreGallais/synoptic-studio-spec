@@ -34,7 +34,7 @@ flowchart TD
 ### Identity
 
 - **Instance ID**: the key of the placed symbol in the configuration files and in the signal list (`pump_p101.speed`). Decided on 2026-11-20: every placed symbol has an instance ID of its own, a field apart from the identifiers of Metadata; the tag is never the key. Proposed: set by the software from the type's `id` and a number (`centrifugal_pump_3`), changed by the user, unique in the folder. Its name waits for the research on the names of identifiers (task T5), the same question as in Metadata.
-- **Identifiers**: one text field per identifier of Metadata **used by the faceplate of the preset** (decided: "the identifiers used give the synoptic its list to fill"), in the order of the Identifiers page, labelled by their ID (an identifier has no display name since 2026-11-21). Proposed: the identifiers not used by the preset are not shown.
+- **Identifiers**: one text field per identifier of Metadata **used by the faceplate of the preset** (decided: "the identifiers used give the synoptic its list to fill"), in the order of the Identifiers page, labelled by their ID (an identifier has no display name since 2026-11-21). A required identifier is marked as such; what happens when its text stays empty is open (see [Identifier](../metadata/entities/01-identifier.md#open-questions)). Proposed: the identifiers not used by the preset are not shown.
 - **Uniqueness**: a text already used by another placed symbol, for the same identifier, is marked at once in the field, and listed in the faults as a warning. It is never refused: the user may be in the middle of renaming. Proposed; Metadata left open whether it is checked.
 
 ### Preset
