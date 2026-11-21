@@ -1814,7 +1814,7 @@ Every field of the schema has a JSON equivalent; the links between objects stay 
 
 - **The value of a command** is a number, a boolean, or the internal ID of an enum item (a string). What it is comes from the type of the target signal, never from the JSON value itself.
 - **What the software ships is never copied into the user's files**: an icon's drawing and the catalogue of quantities stay with the program; the files hold their internal IDs only.
-- **Each file starts with the version of its format** (proposal: `"format": 1`), so that a later Synoptic Studio can still read an older file.
+- **Each file starts with the version of its format** (`"format": 1`): see [Files](#files).
 
 #### A type nested in one object
 
@@ -1878,6 +1878,8 @@ An earlier example, with made-up identifiers. Replaced on 2026-11-21 by [The sch
   - Checking that an ID is unique in the whole tree (decision 0047) needs every type read: they all are, when Metadata opens.
 - **Proposal: the file is named by internal ID** (`types/<internal ID>.json`), never by ID: renaming an ID must break nothing.
 - **Proposal: one file per global enum too**, for the same reasons (`enums/<internal ID>.json`).
+- **Each file starts with the version of its format**, `"format": 1`, its first key, so that a later Synoptic Studio can still read an older file. It is the version of the file format, not of Metadata (decision 0053).
+  - It belongs to the file, not to an object: it is described here, in the rules of the files, and never in the schema of the [Data model](data-model.md) (Product Owner, 2026-11-21, answering the questionnaire: "Règles des fichiers seulement"). A box `FILE` in the schema was the other way; not chosen.
 
 ### The names of the two identifiers
 
@@ -1897,7 +1899,7 @@ An earlier example, with made-up identifiers. Replaced on 2026-11-21 by [The sch
 - The words "ID" and "internal ID": to settle with the documentary research.
 - The presets: their tables, when the Product Owner describes them.
 - JSON files instead of a database: a leaning of the Product Owner (2026-11-18, "peut-être"), not settled.
-- If JSON: the file named by internal ID; one file per global enum; enum items nested in their enum; `null` for an empty field; the format version in each file. Settled: lines nested in their type, one file per type (2026-11-18).
+- If JSON: the file named by internal ID; one file per global enum; enum items nested in their enum; `null` for an empty field. Settled: lines nested in their type, one file per type (2026-11-18); the format version first in each file, described in the rules of the files only (2026-11-21).
 
 ## Who changes what, and where
 

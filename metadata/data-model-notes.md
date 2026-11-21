@@ -37,6 +37,7 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
 - The field order is the rule of the head of this file; the parts and the lists come after the fields of their box.
 - A field or a part that does not exist in this case (its `when` is false) is left out; one that exists but is empty is `null` (no parent, no colour, no display name).
 - A choice of several words is joined by underscores: `"set_signal"`, `"number_field"`, `"radio_one_line"`.
+- A file adds one key that no box shows: `"format"`, the version of the file format, first key of the file. It belongs to the file, not to an object, so it is described in the rules of the files only ([Files](draft.md#files)), never in the schema (Product Owner, 2026-11-21, see [Settled on 2026-11-21 (format key)](#settled-on-2026-11-21-format-key)).
 
 ### What the type shows
 
@@ -396,6 +397,14 @@ The Product Owner answered the question of the pass in the questionnaire, with t
 - Changed in the schema and the JSON example: `VALUE_TYPE`, `BOUND`, `TEXT_CONTENT`; the other boxes already had it in that place, or have no link before it.
 - `direction`, `access` and `input_kind` keep their place after the links: `SIGNAL_FIELD` starts with the signal it shows (assistant's reading).
 
+## Settled on 2026-11-21 (format key)
+
+The Product Owner answered the question of the check of the schema against the JSON in the questionnaire, with the option the assistant advised ("Règles des fichiers seulement").
+
+- **`"format"` is described in the rules of the files only** ([Files](draft.md#files)): it is the version of the file format, so it belongs to the file, not to an object. The schema stays the schema of the objects; no box `FILE` is added.
+- The JSON examples keep `"format": 1` at the top of the file of a type and of an enum; nothing else changes.
+- Still open: whether the catalogue of quantities is one file with one `format` at its top, or one file per quantity (see [Open](#open)).
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -411,5 +420,5 @@ The Product Owner answered the question of the pass in the questionnaire, with t
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
 - The two texts of a boolean, in the preset: required, or "true" and "false" when empty (assistant's reading)? Never in the configuration files sent with the model, since they are display only (assistant's reading, since decision 0058)?
 - `SIGNAL_FIELD` starts with its signal, then `access`: the assistant's reading of the order of the keys, to confirm.
-- `"format"` (found on 2026-11-21): it is in the JSON of a type and of an enum, but in no box of the schema, since it belongs to the file, not to an object. Should the schema show it, or only the rules of the files? And the quantity, shown without it: is the catalogue one file with one `format` at its top, or one file per quantity?
+- The quantity, shown in the JSON without `"format"`: is the catalogue of quantities one file with one `format` at its top, or one file per quantity? It ships with the software (never copied into the user's files), so its form may be the program's own: assistant's reading.
 - The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `FAMILY`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated.
