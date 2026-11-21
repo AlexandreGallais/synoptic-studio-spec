@@ -465,6 +465,15 @@ The Product Owner reviewed what was applied above (questionnaire of 2026-11-22).
 - **The six other names are kept** ("Tous OK"): `color`, `address`, `radio_horizontal` / `radio_vertical`, `UNIT_SYSTEM`, `paragraph`, `format_version`.
 - **`PRESET_VALUE.default_value` becomes `start_value`** (answer: "Valeur au démarrage"): the value the model gets when it starts, the word of FMI (`start`). It is also the value shown before the model sends anything. The screens say "Start value"; the value a synoptic changes for a placed symbol is the start value too (`VALUE_CHANGE.start_value`).
 
+## Settled on 2026-11-22 (palettes)
+
+Said by the Product Owner on 2026-11-22 ("les couleurs sont dans des palettes [...] Je ne veux pas que ce soit stocké à part [...] une palette par fichier [...] Comme ça, on peut les ajouter ou les enlever"). Decision 0065 records it.
+
+- **A color is kept only inside its palette**, never in a file or a list of its own.
+- **One palette per file**, never every palette in one file: a palette is added or removed with its file.
+- **Two entity files** (the Product Owner's proposal): [Color](entities/02-color.md), its box and its schema only; [Palette](entities/03-palette.md), its box, its schema and the schema of its file.
+- Assistant's choices, to confirm: the file named `<internal_id>.palette.json`; the palette as one object `palette` beside `format_version` in its file; `name` required for both; the value of a color a hexadecimal code `#rrggbb`, without transparency (the box says `rgb`); at least one color per palette, as the link `|{` of the schema already says.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.

@@ -18,7 +18,8 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
   - Only a change made after a validation adds a line: the next version, `Draft`, whose `Change` cell lists every change made since the last validation, until it is validated in turn.
   - The `Status` column of [What it contains](#what-it-contains) repeats the status of each file's last version, changed in the same session.
 - **The table of tags** has two columns, `Tag` and `Value`: `File`, with the file's name, when the entity has a file of its own.
-- **Two JSON Schemas**: the entity's (`$id`: its name, then `.schema.json`, as `designation.schema.json`) and the file's (`$id`: the file's name with `.schema.json`, as `designations.schema.json`), whose list refers to the entity's by its `$id` and never repeats its fields.
+- **An entity kept inside another one's file** (a [Color](02-color.md), in its [Palette](03-palette.md)) has no table of tags and no section **The file**: its introduction says where it is kept, and the file is described on the entity that has it.
+- **Two JSON Schemas**: the entity's (`$id`: its name, then `.schema.json`, as `designation.schema.json`) and the file's, which refers to the entity's by its `$id` and never repeats its fields. The file's `$id` is the file's name with `.schema.json` (`designations.schema.json`) when the file holds the whole list; the entity's name with `-file.schema.json` (`palette-file.schema.json`) when there is one file per thing.
 - **The JSON Schema says every rule it can**: a text never empty (`minLength: 1`), a default (`default`), a field set by the software (`readOnly`). What it cannot say (a primary key, a uniqueness) goes in the field's `description`.
 - **The schema shows only the structure**: for each field its type, its name and its key (`PK`, `FK`), nothing else. Mermaid draws only these columns and a comment, and accepts only `PK`, `FK` and `UK` as keys, so the constraints go in the table below.
 - **The table has four columns**: `Field`, `Required` (`✓` when required, a `PK` included; empty otherwise), `Default` (the bare value, such as `false`, empty when there is none), `What it is`: what the field is for the user and what must be respected about it, in one or two sentences, never what everyone knows already (what a primary key does) nor a rule that belongs to another page (what a faceplate shows).
@@ -33,3 +34,5 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 | File | What it holds | Status |
 | --- | --- | --- |
 | [Designation](01-designation.md) | What identifies the equipment of a placed symbol (its tag, its location): defined once, its text written on each placed symbol; all in one file. | Draft |
+| [Color](02-color.md) | One color a type can pick: a name and a value, kept only inside its palette. | Draft |
+| [Palette](03-palette.md) | A named, ordered set of colors; one file per palette. | Draft |

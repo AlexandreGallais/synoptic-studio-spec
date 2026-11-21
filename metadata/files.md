@@ -41,8 +41,9 @@ The rules every file of Metadata follows. An [entity file](entities/README.md) g
 
 ## The name of a file
 
-- An entity with a file of its own gives the file's name in its tag `File`: the name of its list, then `.json` (`designations.json`).
-- That name is reserved for that entity: no other file may take it.
+- An entity with a file of its own gives the file's name in its tag `File`.
+- **One file for the whole list**: the name of its list, then `.json` (`designations.json`). That name is reserved for that entity: no other file may take it.
+- **One file per thing** (a palette): its `internal_id`, then the entity's name, then `.json` (`<internal_id>.palette.json`), so that renaming it breaks nothing. The file holds `format_version`, then the thing as one object named after its entity in lower case (`"palette": { … }`).
 - Where the files are placed is settled by the software architecture, not here.
 
 ## Shared types
@@ -53,4 +54,5 @@ To come: one global JSON Schema will hold the types every entity shares, and the
 
 - JSON files rather than a database: a leaning of the Product Owner, not settled.
 - The catalogue of quantities: one file with one `format_version` at its top, or one file per quantity.
+- The examples of a type and of a global enum in the [Data model](data-model.md) put their fields beside `format_version`, not in one object named after the entity as a palette does: to make even when those entities are written.
 - The other open questions on files stay in the [whole draft](draft.md#files).
