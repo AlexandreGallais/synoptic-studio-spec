@@ -467,16 +467,16 @@ The Product Owner reviewed what was applied above (questionnaire of 2026-11-22).
 
 ## Settled on 2026-11-22 (palettes)
 
-Said by the Product Owner on 2026-11-22 ("les couleurs sont dans des palettes [...] Je ne veux pas que ce soit stocké à part [...] une palette par fichier [...] Comme ça, on peut les ajouter ou les enlever"). Decision 0065 records it.
+Said by the Product Owner on 2026-11-22 ("les couleurs sont dans des palettes [...] Je ne veux pas que ce soit stocké à part [...] une palette par fichier [...] Comme ça, on peut les ajouter ou les enlever"). Decision 0065 recorded it; decision 0066 replaces it, with the color's `name` made optional.
 
 - **A color is kept only inside its palette**, never in a file or a list of its own.
 - **One palette per file**, never every palette in one file: a palette is added or removed with its file.
 - **Two entity files** (the Product Owner's proposal): [Color](entities/02-color.md), its box and its schema only; [Palette](entities/03-palette.md), its box, its schema and the schema of its file.
 - **A palette's file is named after the palette**, never after its `internal_id` (answer to the questionnaire: "Faut que ça ait un sens pour un humain [...] Si on met un internal ID, c'est incompréhensible"). So a palette's `name` is unique, and renaming a palette renames its file. How a name becomes a file name is written in [Files](files.md#the-name-of-a-file): simplified (answer: "Simplifié"), in kebab-case, the Product Owner leaving the choice between kebab-case and snake_case to the assistant.
-- **The `name` of a color is unique in its palette** (answer: "Non, unique").
+- **The `name` of a color is optional** (Product Owner, later the same day: "le nom des couleurs, pour moi, faut pas qu'ils soient obligatoires [...] Le RGBA, il va suffire"; decision 0066, which replaces 0065): a palette can be made of values only. As every empty field, a color without a name has `name` set to `null`. Whether a name, when given, is still unique in its palette (answer "Non, unique", given while the name was required) is open.
 - **Every file holds `format_version`, then one object named after what it holds** (answer: "Objet nommé"), the palette as the type and the global enum: the two examples of the [Data model](data-model.md) were rewritten so.
 - **A color has an opacity** (answer: "Avec transparence"): its value is `#rrggbbaa`, always eight digits, `ff` being opaque; the box says `rgba`.
-- `name` is required for a palette and for a color; a palette holds at least one color, as the link `|{` of the schema says.
+- `name` is required for a palette, never empty; a palette holds at least one color, as the link `|{` of the schema says.
 - **No table of the fields on an entity file** (Product Owner, same day: "le tableau [...] c'est un doublon du schéma JSON [...] il sert à rien, strictement rien"): an entity file shows its schema, then its JSON Schema, which Arsenal draws as a tree; each field is described once, in its `description`. This replaces the table set on 2026-11-21; the three entity files were changed so.
 
 ## Not in the schema yet
@@ -496,5 +496,7 @@ Said by the Product Owner on 2026-11-22 ("les couleurs sont dans des palettes [.
 - `SIGNAL_FIELD` starts with its signal, then `access`: the assistant's reading of the order of the keys, to confirm.
 - The quantity, shown in the JSON without `"format_version"`: is the catalogue of quantities one file with one `format_version` at its top, or one file per quantity? It ships with the software (never copied into the user's files), so its form may be the program's own: assistant's reading.
 - The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `UNIT_SYSTEM`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated.
-- Is the `name` of a preset, a quantity, a unit or an icon unique in its list? (A palette's and a color's are: settled on 2026-11-22.) To say on each entity file (research T5, open question 3).
+- Is the `name` of a preset, a quantity, a unit or an icon unique in its list? (A palette's is: settled on 2026-11-22.) To say on each entity file (research T5, open question 3).
+- The `name` of a color, now optional (decision 0066): when given, is it unique in its palette?
+- What the screens show for a color without a name (its value, for example): to write with the screens of the palette (decision 0066).
 - `UNIT.symbol` and the symbol of Synoptic Studio (the drawing placed) share a word: a glossary should say both meanings (research T5, 3.8).

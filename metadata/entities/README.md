@@ -34,5 +34,5 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 | File | What it holds | Status |
 | --- | --- | --- |
 | [Designation](01-designation.md) | What identifies the equipment of a placed symbol (its tag, its location): defined once, its text written on each placed symbol; all in one file. | Draft |
-| [Color](02-color.md) | One color a type can pick: a name and a value, kept only inside its palette. | Draft |
+| [Color](02-color.md) | One color a type can pick: a value and an optional name, kept only inside its palette. | Draft |
 | [Palette](03-palette.md) | A named, ordered set of colors; one file per palette. | Draft |

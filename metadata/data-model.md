@@ -147,7 +147,7 @@ erDiagram
     }
     COLOR {
         uuid internal_id PK
-        text name "shown on hover"
+        text name "optional, shown on hover"
         rgba value
     }
     TYPE |o--o{ TYPE : "parent"
