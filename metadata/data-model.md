@@ -57,10 +57,6 @@ erDiagram
         uuid quantity FK
         measure measure "value or difference"
     }
-    BOOLEAN_TEXTS {
-        text true_text "shown when the value is true"
-        text false_text "shown when the value is false"
-    }
     COMMAND {
         uuid internal_id PK
         command_kind kind "set_signal, trigger or override"
@@ -87,6 +83,10 @@ erDiagram
     DISPLAY_FORMAT {
         uuid unit FK "the display unit"
         integer decimals
+    }
+    BOOLEAN_TEXTS {
+        text true_text "shown when the value is true"
+        text false_text "shown when the value is false"
     }
     FACEPLATE_ELEMENT {
         uuid internal_id PK
@@ -177,7 +177,6 @@ erDiagram
     SIGNAL ||--|| VALUE_TYPE : "has"
     VALUE_TYPE }o--o| ENUM : "enum, when kind is enum"
     VALUE_TYPE ||--o| MEASUREMENT : "has, when kind is integer or real"
-    VALUE_TYPE ||--o| BOOLEAN_TEXTS : "has, when kind is boolean"
     MEASUREMENT }o--|| QUANTITY : "quantity"
     ENUM ||--o{ ENUM_ITEM : "holds"
     COMMAND ||--o| COMMAND_TARGET : "has, when kind is set_signal or override"
@@ -188,6 +187,7 @@ erDiagram
     PRESET_VALUE }o--o| ENUM_ITEM : "default_value, when the signal is an enum"
     PRESET_VALUE ||--o| DISPLAY_FORMAT : "has, when the signal is an integer or a real"
     DISPLAY_FORMAT }o--|| UNIT : "unit"
+    PRESET_VALUE ||--o| BOOLEAN_TEXTS : "has, when the signal is a boolean"
     PRESET ||--o{ FACEPLATE_ELEMENT : "holds"
     FACEPLATE_ELEMENT |o--o{ FACEPLATE_ELEMENT : "holds, when kind is group"
     FACEPLATE_ELEMENT ||--o| SIGNAL_FIELD : "has, when kind is signal"
@@ -288,11 +288,7 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
       "id": "running",
       "description": "True while the pump turns.",
       "value_type": {
-        "kind": "boolean",
-        "boolean_texts": {
-          "true_text": "Running",
-          "false_text": "Stopped"
-        }
+        "kind": "boolean"
       }
     },
     {
@@ -385,7 +381,11 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
         },
         {
           "signal": "6f1c2a90-0000-4000-8000-000000000023",
-          "default_value": false
+          "default_value": false,
+          "boolean_texts": {
+            "true_text": "Running",
+            "false_text": "Stopped"
+          }
         },
         {
           "signal": "6f1c2a90-0000-4000-8000-000000000024",
@@ -490,7 +490,8 @@ What the example shows, beyond the fields themselves:
 - **Numbers are kept in the default unit** (decision 0051): the speeds are in rad/s, the default unit of the made-up quantity `…900` (angular velocity), while the preset shows them in rpm (`…902`). `157.0796` is 1500 rpm, `151.8436` is 1450 rpm.
 - **A typed value is read by the signal it targets**: `switch_to_auto` sends the internal ID of the item `auto` because `mode` is an enum; `force_speed` sends a number because `speed` is a real.
 - **The maximum of the setpoint is a signal**: `speed_max`, an input of the same quantity (decision 0056); the minimum is typed.
-- **No `input_kind` and no `range` in read**, no `display_format` for the boolean and the enum, no `command_target` for a trigger: their `when` is false.
+- **No `input_kind` and no `range` in read**, no `display_format` for the boolean and the enum, `boolean_texts` for the boolean only, no `command_target` for a trigger: their `when` is false.
+- **The texts of a boolean are in the preset** (decision 0058): `running` shows "Running" or "Stopped" with the preset `Standard`; another preset of the same type may say "On" and "Off".
 - **`display_name: null`**: the field of `speed` shows the signal's `id`.
 - **A difference**: `bearing_temperature_rise` holds a gap of temperature, shown in °C (`…912`), kept in kelvins.
 - The title shows the identifier `…800` (`tag`, say `P-101`) of each placed symbol; the identifiers have their file of their own (draft, Identifiers).
@@ -607,7 +608,7 @@ A labelled field that shows the value of one signal, and lets a person type it w
 | Field | What it holds | When |
 | --- | --- | --- |
 | `signal` | The signal shown: one of the type, own or inherited. | Always. |
-| `access` | `read`: the field only shows the value, as text alone: in the display unit and with the decimals of the preset, an enum by the display name of its item, a boolean by the text of its state (`BOOLEAN_TEXTS`). `write`, for an input: a person types the value the model receives. `override`, for an output: a person types a value that replaces the model's. | Always. Write is offered for an input only, override for an output only (decision 0040). |
+| `access` | `read`: the field only shows the value, as text alone: in the display unit and with the decimals of the preset, an enum by the display name of its item, a boolean by the text of its state (the `BOOLEAN_TEXTS` of the preset). `write`, for an input: a person types the value the model receives. `override`, for an output: a person types a value that replaces the model's. | Always. Write is offered for an input only, override for an output only (decision 0040). |
 | `input_kind` | How the value is typed: `number_field`, `radio_one_line`, `radio_several_lines`, `select` or `switch` (see [The choice lists](#the-choice-lists)). | When `access` is write or override. The choices depend on the value type of the signal. |
 | `display_name` | The label beside the field, for people; never sent to the model. The same name as the field of an identifier (decision 0055). | Always; empty, the signal's `id` is shown (decision 0018). |
 | `range` | A `RANGE`: the values a person may type. | When `input_kind` is `number_field`. |
@@ -800,7 +801,7 @@ The Product Owner answered the two questions of the faceplate in the questionnai
 
 - **A boolean signal is typed with a switch** (Product Owner: "Interrupteur (switch)"): `switch` is added to `input_kind`, for a boolean only. One click turns it on or off, and its state reads at a glance.
 - **A signal field in read shows the text of the value alone** (Product Owner: "Le texte de la valeur seul"): in the display unit and with the decimals of the preset, an enum by the display name of its item, a boolean by the text of its state. No field is drawn, not even greyed.
-- **A boolean signal has two texts of its own** (Product Owner, in a third question: "Deux mots choisis par signal"): `true_text` and `false_text` ("Open" and "Closed", "Running" and "Stopped"), in a part `BOOLEAN_TEXTS` that a value type has for a boolean only, as `MEASUREMENT` for a number. They are typed in the table of signals. Assistant's reading, to confirm: they never go to the model, which gets `true` or `false`; empty, the faceplate shows "true" and "false"; the switch shows the text of its state beside it.
+- **A boolean signal has two texts of its own** (Product Owner, in a third question: "Deux mots choisis par signal"): `true_text` and `false_text` ("Open" and "Closed", "Running" and "Stopped"), in a part `BOOLEAN_TEXTS` that a value type has for a boolean only, as `MEASUREMENT` for a number. They were typed in the table of signals; moved to the preset the same day, see [Changed on 2026-11-21 (boolean texts)](#changed-on-2026-11-21-boolean-texts). Assistant's reading, to confirm: they never go to the model, which gets `true` or `false`; empty, the faceplate shows "true" and "false"; the switch shows the text of its state beside it.
 - Decision 0054 (accepted, 2026-11-21) records the three answers.
 - **So `input_kind` only exists in write or override**: it says how a value is typed, and nothing is typed in read. The builder may keep the last choice while the access changes, so that going back to write finds it: assistant's reading, a matter of the screen, not of the file.
 - The bounds follow: `min` and `max` exist only for a number field, so never in read.
@@ -844,6 +845,15 @@ The Product Owner answered the three questions of the names in the questionnaire
 - **`COMMAND_BUTTON.button_text` becomes `display_name`** (Product Owner: "Renommer en display_name"): it is shown in place of the command's `id`, as the label of a signal field is shown in place of the signal's. Empty, the button shows the command's `id`.
 - **The short text that names an icon or a colour becomes `name`** (Product Owner: "Renommer en name"): a label for a thing without `id`, shown on hover; `description` stays for a text that explains.
 
+## Changed on 2026-11-21 (boolean texts)
+
+Asked by the Product Owner on 2026-11-21 ("le boolean text, ça serait plutôt dans les presets. Ce serait pas dans le signal directement"). Decision 0058 (accepted, 2026-11-21) records it: it changes decision 0054 on where the two texts are set.
+
+- **`BOOLEAN_TEXTS` leaves `VALUE_TYPE` and becomes a part of `PRESET_VALUE`**, for a boolean signal only, as `DISPLAY_FORMAT` is for an integer or a real: how a value is shown is set in the preset, beside the display unit and the decimals.
+- So two presets of the same type may name the states differently ("Running" / "Stopped", "On" / "Off"); the signal itself only says that it is a boolean.
+- They are typed in the table of values of the preset (mode Values), in a column for booleans only: assistant's reading, its header and place to confirm (screen MD-07.13b).
+- They never go to the model, which gets `true` or `false`; nor in the configuration files sent with it, since they are a matter of display like the display unit: assistant's reading.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -857,4 +867,4 @@ The Product Owner answered the three questions of the names in the questionnaire
 - The default number of decimals of a preset: 2 or 3 (Product Owner, 2026-11-19: "qui serait de 2 ou de 3"), and whether it is fixed by the software or set for the project.
 - The syntax of the expressions (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `MEASUREMENT`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
-- The two texts of a boolean: required, or "true" and "false" when empty (assistant's reading)? And are they written in the configuration files sent with the model, as the description is?
+- The two texts of a boolean, in the preset: required, or "true" and "false" when empty (assistant's reading)? Never in the configuration files sent with the model, since they are display only (assistant's reading, since decision 0058)?

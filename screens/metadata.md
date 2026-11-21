@@ -243,7 +243,7 @@ mindmap
 | MD-04.13 | Delete a signal | Button (icon), then a warning | Last column, on the far right of each own line, with no header and the least width; a click opens a warning (2026-11-16). No right click ([layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). | Decided | [Signals](../metadata/draft.md#the-table-of-signals) |
 | MD-04.14 | Handle of a line | Grip, dragged, no header | At the very left of each own line, before Direction: held and dragged to move the line; the order chosen is kept (2026-11-16). Inherited lines have none. A new signal goes at the end: to confirm. Its look: with the design system. | Decided | [Signals](../metadata/draft.md#the-order-of-the-lines) |
 | MD-04.16 | Description | Column, text field, takes the room left | What the signal means, for the person who writes the model (2026-11-20, decision 0052). After Quantity / Difference, before the delete button: the long field last, as for flags and enum items (assistant's reading). Plain text: assistant's reading. Optional; written in the configuration files sent with the model (2026-11-20). | Decided (field, optional, in the files), Proposed (place, plain text) | [Signals](../metadata/draft.md#rules-3) |
-| MD-04.17 | True / False | Column, two short text fields | Boolean only: the text of the true state and of the false state ("Running" / "Stopped"), shown in the faceplate for a signal in read (2026-11-21, decision 0054; never in a title, decision 0055). Empty otherwise. After Enum, header "True / False": assistant's reading. | Decided (field), Proposed (place, header, empty shows true / false) | [Signals](../metadata/draft.md#fields) |
+| MD-04.17 | True / False | — | Removed (2026-11-21, decision 0058): the two texts of a boolean are set in the preset ([MD-07.13b](#md-07--presets)), not on the signal. | Decided | [Data model](../metadata/data-model.md#changed-on-2026-11-21-boolean-texts) |
 
 Gaps:
 
@@ -340,7 +340,7 @@ Path: Metadata › Types › a type › Presets.
 
 The list of presets is on the left, under its title "Presets" and the small + on its right; the page has no big title. The selected preset is on the right: a **switch** between its two modes at the top, then its name, then the mode chosen (Product Owner, 2026-11-16, while reviewing the wireframes; the labels confirmed and the switch moved up at the end of the day):
 
-- **Values**: one table with every signal of the type, for its display unit, decimals and default value; no command;
+- **Values**: one table with every signal of the type, for its display unit, decimals, texts of a boolean and default value; no command;
 - **Faceplate**: the faceplate builder, a list of elements added one by one with the + of its title.
 
 ```mermaid
@@ -348,7 +348,7 @@ block-beta
     columns 4
     list["Presets +, then the list"] sw["Switch, at the top: Values | Faceplate"]:3
     space name["Name of the preset"]:3
-    space values["Values: Signal (icon input or output, ID) | Display unit | Decimals | Default value"]:3
+    space values["Values: Signal (icon input or output, ID) | Display unit | Decimals | True / False | Default value"]:3
 ```
 
 ```mermaid
@@ -377,6 +377,7 @@ mindmap
           Signal, an icon input or output, then its ID
           Display unit
           Decimals
+          True / False, booleans only
           Default value
         No command
       Mode Faceplate, the builder
@@ -390,7 +391,7 @@ mindmap
           Read or override, for an output
         Command element
           Command, by its ID
-          Name on the button
+          Display name on the button
         Title element
         Description element
         Group element
@@ -413,6 +414,7 @@ mindmap
 | MD-07.9 | Signal | Column, read only | Mode Values: an icon of the signal's direction, input or output, then its ID (2026-11-17), so that the default value reads right. | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
 | MD-07.12 | Display unit | Column, select | Mode Values. For every integer and real (each has a quantity, 2026-11-19, decision 0051); starts as the model unit of the quantity. Changing it never changes the default value: only how it is shown. | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
 | MD-07.13 | Decimals | Column, number field | Mode Values. Integers and reals; starts as the one default number of decimals, the same everywhere (2026-11-19, decision 0050). Display only. Kept by the Product Owner on 2026-11-17. | Decided | [Units](../metadata/draft.md#decimal-places) |
+| MD-07.13b | True / False | Column, two short text fields | Mode Values. Booleans only: the text of the true state and of the false state ("Running" / "Stopped"), shown in the faceplate for a signal in read; never sent to the model (2026-11-21, decisions 0054 and 0058; never in a title, decision 0055). Header "True / False", its place after Decimals, and "true" / "false" shown when empty: assistant's reading. | Decided (field in the preset), Proposed (place, header, empty) | [Data model](../metadata/data-model.md#changed-on-2026-11-21-boolean-texts) |
 | MD-07.14 | Default value | Column, field of the signal's type | Mode Values. For an input, the first value sent to the model; for an input and an output, the value shown before the model sends anything (2026-11-17). True or false, a number, a text, or an enum item. A number is shown and typed in the display unit, and kept in the default unit of the quantity (2026-11-19, decision 0051). | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
 | MD-07.18 | Add an element | Buttons (small icons with a +) | Mode Faceplate, on the right of the title "Elements": one icon per kind, a signal, a command, a title, a description, a group, no menu (2026-11-16, the rule of the links, confirmed by the Product Owner the same day). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.9b | Signal element | Element of the builder | The signal, picked by its ID; its display name (plain text, never sent to the model; empty: the ID is shown; called "name shown" until 2026-11-21, decision 0055); read or write (input) or read or override (output); its input. | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |

@@ -512,11 +512,10 @@ A signal is what goes between the front and the model: an input or an output of 
 | ID | The signal's name for the model. | Its variable identifier, set once. Shown as "ID" in the table. |
 | Type | What kind of value. | Integer, real, boolean or enum. A real is a 64-bit double. No text (Product Owner, 2026-11-18, see [No text signal](#no-text-signal)). |
 | Enum | For an enum: the list of values. | An enum picked from the Enums page (see [Enums](#enums)): a global enum or a template (2026-11-17, see [Global enums and templates](#global-enums-and-templates)). A link to it, never a copy, and never defined in the signal. |
-| True / False | For a boolean: the text shown for each state ("Open" and "Closed", "Running" and "Stopped"). | Two short texts, typed on the line (Product Owner, 2026-11-21: "Deux mots choisis par signal", decision 0054). Shown in the faceplate for a signal in read. Never sent to the model, which gets true or false; empty, "true" and "false" are shown (assistant's reading, to confirm). |
 | Quantity | What the value measures (volume, flow, pressure...), and whether the value is the quantity itself or a difference of it. | Required for an integer or a real, never for a boolean or an enum (decision 0051, 2026-11-19): a number that measures nothing physical takes the ratio or the count of the catalogue. Picked from the ready-made catalogue of the Units page, which the user never changes; the user picks the quantity or its difference, told apart by an icon (Product Owner, 2026-11-16), see [Units](#value-or-difference-chosen-in-the-signal). |
 | Description | What the signal means, for the person who writes the model. | Plain text (assistant's reading). Optional. Written in the configuration files sent with the model, edited in Metadata only. Last column of the table (2026-11-20, decision 0052). |
 
-There is no field Minimum or Maximum (Product Owner, 2026-11-17): a bound is a plain signal of its own. There is no field Decimals either (Product Owner, 2026-11-17).
+There is no field Minimum or Maximum (Product Owner, 2026-11-17): a bound is a plain signal of its own. There is no field Decimals either (Product Owner, 2026-11-17). There are no texts of a boolean on the signal: set on the signal by decision 0054, they moved to the preset the same day (Product Owner, 2026-11-21: "ça serait plutôt dans les presets"; decision 0058; see [Mode Values](#mode-values-one-table-of-the-signals)).
 
 ```mermaid
 classDiagram
@@ -525,7 +524,6 @@ classDiagram
         ID
         type
         enum
-        true and false texts
         quantity
         description
     }
@@ -541,17 +539,17 @@ The signals of `centrifugal_pump`, a child of `pump`, itself a child of `equipme
 
 In the column Quantity, ● stands for the icon of a quantity and Δ for the icon of a difference: both are placeholders, the icons are chosen with the design system.
 
-| From | Direction | ID | Type | Enum | True / False | Quantity | Description |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `equipment`, read only | output | `fault` | enum | `fault_state` (0 None, 1 Overheating, 2 Dry running) |  |  | The fault the equipment is in, if any. |
-| `pump`, read only | input | `running` | boolean |  | Running / Stopped |  | True to run the pump, false to stop it. |
-| `pump`, read only | output | `flow` | real |  |  | ● flow | Flow through the pump. |
-| own | input | `mode` | enum | `operating_mode` (0 Off, 1 Manual, 2 Automatic) |  |  | How the pump is driven. |
-| own | input | `speed_setpoint` | integer |  |  | ● rotational speed | Speed asked of the motor. |
-| own | input | `speed_setpoint_max` | integer |  |  | ● rotational speed | Highest speed that may be asked. |
-| own | output | `inlet_pressure` | real |  |  | ● pressure | Pressure at the inlet. |
-| own | output | `pressure_rise` | real |  |  | Δ pressure | Pressure gained between inlet and outlet. |
-| own | output | `bearing_temperature` | real |  |  | ● temperature | Temperature of the motor bearing. |
+| From | Direction | ID | Type | Enum | Quantity | Description |
+| --- | --- | --- | --- | --- | --- | --- |
+| `equipment`, read only | output | `fault` | enum | `fault_state` (0 None, 1 Overheating, 2 Dry running) |  | The fault the equipment is in, if any. |
+| `pump`, read only | input | `running` | boolean |  |  | True to run the pump, false to stop it. |
+| `pump`, read only | output | `flow` | real |  | ● flow | Flow through the pump. |
+| own | input | `mode` | enum | `operating_mode` (0 Off, 1 Manual, 2 Automatic) |  | How the pump is driven. |
+| own | input | `speed_setpoint` | integer |  | ● rotational speed | Speed asked of the motor. |
+| own | input | `speed_setpoint_max` | integer |  | ● rotational speed | Highest speed that may be asked. |
+| own | output | `inlet_pressure` | real |  | ● pressure | Pressure at the inlet. |
+| own | output | `pressure_rise` | real |  | Δ pressure | Pressure gained between inlet and outlet. |
+| own | output | `bearing_temperature` | real |  | ● temperature | Temperature of the motor bearing. |
 
 `speed_setpoint_max` is a bound: a plain input signal, given to the model, with no tie to `speed_setpoint` (Product Owner, 2026-11-17). A minimum would be one more line, the same way.
 
@@ -568,7 +566,6 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 | ID | The model identifier (Product Owner, 2026-11-16: "l'ID, qui est le modèle identifiant"). |
 | Type | Integer, real, boolean, enum. |
 | Enum | For an enum signal only: the enum it points to. |
-| True / False | For a boolean signal only: two short text fields, the text of the true state and of the false state (2026-11-21, decision 0054). Header "True / False" and its place after Enum: assistant's reading. |
 | Quantity / Difference | Header **"Quantity / Difference"** (Product Owner, 2026-11-17: "quantity, c'est le rond, et différence, c'est le petit triangle. Du coup, c'est quantity/différence"). Optional, integers and reals only. One column holds the choice of the quantity or of its difference: its list offers the pressure and the pressure difference (Product Owner, 2026-11-16). Only the quantities whose conversion changes (temperature, gauge pressure...) have the two items; the others are offered once (see [Units](#value-or-difference-chosen-in-the-signal)). **An icon before the name** says which it is: one icon for a quantity, another for a difference, so that the two are told apart at a glance (Product Owner, 2026-11-16: "on met un symbole, une icône. Comme ça, c'est beaucoup plus simple à reconnaître"). **The icon alone**: no "(quantity)" or "(difference)" after the name (Product Owner, 2026-11-16: "pas besoin de mettre (quantité) ou (différence) [...] quand on connaît les icônes"). The icons are chosen with the design system. |
 | Description | What the signal means, for the person who writes the model (Product Owner, 2026-11-20, decision 0052). Last column of values: the short fields first and the long one last, as for the enum items and the flags (assistant's reading). It takes the room left. |
 | Delete | A delete button (an icon), in the last column, on the far right, with **no header**; a click opens a warning before anything is deleted (Product Owner, 2026-11-16). Not on the inherited lines. |
@@ -576,6 +573,7 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 - **No column Model unit** (Product Owner, 2026-11-16, end of the day): the model unit is one per quantity, set outside Metadata (see [Units](#model-unit-and-display-unit)).
 - **No column Min or Max** (Product Owner, 2026-11-17): a bound is a plain signal of its own, on a line of its own.
 - **No column Decimals** (Product Owner, 2026-11-17): decimals are not set in Metadata.
+- **No column True / False** (Product Owner, 2026-11-21, decision 0058): the texts of a boolean are set in the preset.
 - The columns of the handle and of the delete button have no header and take the least room possible (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
 
 - Every line is always editable: a field is changed in place, with no Edit or Save step (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps, rapidement"). See [Always editable, no versions](#always-editable-no-versions).
@@ -1112,7 +1110,7 @@ Decided by the Product Owner on 2026-11-16: "Faceplate et preset, il faut fusion
 Decided by the Product Owner on 2026-11-16, while reviewing the wireframes: "un menu qui soit juste un switch au-dessus de name of the preset. Ce switch serait entre ma définition des display units, des décimales et des default values, et un truc en mode création de pop-up."
 
 - A **switch** sits above the name of the preset. It changes what the right side shows:
-  - **Values**: the display unit, the decimals and the default value of each signal;
+  - **Values**: the display unit, the decimals, the texts of a boolean (decision 0058) and the default value of each signal;
   - **Faceplate**: the faceplate builder, where the faceplate is put together element by element.
 - The labels are **"Values"** and **"Faceplate"** (proposed by the assistant, confirmed by the Product Owner on 2026-11-16: "que ce soit juste un truc Values et Faceplate").
 - **The faceplate has no part of its own**: it is made and seen only in this second mode of the preset (Product Owner, 2026-11-16, end of the day). Decision 0023 replaces decision 0021, which had made it a part.
@@ -1136,6 +1134,7 @@ A table with **every signal of the type**, own and inherited, one per line (Prod
 | Signal | An icon of its direction, then the signal's ID, read only | Which signal the line is about (see [Signals](#signals)). The icon says whether it is an input or an output of the model (Product Owner, 2026-11-17: "il faudrait qu'on puisse savoir si c'est un input ou un output [...] ça donne juste une icône"), so that the default value is read right. |
 | Display unit | Select | Only with a quantity. Among the units of the signal's quantity; starts as the model unit of the quantity. Kept (Product Owner, 2026-11-17: "Display unit pareil"). |
 | Decimals | Number field | Integers and reals only. Starts as the one default number of decimals (see [Decimal places](#decimal-places)). Display only. Kept (Product Owner, 2026-11-17: "les décimales ici servent"). |
+| True / False | Two short text fields | Booleans only: the text of the true state and of the false state ("Open" and "Closed", "Running" and "Stopped"), shown in the faceplate for a signal in read (Product Owner, 2026-11-21: "le boolean text, ça serait plutôt dans les presets"; decision 0058, which moves them from the signal, decision 0054). Never sent to the model, which gets true or false. Header, place after Decimals, and "true" and "false" shown when empty: assistant's reading, to confirm. |
 | Default value | Field of the signal's type | See [The default value](#the-default-value) below. A boolean: true or false. An integer or a real: a number, typed. An enum: an item, picked by its display name (Product Owner, 2026-11-16: "si c'est un nombre, on peut écrire une valeur par défaut, et puis basta"). |
 
 ##### The default value
@@ -1166,11 +1165,11 @@ sequenceDiagram
 
 ```mermaid
 block-beta
-    columns 4
-    h1["Signal"] h2["Display unit"] h3["Decimals"] h4["Default value"]
-    a1["input · running"] a2["-"] a3["-"] a4["false"]
-    b1["input · mode"] b2["-"] b3["-"] b4["Automatic"]
-    c1["output · inlet_pressure"] c2["bar"] c3["2"] c4["1.5"]
+    columns 5
+    h1["Signal"] h2["Display unit"] h3["Decimals"] h5["True / False"] h4["Default value"]
+    a1["input · running"] a2["-"] a3["-"] a5["Running / Stopped"] a4["false"]
+    b1["input · mode"] b2["-"] b3["-"] b5["-"] b4["Automatic"]
+    c1["output · inlet_pressure"] c2["bar"] c3["2"] c5["-"] c4["1.5"]
 ```
 
 #### Mode Faceplate: the faceplate builder
@@ -1239,7 +1238,7 @@ Said by the Product Owner on 2026-11-18, with the page [Identifiers](#identifier
 #### Typing a value
 
 - A signal element offers **read or write for an input**, and **read or override for an output** (Product Owner, end of 2026-11-17: "c'est read write pour un input et read override pour un output"). It corrects the single "read or override" written earlier on 2026-11-17 for both directions (decision 0040, accepted on 2026-11-17, which changes decision 0030).
-- A signal set to **read** shows **the text of its value alone**, no field drawn, not even greyed (Product Owner, 2026-11-21: "Le texte de la valeur seul"): in the display unit and with the decimals of the preset, an enum by the display name of its item, a boolean by the text of its state set on the signal (Product Owner, 2026-11-21: "Deux mots choisis par signal"; see [Signals](#fields)). It has no input to choose and no bounds (decision 0054).
+- A signal set to **read** shows **the text of its value alone**, no field drawn, not even greyed (Product Owner, 2026-11-21: "Le texte de la valeur seul"): in the display unit and with the decimals of the preset, an enum by the display name of its item, a boolean by the text of its state set in the preset (Product Owner, 2026-11-21: "Deux mots choisis par signal", then "ça serait plutôt dans les presets", decision 0058; see [Mode Values](#mode-values-one-table-of-the-signals)). It has no input to choose and no bounds (decision 0054).
 - A signal set to **write** or to **override** in the builder is the only way for a person to type a value: a command always sends a fixed value (see [Commands](#the-value-is-always-fixed)).
 - **An input and an output can both be typed in, in the same way** (Product Owner, 2026-11-17: "c'est des outputs, faut pouvoir les mettre en write aussi, exactement de la même façon"); only the word changes: write for an input, override for an output. It replaces the rule of 2026-11-16, which greyed write for an output (decision 0030, accepted on 2026-11-17, which changes decisions 0014 and 0022 on this point).
 - What happens to the typed value is **left to what is behind** the faceplate (Product Owner: "c'est à ce qui passe derrière de se débrouiller, parce que ça peut devenir une valeur, ça peut devenir un override"): for an input it becomes the value the model receives; for an output, an override of that output. How an override of an output is applied, and how it ends, is the open question already asked for the command "Override an output" (see [Commands](#open-questions-4)).
@@ -1333,7 +1332,7 @@ Mode Faceplate:
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Preset and its name | Metadata, under a type | Symbol and synoptic start from it | Choose one | Choose one |
-| Display unit, decimals, default value | Preset, mode Values, in Metadata | Faceplate of the symbol or synoptic; texts of a symbol that show a value | Edit | Edit |
+| Display unit, decimals, texts of a boolean, default value | Preset, mode Values, in Metadata | Faceplate of the symbol or synoptic; texts of a symbol that show a value | Edit | Edit |
 | Elements of the faceplate: signals (display name, input and its bounds, read or write, read or override), commands (name on the button), titles, descriptions, groups | Preset, mode Faceplate, in Metadata | Faceplate of the symbol or synoptic | Open | Open |
 | Texts of the title and description elements | Preset, mode Faceplate, in Metadata | Faceplate of the symbol or synoptic | Edit (assistant's reading) | Edit, on each placed symbol (assistant's reading) |
 | Variable of a title or description element (an identifier) | Preset, mode Faceplate, in Metadata, through the small icon of the field | Faceplate of the symbol or synoptic | No (assistant's reading) | The text of each identifier filled on each placed symbol (see [Identifiers](#identifiers)) |
@@ -1344,7 +1343,7 @@ Noted, not to be asked again in the chat (Product Owner, end of 2026-11-17).
 
 - Can a signal or a command be added twice to the builder?
 - What a symbol or a synoptic can change in the faceplate built by the preset.
-- The two texts of a boolean signal: required, or "true" and "false" when empty? Does the switch show the text of its state beside it (assistant's reading)?
+- The two texts of a boolean, set in the preset: required, or "true" and "false" when empty? Does the switch show the text of its state beside it (assistant's reading)?
 
 ## Always editable, no versions
 
@@ -1745,7 +1744,6 @@ Said by the Product Owner on 2026-11-18: nested in their type, as the links, eac
 | ID | Text | The public identifier, sent to the model. |
 | Type | Enum: integer, real, boolean or enum | No text (decision 0043). |
 | Enum | Internal ID of an enum | For an enum signal only. |
-| True / False | Two texts | For a boolean signal only: the text of each state, shown in the faceplate (2026-11-21, decision 0054). |
 | Quantity / Difference | Internal ID of a quantity or of a difference | Required for integers and reals, none for the others (decision 0051). Each quantity and each difference of the catalogue has its own internal ID (see [Units](#value-or-difference-chosen-in-the-signal)). |
 | Description | Text | Plain text, for the person who writes the model; optional; written in the configuration files sent with the model (2026-11-20, decision 0052). |
 
@@ -1918,7 +1916,7 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 | Enum and its items (key, description, display name) | Enums page | No | No |
 | Command, its ID and description | Metadata | Link a command to a click | No |
 | Preset and its name | Metadata | Choose one | Choose one |
-| Display unit, decimals, default value of each signal | Preset, mode Values, in Metadata | Edit | Edit |
+| Display unit, decimals, texts of a boolean, default value of each signal | Preset, mode Values, in Metadata | Edit | Edit |
 | Elements of the faceplate: signals (display name, input and its bounds, read or write, read or override), commands (display name of their button), titles, descriptions, groups | Preset, mode Faceplate (the builder), in Metadata | Open | Open |
 | Texts of the title and description elements of the faceplate (no title nor description by default, 2026-11-16) | Preset, mode Faceplate, in Metadata | Edit (assistant's reading) | Edit, on each placed symbol (assistant's reading) |
 | Fixed text or variable (an identifier; a signal until 2026-11-21) of a title or description element (2026-11-18) | Preset, mode Faceplate, in Metadata, through the small icon of the field | No (assistant's reading) | No |
