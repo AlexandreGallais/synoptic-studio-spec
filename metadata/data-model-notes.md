@@ -27,7 +27,7 @@ Status: everything written around the schema of the [Data model](data-model.md) 
 
 ## How the schema becomes JSON
 
-Asked by the Product Owner on 2026-11-21 ("que tu me construises juste en dessous du schéma l'objet JSON [...] qui représente un peu tout ce qu'il pourrait avoir"). One made-up type that uses every box of a type at least once, without trying every combination; then a global enum and a quantity of the catalogue, which live in files of their own. The identifiers, the icons and the palettes are left out; the file of the identifiers is in [Identifier](objects/01-identifier.md) since 2026-11-21. The internal IDs are made up, and only their last digits differ, to read them easily.
+Asked by the Product Owner on 2026-11-21 ("que tu me construises juste en dessous du schéma l'objet JSON [...] qui représente un peu tout ce qu'il pourrait avoir"). One made-up type that uses every box of a type at least once, without trying every combination; then a global enum and a quantity of the catalogue, which live in files of their own. The identifiers, the icons and the palettes are left out; the file of the identifiers is in [Identifier](entities/01-identifier.md) since 2026-11-21. The internal IDs are made up, and only their last digits differ, to read them easily.
 
 How the boxes become JSON, one rule for each, with no exception (the names of the lists confirmed by the Product Owner on 2026-11-21, decision 0057):
 
@@ -50,7 +50,7 @@ What the example of a type shows, beyond the fields themselves:
 - **The texts of a boolean are in the preset** (decision 0058): `running` shows "Running" or "Stopped" with the preset `Standard`; another preset of the same type may say "On" and "Off".
 - **`display_name: null`**: the field of `speed` shows the signal's `id`.
 - **A difference**: `bearing_temperature_rise` holds a gap of temperature, shown in °C (`…912`), kept in kelvins.
-- The title shows the identifier `…800` (`tag`, say `P-101`) of each placed symbol; the identifiers have their file of their own ([Identifier](objects/01-identifier.md)).
+- The title shows the identifier `…800` (`tag`, say `P-101`) of each placed symbol; the identifiers have their file of their own ([Identifier](entities/01-identifier.md)).
 
 ### What the quantity shows
 
@@ -158,7 +158,7 @@ Every field whose value is one word from a fixed list. Each is written in the JS
 
 ## Checked on 2026-11-21 (schema against JSON)
 
-Asked by the Product Owner on 2026-11-21 ("une longue recherche et une comparaison entre l'objet JSON et le schéma, pour voir si tout est cohérent, et [...] pour voir si tous les noms sont logiques"), before the objects are validated one by one. Every box, field, link and label of the schema was read against the three JSON examples and against the rules of the head of this file.
+Asked by the Product Owner on 2026-11-21 ("une longue recherche et une comparaison entre l'objet JSON et le schéma, pour voir si tout est cohérent, et [...] pour voir si tous les noms sont logiques"), before the entities are validated one by one. Every box, field, link and label of the schema was read against the three JSON examples and against the rules of the head of this file.
 
 - **The JSON matches the schema.**
   - Every key of the examples is a field, a part or a list of the schema, under its name; `format` is the only exception (see [Open](#open)).
@@ -401,7 +401,7 @@ The Product Owner answered the question of the pass in the questionnaire, with t
 
 The Product Owner answered the question of the check of the schema against the JSON in the questionnaire, with the option the assistant advised ("Règles des fichiers seulement").
 
-- **`"format"` is described in the rules of the files only** ([Files](draft.md#files)): it is the version of the file format, so it belongs to the file, not to an object. The schema stays the schema of the objects; no box `FILE` is added.
+- **`"format"` is described in the rules of the files only** ([Files](draft.md#files)): it is the version of the file format, so it belongs to the file, not to an entity. The schema stays the schema of the entities; no box `FILE` is added.
 - The JSON examples keep `"format": 1` at the top of the file of a type and of an enum; nothing else changes.
 - Still open: whether the catalogue of quantities is one file with one `format` at its top, or one file per quantity (see [Open](#open)).
 

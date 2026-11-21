@@ -1,12 +1,12 @@
 # Identifier
 
-> [Home](../../README.md) › [Metadata](../README.md) › [Objects](README.md) › Identifier
+> [Home](../../README.md) › [Metadata](../README.md) › [Entities](README.md) › Identifier
 
 Status: draft, written on 2026-11-21 at the Product Owner's request, from the page Identifiers of the [whole draft](../draft.md#identifiers) (decision 0048) and the [Data model](../data-model.md). Not validated. "Identifier" is still a working name.
 
 An identifier is a named key that each placed symbol fills with its own text, in the synoptic: the tag of a pump, for example `P-101`. Metadata only makes the key, never the text. Identifiers are global: they belong to no type, every type can use them, and they are all kept in one file.
 
-## The object
+## The entity
 
 An identifier has its internal ID and three fields, nothing else. A title or a description of a faceplate points to it.
 
@@ -29,7 +29,7 @@ erDiagram
 | Field | What it is | Rule |
 | --- | --- | --- |
 | `internal_id` | The UUID set by the software | Never changes, never leaves the application. A faceplate points to the identifier through it, so a changed `id` breaks nothing. |
-| `id` | The key | Written by the user. The public identifier, as for every object of Metadata. |
+| `id` | The key | Written by the user. The public identifier, as for every entity of Metadata. |
 | `display_name` | The name people read | Shown in place of the `id`. Empty (`null`): the `id` is shown. |
 | `description` | What the identifier is | Plain text, for people. Empty: `null`. |
 

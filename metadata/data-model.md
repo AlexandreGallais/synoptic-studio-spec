@@ -4,7 +4,7 @@
 
 Status: the schema and its JSON, being validated with the Product Owner. The rules, the reading notes and the open questions are in [Data model: notes](data-model-notes.md).
 
-Colours of the boxes: orange, the object has its own page in [Objects](objects/README.md), not validated yet; green, its page is validated by the Product Owner; no colour, not written yet.
+Colours of the boxes: orange, the entity has its own page in [Entities](entities/README.md), not validated yet; green, its page is validated by the Product Owner; no colour, not written yet.
 
 ## The schema
 
