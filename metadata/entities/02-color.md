@@ -35,7 +35,7 @@ erDiagram
       "readOnly": true
     },
     "name": {
-      "description": "The label shown on hover, to tell the colors apart.",
+      "description": "The label shown on hover, to tell the colors apart. Unique in its palette.",
       "type": "string",
       "minLength": 1
     },
@@ -48,7 +48,3 @@ erDiagram
   }
 }
 ```
-
-## Open questions
-
-- Is the `name` of a color unique in its palette?

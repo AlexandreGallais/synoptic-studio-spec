@@ -45,7 +45,7 @@ The rules every file of Metadata follows. An [entity file](entities/README.md) g
 - **A file's name means something to a person**, never an `internal_id`: the files are read and shared by people.
 - **One file for the whole list**: the name of its list, then `.json` (`designations.json`). That name is reserved for that entity: no other file may take it.
 - **One file per thing** (a palette): the file name of its `name`, then the entity's name, then `.json` (`pompes-bleues.palette.json`). Renaming the thing renames its file.
-- **The file name of a `name`**: in lower case, without accents, each run of characters other than a letter or a digit becoming one hyphen, without a hyphen at either end ("Pompes bleues" gives `pompes-bleues`). The same on Windows, macOS and Linux.
+- **The file name of a `name`, in kebab-case**: in lower case, without accents, each run of characters other than a letter or a digit becoming one hyphen `-`, without a hyphen at either end ("Pompes bleues" gives `pompes-bleues`). The same on Windows, macOS and Linux. The hyphen, not the underscore: it is the usual separator in file names and web addresses, and keeps file names apart from the snake_case keys inside the files.
 - **Two things of the same entity never give the same file name**: a `name` whose file name is taken, or that gives an empty one, is refused.
 - Where the files are placed is settled by the software architecture, not here.
 
