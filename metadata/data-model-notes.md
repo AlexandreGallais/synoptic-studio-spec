@@ -422,6 +422,14 @@ Asked by the Product Owner on 2026-11-21 ("dans l'identifiant, on va dégager di
 - **`required` is `false` for a new identifier** (Product Owner, later the same day: "Le booléen required, ce serait genre false").
 - **The schema of an entity page shows only the structure** (Product Owner, same day): type, name, key, required or optional and the default value; what a field means is in the table below it. Written in [Entities](entities/README.md#how-an-entity-file-is-written).
 
+## Changed on 2026-11-21 (entity files and global rules)
+
+Asked by the Product Owner on 2026-11-21 ("c'est des règles globales").
+
+- **Required and default leave the schema for the table**: column `Required`, with `✓` when required.
+- **The section The file of an entity keeps its JSON Schema only**: no text, no example. A tag **File** under the status says the entity has a file of its own.
+- **The rules shared by every file move to [Files](files.md)**: the `format` key, how the schema becomes JSON, the order of the keys. New rule: a file whose key order is not respected is still read, and is written again in the order of the schema when saved.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.

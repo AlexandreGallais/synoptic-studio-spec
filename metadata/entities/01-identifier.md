@@ -4,6 +4,8 @@
 
 Status: draft, written on 2026-11-21 at the Product Owner's request, from the page Identifiers of the [whole draft](../draft.md#identifiers) (decision 0048) and the [Data model](../data-model.md). The head (status and introduction) and the order of the sections are validated by the Product Owner on 2026-11-21; the rest is being read. "Identifier" is still a working name.
 
+**File:** its own, one file for all the identifiers.
+
 An identifier is a named key that each placed symbol fills with its own text, in the synoptic: the tag of a pump, for example `P-101`. Metadata only makes the key, never the text. Identifiers are global: they belong to no type, every type can use them, and they are all kept in one file.
 
 ## The entity
@@ -18,48 +20,14 @@ erDiagram
     }
 ```
 
-| Field | R | Default | What it is | Rules |
+| Field | Required | Default | What it is | Rules |
 | --- | --- | --- | --- | --- |
 | `internal_id` |  |  | The UUID set by the software, version 7 (see [Rules of the schema](../data-model-notes.md#rules-of-the-schema)) | Never changes, never leaves the application. Every link to the identifier goes through it, so a changed `id` breaks nothing. |
-| `id` | R |  | The key | Written by the user. The public identifier, as for every entity of Metadata. Shown wherever the identifier is picked or filled. |
-| `required` | R | `false` | Whether its text must be filled | `true`: the text is asked on every placed symbol, whether or not its faceplate shows the identifier; left empty, the field is marked and the placed symbol is listed in the faults as a warning, and the synoptic is saved anyway. `false`: the text may stay empty. |
+| `id` | ✓ |  | The key | Written by the user. The public identifier, as for every entity of Metadata. Shown wherever the identifier is picked or filled. |
+| `required` | ✓ | `false` | Whether its text must be filled | `true`: the text is asked on every placed symbol, whether or not its faceplate shows the identifier; left empty, the field is marked and the placed symbol is listed in the faults as a warning, and the synoptic is saved anyway. `false`: the text may stay empty. |
 | `description` |  |  | What the identifier is | Plain text, for people. Empty: `null`. |
 
 ## The file
-
-All the identifiers are kept in one file, since they are global and their order is the order on the screen. Its name and its place are a proposal: `identifiers.json`, at the root of the Metadata folder, beside `types/` and `enums/`.
-
-- `"format"` first, the version of the file format, as in every file (see [Files](../draft.md#files)).
-- Then `identifiers`, the ordered list, named after the box in the plural.
-- Each identifier keeps the field order of the schema: `internal_id`, `id`, `required`, `description`.
-
-### Example
-
-Two made-up identifiers. The internal IDs are made up too; `…800` is the one the title of the [type example](../data-model.md#a-type) points to.
-
-```json
-{
-  "format": 1,
-  "identifiers": [
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000800",
-      "id": "tag",
-      "required": true,
-      "description": "The tag of the equipment, as on the plant drawings."
-    },
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000801",
-      "id": "location",
-      "required": false,
-      "description": null
-    }
-  ]
-}
-```
-
-### JSON Schema
-
-The rules of the file, in JSON Schema (draft 2020-12), so that a file can be checked by a program. It says only what the specification settles: nothing on how an `id` is written, nor on its uniqueness, both still open.
 
 ```json
 {
