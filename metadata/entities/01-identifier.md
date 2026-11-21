@@ -12,21 +12,18 @@ An identifier is a named key that each placed symbol fills with its own text, in
 erDiagram
     IDENTIFIER {
         uuid internal_id PK
-        text id "R"
-        boolean required "R, default false"
+        text id
+        boolean required
         text description
     }
 ```
 
-| Field | What it is | Rules |
-| --- | --- | --- |
-| `internal_id` | The UUID set by the software, version 7 (see [Rules of the schema](../data-model-notes.md#rules-of-the-schema)) | Never changes, never leaves the application. Every link to the identifier goes through it, so a changed `id` breaks nothing. |
-| `id` | The key | Written by the user. The public identifier, as for every entity of Metadata. Shown wherever the identifier is picked or filled. |
-| `required` | Whether its text must be filled | `true`: the text is asked on every placed symbol, whether or not its faceplate shows the identifier; left empty, the field is marked and the placed symbol is listed in the faults as a warning, and the synoptic is saved anyway. `false`: the text may stay empty. |
-| `description` | What the identifier is | Plain text, for people. Empty: `null`. |
-
-- The text in front of the key is filled on each placed symbol, in the synoptic (part 3).
-- The order of the list is the order chosen by the user on the page Identifiers, with the handles.
+| Field | R | Default | What it is | Rules |
+| --- | --- | --- | --- | --- |
+| `internal_id` |  |  | The UUID set by the software, version 7 (see [Rules of the schema](../data-model-notes.md#rules-of-the-schema)) | Never changes, never leaves the application. Every link to the identifier goes through it, so a changed `id` breaks nothing. |
+| `id` | R |  | The key | Written by the user. The public identifier, as for every entity of Metadata. Shown wherever the identifier is picked or filled. |
+| `required` | R | `false` | Whether its text must be filled | `true`: the text is asked on every placed symbol, whether or not its faceplate shows the identifier; left empty, the field is marked and the placed symbol is listed in the faults as a warning, and the synoptic is saved anyway. `false`: the text may stay empty. |
+| `description` |  |  | What the identifier is | Plain text, for people. Empty: `null`. |
 
 ## The file
 
