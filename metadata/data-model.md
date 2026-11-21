@@ -4,6 +4,8 @@
 
 Status: the schema and its JSON, being validated with the Product Owner. The rules, the reading notes and the open questions are in [Data model: notes](data-model-notes.md).
 
+Colours of the boxes: orange, the object has its own page in [Objects](objects/README.md), not validated yet; green, its page is validated by the Product Owner; no colour, not written yet.
+
 ## The schema
 
 ```mermaid
@@ -184,6 +186,7 @@ erDiagram
     FAMILY ||--|{ UNIT : "holds, sorted by size"
     QUANTITY }o--|| UNIT : "default_unit"
     UNIT ||--o| CONVERSION : "has, except the default unit"
+    style IDENTIFIER fill:#f8b26a,stroke:#c66a00
 ```
 
 ## The schema as JSON
