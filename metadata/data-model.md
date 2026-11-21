@@ -65,7 +65,7 @@ erDiagram
     }
     PRESET_VALUE {
         uuid signal FK
-        signal_value default_value "a number in the default unit, a boolean, or the internal_id of an item of the signal's enum"
+        signal_value start_value "a number in the default unit, a boolean, or the internal_id of an item of the signal's enum"
     }
     DISPLAY_FORMAT {
         uuid unit FK "the display unit: a unit of the signal's quantity"
@@ -170,7 +170,7 @@ erDiagram
     COMMAND_TARGET }o--o| ENUM_ITEM : "value, when the signal is an enum"
     PRESET ||--o{ PRESET_VALUE : "holds, one per signal of the type"
     PRESET_VALUE }o--|| SIGNAL : "signal"
-    PRESET_VALUE }o--o| ENUM_ITEM : "default_value, when the signal is an enum"
+    PRESET_VALUE }o--o| ENUM_ITEM : "start_value, when the signal is an enum"
     PRESET_VALUE ||--o| DISPLAY_FORMAT : "has, when the signal is an integer or a real"
     DISPLAY_FORMAT }o--|| UNIT : "unit"
     PRESET_VALUE ||--o| BOOLEAN_TEXTS : "has, when the signal is a boolean"
@@ -324,7 +324,7 @@ erDiagram
       "preset_values": [
         {
           "signal": "01a1f800-0000-7000-8000-000000000020",
-          "default_value": 0,
+          "start_value": 0,
           "display_format": {
             "unit": "01a1f800-0000-7000-8000-000000000902",
             "decimals": 0
@@ -332,7 +332,7 @@ erDiagram
         },
         {
           "signal": "01a1f800-0000-7000-8000-000000000021",
-          "default_value": 157.0796,
+          "start_value": 157.0796,
           "display_format": {
             "unit": "01a1f800-0000-7000-8000-000000000902",
             "decimals": 0
@@ -340,7 +340,7 @@ erDiagram
         },
         {
           "signal": "01a1f800-0000-7000-8000-000000000022",
-          "default_value": 0,
+          "start_value": 0,
           "display_format": {
             "unit": "01a1f800-0000-7000-8000-000000000902",
             "decimals": 1
@@ -348,7 +348,7 @@ erDiagram
         },
         {
           "signal": "01a1f800-0000-7000-8000-000000000023",
-          "default_value": false,
+          "start_value": false,
           "boolean_texts": {
             "true_text": "Running",
             "false_text": "Stopped"
@@ -356,11 +356,11 @@ erDiagram
         },
         {
           "signal": "01a1f800-0000-7000-8000-000000000024",
-          "default_value": "01a1f800-0000-7000-8000-000000000501"
+          "start_value": "01a1f800-0000-7000-8000-000000000501"
         },
         {
           "signal": "01a1f800-0000-7000-8000-000000000025",
-          "default_value": 0,
+          "start_value": 0,
           "display_format": {
             "unit": "01a1f800-0000-7000-8000-000000000912",
             "decimals": 1

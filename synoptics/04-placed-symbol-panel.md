@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Synoptics](README.md) › Panel of a placed symbol · Previous: [Placed symbols](03-placed-symbols.md) · Next: [Pipes](05-pipes.md)
 
-Status: extrapolated by the assistant on 2026-11-20. It gathers in one panel what Metadata leaves "to the synoptic, part 3" (identifier texts, flags, template items, preset). The Product Owner settled the instance ID and what the preset lets a synoptic change the same day; the rest is not validated.
+Status: extrapolated by the assistant on 2026-11-20. It gathers in one panel what Metadata leaves "to the synoptic, part 3" (designation texts, flags, template items, preset). The Product Owner settled the instance ID and what the preset lets a synoptic change the same day; the rest is not validated.
 
 The right-hand panel of the synoptic editor, when one placed symbol is selected. It is where a placed symbol gets its identity.
 
@@ -13,7 +13,7 @@ The right-hand panel of the synoptic editor, when one placed symbol is selected.
 
 ```mermaid
 flowchart TD
-    A["Symbol: library, symbol, type, Open, Replace"] --> B["Identity: instance ID, identifier texts"]
+    A["Symbol: library, symbol, type, Open, Replace"] --> B["Identity: instance ID, designation texts"]
     B --> C["Preset: choice, values changed"]
     C --> D["Flags: one checkbox each"]
     D --> E["Template enums: items of this placed symbol"]
@@ -33,19 +33,19 @@ flowchart TD
 
 ### Identity
 
-- **Instance ID**: the key of the placed symbol in the configuration files and in the signal list (`pump_p101.speed`). Decided on 2026-11-20: every placed symbol has an instance ID of its own, a field apart from the identifiers of Metadata; the tag is never the key. Proposed: set by the software from the type's `id` and a number (`centrifugal_pump_3`), changed by the user, unique in the folder. Its name waits for the research on the names of identifiers (task T5), the same question as in Metadata.
-- **Identifiers**: one text field per identifier of Metadata, in the order of the Identifiers page, labelled by their ID (an identifier has no display name since 2026-11-21).
-  - **Every required identifier** is shown on every placed symbol, whether or not the faceplate of its preset uses it, and marked as required (Product Owner, 2026-11-21: "Sur tous les symboles placés").
+- **Instance ID**: the key of the placed symbol in the configuration files and in the signal list (`pump_p101.speed`). Decided on 2026-11-20: every placed symbol has an instance ID of its own, a field apart from the designations of Metadata; the tag is never the key. Proposed: set by the software from the type's `id` and a number (`centrifugal_pump_3`), changed by the user, unique in the folder. Its name is open: the research on names (T5) covered Metadata only.
+- **Designations**: one text field per [designation](../metadata/entities/01-designation.md) of Metadata, in the order of the Designations page, labelled by their ID (a designation has no display name since 2026-11-21).
+  - **Every required designation** is shown on every placed symbol, whether or not the faceplate of its preset uses it, and marked as required (Product Owner, 2026-11-21: "Sur tous les symboles placés").
   - **A required text left empty warns, never blocks** (Product Owner, 2026-11-21: "Avertir sans bloquer"): the field is marked, the section shows the small warning mark, the placed symbol is listed in the [faults](08-faults.md) as a warning, and the synoptic is saved anyway.
-  - **An identifier that is not required** is shown when the faceplate of the preset uses it (decided: "the identifiers used give the synoptic its list to fill"). Proposed: the others are not shown.
-- **Uniqueness**: a text already used by another placed symbol, for the same identifier, is marked at once in the field, and listed in the faults as a warning. It is never refused: the user may be in the middle of renaming. Proposed; Metadata left open whether it is checked.
+  - **A designation that is not required** is shown when the faceplate of the preset uses it (decided in Metadata: the designations used give the synoptic its list to fill). Proposed: the others are not shown.
+- **Uniqueness**: a text already used by another placed symbol, for the same designation, is marked at once in the field, and listed in the faults as a warning. It is never refused: the user may be in the middle of renaming. Proposed; Metadata left open whether it is checked.
 
 ### Preset
 
 - **Preset**: a select of the presets of the type (decided: in a synoptic only the preset can be changed).
-- Decided on 2026-11-20: a synoptic may change, for one placed symbol, the **default values**, the **display units**, the **decimals** and the **texts** of the title and description elements of its faceplate. Nothing else of the preset changes in a synoptic.
+- Decided on 2026-11-20: a synoptic may change, for one placed symbol, the **start values**, the **display units**, the **decimals** and the **texts** of the title and description elements of its faceplate. Nothing else of the preset changes in a synoptic.
 - Decided on 2026-11-20: these changes are **kept as changes from the preset**. A placed symbol that changes nothing follows its preset when the preset changes.
-- Under the select, a table of the values this placed symbol changes: signal, default value, display unit, decimals, then the texts. Proposed (the table).
+- Under the select, a table of the values this placed symbol changes: signal, start value, display unit, decimals, then the texts. Proposed (the table).
 - A changed value shows a dot, and a **Reset to the preset** button on its line (decided on 2026-11-20); the dot is proposed, like the overrides of a pipe style.
 - A value typed is kept in the default unit of its quantity, as every number typed in Metadata (decision 0051); the screen shows it in the display unit. Proposed: the same rule here.
 
@@ -83,7 +83,7 @@ flowchart TD
 | Section | Content |
 | --- | --- |
 | Identity | Instance ID `pump_p101`; Tag `P-101`; Location `Building A` |
-| Preset | `default`; `speed_setpoint` default 1450 rpm changed to 1200 rpm (dot, reset) |
+| Preset | `default`; `speed_setpoint` start value 1450 rpm changed to 1200 rpm (dot, reset) |
 | Flags | `has_bypass` ticked, `remote_start` not ticked |
 | Template enums | `mode` (template `pump_mode`): 0 Off, 1 Local, 2 Remote |
 
@@ -92,13 +92,13 @@ flowchart TD
 | Thing | Created and changed in | In a symbol | In a synoptic |
 | --- | --- | --- | --- |
 | Instance ID | Panel of a placed symbol | No | Set, unique; shared by its references in views |
-| Identifier texts | Panel of a placed symbol, or the page Placed symbols | No | Fill |
+| Designation texts | Panel of a placed symbol, or the page Placed symbols | No | Fill |
 | Flags ticked | Panel of a placed symbol | No | Tick |
 | Template items | Panel of a placed symbol | No | Create, edit, delete, copy from another |
 | Values changed from the preset | Panel of a placed symbol | Same idea in the right-hand panel of the symbol editor | Change, reset |
 
 ## Open questions
 
-- The name of the instance ID: waits for task T5.
-- For an identifier that is not required: show only those used by the preset (advised), or all of them? (A required one is always shown, 2026-11-21.)
-- Is a duplicate identifier text a warning (advised) or refused?
+- The name of the instance ID: not treated by the research T5.
+- For a designation that is not required: show only those used by the preset (advised), or all of them? (A required one is always shown, 2026-11-21.)
+- Is a duplicate designation text a warning (advised) or refused?

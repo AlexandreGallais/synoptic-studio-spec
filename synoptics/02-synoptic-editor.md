@@ -56,7 +56,7 @@ The same as the symbol editor: the **Hand** tool, the middle button held, the wh
 
 - **Fit the frame** and **fit the selection**, one button each.
 - A **minimap** in a corner of the canvas, shown on demand: the whole frame, the visible part as a rectangle that can be dragged.
-- **Search on the canvas**: typing `P-101` selects and zooms on the placed symbol whose identifier has this text.
+- **Search on the canvas**: typing `P-101` selects and zooms on the placed symbol whose designation has this text.
 
 ### Grid, snapping, guides
 
@@ -72,13 +72,13 @@ Missing in the whole application so far (screens inventory). Proposed for the sy
 
 - **Undo and redo** with the usual keys; one history per open synoptic, kept until it is closed.
 - **Save**: the synoptic is saved by the server, with the conflict check of [Storage](../storage/files-and-conflicts.md).
-- **Copy and paste**, also between two synoptics. A pasted placed symbol is a **new** placed symbol: it keeps the symbol, the preset and its values, but its identifiers are **emptied**, since a tag is meant to be unique. Paste as reference is offered when the copy comes from an installation and is pasted into a view.
+- **Copy and paste**, also between two synoptics. A pasted placed symbol is a **new** placed symbol: it keeps the symbol, the preset and its values, but its designations are **emptied**, since a tag is meant to be unique. Paste as reference is offered when the copy comes from an installation and is pasted into a view.
 - **Duplicate** (Ctrl + D): the same as copy and paste, beside the original.
 
 ### Multi-selection
 
 - Several placed symbols selected: the panel shows the sections they share; a value changed applies to all. Proposed.
-- **Numbering**: with several placed symbols selected, an identifier can be filled with a pattern, `P-1{n}` from 01, in the order of the selection or from left to right. Proposed.
+- **Numbering**: with several placed symbols selected, a designation can be filled with a pattern, `P-1{n}` from 01, in the order of the selection or from left to right. Proposed.
 - Pipes and placed symbols selected together can be moved together; the pipes follow (see [Pipes](05-pipes.md)).
 
 ### Performance
@@ -87,7 +87,7 @@ Missing in the whole application so far (screens inventory). Proposed for the sy
 
 ## Example
 
-The user opens the installation "Water treatment", Build mode. They search "pump" in the Library, drag three centrifugal pumps onto the canvas, select them, type the pattern `P-10{n}` in the identifier Tag: the three pumps become `P-101`, `P-102`, `P-103`. Then they switch to Pipes and connect them.
+The user opens the installation "Water treatment", Build mode. They search "pump" in the Library, drag three centrifugal pumps onto the canvas, select them, type the pattern `P-10{n}` in the designation Tag: the three pumps become `P-101`, `P-102`, `P-103`. Then they switch to Pipes and connect them.
 
 ## Where it is used
 

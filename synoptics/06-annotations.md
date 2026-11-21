@@ -25,7 +25,7 @@ An **annotation** is what is drawn in a synoptic and is not a symbol: a title, t
 
 ### Value labels
 
-- A value label points to **a placed symbol and one of its output signals**. It shows the value as the faceplate shows it: display unit and decimals of the preset of that placed symbol, an enum by the display name of its item (same reading as the text elements of the faceplate, see [Identifiers](../metadata/draft.md#identifiers)). Proposed.
+- A value label points to **a placed symbol and one of its output signals**. It shows the value as the faceplate shows it: display unit and decimals of the preset of that placed symbol, an enum by the display name of its item (same reading as the text elements of the faceplate, see the Metadata draft, [Identifiers](../metadata/draft.md#identifiers)). Proposed.
 - It follows the placed symbol when the symbol is deleted: the label is broken and listed in the faults. Proposed.
 - Its format (prefix, suffix, font) is set in its panel; the symbol editor's rules for texts that show a value apply (see [Animation mode](../symbols/08-animation-mode/README.md)). Proposed.
 

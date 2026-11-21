@@ -22,7 +22,7 @@ These rules are decided for a symbol; the assistant proposes the same for a syno
 Proposed:
 
 - **Right-hand panel**: the tree of the placed symbols (and pipes linked to a type), each unfolding into its output signals, with their test values. A click on the canvas selects a placed symbol and unfolds its signals.
-- **Defaults**: every signal starts at the default value of the preset of its placed symbol, with the values the synoptic changed.
+- **Defaults**: every signal starts at the start value of the preset of its placed symbol, with the values the synoptic changed.
 - **Ramps**: on a number signal, a small play button makes the value go from its minimum to its maximum and back, over a duration typed in seconds, to see an animation run without dragging a slider.
 - **Scenarios**: a set of test values can be saved under a name ("Pump P-101 tripped", "Night") and played again. Saved in the synoptic file, never sent anywhere.
 - **Quality**: a select per signal (good, uncertain, bad), to see the quality mark the research advises (report T4, section 3.16).

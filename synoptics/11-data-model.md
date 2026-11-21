@@ -16,7 +16,7 @@ The same as in Metadata:
 - A choice of the software is an English word in the JSON (`"installation"`, `"view"`), never a number.
 - A number typed for a signal is kept in the default unit of its quantity (decision 0051).
 
-Boxes of Metadata and of the Symbol Lib (`TYPE`, `PRESET`, `SIGNAL`, `FLAG`, `IDENTIFIER`, `FACEPLATE_ELEMENT`, `SYMBOL`, `CONNECTION_POINT`, `PIPE_STYLE`, `END_SHAPE`) are only pointed to by a FK field (`symbol`, `preset`, `flag`...); they are not drawn here.
+Boxes of Metadata and of the Symbol Lib (`TYPE`, `PRESET`, `SIGNAL`, `FLAG`, `DESIGNATION`, `FACEPLATE_ELEMENT`, `SYMBOL`, `CONNECTION_POINT`, `PIPE_STYLE`, `END_SHAPE`) are only pointed to by a FK field (`symbol`, `preset`, `flag`...); they are not drawn here.
 
 ## The schema
 
@@ -60,8 +60,8 @@ erDiagram
         uuid preset FK
         text instance_id
     }
-    IDENTIFIER_TEXT {
-        uuid identifier FK
+    DESIGNATION_TEXT {
+        uuid designation FK
         text text
     }
     FLAG_ON {
@@ -69,7 +69,7 @@ erDiagram
     }
     VALUE_CHANGE {
         uuid signal FK
-        typed_value default_value "in the default unit"
+        signal_value start_value "in the default unit"
         uuid unit FK
         integer decimals
     }
@@ -136,7 +136,7 @@ erDiagram
     PLACED_SYMBOL }o--o| PLACED_SYMBOL : "reference"
     PLACED_SYMBOL ||--o| IDENTITY : "has, when it is no reference"
     PLACED_SYMBOL ||--o| ON_PIPE : "has, when connected to a pipe"
-    IDENTITY ||--o{ IDENTIFIER_TEXT : "holds"
+    IDENTITY ||--o{ DESIGNATION_TEXT : "holds"
     IDENTITY ||--o{ FLAG_ON : "holds"
     IDENTITY ||--o{ VALUE_CHANGE : "holds"
     IDENTITY ||--o{ TEXT_CHANGE : "holds"
@@ -156,15 +156,15 @@ erDiagram
 ## Reading notes
 
 - **Identity is a part of its own**, so that a reference has none: a placed symbol of a view that points to a placed symbol of an installation reads the identity of that one (decided on 2026-11-20, see [Synoptics and views](01-synoptics-and-views.md#two-kinds-installation-and-view)).
-- **`instance_id` is the key** of a placed symbol in the outputs, a field of its own, never one of the identifier texts (decided on 2026-11-20). `internal_id` stays the key of every link inside the files.
+- **`instance_id` is the key** of a placed symbol in the outputs, a field of its own, never one of the designation texts (decided on 2026-11-20). `internal_id` stays the key of every link inside the files.
 - **A pipe linked to a type has an identity too**, the same part, so it is wired like a placed symbol (see [Pipes](05-pipes.md#a-pipe-whose-style-is-linked-to-a-type)).
-- **Only what differs from the preset is kept** (`VALUE_CHANGE`: default value, unit, decimals; `TEXT_CHANGE`: texts of the faceplate), decided on 2026-11-20: a placed symbol that changes nothing holds nothing, and follows its preset when the preset changes.
+- **Only what differs from the preset is kept** (`VALUE_CHANGE`: start value, unit, decimals; `TEXT_CHANGE`: texts of the faceplate), decided on 2026-11-20: a placed symbol that changes nothing holds nothing, and follows its preset when the preset changes.
 - **A crossing keeps only the swaps**: the default rule (the last drawn passes over) needs nothing stored; the user's click stores which pipe passes over.
 - **Junctions are not stored**: a branch is a pipe whose end is of kind `pipe`; the junction is computed from it. If the Product Owner chooses one pipe as a tree, `PIPE` will hold its branches instead.
 - The content of an annotation (its shapes, its text, the signal of a value label) and of a scenario (its values) is not drawn yet.
 
 ## Open
 
-- The name of `instance_id`: waits for the research on the names of identifiers (task T5).
+- The name of `instance_id`: the research on names (T5) covered Metadata only and did not treat it.
 - The names of the boxes: working names, like those of Metadata.
 - Whether a synoptic file holds the computed geometry of its pipes (faster to open) or only their points (smaller, advised).

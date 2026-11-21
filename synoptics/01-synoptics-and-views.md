@@ -20,7 +20,7 @@ The introduction names two modes: the full installation, and a more digestible s
 
 | Kind | What it holds | Who reads it |
 | --- | --- | --- |
-| **Installation** | Every object of the installation, placed once: each placed symbol has its own identity (instance ID, identifiers, flags, template items, preset values). | Those who model, specify or simulate the installation. |
+| **Installation** | Every object of the installation, placed once: each placed symbol has its own identity (instance ID, designations, flags, template items, preset values). | Those who model, specify or simulate the installation. |
 | **View** | A summary: some placed symbols, laid out for a screen. A placed symbol of a view taken from an installation is a **reference** to it: it shares its identity, and only its position and look are its own. | Operators, through the runtime. |
 
 - **Decided on 2026-11-20: a reference shares the identity, never copies it.** Pump `P-101` is wired once, in the installation. The overview view and the pumping view show the same `P-101`: its instance ID, its tag, its flags and its values are the same everywhere. Changing its tag in one place changes it everywhere.
@@ -73,8 +73,8 @@ block-beta
 
 ### The page Placed symbols
 
-- A **table**, one line per placed symbol, taking the whole width (layout rule). Columns: thumbnail, symbol, type, the identifiers in the order of Metadata, preset, number of faults. Proposed.
-- It is the quickest way to fill the tags of a big installation: the identifier cells are text fields, typed one under the other, like a spreadsheet. Proposed.
+- A **table**, one line per placed symbol, taking the whole width (layout rule). Columns: thumbnail, symbol, type, the designations in the order of Metadata, preset, number of faults. Proposed.
+- It is the quickest way to fill the tags of a big installation: the designation cells are text fields, typed one under the other, like a spreadsheet. Proposed.
 - A click on the thumbnail opens the canvas with the placed symbol selected and zoomed. Proposed.
 - Sorted and filtered by type, by symbol, by fault. Proposed.
 

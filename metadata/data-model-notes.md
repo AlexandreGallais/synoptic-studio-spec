@@ -457,6 +457,14 @@ Asked by the Product Owner on 2026-11-22 ("applique ce que la recherche a trouv√
 - **Kept, with their meaning written**: `ENUM_ITEM.key` (the number sent to the model, at the head of this file), `override` (the same word in `command_kind` and `access`), `default_value`, `name` (a label here, an identifier in FMI), `display_name`, `description` and every other name.
 - The screens and the draft keep their words for people for now; the other parts (synoptics, symbols, screens) still say "identifier": to change once the Product Owner confirms `DESIGNATION`.
 
+## Settled on 2026-11-22 (names, answers of the Product Owner)
+
+The Product Owner reviewed what was applied above (questionnaire of 2026-11-22). Decision 0064 is accepted.
+
+- **`DESIGNATION` is kept** ("Garder Designation"). The synoptics and the screens say "designation" too: the page Designations (MD-13), the designation texts of a placed symbol. The draft and the earlier decisions keep "identifier", as written when they were settled.
+- **The six other names are kept** ("Tous OK"): `color`, `address`, `radio_horizontal` / `radio_vertical`, `UNIT_SYSTEM`, `paragraph`, `format_version`.
+- **`PRESET_VALUE.default_value` becomes `start_value`** (answer: "Valeur au d√©marrage"): the value the model gets when it starts, the word of FMI (`start`). It is also the value shown before the model sends anything. The screens say "Start value"; the value a synoptic changes for a placed symbol is the start value too (`VALUE_CHANGE.start_value`).
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -473,7 +481,6 @@ Asked by the Product Owner on 2026-11-22 ("applique ce que la recherche a trouv√
 - The two texts of a boolean, in the preset: required, or "true" and "false" when empty (assistant's reading)? Never in the configuration files sent with the model, since they are display only (assistant's reading, since decision 0058)?
 - `SIGNAL_FIELD` starts with its signal, then `access`: the assistant's reading of the order of the keys, to confirm.
 - The quantity, shown in the JSON without `"format_version"`: is the catalogue of quantities one file with one `format_version` at its top, or one file per quantity? It ships with the software (never copied into the user's files), so its form may be the program's own: assistant's reading.
-- The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `FAMILY`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated.
-- `default_value` of a preset: the value the model gets when it starts (then `start_value`, the word of FMI), or a default for display only? (research T5, open question 1).
+- The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `UNIT_SYSTEM`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated.
 - Is the `name` of a preset, a quantity, a unit, an icon or a color unique in its list? To say on each entity file (research T5, open question 3).
 - `UNIT.symbol` and the symbol of Synoptic Studio (the drawing placed) share a word: a glossary should say both meanings (research T5, 3.8).

@@ -15,7 +15,7 @@ Path: on the far left of every screen of Metadata (Product Owner, 2026-11-16).
 | MD-00.3 | Enums | Button (icon) | Opens [MD-09](#md-09--enums). | Decided | [Layout rules](README.md#layout-rules) |
 | MD-00.4 | Versions | — | Removed (2026-11-21, decision 0053): no versions in the application, the JSON files are versioned with Git by the user. | Decided | [Always editable, no versions](../metadata/draft.md#always-editable-no-versions) |
 | MD-00.5 | Flags | — | Removed (2026-11-17): flags are a part of the type, not a page of the bar (see [MD-12](#md-12--flags-a-part-of-the-type)). | Decided | [Flags](../metadata/draft.md#flags) |
-| MD-00.6 | Identifiers | Button (icon) | Opens [MD-13](#md-13--identifiers). A page of the bar, like Units and Enums (2026-11-18: "C'est une page de type unit enum version"). Last, after Enums: assistant's reading. Working name. | Decided (page of the bar), Proposed (place, name) | [Identifiers](../metadata/draft.md#identifiers) |
+| MD-00.6 | Designations | Button (icon) | Opens [MD-13](#md-13--designations). A page of the bar, like Units and Enums (2026-11-18: "C'est une page de type unit enum version"). Last, after Enums: assistant's reading. Named Designations on 2026-11-22 (decision 0064), "Identifiers" until then. | Decided (page of the bar, name), Proposed (place) | [Designation](../metadata/entities/01-designation.md) |
 
 Gaps:
 
@@ -340,7 +340,7 @@ Path: Metadata › Types › a type › Presets.
 
 The list of presets is on the left, under its title "Presets" and the small + on its right; the page has no big title. The selected preset is on the right: a **switch** between its two modes at the top, then its name, then the mode chosen (Product Owner, 2026-11-16, while reviewing the wireframes; the labels confirmed and the switch moved up at the end of the day):
 
-- **Values**: one table with every signal of the type, for its display unit, decimals, texts of a boolean and default value; no command;
+- **Values**: one table with every signal of the type, for its display unit, decimals, texts of a boolean and start value; no command;
 - **Faceplate**: the faceplate builder, a list of elements added one by one with the + of its title.
 
 ```mermaid
@@ -348,7 +348,7 @@ block-beta
     columns 4
     list["Presets +, then the list"] sw["Switch, at the top: Values | Faceplate"]:3
     space name["Name of the preset"]:3
-    space values["Values: Signal (icon input or output, ID) | Display unit | Decimals | True / False | Default value"]:3
+    space values["Values: Signal (icon input or output, ID) | Display unit | Decimals | True / False | Start value"]:3
 ```
 
 ```mermaid
@@ -378,7 +378,7 @@ mindmap
           Display unit
           Decimals
           True / False, booleans only
-          Default value
+          Start value
         No command
       Mode Faceplate, the builder
         No title nor description by default
@@ -411,11 +411,11 @@ mindmap
 | MD-07.6 | Show the faceplate | — | Removed (2026-11-16): the faceplate is seen in the mode Faceplate; the Faceplate part ([MD-06](#md-06--faceplate-removed)) was removed too. | Decided | [Presets](../metadata/draft.md#no-faceplate-part) |
 | MD-07.7 | Table of values | Table | Mode Values: every signal of the type, own and inherited, in the order of Signals; one line each; no "add an entry"; no command (2026-11-16). | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
 | MD-07.8 | Shown | — | Removed (2026-11-16): what is in the builder is shown. | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
-| MD-07.9 | Signal | Column, read only | Mode Values: an icon of the signal's direction, input or output, then its ID (2026-11-17), so that the default value reads right. | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
-| MD-07.12 | Display unit | Column, select | Mode Values. For every integer and real (each has a quantity, 2026-11-19, decision 0051); starts as the model unit of the quantity. Changing it never changes the default value: only how it is shown. | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
+| MD-07.9 | Signal | Column, read only | Mode Values: an icon of the signal's direction, input or output, then its ID (2026-11-17), so that the start value reads right. | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
+| MD-07.12 | Display unit | Column, select | Mode Values. For every integer and real (each has a quantity, 2026-11-19, decision 0051); starts as the model unit of the quantity. Changing it never changes the start value: only how it is shown. | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
 | MD-07.13 | Decimals | Column, number field | Mode Values. Integers and reals; starts as the one default number of decimals, the same everywhere (2026-11-19, decision 0050). Display only. Kept by the Product Owner on 2026-11-17. | Decided | [Units](../metadata/draft.md#decimal-places) |
 | MD-07.13b | True / False | Column, two short text fields | Mode Values. Booleans only: the text of the true state and of the false state ("Running" / "Stopped"), shown in the faceplate for a signal in read; never sent to the model (2026-11-21, decisions 0054 and 0058; never in a title, decision 0055). Header "True / False", its place after Decimals, and "true" / "false" shown when empty: assistant's reading. | Decided (field in the preset), Proposed (place, header, empty) | [Data model](../metadata/data-model-notes.md#changed-on-2026-11-21-boolean-texts) |
-| MD-07.14 | Default value | Column, field of the signal's type | Mode Values. For an input, the first value sent to the model; for an input and an output, the value shown before the model sends anything (2026-11-17). True or false, a number, a text, or an enum item. A number is shown and typed in the display unit, and kept in the default unit of the quantity (2026-11-19, decision 0051). | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
+| MD-07.14 | Start value | Column, field of the signal's type | Mode Values. For an input, the first value sent to the model; for an input and an output, the value shown before the model sends anything (2026-11-17). Called "Default value" until 2026-11-22: `start_value`, the word of FMI (decision 0064). True or false, a number, a text, or an enum item. A number is shown and typed in the display unit, and kept in the default unit of the quantity (2026-11-19, decision 0051). | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
 | MD-07.18 | Add an element | Buttons (small icons with a +) | Mode Faceplate, on the right of the title "Elements": one icon per kind, a signal, a command, a title, a description, a group, no menu (2026-11-16, the rule of the links, confirmed by the Product Owner the same day). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.9b | Signal element | Element of the builder | The signal, picked by its ID; its display name (plain text, never sent to the model; empty: the ID is shown; called "name shown" until 2026-11-21, decision 0055); read or write (input) or read or override (output); its input. | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.10 | Input | Select, in a signal element | Chosen in the builder (end of 2026-11-17: "on met input number, par exemple"). Enum: radio on one line, radio on several lines, select; its items in the order of the handles of [MD-09.12](#md-09--enums) (end of 2026-11-17). Number: a number field, with its bounds ([MD-07.22](#md-07--presets)). Boolean: a switch (2026-11-21). Shown for write or override only; in read, the faceplate shows the text of the value alone (2026-11-21). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
@@ -423,7 +423,7 @@ mindmap
 | MD-07.22 | Minimum, maximum of a number field | Number field each, with a small icon inside to pick a signal | Each typed by hand, or taken from a signal of the type through the small icon in the field, as Figma's "Apply variable" (end of 2026-11-17). The small icon offers the input signals only, never an output (2026-11-21, decision 0055), and only those of the same quantity as the signal shown (2026-11-21, decision 0056). A typed bound is shown in the display unit of the preset. A value outside them is refused (assistant's reading). | Decided (refusal: Proposed) | [Presets](../metadata/draft.md#bounds-of-a-number-field) |
 | MD-07.15 | Command element | Element of the builder | The command, picked by its ID; the display name on its button (plain text, never sent to the model; empty: the command's ID is shown; called "button text" until 2026-11-21, decision 0057). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.19 | Title element, description element | Text fields | A heading or a paragraph inside the faceplate or a group; the only way to give either a title or a description (2026-11-16). Description: plain text, line breaks kept. | Decided | [Presets](../metadata/draft.md#only-elements-in-elements) |
-| MD-07.23 | Fixed text or variable | Small icon, on the right of the text field of a title or description element | As Figma's "Apply variable" (2026-11-18): a fixed text typed by the user, or a variable, an identifier of [MD-13](#md-13--identifiers). Never a signal (2026-11-21, decision 0055): a signal element in read shows a value. An identifier is filled on each placed symbol, in the synoptic. One variable alone in the field, never mixed with text: assistant's reading. | Decided (icon, identifier only), Proposed (one variable, whole) | [Presets](../metadata/draft.md#fixed-text-or-a-variable) |
+| MD-07.23 | Fixed text or variable | Small icon, on the right of the text field of a title or description element | As Figma's "Apply variable" (2026-11-18): a fixed text typed by the user, or a variable, a designation of [MD-13](#md-13--designations). Never a signal (2026-11-21, decision 0055): a signal element in read shows a value. A designation is filled on each placed symbol, in the synoptic. One variable alone in the field, never mixed with text: assistant's reading. | Decided (icon, designation only), Proposed (one variable, whole) | [Presets](../metadata/draft.md#fixed-text-or-a-variable) |
 | MD-07.20 | Group element | Element of the builder | No title nor description of its own (confirmed 2026-11-17). At its top, the five small icons with a + (Signal, Command, Title, Description, Group), then its own elements; a group can hold a group (2026-11-16). The icons confirmed on 2026-11-17, after a doubt the same day: they save time. | Decided | [Presets](../metadata/draft.md#only-elements-in-elements) |
 | MD-07.21 | Delete an element, delete a preset | Button (icon), then a warning | At the far right of the element or of the preset's line (2026-11-16). | Decided | [Layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata) |
 | MD-07.17 | Order | Rule | Mode Values: the order of Signals, no handle, no sort. Mode Faceplate: the order of the builder, moved with a handle (end of 2026-11-17: "il y a déjà les poignées là"). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
@@ -532,7 +532,7 @@ mindmap
 | MD-09.5 | Items | Table | Columns in this order: the handle with no header, Key, Display name, Description, then the delete button with no header (2026-11-17: the short field first, the long one last; replaces Key, Description, Display name of 2026-11-16). A new line takes its place by key, smallest first (end of 2026-11-17: "un tri automatique pour que ça aille dans l'ordre"); then the handle moves it to the order of meaning, without changing its key, and the order is kept (questionnaire, end of 2026-11-17: "Tri par clé, puis poignées"; decision 0038). Once items were moved, a new line goes right after the item with the next smaller key (questionnaire, end of 2026-11-17: "Juste après l'item de clé inférieure"; decision 0039). | Decided | [Enums](../metadata/draft.md#rules-5) |
 | MD-09.12 | Handle of an item | Grip, dragged, no header | At the very left of each item: moves it; the key does not change (end of 2026-11-17, decision 0038). Same behaviour as [MD-04.14](#md-04--signals). | Decided | [Layout rules](README.md#handles-to-choose-the-order) |
 | MD-09.6 | Key | Whole number field | Typed by the user, any whole number, gaps allowed (0, 2, 4), for a global enum and for the items of a template (end of 2026-11-17). Unique; what the model receives (2026-11-16). It can still be changed once given: breaking for the model, with no warning (decision 0038); the Versions page that showed it was removed on 2026-11-21 (decision 0053), the change is seen in Git. Changing it never moves the line (questionnaire, end of 2026-11-17: "Il reste où il est"; decision 0039). | Decided | [Enums](../metadata/draft.md#rules-5) |
-| MD-09.7 | Display name | Text field | After the key. What the faceplate, the symbol texts and the test values show. Not breaking. Called "Display text" until 2026-11-21: renamed for the same word as an identifier and a signal field (decision 0056). | Decided | [Enums](../metadata/draft.md#enums) |
+| MD-09.7 | Display name | Text field | After the key. What the faceplate, the symbol texts and the test values show. Not breaking. Called "Display text" until 2026-11-21: renamed for the same word as a signal field (decision 0056). | Decided | [Enums](../metadata/draft.md#enums) |
 | MD-09.9 | Description | Text field | Last, after the display name (2026-11-17): what the item means, plain text, never sent to the model (2026-11-16). Optional, shown on this page only (2026-11-16). | Decided | [Enums](../metadata/draft.md#enums) |
 | MD-09.8 | Add, delete an item | Button (+), delete button (icon) | The small + on the right of the title "Items"; the delete button at the far right of an item, with no header, then a warning (2026-11-16; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). An enum is deleted the same way. | Decided | [Enums](../metadata/draft.md#enums) |
 
@@ -549,15 +549,15 @@ The libraries of types (Type Libs) were removed by the Product Owner on 2026-11-
 
 The Versions page was removed by the Product Owner on 2026-11-21 (decision 0053): the application keeps no versions, the JSON files of the types are versioned with Git by the user (see [Always editable, no versions](../metadata/draft.md#always-editable-no-versions)). The identifier MD-11 is not reused.
 
-## MD-13 · Identifiers
+## MD-13 · Designations
 
-Path: Metadata › Identifiers (navigation bar, [MD-00.6](#md-00--navigation-bar-of-metadata)). Described by the Product Owner on 2026-11-18; "Identifiers" is a working name. The wireframe is the frame "MD-13 · Identifiers" of the page Spec in Figma, after MD-09; the entry "Identifiers" was added to the navigation bar of every Metadata frame, and the icon MD-07.23 to the frame of the faceplate builder, the same day.
+Path: Metadata › Designations (navigation bar, [MD-00.6](#md-00--navigation-bar-of-metadata)). Described by the Product Owner on 2026-11-18 under the working name "Identifiers"; named Designations on 2026-11-22 (decision 0064). The wireframe is the frame "MD-13 · Identifiers" of the page Spec in Figma, after MD-09, still under its old name; the entry "Identifiers" was added to the navigation bar of every Metadata frame, and the icon MD-07.23 to the frame of the faceplate builder, on 2026-11-18.
 
 ```mermaid
 mindmap
-  root((MD-13 Identifiers))
-    Title Identifiers, small plus on its right
-    Table of identifiers, whole width
+  root((MD-13 Designations))
+    Title Designations, small plus on its right
+    Table of designations, whole width
       Handle, no header
       ID
       Required, checkbox
@@ -569,17 +569,17 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-13.1 | Table of identifiers | Table, whole width | One line per identifier (2026-11-18: "faire un tableau"). Columns in this order: the handle with no header, ID, Required, Description, then the delete button with no header (order: assistant's reading; the order of the fields of an identifier, the long Description last, 2026-11-21). No default value (2026-11-18). No display name (2026-11-21): the ID is shown. | Decided (table, fields), Proposed (column order) | [Identifiers](../metadata/draft.md#identifiers) |
-| MD-13.2 | Add an identifier | Button (+), small icon | On the right of the title "Identifiers" ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Implied | [Identifiers](../metadata/draft.md#identifiers) |
+| MD-13.1 | Table of designations | Table, whole width | One line per designation (2026-11-18: "faire un tableau"). Columns in this order: the handle with no header, ID, Required, Description, then the delete button with no header (order: assistant's reading; the order of the fields of a designation, the long Description last, 2026-11-21). No default value (2026-11-18). No display name (2026-11-21): the ID is shown. | Decided (table, fields), Proposed (column order) | [Identifiers (draft)](../metadata/draft.md#identifiers) |
+| MD-13.2 | Add a designation | Button (+), small icon | On the right of the title "Designations" ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Implied | [Identifiers (draft)](../metadata/draft.md#identifiers) |
 | MD-13.3 | Handle of a line | Grip, dragged, no header | The user chooses the order (2026-11-18: "Il faut pouvoir leur donner un ordre"). | Decided | [Layout rules](README.md#handles-to-choose-the-order) |
-| MD-13.4 | ID | Text field | The key. Always editable, followed through its internal ID when renamed (assistant's reading of the general rule). Unique on the page: open. | Decided (field), Open (unique) | [Identifiers](../metadata/draft.md#identifiers) |
-| MD-13.5 | Display name | — | Removed (2026-11-21: "on va dégager display name [...] on voit que l'ID"): the ID is shown where the identifier is picked and filled. | Decided | [Designation](../metadata/entities/01-designation.md) |
-| MD-13.6 | Description | Text field, takes the room left | What the identifier is (2026-11-18: "expliquer ce que c'est"). Optional: assistant's reading. | Decided (field), Proposed (optional) | [Identifiers](../metadata/draft.md#identifiers) |
-| MD-13.8 | Required | Checkbox, narrow column, between ID and Description | Checked: every placed symbol must have the text of this identifier (a control ID), whether or not its faceplate shows it; left empty, a warning, never a block. Unchecked: it may stay empty (a location). Product Owner, 2026-11-21: "j'ai complètement besoin de dire si c'est required ou non". A checkbox, not a switch, since a table shows several lines: assistant's reading. Unchecked for a new identifier (2026-11-21: "Le booléen required, ce serait genre false"). | Decided (field, default), Proposed (control) | [Designation](../metadata/entities/01-designation.md) |
-| MD-13.7 | Delete an identifier | Button (icon), then a warning | At the far right of the line, with no header (2026-11-18: "et les supprimer"; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). | Decided | [Identifiers](../metadata/draft.md#identifiers) |
+| MD-13.4 | ID | Text field | The key. Always editable, followed through its internal ID when renamed (assistant's reading of the general rule). Unique on the page: open. | Decided (field), Open (unique) | [Identifiers (draft)](../metadata/draft.md#identifiers) |
+| MD-13.5 | Display name | — | Removed (2026-11-21: "on va dégager display name [...] on voit que l'ID"): the ID is shown where the designation is picked and filled. | Decided | [Designation](../metadata/entities/01-designation.md) |
+| MD-13.6 | Description | Text field, takes the room left | What the designation is (2026-11-18: "expliquer ce que c'est"). Optional: assistant's reading. | Decided (field), Proposed (optional) | [Identifiers (draft)](../metadata/draft.md#identifiers) |
+| MD-13.8 | Required | Checkbox, narrow column, between ID and Description | Checked: every placed symbol must have the text of this designation (a control ID), whether or not its faceplate shows it; left empty, a warning, never a block. Unchecked: it may stay empty (a location). Product Owner, 2026-11-21: "j'ai complètement besoin de dire si c'est required ou non". A checkbox, not a switch, since a table shows several lines: assistant's reading. Unchecked for a new designation (2026-11-21: "Le booléen required, ce serait genre false"). | Decided (field, default), Proposed (control) | [Designation](../metadata/entities/01-designation.md) |
+| MD-13.7 | Delete a designation | Button (icon), then a warning | At the far right of the line, with no header (2026-11-18: "et les supprimer"; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). | Decided | [Identifiers (draft)](../metadata/draft.md#identifiers) |
 
 Gaps:
 
-- What a faceplate shows when its title is bound to a deleted identifier.
-- The panel of the synoptic where the text of each identifier is filled: described with part 3.
-- The open questions of [Identifiers](../metadata/draft.md#open-questions-8).
+- What a faceplate shows when its title is bound to a deleted designation.
+- The panel of the synoptic where the text of each designation is filled: described in [Panel of a placed symbol](../synoptics/04-placed-symbol-panel.md#identity).
+- The open questions of [Identifiers (draft)](../metadata/draft.md#open-questions-8).

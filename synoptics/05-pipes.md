@@ -78,7 +78,7 @@ Proposed:
 ### A pipe whose style is linked to a type
 
 - Decided: a pipe style can be linked to a type of Metadata, and the model then drives the speed, the direction and the colours of its dashes.
-- Proposed: such a pipe is wired **like a placed symbol**: it gets an instance ID, identifier texts, flags, template items and a preset, in the same sections of its panel. It is listed in the signal list as a placed symbol is.
+- Proposed: such a pipe is wired **like a placed symbol**: it gets an instance ID, designation texts, flags, template items and a preset, in the same sections of its panel. It is listed in the signal list as a placed symbol is.
 - Open (already asked): does a branch have its own values, or share those of its trunk?
 
 ## Example
