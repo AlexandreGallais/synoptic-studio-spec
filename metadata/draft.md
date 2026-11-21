@@ -1179,7 +1179,7 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas juste bêtement avoi
 
 | Element | What it holds | Rule |
 | --- | --- | --- |
-| Signal | The signal, picked by its ID; the **name shown**; **read or write** for an input, **read or override** for an output; the **input**. | Name shown: plain text, the name people see in the faceplate, never sent to the model; empty, the ID is shown (decision 0018); it exists only in the builder (decision 0022). Read or write, read or override: see [Typing a value](#typing-a-value). Input: chosen in the builder (Product Owner, end of 2026-11-17: "on le choisit : on met input number, par exemple"); for an enum, radio on one line, radio on several lines or select, its items in the order chosen with the handles on the Enums page (Product Owner, end of 2026-11-17: "Oui, l'ordre des poignées"); for a number, a number field, with its [bounds](#bounds-of-a-number-field). |
+| Signal | The signal, picked by its ID; the **name shown**; **read or write** for an input, **read or override** for an output; the **input**. | Name shown: plain text, the name people see in the faceplate, never sent to the model; empty, the ID is shown (decision 0018); it exists only in the builder (decision 0022). Read or write, read or override: see [Typing a value](#typing-a-value). Input: chosen in the builder (Product Owner, end of 2026-11-17: "on le choisit : on met input number, par exemple"); for an enum, radio on one line, radio on several lines or select, its items in the order chosen with the handles on the Enums page (Product Owner, end of 2026-11-17: "Oui, l'ordre des poignées"); for a number, a number field, with its [bounds](#bounds-of-a-number-field); for a boolean, a switch (Product Owner, 2026-11-21: "Interrupteur (switch)"). Chosen for write or override only: in read, the value is shown as text (see [Typing a value](#typing-a-value)). |
 | Command | The command, picked by its ID; the **name on the button**. | Plain text. The faceplate shows a button that sends the command. |
 | Title | A text: fixed, or a variable (an identifier or a signal). | A heading inside the faceplate or inside a group. A small icon on the right of its field chooses a fixed text or a variable (Product Owner, 2026-11-18; see [Fixed text or a variable](#fixed-text-or-a-variable)). |
 | Description | A text, plain: no Markdown, no links; line breaks kept. Fixed, or a variable (an identifier or a signal). | A paragraph inside the faceplate or inside a group. The same small icon as the title (Product Owner, 2026-11-18). |
@@ -1235,6 +1235,7 @@ Said by the Product Owner on 2026-11-18, with the page [Identifiers](#identifier
 #### Typing a value
 
 - A signal element offers **read or write for an input**, and **read or override for an output** (Product Owner, end of 2026-11-17: "c'est read write pour un input et read override pour un output"). It corrects the single "read or override" written earlier on 2026-11-17 for both directions (decision 0040, accepted on 2026-11-17, which changes decision 0030).
+- A signal set to **read** shows **the text of its value alone**, no field drawn, not even greyed (Product Owner, 2026-11-21: "Le texte de la valeur seul"): in the display unit and with the decimals of the preset, an enum by the display text of its item, as a title bound to a signal shows it. It has no input to choose and no bounds.
 - A signal set to **write** or to **override** in the builder is the only way for a person to type a value: a command always sends a fixed value (see [Commands](#the-value-is-always-fixed)).
 - **An input and an output can both be typed in, in the same way** (Product Owner, 2026-11-17: "c'est des outputs, faut pouvoir les mettre en write aussi, exactement de la même façon"); only the word changes: write for an input, override for an output. It replaces the rule of 2026-11-16, which greyed write for an output (decision 0030, accepted on 2026-11-17, which changes decisions 0014 and 0022 on this point).
 - What happens to the typed value is **left to what is behind** the faceplate (Product Owner: "c'est à ce qui passe derrière de se débrouiller, parce que ça peut devenir une valeur, ça peut devenir un override"): for an input it becomes the value the model receives; for an output, an override of that output. How an override of an output is applied, and how it ends, is the open question already asked for the command "Override an output" (see [Commands](#open-questions-4)).
@@ -1303,8 +1304,8 @@ Mode Faceplate:
 | --- | --- |
 | Title | Feed pump |
 | Description | Pump P-101, feeds tank T-3. |
-| Signal | `running`, name shown "Running", true or false, read |
-| Signal | `flow`, name shown "Flow", number field, read |
+| Signal | `running`, name shown "Running", read |
+| Signal | `flow`, name shown "Flow", read |
 | Group | (no title nor description of its own) |
 | › Title | Control |
 | › Description | Local commands |
@@ -1313,9 +1314,9 @@ Mode Faceplate:
 | › Command | `start`, button "Start" |
 | › Command | `stop`, button "Stop" |
 | Title | Measures |
-| Signal | `inlet_pressure`, name shown "Inlet pressure", number field, read |
-| Signal | `pressure_rise`, name shown "Pressure rise", number field, read |
-| Signal | `bearing_temperature`, name shown "Bearing temperature", number field, read |
+| Signal | `inlet_pressure`, name shown "Inlet pressure", read |
+| Signal | `pressure_rise`, name shown "Pressure rise", read |
+| Signal | `bearing_temperature`, name shown "Bearing temperature", read |
 | Description | Alarm above 90 °C. |
 | Command | `reset_fault`, button "Reset fault" |
 
@@ -1335,6 +1336,7 @@ Noted, not to be asked again in the chat (Product Owner, end of 2026-11-17).
 
 - Can a signal or a command be added twice to the builder?
 - What a symbol or a synoptic can change in the faceplate built by the preset.
+- The text of a boolean shown as text (a signal in read, a title bound to a signal): "true" and "false", or words set on the signal ("Open" and "Closed")?
 
 ## Always editable, no versions
 

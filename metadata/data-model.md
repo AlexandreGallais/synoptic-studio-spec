@@ -85,7 +85,7 @@ erDiagram
     SIGNAL_FIELD {
         uuid signal FK
         access access "read; write for an input; override for an output"
-        input_kind input_kind "number field, radio on one line, radio on several lines or select"
+        input_kind input_kind "when access is write or override: number field, radio on one line, radio on several lines, select or switch"
         text name_shown "empty: the signal's id is shown"
     }
     BOUND {
@@ -227,8 +227,8 @@ A labelled field that shows the value of one signal, and lets a person type it w
 | Field | What it holds | When |
 | --- | --- | --- |
 | `signal` | The signal shown: one of the type, own or inherited. | Always. |
-| `access` | `read`: the field only shows the value. `write`, for an input: a person types the value the model receives. `override`, for an output: a person types a value that replaces the model's. | Always. Write is offered for an input only, override for an output only (decision 0040). |
-| `input_kind` | How the value is shown and typed: a number field, radio buttons on one line, radio buttons on several lines, or a select (see [The choice lists](#the-choice-lists)). | Always. The choices depend on the value type of the signal. |
+| `access` | `read`: the field only shows the value, as text alone, the way a text bound to a signal shows it (see `TEXT_CONTENT`). `write`, for an input: a person types the value the model receives. `override`, for an output: a person types a value that replaces the model's. | Always. Write is offered for an input only, override for an output only (decision 0040). |
+| `input_kind` | How the value is typed: a number field, radio buttons on one line, radio buttons on several lines, a select, or a switch (see [The choice lists](#the-choice-lists)). | When `access` is write or override. The choices depend on the value type of the signal. |
 | `name_shown` | The label beside the field, for people; never sent to the model. | Always; empty, the signal's `id` is shown (decision 0018). |
 | `min`, `max` | Two `BOUND`, each optional. A typed value outside them is refused. | When `input_kind` is number field. |
 
@@ -276,7 +276,7 @@ Every field whose value is one word from a fixed list. Each is written in the JS
 | `enum_kind` | `ENUM.kind` | global, template | Items written on the Enums page, the same everywhere; or items completed on each placed symbol. |
 | `element_kind` | `FACEPLATE_ELEMENT.kind` | signal, command, title, description, group | See [The faceplate, box by box](#the-faceplate-box-by-box). |
 | `access` | `SIGNAL_FIELD.access` | read, write, override | Shown only; typed in, for an input; typed in, for an output. |
-| `input_kind` | `SIGNAL_FIELD.input_kind` | number field, radio on one line, radio on several lines, select | Number field: for an integer or a real. Radio on one line, radio on several lines, select: for an enum, its items in the order of the handles of the Enums page. A boolean: not settled, see [Open](#open). |
+| `input_kind` | `SIGNAL_FIELD.input_kind` | number field, radio on one line, radio on several lines, select, switch | Number field: for an integer or a real. Radio on one line, radio on several lines, select: for an enum, its items in the order of the handles of the Enums page. Switch: for a boolean, one click turns it on or off. |
 | `bound_source` | `BOUND.source` | typed, signal | See `BOUND`. |
 | `text_source` | `TEXT_CONTENT.source` | typed, identifier, signal | See `TEXT_CONTENT`. |
 
@@ -402,6 +402,15 @@ The Product Owner read the preset, its values and the faceplate again. The value
   - the source of a text says `typed` instead of `fixed`, the same word as for a bound; screen MD-07.19 and the draft keep "fixed text" for the user, which means the same.
 - **Why a title or a description can point to a signal** (Product Owner: "Je comprends pas pourquoi y a un truc signal"): he asked for it on 2026-11-18 (decision 0048). The text then shows the value of the signal alone, read only; it is not a signal element. Said under `TEXT_CONTENT`.
 
+## Settled on 2026-11-21 (faceplate fields)
+
+The Product Owner answered the two questions of the faceplate in the questionnaire, with the option the assistant advised each time.
+
+- **A boolean signal is typed with a switch** (Product Owner: "Interrupteur (switch)"): `switch` is added to `input_kind`, for a boolean only. One click turns it on or off, and its state reads at a glance.
+- **A signal field in read shows the text of the value alone** (Product Owner: "Le texte de la valeur seul"), as a text bound to a signal does: in the display unit and with the decimals of the preset, an enum by the display text of its item. No field is drawn, not even greyed.
+- **So `input_kind` only exists in write or override**: it says how a value is typed, and nothing is typed in read. The builder may keep the last choice while the access changes, so that going back to write finds it: assistant's reading, a matter of the screen, not of the file.
+- The bounds follow: `min` and `max` exist only for a number field, so never in read.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -416,5 +425,4 @@ The Product Owner read the preset, its values and the faceplate again. The value
 - The syntax of the expressions (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
 - The name of the short text that names a colour or an icon: `description` for now.
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `MEASUREMENT`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
-- The input of a boolean signal in the faceplate: none of the four `input_kind` fits it (a switch, a checkbox, two radio buttons?). The example of the draft only says "true or false".
-- What `input_kind` means for a signal field in `read`: how the value is shown (radio buttons that cannot be clicked, or the text alone)? Assistant's reading: `input_kind` stays set, so that switching to write keeps it.
+- The text of a boolean shown as text (a signal field in read, a title bound to a signal): "true" and "false", or words set on the signal ("Open" and "Closed")?
