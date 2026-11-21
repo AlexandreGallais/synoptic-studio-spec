@@ -9,8 +9,8 @@ Status: schema being read again with the Product Owner (2026-11-19 to 2026-11-21
 - `name`: a label people read, for a thing that has no `id`: nothing points to it and it never goes to the model. What the software ships (quantities, families, units), the name of a preset (see [Read again on 2026-11-21](#read-again-on-2026-11-21-presets-and-faceplate)), the name of a palette, of an icon or of a colour (decision 0057).
 - `display_name`: a label people read, for a thing that has an `id` or a key: it is shown in place of that `id` or key, and never goes to the model (an enum item, an identifier, a signal field, a command button). Empty, the `id` or the key is shown.
 - `description`: a text that explains, for people; plain text everywhere, Markdown only in `DOCUMENTATION`.
-- A choice of the software (`kind`, `direction`, `measure`...) is written in the JSON as an English word (`"input"`, `"difference"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). A value of several words is joined by underscores (`set_signal`, `number_field`), the same in the schema and in the JSON. The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
-- The field that says which alternative a box is: `kind` in general; `source` when it says where a value comes from (typed, or taken from a signal or an identifier); `direction`, `measure`, `access` and `input_kind` where their own word says more.
+- A choice of the software (`kind`, `direction`, `access`...) is written in the JSON as an English word (`"input"`, `"difference"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). A value of several words is joined by underscores (`set_signal`, `number_field`), the same in the schema and in the JSON. The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
+- The field that says which alternative a box is: `kind` in general; `source` when it says where a value comes from (typed, or taken from a signal or an identifier); `direction`, `access` and `input_kind` where their own word says more. Never `type`, which already names `TYPE` and `VALUE_TYPE`.
 - A list of choices is named after its field; a field called `kind` or `source`, which several boxes have, takes its box as prefix (`command_kind`, `bound_source`). Every list is in [The choice lists](#the-choice-lists).
 - A value typed in the builder is prefixed `typed_` where it stands beside a value taken elsewhere (`typed_value`, `typed_text`). A value read by the value type of its signal (a number, a boolean or an enum item) has the type `signal_value`.
 - A box without `internal_id` is a part of its owner (a nested object in the JSON), never pointed to.
@@ -55,7 +55,7 @@ erDiagram
     }
     MEASUREMENT {
         uuid quantity FK
-        measure measure "value or difference"
+        measurement_kind kind "value or difference"
     }
     COMMAND {
         uuid internal_id PK
@@ -252,7 +252,7 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
         "kind": "real",
         "measurement": {
           "quantity": "6f1c2a90-0000-4000-8000-000000000900",
-          "measure": "value"
+          "kind": "value"
         }
       }
     },
@@ -265,7 +265,7 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
         "kind": "real",
         "measurement": {
           "quantity": "6f1c2a90-0000-4000-8000-000000000900",
-          "measure": "value"
+          "kind": "value"
         }
       }
     },
@@ -278,7 +278,7 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
         "kind": "real",
         "measurement": {
           "quantity": "6f1c2a90-0000-4000-8000-000000000900",
-          "measure": "value"
+          "kind": "value"
         }
       }
     },
@@ -310,7 +310,7 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
         "kind": "real",
         "measurement": {
           "quantity": "6f1c2a90-0000-4000-8000-000000000910",
-          "measure": "difference"
+          "kind": "difference"
         }
       }
     }
@@ -664,7 +664,7 @@ Every field whose value is one word from a fixed list. Each is written in the JS
 | `link_kind` | `LINK.kind` | path, url | A path to a file or a folder, or a web address. |
 | `direction` | `SIGNAL.direction` | input, output | The model receives it, or the model sends it. |
 | `value_type_kind` | `VALUE_TYPE.kind` | integer, real, boolean, enum | A whole number, a number, true or false, an item of an enum. |
-| `measure` | `MEASUREMENT.measure` | value, difference | A point on the scale ("it is 20 °C"), or a gap between two points ("it rose by 20 °C"). |
+| `measurement_kind` | `MEASUREMENT.kind` | value, difference | A point on the scale ("it is 20 °C"), or a gap between two points ("it rose by 20 °C"). |
 | `command_kind` | `COMMAND.kind` | set_signal, trigger, override | Send a fixed value to an input; tell the model something happened; replace the value of an output. |
 | `enum_kind` | `ENUM.kind` | global, template | Items written on the Enums page, the same everywhere; or items completed on each placed symbol. |
 | `faceplate_element_kind` | `FACEPLATE_ELEMENT.kind` | signal, command, title, description, group | See [The faceplate, box by box](#the-faceplate-box-by-box). |
@@ -853,6 +853,16 @@ Asked by the Product Owner on 2026-11-21 ("le boolean text, ça serait plutôt d
 - So two presets of the same type may name the states differently ("Running" / "Stopped", "On" / "Off"); the signal itself only says that it is a boolean.
 - They are typed in the table of values of the preset (mode Values), in a column for booleans only: assistant's reading, its header and place to confirm (screen MD-07.13b).
 - They never go to the model, which gets `true` or `false`; nor in the configuration files sent with it, since they are a matter of display like the display unit: assistant's reading.
+
+## Changed on 2026-11-21 (kind of a measurement)
+
+The Product Owner found `"measurement": { "measure": "value" }` odd in the JSON, and asked whether the field should rather be a type, "soit c'est une valeur, soit c'est une différence"; he left the choice to the assistant ("je te laisse réfléchir").
+
+- **`MEASUREMENT.measure` becomes `MEASUREMENT.kind`**, and its list `measure` becomes `measurement_kind` (assistant's choice). It says which of two alternatives the measurement is, which is what `kind` means everywhere in the schema; `measure` repeated the name of its box (`measurement.measure`) without saying more.
+- **Not `type`**: the schema already has `TYPE` and `VALUE_TYPE`, and `measurement.type` beside `value_type` would read as a third kind of type. `kind` is the word the rules give for this.
+- **Not `typed`**: in the schema, `typed` means typed by hand in the builder (`typed_value`, `typed_text`), which this is not.
+- **The values stay `value` and `difference`**: a point on the scale or a gap between two points, as decision 0020 says. In the JSON: `"measurement": { "quantity": "…", "kind": "difference" }`.
+- The earlier sections keep `measure`, as written when they were settled.
 
 ## Not in the schema yet
 
