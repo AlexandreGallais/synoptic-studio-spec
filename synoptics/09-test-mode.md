@@ -13,7 +13,7 @@ The **Test** mode tries a whole synoptic without a model: the user gives test va
 These rules are decided for a symbol; the assistant proposes the same for a synoptic.
 
 - There is no model: nothing is sent, nothing is saved in the synoptic.
-- The control of a test value depends on the signal: a number field or a slider for a number, a select of the display texts for an enum, a switch for a boolean.
+- The control of a test value depends on the signal: a number field or a slider for a number, a select of the display names for an enum, a switch for a boolean.
 - An interaction is only **simulated**: opening a faceplate shows the pop-up; a command gives a line in a **log**.
 - A **simulated screen** shows the synoptic at the size and resolution of another screen; the research adds the scale factor of the system (100 % to 200 %).
 

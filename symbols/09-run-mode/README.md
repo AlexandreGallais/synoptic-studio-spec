@@ -17,7 +17,7 @@ The mode of the [editor](../03-editor/README.md) in which the user tries the sym
 | Signal | Control |
 | --- | --- |
 | A number, for example from 0 to 1 | A number input or a slider. |
-| An enum | A select of the display texts of the enum, to choose an item and see the animation that goes with it. |
+| An enum | A select of the display names of the enum, to choose an item and see the animation that goes with it. |
 | A boolean | A switch (assumed by the assistant, the Product Owner named only the two above). |
 
 - The symbol is redrawn at each change, with the display units and decimal places of its preset.

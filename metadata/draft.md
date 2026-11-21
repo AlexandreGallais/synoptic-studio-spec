@@ -26,7 +26,7 @@ Status: every page of Metadata written up to 2026-11-18, gathered in this one fi
 
 The first part of Synoptic Studio: the data and documentation a symbol can be attached to. It is the model side (what an object is, what goes in and out of it), not the front side (how it looks).
 
-Status: validated by the Product Owner on 2026-11-11, then changed by him the same day while reviewing the [screens](../screens/metadata.md): type tree on the left, order of the parts, three modes for the description, links that only open folders, a signal edited as a whole, enum items as a key and a display text, typed values of any type, differences shown with their quantity. On 2026-11-16, while reviewing the wireframes, he removed the libraries of types and set the layout rules of the [screens](../screens/README.md#layout-rules) (a navigation bar on the left, a list on the left and its panel on the right), made enum keys numbers only, and said how a type is created (a + on hover) and deleted (right click). Later that day he made the parent of a type fixed at creation, the description always editable (no view mode), the add buttons always above the lists, the signals and commands into tables, and the value of a command always fixed (a typed value goes through a write entry of the faceplate). Then he merged the faceplate into the presets (a preset is one table that builds the faceplate, seen with a button) and gave each signal an ID and a display name. Last, he chose a strip of icons for the parts of a type, confirmed delete by right click in all of Metadata, made enum keys whole numbers, kept the type tree in the full page of the description, and limited commands to the inputs of the model (a text that becomes an input writes an input signal directly). Last of all that day, he removed every Edit and Save step (everything is editable all the time) and added the Versions of Metadata (differences, change log, undo, semantic version; removed on 2026-11-21, see [Always editable, no versions](#always-editable-no-versions)), kept the read-only mode of the description, put the direction first in the table of signals with a colour per direction, moved the name people see of a signal from the signal to the preset, and gave commands three kinds (set a signal, trigger, override an output) and an ID. Then he replaced the strip of icons by the names of the parts in whole words, fixed under the type tree in its column, put the choice of quantity or difference in the one column Quantity (a difference only where the conversion changes), and confirmed the default decimals fixed by the catalogue of units. Last, he moved that list above the tree, then back under it, and made the Faceplate a part again, after Presets, which only shows the faceplate of a chosen preset (it replaces the button that showed it). Reviewing the wireframes at the end of the day, he validated the type tree, put its search behind an icon, removed every right click of Metadata (a delete button with a warning instead, in General for a type, at the far right of a line elsewhere), put the inherited signals and commands first, marked a quantity and a difference by icons, put the formatting tool bar in both modes of the description, and split a preset into two modes: its values, and a faceplate builder with groups, titles and descriptions. Last, he removed the Faceplate part (the faceplate is the second mode of a preset), removed the model unit from the signal (one model unit per quantity, set outside Metadata), gave each enum item a description, let the links and the commands be reordered by a handle, and set three layout rules: a small + on the right of the title of each list, no header on the columns of buttons, and handles wherever the user chooses the order. The questions still open are listed in [Open questions](#metadata-open-questions).
+Status: validated by the Product Owner on 2026-11-11, then changed by him the same day while reviewing the [screens](../screens/metadata.md): type tree on the left, order of the parts, three modes for the description, links that only open folders, a signal edited as a whole, enum items as a key and a display name, typed values of any type, differences shown with their quantity. On 2026-11-16, while reviewing the wireframes, he removed the libraries of types and set the layout rules of the [screens](../screens/README.md#layout-rules) (a navigation bar on the left, a list on the left and its panel on the right), made enum keys numbers only, and said how a type is created (a + on hover) and deleted (right click). Later that day he made the parent of a type fixed at creation, the description always editable (no view mode), the add buttons always above the lists, the signals and commands into tables, and the value of a command always fixed (a typed value goes through a write entry of the faceplate). Then he merged the faceplate into the presets (a preset is one table that builds the faceplate, seen with a button) and gave each signal an ID and a display name. Last, he chose a strip of icons for the parts of a type, confirmed delete by right click in all of Metadata, made enum keys whole numbers, kept the type tree in the full page of the description, and limited commands to the inputs of the model (a text that becomes an input writes an input signal directly). Last of all that day, he removed every Edit and Save step (everything is editable all the time) and added the Versions of Metadata (differences, change log, undo, semantic version; removed on 2026-11-21, see [Always editable, no versions](#always-editable-no-versions)), kept the read-only mode of the description, put the direction first in the table of signals with a colour per direction, moved the name people see of a signal from the signal to the preset, and gave commands three kinds (set a signal, trigger, override an output) and an ID. Then he replaced the strip of icons by the names of the parts in whole words, fixed under the type tree in its column, put the choice of quantity or difference in the one column Quantity (a difference only where the conversion changes), and confirmed the default decimals fixed by the catalogue of units. Last, he moved that list above the tree, then back under it, and made the Faceplate a part again, after Presets, which only shows the faceplate of a chosen preset (it replaces the button that showed it). Reviewing the wireframes at the end of the day, he validated the type tree, put its search behind an icon, removed every right click of Metadata (a delete button with a warning instead, in General for a type, at the far right of a line elsewhere), put the inherited signals and commands first, marked a quantity and a difference by icons, put the formatting tool bar in both modes of the description, and split a preset into two modes: its values, and a faceplate builder with groups, titles and descriptions. Last, he removed the Faceplate part (the faceplate is the second mode of a preset), removed the model unit from the signal (one model unit per quantity, set outside Metadata), gave each enum item a description, let the links and the commands be reordered by a handle, and set three layout rules: a small + on the right of the title of each list, no header on the columns of buttons, and handles wherever the user chooses the order. The questions still open are listed in [Open questions](#metadata-open-questions).
 
 ### The big picture
 
@@ -501,7 +501,7 @@ A signal is what goes between the front and the model: an input or an output of 
 - **Its direction is chosen like any signal's**, input or output. In practice a bound is **an input**: it is given to the model, to tell it the range its data will be bounded with (Product Owner, 2026-11-17: "on dit littéralement au modèle ce qu'il va avoir [...] dans la logique, c'est donné au modèle").
 - Where a bound is used:
   - in a symbol, the bounded linear animation can take its minimum or its maximum from any signal of the type, input or output (see [Animation mode](../symbols/08-animation-mode/README.md#shapes-of-mapping));
-  - in the faceplate, the minimum and the maximum of a number field are each typed by hand or taken from an input signal of the type, never an output (Product Owner, end of 2026-11-17, and 2026-11-21 for the input only; see [Presets](#bounds-of-a-number-field)).
+  - in the faceplate, the minimum and the maximum of a number field are each typed by hand or taken from an input signal of the type with the same quantity, never an output (Product Owner, end of 2026-11-17, and 2026-11-21 for the input of the same quantity only; see [Presets](#bounds-of-a-number-field)).
 - **No decimal places on the signal** (Product Owner, 2026-11-17: "le modèle, il doit pouvoir tout bouffer"): the model gives and receives the whole value. If a number of decimals must be set, it is set once for the whole project, in a place for project settings, outside Metadata, so that every value of the project has the same decimals (Product Owner: "c'est pas dans les métadatas [...] avoir le même nombre de décimales partout"). That place is not described yet. What this means for the decimals of the presets and of the catalogue of units is asked (see [Open questions](#metadata-open-questions)).
 
 ### Fields
@@ -641,7 +641,7 @@ flowchart LR
 Decided by the Product Owner on 2026-11-18 (decision 0043, accepted on 2026-11-18).
 
 - **A signal is never a text.** Its type is integer, real, boolean or enum.
-- Why: a simulation model exchanges numbers and states. A word shown on screen is the state of something, so it goes through an enum, whose display texts are the words shown (Product Owner: "si on fait afficher une string, c'est sa représentation d'un état, mais du coup ça passe via un enum").
+- Why: a simulation model exchanges numbers and states. A word shown on screen is the state of something, so it goes through an enum, whose display names are the words shown (Product Owner: "si on fait afficher une string, c'est sa représentation d'un état, mais du coup ça passe via un enum").
 - What follows from it:
   - a fault message becomes an enum output: `fault_message` (text) of the example became `fault` (enum `fault_state`);
   - a command never carries a text value (see [Commands](#the-value-is-always-fixed));
@@ -845,7 +845,7 @@ flowchart LR
 
 ## Enums
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers; the + that creates an enum is an icon on the line of the title; delete with a button and a warning; at the end of the day, an optional description for each item, shown on the Enums page only); reviewed by him on 2026-11-17 (the display text before the description, no change of order of the items); changed by him later on 2026-11-17 (two kinds of enum: global and template, see [Global enums and templates](#global-enums-and-templates)); completed by him at the end of 2026-11-17 (the items of a template are completed on each placed symbol in the synoptic, with a warning until they are; a template has a description); changed by him again at the end of 2026-11-17 (the user picks the number of each key, gaps allowed; the items are sorted by key; the name "template" kept); answered by him on the questionnaire at the end of 2026-11-17 (handles after the sort by key; a key can change, then shown by the Versions page, removed on 2026-11-21); answered by him again (an item added goes right after the item with the next smaller key; an item whose key changes stays where it is); answered by him last (a description for a global enum too; the kind can change at any time, losing nothing). Points left for later are listed in [Left for later](#left-for-later).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (keys always whole numbers; the + that creates an enum is an icon on the line of the title; delete with a button and a warning; at the end of the day, an optional description for each item, shown on the Enums page only); reviewed by him on 2026-11-17 (the display name before the description, no change of order of the items); changed by him later on 2026-11-17 (two kinds of enum: global and template, see [Global enums and templates](#global-enums-and-templates)); completed by him at the end of 2026-11-17 (the items of a template are completed on each placed symbol in the synoptic, with a warning until they are; a template has a description); changed by him again at the end of 2026-11-17 (the user picks the number of each key, gaps allowed; the items are sorted by key; the name "template" kept); answered by him on the questionnaire at the end of 2026-11-17 (handles after the sort by key; a key can change, then shown by the Versions page, removed on 2026-11-21); answered by him again (an item added goes right after the item with the next smaller key; an item whose key changes stays where it is); answered by him last (a description for a global enum too; the kind can change at any time, losing nothing). Points left for later are listed in [Left for later](#left-for-later).
 
 An Enums page lists the enums of the application, like the Units page lists the quantities. A signal of the type enum does not hold its own list of values: it points to an enum of this page.
 
@@ -856,7 +856,7 @@ Decided by the Product Owner on 2026-11-17 (decision 0035, accepted on 2026-11-1
 | Kind | What it is | Its items | Example |
 | --- | --- | --- | --- |
 | **Global** | An enum that is true everywhere: the same items for every symbol and every synoptic that uses it. | Written on the Enums page, as below. | `alarm_level`: "normalement, tu as la même alarm level partout". |
-| **Template** | An enum that is not defined in advance: only its name and its description are made on the Enums page. Its items belong to **one placed symbol** and can change from one symbol to the next. | Not written on the Enums page: no keys, no display texts, no descriptions yet ("des displays qui ne sont pas encore faits, des descriptions qui ne sont pas encore faites"). | The positions of a switch: switch `ID 123` has its own list, another switch another one ("un commutateur, il a plusieurs sélections, mais ça change à chaque fois"). |
+| **Template** | An enum that is not defined in advance: only its name and its description are made on the Enums page. Its items belong to **one placed symbol** and can change from one symbol to the next. | Not written on the Enums page: no keys, no display names, no descriptions yet ("des displays qui ne sont pas encore faits, des descriptions qui ne sont pas encore faites"). | The positions of a switch: switch `ID 123` has its own list, another switch another one ("un commutateur, il a plusieurs sélections, mais ça change à chaque fois"). |
 
 - Why (Product Owner): some enums are shared, others depend on the very object ("le pump mode, ça dépend des pompes potentiellement"). A template lets people work with an enum signal before its items exist ("comme ça, au moins, on se permet de travailler quand même avec les choses").
 - **The user chooses the kind** when making an enum on the Enums page ("dans la page enum, il faut pouvoir créer des enums globaux et des templates").
@@ -866,7 +866,7 @@ Decided by the Product Owner on 2026-11-17 (decision 0035, accepted on 2026-11-1
 - **A signal of the type enum points to a global enum or to a template**, picked in the same list ("pouvoir choisir dans la liste « enum unique » ou un truc du genre"). The Product Owner first said "enum unique", then "template". **The names "Global" and "Template" are kept** (Product Owner, end of 2026-11-17, on the wireframe: "ton truc template, là, je l'aime bien [...] Comment t'as géré ça : global ou template ? Ouais, c'est bien comme ça"), although the research found "template" taken in OPC UA and AutomationML in another sense.
 - **A template has a name and a description** (Product Owner, end of 2026-11-17: "un peu comme les enums normaux, il faudrait, en plus du nom, pouvoir mettre une description qui explique un peu plus ce que c'est, en généralité, de l'enum"). The description says what the enum is about as a whole (for example "the positions of a switch"), since a template has no items to explain it. Plain text, never sent to the model, like the description of an item.
 - **A global enum has the same description of the enum as a whole**, besides the descriptions of its items (Product Owner, end of 2026-11-17: "Oui"; decision 0042).
-- **The items of a template are completed on each placed symbol, in the synoptic** (Product Owner, end of 2026-11-17: "quand on crée le synoptique, les symboles qu'on place contiennent des templates d'enum"). Switch `ID 123` gets its own keys, display texts and descriptions there. The synoptic, part 3, is not written yet: the screen where they are typed is described with it.
+- **The items of a template are completed on each placed symbol, in the synoptic** (Product Owner, end of 2026-11-17: "quand on crée le synoptique, les symboles qu'on place contiennent des templates d'enum"). Switch `ID 123` gets its own keys, display names and descriptions there. The synoptic, part 3, is not written yet: the screen where they are typed is described with it.
 - **A placed symbol whose template is not completed shows a small warning**, an information that its enum must be completed (Product Owner: "c'est une sorte de petit warning ou d'information qui dit : « Oui, vous devez compléter son enum à lui »"). It does not stop the user from placing the symbol or working on: it only reminds that the enum is still empty (assistant's reading of "petit warning ou d'information" and of "on se permet de travailler quand même"). Where it is shown, and whether it is a warning or an information, is for part 3.
 - **The screen must make the difference explicit**: a global enum is the same everywhere, a template changes with each symbol. How it is shown is for the design system: the Product Owner asked the assistant to note it, not to explain it on the page itself ("il ne faut pas l'expliquer, mais toi, il faut que tu te le notes : il faudra trouver un moyen d'expliquer ça explicitement").
 - A Symbol Lib can add its own columns to a template as to a global enum (see [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md)).
@@ -883,19 +883,19 @@ flowchart LR
 
 ### Rules
 
-- An enum is a named list of items. **Each item is a pair: a key and a display text** (Product Owner, 2026-11-11, replacing the "value alone" rule written earlier the same day):
+- An enum is a named list of items. **Each item is a pair: a key and a display name** (Product Owner, 2026-11-11, replacing the "value alone" rule written earlier the same day):
   - the **key** is what the model receives: **always a whole number** (Product Owner, 2026-11-16, replacing "a number or a string, chosen for the whole enum": "les enums, c'est tout le temps des entiers"); keys are unique in the enum;
   - **the user picks the number of each key**, with gaps if they want: an enum can have the keys 0, 2, 4 (Product Owner, end of 2026-11-17: "il faut pouvoir mettre le chiffre qu'on veut. Il faut laisser le choix de rajouter une ligne et de choisir son numéro [...] un enum où c'est 0, 2, 4"). The same for a global enum and for the items of a template ("que ce soit un template ou un enum"). Decision 0037, accepted on 2026-11-17;
   - the **description** explains what the item means, for the people who make the types and the symbols (Product Owner, 2026-11-16, end of the day: "il faut pouvoir décrire quand même ce que vaut l'enum [...] une description, c'est peut-être pas mal pour avoir des explications sur les enums"); plain text; it never goes to the model; **optional, and shown only on the Enums page**: the faceplate never shows it (Product Owner, 2026-11-16);
-  - the **display text** is what people read: the faceplate, a text of a symbol and the test values show it, never the key;
+  - the **display name** is what people read: the faceplate, a text of a symbol and the test values show it, never the key. Called "display text" until 2026-11-21, renamed for the same word as an identifier and a signal field (Product Owner: "Oui, display_name"; decision 0056);
   - each item also has an **internal ID**, set by the software, that never changes and never goes to the model: a command's fixed value points to the item through it, so a key changed later is followed (Product Owner, 2026-11-18, decision 0047, answering the questionnaire: "Oui, un internal ID par item"; see [Data model](#the-commands)).
-- The items are shown in a table whose columns come in this order: the handle with no header (end of 2026-11-17, see below), **Key, Display text, Description**, then the delete button, with no header (Product Owner, 2026-11-17, reviewing the wireframes: "Faudrait peut-être inverser la description et le display name [...] le display name, il est assez court. La description, elle est plutôt grande, donc la description, elle irait après"). The short field first, the long one last. It replaces the order Key, Description, Display text of 2026-11-16 (decision 0032, accepted on 2026-11-17, which changes decision 0025 on this point).
+- The items are shown in a table whose columns come in this order: the handle with no header (end of 2026-11-17, see below), **Key, Display name, Description**, then the delete button, with no header (Product Owner, 2026-11-17, reviewing the wireframes: "Faudrait peut-être inverser la description et le display name [...] le display name, il est assez court. La description, elle est plutôt grande, donc la description, elle irait après"). The short field first, the long one last. It replaces the order Key, Description, Display name of 2026-11-16 (decision 0032, accepted on 2026-11-17, which changes decision 0025 on this point).
 - **The items are sorted by key automatically**, from the smallest key to the largest: a line added with the key 3 goes between 2 and 4 (Product Owner, end of 2026-11-17: "en fonction des chiffres qu'on met, il y ait un tri automatique pour que ça aille dans l'ordre quand même. Il ne faut pas déconner"). It replaces "a new item goes at the end" (assistant's reading of the same day; decision 0037, which changes decision 0032 on this point).
 - **Then handles put the items in the order of their meaning, without changing their keys** (Product Owner, end of 2026-11-17, answering the questionnaire: "Tri par clé, puis poignées"). A new item takes its place by key; the user can then move any item with its handle, at the very left of its line, and the order chosen is kept. Example: the key 6 "Maintenance", added later, goes after 2 by key; its handle moves it between Off and Manual, and its key stays 6. Only the order shown changes: the model still receives the keys. It replaces the refusal of handles said earlier the same day ("On peut pas changer l'ordre, ça me chante pas") and decision 0032 on that point (decision 0038, accepted on 2026-11-17).
 - **An item added once items were moved goes right after the item with the next smaller key**, wherever the handles put that item (Product Owner, end of 2026-11-17, answering the questionnaire: "Juste après l'item de clé inférieure"). Example: Off 0, Maintenance 6, Manual 1, Automatic 2 after a move; a new key 3 goes right after Automatic (key 2). A key smaller than every other one goes first (confirmed by the Product Owner at the end of 2026-11-17: "Oui"). Decision 0039, accepted on 2026-11-17.
 - **An item whose key changes stays where it is**: changing a key never moves the line (Product Owner, end of 2026-11-17, answering the questionnaire: "Il reste où il est"). Decision 0039, accepted on 2026-11-17.
 - **A key can still be changed once given**, which is breaking for the model. The screen does not forbid it and does not warn (decision 0038, accepted on 2026-11-17). The Versions page that showed the change (Product Owner, end of 2026-11-17: "Oui, la page Versions le signale") was removed on 2026-11-21 (decision 0053): the change is seen in the differences of Git, on the JSON files.
-- No string keys (Product Owner, 2026-11-16). Why: every enum can be checked in one place, the Enums page, and the configuration files are generated from it; so the model never needs a readable key, and the display text is enough for people.
+- No string keys (Product Owner, 2026-11-16). Why: every enum can be checked in one place, the Enums page, and the configuration files are generated from it; so the model never needs a readable key, and the display name is enough for people.
 - When the user picks an item, the signal receives exactly its key.
 - It is the pair (name, value) the research found in FMI, SSP and OPC UA.
 - Enums are created and changed on the Enums page only, never inside a signal, a symbol or a synoptic. Exception since 2026-11-17: the items of a **template** are completed on each placed symbol, in the synoptic (see [Global enums and templates](#global-enums-and-templates)); the template itself, its name and its description, is made on the Enums page.
@@ -906,17 +906,17 @@ flowchart LR
 - A signal of the type enum picks one enum of the list. It is a link to the existing enum, never a copy.
 - Several signals can point to the same enum.
 - Changing an enum changes it for every signal that points to it: that is the point of a link.
-- The keys of an enum are part of the contract with the model (decided on 2026-11-11, from the research). Adding, removing or changing a key is breaking, like a rename: OPC UA's best-practices guide forbids it for a published enum. The model must follow. Changing a display text is not breaking: it never goes to the model.
+- The keys of an enum are part of the contract with the model (decided on 2026-11-11, from the research). Adding, removing or changing a key is breaking, like a rename: OPC UA's best-practices guide forbids it for a published enum. The model must follow. Changing a display name is not breaking: it never goes to the model.
 
 The items of `operating_mode`:
 
-| Key | Display text | Description |
+| Key | Display name | Description |
 | --- | --- | --- |
 | 0 | Off | The pump is stopped and ignores the setpoint. |
 | 1 | Manual | An operator drives the pump from its faceplate. |
 | 2 | Automatic | The control loop drives the pump. |
 
-| Enum | Items (key: display text) |
+| Enum | Items (key: display name) |
 | --- | --- |
 | `operating_mode` | 0: Off, 1: Manual, 2: Automatic |
 | `speed` | 0: Low speed, 1: High speed |
@@ -937,7 +937,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A["Create an enum on the Enums page"] --> B["Add its items: a whole number key picked by the user, display text, description; placed by key, then moved by handle if needed"]
+    A["Create an enum on the Enums page"] --> B["Add its items: a whole number key picked by the user, display name, description; placed by key, then moved by handle if needed"]
     B --> C["On a signal of type enum, pick the enum"]
     C --> D["The signal follows the enum: no copy"]
 ```
@@ -946,7 +946,7 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Global enum, its description, its items (key, display text, description) | Enums page | Signal: picks one as a link | Its columns added by the Symbol Lib, used by animations | No |
+| Global enum, its description, its items (key, display name, description) | Enums page | Signal: picks one as a link | Its columns added by the Symbol Lib, used by animations | No |
 | Template (a name and a description, no items) | Enums page | Signal: picks one as a link | Its columns added by the Symbol Lib, used by animations | Its items, completed on each placed symbol; a small warning until they are |
 
 The faceplate builder of a preset chooses how an enum is shown in the faceplate (radio on one line, radio on several lines, select), see [Presets](#mode-faceplate-the-faceplate-builder). **The radio buttons and the select show the items in the order chosen with the handles** on the Enums page, not sorted by key (Product Owner, end of 2026-11-17, answering the questionnaire asked again in plain words: "Oui, l'ordre des poignées").
@@ -1008,7 +1008,7 @@ Decided by the Product Owner on 2026-11-16. It replaces the "typed value" of 202
 | --- | --- |
 | Integer, real | A number, typed. |
 | Boolean | True or false. |
-| Enum | An item of the enum, picked by its display text; the model receives its key. |
+| Enum | An item of the enum, picked by its display name; the model receives its key. |
 
 - To let a person **type a value**, a command is not used: a signal of the preset is set to **write**, which puts an input in the faceplate (see [Presets](#typing-a-value)). The person types the value there; it is checked, converted and sent to the model.
 
@@ -1136,7 +1136,7 @@ A table with **every signal of the type**, own and inherited, one per line (Prod
 | Signal | An icon of its direction, then the signal's ID, read only | Which signal the line is about (see [Signals](#signals)). The icon says whether it is an input or an output of the model (Product Owner, 2026-11-17: "il faudrait qu'on puisse savoir si c'est un input ou un output [...] ça donne juste une icône"), so that the default value is read right. |
 | Display unit | Select | Only with a quantity. Among the units of the signal's quantity; starts as the model unit of the quantity. Kept (Product Owner, 2026-11-17: "Display unit pareil"). |
 | Decimals | Number field | Integers and reals only. Starts as the one default number of decimals (see [Decimal places](#decimal-places)). Display only. Kept (Product Owner, 2026-11-17: "les décimales ici servent"). |
-| Default value | Field of the signal's type | See [The default value](#the-default-value) below. A boolean: true or false. An integer or a real: a number, typed. An enum: an item, picked by its display text (Product Owner, 2026-11-16: "si c'est un nombre, on peut écrire une valeur par défaut, et puis basta"). |
+| Default value | Field of the signal's type | See [The default value](#the-default-value) below. A boolean: true or false. An integer or a real: a number, typed. An enum: an item, picked by its display name (Product Owner, 2026-11-16: "si c'est un nombre, on peut écrire une valeur par défaut, et puis basta"). |
 
 ##### The default value
 
@@ -1204,7 +1204,7 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas donner un titre et u
 - The **order of the faceplate is the order of the builder**: it no longer follows the order of the table of Signals. An element is moved with a **handle** at its left, as in the tables of Metadata and as on the wireframes (Product Owner, end of 2026-11-17: "il y a déjà les poignées là").
 - Deleting an element: a delete button at its right, with a warning, as everywhere in Metadata (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
 - All the commands of the type stay available to the symbol, which links them to clicks on its parts, whether or not the builder holds them (see [Commands](#commands)).
-- An enum is always shown by the display texts of its items, never by their keys (see [Enums](#enums)).
+- An enum is always shown by the display names of its items, never by their keys (see [Enums](#enums)).
 
 ```mermaid
 flowchart TD
@@ -1239,7 +1239,7 @@ Said by the Product Owner on 2026-11-18, with the page [Identifiers](#identifier
 #### Typing a value
 
 - A signal element offers **read or write for an input**, and **read or override for an output** (Product Owner, end of 2026-11-17: "c'est read write pour un input et read override pour un output"). It corrects the single "read or override" written earlier on 2026-11-17 for both directions (decision 0040, accepted on 2026-11-17, which changes decision 0030).
-- A signal set to **read** shows **the text of its value alone**, no field drawn, not even greyed (Product Owner, 2026-11-21: "Le texte de la valeur seul"): in the display unit and with the decimals of the preset, an enum by the display text of its item, a boolean by the text of its state set on the signal (Product Owner, 2026-11-21: "Deux mots choisis par signal"; see [Signals](#fields)). It has no input to choose and no bounds (decision 0054).
+- A signal set to **read** shows **the text of its value alone**, no field drawn, not even greyed (Product Owner, 2026-11-21: "Le texte de la valeur seul"): in the display unit and with the decimals of the preset, an enum by the display name of its item, a boolean by the text of its state set on the signal (Product Owner, 2026-11-21: "Deux mots choisis par signal"; see [Signals](#fields)). It has no input to choose and no bounds (decision 0054).
 - A signal set to **write** or to **override** in the builder is the only way for a person to type a value: a command always sends a fixed value (see [Commands](#the-value-is-always-fixed)).
 - **An input and an output can both be typed in, in the same way** (Product Owner, 2026-11-17: "c'est des outputs, faut pouvoir les mettre en write aussi, exactement de la même façon"); only the word changes: write for an input, override for an output. It replaces the rule of 2026-11-16, which greyed write for an output (decision 0030, accepted on 2026-11-17, which changes decisions 0014 and 0022 on this point).
 - What happens to the typed value is **left to what is behind** the faceplate (Product Owner: "c'est à ce qui passe derrière de se débrouiller, parce que ça peut devenir une valeur, ça peut devenir un override"): for an input it becomes the value the model receives; for an output, an override of that output. How an override of an output is applied, and how it ends, is the open question already asked for the command "Override an output" (see [Commands](#open-questions-4)).
@@ -1250,11 +1250,12 @@ Said by the Product Owner at the end of 2026-11-17. A signal has no bounds of it
 
 - A **number field** of the builder can have a **minimum** and a **maximum**.
 - Each is **typed by hand, or taken from a signal of the type**, picked in the field itself: a small icon inside the field chooses the signal, as Figma's "Apply variable" in its fields ("dans l'input même de sélection du min/max, on puisse mettre un truc à la main ou alors choisir une variable").
-- **The signal is an input, never an output, for now** (Product Owner, 2026-11-21: "qu'en entrée, jamais en sortie pour l'instant [...] Au moins, le signal, il reste fixe"): an input is set by the user and given to the model, so the range does not move with what the model computes. Decision 0055. Of the same quantity as the signal shown: assistant's reading.
+- **The signal is an input, never an output, for now** (Product Owner, 2026-11-21: "qu'en entrée, jamais en sortie pour l'instant [...] Au moins, le signal, il reste fixe"): an input is set by the user and given to the model, so the range does not move with what the model computes. Decision 0055.
+- **The signal has the same quantity as the signal shown**, an integer or a real (Product Owner, 2026-11-21: "Même grandeur obligatoire"): a speed is bounded by a speed, and both compare in the same default unit. The icon of the field offers only these inputs. Decision 0056.
 - A typed bound is shown and typed in the display unit of the preset, and kept in the default unit of the quantity (decision 0051).
 - The minimum and the maximum together are the **range** of the field (`RANGE` in the [data model](data-model.md#range-the-values-allowed-in-a-number-field)).
 - A typed value outside them is refused, as the faceplate did before bounds became signals (assistant's reading).
-- An integer signal accepts whole numbers only. An enum signal accepts only the items of its enum: the user picks a display text, the model receives its key.
+- An integer signal accepts whole numbers only. An enum signal accepts only the items of its enum: the user picks a display name, the model receives its key.
 - A value that passes is converted back to the model unit and rounded to 12 significant digits before it goes to the model (see [Units](#units)).
 
 ```mermaid
@@ -1664,7 +1665,7 @@ erDiagram
     ENUM_ITEM {
         uuid internal_id PK
         integer key "sent to the model"
-        text display_text
+        text display_name
         text description "optional"
     }
     QUANTITY {
@@ -1783,7 +1784,7 @@ These tables are pointed to by the type and its parts. The Product Owner did not
 | --- | --- | --- | --- |
 | Icon | The program: a list of SVG files shipped with it | Internal ID, the SVG drawing | [Icons](#type-icons) |
 | Palette, colour | The design system | A palette holds an ordered list of colours; a colour has an internal ID and its value | [Icons](#type-icons) |
-| Enum, enum item | The user, on the Enums page | An enum: internal ID, ID, kind (global or template), description, ordered list of its items. An item: internal ID, key (a whole number), display text, description | [Enums](#enums) |
+| Enum, enum item | The user, on the Enums page | An enum: internal ID, ID, kind (global or template), description, ordered list of its items. An item: internal ID, key (a whole number), display name, description | [Enums](#enums) |
 | Quantity, difference | The catalogue of the software, read only | Internal ID, ID, kind (quantity or difference) | [Units](#units) |
 | Identifier (working name, 2026-11-18) | The user, on the Identifiers page | Internal ID, ID, display name, description; no value, no default value. One ordered list, the order on the screen | [Identifiers](#identifiers) |
 
@@ -1914,7 +1915,7 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 | Quantity, families, conversions, default unit | Nowhere in the application: catalogue files of the software, completed by contributors; read only on the Units page | No | No |
 | Quantity of a signal, and whether its value is the quantity or a difference | Signal, in Metadata | No | No |
 | Model unit of a quantity, the same for every signal (no longer chosen per signal, 2026-11-16) | Outside Metadata: the catalogue for good, or a configuration file of the project (open) | No | No |
-| Enum and its items (key, description, display text) | Enums page | No | No |
+| Enum and its items (key, description, display name) | Enums page | No | No |
 | Command, its ID and description | Metadata | Link a command to a click | No |
 | Preset and its name | Metadata | Choose one | Choose one |
 | Display unit, decimals, default value of each signal | Preset, mode Values, in Metadata | Edit | Edit |

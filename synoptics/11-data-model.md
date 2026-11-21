@@ -83,7 +83,7 @@ erDiagram
     TEMPLATE_ITEM {
         uuid internal_id PK
         integer key
-        text display_text
+        text display_name
         text description
     }
     ON_PIPE {

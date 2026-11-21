@@ -93,7 +93,7 @@ erDiagram
         text display_name "empty: the signal's id is shown"
     }
     BOUND {
-        uuid signal FK "when source is signal: an input signal, its value is the bound"
+        uuid signal FK "when source is signal: an input of the same quantity, its value is the bound"
         bound_source source "typed or signal"
         real typed_value "when source is typed, in the default unit of the quantity of the signal shown"
     }
@@ -115,7 +115,7 @@ erDiagram
     ENUM_ITEM {
         uuid internal_id PK
         integer key
-        text display_text
+        text display_name
         text description
     }
     IDENTIFIER {
@@ -191,7 +191,7 @@ erDiagram
     SIGNAL_FIELD ||--o| RANGE : "has, when input_kind is number field"
     RANGE ||--o| BOUND : "min"
     RANGE ||--o| BOUND : "max"
-    BOUND }o--o| SIGNAL : "signal, when source is signal: an input"
+    BOUND }o--o| SIGNAL : "signal, when source is signal: an input of the same quantity"
     COMMAND_BUTTON }o--|| COMMAND : "command"
     TEXT_CONTENT }o--o| IDENTIFIER : "identifier, when source is identifier"
     QUANTITY ||--|{ FAMILY : "holds"
@@ -202,7 +202,7 @@ erDiagram
 
 ## The faceplate, box by box
 
-Written on 2026-11-21, at the Product Owner's request ("pour la partie faceplate, j'aimerais bien que tu refasses un retravail là-dessus [...] c'est un peu flou"). It says, field by field, what the boxes of the mode Faceplate of a preset hold. The rules are those of [Presets and their faceplate](draft.md#presets-and-their-faceplate) and of the dated sections below (decision 0055 for the text, the display name and the range).
+Written on 2026-11-21, at the Product Owner's request ("pour la partie faceplate, j'aimerais bien que tu refasses un retravail là-dessus [...] c'est un peu flou"). It says, field by field, what the boxes of the mode Faceplate of a preset hold. The rules are those of [Presets and their faceplate](draft.md#presets-and-their-faceplate) and of the dated sections below (decision 0055 for the text, the display name and the range; decision 0056 for the quantity of a bound).
 
 A preset holds an ordered list of elements. Each element has a kind, and its kind gives it exactly one part, or, for a group, its own list of elements.
 
@@ -214,7 +214,7 @@ flowchart LR
     E -->|"kind is title or description"| TC["TEXT_CONTENT: typed, or an identifier"]
     E -->|"kind is group"| G["Its own elements, in order"]
     SF -->|"when input_kind is number field"| R["RANGE: the values allowed"]
-    R -->|"min, max"| B["BOUND: typed, or an input signal"]
+    R -->|"min, max"| B["BOUND: typed, or an input of the same quantity"]
 ```
 
 ### `FACEPLATE_ELEMENT`: one line of the builder
@@ -232,7 +232,7 @@ A labelled field that shows the value of one signal, and lets a person type it w
 | Field | What it holds | When |
 | --- | --- | --- |
 | `signal` | The signal shown: one of the type, own or inherited. | Always. |
-| `access` | `read`: the field only shows the value, as text alone: in the display unit and with the decimals of the preset, an enum by the display text of its item, a boolean by the text of its state (`BOOLEAN_TEXTS`). `write`, for an input: a person types the value the model receives. `override`, for an output: a person types a value that replaces the model's. | Always. Write is offered for an input only, override for an output only (decision 0040). |
+| `access` | `read`: the field only shows the value, as text alone: in the display unit and with the decimals of the preset, an enum by the display name of its item, a boolean by the text of its state (`BOOLEAN_TEXTS`). `write`, for an input: a person types the value the model receives. `override`, for an output: a person types a value that replaces the model's. | Always. Write is offered for an input only, override for an output only (decision 0040). |
 | `input_kind` | How the value is typed: a number field, radio buttons on one line, radio buttons on several lines, a select, or a switch (see [The choice lists](#the-choice-lists)). | When `access` is write or override. The choices depend on the value type of the signal. |
 | `display_name` | The label beside the field, for people; never sent to the model. The same name as the field of an identifier (decision 0055). | Always; empty, the signal's `id` is shown (decision 0018). |
 | `range` | A `RANGE`: the values a person may type. | When `input_kind` is number field. |
@@ -256,7 +256,7 @@ A bound is its own box because it is one of two things, a number or a signal: th
 | --- | --- | --- |
 | `source` | `typed`: a number typed in the builder. `signal`: the value of an input signal of the type, read at each moment. | Always. |
 | `typed_value` | The number. Shown and typed in the display unit of the preset (`g`, if the preset shows a mass in grams); kept in the default unit of the quantity of the signal shown, the unit of the Units page that every conversion is written against (`kg` for the mass), so that changing the display unit never changes the bound (decision 0051). | When `source` is typed. |
-| `signal` | The signal whose value is the bound, picked with the small icon inside the field (decision 0041). An input only, never an output: an input is what the model receives, so the bound stays what the user set (decision 0055). | When `source` is signal. |
+| `signal` | The signal whose value is the bound, picked with the small icon inside the field (decision 0041). An input only, never an output: an input is what the model receives, so the bound stays what the user set (decision 0055). An integer or a real of the same quantity as the signal shown, so that both compare in the same default unit; the list offers only these inputs (decision 0056). | When `source` is signal. |
 
 ### `COMMAND_BUTTON`: a button that sends a command
 
@@ -328,7 +328,7 @@ The Product Owner answered the two questions of the afternoon in the questionnai
 
 ## Read again on 2026-11-19 (enums)
 
-The Product Owner read the enums and found them right (enum: kind, `id`, description, "faut pas plus"; item: key, display text, description, and its place in the list). The Product Owner then asked why `VALUE_TYPE` holds `measure` beside `enum`, when a signal does not always have a quantity. The question was right: `measure` only means something when there is a quantity, and the box did not say it. The fix is a rule for the whole schema, not only for this box (assistant's proposal, asked by the Product Owner: "corriger tous les endroits où il y aura des problèmes comme ça").
+The Product Owner read the enums and found them right (enum: kind, `id`, description, "faut pas plus"; item: key, display name, description, and its place in the list). The Product Owner then asked why `VALUE_TYPE` holds `measure` beside `enum`, when a signal does not always have a quantity. The question was right: `measure` only means something when there is a quantity, and the box did not say it. The fix is a rule for the whole schema, not only for this box (assistant's proposal, asked by the Product Owner: "corriger tous les endroits où il y aura des problèmes comme ça").
 
 - **Fields that only exist together go in a part of their own.** The quantity and `measure` move to `MEASUREMENT`, which a value type has for an integer or a real only. The enum stays a single field of `VALUE_TYPE`: it has nothing else that goes with it, so it needs no part.
 - **A part that only exists for some signals says so on its link.** `DISPLAY` (unit and decimals) is there for an integer or a real only, never for a boolean or an enum; its unit only when the signal has a quantity.
@@ -424,7 +424,7 @@ The Product Owner read the preset, its values and the faceplate again. The value
 The Product Owner answered the two questions of the faceplate in the questionnaire, with the option the assistant advised each time.
 
 - **A boolean signal is typed with a switch** (Product Owner: "Interrupteur (switch)"): `switch` is added to `input_kind`, for a boolean only. One click turns it on or off, and its state reads at a glance.
-- **A signal field in read shows the text of the value alone** (Product Owner: "Le texte de la valeur seul"): in the display unit and with the decimals of the preset, an enum by the display text of its item, a boolean by the text of its state. No field is drawn, not even greyed.
+- **A signal field in read shows the text of the value alone** (Product Owner: "Le texte de la valeur seul"): in the display unit and with the decimals of the preset, an enum by the display name of its item, a boolean by the text of its state. No field is drawn, not even greyed.
 - **A boolean signal has two texts of its own** (Product Owner, in a third question: "Deux mots choisis par signal"): `true_text` and `false_text` ("Open" and "Closed", "Running" and "Stopped"), in a part `BOOLEAN_TEXTS` that a value type has for a boolean only, as `MEASUREMENT` for a number. They are typed in the table of signals. Assistant's reading, to confirm: they never go to the model, which gets `true` or `false`; empty, the faceplate shows "true" and "false"; the switch shows the text of its state beside it.
 - Decision 0054 (accepted, 2026-11-21) records the three answers.
 - **So `input_kind` only exists in write or override**: it says how a value is typed, and nothing is typed in read. The builder may keep the last choice while the access changes, so that going back to write finds it: assistant's reading, a matter of the screen, not of the file.
@@ -437,9 +437,16 @@ The Product Owner read the signal field, its bounds and the text content again. 
 - **A title or a description comes from a typed text or an identifier, never from a signal** (Product Owner: "le titre ou une description, je pense que ça doit venir que d'un identifiant et jamais d'un signal [...] Puisqu'un signal, on peut l'afficher avec la partie signal"). `signal` leaves `TEXT_CONTENT` and `text_source`. The value of a signal is shown by a signal element in read, which does the same with a label.
 - **`name_shown` becomes `display_name`** (Product Owner: "est-ce que c'est pas display name qu'on appellerait ça [...] faudrait homogénéiser ça partout"): the name people read, the same word as the field of an identifier. The screens and the draft say "Display name" too.
 - **A bound taken from a signal takes an input only, never an output, for now** (Product Owner: "qu'en entrée, jamais en sortie pour l'instant [...] Au moins, le signal, il reste fixe"): an input is a value the user sets and the model receives, so the range does not move with what the model computes. A bounded linear animation of a symbol keeps any signal, input or output: it is another rule (decision 0027).
-  - The signal of a bound is an integer or a real of the same quantity as the signal shown, so that both are compared in the same default unit: assistant's reading.
+  - The signal of a bound is an integer or a real of the same quantity as the signal shown: settled the same day, see below.
 - **`min` and `max` go in a part `RANGE`** (left to the assistant: "je te laisse réfléchir [...] pouvoir mettre un min/max [...] une range de valeurs"). They only exist together, for a number field: the rule of the schema puts them in a part of their own. `BOUND` stays a box, because a bound is a number or a signal and says which. In the JSON: `"range": { "min": { "source": "typed", "typed_value": 0 }, "max": { "source": "signal", "signal": "…" } }`.
 - **The default unit of a typed bound, explained** (Product Owner: "Et où, le default unit ?"): it is the default unit of the quantity of the signal shown, set on the Units page (kilogram for a mass). The user types the bound in the display unit of the preset; the file keeps it in the default unit (decision 0051). The labels of the schema now say it.
+
+## Settled on 2026-11-21 (enum item and bounds)
+
+The Product Owner answered the two questions left by decision 0055 in the questionnaire, with the option the assistant advised each time. Decision 0056 (accepted, 2026-11-21) records them: it specifies decisions 0032 (the column of an enum) and 0041 with 0055 (the signal of a bound).
+
+- **`ENUM_ITEM.display_text` becomes `display_name`** (Product Owner: "Oui, display_name"): the same word as for an identifier and a signal field, "Display name" on screen. Its rule does not change: what people read, never sent to the model.
+- **The signal of a bound has the same quantity as the signal shown** (Product Owner: "Même grandeur obligatoire"): an input, integer or real, of that quantity, so that a speed is bounded by a speed and both compare in the same default unit. The list of the bound offers only these inputs.
 
 ## Not in the schema yet
 
@@ -456,5 +463,3 @@ The Product Owner read the signal field, its bounds and the text content again. 
 - The name of the short text that names a colour or an icon: `description` for now.
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `MEASUREMENT`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
 - The two texts of a boolean: required, or "true" and "false" when empty (assistant's reading)? And are they written in the configuration files sent with the model, as the description is?
-- The display text of an enum item (`ENUM_ITEM.display_text`): renamed `display_name` too, for the same word everywhere, or kept as a text?
-- An input signal used as a bound: of the same quantity as the signal shown (assistant's reading)?

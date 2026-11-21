@@ -425,7 +425,7 @@ mindmap
 | SY-08.6 | Pivot | 9-point grid or a point | Centre by default. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.7 | Text: what it shows | Radio | Written text, the value of a signal, or the unit of a signal only. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-08.8 | Text: show the unit | Toggle | With the value. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
-| SY-08.9 | Text: becomes an input | Radio + Select | Number input or enum menu (display texts shown, key sent); no text input, a signal is never a text (2026-11-18). What it writes is open since commands with a typed value were removed (2026-11-16); proposal: an input signal, directly. | Decided (input), Open (what it writes) | [Animation mode](../symbols/08-animation-mode/README.md) |
+| SY-08.9 | Text: becomes an input | Radio + Select | Number input or enum menu (display names shown, key sent); no text input, a signal is never a text (2026-11-18). What it writes is open since commands with a typed value were removed (2026-11-16); proposal: an input signal, directly. | Decided (input), Open (what it writes) | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.10 | Number format | Toggles | Thousand separator, sign, leading zeros, notation. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 
 Gaps:
@@ -460,7 +460,7 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SY-09.1 | Test value of a number | Number field or Slider | Any value: a signal has no bounds of its own since 2026-11-17 (a bound is a plain signal). The list also shows the signals used as a minimum or a maximum of an animation, inputs included (proposed). | Decided (field), Proposed (bound signals listed) | [Run mode](../symbols/09-run-mode/README.md#open-questions) |
-| SY-09.2 | Test value of an enum | Select | The display texts of the enum. | Decided | [Run mode](../symbols/09-run-mode/README.md) |
+| SY-09.2 | Test value of an enum | Select | The display names of the enum. | Decided | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.3 | Test value of a boolean | Toggle | — | Proposed | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.4 | Quality of a signal | Select | Good, uncertain, bad. | Proposed | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.5 | Simulated screen | Number fields (or a list of screens) | Size and resolution; scale factor proposed. | Decided | [Run mode](../symbols/09-run-mode/README.md) |
@@ -551,7 +551,7 @@ mindmap
     An enum
       Columns from Metadata, read only
         Key
-        Display text
+        Display name
         Description
       Added columns
         Title Columns, small plus on its right
@@ -568,9 +568,9 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | SY-12.1 | Entry of the page | Button of the navigation bar | Enums, second page of the selected Symbol Lib ([SY-00.4](#sy-00--navigation-bar-of-the-symbol-mode), end of 2026-11-17). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
 | SY-12.2 | List of enums | List | Every enum of Metadata, global and template; none is made here. | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
-| SY-12.3 | Key, Display text, Description | Read-only columns | From Metadata, in the order of decision 0032; changed in Metadata only. A template has no items, so no lines: its name and its description are shown instead, read only (end of 2026-11-17). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.3 | Key, Display name, Description | Read-only columns | From Metadata, in the order of decision 0032; changed in Metadata only. A template has no items, so no lines: its name and its description are shown instead, read only (end of 2026-11-17). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.4 | Add a column | Button (+), small icon | As many columns as needed. Creates an empty column with a default name (end of 2026-11-17). The place of the + follows the [layout rules](README.md#a-title-and-a-small--on-its-right) (assistant's reading). | Decided (add), Proposed (place) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
-| SY-12.5 | Name of a column | Text field, always visible in the header of the column | Edited at any time (end of 2026-11-17): `color`, `display text short`... | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
+| SY-12.5 | Name of a column | Text field, always visible in the header of the column | Edited at any time (end of 2026-11-17): `color`, `display name short`... | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.6 | Kind of value of a column | Global enum: set by the first value; template: small icon in the header | Global enum: the first value typed in the column chooses its kind (colour, text, number...), and the other values of the column follow it. Template: it has no values, so a small icon in the header of the column chooses its kind (end of 2026-11-17). The full list of kinds is open. | Decided (list: Open) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.7 | Value of a column for an item | Field of the kind (colour picker, text field, number field) | Global enum only: one per item. For a template, filled with its items on each placed symbol, in the synoptic (end of 2026-11-17; the columns with the items: assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.8 | Delete a column | not said (button) | A column can be deleted (end of 2026-11-17). | Decided (control: not said) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |

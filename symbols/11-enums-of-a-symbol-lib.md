@@ -10,9 +10,9 @@ Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, rea
 
 - **One Enums page in each Symbol Lib** (Product Owner, 2026-11-17: "dans chaque lib, tu auras une petite page enum"). It opens from the navigation bar, as the second page of the selected library, after General (Product Owner, end of 2026-11-17; see [Libraries and symbols](01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode)).
 - **It lists every enum of Metadata**, the global enums and the templates (see [Enums](../metadata/draft.md#global-enums-and-templates)).
-- **What comes from Metadata is read only**: the key, the display text and the description of each item, "pour qu'on puisse comprendre". They are changed in Metadata only. Same columns, same order as on the Enums page of Metadata: Key, Display text, Description (decision 0032).
+- **What comes from Metadata is read only**: the key, the display name and the description of each item, "pour qu'on puisse comprendre". They are changed in Metadata only. Same columns, same order as on the Enums page of Metadata: Key, Display name, Description (decision 0032).
 - **The user adds columns, as many as needed** ("pas un peu, à l'infini"). Each column has:
-  - a **title**, chosen by the user ("on donne le titre qu'on veut"): `color`, `display text short`...;
+  - a **title**, chosen by the user ("on donne le titre qu'on veut"): `color`, `display name short`...;
   - a **kind of value**, chosen in a list: colour, text, number (the Product Owner's examples; "peu importe", the full list is open).
 - **For a global enum, the user fills one value per item** in each added column: for `pump_mode`, 0 → orange, 1 → yellow, 2 → blue in the column `color`.
 - **For a template, the user adds the columns the same way**, without items, since a template has none in advance ("on va pas définir en avance, mais au moins, on va pouvoir définir les colonnes qu'on veut en plus par rapport au template"). The items of a template are completed on each placed symbol, in the synoptic, with a small warning until they are (Product Owner, end of 2026-11-17, see [Enums](../metadata/draft.md#global-enums-and-templates)). The values of these columns are filled there too, with the items (assistant's reading: the question asked both together). Here, a template shows its name and its description, read only, instead of items.
@@ -46,19 +46,19 @@ flowchart LR
 
 The enum `pump_mode` on the Enums page of the Symbol Lib "Plant A". The first three columns come from Metadata, read only; the last two were added in this library. The values are made up for the example.
 
-| Key | Display text | Description | color (colour) | display text short (text) |
+| Key | Display name | Description | color (colour) | display name short (text) |
 | --- | --- | --- | --- | --- |
 | 0 | Off | The pump is stopped. | orange | OFF |
 | 1 | Manual | An operator drives the pump. | yellow | MAN |
 | 2 | Automatic | The control loop drives the pump. | blue | AUTO |
 
-In the symbol of a pump, an animation gives the body of the pump the colour of the column `color` of the signal `mode`, and a text shows its column `display text short`.
+In the symbol of a pump, an animation gives the body of the pump the colour of the column `color` of the signal `mode`, and a text shows its column `display name short`.
 
 ## Where it is used
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| Key, display text, description of an item | Metadata, Enums page | Shown read only here | No | No |
+| Key, display name, description of an item | Metadata, Enums page | Shown read only here | No | No |
 | Added column (title, kind of value) | Enums page of a Symbol Lib | Animations of the symbols of this library | Chosen by an animation | No |
 | Value of an added column, global enum | Enums page of a Symbol Lib | Animations | Shown through the animation | No |
 | Name and description of a template | Metadata, Enums page | Shown read only here | No | No |

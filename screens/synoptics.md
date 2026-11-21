@@ -95,7 +95,7 @@ Path: the same panel, scrolled down.
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SN-04.1 | Flags | Checkbox each, with its description | The flags of the type, own and inherited. | Decided | [Flags](../metadata/draft.md#flags) |
-| SN-04.2 | Template enum block | Table, small + on its title | One per enum signal pointing to a template: key, display text, description, delete. | Decided (filled here), Proposed (table) | [Enums](../metadata/draft.md#global-enums-and-templates) |
+| SN-04.2 | Template enum block | Table, small + on its title | One per enum signal pointing to a template: key, display name, description, delete. | Decided (filled here), Proposed (table) | [Enums](../metadata/draft.md#global-enums-and-templates) |
 | SN-04.3 | Template warning | Mark | Until the block has an item; never blocks. | Decided | idem |
 | SN-04.4 | Copy the items from | Button + select | Another placed symbol of the same type. | Proposed | [Panel](../synoptics/04-placed-symbol-panel.md#template-enums) |
 | SN-04.5 | X, Y, rotation, mirror, size | Number fields, buttons, toggles | — | Proposed | [Panel](../synoptics/04-placed-symbol-panel.md#placement) |

@@ -59,7 +59,7 @@ Decided by the Product Owner (2026-11-11). A text can be set at the size the use
 
 - The user chooses, in the editor, which of these a text does: number input or selection menu.
 - **No text input** (Product Owner, 2026-11-18): a signal is never a text (see [Signals](../../metadata/draft.md#no-text-signal)).
-- An enum is shown by the display text of its item, never by its key (see [Enums](../../metadata/draft.md#enums)). A click on it opens the menu of the display texts; the input signal receives the key of the item picked.
+- An enum is shown by the display name of its item, never by its key (see [Enums](../../metadata/draft.md#enums)). A click on it opens the menu of the display names; the input signal receives the key of the item picked.
 - What the user picks or types is checked, converted to the model unit, then written to the input signal.
 
 ```mermaid

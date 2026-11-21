@@ -54,7 +54,7 @@ flowchart TD
 ### Template enums
 
 - One block per **enum signal of the type that points to a template**, titled with the signal and the description of the template (decided: the items are completed on each placed symbol).
-- Each block is a **table of items**: key, display text, description, with the small + on the right of its title and a delete button at the far right of each line (layout rules of the application).
+- Each block is a **table of items**: key, display name, description, with the small + on the right of its title and a delete button at the far right of each line (layout rules of the application).
 - Until a block has at least one item, the placed symbol shows the **small warning** decided in Metadata, on the canvas and in this section. It never stops the user from working.
 - Proposed: **Copy the items from** another placed symbol of the same type, for ten switches with the same positions.
 
