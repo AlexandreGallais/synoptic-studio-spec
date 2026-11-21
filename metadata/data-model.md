@@ -4,14 +4,14 @@
 
 Status: the schema and its JSON, being validated with the Product Owner. The rules, the reading notes and the open questions are in [Data model: notes](data-model-notes.md).
 
-Colour of a box's title: orange, the entity has its own page in [Entities](entities/README.md), not validated yet; green, its page is validated by the Product Owner; no colour, not written yet.
+Colour of a box's title: orange, the entity has its own page in [Entities](entities/README.md), whose last version is not validated yet; green, the last version of its page is validated by the Product Owner; no colour, not written yet.
 
 ## The schema
 
 ```mermaid
 ---
 config:
-  themeCSS: "[id*='entity-IDENTIFIER-'] .outer-path path { fill: #8fd694 !important; }"
+  themeCSS: "[id*='entity-IDENTIFIER-'] .outer-path path { fill: #f8b26a !important; }"
 ---
 erDiagram
     TYPE {

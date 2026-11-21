@@ -4,8 +4,7 @@
 
 | Version | Date | Status | Change |
 | --- | --- | --- | --- |
-| 1 | 2026-11-21 | Draft | Creation of the file |
-| 2 | 2026-11-21 | Validated | Validated by the Product Owner |
+| 1 | 2026-11-21 | Not validated | Creation of the file |
 
 | Tag | Value |
 | --- | --- |
