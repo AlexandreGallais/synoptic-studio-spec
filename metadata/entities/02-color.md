@@ -15,7 +15,7 @@ erDiagram
     COLOR {
         uuid internal_id PK
         text name
-        rgb value
+        rgba value
     }
 ```
 
@@ -23,7 +23,7 @@ erDiagram
 | --- | --- | --- | --- |
 | `internal_id` | ✓ |  | The unique identifier inside the software, set by it. It never leaves the software. |
 | `name` | ✓ |  | The label shown on hover, to tell the colors apart. |
-| `value` | ✓ |  | The color itself, as a hexadecimal code (`#1f77b4`). |
+| `value` | ✓ |  | The color itself and its opacity, as a hexadecimal code `#rrggbbaa`: `ff` is opaque, `00` is fully transparent (`#1f77b4ff`). |
 
 ```json
 {
@@ -46,9 +46,10 @@ erDiagram
       "minLength": 1
     },
     "value": {
-      "description": "The color, as a hexadecimal sRGB code, lower case, without transparency.",
+      "description": "The color and its opacity, as a hexadecimal sRGB code #rrggbbaa, lower case; ff is opaque.",
       "type": "string",
-      "pattern": "^#[0-9a-f]{6}$"
+      "pattern": "^#[0-9a-f]{8}$",
+      "examples": ["#1f77b4ff"]
     }
   }
 }

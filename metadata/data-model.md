@@ -148,7 +148,7 @@ erDiagram
     COLOR {
         uuid internal_id PK
         text name "shown on hover"
-        rgb value
+        rgba value
     }
     TYPE |o--o{ TYPE : "parent"
     TYPE ||--|| APPEARANCE : "has"
@@ -199,256 +199,258 @@ erDiagram
 ```json
 {
   "format_version": 1,
-  "internal_id": "01a1f800-0000-7000-8000-000000000001",
-  "parent": "01a1f800-0000-7000-8000-000000000000",
-  "id": "centrifugal_pump",
-  "appearance": {
-    "icon": "01a1f800-0000-7000-8000-000000000700",
-    "color": null
-  },
-  "documentation": {
-    "description": "A **centrifugal** pump, driven by a variable speed motor.",
-    "links": [
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000010",
-        "kind": "url",
-        "address": "https://example.com/datasheets/centrifugal-pump",
-        "description": "Datasheet"
-      }
-    ]
-  },
-  "signals": [
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000020",
-      "direction": "input",
-      "id": "speed_setpoint",
-      "description": "Speed asked of the motor.",
-      "value_type": {
-        "kind": "real",
-        "quantity": "01a1f800-0000-7000-8000-000000000900",
-        "relative_quantity": false
-      }
+  "type": {
+    "internal_id": "01a1f800-0000-7000-8000-000000000001",
+    "parent": "01a1f800-0000-7000-8000-000000000000",
+    "id": "centrifugal_pump",
+    "appearance": {
+      "icon": "01a1f800-0000-7000-8000-000000000700",
+      "color": null
     },
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000021",
-      "direction": "input",
-      "id": "speed_max",
-      "description": "Highest speed the operator may ask for.",
-      "value_type": {
-        "kind": "real",
-        "quantity": "01a1f800-0000-7000-8000-000000000900",
-        "relative_quantity": false
-      }
-    },
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000022",
-      "direction": "output",
-      "id": "speed",
-      "description": "Speed of the motor, computed by the model.",
-      "value_type": {
-        "kind": "real",
-        "quantity": "01a1f800-0000-7000-8000-000000000900",
-        "relative_quantity": false
-      }
-    },
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000023",
-      "direction": "output",
-      "id": "running",
-      "description": "True while the pump turns.",
-      "value_type": {
-        "kind": "boolean"
-      }
-    },
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000024",
-      "direction": "input",
-      "id": "mode",
-      "description": "How the pump is driven.",
-      "value_type": {
-        "kind": "enum",
-        "enum": "01a1f800-0000-7000-8000-000000000500"
-      }
-    },
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000025",
-      "direction": "output",
-      "id": "bearing_temperature_rise",
-      "description": "How much the bearing is warmer than the room.",
-      "value_type": {
-        "kind": "real",
-        "quantity": "01a1f800-0000-7000-8000-000000000910",
-        "relative_quantity": true
-      }
-    }
-  ],
-  "commands": [
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000030",
-      "kind": "trigger",
-      "id": "start",
-      "description": "Asks the model to start the pump."
-    },
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000031",
-      "kind": "set_signal",
-      "id": "switch_to_auto",
-      "description": "Puts the pump in automatic mode.",
-      "command_target": {
-        "signal": "01a1f800-0000-7000-8000-000000000024",
-        "value": "01a1f800-0000-7000-8000-000000000502"
-      }
-    },
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000032",
-      "kind": "override",
-      "id": "force_speed",
-      "description": "Replaces the speed computed by the model, for a test.",
-      "command_target": {
-        "signal": "01a1f800-0000-7000-8000-000000000022",
-        "value": 151.8436
-      }
-    }
-  ],
-  "flags": [
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000040",
-      "id": "under_maintenance",
-      "description": "The pump is out of service for maintenance."
-    }
-  ],
-  "presets": [
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000050",
-      "name": "Standard",
-      "preset_values": [
+    "documentation": {
+      "description": "A **centrifugal** pump, driven by a variable speed motor.",
+      "links": [
         {
-          "signal": "01a1f800-0000-7000-8000-000000000020",
-          "start_value": 0,
-          "display_format": {
-            "unit": "01a1f800-0000-7000-8000-000000000902",
-            "decimals": 0
-          }
-        },
-        {
-          "signal": "01a1f800-0000-7000-8000-000000000021",
-          "start_value": 157.0796,
-          "display_format": {
-            "unit": "01a1f800-0000-7000-8000-000000000902",
-            "decimals": 0
-          }
-        },
-        {
-          "signal": "01a1f800-0000-7000-8000-000000000022",
-          "start_value": 0,
-          "display_format": {
-            "unit": "01a1f800-0000-7000-8000-000000000902",
-            "decimals": 1
-          }
-        },
-        {
-          "signal": "01a1f800-0000-7000-8000-000000000023",
-          "start_value": false,
-          "boolean_texts": {
-            "true_text": "Running",
-            "false_text": "Stopped"
-          }
-        },
-        {
-          "signal": "01a1f800-0000-7000-8000-000000000024",
-          "start_value": "01a1f800-0000-7000-8000-000000000501"
-        },
-        {
-          "signal": "01a1f800-0000-7000-8000-000000000025",
-          "start_value": 0,
-          "display_format": {
-            "unit": "01a1f800-0000-7000-8000-000000000912",
-            "decimals": 1
-          }
-        }
-      ],
-      "faceplate_elements": [
-        {
-          "internal_id": "01a1f800-0000-7000-8000-000000000060",
-          "kind": "title",
-          "text_content": {
-            "source": "designation",
-            "designation": "01a1f800-0000-7000-8000-000000000800"
-          }
-        },
-        {
-          "internal_id": "01a1f800-0000-7000-8000-000000000061",
-          "kind": "paragraph",
-          "text_content": {
-            "source": "typed",
-            "typed_text": "Feed pump of the main loop."
-          }
-        },
-        {
-          "internal_id": "01a1f800-0000-7000-8000-000000000062",
-          "kind": "group",
-          "faceplate_elements": [
-            {
-              "internal_id": "01a1f800-0000-7000-8000-000000000063",
-              "kind": "signal",
-              "signal_field": {
-                "signal": "01a1f800-0000-7000-8000-000000000020",
-                "access": "write",
-                "input_kind": "number_field",
-                "display_name": "Speed setpoint",
-                "range": {
-                  "min": {
-                    "source": "typed",
-                    "typed_value": 0
-                  },
-                  "max": {
-                    "source": "signal",
-                    "signal": "01a1f800-0000-7000-8000-000000000021"
-                  }
-                }
-              }
-            },
-            {
-              "internal_id": "01a1f800-0000-7000-8000-000000000064",
-              "kind": "signal",
-              "signal_field": {
-                "signal": "01a1f800-0000-7000-8000-000000000022",
-                "access": "read",
-                "display_name": null
-              }
-            },
-            {
-              "internal_id": "01a1f800-0000-7000-8000-000000000065",
-              "kind": "signal",
-              "signal_field": {
-                "signal": "01a1f800-0000-7000-8000-000000000023",
-                "access": "read",
-                "display_name": "State"
-              }
-            }
-          ]
-        },
-        {
-          "internal_id": "01a1f800-0000-7000-8000-000000000066",
-          "kind": "signal",
-          "signal_field": {
-            "signal": "01a1f800-0000-7000-8000-000000000024",
-            "access": "write",
-            "input_kind": "radio_horizontal",
-            "display_name": "Mode"
-          }
-        },
-        {
-          "internal_id": "01a1f800-0000-7000-8000-000000000067",
-          "kind": "command",
-          "command_button": {
-            "command": "01a1f800-0000-7000-8000-000000000030",
-            "display_name": "Start"
-          }
+          "internal_id": "01a1f800-0000-7000-8000-000000000010",
+          "kind": "url",
+          "address": "https://example.com/datasheets/centrifugal-pump",
+          "description": "Datasheet"
         }
       ]
-    }
-  ]
+    },
+    "signals": [
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000020",
+        "direction": "input",
+        "id": "speed_setpoint",
+        "description": "Speed asked of the motor.",
+        "value_type": {
+          "kind": "real",
+          "quantity": "01a1f800-0000-7000-8000-000000000900",
+          "relative_quantity": false
+        }
+      },
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000021",
+        "direction": "input",
+        "id": "speed_max",
+        "description": "Highest speed the operator may ask for.",
+        "value_type": {
+          "kind": "real",
+          "quantity": "01a1f800-0000-7000-8000-000000000900",
+          "relative_quantity": false
+        }
+      },
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000022",
+        "direction": "output",
+        "id": "speed",
+        "description": "Speed of the motor, computed by the model.",
+        "value_type": {
+          "kind": "real",
+          "quantity": "01a1f800-0000-7000-8000-000000000900",
+          "relative_quantity": false
+        }
+      },
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000023",
+        "direction": "output",
+        "id": "running",
+        "description": "True while the pump turns.",
+        "value_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000024",
+        "direction": "input",
+        "id": "mode",
+        "description": "How the pump is driven.",
+        "value_type": {
+          "kind": "enum",
+          "enum": "01a1f800-0000-7000-8000-000000000500"
+        }
+      },
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000025",
+        "direction": "output",
+        "id": "bearing_temperature_rise",
+        "description": "How much the bearing is warmer than the room.",
+        "value_type": {
+          "kind": "real",
+          "quantity": "01a1f800-0000-7000-8000-000000000910",
+          "relative_quantity": true
+        }
+      }
+    ],
+    "commands": [
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000030",
+        "kind": "trigger",
+        "id": "start",
+        "description": "Asks the model to start the pump."
+      },
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000031",
+        "kind": "set_signal",
+        "id": "switch_to_auto",
+        "description": "Puts the pump in automatic mode.",
+        "command_target": {
+          "signal": "01a1f800-0000-7000-8000-000000000024",
+          "value": "01a1f800-0000-7000-8000-000000000502"
+        }
+      },
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000032",
+        "kind": "override",
+        "id": "force_speed",
+        "description": "Replaces the speed computed by the model, for a test.",
+        "command_target": {
+          "signal": "01a1f800-0000-7000-8000-000000000022",
+          "value": 151.8436
+        }
+      }
+    ],
+    "flags": [
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000040",
+        "id": "under_maintenance",
+        "description": "The pump is out of service for maintenance."
+      }
+    ],
+    "presets": [
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000050",
+        "name": "Standard",
+        "preset_values": [
+          {
+            "signal": "01a1f800-0000-7000-8000-000000000020",
+            "start_value": 0,
+            "display_format": {
+              "unit": "01a1f800-0000-7000-8000-000000000902",
+              "decimals": 0
+            }
+          },
+          {
+            "signal": "01a1f800-0000-7000-8000-000000000021",
+            "start_value": 157.0796,
+            "display_format": {
+              "unit": "01a1f800-0000-7000-8000-000000000902",
+              "decimals": 0
+            }
+          },
+          {
+            "signal": "01a1f800-0000-7000-8000-000000000022",
+            "start_value": 0,
+            "display_format": {
+              "unit": "01a1f800-0000-7000-8000-000000000902",
+              "decimals": 1
+            }
+          },
+          {
+            "signal": "01a1f800-0000-7000-8000-000000000023",
+            "start_value": false,
+            "boolean_texts": {
+              "true_text": "Running",
+              "false_text": "Stopped"
+            }
+          },
+          {
+            "signal": "01a1f800-0000-7000-8000-000000000024",
+            "start_value": "01a1f800-0000-7000-8000-000000000501"
+          },
+          {
+            "signal": "01a1f800-0000-7000-8000-000000000025",
+            "start_value": 0,
+            "display_format": {
+              "unit": "01a1f800-0000-7000-8000-000000000912",
+              "decimals": 1
+            }
+          }
+        ],
+        "faceplate_elements": [
+          {
+            "internal_id": "01a1f800-0000-7000-8000-000000000060",
+            "kind": "title",
+            "text_content": {
+              "source": "designation",
+              "designation": "01a1f800-0000-7000-8000-000000000800"
+            }
+          },
+          {
+            "internal_id": "01a1f800-0000-7000-8000-000000000061",
+            "kind": "paragraph",
+            "text_content": {
+              "source": "typed",
+              "typed_text": "Feed pump of the main loop."
+            }
+          },
+          {
+            "internal_id": "01a1f800-0000-7000-8000-000000000062",
+            "kind": "group",
+            "faceplate_elements": [
+              {
+                "internal_id": "01a1f800-0000-7000-8000-000000000063",
+                "kind": "signal",
+                "signal_field": {
+                  "signal": "01a1f800-0000-7000-8000-000000000020",
+                  "access": "write",
+                  "input_kind": "number_field",
+                  "display_name": "Speed setpoint",
+                  "range": {
+                    "min": {
+                      "source": "typed",
+                      "typed_value": 0
+                    },
+                    "max": {
+                      "source": "signal",
+                      "signal": "01a1f800-0000-7000-8000-000000000021"
+                    }
+                  }
+                }
+              },
+              {
+                "internal_id": "01a1f800-0000-7000-8000-000000000064",
+                "kind": "signal",
+                "signal_field": {
+                  "signal": "01a1f800-0000-7000-8000-000000000022",
+                  "access": "read",
+                  "display_name": null
+                }
+              },
+              {
+                "internal_id": "01a1f800-0000-7000-8000-000000000065",
+                "kind": "signal",
+                "signal_field": {
+                  "signal": "01a1f800-0000-7000-8000-000000000023",
+                  "access": "read",
+                  "display_name": "State"
+                }
+              }
+            ]
+          },
+          {
+            "internal_id": "01a1f800-0000-7000-8000-000000000066",
+            "kind": "signal",
+            "signal_field": {
+              "signal": "01a1f800-0000-7000-8000-000000000024",
+              "access": "write",
+              "input_kind": "radio_horizontal",
+              "display_name": "Mode"
+            }
+          },
+          {
+            "internal_id": "01a1f800-0000-7000-8000-000000000067",
+            "kind": "command",
+            "command_button": {
+              "command": "01a1f800-0000-7000-8000-000000000030",
+              "display_name": "Start"
+            }
+          }
+        ]
+      }
+    ]
+  }
 }
 ```
 
@@ -457,24 +459,26 @@ erDiagram
 ```json
 {
   "format_version": 1,
-  "internal_id": "01a1f800-0000-7000-8000-000000000500",
-  "kind": "global",
-  "id": "operating_mode",
-  "description": "How a piece of equipment is driven.",
-  "enum_items": [
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000501",
-      "key": 0,
-      "display_name": "Manual",
-      "description": "Driven by the operator."
-    },
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000502",
-      "key": 1,
-      "display_name": "Auto",
-      "description": "Driven by the control loop."
-    }
-  ]
+  "enum": {
+    "internal_id": "01a1f800-0000-7000-8000-000000000500",
+    "kind": "global",
+    "id": "operating_mode",
+    "description": "How a piece of equipment is driven.",
+    "enum_items": [
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000501",
+        "key": 0,
+        "display_name": "Manual",
+        "description": "Driven by the operator."
+      },
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000502",
+        "key": 1,
+        "display_name": "Auto",
+        "description": "Driven by the control loop."
+      }
+    ]
+  }
 }
 ```
 

@@ -42,9 +42,17 @@ The rules every file of Metadata follows. An [entity file](entities/README.md) g
 ## The name of a file
 
 - An entity with a file of its own gives the file's name in its tag `File`.
+- **A file's name means something to a person**, never an `internal_id`: the files are read and shared by people.
 - **One file for the whole list**: the name of its list, then `.json` (`designations.json`). That name is reserved for that entity: no other file may take it.
-- **One file per thing** (a palette): its `internal_id`, then the entity's name, then `.json` (`<internal_id>.palette.json`), so that renaming it breaks nothing. The file holds `format_version`, then the thing as one object named after its entity in lower case (`"palette": { … }`).
+- **One file per thing** (a palette): the file name of its `name`, then the entity's name, then `.json` (`pompes-bleues.palette.json`). Renaming the thing renames its file.
+- **The file name of a `name`**: in lower case, without accents, each run of characters other than a letter or a digit becoming one hyphen, without a hyphen at either end ("Pompes bleues" gives `pompes-bleues`). The same on Windows, macOS and Linux.
+- **Two things of the same entity never give the same file name**: a `name` whose file name is taken, or that gives an empty one, is refused.
 - Where the files are placed is settled by the software architecture, not here.
+
+## What a file holds
+
+- **`format_version`, then one key**, named after what the file holds, in lower case: the list in the plural for a whole list (`"designations": [ … ]`), the entity in the singular for one thing (`"palette": { … }`, `"type": { … }`, `"enum": { … }`).
+- The fields of an entity are never beside `format_version`: the entity's schema stays closed, and the file's schema only adds the key that holds it.
 
 ## Shared types
 
@@ -54,5 +62,4 @@ To come: one global JSON Schema will hold the types every entity shares, and the
 
 - JSON files rather than a database: a leaning of the Product Owner, not settled.
 - The catalogue of quantities: one file with one `format_version` at its top, or one file per quantity.
-- The examples of a type and of a global enum in the [Data model](data-model.md) put their fields beside `format_version`, not in one object named after the entity as a palette does: to make even when those entities are written.
 - The other open questions on files stay in the [whole draft](draft.md#files).

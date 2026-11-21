@@ -472,7 +472,10 @@ Said by the Product Owner on 2026-11-22 ("les couleurs sont dans des palettes [.
 - **A color is kept only inside its palette**, never in a file or a list of its own.
 - **One palette per file**, never every palette in one file: a palette is added or removed with its file.
 - **Two entity files** (the Product Owner's proposal): [Color](entities/02-color.md), its box and its schema only; [Palette](entities/03-palette.md), its box, its schema and the schema of its file.
-- Assistant's choices, to confirm: the file named `<internal_id>.palette.json`; the palette as one object `palette` beside `format_version` in its file; `name` required for both; the value of a color a hexadecimal code `#rrggbb`, without transparency (the box says `rgb`); at least one color per palette, as the link `|{` of the schema already says.
+- **A palette's file is named after the palette**, never after its `internal_id` (answer to the questionnaire: "Faut que ça ait un sens pour un humain [...] Si on met un internal ID, c'est incompréhensible"). So a palette's `name` is unique, and renaming a palette renames its file. How a name becomes a file name is written in [Files](files.md#the-name-of-a-file): the assistant's choice, to confirm.
+- **Every file holds `format_version`, then one object named after what it holds** (answer: "Objet nommé"), the palette as the type and the global enum: the two examples of the [Data model](data-model.md) were rewritten so.
+- **A color has an opacity** (answer: "Avec transparence"): its value is `#rrggbbaa`, always eight digits, `ff` being opaque; the box says `rgba`.
+- `name` is required for a palette and for a color; a palette holds at least one color, as the link `|{` of the schema says.
 
 ## Not in the schema yet
 

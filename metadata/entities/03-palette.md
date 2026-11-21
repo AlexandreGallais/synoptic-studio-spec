@@ -8,9 +8,9 @@
 
 | Tag | Value |
 | --- | --- |
-| File | `<internal_id>.palette.json` |
+| File | `<name>.palette.json` |
 
-A palette is a named, ordered set of [colors](02-color.md): the only place where colors are kept, and the only colors a type can pick. Each palette has a file of its own, so that a palette is added or removed with its file.
+A palette is a named, ordered set of [colors](02-color.md): the only place where colors are kept, and the only colors a type can pick. Each palette has a file of its own, named after it (`pompes-bleues.palette.json` for "Pompes bleues"), so that a palette is added or removed with its file; renaming the palette renames its file.
 
 ## The entity
 
@@ -26,7 +26,7 @@ erDiagram
 | Field | Required | Default | What it is |
 | --- | --- | --- | --- |
 | `internal_id` | ✓ |  | The unique identifier inside the software, set by it. It never leaves the software. |
-| `name` | ✓ |  | The label people read to tell the palettes apart. |
+| `name` | ✓ |  | The label people read to tell the palettes apart; it gives the name of the palette's file, so it is unique. |
 | `colors` | ✓ |  | Its [colors](02-color.md), in the order chosen by the user. |
 
 ```json
@@ -45,7 +45,7 @@ erDiagram
       "readOnly": true
     },
     "name": {
-      "description": "The label people read to tell the palettes apart.",
+      "description": "The label people read to tell the palettes apart. Unique: it gives the name of the palette's file.",
       "type": "string",
       "minLength": 1
     },
@@ -84,6 +84,5 @@ erDiagram
 
 ## Open questions
 
-- Is the `name` of a palette unique?
 - A type whose color belonged to a palette that was removed: does it follow its parent's color, as when its color is empty?
 - Which palettes ship with the software, and whether the user can add their own: defined with the design system.
