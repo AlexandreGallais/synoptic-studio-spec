@@ -6,8 +6,10 @@ The entities of Metadata, one file each, written whole. An entity is a kind of t
 
 ## How an entity file is written
 
-Settled with the Product Owner on 2026-11-21, on the file [Identifier](01-identifier.md):
+Settled with the Product Owner on 2026-11-21, on the file [Identifier](01-identifier.md), validated that day as the model of every entity file:
 
+- **Every entity file follows [Identifier](01-identifier.md) exactly**: the same sections, the same tables, the same two schemas, nothing added.
+- **Short texts**: the introduction in a few sentences, each `What it is` in one or two; never what a column or a schema already says (a `✓` in `Required`, a `minLength`).
 - **The Product Owner validates each entity file, one by one**, its structure and its text ("je te valide la structuration de toutes les entités à chaque fois").
 - **The same sections, in the same order**: the title and its breadcrumb; the table of versions; the table of tags; a short introduction that says what the entity is; **The entity** (the schema, the table of its fields, then the JSON Schema of the entity); **The file** (its JSON Schema only, no text, no example); **Open questions**, only when one is left (the names wait for the research on the terms). No status sentence, no **Where it is used** (the pages that use an entity link to it; the whole picture is the [Data model](../data-model.md)), no **Product Owner context**.
 - **The table of versions** has four columns: `Version`, `Date`, `Status`, `Change`. The first line is version 1, `Draft`, "Creation of the file"; each later change adds a line. The status stays `Draft` until the Product Owner validates the file.

@@ -5,6 +5,7 @@
 | Version | Date | Status | Change |
 | --- | --- | --- | --- |
 | 1 | 2026-11-21 | Draft | Creation of the file |
+| 2 | 2026-11-21 | Draft | Entity files give two schemas; shared types to come |
 
 The rules every file of Metadata follows. An [entity file](entities/README.md) gives only the JSON Schemas of its entity and of its own file; what holds for every file is written here, never on an entity.
 
@@ -32,6 +33,10 @@ The rules every file of Metadata follows. An [entity file](entities/README.md) g
 - An entity with a file of its own gives the file's name in its tag `File`: the name of its list, then `.json` (`identifiers.json`).
 - That name is reserved for that entity: no other file may take it.
 - Where the files are placed is settled by the software architecture, not here.
+
+## Shared types
+
+To come: one global JSON Schema will hold the types every entity shares, and the entity schemas will refer to it instead of repeating them. The first one is the UUID: every UUID of Synoptic Studio is a UUID version 7 (RFC 9562), which starts with the time of its creation (see [Rules of the schema](data-model-notes.md#rules-of-the-schema)).
 
 ## Open questions
 

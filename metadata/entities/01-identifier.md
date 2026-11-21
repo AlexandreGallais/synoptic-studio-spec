@@ -5,6 +5,7 @@
 | Version | Date | Status | Change |
 | --- | --- | --- | --- |
 | 1 | 2026-11-21 | Draft | Creation of the file |
+| 2 | 2026-11-21 | Validated | Validated by the Product Owner |
 
 | Tag | Value |
 | --- | --- |
@@ -27,7 +28,7 @@ erDiagram
 | Field | Required | Default | What it is |
 | --- | --- | --- | --- |
 | `internal_id` | ✓ |  | The unique identifier inside the software, set by it. |
-| `id` | ✓ |  | The key the user gives, never empty. It is the name shown in the software and the one written in the configuration files it makes, where `internal_id` never appears. |
+| `id` | ✓ |  | The key the user gives. The software shows it and writes it in the configuration files it makes; `internal_id` never appears there. |
 | `required` | ✓ | `false` | Whether its text must be filled on every placed symbol. |
 | `description` |  |  | What the identifier is, in plain text for people. |
 
