@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-21 | Draft | Creation of the file |
 
-The rules every file of Metadata follows. An [entity file](entities/README.md) gives only the JSON Schema of its own file; what holds for every file is written here, never on an entity.
+The rules every file of Metadata follows. An [entity file](entities/README.md) gives only the JSON Schemas of its entity and of its own file; what holds for every file is written here, never on an entity.
 
 ## Each file
 
