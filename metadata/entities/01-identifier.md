@@ -11,28 +11,21 @@ An identifier is a named key that each placed symbol fills with its own text, in
 ```mermaid
 erDiagram
     IDENTIFIER {
-        uuid internal_id PK "required, generated"
-        text id "required, no default"
-        boolean required "required, default false"
-        text description "optional, no default"
+        uuid internal_id PK
+        text id "R"
+        boolean required "R, default false"
+        text description
     }
 ```
 
-| Field | What it is | Rule |
+| Field | What it is | Rules |
 | --- | --- | --- |
-| `internal_id` | The UUID set by the software, version 7 (see [Rules of the schema](../data-model-notes.md#rules-of-the-schema)) | Generated when the identifier is created. Never changes, never leaves the application. A faceplate points to the identifier through it, so a changed `id` breaks nothing. |
-| `id` | The key | Written by the user. The public identifier, as for every entity of Metadata. It is also what people read: the identifier has no display name. |
-| `required` | Whether its text must be filled | `true`: every placed symbol must have its text (a control ID, the tag of the equipment). `false`: the text may stay empty (a location, given for context). `false` for a new identifier (Product Owner, 2026-11-21). |
+| `internal_id` | The UUID set by the software, version 7 (see [Rules of the schema](../data-model-notes.md#rules-of-the-schema)) | Never changes, never leaves the application. Every link to the identifier goes through it, so a changed `id` breaks nothing. |
+| `id` | The key | Written by the user. The public identifier, as for every entity of Metadata. Shown wherever the identifier is picked or filled. |
+| `required` | Whether its text must be filled | `true`: the text is asked on every placed symbol, whether or not its faceplate shows the identifier; left empty, the field is marked and the placed symbol is listed in the faults as a warning, and the synoptic is saved anyway. `false`: the text may stay empty. |
 | `description` | What the identifier is | Plain text, for people. Empty: `null`. |
 
-- **Required or not** (Product Owner, 2026-11-21: "j'ai complètement besoin de dire si c'est required ou non [...] des identifiants qui vont forcément être requis, comme un ID [...] un ID qui est la localisation de la chose [...] qui ne serait pas obligatoire").
-  - **On every placed symbol**, whether or not its faceplate shows the identifier (Product Owner, questionnaire of 2026-11-21: "Sur tous les symboles placés"): required means each piece of equipment has its control ID.
-  - **An empty required text warns, never blocks** (same questionnaire: "Avertir sans bloquer"): the field is marked, the placed symbol is listed in the faults as a warning, and the synoptic is saved anyway, so that the work can be finished later.
-- **Field order: what the identifier is, what it asks for, then what explains it** (assistant's choice, left to it by the Product Owner, who wants "un ordre le plus logique possible"): `internal_id`, `id`, `required`, `description`. It is also the order of every box of the schema, where the text that explains comes last.
-- **A few identifiers per project**: usually three, four at most (Product Owner, 2026-11-21: "Normalement, ils sont censés en avoir trois. Je pense qu'on aura trois, quatre grands max"). An order of size for the screens, not a limit set by the software.
-- **No display name** (Product Owner, 2026-11-21: "on va dégager display name [...] on voit que l'ID [...] Par contre, faut laisser la description"): the `id` is shown everywhere the identifier is picked or filled. Removing it breaks nothing in a first version.
-- The title or description of a faceplate that points to an identifier is a `TEXT_CONTENT` of the preset (see [Data model](../data-model.md)); it belongs to the faceplate, so it is not drawn on this page (assistant's choice, left to it by the Product Owner).
-- No value of its own: the text in front of the key is filled on each placed symbol, in the synoptic (part 3).
+- The text in front of the key is filled on each placed symbol, in the synoptic (part 3).
 - The order of the list is the order chosen by the user on the page Identifiers, with the handles.
 
 ## The file
@@ -134,3 +127,9 @@ The rules of the file, in JSON Schema (draft 2020-12), so that a file can be che
 - Must an `id` be unique on the page? May it be empty?
 - Are the configuration files of a synoptic made while a required text is empty (proposal: yes, with the warning, since nothing blocks)?
 - The other open questions of the page stay in the [whole draft](../draft.md#open-questions-8).
+
+## Product Owner context
+
+- Usually three or four identifiers per project: a size for the screens, not a limit.
+- `required` is for keys every piece of equipment must have (a control ID); a location stays optional.
+- The display name was removed on 2026-11-21: only the `id` is shown.
