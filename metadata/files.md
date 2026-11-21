@@ -6,12 +6,14 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-21 | Draft | Creation of the file |
 | 2 | 2026-11-21 | Draft | Entity files give two schemas; shared types to come |
+| 3 | 2026-11-21 | Draft | One schema per version of the file format |
 
 The rules every file of Metadata follows. An [entity file](entities/README.md) gives only the JSON Schemas of its entity and of its own file; what holds for every file is written here, never on an entity.
 
 ## Each file
 
 - **`"format"` is the first key**: the version of the file format, not of Metadata (decision 0053), so that a later Synoptic Studio can still read an older file. It belongs to the file, not to an entity, so it is never in the schema of the [Data model](data-model.md).
+- **One schema per version of the file format**: the schema of a file fixes its `format` to one value (`"const": 1`). A new version of the format gets a schema of its own, and the software reads `format` first to choose the schema that checks the file.
 - **The rules of each file are given in JSON Schema (draft 2020-12)**. The software checks each object against it and lists where the errors are; a file with errors is still read and written.
 - **A text is never an empty string**: empty is `null`.
 
