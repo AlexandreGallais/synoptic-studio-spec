@@ -10,7 +10,8 @@ Status: schema being read again with the Product Owner (2026-11-19 to 2026-11-21
 - `display_name`: a label people read, for a thing that has an `id` or a key: it is shown in place of that `id` or key, and never goes to the model (an enum item, an identifier, a signal field, a command button). Empty, the `id` or the key is shown.
 - `description`: a text that explains, for people; plain text everywhere, Markdown only in `DOCUMENTATION`.
 - A choice of the software (`kind`, `direction`, `access`...) is written in the JSON as an English word (`"input"`, `"real"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). A value of several words is joined by underscores (`set_signal`, `number_field`), the same in the schema and in the JSON. The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
-- The field that says which alternative a box is: `kind` in general; `source` when it says where a value comes from (typed, or taken from a signal or an identifier); `direction`, `access` and `input_kind` where their own word says more. Never `type`, which already names `TYPE` and `VALUE_TYPE`.
+- The field that says which alternative a box is: `kind` when the alternative changes what the thing is (a link is a path or a URL, an element is a signal field or a button); `source` when the thing stays the same and only its value comes from elsewhere (a bound is always a number, typed or read from a signal; a text is always a text, typed or read from an identifier), each value of `source` naming the field that then holds the value (`typed` → `typed_value` or `typed_text`, `signal` → `signal`, `identifier` → `identifier`); `direction`, `access` and `input_kind` where their own word says more. Never `type`, which already names `TYPE` and `VALUE_TYPE`.
+- One idea, one word, across the whole JSON: a value that is a gap between two points is a `relative_quantity` everywhere in the files (`VALUE_TYPE.relative_quantity`, `QUANTITY.offers_relative_quantity`); the screens keep "difference" for people.
 - A list of choices is named after its field; a field called `kind` or `source`, which several boxes have, takes its box as prefix (`command_kind`, `bound_source`). Every list is in [The choice lists](#the-choice-lists).
 - A value typed in the builder is prefixed `typed_` where it stands beside a value taken elsewhere (`typed_value`, `typed_text`). A value read by the value type of its signal (a number, a boolean or an enum item) has the type `signal_value`.
 - A box without `internal_id` is a part of its owner (a nested object in the JSON), never pointed to.
@@ -133,7 +134,7 @@ erDiagram
         uuid internal_id PK
         uuid default_unit FK
         text name
-        boolean offers_difference "a signal of it may have relative_quantity true"
+        boolean offers_relative_quantity "a signal of it may have relative_quantity true"
     }
     FAMILY {
         uuid internal_id PK
@@ -521,7 +522,7 @@ Shipped with the software, never copied into the user's files: they hold the int
   "internal_id": "6f1c2a90-0000-4000-8000-000000000910",
   "default_unit": "6f1c2a90-0000-4000-8000-000000000911",
   "name": "temperature",
-  "offers_difference": true,
+  "offers_relative_quantity": true,
   "families": [
     {
       "internal_id": "6f1c2a90-0000-4000-8000-000000000915",
@@ -860,9 +861,20 @@ The Product Owner asked whether `measurement` was really the best name, and to k
 
 - **The part `MEASUREMENT` is gone**: its two fields go on `VALUE_TYPE`, for an integer or a real only. In the JSON: `"value_type": { "quantity": "…", "kind": "real", "relative_quantity": true }`.
 - **`quantity`**: the FK to the quantity, required for an integer or a real (decision 0051). The word of FMI, OPC UA and CLDR (research T2, sources S1, S3, S16).
-- **`relative_quantity`**: a boolean, `true` when the value is a difference (a gap between two points), `false` when it is a value (a point on the scale). The word of FMI, `relativeQuantity`, whose offset is then ignored (research T2, section 3.8, source S1). It replaces the list `measurement_kind` and its values `value` and `difference`. It may only be `true` when the quantity has `offers_difference`.
+- **`relative_quantity`**: a boolean, `true` when the value is a difference (a gap between two points), `false` when it is a value (a point on the scale). The word of FMI, `relativeQuantity`, whose offset is then ignored (research T2, section 3.8, source S1). It replaces the list `measurement_kind` and its values `value` and `difference`. It may only be `true` when the quantity has `offers_relative_quantity` (renamed the same day, see below).
 - **The rule of the parts gets one written exception**, at the head of this file: these two fields only exist together, but stay on `VALUE_TYPE`, to keep the words of a standard and one level less in the JSON.
 - The screens do not change: the column Quantity of the table of signals still offers a quantity or its difference, each with its icon (screen MD-04.9); only the file says it with `relative_quantity`.
+
+## Read again on 2026-11-21 (kind or source)
+
+The Product Owner asked why `TEXT_CONTENT` says `source` and not `kind` "comme partout", thought `source` might be better, left it to the assistant ("à toi d'y réfléchir"), and asked for a pass over the whole JSON on this kind of thing.
+
+- **`source` stays, on `TEXT_CONTENT` and on `BOUND`** (assistant's choice). `kind` says what a thing is, and its other fields change with it: a faceplate element of kind signal has a `signal_field`, one of kind command a `command_button`. A bound is always a number and a text always a text, whatever is chosen: only where the value comes from changes. `source` says it in one word, and each of its values names the field that then holds the value (`typed` → `typed_value` / `typed_text`, `signal` → `signal`, `identifier` → `identifier`), which `kind` would not show. The head of this file now gives that reason.
+- **Every field of choice of the JSON read again against this rule**, nothing else changes:
+  - `kind` on `LINK`, `VALUE_TYPE`, `COMMAND`, `ENUM` and `FACEPLATE_ELEMENT`: each says what the thing is, and is always there;
+  - `direction` on `SIGNAL` and `access` on `SIGNAL_FIELD`: their own word says more than `kind`;
+  - `input_kind` stays, not `kind`: the Product Owner's word (2026-11-21), and it only exists in write or override, while a `kind` is always there.
+- **`QUANTITY.offers_difference` becomes `offers_relative_quantity`** (assistant's choice, found in the pass): since decision 0059 the signal says `relative_quantity`, and the same idea had two words in the files. The screens keep "difference" for people.
 
 ## Not in the schema yet
 
