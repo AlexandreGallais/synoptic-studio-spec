@@ -94,9 +94,9 @@ Every interactive component is prototyped in its component set: `hover` while th
 | `data-table-header` | the room of the handle, the slot `columns` of `column-header`, the room of the delete button | — | — | Every data-table |
 | `data-table-row` | `drag-handle`, the slot `cells`, the delete `icon-button`; its default cells are the columns of Signals | `kind=default, inherited, error`; no background per direction (Product Owner, 2026-11-22: the direction is told by its icon only) | `hover`; `dragging` (held by its handle: `layer-selected` and `shadow-raised`), own lines only; no `selected`, a line of a table is never selected; `inherited`: read only, no handle nor delete, nothing that tells its parent (Product Owner, 2026-11-22: the tree already shows it) | Every data-table |
 | `list-panel` | `list-title` + `list-row` × n | — | `empty` | MD-07.1, MD-08.1, MD-09.1 |
-| `dialog` | `heading` + text + `button` × 2 | `kind=warning, danger` | — | Every delete |
-| `formatting-toolbar` | `toolbar-group` × n + `segmented-control` + full-page `icon-button` | `mode=visual, markdown` | — | MD-03.4d |
-| `markdown-editor` | `formatting-toolbar` + editing area | `mode=read-only, visual, markdown` | `full-page` | MD-03.1 to MD-03.4c |
+| `dialog` | `heading` + text + `button` × 2; `kind=form`: `heading` + `field` × n + Cancel and a primary button | `kind=warning, danger, form` | — | Every delete; `form`: Add a URL (MD-03.7) |
+| `formatting-toolbar` | `toolbar-group` × n + `segmented-control` (two items: Visual, Markdown) + full-page `icon-button`; the same groups in both modes | `mode=visual, markdown` | — | MD-03.4d |
+| `markdown-editor` | `list-title` "Description" (no action) + `formatting-toolbar` + editing area | `mode=visual, markdown` (no read-only, Product Owner, 2026-11-22) | `full-page`: the editing area fills down to the bottom | MD-03.1b to MD-03.4c |
 | `faceplate-element` | `drag-handle` + kind `icon` + the slot `fields` + delete; a group adds the slot `actions` (its five add buttons) and, under it, the slot `elements` (its own elements, indented by `spacing-07`) | `kind=signal, command, title, paragraph, group` | `selected` | MD-07.18 to MD-07.20; read or write is a horizontal `radio-group` (MD-07.11) |
 | `palette-picker` | `colour-swatch` × n + `reset`; the swatches show sample colours until the palette of the project is known | — | — | MD-02.6, MD-02.7 |
 | `icon-picker` | `icon-button` × n + `reset` | — | — | MD-02.5, MD-02.7 |

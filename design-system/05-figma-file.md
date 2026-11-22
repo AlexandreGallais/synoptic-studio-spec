@@ -142,7 +142,8 @@ The page Metadata holds one Figma section per screen of [Screens of Metadata](..
 | Section | Id | Frames |
 | --- | --- | --- |
 | MD-01 · Types and MD-02 · General | `667:6125` | General (`667:6126`), error, long text; Types: many, searching, empty |
-| MD-03 · Documentation | `667:9805` | read only, visual, markdown, full page, no link, long text |
+| MD-03 · Documentation | `667:9805` | visual (`667:10608`), markdown, full page, no link, long text; no read only (removed on 2026-11-22) |
+| MD-03 · Add a link | `679:15292` | `MD-03 · Add a URL` (`679:15293`), the overlay of the URL icon; `MD-03 · Add a path · window of the computer` (`679:15322`), a stand-in for the system's window, opened by the path icon |
 | MD-04 · Signals | `665:4990` | default (`665:4991`), empty, many, long text, error |
 | MD-05 · Commands | `666:3777` | default (`666:3778`), empty, error |
 | MD-12 · Flags | `666:6541` | default (`666:6542`), empty, error |
@@ -152,7 +153,7 @@ The page Metadata holds one Figma section per screen of [Screens of Metadata](..
 | MD-13 · Designations | `666:8401` | default (`666:8402`), empty, error |
 | Delete warning | `670:13025` | `MD-02 · Delete warning` (`670:13026`), the frame the delete buttons open as an overlay |
 
-The prototype starts at `MD-02 · General` (flow "Metadata"): the rail, the list of the parts, the modes of the documentation and of a preset lead to their screen; the delete button of General and of each own signal opens the warning, whose two buttons close it. The dimmed background behind the warning is set by hand in Figma (the plugin API cannot set it).
+The prototype starts at `MD-02 · General` (flow "Metadata"): the rail, the list of the parts, the modes of the documentation and of a preset lead to their screen; the two add icons of Links open their overlay; the delete button of General and of each own signal opens the warning, whose two buttons close it. The dimmed background behind the warning is set by hand in Figma (the plugin API cannot set it).
 
 ## Left to draw
 

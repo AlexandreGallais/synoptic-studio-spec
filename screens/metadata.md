@@ -125,19 +125,20 @@ Path: Metadata › Types › a type › Documentation.
 mindmap
   root((MD-03 Documentation))
     Description
+      Title Description, proposed
       No Edit step
-      Formatting tool bar, in Visual and in Markdown
+      Formatting tool bar, the same in Visual and in Markdown
         Headings, lists, tables, the rest of Markdown
         No text colour
-        On its right, Read only, Visual, Markdown
+        On its right, Visual, Markdown
         Full page button
-      Read only, laid out
       Visual editor
       Markdown, raw text
+      No read only mode
     Links
       Title Links, two small icons with a plus on its right
-        Path icon plus
-        URL icon plus
+        Path icon plus, the selection window of the computer
+        URL icon plus, a window Add a URL
       Handle at the left of each line, drag to reorder
       Path or URL, an icon at its start, a click opens it
         A path opens a folder, never a file
@@ -149,17 +150,18 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-03.1 | Description, read only | Editor (laid out, read only) | Kept (Product Owner, 2026-11-16, correcting his removal of the same day). Which mode opens first: open. | Decided (mode), Open (first) | [Documentation](../metadata/draft.md#type-documentation) |
-| MD-03.2 | Description, visual editor | Editor (visual) | A "what you see is what you get" editor with a formatting tool bar. | Decided | [Documentation](../metadata/draft.md#type-documentation) |
-| MD-03.3 | Description, Markdown | Editor (raw text) | For those who write Markdown faster; the user switches between the three modes at any time. | Decided | [Documentation](../metadata/draft.md#type-documentation) |
+| MD-03.1 | Description, read only | — | Removed (Product Owner, 2026-11-22): only Visual and Markdown. | Decided | [Documentation](../metadata/draft.md#the-description) |
+| MD-03.1b | Title "Description" | Title, above the editor | Tells what the text is, as "Links" does for the links (Product Owner, 2026-11-22, with a doubt; assistant's choice). | Proposed | [Documentation](../metadata/draft.md#the-description) |
+| MD-03.2 | Description, visual editor | Editor (visual) | A "what you see is what you get" editor with a formatting tool bar. Proposed as the mode that opens first. | Decided (mode), Proposed (first) | [Documentation](../metadata/draft.md#type-documentation) |
+| MD-03.3 | Description, Markdown | Editor (raw text) | For those who write Markdown faster, with the same formatting tool bar; the user switches between the two modes at any time. | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.4 | Go to edit, Save | — | None: switching mode is not an Edit step, nothing to save or confirm (2026-11-16). | Decided | [Always editable](../metadata/draft.md#always-editable-no-versions) |
-| MD-03.4b | Read only, Visual, Markdown | Buttons (switch) | On the right of the formatting tool bar, on the same line (2026-11-16). | Decided | [Documentation](../metadata/draft.md#type-documentation) |
+| MD-03.4b | Visual, Markdown | Buttons (switch) | On the right of the formatting tool bar, on the same line (2026-11-16); Read only removed (2026-11-22). | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.4d | Formatting tool bar | Buttons | In Visual and in Markdown (2026-11-16). Like a word processor: heading levels, lists, tables and the rest of Markdown (proposed list in [Documentation](../metadata/draft.md#the-formatting-tool-bar)); no text colour. | Decided (both modes), Proposed (content) | [Documentation](../metadata/draft.md#the-formatting-tool-bar) |
-| MD-03.4c | Full page | Button (icon), in the tool bar | The description takes the whole editing part; the links are hidden; the window, the menus of the application and the type tree stay. The same button brings the page back (2026-11-16). | Decided | [Documentation](../metadata/draft.md#type-documentation) |
+| MD-03.4c | Full page | Button (icon), in the tool bar | The description takes the whole editing part; the links are hidden; the window, the menus of the application and the type tree stay. The same button brings the page back (2026-11-16). The editing area goes down to the bottom of the page, whatever the length of the text (2026-11-22). | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.5 | Links | List | Each link: a path or a URL, and a description. | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.12 | Documentation of a sub-type | Rule | A sub-type shows its own description and links only, never its parent's, even when they are empty (2026-11-22, decision 0081). | Decided | [Inheritance of types](../metadata/inheritance.md#what-a-sub-type-inherits) |
-| MD-03.6 | Add a path | Button (icon with a small +) | On the right of the title "Links", first of two icons (2026-11-16). The server opens a selection window; only the path is kept (`W:/...`). A file or a folder. | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
-| MD-03.7 | Add a URL | Button (icon with a small +), then a text field | Next to MD-03.6 (2026-11-16): two icons, no menu, "clac-clac". Typed or pasted. | Decided | [Documentation](../metadata/draft.md#the-links) |
+| MD-03.6 | Add a path | Button (icon with a small +), then the selection window of the computer | On the right of the title "Links", first of two icons (2026-11-16). The server opens the selection window of the computer; only the path is kept (`W:/...`). A file or a folder. The new link goes at the end of the list. In the mockups, the window is a stand-in frame (2026-11-22). | Decided (window), Proposed (stand-in) | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
+| MD-03.7 | Add a URL | Button (icon with a small +), then a window "Add a URL" | Next to MD-03.6 (2026-11-16): two icons, no menu, "clac-clac". The window has a URL field (typed or pasted) and a description field (optional), then Cancel and Add; the new link goes at the end of the list (2026-11-22). | Decided (icon), Proposed (window) | [Documentation](../metadata/draft.md#the-links) |
 | MD-03.11 | Handle of a link | Grip, dragged, no header | At the very left of each link: moves it; the order is kept (2026-11-16). | Decided | [Documentation](../metadata/draft.md#the-links) |
 | MD-03.8 | Description of a link | Text field | Plain text, not Markdown. | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.9 | Open | Click on the path or the URL, an icon at its start | No column Open (2026-11-16). A click on a path opens a folder: the one that contains the file, or the folder itself; never a file or a program. A click on a URL opens it in the default browser. The icon at the start says folder or link. | Decided | [Documentation](../metadata/draft.md#the-links) |
@@ -167,7 +169,8 @@ mindmap
 
 Gaps:
 
-- How is a link edited in place, now that a click on its path or URL opens it?
+- How is a link edited in place, now that a click on its path or URL opens it? Can it be changed at all once added?
+- Which mode opens first: Visual (proposed) or Markdown?
 - The exact content of the formatting tool bar.
 
 ## MD-04 · Signals

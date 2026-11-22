@@ -359,7 +359,7 @@ flowchart TD
 
 ## Type documentation
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no Edit step, read-only mode kept, full page button with the type tree kept, add buttons above the links, the description shown on this page only); reviewing the wireframes later that day, he set the formatting tool bar in both modes, with the full page button in it, and a delete button with a warning on each link; at the end of the day, a handle to reorder the links, two small icons with a + on the right of their title (path, URL), and no column Open: a click on the path or the URL opens it, an icon at its start. Open points are listed in [Open questions](#metadata-open-questions).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (no Edit step, read-only mode kept, then removed on 2026-11-22, full page button with the type tree kept, add buttons above the links, the description shown on this page only); reviewing the wireframes later that day, he set the formatting tool bar in both modes, with the full page button in it, and a delete button with a warning on each link; at the end of the day, a handle to reorder the links, two small icons with a + on the right of their title (path, URL), and no column Open: a click on the path or the URL opens it, an icon at its start. Open points are listed in [Open questions](#metadata-open-questions).
 
 A type has a documentation page, where people put what explains the type: a description and links to documents and sources.
 
@@ -387,15 +387,15 @@ flowchart TD
 
 - It is stored in Markdown.
 - **No Edit or Save step** (Product Owner, 2026-11-16): what is typed is kept, as everywhere in Metadata (see [Always editable, no versions](#always-editable-no-versions)).
-- **The read-only mode stays** (Product Owner, 2026-11-16, correcting what he had said earlier that day: "en fait, si, faut le laisser"). Three modes, and the user switches between them at any time:
+- **Two modes, Visual and Markdown**; the user switches between them at any time. There is **no read-only mode** (Product Owner, 2026-11-22: "le readonly, tu peux juste le dégager [...] Y a que visuel et Markdown que je veux voir ici"; it replaces the read-only mode kept on 2026-11-16).
 
 | Mode | What the user sees | When |
 | --- | --- | --- |
-| Read only | The description laid out, nothing can be typed. | Which mode opens first is open. |
-| Visual | A visual editor (what you see is what you get), with a formatting tool bar. | When the user switches to it. |
-| Markdown | The raw text, for those who write Markdown faster. | When the user switches to it. |
+| Visual | A visual editor (what you see is what you get), with the formatting tool bar. | Assistant's proposal, to confirm: the mode that opens first. |
+| Markdown | The raw text, for those who write Markdown faster, with the same formatting tool bar. | When the user switches to it. |
 
-- Switching to Visual or Markdown is not an Edit button: there is nothing to save or to confirm when going back to read only.
+- Switching mode is not an Edit button: there is nothing to save or to confirm.
+- The description has a **title, "Description"**, above its editor, as the links have theirs, so that the user knows what the text is (Product Owner, 2026-11-22: "on sait pas que c'est une description [...] je sais pas s'il faudrait un petit titre au-dessus"). Assistant's choice, to confirm.
 - The application holds its own **Markdown editor** (Product Owner, 2026-11-16: "il faudra faire un éditeur Markdown"), with its two ways to type:
   - **Markdown**: the raw text shows its marks, for example the `#` of a heading;
   - **Visual**: the text is laid out, "comme un éditeur de texte Word".
@@ -404,26 +404,24 @@ flowchart TD
 
 Said by the Product Owner on 2026-11-16, while reviewing the wireframes.
 
-- The **formatting tool bar** is there **in both modes**, Visual and Markdown ("disponible dans les deux, dans tous les cas"). In Markdown, a button writes the marks into the text; in Visual, it lays the text out.
+- The **formatting tool bar** is there **in both modes**, Visual and Markdown, with the same buttons ("disponible dans les deux, dans tous les cas"; confirmed on 2026-11-22: "T'es censé le laisser, même quand on sélectionne le Markdown"). In Markdown, a button writes the marks into the text; in Visual, it lays the text out.
 - It works "un peu comme Word": the user picks what to apply, among **what Markdown can write**: the level of a heading, lists, tables, and the rest of Markdown ("tous les trucs Markdown").
 - Proposed content, to confirm (the marks of CommonMark and of GitHub's Markdown): heading levels, bold, italic, strikethrough, bulleted list, numbered list, checklist, quote, inline code, code block, table, link, horizontal line.
 - **No text colour**: Markdown has no mark for a colour (only raw HTML could), so the tool bar offers none. The Product Owner asked whether it could ("je sais pas si, en Markdown, on peut choisir la couleur de texte"); assistant's answer, to confirm.
 - The **full page** button is part of the tool bar (Product Owner, 2026-11-16).
-- The buttons Read only, Visual, Markdown sit on its right, on the same line (see above).
-- The buttons that switch between the modes sit **on the right of the formatting tool bar**, on the same line (Product Owner, 2026-11-16).
+- The two buttons that switch between the modes, Visual and Markdown, sit **on the right of the formatting tool bar**, on the same line (Product Owner, 2026-11-16).
 - The tool bar also has a **full page** button (Product Owner, 2026-11-16):
   - the description takes the whole page of the documentation, and the links are no longer shown, so the user only types text, calmly;
   - it is not the full screen of the system: the window stays as it is, and the menus of the application stay;
   - **the type tree stays visible** (Product Owner, 2026-11-16): only the editing part takes the whole page, the rest of the screen does not move;
+  - the editing area goes down to the bottom of the page, whatever the length of the text (Product Owner, 2026-11-22: "la couleur plus claire, elle serait pas censée descendre jusqu'en bas ?");
   - the same button brings the page back.
 - The description is written in the documentation page, not in General. It does not go to the model.
 - The description is **optional** (Product Owner, 2026-11-22: "Facultative"): a new type has none until someone writes it.
 
 ```mermaid
 flowchart LR
-    R["Read only: laid out"] <-->|"switch, right of the tool bar"| E["Visual editor, tool bar"]
-    E <-->|"switch"| M["Markdown: raw text"]
-    R <-->|"switch"| M
+    E["Visual editor, tool bar"] <-->|"switch, right of the tool bar"| M["Markdown: raw text, same tool bar"]
     E -->|"full page button"| F["The description takes the whole editing part; links hidden; tree and menus kept"]
     F -->|"same button"| E
 ```
@@ -434,6 +432,18 @@ flowchart LR
 - A path is chosen with a selection window: the user browses to the file or the folder, and the application keeps only its path (for example `W:/...`). The file is never loaded, copied or embedded.
 - A URL is typed or pasted.
 - The list has the title "Links", with **two small icons on its right, each with a small +**: a path icon, which opens the selection window, and a URL icon, which opens a field to type or paste (Product Owner, 2026-11-16: "un petit +, une petite icône à côté du titre", then, against a menu: "là, tu peux faire clac-clac. C'est beaucoup plus rapide"; see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)). They replace the two buttons "Add a path" and "Add a URL".
+- **How a link is added** (Product Owner, 2026-11-22: "on voit pas une sorte de pop-up pour pouvoir les ajouter [...] Quand je rajoute un lien, il faut bien que je puisse entrer le lien quelque part"; assistant's proposal, to confirm):
+  - the path icon opens the **selection window of the computer**, shown by the server; the path chosen becomes a new link at the end of the list. In the mockups, this window is a stand-in frame, since it belongs to the system, not to the application;
+  - the URL icon opens a **small window, "Add a URL"**, with a field for the URL and one for its description (optional), then Cancel and Add; Add puts the new link at the end of the list.
+
+```mermaid
+flowchart LR
+    P["Path icon +"] --> S["Selection window of the computer"] -->|"a file or a folder chosen"| N["New link, end of the list"]
+    U["URL icon +"] --> W["Window Add a URL: URL, description"] -->|"Add"| N
+    W -->|"Cancel"| X["Nothing added"]
+    S -->|"closed"| X
+```
+
 - **No column "Open"** (Product Owner, 2026-11-16: "la colonne open, elle sert à rien"): a click on the path or on the URL itself opens it, as below. A **small icon at the start** of the path or of the URL says which kind it is (a folder or a link) and shows that it can be clicked ("une icône avant dans le path ou l'URL").
 - **The user chooses the order of the links** (Product Owner, 2026-11-16, reviewing the wireframes: "dans les liens de la documentation [...] il faudrait pouvoir changer de place"): each line has a **handle** at its very left, held and dragged to move it, as in the table of signals; the order is kept (see [Signals](#the-order-of-the-lines)).
 - The columns of the handle and of the delete button have no header (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
@@ -468,7 +478,8 @@ flowchart TD
 
 ### Open questions
 
-- Which mode opens first: read only, or visual?
+- Which mode opens first: Visual (proposed) or Markdown?
+- Whether a link can be changed once added ("Est-ce qu'ils deviennent [...] une fois ajoutés ?", 2026-11-22, the word not understood).
 - The content of the formatting tool bar (proposed above) and no text colour: to confirm.
 - How a link is edited in place, now that a click on its path or URL opens it (a pencil, a double click, the description only?).
 
@@ -1348,7 +1359,6 @@ Metadata is always editable, and the application keeps no versions of it: the ty
 - No Edit button, no Save button, no edit mode to enter and validate, anywhere in Metadata: General, documentation, signals, commands, presets, enums, flags, identifiers (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps, rapidement, et puis basta … tout reste ultra simple").
 - The units are not in this list: they are a read-only catalogue that the user never changes (Product Owner, 2026-11-16; see [Units](#a-ready-made-catalogue-read-only)).
 - It replaces every Edit and Save step decided before (the name of a type, the whole signal, the tables).
-- The read-only mode of the description stays: it is a way to read, not a lock (see [Documentation](#the-description)).
 - Each change is written to the files as it is made, since there is no Save button (assistant's reading, to confirm; see [Files and conflicts](../storage/files-and-conflicts.md)).
 
 #### No versions in the application: Git is enough
@@ -1947,7 +1957,7 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | Folder, generated files and conflicts between people | [Files and conflicts](../storage/files-and-conflicts.md) | Open, not about metadata. |
 | Source and licence of the ready-made catalogue of units; where the model unit of each quantity is set (catalogue for good, a configuration file of the project, or an annex page) | [Units](#units) | Licences of UCUM, QUDT, CLDR and NIST not checked, to settle before release. The model unit left the signal at the end of 2026-11-16: one per quantity, the same everywhere, set outside Metadata; the Product Owner leans towards the catalogue but will think it over. Once settled, it will be decision 0029. |
 | An element twice; what a symbol or a synoptic changes in the built faceplate | [Presets](#presets-and-their-faceplate) | Raised when the preset was split into Values and the faceplate builder (2026-11-16). The order by handle, the input chosen in the builder, the bounds of a number field and read or write (input) against read or override (output) were settled at the end of 2026-11-17. Not to be asked again in the chat. |
-| Which mode of the description opens first; content of the formatting tool bar and no text colour; editing of a link in place, now that a click on it opens it | [Documentation](#type-documentation) | Raised when the read-only mode came back, then while reviewing the wireframes (2026-11-16). The order of the links (a handle), the two add icons and the click that opens were decided at the end of the day. |
+| Which mode of the description opens first (Visual or Markdown); content of the formatting tool bar and no text colour; editing of a link in place, now that a click on it opens it | [Documentation](#type-documentation) | Raised while reviewing the wireframes (2026-11-16); the read-only mode removed on 2026-11-22. The order of the links (a handle), the two add icons and the click that opens were decided at the end of the day. |
 | Override an output: who applies it, what is seen while it holds, how it ends | [Commands](#commands), [Presets](#typing-a-value) | The kind is decided (2026-11-16); its mechanism is open. Since 2026-11-17, a signal element of the faceplate set to "override" also overrides an output; the Product Owner leaves it to what is behind the faceplate. |
 | An undo (Ctrl+Z) in Metadata; each change written to the files at once | [Always editable, no versions](#always-editable-no-versions) | Raised when the Versions page was removed (decision 0053, 2026-11-21): versions are left to Git on clean JSON files. |
 | The description kept out of the configuration files | [Flags](#flags) | Settled by the Product Owner on 2026-11-17: the description optional, an internal identifier, no warning on delete, no rule on how an ID is written, the order by handle, the inheritance; on 2026-11-22: an ID unique in the type and its parents. |
