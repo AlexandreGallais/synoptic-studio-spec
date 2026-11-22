@@ -699,9 +699,17 @@ Asked by the Product Owner on 2026-11-22 ("tu vas pouvoir supprimer [...] le sch
 - **The guide of [Entities](entities/README.md) keeps only a short description and the table**; the rules on how an entity file is written move to [Writing rules](#writing-rules-of-the-entity-files-to-become-a-skill), until they become a skill.
 - **A plan of the documentation** of Metadata lists the kinds of documents and those still missing: [Documentation plan](documentation-plan.md).
 
+## Settled on 2026-11-22 (documentation plan)
+
+Answers of the Product Owner to the questionnaire of Travail, same day.
+
+- **The kind of [Files](files.md) and [Formulas](formulas.md) is the Topic** ("Topic (thème)"): one theme, the question it raises and how it is settled. Written in the [Documentation plan](documentation-plan.md).
+- **The writing rules of the entity files become a skill** of the assistant, in `.claude/skills/` of the programme ("Skill .claude/skills/"), on condition that the assistant reads it again when it writes an entity file. Writing there was refused twice (permission not granted): the rules stay in the section below until it is allowed. At the end of the project, these skills are to be offered to Arsenal as general skills (noted in the feedback of the session).
+- **The glossary is written first** ("Glossaire"): [Glossary](glossary.md), from the data model, the entities and the research reports T2 and T5. It says both meanings of "symbol", which this file left open.
+
 ## Writing rules of the entity files (to become a skill)
 
-Moved here from [Entities](entities/README.md) on 2026-11-22 at the Product Owner's request ("c'est plutôt un skill [...] on fait pas une spec de spec"): how the specification is written is not the specification. These rules wait here until they become a skill of the assistant; they were brought up to date when moved.
+Moved here from [Entities](entities/README.md) on 2026-11-22 at the Product Owner's request ("c'est plutôt un skill [...] on fait pas une spec de spec"): how the specification is written is not the specification. These rules wait here until they become the skill `write-a-metadata-entity-file` (see [Settled on 2026-11-22 (documentation plan)](#settled-on-2026-11-22-documentation-plan)); they were brought up to date when moved.
 
 ### The model
 
@@ -773,4 +781,3 @@ Never a status sentence, a "Where it is used", a "Product Owner context", a tabl
 - Whether the two texts of a boolean are ever written in the configuration files sent with the model: open in [Boolean texts](entities/21-boolean-texts.md#open-questions).
 - `SIGNAL_FIELD` starts with its signal, then `access`: the assistant's reading of the order of the keys, to confirm.
 - The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `UNIT_SYSTEM`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated; asked on [Faceplate element](entities/28-faceplate-element.md#open-questions).
-- `UNIT.symbol` and the symbol of Synoptic Studio (the drawing placed) share a word: a glossary should say both meanings (research T5, 3.8).

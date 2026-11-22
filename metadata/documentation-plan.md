@@ -33,9 +33,9 @@ flowchart TD
 | --- | --- | --- | --- |
 | **Data model** | The whole schema, the table of the entities, the types of the fields. | [Data model](data-model.md) | — |
 | **Entity** | One kind of thing kept: what it is, its schema, its JSON Schema, the JSON Schema of its file. | 30, in [Entities](entities/README.md) | — |
-| **Topic** (name to confirm) | One theme, the question it raises and how it is settled, across several entities. | [Files](files.md), [Formulas](formulas.md) | See [The topics missing](#the-topics-missing). |
+| **Topic** | One theme, the question it raises and how it is settled, across several entities. | [Files](files.md), [Formulas](formulas.md) | See [The topics missing](#the-topics-missing). |
 | **Catalogue** | The data Synoptic Studio ships: each item, its values, its source. | — | Quantities and units; palettes; icon sets. |
-| **Glossary** | Each word of the product, its one meaning, and the words not to use for it. | — | Symbol (drawing) and `UNIT.symbol`; signal, command, trigger, faceplate, preset, type, quantity, designation, template. |
+| **Glossary** | Each word of the product, its one meaning, and the words not to use for it. | [Glossary](glossary.md) | — |
 | **Screen** | One screen: its identifier, its map, every button, field and list, its states and messages. | [Screens of Metadata](../screens/metadata.md), written before the entities | Each screen read again against the entities: names, fields, lists. |
 | **Journey** | One path of a user through the screens, step by step, with the screen of each step. | — | Every journey of Metadata (each screen and menu must have one). |
 | **Interface** | What Metadata gives outside the software: to the model, to the configuration files, to an export. | Part of [Files](files.md) (match with the standards) | What the model receives (ids, keys, units); the configuration files and what they hold (flags, texts of a boolean); exports. |
@@ -62,9 +62,8 @@ Each one gathers rules spread today across the entity files and the [whole draft
 Not part of the specification of the product, but to carry to the software architecture (repository `synoptic-studio-spec`, programme architecture):
 
 - The branded types of JavaScript, one per type of the fields: see [For the development](data-model-notes.md#for-the-development).
-- The writing rules of the entity files, to turn into a skill of the assistant: see [Writing rules](data-model-notes.md#writing-rules-of-the-entity-files-to-become-a-skill).
+- The writing rules of the entity files: to become the skill `write-a-metadata-entity-file` of the assistant, in `.claude/skills/` of the programme (Product Owner, 2026-11-22); until then in [Writing rules](data-model-notes.md#writing-rules-of-the-entity-files-to-become-a-skill).
 
 ## Open questions
 
-- The name of the kind of [Files](files.md) and [Formulas](formulas.md): "Topic" is the assistant's proposal.
-- The order in which the missing documents are written.
+- The order of the missing documents after the glossary, written first (Product Owner, 2026-11-22).
