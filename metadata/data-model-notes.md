@@ -627,6 +627,21 @@ Asked by the Product Owner on 2026-11-22 ("je veux bien que tu fasses la partie 
 - **Assistant's readings, written in the JSON Schemas**: `decimals` is a whole number from 0; `DISPLAY_FORMAT.unit` starts as the default unit of the quantity; a signal has one preset value per preset, so `signal` is unique in its preset; the two boolean texts follow the rule of every text (`null` when empty).
 - The open questions on the default number of decimals and on the boolean texts move to their entity files; one is new, the start value of a signal whose enum is a template.
 
+## Settled on 2026-11-22 (preset values)
+
+The Product Owner answered the three questions of the preset values in the questionnaire.
+
+- **A signal whose enum is a template has a null start value in the preset**: its items exist only on each placed symbol, where the start value is picked. Written in [Preset value](entities/22-preset-value.md) (`start_value` may be `null`) and in the [draft](draft.md#the-default-value).
+- **The two boolean texts are optional**: "true" and "false" are shown when they are `null`. Written in [Boolean texts](entities/21-boolean-texts.md) and in the table of the mode Values of the [draft](draft.md#mode-values-one-table-of-the-signals).
+- **The default number of decimals is fixed by the software**, never set for a project; the preset, then the symbol and the synoptic, may change it. The value was left to the assistant after a short search ("mets la valeur qui te parle le mieux"): **2**. Written in [Display format](entities/20-display-format.md) (`default: 2`) and in the [draft](draft.md#decimal-places).
+- **What the short search found** (2026-11-22, web search in this session, 6 queries, 7 pages tried, 6 read; stop: saturation, no source gave a common default). Confidence: low.
+  - No source states a default shared by the supervision tools. OPC UA gives an optional `ValuePrecision` (digits after the decimal point) with no default ([OPC 10000-8, §5](https://reference.opcfoundation.org/specs/OPC-10000-8/5)).
+  - Ignition's documentation gives no default for a tag's format string ([Tag properties, 8.1](https://www.docs.inductiveautomation.com/docs/8.1/platform/tags/tag-properties)).
+  - Grafana rounds automatically when the decimals are left empty, its example showing 1.1234 as 1.12 ([Standard options](https://grafana.com/docs/grafana/latest/panels-visualizations/configure-standard-options/)).
+  - The browser's `Intl.NumberFormat` shows at most 3 decimals by default, without trailing zeros ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat)).
+  - Not opened: FactoryTalk View's page on its decimals setting (403 refused), and a third-party blog that says Ignition's tables default to 3 decimals; neither is used.
+  - Analysis: 2 is the value Grafana's example lands on and the one the Product Owner advised; 3 is the browser's maximum, not a fixed count. A fixed count of 2 keeps the faceplate's columns aligned; a preset that needs more changes it.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -636,10 +651,8 @@ Asked by the Product Owner on 2026-11-22 ("je veux bien que tu fasses la partie 
 - The default unit and the model unit (decision 0024): open in [Quantity](entities/14-quantity.md#open-questions).
 - An integer signal shown in another unit than its default unit: a number typed there may not give a whole number in the default unit (24.17 rps is 1450.2 rpm). Rounded to the nearest whole number, or refused?
 - The names of the two quantities added for numbers that measure nothing physical: "ratio" and "count" for now.
-- The default number of decimals of a preset: open in [Display format](entities/20-display-format.md#open-questions).
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
-- The two texts of a boolean, in the preset: open in [Boolean texts](entities/21-boolean-texts.md#open-questions).
-- The start value of a signal whose enum is a template: open in [Preset value](entities/22-preset-value.md#open-questions).
+- Whether the two texts of a boolean are ever written in the configuration files sent with the model: open in [Boolean texts](entities/21-boolean-texts.md#open-questions).
 - `SIGNAL_FIELD` starts with its signal, then `access`: the assistant's reading of the order of the keys, to confirm.
 - The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `UNIT_SYSTEM`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated.
 - Is the `name` of a preset unique in its list? (A palette's, an icon set's, a quantity's, and in its quantity a unit system's and a unit's are; a color's and an icon's are optional and may be shared: settled on 2026-11-22.) To say on its entity file (research T5, open question 3).

@@ -28,13 +28,13 @@ erDiagram
   "additionalProperties": false,
   "properties": {
     "true_text": {
-      "description": "What is shown when the value is true.",
+      "description": "What is shown when the value is true; \"true\" is shown when it is null.",
       "type": ["string", "null"],
       "minLength": 1,
       "examples": ["Running"]
     },
     "false_text": {
-      "description": "What is shown when the value is false.",
+      "description": "What is shown when the value is false; \"false\" is shown when it is null.",
       "type": ["string", "null"],
       "minLength": 1,
       "examples": ["Stopped"]
@@ -45,5 +45,4 @@ erDiagram
 
 ## Open questions
 
-- Are the two texts required, or may they be empty, "true" and "false" being shown then?
 - Are they ever written in the configuration files sent with the model, or never, since they are display only?

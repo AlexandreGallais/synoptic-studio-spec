@@ -33,14 +33,11 @@ erDiagram
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
     },
     "decimals": {
-      "description": "How many decimals are shown; only rounds what is shown. Starts as the default number of decimals of the software.",
+      "description": "How many decimals are shown; only rounds what is shown. Its default is fixed by the software, never set for a project.",
       "type": "integer",
-      "minimum": 0
+      "minimum": 0,
+      "default": 2
     }
   }
 }
 ```
-
-## Open questions
-
-- The default number of decimals: 2 or 3, fixed by the software or set for the project.

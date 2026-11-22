@@ -820,7 +820,7 @@ Example, the mass, family Imperial, with 1 typed in the field (default unit: kil
 
 - Decimal places are the number of decimals shown for a value. They are a display matter only.
 - **The decimals are set in the presets only**, for each signal, next to its display unit (see [Presets](#presets-and-their-faceplate)). They start from one default number of decimals, the same everywhere; the catalogue gives no decimals per quantity (Product Owner, 2026-11-19: "les décimales à montrer, c'est vraiment selon les presets"; decision 0050, which replaces the default per quantity confirmed on 2026-11-16). The right number depends on the unit shown, not on the quantity.
-- The default number: 2 or 3, fixed by the software or set for the project, is open (see [Data model: notes](data-model-notes.md#open)).
+- **The default number is 2, fixed by the software** (Product Owner, 2026-11-22: "c'est fixé par le logiciel"), never set for a project; the value 2 was left to the assistant after a short search (see [Data model: notes](data-model-notes.md#settled-on-2026-11-22-preset-values)).
 - The symbol and the synoptic can edit it from the preset, like the display unit.
 
 ```mermaid
@@ -1135,8 +1135,8 @@ A table with **every signal of the type**, own and inherited, one per line (Prod
 | --- | --- | --- |
 | Signal | An icon of its direction, then the signal's ID, read only | Which signal the line is about (see [Signals](#signals)). The icon says whether it is an input or an output of the model (Product Owner, 2026-11-17: "il faudrait qu'on puisse savoir si c'est un input ou un output [...] ça donne juste une icône"), so that the default value is read right. |
 | Display unit | Select | Only with a quantity. Among the units of the signal's quantity; starts as the model unit of the quantity. Kept (Product Owner, 2026-11-17: "Display unit pareil"). |
-| Decimals | Number field | Integers and reals only. Starts as the one default number of decimals (see [Decimal places](#decimal-places)). Display only. Kept (Product Owner, 2026-11-17: "les décimales ici servent"). |
-| True / False | Two short text fields | Booleans only: the text of the true state and of the false state ("Open" and "Closed", "Running" and "Stopped"), shown in the faceplate for a signal in read (Product Owner, 2026-11-21: "le boolean text, ça serait plutôt dans les presets"; decision 0058, which moves them from the signal, decision 0054). Never sent to the model, which gets true or false. Header, place after Decimals, and "true" and "false" shown when empty: assistant's reading, to confirm. |
+| Decimals | Number field | Integers and reals only. Starts at 2, the one default number of decimals (see [Decimal places](#decimal-places)). Display only. Kept (Product Owner, 2026-11-17: "les décimales ici servent"). |
+| True / False | Two short text fields | Booleans only: the text of the true state and of the false state ("Open" and "Closed", "Running" and "Stopped"), shown in the faceplate for a signal in read (Product Owner, 2026-11-21: "le boolean text, ça serait plutôt dans les presets"; decision 0058, which moves them from the signal, decision 0054). Never sent to the model, which gets true or false. Optional: "true" and "false" are shown when empty (Product Owner, 2026-11-22). Header and place after Decimals: assistant's reading, to confirm. |
 | Default value | Field of the signal's type | See [The default value](#the-default-value) below. A boolean: true or false. An integer or a real: a number, typed. An enum: an item, picked by its display name (Product Owner, 2026-11-16: "si c'est un nombre, on peut écrire une valeur par défaut, et puis basta"). |
 
 ##### The default value
@@ -1148,6 +1148,7 @@ Said by the Product Owner on 2026-11-17, who asked that it be written as it is: 
 - This is why the table shows the direction of each signal: the same field means more for an input than for an output.
 - Written in decision 0030 (accepted on 2026-11-17).
 - The default value is shown and typed in the display unit of the line, and kept in the default unit of the quantity: changing the display unit never changes it (Product Owner, 2026-11-19: "Unité par défaut"; decision 0051).
+- **An enum that is a template has no default value in the preset**: its items exist only on each placed symbol, so the default value is picked there (Product Owner, 2026-11-22).
 
 ```mermaid
 sequenceDiagram

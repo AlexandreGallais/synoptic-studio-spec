@@ -40,14 +40,15 @@ erDiagram
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
     },
     "start_value": {
-      "description": "The first value sent to the model, for an input, and the value shown until the model sends one, for an input and an output. Of the signal's value type: a number in the default unit of its quantity, typed in the display unit; true or false; or the internal_id of an item of its enum.",
+      "description": "The first value sent to the model, for an input, and the value shown until the model sends one, for an input and an output. Of the signal's value type: a number in the default unit of its quantity, typed in the display unit; true or false; or the internal_id of an item of its enum. Null when the enum is a template, whose items exist only on each placed symbol, where the start value is picked.",
       "oneOf": [
         { "type": "number" },
         { "type": "boolean" },
         {
           "type": "string",
           "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
-        }
+        },
+        { "type": "null" }
       ]
     },
     "display_format": {
@@ -61,7 +62,3 @@ erDiagram
   }
 }
 ```
-
-## Open questions
-
-- The start value of a signal whose enum is a template: its items are only filled on each placed symbol, so Metadata has no item to pick. No start value in the preset, or one picked on the placed symbol?
