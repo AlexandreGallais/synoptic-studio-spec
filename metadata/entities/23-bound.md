@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A bound is the minimum or the maximum of a [range](24-range.md): a number typed in the faceplate builder, or the value of an input [signal](16-signal.md) of the type, read at each moment. It is kept inside its range, as its `min` or its `max`; it has no `internal_id`, since nothing points to it.
+A bound is the minimum or the maximum of a [range](24-range.md): a number typed in the faceplate builder, or the value of an input [signal](16-signal.md) of the type, read at each moment. A bound read from a signal is removed when that signal is deleted: its range then has no minimum, or no maximum. It is kept inside its range, as its `min` or its `max`; it has no `internal_id`, since nothing points to it.
 
 ## The entity
 

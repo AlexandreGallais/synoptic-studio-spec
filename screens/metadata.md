@@ -113,7 +113,7 @@ mindmap
 | MD-02.5 | Icon | List of icons | One icon of the predefined SVG list. No import. Validated (2026-11-16). | Decided | [Icons](../metadata/draft.md#type-icons) |
 | MD-02.6 | Colour | Colour (palette only) | One colour of a fixed palette; no free colour. Validated (2026-11-16). | Decided | [Icons](../metadata/draft.md#type-icons) |
 | MD-02.7 | Reset icon, reset colour | Button (icon) | Shown when the type overrides its parent's choice; makes it follow the parent again. An icon, no text label (2026-11-16). | Decided | [Icons](../metadata/draft.md#type-icons) |
-| MD-02.8 | Delete the type | Button, then a warning (dialog) | In General (2026-11-16): the only way to delete a type. A click opens a warning that asks to confirm. | Decided | [Types](../metadata/draft.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
+| MD-02.8 | Delete the type | Button, then a warning (dialog) | In General (2026-11-16): the only way to delete a type. A click opens a warning that asks to confirm. Refused while the type has sub-types: they are deleted first (decision 0082). | Decided | [Types](../metadata/draft.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
 
 Gaps:
 
@@ -121,6 +121,7 @@ Gaps:
 - The label of the name: "Name" or "ID" (open).
 - The palette and the icons may take several lines: where the reset buttons go then.
 - The wording of the warning.
+- How the refused delete of a type with sub-types shows: open in [Deleting and its consequences](../metadata/deleting.md#open-questions).
 
 ## MD-03 · Documentation
 
@@ -534,7 +535,7 @@ mindmap
 | MD-09.6 | Key | Whole number field | Typed by the user, any whole number, gaps allowed (0, 2, 4), for a global enum and for the items of a template (end of 2026-11-17). Unique; what the model receives (2026-11-16). It can still be changed once given: breaking for the model, with no warning (decision 0038); the Versions page that showed it was removed on 2026-11-21 (decision 0053), the change is seen in Git. Changing it never moves the line (questionnaire, end of 2026-11-17: "Il reste où il est"; decision 0039). | Decided | [Enums](../metadata/draft.md#rules-5) |
 | MD-09.7 | Display name | Text field | After the key. What the faceplate, the symbol texts and the test values show. Not breaking. Called "Display text" until 2026-11-21: renamed for the same word as a signal field (decision 0056). | Decided | [Enums](../metadata/draft.md#enums) |
 | MD-09.9 | Description | Text field | Last, after the display name (2026-11-17): what the item means, plain text, never sent to the model (2026-11-16). Optional, shown on this page only (2026-11-16). | Decided | [Enums](../metadata/draft.md#enums) |
-| MD-09.8 | Add, delete an item | Button (+), delete button (icon) | The small + on the right of the title "Items"; the delete button at the far right of an item, with no header, then a warning (2026-11-16; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). An enum is deleted the same way. | Decided | [Enums](../metadata/draft.md#enums) |
+| MD-09.8 | Add, delete an item | Button (+), delete button (icon) | The small + on the right of the title "Items"; the delete button at the far right of an item, with no header, then a warning (2026-11-16; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). An enum is deleted the same way. Deleting one still used is allowed: the signals, start values and commands that use it are flagged in error (decision 0082). | Decided | [Enums](../metadata/draft.md#enums) |
 
 Gaps:
 
@@ -576,10 +577,10 @@ mindmap
 | MD-13.5 | Display name | — | Removed (2026-11-21: "on va dégager display name [...] on voit que l'ID"): the ID is shown where the designation is picked and filled. | Decided | [Designation](../metadata/entities/11-designation.md) |
 | MD-13.6 | Description | Text field, takes the room left | What the designation is (2026-11-18: "expliquer ce que c'est"). Optional: assistant's reading. | Decided (field), Proposed (optional) | [Identifiers (draft)](../metadata/draft.md#identifiers) |
 | MD-13.8 | Required | Checkbox, narrow column, between ID and Description | Checked: every placed symbol must have the text of this designation (a control ID), whether or not its faceplate shows it; left empty, a warning, never a block. Unchecked: it may stay empty (a location). Product Owner, 2026-11-21: "j'ai complètement besoin de dire si c'est required ou non". A checkbox, not a switch, since a table shows several lines: assistant's reading. Unchecked for a new designation (2026-11-21: "Le booléen required, ce serait genre false"). | Decided (field, default), Proposed (control) | [Designation](../metadata/entities/11-designation.md) |
-| MD-13.7 | Delete a designation | Button (icon), then a warning | At the far right of the line, with no header (2026-11-18: "et les supprimer"; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). | Decided | [Identifiers (draft)](../metadata/draft.md#identifiers) |
+| MD-13.7 | Delete a designation | Button (icon), then a warning | At the far right of the line, with no header (2026-11-18: "et les supprimer"; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). Deleting one still used is allowed: the titles and paragraphs of the faceplate that show it are flagged in error (decision 0082). | Decided | [Identifiers (draft)](../metadata/draft.md#identifiers) |
 
 Gaps:
 
-- What a faceplate shows when its title is bound to a deleted designation.
+- What the faceplate of a placed symbol shows for a title whose designation was deleted (flagged in error in Metadata, decision 0082).
 - The panel of the synoptic where the text of each designation is filled: described in [Panel of a placed symbol](../synoptics/04-placed-symbol-panel.md#identity).
 - The open questions of [Identifiers (draft)](../metadata/draft.md#open-questions-8).

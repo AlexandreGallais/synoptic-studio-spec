@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A text content is the text a title or a paragraph of the faceplate shows: a text typed in the builder, or the text each placed symbol fills for a [designation](11-designation.md), such as its tag. It never comes from a signal: a signal is shown by a [signal field](25-signal-field.md) in read. A text content is kept inside its [faceplate element](28-faceplate-element.md), which has one when its kind is title or paragraph; it has no `internal_id`, since nothing points to it.
+A text content is the text a title or a paragraph of the faceplate shows: a text typed in the builder, or the text each placed symbol fills for a [designation](11-designation.md), such as its tag. It never comes from a signal: a signal is shown by a [signal field](25-signal-field.md) in read. When its designation is deleted, its faceplate element is flagged in error and kept as written, until another designation is picked. A text content is kept inside its [faceplate element](28-faceplate-element.md), which has one when its kind is title or paragraph; it has no `internal_id`, since nothing points to it.
 
 ## The entity
 

@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-What a sub-type takes from its parents, what it may change, and what happens when a parent changes or is missing. The rules come from decisions 0003, 0013, 0033, 0047, 0079, 0080 and 0081, the [whole draft](draft.md#types) and the [entity files](entities/README.md).
+What a sub-type takes from its parents, what it may change, and what happens when a parent changes or is missing. The rules come from decisions 0003, 0013, 0033, 0047, 0079, 0080, 0081 and 0082, the [whole draft](draft.md#types) and the [entity files](entities/README.md).
 
 ## Where it is used
 
@@ -24,6 +24,7 @@ What a sub-type takes from its parents, what it may change, and what happens whe
 
 - **A type has one parent or none.** Its parents are every type up its branch, to the root: `pneumatic_positive_displacement_pump` has `positive_displacement_pump` and `pump`.
 - **The parent is set when the type is created and never changes** (decision 0013): by the + of the type it is created under, or the + of the title for a root type. A type created under the wrong parent is deleted and created again under the right one.
+- **A type that has sub-types cannot be deleted** (decision 0082): its sub-types are deleted first, from the bottom of the branch up (see [Deleting and its consequences](deleting.md)).
 - **Every type can be chosen**, at any level: there are no abstract types.
 - **The `id` of a type is unique in the whole tree** (decision 0047), not only among its brothers.
 
@@ -81,7 +82,7 @@ A change in the lines, the icon or the color of a parent reaches every sub-type 
 | --- | --- |
 | A signal, a command or a flag added | The sub-type has it too, among its inherited lines. The addition is refused when a sub-type already has this `id` as its own line (decision 0080). |
 | A signal added | Its preset value is added to every preset of the type and of its sub-types, with the start value and the display format a new preset value starts with (decision 0079). |
-| A signal removed | Its preset value is removed from these presets, with the faceplate elements that show it (decision 0079). |
+| A signal removed | Its preset value is removed from these presets, with the faceplate elements that show it (decision 0079) and the bounds read from it (decision 0082). A command of the sub-type that targets it is flagged in error and kept as written (decision 0082). |
 | A command removed | The faceplate elements that send it are removed from these presets (decision 0080). |
 | A preset changed, added or removed | Nothing: the presets of a sub-type are its own (decision 0080). |
 | A line changed (its `id`, its value type, its quantity...) | The sub-type sees the change; renaming an `id` breaks the models that use it, never the software (its links go through the `internal_id`). A rename is refused when a sub-type already has the new `id` as its own line, as an addition is (decision 0081). |
@@ -91,8 +92,3 @@ A change in the lines, the icon or the color of a parent reaches every sub-type 
 
 - **A type whose parent's file is missing or unreadable is still shown, flagged in error**, the missing parent named; its file is left as it is (decision 0079).
 - Nothing is lost: when the parent's file comes back, the type finds its parent again through `parent`, which holds its `internal_id`.
-
-## Open questions
-
-- **A bound or a command target** that points to a signal removed, own or inherited: see [Deleting and its consequences](deleting.md#open-questions).
-- **Deleting a type that has sub-types**: see [Deleting and its consequences](deleting.md#open-questions).

@@ -10,7 +10,7 @@
 | --- | --- |
 | File | `<id>.type.json` |
 
-A type is what a symbol represents, at one level of detail: a pump, a centrifugal pump. Types form a tree: a type has one parent or none, set when it is created and never changed, and inherits the signals, the commands and the flags of its parents (see [Inheritance of types](../inheritance.md)). A type holds its [appearance](12-appearance.md), its [documentation](14-documentation.md), its own [signals](16-signal.md), [commands](18-command.md) and [flags](19-flag.md), and its [presets](29-preset.md). Its `id` is the contract with the model: renaming it breaks the models that use it, never the software, whose links go through the `internal_id`. One file per type. A type whose parent's file is missing or unreadable is still shown, flagged in error with the missing parent named; its file is left as it is.
+A type is what a symbol represents, at one level of detail: a pump, a centrifugal pump. Types form a tree: a type has one parent or none, set when it is created and never changed, and inherits the signals, the commands and the flags of its parents (see [Inheritance of types](../inheritance.md)). A type holds its [appearance](12-appearance.md), its [documentation](14-documentation.md), its own [signals](16-signal.md), [commands](18-command.md) and [flags](19-flag.md), and its [presets](29-preset.md). Its `id` is the contract with the model: renaming it breaks the models that use it, never the software, whose links go through the `internal_id`. One file per type. A type whose parent's file is missing or unreadable is still shown, flagged in error with the missing parent named; its file is left as it is. A type that has sub-types cannot be deleted: its sub-types are deleted first.
 
 ## The entity
 

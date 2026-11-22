@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A preset value says, for one [signal](16-signal.md) of the type, how a preset starts it and shows it: its start value, then its [display format](20-display-format.md) for an integer or a real, or its [boolean texts](21-boolean-texts.md) for a boolean. A preset holds exactly one preset value per signal of the type, own and inherited, in its list of preset values (see the [Data model](../data-model.md)); it has no `internal_id`, since nothing points to it.
+A preset value says, for one [signal](16-signal.md) of the type, how a preset starts it and shows it: its start value, then its [display format](20-display-format.md) for an integer or a real, or its [boolean texts](21-boolean-texts.md) for a boolean. A preset holds exactly one preset value per signal of the type, own and inherited, in its list of preset values (see the [Data model](../data-model.md)). When the enum item of its start value is deleted, the preset value is flagged in error and kept as written, until another item is picked. It has no `internal_id`, since nothing points to it.
 
 ## The entity
 

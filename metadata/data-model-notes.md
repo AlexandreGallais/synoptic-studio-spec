@@ -724,6 +724,12 @@ Fourth questionnaire, same day (decision 0081), each time the advised option:
 - **A sub-type never shows the documentation of its parent** ("Non, seulement la sienne"), even when its own is empty. Written in [Inheritance of types](inheritance.md#what-a-sub-type-inherits), [Documentation](entities/14-documentation.md) and screen MD-03.12.
 - **The next document is deleting and its consequences** ("Suppression et conséquences"): [Deleting and its consequences](deleting.md), a topic that gathers the rules already written and decides nothing new. It takes over two questions of [Inheritance of types](inheritance.md): a bound or a command target whose signal is deleted, a type that has sub-types.
 
+Fifth questionnaire, same day (decision 0082), each time the advised option:
+
+- **A type that has sub-types cannot be deleted** ("Suppression refusée"): its sub-types are deleted first. Written in [Deleting and its consequences](deleting.md), [Inheritance of types](inheritance.md#the-tree), [Type](entities/30-type.md) and screen MD-02.8.
+- **A signal deleted, own or inherited, removes the bounds read from it and flags in error the commands that target it** ("Borne retirée, commande en erreur"): the range then has no minimum or no maximum; the command is kept as written. Written in [Deleting and its consequences](deleting.md), [Inheritance of types](inheritance.md#when-a-parent-changes), [Bound](entities/23-bound.md) and [Command target](entities/17-command-target.md).
+- **An enum, an enum item or a designation deleted while used flags in error what uses it** ("Utilisateurs marqués en erreur"), kept as written, as for a missing parent (decision 0079): the signal of its value type, the preset value of its start value, the command of its value, the faceplate element of its text content. Written in [Deleting and its consequences](deleting.md), [Value type](entities/15-value-type.md), [Preset value](entities/22-preset-value.md), [Command target](entities/17-command-target.md), [Text content](entities/27-text-content.md) and screens MD-09.8 and MD-13.7.
+
 ## Writing rules of the entity files (to become a skill)
 
 Moved here from [Entities](entities/README.md) on 2026-11-22 at the Product Owner's request ("c'est plutôt un skill [...] on fait pas une spec de spec"): how the specification is written is not the specification. These rules wait here until they become the skill `write-a-metadata-entity-file` (see [Settled on 2026-11-22 (documentation plan)](#settled-on-2026-11-22-documentation-plan)); they were brought up to date when moved.
