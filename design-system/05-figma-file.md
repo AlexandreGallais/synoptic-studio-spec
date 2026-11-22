@@ -22,7 +22,7 @@ What the Figma file of the design system holds, with the ids a later session nee
 
 | Collection | Id | Modes | Variables |
 | --- | --- | --- | --- |
-| `primitives` | `VariableCollectionId:630:111` | `value` | 39: 23 colours (`sand/25` and `sand/30` added on 2026-11-22 for the hover) (`sand/`, `white`, `black`, accents), `black/a60`, 15 steps of `scale/` |
+| `primitives` | `VariableCollectionId:630:111` | `value` | 42: 23 colours (`sand/25` and `sand/30` added on 2026-11-22 for the hover) (`sand/`, `white`, `black`, accents), `black/a60`, the veils `black/a07`, `black/a13`, `black/a17` (2026-11-22, aliased by `layer-hover`, `layer-pressed`, `layer-active`), 15 steps of `scale/` |
 | `semantic` | `VariableCollectionId:630:149` | `sand` (`630:1`) | 50 (`layer-active` added on 2026-11-22): the roles, spacing, sizes, radii and widths of [Foundations](02-foundations.md) |
 
 The tints `blue/05` and `green/05`, and the roles `signal-input` and `signal-output`, were removed on 2026-11-22 with the background of the signal lines.
@@ -119,6 +119,8 @@ The id of each component set (or component), to go on from it. Every one is prot
 
 `data-table-row` holds its cells in the slot `cells`, and `data-table-header` its column headers in the slot `columns`: a screen puts in them the columns of its table, each cell as wide as its `column-header`. Their default content is the columns of Signals. `data-table` has the corners `radius-md` and the padding `spacing-04` at the top and the bottom: the add button of its title and the delete button of its last line are 16 from the edges, as on the sides. `quantity-cell` and `direction-cell` are deprecated: their description says what replaces them. `data-table-row` has no line under it and its states are `default`, `hover` and `dragging` (no `dragging` for `kind=inherited`); in the prototype, only pressing its handle shows the line `dragging`; a click on the line itself does nothing (Product Owner, 2026-11-22: "la ligne, je suis pas censé pouvoir la cliquer"). A `text-input` or `number-input` `filled` takes the focus on a click and gives it back on a second click. In the formatting tool bar, a click on the table button turns it `selected` and opens its grid. In `faceplate-element` `kind=group`, the slot `actions` and the delete sit in the frame `buttons` (gap `spacing-02`), so the delete is one more button of the row; after such a change of structure, an instance may draw the old positions until its main component's frame is touched again (a padding set then reset).
 
+No frame or slot without a fill clips its content, in the components and on the screens (2026-11-22, 124 frames changed): the focus line of a field at the edge of its frame showed cut. Only the surfaces with a fill clip (a table, a panel, a screen, an overlay).
+
 An instance given a click of its own (open an overlay, go to a screen) loses the hover of its component unless it is set again with it: on 2026-11-22, 160 instances got their hover back (Delete the type, the buttons of the warning, the rail...). Any new click is set next to the hover, never in its place.
 
 An icon swapped into a `button` or an `icon-button` keeps only the colour overrides of the lines its default icon has (`icon/add` has two): every line of the new icon gets the colour of its variant by hand, the label's colour in a `button` (fixed on 2026-11-22: the delete icon of a danger button was half white, half black).
@@ -147,14 +149,14 @@ The page Metadata holds one Figma section per screen of [Screens of Metadata](..
 | --- | --- | --- |
 | MD-01 · Types and MD-02 · General | `667:6125` | General (`667:6126`), error, long text; Types: many, searching, empty |
 | MD-03 · Documentation | `667:9805` | visual (`667:10608`), markdown, full page, no link, long text; no read only (removed on 2026-11-22) |
-| MD-03 · Formatting | `684:14751` | `MD-03 · Heading level` (`684:14752`), the list of the heading select; `MD-03 · Insert a table` (`684:14867`), the grid of the table button |
+| MD-03 · Formatting | `684:14751` | `MD-03 · Heading level` (`684:14752`), the list of the heading select; `MD-03 · Insert a table` (`684:14867`), the grid of the table button. Each is a transparent frame of the size of the screen, its content right under its button, closed by a click anywhere: the plugin API cannot set the place of an overlay, and a centred overlay showed in the middle of the page |
 | MD-03 · Add a link | `679:15292` | `MD-03 · Add a URL` (`679:15293`), the overlay of the URL icon; `MD-03 · Add a path · window of the computer` (`679:15322`), a stand-in for the system's window, opened by the path icon |
 | MD-04 · Signals | `665:4990` | default (`665:4991`), empty, many, long text, error |
 | MD-05 · Commands | `666:3777` | default (`666:3778`), empty, error |
 | MD-12 · Flags | `666:6541` | default (`666:6542`), empty, error |
 | MD-07 · Presets | `668:9609` | Values (`668:9610`), Faceplate (`668:11695`), empty, error |
 | MD-08 · Units | `669:11672` | Mass in Imperial (`669:11673`), Temperature in Imperial (`669:13261`, with its switch Quantity or Difference); the quantities are a `list-panel` of `list-row` with their icons since 2026-11-22 |
-| MD-09 · Enums | `669:14179` | global (`669:14180`), template, empty, error |
+| MD-09 · Enums | `669:14179` | global (`669:14180`), template (`669:15030`: the same enum `pump_mode`, its Items table empty with its message), empty, error; Global and Template lead from one to the other |
 | MD-13 · Designations | `666:8401` | default (`666:8402`), empty, error |
 | Delete warning | `670:13025` | `MD-02 · Delete warning` (`670:13026`), the frame the delete buttons open as an overlay |
 

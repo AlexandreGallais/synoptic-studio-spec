@@ -31,9 +31,9 @@ The roles the components of the specs need, with their value in the theme `sand`
 | `background` | The window behind everything. | `#dfd9c9` | `surface/canvas` |
 | `layer-01` | Panels, columns, the top bar, the rail. | `#e9e2d3` | `surface/base` |
 | `layer-02` | A surface on a panel: a field, a table header. | `#f3ecdd` | `surface/sunken` |
-| `layer-hover` | A line, a button or an item under the mouse; darker than `background` and than `layer-01`, so that it shows on both (2026-11-22: it was lighter than `background`, and the hover of the icons of General did not show). | `#d9d2c3` | `interact/hover` |
-| `layer-pressed` | A button or an item while the mouse button is down; also the hover of a quiet icon-button, on a line already in hover. | `#ccc5b5` | `interact/pressed` |
-| `layer-active` | The press of a quiet icon-button, on a line already in hover. | `#c1baa9` | `interact/active` |
+| `layer-hover` | A line, a button or an item under the mouse. A dark transparent veil, so that it darkens whatever is under it: `background`, `layer-01`, or a violet selected line (Product Owner, 2026-11-22: pressing a handle on a violet line showed grey, "plutôt un truc sombre transparent"). | `#000000` at 7 % (`black/a07`) | `interact/hover` |
+| `layer-pressed` | A button or an item while the mouse button is down; also the hover of a quiet icon-button, on a line already in hover. The same veil, darker. | `#000000` at 13 % (`black/a13`) | `interact/pressed` |
+| `layer-active` | The press of a quiet icon-button, on a line already in hover. The same veil, darker still. | `#000000` at 17 % (`black/a17`) | `interact/active` |
 | `layer-selected` | The selected line, item or part. | `#d6cded` | `interact/selected` |
 | `layer-inverse` | A tooltip. | `#181612` | `content/primary` |
 | `border-subtle` | Separators, table lines. | `#d4cdbe` | `border/subtle` |
