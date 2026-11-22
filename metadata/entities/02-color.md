@@ -35,7 +35,7 @@ erDiagram
       "readOnly": true
     },
     "name": {
-      "description": "A name for people; two colors of a palette may share it.",
+      "description": "A name for people; two colors of a palette may share it. Without a name, the value is shown in its place.",
       "type": ["string", "null"],
       "minLength": 1
     },

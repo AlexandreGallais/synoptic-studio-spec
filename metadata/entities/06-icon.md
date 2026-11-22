@@ -35,20 +35,16 @@ erDiagram
       "readOnly": true
     },
     "name": {
-      "description": "A name for people, read on hover and searched in the list; two icons of a set may share it.",
+      "description": "A name for people; two icons of a set may share it. Without a name, nothing stands in its place.",
       "type": ["string", "null"],
       "minLength": 1,
       "examples": ["centrifugal-pump"]
     },
     "drawing": {
-      "description": "The whole SVG of the icon, from <svg> to </svg>: an ordinary SVG, which may have a viewBox. Drawn with fills only, never strokes, even its thin lines. The software puts the color of the type on every fill, whatever color the drawing gives it: an icon is always of one color. An icon drawn with a stroke is shown as it is, its stroke not always of the color of the type.",
+      "description": "An ordinary SVG, drawn with fills only. Every fill takes the color of the type; a stroke is shown as it is.",
       "type": "string",
       "minLength": 1
     }
   }
 }
 ```
-
-## Open questions
-
-- What the hover and the search show for an icon without a name: with the screens.
