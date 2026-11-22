@@ -32,8 +32,8 @@ The roles the components of the specs need, with their value in the theme `sand`
 | `layer-01` | Panels, columns, the top bar, the rail. | `#e9e2d3` | `surface/base` |
 | `layer-02` | A surface on a panel: a field, a table header. | `#f3ecdd` | `surface/sunken` |
 | `layer-hover` | A line, a button or an item under the mouse. A dark transparent veil, so that it darkens whatever is under it: `background`, `layer-01`, or a violet selected line (Product Owner, 2026-11-22: pressing a handle on a violet line showed grey, "plutôt un truc sombre transparent"). | `#000000` at 7 % (`black/a07`) | `interact/hover` |
-| `layer-pressed` | A button or an item while the mouse button is down; also the hover of a quiet icon-button, on a line already in hover. The same veil, darker. | `#000000` at 13 % (`black/a13`) | `interact/pressed` |
-| `layer-active` | The press of a quiet icon-button, on a line already in hover. The same veil, darker still. | `#000000` at 17 % (`black/a17`) | `interact/active` |
+| `layer-pressed` | A button or an item while the mouse button is down. The same veil, darker. | `#000000` at 13 % (`black/a13`) | `interact/pressed` |
+| `layer-active` | Kept for a press that must show over a pressed surface; no component uses it since 2026-11-22. The same veil, darker still. | `#000000` at 17 % (`black/a17`) | `interact/active` |
 | `layer-transparent` | The rest state of a component that has a hover veil: the same veil, fully transparent, so that the hover fades in instead of starting from black. | `#000000` at 0 % (`black/a00`) | new |
 | `layer-selected` | The selected line, item or part. | `#d6cded` | `interact/selected` |
 | `layer-inverse` | A tooltip. | `#181612` | `content/primary` |

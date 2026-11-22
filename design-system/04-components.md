@@ -36,6 +36,8 @@ What is selected and cannot be clicked again (the item of a `segmented-control`,
 
 The hover, the press and the drag are a dark veil laid over the component's own background (`layer-hover`, `layer-pressed`, `layer-active` on top of `layer-02`, `layer-01` or nothing). At rest the component holds the same veil, transparent (`layer-transparent`), so that the change only fades the veil in (Product Owner, 2026-11-22: the hover of the tables went dark, then lighter).
 
+A list that opens over the page (a menu, a select, a picker) is 280 high at most: beyond, it scrolls inside, with a `scrollbar`, and it always stays `spacing-04` from the edge of the window (Product Owner, 2026-11-22: "une scroll bar à l'intérieur pour ne pas que ça dépasse une taille [...] pour que ça reste élégant. Un peu penser à ça partout"). The height of 280 is the assistant's choice.
+
 The double focus line is drawn outside the control: no frame without a background cuts what overflows it (no clip), so the line shows whole even when a field touches the edge of its column, its cell or its slot (Product Owner, 2026-11-22: a field in focus was cut on the right in Documentation, on the left in Units). Only a surface with a background and rounded corners (a table, a panel, a screen) cuts, and it leaves room for the line with its padding.
 
 A text on one line (a field, a select, a line of a list, a tree or a table) never wraps: what does not fit ends with "…".
@@ -52,7 +54,7 @@ Every interactive component is prototyped in its component set: `hover` while th
 | --- | --- | --- | --- |
 | `icon` | One component per icon of [Icons](03-icons.md), `icon/<name>`; the size is set on the instance, `size-icon-sm` (16) or `size-icon-md` (20), never a variant | — | Everywhere |
 | `button` | `kind=primary, secondary, ghost, danger`; `size=md, lg`; leading icon on or off | — | Dialogs: Cancel, Delete |
-| `icon-button` | `kind=ghost, quiet` (quiet: `icon-secondary`, the + on hover); `size=sm, md` | `selected`; the hover of `quiet` is `layer-pressed` and its press `layer-active`, so that it shows on a line already in hover (Product Owner, 2026-11-22: the + of the tree had no visible hover) | Every + of a title, delete, reset, search, full page |
+| `icon-button` | `kind=ghost, quiet` (quiet: `icon-secondary`, the + on hover); `size=sm, md` | `selected`; `ghost` and `quiet` have the same hover (`layer-hover`) and press (`layer-pressed`): on a line already in hover the two veils add up, so the button still shows (Product Owner, 2026-11-22: "ton hover n'a pas toujours la même teinte") | Every + of a title, delete, reset, search, full page |
 | `toggle-button` | `state=off, on`: an `icon-button` ghost, at rest or `selected`; a click turns it on or off | — | Bold, italic of the formatting tool bar (MD-03.4d), showing the state of the selection (Product Owner, 2026-11-22) |
 | `text-input` | `size=sm, md` (sm in a table cell); with or without a trailing icon | `filled`, `read-only`, `error`; a click gives the focus, a second click takes it back (as `number-input`) | MD-02.1, MD-03.8, every ID |
 | `number-input` | `size=sm, md`; with or without a unit; with or without the `variable` icon | `filled`, `read-only`, `error`, `variable` (the value comes from a signal) | MD-07.13, MD-07.22, MD-08.13, MD-09.6 |
@@ -64,6 +66,7 @@ Every interactive component is prototyped in its component set: `hover` while th
 | `drag-handle` | — | `dragging` | Every ordered table |
 | `label` | `required=false, true` | — | Every field outside a table |
 | `tooltip` | `placement=top, right, bottom, left` | — | Every icon alone |
+| `scrollbar` | a thumb of `border-strong`, 4 wide, `radius` 2, no track, no arrows | — | Every list that reaches its highest size |
 | `colour-swatch` | `size=sm, md` | `selected`; `hover`: a 2 px `border-strong` line and `shadow-raised`, to be seen (Product Owner, 2026-11-22: "il se voit presque pas") | MD-02.6 |
 | `divider` | `direction=horizontal, vertical` | — | Rail, panels |
 | `column-header` | — (text `label`; its width is the width of its column) | — | The head of every column of a `data-table-header` |
@@ -74,7 +77,9 @@ Every interactive component is prototyped in its component set: `hover` while th
 | --- | --- | --- | --- | --- |
 | `field` | `label` + one input atom + help text | `layout=stacked, inline` | `error` (help in `danger`) | General, Units |
 | `menu-item` | `icon` + text + check | with or without icon | `selected` | Every select |
-| `menu` | `menu-item` × 5, two more behind the booleans `item-6`, `item-7` | — | — | Every select; the heading level of the formatting tool bar (seven items) |
+| `menu` | `menu-item` × 5, two more behind the booleans `item-6`, `item-7`; 280 high at most, then it scrolls inside with a `scrollbar` | — | — | Every select; the heading level of the formatting tool bar (seven items) |
+| `menu-group-title` | text `caption`, `text-secondary`, padding `spacing-03` and `spacing-02` under it | — | — | The unit systems in the list of display units |
+| `menu-grouped` | the surface of `menu`, then for each group a `menu-group-title` and its `menu-item` (no icon), a `scrollbar` on its right; 280 high at most, it scrolls inside | — | — | The display unit of a preset (MD-07.12) |
 | `table-size-picker` | a grid of 8 × 6 cells, those from the top left to the mouse lit (`layer-selected`, `accent`), and the caption columns × rows | — | — | The table button of the formatting tool bar (MD-03.4d) |
 | `select` | `select-trigger` + `menu` | — | `open` | Every select |
 | `segmented-control` | two or three `button` side by side | `items=2, 3`; `selected=1, 2, 3` (the item selected) | — | MD-07.2b Values / Faceplate, MD-03.4b Visual / Markdown, MD-08.15 Quantity / Difference |
@@ -105,7 +110,7 @@ Every interactive component is prototyped in its component set: `hover` while th
 | `dialog` | `heading` + text + `button` × 2; `kind=form`: `heading` + `field` × n + Cancel and a primary button | `kind=warning, danger, form` | — | Every delete; `form`: Add a URL (MD-03.7) |
 | `formatting-toolbar` | heading `select-trigger` (Paragraph, Heading 1 to 6), its list opening right under it + `toolbar-group` × n (bold and italic are `toggle-button`, `spacing-02` after the heading select, the other groups `spacing-03` apart with a divider: Product Owner, 2026-11-22, the gap between Paragraph and bold was too wide; the table button opens `table-size-picker` right under it and stays `selected` while it is open) + `segmented-control` (two items: Visual, Markdown) + full-page `icon-button`; the same groups in both modes | `mode=visual, markdown` | — | MD-03.4d |
 | `markdown-editor` | `list-title` "Description" (no action) + `formatting-toolbar` + editing area | `mode=visual, markdown` (no read-only, Product Owner, 2026-11-22) | `full-page`: the editing area fills down to the bottom | MD-03.1b to MD-03.4c |
-| `faceplate-element` | `drag-handle` + kind `icon` + the slot `fields` + delete; a signal in write or override puts its input on a second line, under its fields: the kind of input, then the minimum and the maximum, of the same width (Product Owner, 2026-11-22); a group adds the slot `actions` (its five add buttons), and its delete follows them `spacing-02` apart, as one row of buttons (Product Owner, 2026-11-22: the gap before the delete was wider than between the add buttons); under it, the slot `elements` (its own elements, indented by `spacing-07`) | `kind=signal, command, title, paragraph, group` | `selected` | MD-07.18 to MD-07.20; read or write is a horizontal `radio-group` (MD-07.11) |
+| `faceplate-element` | `drag-handle` + kind `icon` + the slot `fields` + delete; a signal in write or override is always on two lines, whatever its input: the first ends with read or write (read or override), the second holds the rest, the kind of input, then for a number the minimum and the maximum, of the same width (Product Owner, 2026-11-22: "dès que ça commence à être un signal [...] tout le temps en deux lignes"); a group adds the slot `actions` (its five add buttons), and its delete follows them `spacing-02` apart, as one row of buttons (Product Owner, 2026-11-22: the gap before the delete was wider than between the add buttons); under it, the slot `elements` (its own elements, indented by `spacing-07`) | `kind=signal, command, title, paragraph, group` | `selected` | MD-07.18 to MD-07.20; read or write is a horizontal `radio-group` (MD-07.11) |
 | `palette-picker` | `colour-swatch` × n + `reset`; the swatches show sample colours until the palette of the project is known | — | — | MD-02.6, MD-02.7 |
 | `icon-picker` | `icon-button` × n + `reset` | — | — | MD-02.5, MD-02.7 |
 

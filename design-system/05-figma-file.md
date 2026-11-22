@@ -25,6 +25,8 @@ What the Figma file of the design system holds, with the ids a later session nee
 | `primitives` | `VariableCollectionId:630:111` | `value` | 43: 23 colours (`sand/25` and `sand/30` added on 2026-11-22 for the hover) (`sand/`, `white`, `black`, accents), `black/a60`, the veils `black/a00`, `black/a07`, `black/a13`, `black/a17` (2026-11-22, aliased by `layer-transparent`, `layer-hover`, `layer-pressed`, `layer-active`), 15 steps of `scale/` |
 | `semantic` | `VariableCollectionId:630:149` | `sand` (`630:1`) | 51 (`layer-active` and `layer-transparent` added on 2026-11-22): the roles, spacing, sizes, radii and widths of [Foundations](02-foundations.md) |
 
+The effect style `focus-ring` does not show behind its node (`showShadowBehindNode` false): behind a transparent veil, its light line made the whole control look light (2026-11-22). `menu` is 280 high at most and scrolls inside.
+
 A colour bound to a variable takes its opacity from the variable: a fill bound to `layer-hover` set to 0 % still shows at 7 %. A transparent start needs its own variable (`layer-transparent`).
 
 The tints `blue/05` and `green/05`, and the roles `signal-input` and `signal-output`, were removed on 2026-11-22 with the background of the signal lines.
@@ -83,11 +85,14 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Atoms | `column-header` | `664:6368` |
 | Atoms | `toggle-button` | `684:2199` |
 | Atoms | `table/toggle-button` | `701:20082` (the table, in the section `Actions`) |
+| Atoms | `scrollbar` | `706:717`, in its table `706:719` (section `Support`) |
 | Atoms | `playground/atoms` | `643:2164` |
 | Molecules | `field` | `637:53` |
 | Molecules | `menu-item` | `637:102` |
 | Molecules | `menu` | `637:103` |
 | Molecules | `select` | `637:206` |
+| Molecules | `menu-group-title` | `706:736`, in its table `706:790` (section `Forms`) |
+| Molecules | `menu-grouped` | `706:738`, in its table `706:856` (section `Forms`); 280 high, clips and scrolls vertically |
 | Molecules | `segmented-control` | `637:250` |
 | Molecules | `radio-group` | `637:281` |
 | Molecules | `list-title` | `638:143` |
@@ -159,7 +164,7 @@ The page Metadata holds one Figma section per screen of [Screens of Metadata](..
 | MD-04 · Signals | `665:4990` | default (`665:4991`), empty, many, long text, error |
 | MD-05 · Commands | `666:3777` | default (`666:3778`), empty, error |
 | MD-12 · Flags | `666:6541` | default (`666:6542`), empty, error |
-| MD-07 · Presets | `668:9609` | Values (`668:9610`), Faceplate (`668:11695`), empty, error |
+| MD-07 · Presets | `668:9609` | Values (`668:9610`), Faceplate (`668:11695`), empty, error; `MD-07 · Display unit` (`706:13686`), the grouped list the display unit `bar` of `pressure_out` opens, a transparent frame of the screen's size like the lists of MD-03. In Faceplate, every signal in write is on two lines |
 | MD-08 · Units | `669:11672` | Mass in Imperial (`669:11673`), Temperature in Imperial (`669:13261`, with its switch Quantity or Difference); the quantities are a `list-panel` of `list-row` with their icons since 2026-11-22 |
 | MD-09 · Enums | `669:14179` | global (`669:14180`), template (`669:15030`: the same enum `pump_mode`, its Items table empty with its message), empty, error; Global and Template lead from one to the other |
 | MD-13 · Designations | `666:8401` | default (`666:8402`), empty, error |
