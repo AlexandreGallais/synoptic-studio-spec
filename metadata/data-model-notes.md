@@ -586,7 +586,8 @@ Said by the Product Owner after the research above was written ("je veux bien qu
 - **Refused**: a conversion that means nothing, such as a mass into a molar mass (Product Owner: "ça fait aucun sens").
 - **Doubts of the Product Owner, left to the research**:
   - a conversion between unit systems, such as metric and imperial ("potentiellement [...] on verra"), while today a unit system only groups the units of its quantity ([Unit system](entities/13-unit-system.md));
-  - a conversion from one quantity to another ("peut-être que c'est de quantité à quantité"), while today a conversion only exists inside its quantity (decision 0049).
+  - a conversion from one quantity to another ("peut-être que c'est de quantité à quantité"), while today a conversion only exists inside its quantity (decision 0049);
+  - an idea, to look at after the research ("on verra ça après la recherche"): each unit system with a default unit of its own, and a conversion between the default units of the unit systems ("un truc de conversion [...] entre unités par défaut").
 - Until the research and a decision, the entity files keep the rules of decision 0049.
 
 ## Not in the schema yet
