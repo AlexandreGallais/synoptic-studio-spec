@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-The documentation explains a type to people: a description and [links](13-link.md) to documents and sources. Each type has exactly one, kept inside the type's file; it has no `internal_id`, since nothing points to it. Neither the description nor the links go to the model.
+The documentation explains a type to people: a description and [links](13-link.md) to documents and sources. Each type has exactly one, kept inside the type's file; it has no `internal_id`, since nothing points to it. It is never inherited: a sub-type shows its own documentation only, even an empty one. Neither the description nor the links go to the model.
 
 ## The entity
 

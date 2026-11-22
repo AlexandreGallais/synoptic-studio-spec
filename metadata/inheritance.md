@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-What a sub-type takes from its parents, what it may change, and what happens when a parent changes or is missing. The rules come from decisions 0003, 0013, 0033, 0047, 0079 and 0080, the [whole draft](draft.md#types) and the [entity files](entities/README.md).
+What a sub-type takes from its parents, what it may change, and what happens when a parent changes or is missing. The rules come from decisions 0003, 0013, 0033, 0047, 0079, 0080 and 0081, the [whole draft](draft.md#types) and the [entity files](entities/README.md).
 
 ## Where it is used
 
@@ -15,6 +15,7 @@ What a sub-type takes from its parents, what it may change, and what happens whe
 | [Type](entities/30-type.md) | `parent`, and the lists of the type, which hold its own lines only. |
 | [Signal](entities/16-signal.md), [Command](entities/18-command.md), [Flag](entities/19-flag.md) | An `id` unique along the branch: among the lines of the type, of its parents and of its sub-types. |
 | [Appearance](entities/12-appearance.md) | A value left `null` shows the parent's. |
+| [Documentation](entities/14-documentation.md) | Never inherited: a sub-type shows its own only. |
 | [Preset](entities/29-preset.md) | A new sub-type starts with a copy of its parent's presets. |
 | [Preset value](entities/22-preset-value.md), [Signal field](entities/25-signal-field.md), [Command button](entities/26-command-button.md), [Bound](entities/23-bound.md), [Command target](entities/17-command-target.md) | A signal or a command of the type, own or inherited. |
 | [MD-04 · Signals](../screens/metadata.md#md-04--signals), [MD-05 · Commands](../screens/metadata.md#md-05--commands) | The inherited lines first, read only. |
@@ -44,7 +45,7 @@ flowchart TD
 | Flags | Yes, all (decision 0033) | The same; a placed symbol has the flags of its type and of its parents. |
 | Icon, color | Yes, each one alone | A value left `null` shows the parent's, which may itself be inherited; at the root, the software's default. |
 | `id` | No | Each type has its own, unique in the tree. |
-| Documentation | Not settled | See [Open questions](#open-questions). |
+| Documentation | No (decision 0081) | A sub-type shows its own description and links only, even when they are empty: a documentation describes one type. |
 | Presets | Copied once, at creation (decision 0080) | A new sub-type starts with a copy of each preset of its parent, with its preset values and its faceplate elements; the copy then lives alone. A root type starts with none. |
 
 `pneumatic_positive_displacement_pump` has the signals `flow`, `speed`, `stroke` and `air_pressure`, and shows the pump icon in green: the icon of `pump`, the color of `positive_displacement_pump`.
@@ -83,7 +84,7 @@ A change in the lines, the icon or the color of a parent reaches every sub-type 
 | A signal removed | Its preset value is removed from these presets, with the faceplate elements that show it (decision 0079). |
 | A command removed | The faceplate elements that send it are removed from these presets (decision 0080). |
 | A preset changed, added or removed | Nothing: the presets of a sub-type are its own (decision 0080). |
-| A line changed (its `id`, its value type, its quantity...) | The sub-type sees the change; renaming an `id` breaks the models that use it, never the software (its links go through the `internal_id`). |
+| A line changed (its `id`, its value type, its quantity...) | The sub-type sees the change; renaming an `id` breaks the models that use it, never the software (its links go through the `internal_id`). A rename is refused when a sub-type already has the new `id` as its own line, as an addition is (decision 0081). |
 | The icon or the color changed | Each sub-type that leaves the value `null` shows the new one. |
 
 ## When a parent is missing
@@ -93,7 +94,5 @@ A change in the lines, the icon or the color of a parent reaches every sub-type 
 
 ## Open questions
 
-- **Documentation**: does a sub-type show the description and the links of its parent when it has none?
-- **A renamed `id`**: a line of a parent renamed to an `id` a sub-type already has as its own. Refused as an addition is, by the same uniqueness along the branch: assistant's reading, to confirm.
-- **A bound or a command target** that points to an inherited signal removed from its parent: removed, or flagged in error?
-- Deleting a type that has sub-types: in the topic "Deleting and its consequences", still to write (see the [Documentation plan](documentation-plan.md#the-topics-missing)).
+- **A bound or a command target** that points to a signal removed, own or inherited: see [Deleting and its consequences](deleting.md#open-questions).
+- **Deleting a type that has sub-types**: see [Deleting and its consequences](deleting.md#open-questions).

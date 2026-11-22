@@ -718,6 +718,12 @@ Third questionnaire, same day (decision 0080), each time the advised option:
 - **A line added to a parent is refused when a sub-type already has its `id` as its own line** ("Ajout refusé"): the `id` of a signal, a command or a flag is unique along the branch, sub-types included. Written in [Signal](entities/16-signal.md), [Command](entities/18-command.md) and [Flag](entities/19-flag.md). The same for a line renamed in a parent: assistant's reading, left open in [Inheritance of types](inheritance.md#open-questions).
 - **A command removed removes the faceplate elements that send it** ("Retirés aussi"), in every preset of the type and of its sub-types, as for a signal (decision 0079). Written in [Preset](entities/29-preset.md) and [Command button](entities/26-command-button.md).
 
+Fourth questionnaire, same day (decision 0081), each time the advised option:
+
+- **A line renamed in a parent is refused when a sub-type already has the new `id` as its own line** ("Refusé, comme un ajout"): the same uniqueness along the branch as for an addition. Written in [Inheritance of types](inheritance.md#when-a-parent-changes).
+- **A sub-type never shows the documentation of its parent** ("Non, seulement la sienne"), even when its own is empty. Written in [Inheritance of types](inheritance.md#what-a-sub-type-inherits), [Documentation](entities/14-documentation.md) and screen MD-03.12.
+- **The next document is deleting and its consequences** ("Suppression et conséquences"): [Deleting and its consequences](deleting.md), a topic that gathers the rules already written and decides nothing new. It takes over two questions of [Inheritance of types](inheritance.md): a bound or a command target whose signal is deleted, a type that has sub-types.
+
 ## Writing rules of the entity files (to become a skill)
 
 Moved here from [Entities](entities/README.md) on 2026-11-22 at the Product Owner's request ("c'est plutôt un skill [...] on fait pas une spec de spec"): how the specification is written is not the specification. These rules wait here until they become the skill `write-a-metadata-entity-file` (see [Settled on 2026-11-22 (documentation plan)](#settled-on-2026-11-22-documentation-plan)); they were brought up to date when moved.

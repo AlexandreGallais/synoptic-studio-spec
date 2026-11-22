@@ -162,6 +162,7 @@ mindmap
 | MD-03.4d | Formatting tool bar | Buttons | In Visual and in Markdown (2026-11-16). Like a word processor: heading levels, lists, tables and the rest of Markdown (proposed list in [Documentation](../metadata/draft.md#the-formatting-tool-bar)); no text colour. | Decided (both modes), Proposed (content) | [Documentation](../metadata/draft.md#the-formatting-tool-bar) |
 | MD-03.4c | Full page | Button (icon), in the tool bar | The description takes the whole editing part; the links are hidden; the window, the menus of the application and the type tree stay. The same button brings the page back (2026-11-16). | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.5 | Links | List | Each link: a path or a URL, and a description. | Decided | [Documentation](../metadata/draft.md#type-documentation) |
+| MD-03.12 | Documentation of a sub-type | Rule | A sub-type shows its own description and links only, never its parent's, even when they are empty (2026-11-22, decision 0081). | Decided | [Inheritance of types](../metadata/inheritance.md#what-a-sub-type-inherits) |
 | MD-03.6 | Add a path | Button (icon with a small +) | On the right of the title "Links", first of two icons (2026-11-16). The server opens a selection window; only the path is kept (`W:/...`). A file or a folder. | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
 | MD-03.7 | Add a URL | Button (icon with a small +), then a text field | Next to MD-03.6 (2026-11-16): two icons, no menu, "clac-clac". Typed or pasted. | Decided | [Documentation](../metadata/draft.md#the-links) |
 | MD-03.11 | Handle of a link | Grip, dragged, no header | At the very left of each link: moves it; the order is kept (2026-11-16). | Decided | [Documentation](../metadata/draft.md#the-links) |
@@ -432,7 +433,6 @@ mindmap
 Gaps:
 
 - Rename and duplicate a preset; what happens to the symbols that use a deleted preset?
-- Does a sub-type see the presets of its parent?
 - Can an element be added twice? What can a symbol or a synoptic change in the built faceplate (the texts of its title and description elements, at least)?
 
 ## MD-08 · Units
