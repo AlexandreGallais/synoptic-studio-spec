@@ -17,6 +17,7 @@ Path: on the far left of every screen of Metadata (Product Owner, 2026-11-16).
 | MD-00.5 | Flags | — | Removed (2026-11-17): flags are a part of the type, not a page of the bar (see [MD-12](#md-12--flags-a-part-of-the-type)). | Decided | [Flags](../metadata/draft.md#flags) |
 | MD-00.6 | Designations | Button (icon) | Opens [MD-13](#md-13--designations). A page of the bar, like Units and Enums (2026-11-18: "C'est une page de type unit enum version"). Last, after Enums: assistant's reading. Named Designations on 2026-11-22 (decision 0064), "Identifiers" until then. | Decided (page of the bar, name), Proposed (place) | [Designation](../metadata/entities/11-designation.md) |
 | MD-00.7 | Divider | — | After Types: the types on one side, what they use on the other, Units, Enums and Designations (2026-11-22: the divider before Designations alone had no meaning, the Product Owner asked to keep it only if it had one; assistant's choice). | Proposed | [Layout rules](README.md#layout-rules) |
+| MD-00.8 | Name of a button | Tooltip | When the mouse stays on an icon of the bar, a tooltip gives the name of its page, on its right: Types, Units, Enums, Designations; the parts of the top bar do the same under them: Metadata, Symbols, Synoptic (Product Owner, 2026-11-22: "quand on over une icône, [...] un petit truc qui s'affiche pour dire ce que c'est", "si on laisse hover pendant longtemps"). It shows after 0.8 s (assistant's choice) and leaves with the mouse. | Decided (tooltip), Proposed (delay) | [Components](../design-system/04-components.md#molecules) |
 
 Gaps:
 
@@ -46,6 +47,7 @@ mindmap
     Type tree, on the left
       Line of the title
         Type tree
+        Open all and close all icons, left of the search
         Search icon, left of the plus
         Plus, always shown, far right
         In search, the title becomes a field and the plus a cross
@@ -54,6 +56,7 @@ mindmap
       Select a type
       No right click
       No rename by double click
+    Divider between the tree and the parts
     Parts by name, fixed under the tree, in this order
       1 MD-02 General
       2 MD-03 Documentation
@@ -74,6 +77,8 @@ mindmap
 | MD-01.6 | Search | Button (icon) on the line of the title, left of the + | A click turns the title into a search field; typing filters the tree; the + becomes a cross that closes the search and brings the title back (2026-11-16). It replaces the field under the title. | Decided | [Types](../metadata/draft.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
 | MD-01.6b | Search field | Text field | In place of the title "Type tree", while searching. | Decided | [Types](../metadata/draft.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
 | MD-01.6c | Close the search | Button (×) | In place of the + while searching. | Decided | [Types](../metadata/draft.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
+| MD-01.7 | Open all, close all | Two buttons (icon) on the line of the title, left of the search | Open all unfolds every branch of the tree, close all folds them all, to find a type faster (Product Owner, 2026-11-22: "deux boutons comme ça pour tout ouvrir, tout fermer"). Icons `expand-all` and `collapse-all`; their place: assistant's choice. While searching, the search field takes the line. | Decided (buttons), Proposed (place) | [Icons](../design-system/03-icons.md) |
+| MD-01.8 | Divider between the tree and the parts | Line | A horizontal line across the column, between the type tree and the list of the parts, so that they read as two different things (Product Owner, 2026-11-22: "pour qu'on voie que c'est pas la même chose"). | Decided | — |
 
 Gaps:
 

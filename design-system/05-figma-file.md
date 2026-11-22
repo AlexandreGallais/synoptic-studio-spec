@@ -22,8 +22,10 @@ What the Figma file of the design system holds, with the ids a later session nee
 
 | Collection | Id | Modes | Variables |
 | --- | --- | --- | --- |
-| `primitives` | `VariableCollectionId:630:111` | `value` | 42: 23 colours (`sand/25` and `sand/30` added on 2026-11-22 for the hover) (`sand/`, `white`, `black`, accents), `black/a60`, the veils `black/a07`, `black/a13`, `black/a17` (2026-11-22, aliased by `layer-hover`, `layer-pressed`, `layer-active`), 15 steps of `scale/` |
-| `semantic` | `VariableCollectionId:630:149` | `sand` (`630:1`) | 50 (`layer-active` added on 2026-11-22): the roles, spacing, sizes, radii and widths of [Foundations](02-foundations.md) |
+| `primitives` | `VariableCollectionId:630:111` | `value` | 43: 23 colours (`sand/25` and `sand/30` added on 2026-11-22 for the hover) (`sand/`, `white`, `black`, accents), `black/a60`, the veils `black/a00`, `black/a07`, `black/a13`, `black/a17` (2026-11-22, aliased by `layer-transparent`, `layer-hover`, `layer-pressed`, `layer-active`), 15 steps of `scale/` |
+| `semantic` | `VariableCollectionId:630:149` | `sand` (`630:1`) | 51 (`layer-active` and `layer-transparent` added on 2026-11-22): the roles, spacing, sizes, radii and widths of [Foundations](02-foundations.md) |
+
+A colour bound to a variable takes its opacity from the variable: a fill bound to `layer-hover` set to 0 % still shows at 7 %. A transparent start needs its own variable (`layer-transparent`).
 
 The tints `blue/05` and `green/05`, and the roles `signal-input` and `signal-output`, were removed on 2026-11-22 with the background of the signal lines.
 
@@ -48,7 +50,7 @@ The tables of a page are grouped by family, one Figma section each. The frame `p
 
 | Page | Sections, in order |
 | --- | --- |
-| Icons | `Icons`: one table per family (Parts and window, Metadata, Actions, Formatting, Signals and faceplate, Status), each icon with its name |
+| Icons | `Icons`: one table per family (Parts and window, Metadata, Actions, Formatting, Signals and faceplate, Status), each icon with its name; every table six cells wide with a border on its four sides, three tables a row |
 | Atoms | `Actions`, `Selection`, `Inputs`, `Support`, `Playground` |
 | Molecules | `Forms`, `Lists and navigation`, `Table cells`, `Toolbars and window`, `Playground` |
 | Organisms | `App frame`, `Lists`, `Data table`, `Editors`, `Pickers`, `Dialogs`, `Playground` |
@@ -63,7 +65,7 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Page | Component | Id |
 | --- | --- | --- |
 | Foundations | specimen board | `630:203` |
-| Icons | 46 icons `icon/<name>`, in the section `Icons`; `folder-add` (`673:13125`) and `link-add` (`673:13131`) since 2026-11-22, then `signal-add` (`680:12952`), `command-add` (`680:12964`), `title-add` (`680:12974`), `paragraph-add` (`680:12985`) and `group-add` (`680:12997`) | `656:7343` |
+| Icons | 46 icons `icon/<name>`, in the section `Icons`; `folder-add` (`673:13125`) and `link-add` (`673:13131`) since 2026-11-22, then `signal-add` (`680:12952`), `command-add` (`680:12964`), `title-add` (`680:12974`), `paragraph-add` (`680:12985`) and `group-add` (`680:12997`), `expand-all` (`699:13751`) and `collapse-all` (`699:13755`); 53 icons | `656:7343` |
 | Atoms | `button` | `632:209` |
 | Atoms | `icon-button` | `633:98` |
 | Atoms | `checkbox` | `633:144` |
@@ -80,6 +82,7 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Atoms | `divider` | `635:170` |
 | Atoms | `column-header` | `664:6368` |
 | Atoms | `toggle-button` | `684:2199` |
+| Atoms | `table/toggle-button` | `701:20082` (the table, in the section `Actions`) |
 | Atoms | `playground/atoms` | `643:2164` |
 | Molecules | `field` | `637:53` |
 | Molecules | `menu-item` | `637:102` |
@@ -97,7 +100,7 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Molecules | `direction-cell` | `638:884` |
 | Molecules | `toolbar-group` | `638:885` |
 | Molecules | `window-controls` | `638:936` |
-| Molecules | `table-size-picker` | `684:2760` |
+| Molecules | `table-size-picker` | `684:2760`, in its table `701:20176` (section `Toolbars and window`) |
 | Molecules | `playground/molecules` | `643:2262` |
 | Organisms | `top-bar` | `640:200` |
 | Organisms | `nav-rail` | `640:201` |
@@ -118,6 +121,8 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Templates | `example/editor`, an instance of the template with its slots filled | `657:155` |
 
 `data-table-row` holds its cells in the slot `cells`, and `data-table-header` its column headers in the slot `columns`: a screen puts in them the columns of its table, each cell as wide as its `column-header`. Their default content is the columns of Signals. `data-table` has the corners `radius-md` and the padding `spacing-04` at the top and the bottom: the add button of its title and the delete button of its last line are 16 from the edges, as on the sides. `quantity-cell` and `direction-cell` are deprecated: their description says what replaces them. `data-table-row` has no line under it and its states are `default`, `hover` and `dragging` (no `dragging` for `kind=inherited`); in the prototype, only pressing its handle shows the line `dragging`; a click on the line itself does nothing (Product Owner, 2026-11-22: "la ligne, je suis pas censé pouvoir la cliquer"). A `text-input` or `number-input` `filled` takes the focus on a click and gives it back on a second click. In the formatting tool bar, a click on the table button turns it `selected` and opens its grid. In `faceplate-element` `kind=group`, the slot `actions` and the delete sit in the frame `buttons` (gap `spacing-02`), so the delete is one more button of the row; after such a change of structure, an instance may draw the old positions until its main component's frame is touched again (a padding set then reset).
+
+`list-title` has the variants `actions=tree` (`699:14056`, searching `699:14060`), used by `tree`. `nav-rail-item` holds a hidden `tooltip` in every variant and shows it in `state=tooltip` (rail `701:34`, top bar `701:41`): while hovering it goes to `hover`, and a mouse enter of 0.8 s leads to `tooltip`; the rail items of the screens carry the same two reactions next to their click. The texts are set in `nav-rail` and `top-bar`. A selected item, line or part has no reaction of its own (2026-11-22: 51 instances cleared). `template/editor` and its `body` draw their first child on top (`itemReverseZIndex`), so that the rail and the top bar show their tooltips over the columns. A script that looks for a hidden layer inside an instance sets `figma.skipInvisibleInstanceChildren = false` first: the plugin API hides them by default.
 
 No frame or slot without a fill clips its content, in the components and on the screens (2026-11-22, 124 frames changed): the focus line of a field at the edge of its frame showed cut. Only the surfaces with a fill clip (a table, a panel, a screen, an overlay).
 
@@ -143,7 +148,7 @@ block-beta
 
 ## Screens of Metadata
 
-The page Metadata holds one Figma section per screen of [Screens of Metadata](../screens/metadata.md), from top to bottom in the order of the type and of the rail (Product Owner, 2026-11-22): General (with the type tree), Documentation, Signals, Commands, Flags, Presets, Units, Enums, Designations, then the overlays (Delete warning, Add a link, Formatting). Each screen is an instance of `template/editor`, named `MD-xx · <screen>`, then `· <state>` for each content state.
+The page Metadata holds one Figma section per screen of [Screens of Metadata](../screens/metadata.md), from top to bottom in the order of the type and of the rail (Product Owner, 2026-11-22): General (with the type tree), Documentation, Signals, Commands, Flags, Presets, Units, Enums, Designations, then the overlays (Delete warning, Add a link, Formatting). Each screen is an instance of `template/editor`, named `MD-xx · <screen>`, then `· <state>` for each content state. In the left column of the 25 screens with the type tree, and of `example/editor`, a `divider` separates the tree from the parts (MD-01.8).
 
 | Section | Id | Frames |
 | --- | --- | --- |
