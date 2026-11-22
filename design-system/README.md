@@ -23,7 +23,7 @@ Set by the Product Owner on 2026-11-22. The pages of the old design system stay 
 
 ```mermaid
 flowchart LR
-    F["Foundations"] --> I["Icons"] --> A["Atoms"] --> M["Molecules"] --> O["Organisms"] --> MD["Metadata: the screens of Metadata"]
+    F["Foundations"] --> I["Icons"] --> A["Atoms"] --> M["Molecules"] --> O["Organisms"] --> T["Templates"] --> MD["Metadata: the screens of Metadata"]
 ```
 
 | Page | What it holds |
@@ -33,9 +33,10 @@ flowchart LR
 | Atoms | The atoms of [Components](04-components.md), each with its variants and its states. |
 | Molecules | The molecules, made of atoms only. |
 | Organisms | The organisms, made of molecules and atoms. |
-| Metadata | The screens of Metadata (`MD-00` to `MD-13` of [Screens of Metadata](../screens/metadata.md)), made of instances only, each with its content states. |
+| Templates | The layout of the screens without their content: window, top bar, left column, main area, drawn once at 1600 × 900 and reused by every screen. |
+| Metadata | The screens of Metadata (`MD-00` to `MD-13` of [Screens of Metadata](../screens/metadata.md)), made of instances of the templates and components only, each with its content states. |
 
-Whether the layout of the screens (the templates) gets a page of its own: see [Open questions](open-questions.md).
+The screens of Metadata stay in the library file, not in a product file of their own: see [Skill rules R1](skill-rules.md#r1--the-pages-of-the-library).
 
 ## Where it is used
 

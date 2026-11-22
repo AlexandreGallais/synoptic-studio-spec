@@ -28,7 +28,7 @@ Status: first draft, from the Product Owner's brief of 2026-11-22. Not validated
 
 - Every screen is drawn in 16:9.
 - The smallest window the application is designed for is **1600 × 900** (Product Owner, 2026-11-22). The screens of the Metadata page are drawn at that size.
-- Below it, nothing is promised: the application is not designed for a phone or a tablet.
+- Below it, nothing is promised: the application is not designed for a phone or a tablet. The screens are an editor and data tables, which need a two-dimensional layout: WCAG 2.2 exempts them from reflow at 320 px wide (criterion 1.4.10). See [Skill rules R4](skill-rules.md#r4--screens-in-169-at-least-1600--900).
 
 ```mermaid
 block-beta

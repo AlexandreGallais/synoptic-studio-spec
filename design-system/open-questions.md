@@ -4,14 +4,6 @@
 
 What is left to decide on the design system. A question answered leaves this file; its answer goes where the concept is written.
 
-## Pages of the Figma file
-
-- A page Templates for the layout of the screens, and the screens of Metadata in the library file or in a product file of their own? See [Skill rules R1](skill-rules.md#r1--the-pages-of-the-library).
-
-## Screen size
-
-- Below 1600 × 900: is anything promised (a scroll, a narrower left column), and does the rule of WCAG on 320 px wide hold? See [Skill rules R4](skill-rules.md#r4--screens-in-169-at-least-1600--900).
-
 ## Foundations
 
 - The colour values: read from the Neutral Fog theme of the old design system, in Figma.

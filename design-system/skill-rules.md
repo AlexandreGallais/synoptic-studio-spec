@@ -23,10 +23,10 @@ Each rule: what it says, the skill it adds to or contradicts, its status.
 
 ### R1 · The pages of the library
 
-- **Rule**: the Figma file has the pages Foundations, Icons, Atoms, Molecules, Organisms, then Metadata, the screens of Metadata (Product Owner, 2026-11-22).
-- **Skill**: `name-and-organise-components-layers-and-pages` asks for the pages Foundations, Atoms, Molecules, Organisms, **Templates**, and puts screens in **product files**, one page per flow, outside the library.
-- **Differences**: a page Icons (adds to the skill); no page Templates; the screens in the library file.
-- **Status**: Asked.
+- **Rule**: the Figma file has the pages Foundations, Icons, Atoms, Molecules, Organisms, Templates, then Metadata, the screens of Metadata, in the library file itself (Product Owner, 2026-11-22).
+- **Skill**: `name-and-organise-components-layers-and-pages` asks for the pages Foundations, Atoms, Molecules, Organisms, Templates, and puts screens in **product files**, one page per flow, outside the library.
+- **Differences**: a page Icons (adds to the skill); the screens of Metadata in the library file, not in a product file.
+- **Status**: Kept over the skill.
 
 ### R2 · One theme, on Neutral Fog
 
@@ -42,9 +42,9 @@ Each rule: what it says, the skill it adds to or contradicts, its status.
 
 ### R4 · Screens in 16:9, at least 1600 × 900
 
-- **Rule**: every screen in 16:9; the smallest window is 1600 × 900 (Product Owner, 2026-11-22).
+- **Rule**: every screen in 16:9; the smallest window is 1600 × 900, and nothing is promised below it, under the exemption of WCAG for two-dimensional layouts (Product Owner, 2026-11-22).
 - **Skill**: `check-accessibility-in-the-design` asks that every screen works at **320 px wide** without horizontal scrolling (WCAG 2.2, criterion 1.4.10 Reflow). WCAG exempts what needs a two-dimensional layout, such as an editor or a data table.
-- **Status**: Asked.
+- **Status**: Kept over the skill.
 
 ### R5 · Every component with its states
 
