@@ -536,7 +536,9 @@ Said by the Product Owner on 2026-11-22 ("c'est un peu comme les couleurs [...] 
 - **The software puts the color of the type on every fill of the drawing**, whatever color the drawing gives it: an icon is always of one color, and any icon set works as it is, with nothing to prepare (Product Owner, answering the questionnaire the same day). `currentColor` is not used.
 - **An icon drawn with a stroke, against the rule, is shown as it is** (Product Owner, same questionnaire): the software does not check the drawings; its stroke may not take the color of the type.
 - **An icon without a name shows no name**: nothing stands in its place, the user gives one if they want it; and the icons are not searched (Product Owner, same day: "s'il n'y a pas de nom, il n'y a pas de nom [...] faire des recherches sur les icônes, je vois pas trop l'intérêt"). A color without a name shows its RGBA value (same message).
-- Open: whether a set says its origin and its licence.
+- **An icon set says nothing of its origin nor of its licence** (Product Owner, same day: "je pense qu'on s'en fout [...] je suis pas là pour faire des trucs trop chiants"): no field for them.
+- **The icon sets the software ships are drawn for it, following its own rules** (Product Owner, same day: "on va les faire selon des règles"): no licence of others to keep.
+- **Which icon sets ship, and their names, are chosen in due time**, as for the palettes. The Product Owner gave, with a doubt, an example of a file name: `synoptic-studio.icon-set.json` ("un truc du genre. J'en ai aucune idée").
 
 ## Not in the schema yet
 
