@@ -11,7 +11,7 @@ Colour of a box's title: orange, the entity has its own page in [Entities](entit
 ```mermaid
 ---
 config:
-  themeCSS: "[id*='entity-DESIGNATION-'] .outer-path path, [id*='entity-PALETTE-'] .outer-path path, [id*='entity-COLOR-'] .outer-path path, [id*='entity-ENUM-'] .outer-path path, [id*='entity-ENUM_ITEM-'] .outer-path path { fill: #f8b26a !important; }"
+  themeCSS: "[id*='entity-DESIGNATION-'] .outer-path path, [id*='entity-PALETTE-'] .outer-path path, [id*='entity-COLOR-'] .outer-path path, [id*='entity-ENUM-'] .outer-path path, [id*='entity-ENUM_ITEM-'] .outer-path path, [id*='entity-ICON-'] .outer-path path, [id*='entity-ICON_SET-'] .outer-path path { fill: #f8b26a !important; }"
 ---
 erDiagram
     TYPE {
@@ -137,6 +137,10 @@ erDiagram
         expression to_default "x in this unit gives the default unit"
         expression from_default "x in the default unit gives this unit"
     }
+    ICON_SET {
+        uuid internal_id PK
+        text name
+    }
     ICON {
         uuid internal_id PK
         text name "shown on hover"
@@ -161,6 +165,7 @@ erDiagram
     TYPE ||--o{ PRESET : "holds"
     APPEARANCE }o--o| ICON : "icon"
     APPEARANCE }o--o| COLOR : "color"
+    ICON_SET ||--|{ ICON : "holds"
     PALETTE ||--|{ COLOR : "holds"
     SIGNAL ||--|| VALUE_TYPE : "has"
     VALUE_TYPE }o--o| ENUM : "enum, when kind is enum"

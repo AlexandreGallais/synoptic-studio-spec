@@ -319,7 +319,7 @@ An icon helps to recognise a type at a glance, in addition to its name. It is on
 
 ### Rules
 
-- The icons come from a predefined list of SVG files that ships with the program. The user cannot import their own icon. To add one by hand, the file of the list is edited, and that is all.
+- The icons come from a predefined list of SVG files that ships with the program. The user cannot import their own icon. To add one by hand, the file of the list is edited, and that is all. Replaced on 2026-11-22 (decision 0073): the icons come in icon sets, one file each, and the user adds their own sets in their configuration folder (see [Icon set](entities/07-icon-set.md)).
 - The list can already hold icons for common objects (for example, several pumps).
 - The colour comes from a fixed palette of predefined colours. The user cannot pick any other colour.
 - For a type, the user picks one icon in the list, then one colour in the palette.

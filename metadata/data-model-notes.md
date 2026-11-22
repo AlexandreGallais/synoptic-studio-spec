@@ -521,6 +521,17 @@ An idea of the Product Owner, said on 2026-11-22 as a note, not a decision ("ça
 - The Product Owner first hesitated on where the expression is kept ("qui ne serait pas du tout dans les fichiers de config, ou je ne sais pas quoi"), then said the settings file: assistant's reading, to confirm.
 - Open: whether the software ships a format or none, since the Product Owner wanted no rule on how an ID is written (2026-11-17, [whole draft](draft.md#flags)); a message only or the `id` refused; one expression per entity (type, signal, enum, designation…) or shared ones; which configuration folder holds the settings file ([Files](files.md#the-two-configuration-folders)).
 
+## Settled on 2026-11-22 (icon sets)
+
+Said by the Product Owner on 2026-11-22 ("c'est un peu comme les couleurs [...] des fichiers d'icônes différentes [...] ça, c'est des icônes carbone, ça, c'est des icônes Microsoft [...] ça permettra de surcharger les icônes du logiciel"). Decision 0073 records it: it replaces the rule of the draft by which the icons are one list shipped with the program, which the user cannot add to.
+
+- **The icons are kept in icon sets, one set per file**, as the colors in their palettes: a set gathers icons of one style or one origin (Carbon's, Microsoft's…), and is added or removed with its file.
+- **`ICON_SET`** (the name left to the assistant: "il va falloir que tu trouves un nom"): "icon set" is the usual word for such a set; "library" is kept for the symbols, and "pack" says less. Its `name` is unique, since it names the file (`carbon.icon-set.json`).
+- **Two entity files** (the Product Owner's request): [Icon](entities/06-icon.md), its box and its schema only, kept inside its set; [Icon set](entities/07-icon-set.md), its box, its schema and the schema of its file.
+- **The user's sets go in their configuration folder**; a user's set of the same file name replaces the software's (decision 0071): that is how the icons the software ships are overridden. Assistant's reading of "surcharger les icônes du logiciel", to confirm.
+- **The `name` of an icon is required and unique in its set**: assistant's choice, to confirm; it is what the hover shows and what the list is searched by.
+- Open: what a type shows when the set of its icon is removed (a copy of the drawing, as `color_value` for the color, or the default icon); what the SVG of an icon may hold; whether a set says its origin and its licence.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -538,6 +549,6 @@ An idea of the Product Owner, said on 2026-11-22 as a note, not a decision ("ça
 - `SIGNAL_FIELD` starts with its signal, then `access`: the assistant's reading of the order of the keys, to confirm.
 - The quantity, shown in the JSON without `"format_version"`: is the catalogue of quantities one file with one `format_version` at its top, or one file per quantity? It ships with the software (never copied into the user's files), so its form may be the program's own: assistant's reading.
 - The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `UNIT_SYSTEM`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated.
-- Is the `name` of a preset, a quantity, a unit or an icon unique in its list? (A palette's is: settled on 2026-11-22.) To say on each entity file (research T5, open question 3).
+- Is the `name` of a preset, a quantity or a unit unique in its list? (A palette's and an icon set's are: settled on 2026-11-22; an icon's, unique in its set, is the assistant's choice to confirm.) To say on each entity file (research T5, open question 3).
 - What the screens show for a color without a name (its value, for example): to write with the screens of the palette (decision 0066).
 - `UNIT.symbol` and the symbol of Synoptic Studio (the drawing placed) share a word: a glossary should say both meanings (research T5, 3.8).

@@ -38,3 +38,5 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 | [Palette](03-palette.md) | A set of colors: the only colors a type can pick. | Draft |
 | [Enum item](04-enum-item.md) | One value of an enum: the number the model receives and the name people read. | Draft |
 | [Enum](05-enum.md) | A named list of items, picked by a signal whose value is an enum. | Draft |
+| [Icon](06-icon.md) | One drawing of an icon set, picked for the appearance of a type. | Draft |
+| [Icon set](07-icon-set.md) | A set of icons of one style or one origin: the icons a type can pick. | Draft |

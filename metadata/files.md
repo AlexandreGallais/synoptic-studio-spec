@@ -50,7 +50,7 @@ The rules every file of Metadata follows. An [entity file](entities/README.md) g
 
 ## The two configuration folders
 
-- **The configuration files, such as the palettes, are kept in two folders**: the software's and the user's. The software reads both, and offers what it finds in both.
+- **The configuration files, such as the palettes and the icon sets, are kept in two folders**: the software's and the user's. The software reads both, and offers what it finds in both.
 - **The software's folder** holds what Synoptic Studio ships. The user may change its files by hand; a file they break is read like any file with errors.
 - **The user's folder** holds what the user adds; they do with it what they want.
 - **The same file name in both folders: the user's file is offered**, the software's is not (decision 0071). The user replaces a file of the software without touching the software's folder.
@@ -69,7 +69,7 @@ To come: one global JSON Schema will hold the types every entity shares, and the
 
 - JSON files rather than a database: a leaning of the Product Owner, not settled.
 - The catalogue of quantities: one file with one `format_version` at its top, or one file per quantity.
-- Which files are configuration files, in the two folders, beside the palettes: the icons, the catalogue of quantities, others? Left for later by the Product Owner (2026-11-22: "on verra ça après").
+- Which files are configuration files, in the two folders, beside the palettes and the icon sets: the catalogue of quantities, others? Left for later by the Product Owner (2026-11-22: "on verra ça après").
 - The same `internal_id` under two different file names, in the software's folder and in the user's: which one is offered?
 - **The format of the `id`s, an idea of the Product Owner (2026-11-22), not settled**: a settings page where the user chooses the format each kind of `id` must follow, as a regular expression kept in the settings configuration file; the software tells when an `id` typed does not follow it, and the user writes their own expressions in that file. Open: whether a format is set by default or none (the rule of 2026-11-17 says no rule on how an ID is written); a message only, or the `id` refused; one format per entity or shared ones. See [Data model notes](data-model-notes.md#noted-on-2026-11-22-format-of-the-ids-idea).
 - The other open questions on files stay in the [whole draft](draft.md#files).
