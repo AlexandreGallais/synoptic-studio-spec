@@ -66,8 +66,8 @@ Every interactive component is prototyped in its component set: `hover` while th
 | `drag-handle` | — | `dragging` | Every ordered table |
 | `label` | `required=false, true` | — | Every field outside a table |
 | `tooltip` | `placement=top, right, bottom, left` | — | Every icon alone |
-| `scrollbar` | a thumb of `border-strong`, 4 wide, `radius` 2, no track, no arrows | — | Every list that reaches its highest size |
-| `colour-swatch` | `size=sm, md` | `selected`; `hover`: a 2 px `border-strong` line and `shadow-raised`, to be seen (Product Owner, 2026-11-22: "il se voit presque pas") | MD-02.6 |
+| `scrollbar` | `direction=vertical, horizontal` (Product Owner, 2026-11-22: "t'as pas fait la scroll bar horizontale"); a thumb of `border-strong`, 4 thick, `radius` 2, no track, no arrows; its length is set on the instance | — | Every list that reaches its highest size; a table wider than its panel |
+| `colour-swatch` | `size=sm, md` | `hover`: a 2 px `border-strong` line (grey) and `shadow-raised`, to be seen (Product Owner, 2026-11-22: "il se voit presque pas"); `selected`: a 2 px `text-primary` line (near black), no shadow, so it never looks like the hover (Product Owner, 2026-11-22: "le selected et le over [...] je vois exactement les mêmes couleurs") | MD-02.6 |
 | `divider` | `direction=horizontal, vertical` | — | Rail, panels |
 | `column-header` | — (text `label`; its width is the width of its column) | — | The head of every column of a `data-table-header` |
 

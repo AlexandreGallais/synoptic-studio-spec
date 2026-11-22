@@ -85,7 +85,7 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Atoms | `column-header` | `664:6368` |
 | Atoms | `toggle-button` | `684:2199` |
 | Atoms | `table/toggle-button` | `701:20082` (the table, in the section `Actions`) |
-| Atoms | `scrollbar` | `706:717`, in its table `706:719` (section `Support`) |
+| Atoms | `scrollbar` | `713:5` (`direction=vertical` `706:717`, `direction=horizontal` `713:3`), in its table `706:719` (section `Support`) |
 | Atoms | `playground/atoms` | `643:2164` |
 | Molecules | `field` | `637:53` |
 | Molecules | `menu-item` | `637:102` |
