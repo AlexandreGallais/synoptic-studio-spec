@@ -108,7 +108,7 @@ Decided by the Product Owner on 2026-11-16, while reviewing the wireframes. It r
 - A click on the button opens a **warning message** that asks to confirm. Nothing is deleted before the user confirms. So deleting is never "aussi simple que ça".
 - The same warning everywhere, for a type as for a line.
 - The application keeps no versions: what is deleted is taken back only with Git, on the JSON files (decision 0053; see [Always editable, no versions](../metadata/draft.md#always-editable-no-versions)).
-- **The warning never says what the delete breaks** (Product Owner, 2026-11-17: "c'est à la personne de savoir qu'elle supprime quelque chose et qu'il faut faire attention [...] sinon ça va le dire tout le temps et ça ne sert à rien"). What is broken is listed in the symbol mode and in the synoptic mode (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#when-metadata-changes)). The wording of the warning itself: to settle.
+- **The warning never says what the delete breaks** (Product Owner, 2026-11-17: "c'est à la personne de savoir qu'elle supprime quelque chose et qu'il faut faire attention [...] sinon ça va le dire tout le temps et ça ne sert à rien"). What is broken is listed in the symbol mode and in the synoptic mode (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#when-metadata-changes)). The wording of the warning for a type: [MD-02.8](metadata.md#md-02--general); for the other deletes: to settle.
 
 ```mermaid
 flowchart LR

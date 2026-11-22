@@ -113,13 +113,12 @@ mindmap
 | MD-02.5 | Icon | List of icons | One icon of the predefined SVG list. No import. Validated (2026-11-16). | Decided | [Icons](../metadata/draft.md#type-icons) |
 | MD-02.6 | Colour | Colour (palette only) | One colour of a fixed palette; no free colour. Validated (2026-11-16). | Decided | [Icons](../metadata/draft.md#type-icons) |
 | MD-02.7 | Reset icon, reset colour | Button (icon) | Shown when the type overrides its parent's choice; makes it follow the parent again. An icon, no text label (2026-11-16). | Decided | [Icons](../metadata/draft.md#type-icons) |
-| MD-02.8 | Delete the type | Button, then a warning (dialog) | In General (2026-11-16): the only way to delete a type. A click opens a warning that asks to confirm. Refused while the type has sub-types: they are deleted first (decision 0082). | Decided | [Types](../metadata/draft.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
+| MD-02.8 | Delete the type | Button, then a warning (dialog) | In General (2026-11-16): the only way to delete a type. A click opens a warning that asks to confirm. Refused while the type has sub-types: they are deleted first (decision 0082). The warning says "Delete centrifugal_pump?" (the ID of the type), then "The type is deleted at once. Only Git can bring it back." (Product Owner, 2026-11-22). | Decided | [Types](../metadata/draft.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
 
 Gaps:
 
 - Which icons for Reset (to choose with the design system).
 - The palette and the icons may take several lines: where the reset buttons go then.
-- The wording of the warning.
 - How the refused delete of a type with sub-types shows: open in [Checks and errors](../metadata/checks-and-errors.md#open-questions).
 
 ## MD-03 · Documentation
@@ -228,7 +227,7 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | MD-04.1 | Table of signals | Table | One line per signal, one column per field; takes as much room as possible. Own and inherited signals (2026-11-16). | Decided | [Signals](../metadata/draft.md#the-table-of-signals) |
 | MD-04.2 | Enum on a signal line | — | The line shows the enum's name. No bubble listing its items when the mouse rests on the name (2026-11-17). | Decided | [Signals](../metadata/draft.md#the-table-of-signals) |
-| MD-04.3 | Inherited signals | Lines of the table | First, read only: the signals of the first parent at the top of the tree, then of the next parent, then the type's own (2026-11-16). Edited in the type that declares them. Their look (greyed, with the parent's name) is not said. | Decided (order), Open (look) | [Signals](../metadata/draft.md#the-table-of-signals) |
+| MD-04.3 | Inherited signals | Lines of the table | First, read only: the signals of the first parent at the top of the tree, then of the next parent, then the type's own (2026-11-16). Edited in the type that declares them. Drawn read only, with no handle nor delete; the line never names its parent, which the tree already shows (Product Owner, 2026-11-22). | Decided | [Signals](../metadata/draft.md#the-table-of-signals) |
 | MD-04.4 | Add a signal | Button (+), small icon | On the right of the title "Signals", above the table (2026-11-16). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
 | MD-04.5 | Edit, Save | — | Removed (2026-11-16): the table is always editable. | Decided | [Always editable](../metadata/draft.md#always-editable-no-versions) |
 | MD-04.5b | Colour of a line | — | Removed (2026-11-22): no background per direction, the icon of the column Direction tells an input from an output, both icons in the same colour. Replaces one colour per direction (2026-11-16). | Decided | [Signals](../metadata/draft.md#the-table-of-signals) |

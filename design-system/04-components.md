@@ -28,7 +28,7 @@ flowchart LR
 | `focus` | Reached with the keyboard: the double focus line (`focus-ring`, or `focus-ring-inset` on a line), on the hover background when the component has none. |
 | `disabled` | Cannot be used. |
 
-A line of a list, a tree or a table (`tree-row`, `list-row`, `part-item`, `menu-item`, `data-table-row`) has rounded corners, `radius-sm`, like every control (Product Owner, 2026-11-22: "si on met un border radius, j'aimerais bien qu'il soit partout"). Its list (`tree`, `part-list`, `list-panel`, `data-table`) leaves `spacing-03` on each side and `spacing-01` between lines, so a line in `hover` or `selected` never touches the edges.
+A line of a list, a tree or a table (`tree-row`, `list-row`, `part-item`, `menu-item`, `data-table-row`) has rounded corners, `radius-sm`, like every control (Product Owner, 2026-11-22: "si on met un border radius, j'aimerais bien qu'il soit partout"). Its list (`tree`, `part-list`, `list-panel`, `data-table`) leaves `spacing-03` on each side and `spacing-01` between lines, so a line in `hover` or `selected` never touches the edges. A line has no line under it: a stroke on a rounded shape thins at its corners; lines are told apart by the `spacing-01` between them, and only the header of a table keeps a straight line under it.
 
 The tables below add the states each component needs on top of these. A field (`text-input`, `number-input`, `text-area`) has no `pressed`: a click puts it in `focus`.
 
@@ -92,7 +92,7 @@ Every interactive component is prototyped in its component set: `hover` while th
 | `part-list` | `part-item` × n | — | one part `selected` | MD-01.5 |
 | `data-table` | `list-title` + `data-table-header` + `data-table-row` × n (`drag-handle`, inputs, cell molecules, delete) | — | table `empty` | MD-03.5, MD-04, MD-05, MD-07.7, MD-08.7, MD-09.5, MD-12, MD-13 |
 | `data-table-header` | the room of the handle, the slot `columns` of `column-header`, the room of the delete button | — | — | Every data-table |
-| `data-table-row` | `drag-handle`, the slot `cells`, the delete `icon-button`; its default cells are the columns of Signals | `kind=default, inherited, error`; no background per direction (Product Owner, 2026-11-22: the direction is told by its icon only) | `hover`, `selected`; `inherited`: read only, no handle nor delete | Every data-table |
+| `data-table-row` | `drag-handle`, the slot `cells`, the delete `icon-button`; its default cells are the columns of Signals | `kind=default, inherited, error`; no background per direction (Product Owner, 2026-11-22: the direction is told by its icon only) | `hover`; `dragging` (held by its handle: `layer-selected` and `shadow-raised`), own lines only; no `selected`, a line of a table is never selected; `inherited`: read only, no handle nor delete, nothing that tells its parent (Product Owner, 2026-11-22: the tree already shows it) | Every data-table |
 | `list-panel` | `list-title` + `list-row` × n | — | `empty` | MD-07.1, MD-08.1, MD-09.1 |
 | `dialog` | `heading` + text + `button` × 2 | `kind=warning, danger` | — | Every delete |
 | `formatting-toolbar` | `toolbar-group` × n + `segmented-control` + full-page `icon-button` | `mode=visual, markdown` | — | MD-03.4d |

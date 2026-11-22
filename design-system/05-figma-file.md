@@ -63,7 +63,7 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Page | Component | Id |
 | --- | --- | --- |
 | Foundations | specimen board | `630:203` |
-| Icons | 44 icons `icon/<name>`, in the section `Icons` | `656:7343` |
+| Icons | 46 icons `icon/<name>`, in the section `Icons`; `folder-add` (`673:13125`) and `link-add` (`673:13131`) since 2026-11-22 | `656:7343` |
 | Atoms | `button` | `632:209` |
 | Atoms | `icon-button` | `633:98` |
 | Atoms | `checkbox` | `633:144` |
@@ -115,7 +115,7 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Templates | `template/editor` | `657:2` |
 | Templates | `example/editor`, an instance of the template with its slots filled | `657:155` |
 
-`data-table-row` holds its cells in the slot `cells`, and `data-table-header` its column headers in the slot `columns`: a screen puts in them the columns of its table, each cell as wide as its `column-header`. Their default content is the columns of Signals. `quantity-cell` and `direction-cell` are deprecated: their description says what replaces them.
+`data-table-row` holds its cells in the slot `cells`, and `data-table-header` its column headers in the slot `columns`: a screen puts in them the columns of its table, each cell as wide as its `column-header`. Their default content is the columns of Signals. `quantity-cell` and `direction-cell` are deprecated: their description says what replaces them. `data-table-row` has no line under it and its states are `default`, `hover` and `dragging` (no `dragging` for `kind=inherited`); in the prototype, pressing a line in `hover` shows it `dragging`.
 
 An instance nested in another one keeps the size of its main component: in a screen, a column gets its width only as the content of a slot. After a script fills a slot, Figma may draw a cell that fills its line at its old width: setting it to a fixed width, then back to fill, draws it right.
 

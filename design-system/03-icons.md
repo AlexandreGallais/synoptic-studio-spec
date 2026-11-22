@@ -31,8 +31,9 @@ Status: first draft, written by the assistant on 2026-11-22 from the screens of 
 | `delete` | Delete a line, a type | MD-02.8, MD-03.10, MD-04.13 and every table |
 | `drag-handle` | The handle of a line | MD-03.11, MD-04.14 and every ordered table |
 | `reset` | Follow the parent's icon or colour again | MD-02.7 |
-| `folder` | A path link | MD-03.6, MD-03.9 |
-| `link` | A URL link | MD-03.7, MD-03.9 |
+| `folder` | A path link | MD-03.9 |
+| `link` | A URL link | MD-03.9 |
+| `folder-add`, `link-add` | Add a path, add a URL: the icon with a small + at its bottom right | MD-03.6, MD-03.7 |
 | `full-page`, `exit-full-page` | The description on the whole editing part | MD-03.4c |
 | `bold`, `italic`, `heading`, `list-bulleted`, `list-numbered`, `table`, `code`, `quote` | The formatting tool bar (content proposed) | MD-03.4d |
 | `signal-input`, `signal-output` | The direction of a signal | MD-04.12, MD-07.9 |
