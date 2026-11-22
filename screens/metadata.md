@@ -402,7 +402,7 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-07.1 | List of presets | List | At least one is needed to use the type in a symbol; none is created automatically. | Decided | [Presets](../metadata/draft.md#presets-and-their-faceplate) |
+| MD-07.1 | List of presets | List | At least one is needed to use the type in a symbol; none is created automatically, except for a new sub-type, which starts with a copy of each preset of its parent (2026-11-22, decision 0080). | Decided | [Presets](../metadata/draft.md#presets-and-their-faceplate), [Inheritance of types](../metadata/inheritance.md#what-a-sub-type-inherits) |
 | MD-07.2 | Create a preset | Button (+), small icon | On the right of the title "Presets" of the list; the page has no big title (2026-11-16). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
 | MD-07.2b | Switch of the modes | Switch (two buttons) | At the top of the right side, above the name of the preset: **Values** or **Faceplate** (2026-11-16; labels confirmed at the end of the day). | Decided | [Presets](../metadata/draft.md#two-modes-chosen-by-a-switch) |
 | MD-07.3 | Name of the preset | Text field | A preset has a name (2026-11-16). Under the switch, the same in both modes. | Decided | [Presets](../metadata/draft.md#presets-and-their-faceplate) |

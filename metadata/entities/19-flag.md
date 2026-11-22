@@ -35,7 +35,7 @@ erDiagram
       "readOnly": true
     },
     "id": {
-      "description": "The key written in the configuration files when the flag is on; unique among the flags of its type and of the types it inherits from.",
+      "description": "The key written in the configuration files when the flag is on; unique along its branch: among the flags of its type, of its parents and of its sub-types.",
       "type": "string",
       "minLength": 1,
       "examples": ["under_maintenance"]

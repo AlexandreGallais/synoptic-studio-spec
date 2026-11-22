@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A command button is a button of the faceplate that sends one [command](18-command.md) of the type when a person clicks it. It is kept inside its [faceplate element](28-faceplate-element.md), which has one when its kind is command; it has no `internal_id`, since nothing points to it.
+A command button is a button of the faceplate that sends one [command](18-command.md) of the type when a person clicks it. It is kept inside its [faceplate element](28-faceplate-element.md), which has one when its kind is command; it has no `internal_id`, since nothing points to it. A command removed from the type, or from one of its parents, removes the faceplate elements whose button sends it.
 
 ## The entity
 

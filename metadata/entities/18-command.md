@@ -46,7 +46,7 @@ erDiagram
       "enum": ["set_input_signal", "trigger", "override_output_signal"]
     },
     "id": {
-      "description": "The name of the command for the model; unique among the commands of its type and of the types it inherits from.",
+      "description": "The name of the command for the model; unique along its branch: among the commands of its type, of its parents and of its sub-types.",
       "type": "string",
       "minLength": 1,
       "examples": ["start"]

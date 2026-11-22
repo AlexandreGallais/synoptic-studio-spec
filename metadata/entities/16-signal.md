@@ -41,7 +41,7 @@ erDiagram
       "enum": ["input", "output"]
     },
     "id": {
-      "description": "The name of the signal for the model; unique among the signals of its type and of the types it inherits from.",
+      "description": "The name of the signal for the model; unique along its branch: among the signals of its type, of its parents and of its sub-types.",
       "type": "string",
       "minLength": 1,
       "examples": ["speed_setpoint"]

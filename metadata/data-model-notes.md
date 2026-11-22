@@ -712,6 +712,12 @@ Second questionnaire, same day:
 - **The glossary is the one of the whole specification** ("Toute la spec"): moved to [`overview/glossary.md`](../overview/glossary.md), Metadata's words under a heading of their own; each part adds its words when it is written again.
 - **The next document is the inheritance of types** ("Héritage des types"): [Inheritance of types](inheritance.md), a topic that gathers the rules already written (decisions 0003, 0013, 0033, 0047, 0079, the draft, the entity files) and decides nothing new. It leaves five questions open there: the presets and the documentation of a sub-type, an `id` taken twice when a parent receives a line, a command removed from a parent, a bound or a command target whose inherited signal is removed.
 
+Third questionnaire, same day (decision 0080), each time the advised option:
+
+- **A new sub-type starts with a copy of each preset of its parent** ("Copiés à la création"), with its preset values and its faceplate elements; the copy then lives alone, with no virtual link. A root type still starts with none. This changes the rule of the draft by which no preset is created automatically, and screen MD-07.1. Written in [Inheritance of types](inheritance.md) and [Preset](entities/29-preset.md).
+- **A line added to a parent is refused when a sub-type already has its `id` as its own line** ("Ajout refusé"): the `id` of a signal, a command or a flag is unique along the branch, sub-types included. Written in [Signal](entities/16-signal.md), [Command](entities/18-command.md) and [Flag](entities/19-flag.md). The same for a line renamed in a parent: assistant's reading, left open in [Inheritance of types](inheritance.md#open-questions).
+- **A command removed removes the faceplate elements that send it** ("Retirés aussi"), in every preset of the type and of its sub-types, as for a signal (decision 0079). Written in [Preset](entities/29-preset.md) and [Command button](entities/26-command-button.md).
+
 ## Writing rules of the entity files (to become a skill)
 
 Moved here from [Entities](entities/README.md) on 2026-11-22 at the Product Owner's request ("c'est plutôt un skill [...] on fait pas une spec de spec"): how the specification is written is not the specification. These rules wait here until they become the skill `write-a-metadata-entity-file` (see [Settled on 2026-11-22 (documentation plan)](#settled-on-2026-11-22-documentation-plan)); they were brought up to date when moved.

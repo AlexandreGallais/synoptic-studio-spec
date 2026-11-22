@@ -11,7 +11,7 @@ Each word of Synoptic Studio, its one meaning, the name it has in the files, and
 | Word | Meaning | In the files | Not to use |
 | --- | --- | --- | --- |
 | **Type** | What a symbol represents, at one level of detail: a pump, a centrifugal pump. Types form a tree. | `TYPE`, `<id>.type.json` | Template: the word of AutomationML for a type (T2, 3.12). Type Lib: removed on 2026-11-16. |
-| **Parent**, **sub-type** | The type a type inherits from, set when it is created and never changed; a sub-type inherits the signals, the commands, the flags and the appearance of its parents (see [Inheritance of types](../metadata/inheritance.md)). | `TYPE.parent` | — |
+| **Parent**, **sub-type** | The type a type inherits from, set when it is created and never changed; a sub-type inherits the signals, the commands, the flags and the appearance of its parents, and starts with a copy of their presets (see [Inheritance of types](../metadata/inheritance.md)). | `TYPE.parent` | — |
 | **Signal** | A value that goes between the front and the model, as an input or an output. | `SIGNAL` | Property: a metadata in OPC UA, a visual attribute on the front. Variable: too general (FMI). Tag: a controller address, a data point in supervision (T2, 3.12; T5). |
 | **Input**, **output** | The direction of a signal: the model receives an input, and sends an output. | `SIGNAL.direction`: `input`, `output` | — |
 | **Command** | What the front sends with one click: a fixed value to an input, an override of an output, or a trigger. | `COMMAND` | Control: an element of an interface; in French, « contrôle » means a check (T2, 3.12). |

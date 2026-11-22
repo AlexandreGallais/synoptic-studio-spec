@@ -1103,7 +1103,7 @@ Decided by the Product Owner on 2026-11-16: "Faceplate et preset, il faut fusion
 
 #### A type needs a preset
 
-- A type needs at least one preset to be chosen in a symbol or a synoptic. No preset is created automatically. If no preset fits, the user creates one in Metadata.
+- A type needs at least one preset to be chosen in a symbol or a synoptic. No preset is created automatically, except for a new sub-type, which starts with a copy of each preset of its parent, then lives alone (Product Owner, 2026-11-22; decision 0080; see [Inheritance of types](inheritance.md)). If no preset fits, the user creates one in Metadata.
 - The list of presets is on the left. Its title is **"Presets"**, with a small **+ on its right** that creates a preset (Product Owner, 2026-11-16: "Preset, ça ne doit pas être le titre de toute la page. Tu dois juste mettre Preset comme titre de la liste et avoir un petit + à droite"; see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)). The page has no big title above.
 - The selected preset is on the right: the switch of the two modes **at the top**, where the page title was ("ça te permettra de remonter le truc Values / Faceplate"), then its name, then the mode chosen.
 - A preset has a name, which tells two presets of a type apart (Product Owner, 2026-11-16). Its field sits under the switch of the two modes, and stays the same in both.
