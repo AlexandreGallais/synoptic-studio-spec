@@ -41,7 +41,7 @@ erDiagram
       "examples": ["centrifugal-pump"]
     },
     "drawing": {
-      "description": "The whole SVG of the icon, from <svg> to </svg>.",
+      "description": "The whole SVG of the icon, from <svg> to </svg>: an ordinary SVG, which may have a viewBox. Drawn with fills only, never strokes, even its thin lines: the color of the type goes on the fills.",
       "type": "string",
       "minLength": 1
     }
@@ -51,4 +51,5 @@ erDiagram
 
 ## Open questions
 
-- What the SVG of an icon may hold: its size and `viewBox`, and how the color of the type is put on the drawing (a type shows its icon in its color).
+- How the color of the type reaches the fills: the software puts it on every fill of the drawing, or the drawing says where with `currentColor`.
+- What the software does with an icon drawn with a stroke.

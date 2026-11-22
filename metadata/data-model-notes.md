@@ -531,7 +531,9 @@ Said by the Product Owner on 2026-11-22 ("c'est un peu comme les couleurs [...] 
 - **The user's sets go in their configuration folder**; a user's set of the same file name replaces the software's (decision 0071): that is how the icons the software ships are overridden (Product Owner, answering the questionnaire the same day). Only whole sets are replaced: neither one icon of a set nor the icons of the software's own interface.
 - **A type keeps the icon it picked, even when its icon set is removed** (Product Owner, answering the questionnaire the same day), as for its color: `APPEARANCE` holds `icon`, the FK to the icon picked in a set, and `icon_drawing`, a copy of its SVG, refreshed while the set exists. Both are `null` when the type has no icon of its own (assistant's reading, as for the color).
 - **The `name` of an icon is optional, and two icons of a set may share it** (Product Owner, answering the questionnaire the same day), as for a color: the key is always written, `null` when empty. What the hover and the search show for an icon without a name is left to the screens.
-- Open: what the SVG of an icon may hold; whether a set says its origin and its licence.
+- **The drawing of an icon is an ordinary SVG**, which may have a `viewBox` (Product Owner, same day: "c'est un SVG normal").
+- **An icon is drawn with fills only, never strokes**, even its thin lines (Product Owner: "même si c'est des bords fins [...] faut que ce soit du fil, et puis basta"): the color of the type goes on the fills.
+- Open: how the color of the type reaches the fills, the software putting it on every fill or the drawing saying where with `currentColor` (Product Owner: "j'en ai aucune idée"); what the software does with an icon drawn with a stroke; whether a set says its origin and its licence.
 
 ## Not in the schema yet
 
