@@ -663,7 +663,7 @@ Decided by the Product Owner on 2026-11-16: "il n'y a pas d'édition possible. T
 - The aim is the whole catalogue at once: every unit that can be imagined is in it from the first launch (Product Owner: "toutes les unités possibles, imaginables, on peut viser juste pour toutes les mettre à l'intérieur instantanément").
 - **The Units page is read only.** The user browses the quantities, families and units and reads their conversions; there is no + button, no field to change, nothing to delete. It replaces the rule of 2026-11-11 by which the user could add and change quantities, families and units.
 - The catalogue is kept in **files of the software itself**, delivered with the application. Synoptic Studio is open source: when a unit or a quantity is missing, a contributor adds it to these files, and it comes to everyone with the next version of the software (Product Owner: "s'il manque des unités, des quantités, il faudrait pouvoir venir les rajouter").
-- The format of these files and the repository that holds them are chosen with the architecture, not in these specs (left open by decision 0020).
+- Each quantity is one file of the catalogue, `<name>.quantity.json`, described in [Quantity](entities/14-quantity.md) (Product Owner, 2026-11-22). The repository that holds them is chosen with the architecture.
 
 ```mermaid
 flowchart LR

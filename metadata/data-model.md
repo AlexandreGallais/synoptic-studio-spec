@@ -11,7 +11,7 @@ Colour of a box's title: orange, the entity has its own page in [Entities](entit
 ```mermaid
 ---
 config:
-  themeCSS: "[id*='entity-DESIGNATION-'] .outer-path path, [id*='entity-PALETTE-'] .outer-path path, [id*='entity-COLOR-'] .outer-path path, [id*='entity-ENUM-'] .outer-path path, [id*='entity-ENUM_ITEM-'] .outer-path path, [id*='entity-ICON-'] .outer-path path, [id*='entity-ICON_SET-'] .outer-path path, [id*='entity-FLAG-'] .outer-path path, [id*='entity-LINK-'] .outer-path path, [id*='entity-DOCUMENTATION-'] .outer-path path { fill: #f8b26a !important; }"
+  themeCSS: "[id*='entity-DESIGNATION-'] .outer-path path, [id*='entity-PALETTE-'] .outer-path path, [id*='entity-COLOR-'] .outer-path path, [id*='entity-ENUM-'] .outer-path path, [id*='entity-ENUM_ITEM-'] .outer-path path, [id*='entity-ICON-'] .outer-path path, [id*='entity-ICON_SET-'] .outer-path path, [id*='entity-FLAG-'] .outer-path path, [id*='entity-LINK-'] .outer-path path, [id*='entity-DOCUMENTATION-'] .outer-path path, [id*='entity-QUANTITY-'] .outer-path path, [id*='entity-UNIT_SYSTEM-'] .outer-path path, [id*='entity-UNIT-'] .outer-path path, [id*='entity-CONVERSION-'] .outer-path path { fill: #f8b26a !important; }"
 ---
 erDiagram
     TYPE {
@@ -500,50 +500,53 @@ erDiagram
 }
 ```
 
-### A quantity of the catalogue
+### A quantity
 
 ```json
 {
-  "internal_id": "01a1f800-0000-7000-8000-000000000910",
-  "default_unit": "01a1f800-0000-7000-8000-000000000911",
-  "name": "temperature",
-  "offers_relative_quantity": true,
-  "unit_systems": [
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000915",
-      "name": "metric",
-      "units": [
-        {
-          "internal_id": "01a1f800-0000-7000-8000-000000000911",
-          "name": "kelvin",
-          "symbol": "K"
-        },
-        {
-          "internal_id": "01a1f800-0000-7000-8000-000000000912",
-          "name": "degree Celsius",
-          "symbol": "°C",
-          "conversion": {
-            "to_default": "x + 273.15",
-            "from_default": "x - 273.15"
+  "format_version": 1,
+  "quantity": {
+    "internal_id": "01a1f800-0000-7000-8000-000000000910",
+    "default_unit": "01a1f800-0000-7000-8000-000000000911",
+    "name": "temperature",
+    "offers_relative_quantity": true,
+    "unit_systems": [
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000915",
+        "name": "metric",
+        "units": [
+          {
+            "internal_id": "01a1f800-0000-7000-8000-000000000911",
+            "name": "kelvin",
+            "symbol": "K"
+          },
+          {
+            "internal_id": "01a1f800-0000-7000-8000-000000000912",
+            "name": "degree Celsius",
+            "symbol": "°C",
+            "conversion": {
+              "to_default": "x + 273.15",
+              "from_default": "x - 273.15"
+            }
           }
-        }
-      ]
-    },
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000916",
-      "name": "imperial",
-      "units": [
-        {
-          "internal_id": "01a1f800-0000-7000-8000-000000000913",
-          "name": "degree Fahrenheit",
-          "symbol": "°F",
-          "conversion": {
-            "to_default": "(x + 459.67) * 5 / 9",
-            "from_default": "x * 9 / 5 - 459.67"
+        ]
+      },
+      {
+        "internal_id": "01a1f800-0000-7000-8000-000000000916",
+        "name": "imperial",
+        "units": [
+          {
+            "internal_id": "01a1f800-0000-7000-8000-000000000913",
+            "name": "degree Fahrenheit",
+            "symbol": "°F",
+            "conversion": {
+              "to_default": "(x + 459.67) * 5 / 9",
+              "from_default": "x * 9 / 5 - 459.67"
+            }
           }
-        }
-      ]
-    }
-  ]
+        ]
+      }
+    ]
+  }
 }
 ```

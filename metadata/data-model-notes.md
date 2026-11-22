@@ -553,22 +553,32 @@ Said by the Product Owner on 2026-11-22, answering the questionnaire ("Facultati
 - **The description of a link is optional**: without it, only the path or the URL is shown. Written in [the Link entity](entities/09-link.md) and in the [whole draft](draft.md#the-links).
 - **The description of the documentation of a type is optional**: a new type has none. Written in [Documentation](entities/10-documentation.md) and in the [whole draft](draft.md#the-description).
 
+## Settled on 2026-11-22 (one file per quantity)
+
+Said by the Product Owner on 2026-11-22 ("on va avoir un fichier par quantité [...] ça, ça contient tout ça"), who left the rest to the assistant ("à toi de gérer").
+
+- **Each quantity is one file, `<name>.quantity.json`**, which holds the whole quantity: its unit systems, their units and the conversion of each unit. It answers the open question of the format key and of [Files](files.md#open-questions).
+- **Four entity files**: [Conversion](entities/11-conversion.md), [Unit](entities/12-unit.md) and [Unit system](entities/13-unit-system.md), kept inside the quantity's file; [Quantity](entities/14-quantity.md), with the schema of its file. The example of the [Data model](data-model.md) now shows the whole file.
+- **The `name` of a quantity is unique**, since it names its file, by the rule of [Files](files.md#the-name-of-a-file). Assistant's reading of that rule; the `name` of a unit system and of a unit stays open on their files.
+- **`offers_relative_quantity` is `false` unless set** (assistant's reading): most quantities only multiply.
+- **A unit's `symbol` is required for now** (assistant's reading); whether a unit may have none, such as the unit 1 of a count, is an open question of [Unit](entities/12-unit.md).
+- Which configuration folder holds the quantity files stays open in [Files](files.md#open-questions).
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
 
 ## Open
 
-- The default unit is also the model unit while the model unit stays in the catalogue (decision 0024 leans that way). If it moves to a configuration of the project, the default unit stays the unit the formulas are written against, and the model unit becomes a field of its own.
-- The symbol of a unit for a difference: the same (`°C`) or marked (`Δ°C`)?
+- The default unit and the model unit (decision 0024): open in [Quantity](entities/14-quantity.md#open-questions).
+- The symbol of a unit for a difference, and a unit without a symbol: open in [Unit](entities/12-unit.md#open-questions).
 - An integer signal shown in another unit than its default unit: a number typed there may not give a whole number in the default unit (24.17 rps is 1450.2 rpm). Rounded to the nearest whole number, or refused?
 - The names of the two quantities added for numbers that measure nothing physical: "ratio" and "count" for now.
 - The default number of decimals of a preset: 2 or 3 (Product Owner, 2026-11-19: "qui serait de 2 ou de 3"), and whether it is fixed by the software or set for the project.
-- The syntax of the expressions (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
+- The syntax of the expressions: open in [Conversion](entities/11-conversion.md#open-questions).
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
 - The two texts of a boolean, in the preset: required, or "true" and "false" when empty (assistant's reading)? Never in the configuration files sent with the model, since they are display only (assistant's reading, since decision 0058)?
 - `SIGNAL_FIELD` starts with its signal, then `access`: the assistant's reading of the order of the keys, to confirm.
-- The quantity, shown in the JSON without `"format_version"`: is the catalogue of quantities one file with one `format_version` at its top, or one file per quantity? It ships with the software (never copied into the user's files), so its form may be the program's own: assistant's reading.
 - The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `UNIT_SYSTEM`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated.
-- Is the `name` of a preset, a quantity or a unit unique in its list? (A palette's and an icon set's are; a color's and an icon's are optional and may be shared: settled on 2026-11-22.) To say on each entity file (research T5, open question 3).
+- Is the `name` of a preset, a unit system or a unit unique in its list? (A palette's, an icon set's and a quantity's are; a color's and an icon's are optional and may be shared: settled on 2026-11-22.) To say on each entity file (research T5, open question 3).
 - `UNIT.symbol` and the symbol of Synoptic Studio (the drawing placed) share a word: a glossary should say both meanings (research T5, 3.8).

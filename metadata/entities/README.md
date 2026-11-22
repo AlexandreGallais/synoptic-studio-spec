@@ -43,3 +43,7 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 | [Flag](08-flag.md) | A key each placed symbol of a type has on or off, written in the configuration files for a program outside. | Draft |
 | [Link entity](09-link.md) | A path to a file or a folder, or a URL, in the documentation of a type. | Draft |
 | [Documentation](10-documentation.md) | What explains a type to people: a description in Markdown and links. | Draft |
+| [Conversion](11-conversion.md) | The two formulas that turn a value of a unit into the default unit of its quantity, and back. | Draft |
+| [Unit](12-unit.md) | One way to count a quantity, with its name, its symbol and its conversion. | Draft |
+| [Unit system](13-unit-system.md) | The units of a quantity that belong to one system, such as metric or imperial. | Draft |
+| [Quantity](14-quantity.md) | What a value measures, with its default unit and its unit systems; one file each. | Draft |
