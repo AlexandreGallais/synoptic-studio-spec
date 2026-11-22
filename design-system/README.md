@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › Design system
 
-Status: first draft, written by the assistant on 2026-11-22 from the Product Owner's brief of the same day, and drawn in Figma the same day (foundations, icons, atoms, molecules, organisms, prototyped, each shown as a table of its variants and states; the template of the screens). Not validated. The values marked "proposed" are to review on screen, in Figma.
+Status: first draft, written by the assistant on 2026-11-22 from the Product Owner's brief of the same day, and drawn in Figma the same day (foundations, icons, atoms, molecules, organisms, prototyped, each shown as a table of its variants and states; the template of the screens; the screens of Metadata with their content states and their prototype). Not validated. The values marked "proposed" are to review on screen, in Figma.
 
 What the design system of Synoptic Studio is made of, before it is drawn in the Figma file (https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL). The design system is reusable outside Synoptic Studio; its code is the library of the repository `synoptic-studio-design-system`.
 

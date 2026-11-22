@@ -78,6 +78,7 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Atoms | `tooltip` | `635:158` |
 | Atoms | `colour-swatch` | `635:167` |
 | Atoms | `divider` | `635:170` |
+| Atoms | `column-header` | `664:6368` |
 | Atoms | `playground/atoms` | `643:2164` |
 | Molecules | `field` | `637:53` |
 | Molecules | `menu-item` | `637:102` |
@@ -114,7 +115,9 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Templates | `template/editor` | `657:2` |
 | Templates | `example/editor`, an instance of the template with its slots filled | `657:155` |
 
-`data-table-row` and `data-table-header` have the columns of Signals since 2026-11-22: handle, Direction, ID, Type, Enum, Quantity / Difference, Description, delete, on lines 1120 wide. `direction-cell` has no text property: its word follows its direction.
+`data-table-row` holds its cells in the slot `cells`, and `data-table-header` its column headers in the slot `columns`: a screen puts in them the columns of its table, each cell as wide as its `column-header`. Their default content is the columns of Signals. `quantity-cell` and `direction-cell` are deprecated: their description says what replaces them.
+
+An instance nested in another one keeps the size of its main component: in a screen, a column gets its width only as the content of a slot. After a script fills a slot, Figma may draw a cell that fills its line at its old width: setting it to a fixed width, then back to fill, draws it right.
 
 ## Templates
 
@@ -130,6 +133,25 @@ block-beta
 - `top-bar` (`platform=windows` by default) across the whole width, then `nav-rail`, the slot `left` (width `size-left-column`), a vertical `divider`, and the slot `main` (padding and gap `spacing-06`).
 - A screen is an instance of the template: its content goes into the two slots, as instances. `example/editor` shows it with the type tree and the parts on the left, the table of signals in the main area.
 
+## Screens of Metadata
+
+The page Metadata holds one Figma section per screen of [Screens of Metadata](../screens/metadata.md). Each screen is an instance of `template/editor`, named `MD-xx · <screen>`, then `· <state>` for each content state.
+
+| Section | Id | Frames |
+| --- | --- | --- |
+| MD-01 · Types and MD-02 · General | `667:6125` | General (`667:6126`), error, long text; Types: many, searching, empty |
+| MD-03 · Documentation | `667:9805` | read only, visual, markdown, full page, no link, long text |
+| MD-04 · Signals | `665:4990` | default (`665:4991`), empty, many, long text, error |
+| MD-05 · Commands | `666:3777` | default (`666:3778`), empty, error |
+| MD-12 · Flags | `666:6541` | default (`666:6542`), empty, error |
+| MD-07 · Presets | `668:9609` | Values (`668:9610`), Faceplate (`668:11695`), empty, error |
+| MD-08 · Units | `669:11672` | Mass in Imperial (`669:11673`), Temperature in Imperial |
+| MD-09 · Enums | `669:14179` | global (`669:14180`), template, empty, error |
+| MD-13 · Designations | `666:8401` | default (`666:8402`), empty, error |
+| Delete warning | `670:13025` | `MD-02 · Delete warning` (`670:13026`), the frame the delete buttons open as an overlay |
+
+The prototype starts at `MD-02 · General` (flow "Metadata"): the rail, the list of the parts, the modes of the documentation and of a preset lead to their screen; the delete button of General and of each own signal opens the warning, whose two buttons close it. The dimmed background behind the warning is set by hand in Figma (the plugin API cannot set it).
+
 ## Left to draw
 
-- The page Metadata.
+- The screens of the other parts: Symbols, Pipes, Synoptic.

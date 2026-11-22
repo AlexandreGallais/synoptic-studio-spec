@@ -32,6 +32,10 @@ A line of a list, a tree or a table (`tree-row`, `list-row`, `part-item`, `menu-
 
 The tables below add the states each component needs on top of these. A field (`text-input`, `number-input`, `text-area`) has no `pressed`: a click puts it in `focus`.
 
+A text on one line (a field, a select, a line of a list, a tree or a table) never wraps: what does not fit ends with "…".
+
+A part whose content changes from one screen to the next is a slot, filled on the screen with instances: the lines of `tree`, `list-panel` and `data-table` (`rows`), the column headers of `data-table-header` (`columns`), the cells of `data-table-row` (`cells`), the add buttons of `list-title` with several kinds (`actions`), the fields of `faceplate-element` (`fields`), and the add buttons and the elements of a group (`actions`, `elements`). So a table has the columns of its screen, and a list as many lines as its content.
+
 Every component is shown in the Figma file as a table of its variants and its states, grouped by family: see [Figma file](05-figma-file.md#how-a-page-shows-its-components) and [Skill rules R9](skill-rules.md#r9--components-shown-as-tables-of-variants-and-states).
 
 Every interactive component is prototyped in its component set: `hover` while the mouse is over it, `pressed` while its button is down, and a click to the next state (checked, on, open, selected, expanded). See [Skill rules R8](skill-rules.md#r8--components-prototyped-on-their-own).
@@ -46,7 +50,7 @@ Every interactive component is prototyped in its component set: `hover` while th
 | `text-input` | `size=sm, md` (sm in a table cell); with or without a trailing icon | `filled`, `read-only`, `error` | MD-02.1, MD-03.8, every ID |
 | `number-input` | `size=sm, md`; with or without a unit; with or without the `variable` icon | `filled`, `read-only`, `error`, `variable` (the value comes from a signal) | MD-07.13, MD-07.22, MD-08.13, MD-09.6 |
 | `text-area` | — | `filled`, `read-only`, `error` | MD-09.11, the description element |
-| `select-trigger` | `size=sm, md`; with or without a leading icon | `open`, `filled`, `read-only`, `error` | MD-04.7 to MD-04.12, MD-05.4, MD-07.12 |
+| `select-trigger` | `size=sm, md`; with or without a leading icon | `open`, `filled`, `read-only`, `error` | MD-04.7 to MD-04.12, MD-05.4, MD-07.12; with the icon `signal-input` or `signal-output` for a direction (MD-04.12, MD-07.9), `quantity` or `difference` for a quantity (MD-04.9) |
 | `checkbox` | `checked=false, true, mixed` | — | MD-13.8 |
 | `radio` | `checked=false, true` | — | MD-07.11 |
 | `toggle` | `on=false, true` | — | Boolean input of a faceplate (MD-07.10) |
@@ -55,6 +59,7 @@ Every interactive component is prototyped in its component set: `hover` while th
 | `tooltip` | `placement=top, right, bottom, left` | — | Every icon alone |
 | `colour-swatch` | `size=sm, md` | `selected` | MD-02.6 |
 | `divider` | `direction=horizontal, vertical` | — | Rail, panels |
+| `column-header` | — (text `label`; its width is the width of its column) | — | The head of every column of a `data-table-header` |
 
 ## Molecules
 
@@ -66,14 +71,14 @@ Every interactive component is prototyped in its component set: `hover` while th
 | `select` | `select-trigger` + `menu` | — | `open` | Every select |
 | `segmented-control` | two or three `button` side by side | `items=2, 3`; `selected=1, 2, 3` (the item selected) | — | MD-07.2b Values / Faceplate, MD-03.4b Read only / Visual / Markdown |
 | `radio-group` | `radio` × n + labels | `orientation=horizontal, vertical` | — | MD-07.11, enum input of a faceplate |
-| `list-title` | text `body-strong` + `icon-button` × n (one + per kind, search) | `actions=add, search-add, several-add` | `searching` (the title becomes a `text-input`, the + a `dismiss`) | Every list and table: Type tree, Signals, Links, Elements |
-| `nav-rail-item` | `icon-button` + `tooltip` | — | `selected` | MD-00 |
+| `list-title` | text `body-strong` + `icon-button` × n (one + per kind, search) | `actions=add, search-add, several-add`; `several-add` holds its buttons in the slot `actions`, empty for a title with no button (Quantities, Unit systems) | `searching` (the title becomes a `text-input`, the + a `dismiss`) | Every list and table: Type tree, Signals, Links, Elements |
+| `nav-rail-item` | `icon-button` + `tooltip`; a square of `size-control-lg` in the rail, a square of `size-top-bar` with a `size-control-md` button and the same margin on every side in the top bar | `placement=rail, top-bar` | `selected`: the `layer-selected` background; in the top bar, a bar of `accent` under it too, no bar in the rail (Product Owner, 2026-11-22: "la barre [...] devrait être en bas"; in the rail, "à toi de choisir") | MD-00, top bar |
 | `tree-row` | `icon` chevron + type `icon` in its colour + name + quiet `add` | `depth=0…n`; `has-children=false, true` | `selected`, `expanded` | MD-01.1, MD-01.3 |
 | `list-row` | name + `icon-button` delete | with or without delete | `selected` | Presets, Enums, Unit systems |
 | `part-item` | text of a part | — | `selected` | MD-01.5 |
 | `link-cell` | `folder` or `link` icon + path or URL | `kind=path, url` | — | MD-03.9 |
-| `quantity-cell` | `quantity` or `difference` icon + name | `kind=quantity, difference` | — | MD-04.9 |
-| `direction-cell` | `signal-input` or `signal-output` icon + text; the icon in `icon-primary`, the same colour for both directions | `direction=input, output` | — | MD-04.12, MD-07.9 |
+| `quantity-cell` | `quantity` or `difference` icon + name | `kind=quantity, difference` | — | Deprecated (2026-11-22): the quantity is chosen in the table, so its cell is a `select-trigger` with the icon (Product Owner: "ça doit pouvoir être sélectionné autant que les autres") |
+| `direction-cell` | `signal-input` or `signal-output` icon + text; the icon in `icon-primary`, the same colour for both directions | `direction=input, output` | — | Deprecated (2026-11-22): the direction is a select too (MD-04.12), a `select-trigger` with the icon |
 | `toolbar-group` | `icon-button` × n | — | — | MD-03.4d |
 | `window-controls` | minimise, maximise or restore, close | `platform=windows, macos` | — | Top bar |
 
@@ -81,19 +86,19 @@ Every interactive component is prototyped in its component set: `hover` while th
 
 | Component | Made of | Variants | States added | Screens |
 | --- | --- | --- | --- | --- |
-| `top-bar` | `app-mark` + `nav-rail-item` × 3 (the parts) + `window-controls` | `platform=windows, macos, browser` | one part `selected` | Every screen |
+| `top-bar` | `app-mark` + `nav-rail-item` × 3 (`placement=top-bar`, the parts) + `window-controls` | `platform=windows, macos, browser` | one part `selected` | Every screen |
 | `nav-rail` | `nav-rail-item` × n + `divider` | — | one item `selected` | MD-00, SY-00 |
 | `tree` | `list-title` + `tree-row` × n | — | `searching`, `empty` | MD-01 |
 | `part-list` | `part-item` × n | — | one part `selected` | MD-01.5 |
 | `data-table` | `list-title` + `data-table-header` + `data-table-row` × n (`drag-handle`, inputs, cell molecules, delete) | — | table `empty` | MD-03.5, MD-04, MD-05, MD-07.7, MD-08.7, MD-09.5, MD-12, MD-13 |
-| `data-table-header` | the name of each column, `caption` | — | — | Every data-table |
-| `data-table-row` | the cells of one line, drawn with the columns of Signals | `kind=default, inherited, error`; no background per direction (Product Owner, 2026-11-22: the direction is told by the icon of `direction-cell` only) | `hover`, `selected`; `inherited`: read only, no handle nor delete, the name of its parent | Every data-table |
+| `data-table-header` | the room of the handle, the slot `columns` of `column-header`, the room of the delete button | — | — | Every data-table |
+| `data-table-row` | `drag-handle`, the slot `cells`, the delete `icon-button`; its default cells are the columns of Signals | `kind=default, inherited, error`; no background per direction (Product Owner, 2026-11-22: the direction is told by its icon only) | `hover`, `selected`; `inherited`: read only, no handle nor delete | Every data-table |
 | `list-panel` | `list-title` + `list-row` × n | — | `empty` | MD-07.1, MD-08.1, MD-09.1 |
 | `dialog` | `heading` + text + `button` × 2 | `kind=warning, danger` | — | Every delete |
 | `formatting-toolbar` | `toolbar-group` × n + `segmented-control` + full-page `icon-button` | `mode=visual, markdown` | — | MD-03.4d |
 | `markdown-editor` | `formatting-toolbar` + editing area | `mode=read-only, visual, markdown` | `full-page` | MD-03.1 to MD-03.4c |
-| `faceplate-element` | `drag-handle` + kind `icon` + fields of its kind + delete | `kind=signal, command, title, paragraph, group` | `selected` | MD-07.18 to MD-07.20 |
-| `palette-picker` | `colour-swatch` × n + `reset` | — | — | MD-02.6, MD-02.7 |
+| `faceplate-element` | `drag-handle` + kind `icon` + the slot `fields` + delete; a group adds the slot `actions` (its five add buttons) and, under it, the slot `elements` (its own elements, indented by `spacing-07`) | `kind=signal, command, title, paragraph, group` | `selected` | MD-07.18 to MD-07.20; read or write is a horizontal `radio-group` (MD-07.11) |
+| `palette-picker` | `colour-swatch` × n + `reset`; the swatches show sample colours until the palette of the project is known | — | — | MD-02.6, MD-02.7 |
 | `icon-picker` | `icon-button` × n + `reset` | — | — | MD-02.5, MD-02.7 |
 
 ## Content states drawn on the page Metadata
