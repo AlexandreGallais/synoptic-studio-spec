@@ -654,7 +654,16 @@ Asked by the Product Owner after research T6 ("dans une quantité, on puisse pas
   - Both only multiply between their own units, so neither offers a difference; a gap between two pressures (a pressure drop) is a plain pressure. Only the temperatures multiply then shift.
   - The simulation model says which of the two it sends; a preset cannot show in bar a a value received in bar g.
   - Written in the [draft](draft.md#value-or-difference-chosen-in-the-signal) (its examples now use the temperature, and `pressure_rise` is a plain pressure), in [MD-04.9](../screens/metadata.md#md-04--signals) and in the notes of 2026-11-19 above.
+- **The names of the two pressures** (Product Owner, questionnaire, same day): `pressure` (absolute pressure and any gap between two pressures) and `gauge_pressure`, as `Pressure` and `GaugePressure` in QUDT.
 - **Correction taken from the research**: [Unit system](entities/13-unit-system.md): two steps equal in theory may differ at the 14th digit, so they compare within a relative tolerance of 1e-9 (research T6, 3.11; the tolerance is PEP 485's default).
+
+## Written on 2026-11-22 (formulas)
+
+Asked by the Product Owner in the questionnaire ("Le fichier de syntaxe des formules"), as noted in [syntax of the formulas](#noted-on-2026-11-22-syntax-of-the-formulas).
+
+- **[Formulas](formulas.md)**, a file of its own in Metadata, cited by [Conversion](entities/11-conversion.md), not written in the entity files.
+- Its rules are the advice of research T6 (3.6 to 3.13, decision 3), all **proposed**: the variable `x` only; `pi` and `e`; `+ - * / ^`; seven functions (`sqrt exp ln log10 log2 tan atan`); `^` from right to left; `-x^2`, implied multiplication, `**` and `log` refused; a parser of the project, no `eval`; formulas parsed once when the catalogue is read; round trip within 1e-9.
+- Open there: a value out of the domain of a formula (D1 to D3), the absolute tolerance near zero, scales defined by tables.
 
 ## Not in the schema yet
 
@@ -665,7 +674,6 @@ Asked by the Product Owner after research T6 ("dans une quantité, on puisse pas
 - The default unit and the model unit (decision 0024): open in [Quantity](entities/14-quantity.md#open-questions).
 - An integer signal shown in another unit than its default unit: a number typed there may not give a whole number in the default unit (24.17 rps is 1450.2 rpm). Rounded to the nearest whole number, or refused?
 - The names of the two quantities added for numbers that measure nothing physical: "ratio" and "count" for now.
-- The names of the two pressures (decision 0075): `pressure` (absolute pressure and any gap between two pressures) and `gauge_pressure` for now, as `Pressure` and `GaugePressure` in QUDT.
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
 - Whether the two texts of a boolean are ever written in the configuration files sent with the model: open in [Boolean texts](entities/21-boolean-texts.md#open-questions).
 - `SIGNAL_FIELD` starts with its signal, then `access`: the assistant's reading of the order of the keys, to confirm.
