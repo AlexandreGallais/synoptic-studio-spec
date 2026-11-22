@@ -11,7 +11,7 @@ Colour of a box's title: orange, the entity has its own page in [Entities](entit
 ```mermaid
 ---
 config:
-  themeCSS: "[id*='entity-DESIGNATION-'] .outer-path path, [id*='entity-PALETTE-'] .outer-path path, [id*='entity-COLOR-'] .outer-path path, [id*='entity-ENUM-'] .outer-path path, [id*='entity-ENUM_ITEM-'] .outer-path path, [id*='entity-ICON-'] .outer-path path, [id*='entity-ICON_SET-'] .outer-path path, [id*='entity-FLAG-'] .outer-path path, [id*='entity-LINK-'] .outer-path path, [id*='entity-DOCUMENTATION-'] .outer-path path, [id*='entity-QUANTITY-'] .outer-path path, [id*='entity-UNIT_SYSTEM-'] .outer-path path, [id*='entity-UNIT-'] .outer-path path, [id*='entity-CONVERSION-'] .outer-path path, [id*='entity-SIGNAL-'] .outer-path path, [id*='entity-VALUE_TYPE-'] .outer-path path { fill: #f8b26a !important; }"
+  themeCSS: "[id*='entity-DESIGNATION-'] .outer-path path, [id*='entity-PALETTE-'] .outer-path path, [id*='entity-COLOR-'] .outer-path path, [id*='entity-ENUM-'] .outer-path path, [id*='entity-ENUM_ITEM-'] .outer-path path, [id*='entity-ICON-'] .outer-path path, [id*='entity-ICON_SET-'] .outer-path path, [id*='entity-FLAG-'] .outer-path path, [id*='entity-LINK-'] .outer-path path, [id*='entity-DOCUMENTATION-'] .outer-path path, [id*='entity-QUANTITY-'] .outer-path path, [id*='entity-UNIT_SYSTEM-'] .outer-path path, [id*='entity-UNIT-'] .outer-path path, [id*='entity-CONVERSION-'] .outer-path path, [id*='entity-SIGNAL-'] .outer-path path, [id*='entity-VALUE_TYPE-'] .outer-path path, [id*='entity-COMMAND-'] .outer-path path, [id*='entity-COMMAND_TARGET-'] .outer-path path { fill: #f8b26a !important; }"
 ---
 erDiagram
     TYPE {
@@ -20,41 +20,41 @@ erDiagram
         uuid parent FK
     }
     APPEARANCE {
-        uuid icon FK "the icon picked in an icon set"
-        svg icon_drawing "a copy of its drawing, refreshed while its icon set exists, kept when it is removed"
-        uuid color FK "the color picked in a palette"
-        rgba color_value "a copy of its value, refreshed while its palette exists, kept when it is removed"
+        uuid icon FK
+        svg icon_drawing
+        uuid color FK
+        rgba color_value
     }
     DOCUMENTATION {
         markdown description
     }
     LINK {
         uuid internal_id PK
-        link_kind kind "path or url"
+        link_kind kind
         text address
         text description
     }
     SIGNAL {
         uuid internal_id PK
-        direction direction "input or output"
+        direction direction
         text id
         text description
     }
     VALUE_TYPE {
-        value_type_kind kind "integer, real, boolean or enum"
-        uuid enum FK "when kind is enum"
-        uuid quantity FK "when kind is integer or real"
-        boolean relative_quantity "when kind is integer or real: true when the value is a difference"
+        value_type_kind kind
+        uuid enum FK
+        uuid quantity FK
+        boolean relative_quantity
     }
     COMMAND {
         uuid internal_id PK
-        command_kind kind "set_signal, trigger or override"
+        command_kind kind
         text id
         text description
     }
     COMMAND_TARGET {
-        uuid signal FK "an input for set_signal, an output for override"
-        signal_value value "a number in the default unit, a boolean, or the internal_id of an item of the signal's enum"
+        uuid signal FK
+        signal_value value
     }
     FLAG {
         uuid internal_id PK
@@ -67,63 +67,63 @@ erDiagram
     }
     PRESET_VALUE {
         uuid signal FK
-        signal_value start_value "a number in the default unit, a boolean, or the internal_id of an item of the signal's enum"
+        signal_value start_value
     }
     DISPLAY_FORMAT {
-        uuid unit FK "the display unit: a unit of the signal's quantity"
+        uuid unit FK
         integer decimals
     }
     BOOLEAN_TEXTS {
-        text true_text "shown when the value is true"
-        text false_text "shown when the value is false"
+        text true_text
+        text false_text
     }
     FACEPLATE_ELEMENT {
         uuid internal_id PK
-        faceplate_element_kind kind "signal, command, title, paragraph or group"
+        faceplate_element_kind kind
     }
     SIGNAL_FIELD {
         uuid signal FK
-        access access "read; write for an input; override for an output"
-        input_kind input_kind "when access is write or override: number_field for a number; radio_horizontal, radio_vertical or select for an enum; switch for a boolean"
-        text display_name "empty: the signal's id is shown"
+        access access
+        input_kind input_kind
+        text display_name
     }
     BOUND {
-        bound_source source "typed or signal"
-        uuid signal FK "when source is signal: an input of the same quantity, its value is the bound"
-        real typed_value "when source is typed, in the default unit of the quantity of the signal shown"
+        bound_source source
+        uuid signal FK
+        real typed_value
     }
     COMMAND_BUTTON {
         uuid command FK
-        text display_name "empty: the command's id is shown"
+        text display_name
     }
     TEXT_CONTENT {
-        text_content_source source "typed or designation"
-        uuid designation FK "when source is designation: its text on each placed symbol"
-        text typed_text "when source is typed"
+        text_content_source source
+        uuid designation FK
+        text typed_text
     }
     ENUM {
         uuid internal_id PK
-        enum_kind kind "global or template"
+        enum_kind kind
         text id
         text description
     }
     ENUM_ITEM {
         uuid internal_id PK
         integer key
-        text display_name "empty: the key is shown"
+        text display_name
         text description
     }
     DESIGNATION {
         uuid internal_id PK
         text id
-        boolean required "true: its text must be filled on every placed symbol"
+        boolean required
         text description
     }
     QUANTITY {
         uuid internal_id PK
         text name
-        uuid default_unit FK "one of its units"
-        boolean offers_relative_quantity "a signal of it may have relative_quantity true"
+        uuid default_unit FK
+        boolean offers_relative_quantity
     }
     UNIT_SYSTEM {
         uuid internal_id PK
@@ -132,11 +132,11 @@ erDiagram
     UNIT {
         uuid internal_id PK
         text name
-        text symbol "empty: nothing after the value"
+        text symbol
     }
     CONVERSION {
-        expression to_default "x in this unit gives the default unit"
-        expression from_default "x in the default unit gives this unit"
+        expression to_default
+        expression from_default
     }
     ICON_SET {
         uuid internal_id PK

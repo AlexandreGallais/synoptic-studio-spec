@@ -25,6 +25,7 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
   - **No comment on a field**, not even when it exists in some cases only: the JSON Schema already says it.
   - **The schema draws the entity and the entities it has or holds**: a FK to an entity kept outside it (an enum, a quantity) is only its column, with no box nor link for that entity; the whole picture is the [Data model](../data-model.md).
 - **Each field is described once, in the JSON Schema**: its `description` says what the field is for the user and what must be respected about it, in one or two sentences, never what everyone knows already (what a primary key does) nor a rule that belongs to another page (what a faceplate shows). Arsenal draws the JSON Schema as a tree of the fields, so no table repeats it.
+- **The boxes of the [Data model](../data-model.md) follow the same rule** (Product Owner, 2026-11-22): type, name and key only, no comment, so that each box reads exactly as the schema of its entity file. Each entity file written or changed brings its box in the data model to it in the same session.
 - **In the [Data model](../data-model.md), only the title of the entity's box is coloured**, by a rule in the `themeCSS` line at the top of the diagram (`[id*='entity-NAME-'] .outer-path path`), never by a `style` line, which colours every other row.
 - **What holds for every file is never written on an entity** (the `format_version` key, the names of the lists, the order of the keys): it is in [Files](../files.md).
 - **The body says only what must be respected**: no history of the discussion, no "no display name", no quote, no "chosen by", no order of size, no reason already given by a field's description.
@@ -51,3 +52,5 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 | [Quantity](14-quantity.md) | What a value measures, with its default unit and its unit systems; one file each. | Draft |
 | [Value type](15-value-type.md) | What kind of value a signal holds, and for a number, the quantity it measures. | Draft |
 | [Signal](16-signal.md) | A value that goes between the front and the model, as an input or an output. | Draft |
+| [Command](17-command.md) | What the front sends to the model with one click: a fixed value to an input, a trigger, or an override of an output. | Draft |
+| [Command target](18-command-target.md) | The signal a command sends its value to, and that fixed value. | Draft |
