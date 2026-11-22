@@ -35,7 +35,7 @@ erDiagram
       "readOnly": true
     },
     "name": {
-      "description": "The system its units belong to.",
+      "description": "The system its units belong to; unique among the unit systems of its quantity.",
       "type": "string",
       "minLength": 1,
       "examples": ["metric"]
@@ -49,7 +49,3 @@ erDiagram
   }
 }
 ```
-
-## Open questions
-
-- Is the `name` of a unit system unique in its quantity?

@@ -36,14 +36,14 @@ erDiagram
       "readOnly": true
     },
     "name": {
-      "description": "With its variant when one name hides several values, such as US gallon or thermochemical calorie.",
+      "description": "Unique among the units of its quantity, with its variant when one name hides several values, such as US gallon or thermochemical calorie.",
       "type": "string",
       "minLength": 1,
       "examples": ["degree Celsius"]
     },
     "symbol": {
-      "description": "What is written after a value in this unit.",
-      "type": "string",
+      "description": "What is written after a value in this unit, the same for a difference. Empty when nothing is written, such as the unit 1 of a count: 12, not 12 1.",
+      "type": ["string", "null"],
       "minLength": 1,
       "examples": ["°C"]
     },
@@ -54,9 +54,3 @@ erDiagram
   }
 }
 ```
-
-## Open questions
-
-- Is the `name` of a unit unique in its quantity?
-- A unit without a symbol, such as the unit 1 of a count: `symbol` required, or `null`?
-- The symbol of a unit for a difference: the same (`°C`) or marked (`Δ°C`)?

@@ -559,10 +559,17 @@ Said by the Product Owner on 2026-11-22 ("on va avoir un fichier par quantité [
 
 - **Each quantity is one file, `<name>.quantity.json`**, which holds the whole quantity: its unit systems, their units and the conversion of each unit. It answers the open question of the format key and of [Files](files.md#open-questions).
 - **Four entity files**: [Conversion](entities/11-conversion.md), [Unit](entities/12-unit.md) and [Unit system](entities/13-unit-system.md), kept inside the quantity's file; [Quantity](entities/14-quantity.md), with the schema of its file. The example of the [Data model](data-model.md) now shows the whole file.
-- **The `name` of a quantity is unique**, since it names its file, by the rule of [Files](files.md#the-name-of-a-file). Assistant's reading of that rule; the `name` of a unit system and of a unit stays open on their files.
+- **The `name` of a quantity is unique**, since it names its file, by the rule of [Files](files.md#the-name-of-a-file). Assistant's reading of that rule.
 - **`offers_relative_quantity` is `false` unless set** (assistant's reading): most quantities only multiply.
-- **A unit's `symbol` is required for now** (assistant's reading); whether a unit may have none, such as the unit 1 of a count, is an open question of [Unit](entities/12-unit.md).
 - Which configuration folder holds the quantity files stays open in [Files](files.md#open-questions).
+
+## Settled on 2026-11-22 (names and symbols of units)
+
+The Product Owner answered the three questions of the quantity files in the questionnaire, each with the advised choice.
+
+- **The `name` of a unit system is unique among the unit systems of its quantity, and the `name` of a unit among the units of its quantity** ("Uniques dans leur grandeur"): two "metric" or two "kelvin" in one quantity would mean nothing. Written in [Unit system](entities/13-unit-system.md) and [Unit](entities/12-unit.md).
+- **A unit's `symbol` may be `null`** ("Symbole facultatif"): nothing is written after the value, such as the unit 1 of a count (12, not 12 1). Written in [Unit](entities/12-unit.md).
+- **A difference shows the same symbol as a value** ("Le même : « °C »"): a rise of 5 °C is written 5 °C, never Δ°C; the column Quantity of the table of signals already shows the icon of a difference. Written in [Unit](entities/12-unit.md).
 
 ## Not in the schema yet
 
@@ -571,7 +578,6 @@ Said by the Product Owner on 2026-11-22 ("on va avoir un fichier par quantité [
 ## Open
 
 - The default unit and the model unit (decision 0024): open in [Quantity](entities/14-quantity.md#open-questions).
-- The symbol of a unit for a difference, and a unit without a symbol: open in [Unit](entities/12-unit.md#open-questions).
 - An integer signal shown in another unit than its default unit: a number typed there may not give a whole number in the default unit (24.17 rps is 1450.2 rpm). Rounded to the nearest whole number, or refused?
 - The names of the two quantities added for numbers that measure nothing physical: "ratio" and "count" for now.
 - The default number of decimals of a preset: 2 or 3 (Product Owner, 2026-11-19: "qui serait de 2 ou de 3"), and whether it is fixed by the software or set for the project.
@@ -580,5 +586,5 @@ Said by the Product Owner on 2026-11-22 ("on va avoir un fichier par quantité [
 - The two texts of a boolean, in the preset: required, or "true" and "false" when empty (assistant's reading)? Never in the configuration files sent with the model, since they are display only (assistant's reading, since decision 0058)?
 - `SIGNAL_FIELD` starts with its signal, then `access`: the assistant's reading of the order of the keys, to confirm.
 - The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `UNIT_SYSTEM`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated.
-- Is the `name` of a preset, a unit system or a unit unique in its list? (A palette's, an icon set's and a quantity's are; a color's and an icon's are optional and may be shared: settled on 2026-11-22.) To say on each entity file (research T5, open question 3).
+- Is the `name` of a preset unique in its list? (A palette's, an icon set's, a quantity's, and in its quantity a unit system's and a unit's are; a color's and an icon's are optional and may be shared: settled on 2026-11-22.) To say on its entity file (research T5, open question 3).
 - `UNIT.symbol` and the symbol of Synoptic Studio (the drawing placed) share a word: a glossary should say both meanings (research T5, 3.8).

@@ -132,7 +132,7 @@ erDiagram
     UNIT {
         uuid internal_id PK
         text name
-        text symbol
+        text symbol "empty: nothing after the value"
     }
     CONVERSION {
         expression to_default "x in this unit gives the default unit"
