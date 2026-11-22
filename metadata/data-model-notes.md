@@ -618,6 +618,15 @@ Said by the Product Owner on 2026-11-22 ("le trigger, c'est pas du tout pour le 
 - Its description says what that layer is expected to do. The name and the nature of that layer are an open question of the [draft](draft.md#open-questions-4).
 - Written in [Command](entities/18-command.md), the example of the [Data model](data-model.md), the list `command_kind` above, the [draft](draft.md#commands) and [MD-05.12](../screens/metadata.md#md-05--commands).
 
+## Written on 2026-11-22 (preset values)
+
+Asked by the Product Owner on 2026-11-22 ("je veux bien que tu fasses la partie preset value").
+
+- **Three entity files**, as for a command and its target: [Display format](entities/20-display-format.md) and [Boolean texts](entities/21-boolean-texts.md), the two parts of a preset value, then [Preset value](entities/22-preset-value.md), numbered just before the preset that will hold it.
+- Nothing new is decided: the files follow the box of the [Data model](data-model.md) and the rules already written (decisions 0030, 0050, 0051, 0058; `start_value` of 2026-11-22).
+- **Assistant's readings, written in the JSON Schemas**: `decimals` is a whole number from 0; `DISPLAY_FORMAT.unit` starts as the default unit of the quantity; a signal has one preset value per preset, so `signal` is unique in its preset; the two boolean texts follow the rule of every text (`null` when empty).
+- The open questions on the default number of decimals and on the boolean texts move to their entity files; one is new, the start value of a signal whose enum is a template.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -627,9 +636,10 @@ Said by the Product Owner on 2026-11-22 ("le trigger, c'est pas du tout pour le 
 - The default unit and the model unit (decision 0024): open in [Quantity](entities/14-quantity.md#open-questions).
 - An integer signal shown in another unit than its default unit: a number typed there may not give a whole number in the default unit (24.17 rps is 1450.2 rpm). Rounded to the nearest whole number, or refused?
 - The names of the two quantities added for numbers that measure nothing physical: "ratio" and "count" for now.
-- The default number of decimals of a preset: 2 or 3 (Product Owner, 2026-11-19: "qui serait de 2 ou de 3"), and whether it is fixed by the software or set for the project.
+- The default number of decimals of a preset: open in [Display format](entities/20-display-format.md#open-questions).
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
-- The two texts of a boolean, in the preset: required, or "true" and "false" when empty (assistant's reading)? Never in the configuration files sent with the model, since they are display only (assistant's reading, since decision 0058)?
+- The two texts of a boolean, in the preset: open in [Boolean texts](entities/21-boolean-texts.md#open-questions).
+- The start value of a signal whose enum is a template: open in [Preset value](entities/22-preset-value.md#open-questions).
 - `SIGNAL_FIELD` starts with its signal, then `access`: the assistant's reading of the order of the keys, to confirm.
 - The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `UNIT_SYSTEM`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated.
 - Is the `name` of a preset unique in its list? (A palette's, an icon set's, a quantity's, and in its quantity a unit system's and a unit's are; a color's and an icon's are optional and may be shared: settled on 2026-11-22.) To say on its entity file (research T5, open question 3).

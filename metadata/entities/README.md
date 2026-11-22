@@ -56,3 +56,6 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 | [Command target](17-command-target.md) | The signal a command sends its value to, and that fixed value. | Draft |
 | [Command](18-command.md) | What the front sends with one click: a fixed value to an input, an override of an output, or a trigger for the layer above the model. | Draft |
 | [Appearance](19-appearance.md) | The icon and the color a type shows, copied when picked; null, those of its parent. | Draft |
+| [Display format](20-display-format.md) | The unit and the decimals a preset shows an integer or a real with. | Draft |
+| [Boolean texts](21-boolean-texts.md) | The words a preset shows for true and for false. | Draft |
+| [Preset value](22-preset-value.md) | How a preset starts and shows one signal: its start value, and its display format or its boolean texts. | Draft |

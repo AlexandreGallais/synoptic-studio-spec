@@ -1,0 +1,49 @@
+# Boolean texts
+
+> [Home](../../README.md) › [Metadata](../README.md) › [Entities](README.md) › Boolean texts
+
+| Version | Date | Status | Change |
+| --- | --- | --- | --- |
+| 1 | 2026-11-22 | Draft | Creation of the file |
+
+The boolean texts are the two words a preset shows for the states of a boolean [signal](16-signal.md), such as "Running" and "Stopped": two presets of the same type may name them differently. They are for display only: the model always gets true or false. They are kept inside their [preset value](22-preset-value.md); they have no `internal_id`, since nothing points to them.
+
+## The entity
+
+```mermaid
+erDiagram
+    BOOLEAN_TEXTS {
+        text true_text
+        text false_text
+    }
+```
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "boolean-texts.schema.json",
+  "title": "Synoptic Studio boolean texts",
+  "type": "object",
+  "required": ["true_text", "false_text"],
+  "additionalProperties": false,
+  "properties": {
+    "true_text": {
+      "description": "What is shown when the value is true.",
+      "type": ["string", "null"],
+      "minLength": 1,
+      "examples": ["Running"]
+    },
+    "false_text": {
+      "description": "What is shown when the value is false.",
+      "type": ["string", "null"],
+      "minLength": 1,
+      "examples": ["Stopped"]
+    }
+  }
+}
+```
+
+## Open questions
+
+- Are the two texts required, or may they be empty, "true" and "false" being shown then?
+- Are they ever written in the configuration files sent with the model, or never, since they are display only?
