@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A range is the values a person may type in a number field of the faceplate: a minimum and a maximum, each a [bound](23-bound.md). A typed value outside the range is refused. A range is kept inside its [signal field](25-signal-field.md), which has one when its input is a number field; it has no `internal_id`, since nothing points to it.
+A range is the values a person may type in a number field of the faceplate: a minimum and a maximum, each a [bound](23-bound.md). A typed value outside the range is refused. In the faceplate builder, a minimum typed greater than the maximum is refused. A range is kept inside its [signal field](25-signal-field.md), which has one when its input is a number field; it has no `internal_id`, since nothing points to it.
 
 ## The entity
 
@@ -39,4 +39,4 @@ erDiagram
 
 ## Open questions
 
-- A minimum greater than the maximum, both typed or read from signals: refused when typed in the builder, or only flagged? And what does the number field do while the two signals give such a range?
+- Bounds read from signals: what does the number field do while the two signals give a minimum greater than the maximum?

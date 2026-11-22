@@ -8,6 +8,8 @@
 
 A preset holds the defaults a symbol and a synoptic start from: how each signal of the type starts and is shown, its [preset values](22-preset-value.md), and the faceplate it builds, its [faceplate elements](28-faceplate-element.md). A type needs at least one preset to be chosen in a symbol or a synoptic. A preset exists only inside its [type](30-type.md), in the type's list of presets; its `name` is unique there.
 
+A signal added to the type, or to one of its parents, adds its preset value to every preset of the type and of its sub-types, with the start value and the display format a new preset value starts with. A signal removed removes its preset value from these presets, and the faceplate elements that show it.
+
 ## The entity
 
 ```mermaid
@@ -54,7 +56,3 @@ erDiagram
   }
 }
 ```
-
-## Open questions
-
-- A signal added to the type, or to one of its parents: does the software add its preset value to every preset of the type and of its sub-types, with the start value and the display format a new preset value starts with? And a signal removed: is its preset value removed, with the faceplate elements that show it?

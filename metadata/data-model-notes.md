@@ -693,6 +693,12 @@ Answers of the Product Owner to the questionnaire of Travail, same day (decision
 - **The `name` of a preset is unique among the presets of its type** ("Unique dans son type"): it is the only thing that tells two presets apart on screen. Written in [Preset](entities/29-preset.md).
 - **The same signal or the same command may be in several elements of a faceplate** ("Oui, permis"): read in one group and written in another, for instance. Written in [Faceplate element](entities/28-faceplate-element.md).
 
+Second questionnaire, same day (decision 0079):
+
+- **A minimum typed greater than the maximum is refused in the builder** ("Refusé à la saisie"). Written in [Range](entities/24-range.md). Still open there: the number field while two signals give such a range.
+- **Preset values follow the signals** ("Ajoutée et retirés automatiquement"): a signal added to a type or a parent adds its preset value to every preset of the type and its sub-types; a signal removed removes its preset value and the faceplate elements that show it. Written in [Preset](entities/29-preset.md).
+- **A type whose parent's file is missing is shown, flagged in error** ("Affiché, marqué en erreur"), the missing parent named; its file is left as it is. Written in [Type](entities/30-type.md).
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
