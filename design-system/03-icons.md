@@ -17,7 +17,7 @@ Status: first draft, written by the assistant on 2026-11-22 from the screens of 
 
 | Icon | Meaning | Screens |
 | --- | --- | --- |
-| `app-mark` | The logo, a valve | Top bar |
+| `app-mark` | The logo, a valve: two triangles meeting at their tips, without the stem on top (Product Owner, 2026-11-22) | Top bar |
 | `metadata` | The Metadata part | Top bar |
 | `symbols` | The Symbols part | Top bar |
 | `synoptic` | The Synoptic part | Top bar |
