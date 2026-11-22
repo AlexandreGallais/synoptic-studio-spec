@@ -19,7 +19,7 @@ The screens are also drawn as wireframes on the page **"Spec"** of the Figma fil
 - **Every decision that changes a screen changes, in the same go, the pages of the part, this inventory and the wireframe in Figma** (Product Owner, 2026-11-17: "à chaque décision qui change un écran [...] faut changer les specs et les écrans sur Figma"). Never one without the others.
 - The change in Figma is checked on a capture of the frame before it is said done.
 - The texts of the wireframes are in English, like these specs; their notes cite the decision and its date.
-- The designed screens of Metadata, made of the components of the [design system](../design-system/README.md), are on the page **"Metadata"** of the same file, one frame per screen and per content state, with their prototype (2026-11-22; see [Figma file](../design-system/05-figma-file.md#screens-of-metadata)). The wireframes of the page "Spec" stay as they are.
+- The designed screens of Metadata, made of the components of the [design system](../design-system/README.md), are on the page **"Metadata"** of the same file, one frame per screen and per content state, with their prototype (2026-11-22; see [Figma file](../design-system/04-figma-file.md#screens-of-metadata)). The wireframes of the page "Spec" stay as they are.
 - Two sections were added on 2026-11-20, at the Product Owner's request: **"Synoptic · SN-00 to SN-12"**, the screens of [Synoptic](synoptics.md), extrapolated by the assistant; and **"Symbol editor · ideas"** (SY-I1 to SY-I8), ideas for the symbol mode drawn in Figma only, which change none of the pages of [Symbols](../symbols/README.md).
 
 ## What it contains

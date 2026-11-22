@@ -13,7 +13,7 @@ Figma: page Icons (`630:104`), one component `icon/<name>` each, section Icons (
 - The SVG files have no stroke: every line is turned into a filled outline, joined into one shape, filled with `currentColor` so that the code gives the colour (Product Owner, 2026-11-22). Figma keeps the lines.
 - An icon "-add" is its icon, smaller, in the top left, with a + in the bottom right, both inside the 16 px square.
 - An icon takes its colour from a token (`icon-primary`, `icon-secondary`, `accent`, `danger`), never a fixed colour.
-- An icon alone on a button always has an accessible name and a [tooltip](../atoms/tooltip/README.md).
+- An icon alone on a button always has an accessible name and a [tooltip](../atoms/tooltip.md).
 - The icons of the interface are not the icons of the types: those are files of Metadata ([Icon](../../metadata/entities/03-icon.md)).
 
 ## Parts and window

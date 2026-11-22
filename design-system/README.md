@@ -12,14 +12,14 @@ What the design system of Synoptic Studio is made of, and how it is drawn in the
 | --- | --- |
 | [Principles](01-principles.md) | Who it is for, how dense and how large, the one theme, the size of the screens. |
 | [Foundations](02-foundations.md) | The tokens: colours, typography, spacing, sizes, radii, borders, shadows. |
-| [Components](04-components.md) | The levels, what a sheet holds, and the rules every component follows. |
+| [Components](03-components.md) | The levels, what a sheet holds, and the rules every component follows. |
 | [Icons](icons/README.md) | The icons of the interface, each exported as SVG. |
-| [Atoms](atoms/README.md) | One folder per atom: its sheet and its table of variants and states. |
-| [Molecules](molecules/README.md) | One folder per molecule. |
-| [Organisms](organisms/README.md) | One folder per organism. |
+| [Atoms](atoms/README.md) | One sheet per atom; the tables of their variants and states in `atoms/images`. |
+| [Molecules](molecules/README.md) | One sheet per molecule, tables in `molecules/images`. |
+| [Organisms](organisms/README.md) | One sheet per organism, tables in `organisms/images`. |
 | [Templates](templates/README.md) | The layout of the screens. |
-| [Screens of Metadata](metadata/README.md) | The screens of Metadata as drawn, exported as SVG, with their ids. |
-| [Figma file](05-figma-file.md) | The pages, variables and styles of the Figma file, how a page shows its components, the exports, and the ways of Figma to keep in mind. |
+| [Screens of Metadata](metadata/README.md) | One page per part of a type: its screens as drawn, with their ids; the SVG files in `metadata/images`. |
+| [Figma file](04-figma-file.md) | The pages, variables and styles of the Figma file, how a page shows its components, the exports, and the ways of Figma to keep in mind. |
 | [Skill rules](skill-rules.md) | What the Product Owner adds to, or changes in, the design-system skills of the assistant. |
 | [Open questions](open-questions.md) | What is left to decide. |
 

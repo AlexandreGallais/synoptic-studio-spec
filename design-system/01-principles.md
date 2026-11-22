@@ -47,5 +47,5 @@ block-beta
 | Where | What it changes |
 | --- | --- |
 | [Foundations](02-foundations.md) | The sizes, the type scale and the colours follow these rules. |
-| [Components](04-components.md) | Every component has its states and its sizes. |
+| [Components](03-components.md) | Every component has its states and its sizes. |
 | [Screens of Metadata](../screens/metadata.md) | Drawn at 1600 × 900. |

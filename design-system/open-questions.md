@@ -8,6 +8,7 @@ What is left to decide on the design system. A question answered leaves this fil
 
 - The colour values taken from Warm Sand, and the two new ones (`text-placeholder`, `text-inverse`): to review on screen.
 - The sizes proposed (controls 32 px, text 14 px, rows 36 px): to review on screen, now with IBM Plex Sans.
+- The sizes of the headings of a description, Heading 1 to 6: 28, 24, 20, 18, 17, 16 (proposed, 2026-11-23).
 
 ## Components
 
@@ -20,3 +21,6 @@ What is left to decide on the design system. A question answered leaves this fil
 - A field placed `filled` has no hover of its own: add a state `filled` with a hover?
 - The thumb of the scrollbar of `menu-grouped` is 24 high in the component, where the component `scrollbar` draws it 56: Figma refuses to change it in the instance. Does 24 suit?
 - Other components may keep a raw colour under their variable, as `colour-swatch` did: to review them all?
+- A table of a description under the mouse: every + shows at once (drawn), or only those near the mouse?
+- The controls with an opaque background keep the focus as an effect: in their SVG its corners are a little squarer. Draw their focus as two lines too, as the round and transparent ones?
+- The rules for every component in [Components](03-components.md): the Product Owner wonders whether this text is useful (2026-11-23); keep it, shorten it, or move it to the sheets?
