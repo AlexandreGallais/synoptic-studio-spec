@@ -494,6 +494,16 @@ Said by the Product Owner on 2026-11-22, answering the two open questions of the
   - Which files go in the two folders beside the palettes: left for later ("on verra ça après"), open in [Files](files.md#open-questions).
 - Also done: the box `COLOR` of the [Data model](data-model.md) loses "optional, shown on hover", as its entity file already did.
 
+## Settled on 2026-11-22 (enums in one file)
+
+Said by the Product Owner on 2026-11-22 ("les enums, non, c'est un truc d'entreprise, tu vas pas les partager [...] y a qu'un fichier, un peu comme les désignations"). Decision 0072 records it.
+
+- **Every enum is kept in one file, `enums.json`**, like the designations: enums belong to one company and are not shared, while a palette may be exported and imported, hence one file per palette. An enum per file would also make very small files.
+- **Two entity files** (the Product Owner's proposal): [Enum item](entities/04-enum-item.md), its box and its schema only, kept inside its enum; [Enum](entities/05-enum.md), its box, its schema and the schema of its file.
+- The example of the [Data model](data-model.md) now shows the file `enums.json`, with a global enum and a template.
+- **A template keeps its items** in `enum_items`, unused, so that going back to global finds them (draft, Enums: changing the kind loses nothing). Assistant's reading of that rule in the file.
+- Open on the entity files: whether the `id` of an enum is unique; whether the items of a template on a placed symbol follow the schema of an enum item.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.

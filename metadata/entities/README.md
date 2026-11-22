@@ -36,3 +36,5 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 | [Designation](01-designation.md) | What identifies the equipment of a placed symbol, such as its tag or its location. | Draft |
 | [Color](02-color.md) | One color of a palette, picked for the appearance of a type. | Draft |
 | [Palette](03-palette.md) | A set of colors: the only colors a type can pick. | Draft |
+| [Enum item](04-enum-item.md) | One value of an enum: the number the model receives and the name people read. | Draft |
+| [Enum](05-enum.md) | A named list of items, picked by a signal whose value is an enum. | Draft |

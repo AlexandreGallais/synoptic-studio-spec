@@ -58,7 +58,7 @@ The rules every file of Metadata follows. An [entity file](entities/README.md) g
 
 ## What a file holds
 
-- **`format_version`, then one key**, named after what the file holds, in lower case: the list in the plural for a whole list (`"designations": [ … ]`), the entity in the singular for one thing (`"palette": { … }`, `"type": { … }`, `"enum": { … }`).
+- **`format_version`, then one key**, named after what the file holds, in lower case: the list in the plural for a whole list (`"designations": [ … ]`, `"enums": [ … ]`), the entity in the singular for one thing (`"palette": { … }`, `"type": { … }`).
 - The fields of an entity are never beside `format_version`: the entity's schema stays closed, and the file's schema only adds the key that holds it.
 
 ## Shared types

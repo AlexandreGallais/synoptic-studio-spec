@@ -11,7 +11,7 @@ Colour of a box's title: orange, the entity has its own page in [Entities](entit
 ```mermaid
 ---
 config:
-  themeCSS: "[id*='entity-DESIGNATION-'] .outer-path path, [id*='entity-PALETTE-'] .outer-path path, [id*='entity-COLOR-'] .outer-path path { fill: #f8b26a !important; }"
+  themeCSS: "[id*='entity-DESIGNATION-'] .outer-path path, [id*='entity-PALETTE-'] .outer-path path, [id*='entity-COLOR-'] .outer-path path, [id*='entity-ENUM-'] .outer-path path, [id*='entity-ENUM_ITEM-'] .outer-path path { fill: #f8b26a !important; }"
 ---
 erDiagram
     TYPE {
@@ -456,31 +456,40 @@ erDiagram
 }
 ```
 
-### A global enum
+### The enums
 
 ```json
 {
   "format_version": 1,
-  "enum": {
-    "internal_id": "01a1f800-0000-7000-8000-000000000500",
-    "kind": "global",
-    "id": "operating_mode",
-    "description": "How a piece of equipment is driven.",
-    "enum_items": [
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000501",
-        "key": 0,
-        "display_name": "Manual",
-        "description": "Driven by the operator."
-      },
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000502",
-        "key": 1,
-        "display_name": "Auto",
-        "description": "Driven by the control loop."
-      }
-    ]
-  }
+  "enums": [
+    {
+      "internal_id": "01a1f800-0000-7000-8000-000000000500",
+      "kind": "global",
+      "id": "operating_mode",
+      "description": "How a piece of equipment is driven.",
+      "enum_items": [
+        {
+          "internal_id": "01a1f800-0000-7000-8000-000000000501",
+          "key": 0,
+          "display_name": "Manual",
+          "description": "Driven by the operator."
+        },
+        {
+          "internal_id": "01a1f800-0000-7000-8000-000000000502",
+          "key": 1,
+          "display_name": "Auto",
+          "description": "Driven by the control loop."
+        }
+      ]
+    },
+    {
+      "internal_id": "01a1f800-0000-7000-8000-000000000510",
+      "kind": "template",
+      "id": "switch_positions",
+      "description": "The positions of a switch.",
+      "enum_items": []
+    }
+  ]
 }
 ```
 
