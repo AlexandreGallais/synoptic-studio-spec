@@ -5,8 +5,9 @@
 | Version | Date | Status | Change |
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file, from research T6 |
+| 2 | 2026-11-22 | Draft | Parser of the project, `-x^2` refused, result checked out of domain: decided (decision 0076) |
 
-How the two formulas of a [conversion](entities/11-conversion.md) are written and computed: `to_default` and `from_default`, each a formula in `x`. Every rule of this file comes from the advice of research T6 (`research/t6-recherche-documentaire-conversions-d-unites-tout/rapport.md`, 3.6 to 3.13 and 6, decision 3) and is **proposed**, until the Product Owner validates it.
+How the two formulas of a [conversion](entities/11-conversion.md) are written and computed: `to_default` and `from_default`, each a formula in `x`. Every rule of this file comes from the advice of research T6 (`research/t6-recherche-documentaire-conversions-d-unites-tout/rapport.md`, 3.6 to 3.13 and 6, decision 3). Three are **decided** by the Product Owner (decision 0076): the parser of the project, `-x^2` refused, and a value out of domain caught by checking the result. The others are **proposed** until the Product Owner validates the file.
 
 ## Where it is used
 
@@ -62,7 +63,7 @@ Each is refused with a message that says how to write it.
 
 | Written | Why | Write instead |
 | --- | --- | --- |
-| `-x^2` | Read −(x²) by Python and −x squared by Excel's order: a minus sign directly before a power is ambiguous | `-(x^2)` or `(-x)^2` |
+| `-x^2` | Read −(x²) by Python and −x squared by Excel's order: a minus sign directly before a power is ambiguous. Refused, as JavaScript does (decision 0076) | `-(x^2)` or `(-x)^2` |
 | `2x`, `2(x + 1)`, `2 pi` | No implied multiplication | `2 * x` |
 | `x**2` | One power operator only | `x^2` |
 | `log(x)` | Ambiguous | `ln(x)` or `log10(x)` |
@@ -103,15 +104,22 @@ digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
 
 - **No `eval` and no `new Function`**: a formula is read by a parser of its own into a tree, then the tree is computed. A quantity file may come from a third party (decisions 0069, 0071): a formula is never run as code.
 - **Read once, computed often**: every formula is parsed when the catalogue is read, and the tree is kept for its unit. The POCs measure the cost of a conversion per shown value against the 8.3 ms of a frame (criterion C15).
-- **A parser written for the project**, on the grammar above (research T6, decision 3, option D): no dependency, exactly the list of this file, and its own messages. Second option: jsep for the parsing, with an evaluator of the project and a white list of operators and functions. The two most complete libraries (math.js, expr-eval) had a code-execution flaw in 2025–2026.
-- **A result that is not a number** (NaN, or ±Infinity, as `log10(0)` gives) is never shown as a number. What is shown instead is open (below).
+- **A parser written for the project**, on the grammar above (decision 0076; research T6, decision 3, option D): no dependency, exactly the list of this file, and its own messages. Not taken: jsep for the parsing, math.js or expr-eval; the last two had a code-execution flaw in 2025–2026.
+
+## Out of the domain of a formula
+
+A value out of the domain of a formula (`log10(0)`, `ln` of a negative number) is caught by **checking the result only** (decision 0076): the catalogue writes no domain.
+
+- **A result that is not a finite number** (NaN, +Infinity or −Infinity) is never shown as a number: the synoptic and the screens show a mark in its place.
+- **A value typed by the user** (a preset, a typed value, decision 0051) whose conversion gives no finite number is refused.
+- **Limit, accepted**: a value at or near the edge of a domain may give a finite number, often huge, and is shown as it is. In a slope in percent, 89.9999° gives about 57,295,780 %, and 90° itself gives about 1.6 × 10¹⁸ %, since π/2 is not exact in floats (computed with Node.js). Nothing brings a value back to a bound.
 
 ## Checks of the catalogue
 
 Run on every quantity file when it is read, and by the tests of the shipped catalogue.
 
 1. Each formula follows the grammar and the refused forms; its only name is `x`.
-2. **Round trip**: on a sample of values in the domain of the unit, `from_default(to_default(x))` gives `x` back within a relative tolerance of 1e-9 (the default of PEP 485; research T6, 3.11). °F → K → °F passes on 100,000 values from −459 to 911, with a largest relative error of 1.2 × 10⁻¹¹.
+2. **Round trip**: on a sample of values, those for which both formulas give a finite number, `from_default(to_default(x))` gives `x` back within a relative tolerance of 1e-9 (the default of PEP 485; research T6, 3.11). °F → K → °F passes on 100,000 values from −459 to 911, with a largest relative error of 1.2 × 10⁻¹¹.
 3. **Multiplies then shifts**, for a quantity with `offers_relative_quantity`: `to_default(x) − to_default(0)` equals `k · x`, with `k = to_default(1) − to_default(0)`, on the same sample (decision 0050).
 4. The same tolerance compares two units of equal step when they are sorted ([Unit system](entities/13-unit-system.md)).
 
@@ -128,6 +136,6 @@ Run on every quantity file when it is read, and by the tests of the shipped cata
 
 ## Open questions
 
-- What the synoptic shows, and what a typed value does, outside the domain of a formula (research T6, 3.10): a domain written in the catalogue for each conversion (D1), a check of the result only (D2), or the value brought back to a bound (D3).
+- The look of the mark shown in place of a result that is not a number: drawn with the screens.
 - The absolute tolerance of the round trip near zero, where a relative tolerance alone fails (PEP 485).
 - Scales defined by tables (hardness): out of these formulas; whether they enter the catalogue (research T6, open question 2).

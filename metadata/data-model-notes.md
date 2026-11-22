@@ -663,7 +663,16 @@ Asked by the Product Owner in the questionnaire ("Le fichier de syntaxe des form
 
 - **[Formulas](formulas.md)**, a file of its own in Metadata, cited by [Conversion](entities/11-conversion.md), not written in the entity files.
 - Its rules are the advice of research T6 (3.6 to 3.13, decision 3), all **proposed**: the variable `x` only; `pi` and `e`; `+ - * / ^`; seven functions (`sqrt exp ln log10 log2 tan atan`); `^` from right to left; `-x^2`, implied multiplication, `**` and `log` refused; a parser of the project, no `eval`; formulas parsed once when the catalogue is read; round trip within 1e-9.
-- Open there: a value out of the domain of a formula (D1 to D3), the absolute tolerance near zero, scales defined by tables.
+- Open there: the absolute tolerance near zero, scales defined by tables, the look of the mark shown for a result that is not a number.
+
+## Settled on 2026-11-22 (formulas)
+
+Answers of the Product Owner to the questionnaire of Travail, same day (decision 0076):
+
+- **The formulas are read by a small parser of the project** ("Un petit analyseur propre au projet"), no `eval`, no library: a quantity file may come from a third party.
+- **`-x^2` is refused**, with a message asking for parentheses ("Il le refuse et demande des parenthèses"); `10^-3` stays allowed.
+- **Out of the domain of a formula, only the result is checked** ("Contrôle du résultat seulement"): no domain in the JSON; a result that is not a finite number shows a mark, and a typed value that gives one is refused. A value near the edge (`tan` near 90°) gives a huge number, shown as it is.
+- Written in [Formulas](formulas.md); the other rules of that file stay proposed.
 
 ## Not in the schema yet
 
