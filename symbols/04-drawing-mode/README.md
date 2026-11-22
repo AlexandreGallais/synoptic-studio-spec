@@ -2,13 +2,13 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › Drawing mode · Previous: [Editor](../03-editor/README.md) · Next: [Point editing mode](../05-point-editing-mode/README.md)
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+Status: draft. Not validated.
 
 The default mode of the [editor](../03-editor/README.md): draw and arrange shapes.
 
 ## Rules
 
-- Tool bar: [Select](../03-editor/select.md), [Hand](../03-editor/hand.md), then in this order: [Group](group.md), [Rectangle](rectangle.md), [Ellipse](ellipse.md), [Polygon](polygon.md), [Pen](pen.md), [Text](text.md). The order is the one the Product Owner chose: groups, then the basic shapes, then the pen, then the text.
+- Tool bar: [Select](../03-editor/select.md), [Hand](../03-editor/hand.md), then in this order: [Group](group.md), [Rectangle](rectangle.md), [Ellipse](ellipse.md), [Polygon](polygon.md), [Pen](pen.md), [Text](text.md). The order: groups, then the basic shapes, then the pen, then the text.
 - The Group, Rectangle, Ellipse, Polygon, Pen and Text tools exist only in this mode (the Pen is also in the point editing mode).
 - Right-hand panel: the options of the selected shape (colours, corner radius, effects...).
 - Everything drawn becomes a path, except a text, which stays a text.

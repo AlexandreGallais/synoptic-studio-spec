@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Synoptics](README.md) › Open questions · Previous: [Data model](11-data-model.md)
 
-Status: written by the assistant on 2026-11-20, with the extrapolation of this part. Each question gives the option the assistant advises, never a decision. The Product Owner settles them at the review of the part. The questions he settled on 2026-11-20 (references in a view, the instance ID as the key, what a synoptic changes in the preset) are written in their pages and left this list.
+Status: written by the assistant, with the extrapolation of this part. Each question gives the option the assistant advises, never a decision; they are settled at the review of the part. A question settled leaves this list for its page.
 
 ## The most structuring
 
@@ -43,6 +43,6 @@ These change the data model; to settle first.
 
 ## Left for later
 
-Ideas of the Product Owner, not to be asked now.
+Ideas, not to be asked now.
 
-- **A read-only way in for model authors** (Product Owner, 2026-11-20: "les modeleurs [...] vont avoir les vues synoptiques en mode readonly. Quand ils cliqueront sur un symbole, ils auront les informations, des fiches récapitulatives en fonction des symboles [...] on verra ça plus tard"): the synoptic views opened without editing, and a click on a placed symbol shows a summary sheet of its type (signals, commands and their descriptions). Whether it is a mode of the application, what the sheet holds, and whether it is in these specs: not described.
+- **A read-only way in for model authors**: the synoptic views opened without editing, and a click on a placed symbol shows a summary sheet of its type (signals, commands and their descriptions). Whether it is a mode of the application, what the sheet holds, and whether it is in these specs: not described.

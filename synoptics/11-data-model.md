@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Synoptics](README.md) › Data model · Previous: [Outputs](10-outputs.md) · Next: [Open questions](12-open-questions.md)
 
-Status: a first sketch by the assistant, 2026-11-20. Three of its choices were settled by the Product Owner the same day (references, instance ID, changes from the preset, see the reading notes); the rest is not validated. Written with the conventions of the [data model of Metadata](../metadata/data-model.md), which it points to and never changes.
+Status: a first sketch by the assistant. Three of its choices are settled (references, instance ID, changes from the preset, see the reading notes); the rest is not validated. Written with the conventions of the [data model of Metadata](../metadata/data-model.md), which it points to and never changes.
 
 ## Conventions
 
@@ -160,7 +160,7 @@ erDiagram
 - **A pipe linked to a type has an identity too**, the same part, so it is wired like a placed symbol (see [Pipes](05-pipes.md#a-pipe-whose-style-is-linked-to-a-type)).
 - **Only what differs from the preset is kept** (`VALUE_CHANGE`: start value, unit, decimals; `TEXT_CHANGE`: texts of the faceplate), decided on 2026-11-20: a placed symbol that changes nothing holds nothing, and follows its preset when the preset changes.
 - **A crossing keeps only the swaps**: the default rule (the last drawn passes over) needs nothing stored; the user's click stores which pipe passes over.
-- **Junctions are not stored**: a branch is a pipe whose end is of kind `pipe`; the junction is computed from it. If the Product Owner chooses one pipe as a tree, `PIPE` will hold its branches instead.
+- **Junctions are not stored**: a branch is a pipe whose end is of kind `pipe`; the junction is computed from it. If one pipe as a tree is chosen, `PIPE` will hold its branches instead.
 - The content of an annotation (its shapes, its text, the signal of a value label) and of a scenario (its values) is not drawn yet.
 
 ## Open

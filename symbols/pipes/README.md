@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › Pipes · Previous: [Run mode](../09-run-mode/README.md)
 
-Status: draft, from the Product Owner's oral description of 2026-11-11 and the second research report of 2026-11-11 (`research/t4-…/rapport.md`, which also read the archived Figma page "Flow · Pipes"). Not validated.
+Status: draft, with the second research report (`research/t4-…/rapport.md`, which also read the archived Figma page "Flow · Pipes"). Not validated.
 
 Pipes are the lines that connect symbols in a synoptic. The user draws them with a pipe tool, and the editor computes the rest: joints, corners, junctions, crossings. This part of the specs covers what is **created in a library** (the styles) and what the symbol must offer (the connection points). How a pipe is drawn in a synoptic is in [Pipes in the synoptic](in-the-synoptic.md), which belongs to part 3.
 
@@ -11,9 +11,9 @@ Pipes are the lines that connect symbols in a synoptic. The user draws them with
 - A pipe connects the **connection points** of symbols (see [Connection points](connection-points.md)).
 - A pipe is drawn with straight segments, by clicking. Everything else is computed.
 - What a pipe looks like comes from its **pipe style**, kept in the Symbol Lib, never from options typed on each pipe.
-- A Symbol Lib has **one base pipe style**, the global look of all its pipes. Each **pipe style** (water, gas, steam...) overrides it: by default only the colours (body, border, dashes or not), and any other option when needed, such as a smaller width for gas pipes (Product Owner, 2026-11-11; see [Pipe styles](pipe-styles.md)).
+- A Symbol Lib has **one base pipe style**, the global look of all its pipes. Each **pipe style** (water, gas, steam...) overrides it: by default only the colours (body, border, dashes or not), and any other option when needed, such as a smaller width for gas pipes (see [Pipe styles](pipe-styles.md)).
 - Dashes, on a body or a border, are a **sequence of coloured segments** (a gap is a transparent segment), computed along the pipe.
-- **Everything lives in the pipe style** (decided by the Product Owner, 2026-11-11): the junctions, the crossings and the start and end shapes are parts of the pipe style, not separate lists of the Symbol Lib. They are computed, not edited by hand: the user chooses one style for a pipe, and the style says how all of it looks.
+- **Everything lives in the pipe style**: the junctions, the crossings and the start and end shapes are parts of the pipe style, not separate lists of the Symbol Lib. They are computed, not edited by hand: the user chooses one style for a pipe, and the style says how all of it looks.
 
 | Part of the pipe style | What it sets | Page |
 | --- | --- | --- |
@@ -95,7 +95,7 @@ An archived inspiration, not a decision. It differs from these pages on several 
 | Path kind per pipe (straight, right angles, rounded) | To discuss with the corner radius of the style. |
 | Usage counter of a style | Add: it prepares the display of broken links. |
 | Colouring by topology (zenon) | Refuse: the editor does not know what a fluid is. |
-| Automatic routing around symbols (libavoid) | Not in the first version: the Product Owner wants a path by clicks. |
+| Automatic routing around symbols (libavoid) | Not in the first version: a path is drawn by clicks. |
 
 ### Vocabulary (opinion of the report)
 
@@ -128,7 +128,7 @@ flowchart TD
 - For the geometry research (not this part): offset of a polyline with arcs (body, borders, kinds of joins); search of the crossings between segments and arcs, with a spatial index, incremental; cut of a path at a point and insertion of an arc; length along a path (position of an inline symbol, start of the dashes).
 - POC proposed, **P9**: 100, 300 then 1 000 pipes of 5 segments, 1 000 to 10 000 crossings, one point moved with the mouse; work time per frame in plain JavaScript, with and without index; ways A and B of [Pipe styles](pipe-styles.md).
 
-## Decided by the Product Owner (2026-11-11)
+## Decided
 
 - Junctions, crossings and start and end shapes live **inside the pipe style**, as in the archived Figma page and as the report advised. They are computed: the user picks a style for a pipe and does not edit these parts by hand.
 - A symbol can be **connected to a pipe**: it fits onto it and can only be moved along it (see [Pipes in the synoptic](in-the-synoptic.md)).

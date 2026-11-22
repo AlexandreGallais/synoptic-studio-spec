@@ -17,7 +17,7 @@ What a synoptic gives to the world outside the editor: to the runtime, to the pe
 
 ### Six outputs
 
-The first five are proposed; the interface description of the models is the Product Owner's (2026-11-22).
+The first five are proposed; the interface description of the models is decided.
 
 | Output | For whom | What it holds | Format |
 | --- | --- | --- | --- |
@@ -30,7 +30,7 @@ The first five are proposed; the interface description of the models is the Prod
 
 ### The interface description of the models
 
-Once the synoptics are done, the editor writes, for the models, a kind of interface description document (IDD): for each type used in the project, it shows every signal of the type, and says which ones the project really needs, given how its symbols are used in the synoptics (Product Owner, 2026-11-22).
+Once the synoptics are done, the editor writes, for the models, a kind of interface description document (IDD): for each type used in the project, it shows every signal of the type, and says which ones the project really needs, given how its symbols are used in the synoptics.
 
 Example: in a project, the pumps use a preset whose faceplate is turned off; on the synoptics, a pump only animates its speed and offers two actions, start and stop. The description lists all the signals of the type Pump, and says that this project's pump only needs its speed and the two signals of start and stop. The model built for the project can stop there.
 

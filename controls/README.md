@@ -2,9 +2,9 @@
 
 > [Home](../README.md) › Controls
 
-Status: draft, from the Product Owner's description of 2026-11-15. Not validated.
+Status: draft. Not validated.
 
-The controls shared by the whole application: a number field, a text field, and the other controls that every part uses. Each one is a single component of the design system, with the same behaviour on every screen, in Metadata, in the symbol editor and in the synoptic (Product Owner, 2026-11-15: "des composants logiques", one per kind).
+The controls shared by the whole application: a number field, a text field, and the other controls that every part uses. Each one is a single component of the design system, with the same behaviour on every screen, in Metadata, in the symbol editor and in the synoptic.
 
 ## What it contains
 

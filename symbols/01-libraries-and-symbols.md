@@ -2,17 +2,17 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Libraries and symbols · Next: [Type, preset and faceplate](02-type-and-faceplate.md)
 
-Status: draft, from the Product Owner's description of 2026-11-11, reviewed on 2026-11-15 (one list of symbols, type optional, the left-hand panel), on 2026-11-16 (no libraries of types, a navigation bar on the left with the list of the Symbol Libs) and at the end of 2026-11-17 (a small + instead of the Libraries button; the pages General, Enums, Symbols, Pipes of the selected library in the bar). Not validated.
+Status: draft. Not validated.
 
-A **Symbol Lib** holds symbols. It is the only kind of library: there are no libraries of types (Product Owner, 2026-11-16). This page is about the Symbol Lib, how a symbol is created, and what happens to a symbol when Metadata changes.
+A **Symbol Lib** holds symbols. It is the only kind of library: there are no libraries of types. This page is about the Symbol Lib, how a symbol is created, and what happens to a symbol when Metadata changes.
 
 ## Rules
 
 ### Symbol Lib
 
-- It holds two lists: its **symbols**, a **tree** where a sub-symbol sits under its parent, as in Metadata (Product Owner, 2026-11-18, decision 0045, which replaces the flat list of 2026-11-11 and changes decision 0010; see [Sub-symbols](12-sub-symbols.md)), then its **pipe styles**, a flat list. It also has one base pipe style, the global look of its pipes, that the pipe styles override. Junctions, crossings and start and end shapes are parts of the styles (decided by the Product Owner, 2026-11-11; see [Pipe styles](pipes/pipe-styles.md)). A pipe style can be linked to a type, chosen among all the types of Metadata.
-- **One list of symbols only** (Product Owner, 2026-11-15). There is no "static" or "dynamic" kind: every symbol is the same kind of object, and a symbol simply has a type or not yet. The Product Owner settled it so that the software is simpler to understand at first.
-- It has a small **Enums** page: the enums of Metadata, read only, with the columns the library adds to them for the animations (Product Owner, 2026-11-17; see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)).
+- It holds two lists: its **symbols**, a **tree** where a sub-symbol sits under its parent, as in Metadata (decision 0045; see [Sub-symbols](12-sub-symbols.md)), then its **pipe styles**, a flat list. It also has one base pipe style, the global look of its pipes, that the pipe styles override. Junctions, crossings and start and end shapes are parts of the styles (see [Pipe styles](pipes/pipe-styles.md)). A pipe style can be linked to a type, chosen among all the types of Metadata.
+- **One list of symbols only**. There is no "static" or "dynamic" kind: every symbol is the same kind of object, and a symbol simply has a type or not yet, so that the software is simpler to understand at first.
+- It has a small **Enums** page: the enums of Metadata, read only, with the columns the library adds to them for the animations (see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)).
 - It has a name, set on its **General** page. Nothing else: the lists above are its content, not settings.
 - Every symbol is in one Symbol Lib, and only one. No symbol lives outside a library.
 - In symbol mode, the user selects a Symbol Lib in the navigation bar, then one of its pages: General, Enums, Symbols or Pipes.
@@ -20,23 +20,23 @@ A **Symbol Lib** holds symbols. It is the only kind of library: there are no lib
 
 ### No library of types
 
-- The Product Owner removed the libraries of types (Type Libs) on 2026-11-16: "ça sert à rien". A Symbol Lib is linked to no list of types.
+- There are no libraries of types (Type Libs). A Symbol Lib is linked to no list of types.
 - Every type of Metadata can be chosen for any symbol, in any Symbol Lib.
 - So changing the types offered to a Symbol Lib no longer exists, and cannot break symbols.
 
 ### Navigation bar of the symbol mode
 
-The symbol mode has a navigation bar on the far left, like the one of Metadata (see [Layout rules](../screens/README.md#layout-rules)). Decided by the Product Owner on 2026-11-16, changed by him on 2026-11-17 (end of the day): the pages of a Symbol Lib move into the bar, and the pipes are separated from the symbols.
+The symbol mode has a navigation bar on the far left, like the one of Metadata (see [Layout rules](../screens/README.md#layout-rules)). The pages of a Symbol Lib are in the bar, and the pipes are separated from the symbols.
 
-- At the top, a **small +** that creates a Symbol Lib. It replaces the Libraries button and its page of all the Symbol Libs ("au lieu d'avoir le bouton Lib, on met un petit bouton +").
+- At the top, a **small +** that creates a Symbol Lib. There is no Libraries button nor a page of all the Symbol Libs.
 - Then the list of **every Symbol Lib**: the libraries are listed on the left only.
-- At the bottom of the bar, after a **separator** ("un divider"), the **pages of the selected Symbol Lib**, in this order ("comme ça, là, ça a plus de sens"):
-  1. **General**: the name of the library and the rest of its settings; it is the former page of a Symbol Lib, now its first page ("ça devient une page de la bibliothèque, puis ça devient la première");
+- At the bottom of the bar, after a **separator**, the **pages of the selected Symbol Lib**, in this order:
+  1. **General**: the name of the library and the rest of its settings;
   2. **Enums**: see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md);
   3. **Symbols**: the symbols and the editor;
   4. **Pipes**: the pipe styles (see [Pipes](pipes/README.md)).
-- These four buttons **show only once a Symbol Lib is selected** ("que ça n'apparaisse que quand on a sélectionné une bibliothèque").
-- Why (Product Owner): the pipes are no longer mixed with the symbols, the libraries are only on the left, and the pages sit under them; "c'est plutôt simple à comprendre".
+- These four buttons **show only once a Symbol Lib is selected**.
+- Why: the pipes are not mixed with the symbols, the libraries are only on the left, and the pages sit under them, which is simple to understand.
 
 ```mermaid
 block-beta
@@ -50,7 +50,7 @@ What the left-hand panel shows depends on the page chosen in the bar. Since 2026
 
 | Page | Left-hand panel, from top to bottom |
 | --- | --- |
-| Symbols | A search field (a small magnifier), a **+** button to create a symbol, then the list; a click on an item opens the symbol in the editor. Under it, the **layers** of the open symbol: see [Layers](03-editor/layers.md) (Product Owner, 2026-11-15). |
+| Symbols | A search field (a small magnifier), a **+** button to create a symbol, then the list; a click on an item opens the symbol in the editor. Under it, the **layers** of the open symbol: see [Layers](03-editor/layers.md). |
 | Pipes | The same for the pipe styles: a magnifier, a **+** button to create a style, then the list; a click on an item opens the style. |
 
 - An item of the symbol list shows a **thumbnail** and the **name** of the symbol.
@@ -66,14 +66,14 @@ block-beta
 
 ### Creating a symbol
 
-- The **+** of the symbol list creates a symbol. The type, and the preset, **can** be chosen at creation, among all the types of Metadata, but nothing is imposed (Product Owner, 2026-11-15).
+- The **+** of the symbol list creates a symbol. The type, and the preset, **can** be chosen at creation, among all the types of Metadata, but nothing is imposed.
 - They can be chosen or changed later, in the right-hand panel of the editor (see [Type, preset and faceplate](02-type-and-faceplate.md)).
 - A symbol without a type is a drawing only: it has no signal and no command, so nothing to animate, to link to a gesture or to test. The Interaction, Animation and Run modes need a type (how they look before one is chosen: open).
 - Once a type is chosen, the user links the drawing to it (see [Editor](03-editor/README.md)).
 
 Several symbols can share a type, with different drawings and presets: a centrifugal pump can have a manual symbol and a motorised one, with no change in Metadata.
 
-A symbol can also be created as a **sub-symbol** of another one, of the same Symbol Lib, by the small + of its parent, in the tree or in the editor: it takes what was made for its parent, read only, preset and connection points included, follows its changes, and adds more; its type is the parent's or a sub-type of it (Product Owner, 2026-11-18; see [Sub-symbols](12-sub-symbols.md)).
+A symbol can also be created as a **sub-symbol** of another one, of the same Symbol Lib, by the small + of its parent, in the tree or in the editor: it takes what was made for its parent, read only, preset and connection points included, follows its changes, and adds more; its type is the parent's or a sub-type of it (see [Sub-symbols](12-sub-symbols.md)).
 
 ### Removing the type of a symbol
 
@@ -86,7 +86,7 @@ A symbol can also be created as a **sub-symbol** of another one, of the same Sym
 - A change of the interface can **break a link**: what it points to is gone, or can no longer be used the same way (the list is below).
 - A broken item is shown as broken, with a small red mark. How it looks is for the design, later; it may say why, later too. The animation itself is not changed: it just cannot work the same way any more.
 - There is no tool and no automatic repair. The item only warns that it is broken, and the user redoes the mapping properly, on the symbol side, never in Metadata.
-- **Metadata never warns about what a change breaks**; the symbol mode and the synoptic mode show **a list of what is broken** (Product Owner, 2026-11-17: "si ça casse, ça ne dit pas forcément, parce que sinon ça va le dire tout le temps et ça ne sert à rien. Par contre, une fois qu'on est en mode synoptique ou symbole, là, il y a une liste des choses cassées"). Where this list sits and what each line says: not described yet.
+- **Metadata never warns about what a change breaks**; the symbol mode and the synoptic mode show **a list of what is broken**. Where this list sits and what each line says: not described yet.
 - The same rules apply when the type of a symbol is changed, and when a type is chosen again for a symbol that had lost it.
 
 #### What breaks a link
@@ -139,7 +139,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.5, 
 - **Quality of a value.** Ignition shows an overlay when the quality is not good (see [Animation mode](08-animation-mode/README.md)).
 - **Usage counter.** The archived Figma page shows "used by 38 pipes" on a style. Opinion: add it to symbols and styles; it prepares the display of broken links.
 - **Named colours.** Opinion: a flat list "Colours" in the Symbol Lib, which symbols and styles point to (see [Fill and border](04-drawing-mode/fill-and-border.md)).
-- **Where pipe parts live.** The archived Figma page keeps junctions, crossings and end parts inside the pipe style. The Product Owner chose the same (2026-11-11).
+- **Where pipe parts live.** Junctions, crossings and end parts are inside the pipe style, as in the archived Figma page.
 
 ## Where it is used
 

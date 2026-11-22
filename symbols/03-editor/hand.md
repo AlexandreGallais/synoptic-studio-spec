@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Editor](README.md) › Hand
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+Status: draft. Not validated.
 
 ## Rules
 

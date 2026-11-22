@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Synoptics](README.md) › Synoptics and views · Next: [Synoptic editor](02-synoptic-editor.md)
 
-Status: extrapolated by the assistant on 2026-11-20, from the [introduction](../overview/introduction.md) (two modes: full installation, summary view) and the layout rules. The Product Owner settled the references of a view the same day; the rest is not validated.
+Status: extrapolated by the assistant, from the [introduction](../overview/introduction.md) (two modes: full installation, summary view) and the layout rules. The references of a view are settled; the rest is not validated.
 
 A **synoptic** is one drawing of the installation, saved as one file in the folder of the application. There are two kinds: the **installation**, where every object is placed once, and the **view**, a summary made for operators.
 

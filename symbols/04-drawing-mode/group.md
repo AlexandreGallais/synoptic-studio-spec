@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › Group
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+Status: draft. Not validated.
 
 Group is a tool of the tool bar, like Select or Rectangle: the user picks it to create a group. A group is also the object it creates.
 
@@ -28,7 +28,7 @@ A group is an SVG `g` element. Its first use is to give a structure to several s
 
 - It is available when the group has its own size. The panel offers the placement of the children in the group: centred, or aligned left, right, top or bottom, with anchors.
 - All the children centred is the simple case. When the group fits its content, the biggest child gives the size, and the others are centred on it.
-- The Product Owner does not want a flex display (rows, columns, gaps): he sees no case where it would be useful.
+- No flex display (rows, columns, gaps): no case where it would be useful.
 
 ### Absolute children
 

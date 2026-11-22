@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Pipes](README.md) › Connection points
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+Status: draft. Not validated.
 
 A connection point is a place of a symbol where a pipe can be attached.
 
@@ -16,7 +16,7 @@ A connection point is a place of a symbol where a pipe can be attached.
 
 ## Where it is made in the editor
 
-Provisional, by the assistant: a **Connection point** tool, in a mode of its own ("Connection" mode) with the Select and Hand tools, like the Interaction mode has its zone tool. The Product Owner did not say where the tool lives: it is a question (see [Open questions](../10-open-questions.md)).
+Provisional, by the assistant: a **Connection point** tool, in a mode of its own ("Connection" mode) with the Select and Hand tools, like the Interaction mode has its zone tool. Where the tool lives is a question (see [Open questions](../10-open-questions.md)).
 
 ## What the research found
 

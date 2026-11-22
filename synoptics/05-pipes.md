@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Synoptics](README.md) › Pipes · Previous: [Panel of a placed symbol](04-placed-symbol-panel.md) · Next: [Annotations](06-annotations.md)
 
-Status: extrapolated by the assistant on 2026-11-20. What the Product Owner said on 2026-11-11 stays written in [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md), in the Symbols part, untouched; this page builds on it. Not validated.
+Status: extrapolated by the assistant. What is decided stays written in [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md), in the Symbols part, untouched; this page builds on it. Not validated.
 
 How pipes are drawn and edited in a synoptic. What a pipe looks like (its style, junctions, crossings, ends) is made in the Symbol Lib: see [Pipes](../symbols/pipes/README.md).
 
@@ -99,4 +99,4 @@ The user draws `W-01` from the outlet of tank `T-1` to the inlet of pump `P-101`
 - A branch: two pipes or one pipe as a tree? (To decide, already asked.)
 - A symbol on a pipe: does it follow the bends (archived page) or stay on one segment?
 - Which Symbol Lib do the pipe styles come from when a synoptic uses several? Advised: all those used, grouped by library.
-- Should the editor route a pipe around symbols by itself? Not in the first version (the Product Owner wants a path by clicks).
+- Should the editor route a pipe around symbols by itself? Not in the first version.

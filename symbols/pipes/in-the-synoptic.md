@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Pipes](README.md) › Pipes in the synoptic
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated. This page belongs to part 3 (the synoptic), which is not written yet. It only records what the Product Owner said about pipes, so that it is not lost.
+Status: draft. Not validated. This page belongs to part 3 (the synoptic), which is not written yet. It only records what is decided about pipes in the synoptic, so that it is not lost.
 
 ## Rules
 
@@ -16,7 +16,7 @@ Status: draft, from the Product Owner's description of 2026-11-11. Not validated
 
 ### A symbol connected to a pipe
 
-Decided by the Product Owner (2026-11-11).
+Decided.
 
 - The user draws a pipe, places a symbol, and sets the symbol **connected to the pipe** ("Connect to the pipe").
 - The symbol then fits onto the pipe and stays attached to it. It can only be moved **along the pipe**, never freely: dragging it slides it along the pipe.
@@ -38,7 +38,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.1, 
 
 - Drawing: Ignition draws orthogonal segments by default (Alt: steps of 15 degrees, Shift: free). Opinion: an **orthogonal lock** while drawing, like the angle lock of the pen.
 - The archived Figma page gives a pipe a panel: style (with "edit this style"), path kind (Straight, Right angles, Rounded), start and end, inline symbols with their position in percent, crossings (with "swap all").
-- **Inline symbol** (archived page, Plant 3D): right click on the pipe, pick a symbol with two connection points; it slides along the pipe, bends included, without leaving it; removed, the pipe keeps its place and points. Advised by the report, and decided by the Product Owner (see above).
+- **Inline symbol** (archived page, Plant 3D): right click on the pipe, pick a symbol with two connection points; it slides along the pipe, bends included, without leaving it; removed, the pipe keeps its place and points. Advised by the report, and decided (see above).
 - A branch leaves one pipe as a tree in the archived page and in Ignition (see [Junctions](junctions.md)).
 - Automatic routing (libavoid): not in the first version, the user draws by clicks.
 

@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Editor](README.md) › Select
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+Status: draft. Not validated.
 
 Select is in the tool bar of every mode except the Run mode. What it does depends on the mode.
 
@@ -41,7 +41,7 @@ Second research report (`research/t4-…/rapport.md`, section 3.15):
 
 - The clickable real shape, transparent fill included, is native: `pointer-events` has values that make the inside clickable whatever the fill. Opinion of the report: let the browser do the hit test, with no computation in JavaScript. (The definitions of the values were not on the page opened.)
 
-## Decided by the Product Owner (2026-11-11)
+## Decided
 
 - **Keys must exist on every platform** (Windows, macOS, Linux), the same everywhere: see the rule in the [editor](README.md). "Option" does not exist on Windows, so the specs name the key **Alt** (it is the Option key on a Mac).
 - A selection rectangle selects only the shapes it contains entirely while **Alt** is held. The option in the panel stays as the visible equivalent.

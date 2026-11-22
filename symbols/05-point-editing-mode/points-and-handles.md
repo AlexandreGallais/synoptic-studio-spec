@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Point editing mode](README.md) › Points and handles
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+Status: draft. Not validated.
 
 What the right-hand panel offers when a point or a handle is selected in the [point editing mode](README.md).
 
@@ -40,7 +40,7 @@ When a handle is selected, it can be edited in two ways, which stay linked:
 
 Changing X and Y changes the angle and the length, and the other way round. The angle and length way is for a handle that must go at a precise angle, which X and Y alone do not give easily.
 
-With the mouse, a point or a handle can be dragged pixel by pixel while a key is held, even when the view is zoomed out (see [Precise move](../03-editor/precise-move.md); Product Owner, 2026-11-15).
+With the mouse, a point or a handle can be dragged pixel by pixel while a key is held, even when the view is zoomed out (see [Precise move](../03-editor/precise-move.md)).
 
 ### What the research found
 

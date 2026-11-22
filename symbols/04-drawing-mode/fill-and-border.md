@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › Fill and border
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+Status: draft. Not validated.
 
 What every shape has in common: the [rectangle](rectangle.md), the [ellipse](ellipse.md) and the [polygon](polygon.md). They are set in the right-hand panel.
 
@@ -17,7 +17,7 @@ What every shape has in common: the [rectangle](rectangle.md), the [ellipse](ell
 
 The background can be a plain colour, or a gradient. The border can be given the same kinds of fill as the background, so it can also be a gradient.
 
-Proposed by the assistant, the Product Owner asked it to think of what can be offered. To confirm:
+Proposed by the assistant. To confirm:
 
 | Kind | Notes |
 | --- | --- |
@@ -31,7 +31,7 @@ Proposed by the assistant, the Product Owner asked it to think of what can be of
 - **Size**: the width of the border, in pixels. Example: a border of 2 px.
 - **Position**: outside, in the middle, or inside the shape.
 - **Fill**: a colour or a gradient, as above.
-- **Dashes**: the border can be dashed, as the user wants, with a **dash sequence** (Product Owner, 2026-11-11, the same rule as for pipes, see [Pipe styles](../pipes/pipe-styles.md)):
+- **Dashes**: the border can be dashed, as the user wants, with a **dash sequence** (the same rule as for pipes, see [Pipe styles](../pipes/pipe-styles.md)):
   - a sequence of segments, each with a **length** and a **colour**, repeated along the border;
   - a gap is a segment with a **transparent** colour: "black 2, transparent 2" gives classic dashes;
   - several colours can follow each other: "red 4, black 4" gives red and black dashes;
@@ -40,7 +40,7 @@ Proposed by the assistant, the Product Owner asked it to think of what can be of
 
 ### Dashes: what the research says
 
-- Native SVG dashes (`stroke-dasharray`) exist only for a stroke, and have **one colour**. The border of the project is a fill, and a dash sequence can have several colours: the dashes are therefore computed, each dash as a small shape, as the Product Owner wants for pipes ("everything is computed"). It is a geometric calculation redone at each resize, for the geometry research. For shape borders, this follows from the dash sequence; to confirm by the Product Owner.
+- Native SVG dashes (`stroke-dasharray`) exist only for a stroke, and have **one colour**. The border of the project is a fill, and a dash sequence can have several colours: the dashes are therefore computed, each dash as a small shape, as for pipes. It is a geometric calculation redone at each resize, for the geometry research. For shape borders, this follows from the dash sequence; to confirm.
 - The cost follows the number of dashes (the perimeter divided by dash plus space). The editor needs a maximum number of dashes per shape, set by the POC (P8).
 - No source gives the cost of a gradient or of its number of colour stops: a short POC (P8) is planned.
 

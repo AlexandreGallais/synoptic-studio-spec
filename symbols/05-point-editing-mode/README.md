@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › Point editing mode · Previous: [Drawing mode](../04-drawing-mode/README.md) · Next: [Alignment mode](../06-alignment-mode/README.md)
 
-Status: draft, from the Product Owner's descriptions of 2026-11-11. Not validated.
+Status: draft. Not validated.
 
 The mode of the [editor](../03-editor/README.md) in which the points of a path are edited.
 
@@ -40,7 +40,7 @@ The mode of the [editor](../03-editor/README.md) in which the points of a path a
 ### A shape that receives points becomes a free form
 
 - When points are added to a rectangle, an ellipse or a polygon (with the Select tool or the Pen), the shape becomes a free form: a path.
-- The Product Owner's rule: it **loses nothing** of what it had (fill, border, effects, position); it is only now a free form, whose points are all editable.
+- It **loses nothing** of what it had (fill, border, effects, position); it is only now a free form, whose points are all editable.
 - The path now follows its points, not the options of the former shape.
 - The same holds when a point is **removed**: a rectangle that loses a point becomes a triangle, as a free form. Moving the points of a rectangle also makes it a free form.
 
@@ -48,7 +48,7 @@ The mode of the [editor](../03-editor/README.md) in which the points of a path a
 
 - An ellipse is, at its base, only a shape with handles: its 4 points have handles and no corner radius mode (see [Points and handles](points-and-handles.md)).
 - When a point is added to it or removed from it, it becomes a free form. Its points then gain the corner radius mode, like the points of any other path. It is not applied by itself: the points keep their handles, and the user switches a point to the corner radius mode when they want it.
-- How the roundings are edited precisely (a point switched to the corner radius mode, its radius) is not detailed yet: to be settled later with the Product Owner.
+- How the roundings are edited precisely (a point switched to the corner radius mode, its radius) is not detailed yet: to be settled later.
 
 ```mermaid
 flowchart LR
@@ -66,6 +66,6 @@ Source: the second research report (`research/t4-…/rapport.md`, section 3.15).
 
 ## Open questions
 
-- Options that belong to the former shape (the corner radius of a rectangle, the number of sides of a polygon, the box of an ellipse): once the shape is a free form, are they gone from the panel, or kept as shortcuts? The Product Owner said nothing is lost, but these options describe a shape that no longer has a fixed geometry.
+- Options that belong to the former shape (the corner radius of a rectangle, the number of sides of a polygon, the box of an ellipse): once the shape is a free form, are they gone from the panel, or kept as shortcuts? Nothing is lost, but these options describe a shape that no longer has a fixed geometry.
 - Precise editing of the roundings (corner radius mode of a point): to be detailed later.
 - The list of the right-hand panel: all the points of all the shapes of the symbol, or only those of the selected shapes (all shapes when nothing is selected)? The spec above assumes all shapes, grouped by shape, to confirm.

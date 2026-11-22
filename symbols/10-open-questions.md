@@ -26,7 +26,7 @@ This file is the index of the open questions. A question sits in the file it con
 | **Text that becomes an input: HTML field laid over the text instead of a `foreignObject`.** The text writes an input signal directly, without a command (decision 0014). | [Animation mode](08-animation-mode/README.md) | HTML field over the text: proposed in decision 0006, settled after POC P12. |
 | Do the signals carry a quality in the contract with the model? | [Animation mode](08-animation-mode/README.md) | Yes, shown by default. |
 | Name "Test mode"; form of the simulation log and of the simulated faceplate; the signals used as bounds of an animation listed with the test values. | [Run mode](09-run-mode/README.md) | Test mode; a log line: time, place, gesture, effect, value; bound signals listed, inputs included. |
-| A bound of a bounded linear animation typed as a number, besides a signal in or out. | [Animation mode](08-animation-mode/README.md#the-input-range-of-a-bounded-linear-animation) | Yes: assistant's reading of the Product Owner's words (2026-11-17). |
+| A bound of a bounded linear animation typed as a number, besides a signal in or out. | [Animation mode](08-animation-mode/README.md#the-input-range-of-a-bounded-linear-animation) | Yes: assistant's reading, to confirm. |
 | A branch as one pipe or two; a type of Metadata for a pipe; path kind per pipe. (Junctions, crossings and ends inside the pipe style; symbol connected to a pipe: decided 2026-11-11.) | [Pipes](pipes/README.md) | One pipe; yes, three signals. |
 | Symbol connected to a pipe: which symbols, pipe cut under it or not, how its position is kept, what happens when the pipe changes. | [Pipes in the synoptic](pipes/in-the-synoptic.md) | Two connection points, pipe continuous under it (archived Figma page). |
 | Properties a signal can drive on a pipe style; a type on the base style; a branch with its own values and propagation; global stop and "reduce motion"; path kind per pipe. (Base style with overrides, dash sequences, computed dashes, moving dashes with a direction, propagation at junctions, optional type on a pipe style: decided 2026-11-11.) | [Pipe styles](pipes/pipe-styles.md) | Global stop and "reduce motion": yes. |
@@ -40,7 +40,7 @@ This file is the index of the open questions. A question sits in the file it con
 | Thumbnail of a symbol in the list: the symbol itself, or its outlines only; what else an item shows. | [Libraries and symbols](01-libraries-and-symbols.md) | Outlines only, as Figma's outline view, with the name. |
 | Look of the Interaction, Animation and Run modes before a type is chosen. | [Libraries and symbols](01-libraries-and-symbols.md) | Greyed in the mode menu, with a tooltip "choose a type first". |
 | Place of the base pipe style. | [Libraries and symbols](01-libraries-and-symbols.md) | First item of the pipe styles list. |
-| Place of the floating tool bar: bottom or top of the drawing area. | [Editor](03-editor/README.md) | Bottom, centred (the Product Owner's leaning). |
+| Place of the floating tool bar: bottom or top of the drawing area. | [Editor](03-editor/README.md) | Bottom, centred. |
 | Key and ratio of the precise move; does it also apply to whole shapes. | [Precise move](03-editor/precise-move.md) | See the page. |
 | What a line of the layer tree shows besides its name (lock, hide, icon of its kind). | [Layers](03-editor/layers.md) | Icon of the kind, name, hide, lock. |
 
@@ -56,7 +56,7 @@ This file is the index of the open questions. A question sits in the file it con
 | Question | Page | Proposal of the assistant |
 | --- | --- | --- |
 | Sub-symbols: what becomes of them when their parent is deleted; where the + sits in the editor. (Decided 2026-11-18: a tree, the parent in the same Symbol Lib, a small + in the tree and in the editor, any type under a parent without a type, every sub-symbol in fault when the parent changes or loses its type, preset and connection points taken, a parent can be deleted.) | [Sub-symbols](12-sub-symbols.md) | Into fault, as for a change of type. |
-| The list of faults of the application: what puts a symbol in fault, how it shows, how it is repaired (Product Owner, 2026-11-18). | [Sub-symbols](12-sub-symbols.md) | Start from the small red mark of a broken link. |
+| The list of faults of the application: what puts a symbol in fault, how it shows, how it is repaired. | [Sub-symbols](12-sub-symbols.md) | Start from the small red mark of a broken link. |
 
 ## Still open, not researched
 

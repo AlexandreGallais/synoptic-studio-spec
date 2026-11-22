@@ -4,7 +4,7 @@
 
 How the application reads and writes its files. It is not about metadata: it holds for everything the application saves.
 
-Status: draft, written from the Product Owner's oral description on 2026-11-10. Nothing here is validated.
+Status: draft on 2026-11-10. Nothing here is validated.
 
 ## What it contains
 

@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Storage](README.md) › Files and conflicts
 
-Status: draft, rules stated by the Product Owner on 2026-11-10. Nothing here is validated.
+Status: draft. Nothing here is validated.
 
 The open source application has access to a folder. Everything it generates (types, Symbol Libs, and the rest) is saved as files in that folder. All reading and writing goes through the server, never through the browser's file loading.
 
@@ -18,7 +18,7 @@ As soon as something changes, the application must be able to check that the fil
 
 - An option, to be ticked, makes the application check before saving that the file has not changed since it was loaded.
 - An option makes the application refresh the folder before saving.
-- Whether these are options or always on is not decided: the Product Owner has no firm idea yet.
+- Whether these are options or always on is not decided yet.
 
 ```mermaid
 sequenceDiagram
@@ -37,4 +37,4 @@ sequenceDiagram
 
 - Are the check and the refresh options, or always on? Open.
 - What does the application do on a conflict: warn and stop, or offer to reload? Open.
-- Which files are generated and under which names and sub-folders? To be specified. The Product Owner leans towards JSON files, with no database (2026-11-18, "peut-être"); for Metadata, see [Data model](../metadata/draft.md#as-json).
+- Which files are generated and under which names and sub-folders? To be specified. JSON files with no database are a leaning, not settled; for Metadata, see [Data model](../metadata/draft.md#as-json).

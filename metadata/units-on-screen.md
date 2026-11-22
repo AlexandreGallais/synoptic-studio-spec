@@ -89,7 +89,7 @@ flowchart LR
 
 ## On the Units page
 
-- **The page is read only** (MD-08): it lists the quantities, one line each with the icon `quantity` and, when it has one, the icon `difference`; a quantity shows a switch Quantity | Difference when it has a difference, then its default unit and its unit systems (Product Owner, 2026-11-22); a unit system shows a converter and the table of its units.
+- **The page is read only** (MD-08): it lists the quantities, one line each with the icon `quantity` and, when it has one, the icon `difference`; a quantity shows a switch Quantity | Difference when it has a difference, then its default unit and its unit systems; a unit system shows a converter and the table of its units.
 - **The converter is a number field in the default unit**, 1 to start with (decision 0085): its value is shown in every unit of the table, and nothing is kept.
 - **The table of units**: Unit (its name, with its variant: US gallon), Symbol, Value, Formula (how the unit is computed from the default unit). The line of the default unit is marked (assistant's reading).
 - **The units are sorted by the software**: smallest first, by the size of one step in the default unit, then by name; a quantity whose formulas give no finite step keeps the order of its file ([Unit system](entities/09-unit-system.md)).

@@ -2,13 +2,13 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Pipes](README.md) › Pipe ends
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+Status: draft. Not validated.
 
 A start shape and an end shape can be set on a pipe. They are created in the **pipe style** and chosen in the synoptic.
 
 ## Rules
 
-- End shapes are parts of the base pipe style, and a pipe style can override them (see [Pipe styles](pipe-styles.md)); they are not a separate list of the Symbol Lib (decided by the Product Owner, 2026-11-11). In the synoptic, each end of a pipe offers the shapes of its style, or none (as in the archived Figma page).
+- End shapes are parts of the base pipe style, and a pipe style can override them (see [Pipe styles](pipe-styles.md)); they are not a separate list of the Symbol Lib. In the synoptic, each end of a pipe offers the shapes of its style, or none (as in the archived Figma page).
 
 - An end shape is drawn in a small editor of its own: a **box** of the size the user wants, with an **anchor** at each side and each corner of the box (see [Anchors](../03-editor/anchors.md)).
 - The user draws the shape freely inside the box, with the tools of the [drawing mode](../04-drawing-mode/README.md).

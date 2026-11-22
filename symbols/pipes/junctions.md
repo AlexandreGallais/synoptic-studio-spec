@@ -2,15 +2,15 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Pipes](README.md) › Junctions
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+Status: draft. Not validated.
 
 A junction is a place where a pipe splits in two (or where several pipes meet).
 
 ## Rules
 
 - A junction is made in the synoptic: the user draws a pipe, clicks inside another pipe, and draws a new pipe from there. The editor computes the junction and splits the pipe in two (see [Pipes in the synoptic](in-the-synoptic.md)).
-- The look of a junction is set in the **base pipe style** of the Symbol Lib, and a pipe style can override it (see [Pipe styles](pipe-styles.md)); it is not a separate list of the Symbol Lib (decided by the Product Owner, 2026-11-11). It is computed; the user does not edit it by hand.
-- **Propagation** (Product Owner, 2026-11-11): when the dashes of a pipe move, the movement goes on through the junction into the branches, following the flow (see [Pipe styles](pipe-styles.md)).
+- The look of a junction is set in the **base pipe style** of the Symbol Lib, and a pipe style can override it (see [Pipe styles](pipe-styles.md)); it is not a separate list of the Symbol Lib. It is computed; the user does not edit it by hand.
+- **Propagation**: when the dashes of a pipe move, the movement goes on through the junction into the branches, following the flow (see [Pipe styles](pipe-styles.md)).
 - The junction of a pipe style is one of:
 
 | Kind | What it looks like |

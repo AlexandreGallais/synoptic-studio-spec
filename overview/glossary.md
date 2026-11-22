@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Overview](README.md) › Glossary
 
-Each word of Synoptic Studio, its one meaning, the name it has in the files, and the words not to use for it: one glossary for the whole specification, so that a word keeps one meaning in every part. The words of Metadata were written by the assistant on 2026-11-22, at the Product Owner's request, from the [Data model](../metadata/data-model.md), the [entities](../metadata/entities/README.md) and the research reports T2 and T5; those of the other parts are added as each part is written again. Nothing here is validated. A word to avoid gives its reason and its source; "Analysis" marks the assistant's own reason.
+Each word of Synoptic Studio, its one meaning, the name it has in the files, and the words not to use for it: one glossary for the whole specification, so that a word keeps one meaning in every part. The words of Metadata come from the [Data model](../metadata/data-model.md), the [entities](../metadata/entities/README.md) and the research reports T2 and T5; those of the other parts are added as each part is written again. Nothing here is validated. A word to avoid gives its reason and its source; "Analysis" marks the assistant's own reason.
 
 ## Metadata
 

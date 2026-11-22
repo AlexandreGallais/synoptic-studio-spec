@@ -2,13 +2,13 @@
 
 > [Home](../../../README.md) › [Symbols](../../README.md) › [Editor](../README.md) › Advanced tools
 
-Status: draft, from the Product Owner's description of 2026-11-11, reviewed on 2026-11-15 (a second bar instead of the three dots menu). Not validated.
+Status: draft, reviewed on 2026-11-15 (a second bar instead of the three dots menu). Not validated.
 
-The advanced tools are the tools that are not for everyday drawing. The Product Owner calls them "advanced tools" (2026-11-15); this folder was first named "expert menu".
+The advanced tools are the tools that are not for everyday drawing; the name of this folder, "expert menu", is their former name.
 
 ## Rules
 
-- A button of the floating tool bar shows or hides a **second bar**, just above the tool bar, with **all** the advanced tools (Product Owner, 2026-11-15). It replaces the menu with three small dots.
+- A button of the floating tool bar shows or hides a **second bar**, just above the tool bar, with **all** the advanced tools. It replaces the menu with three small dots.
 - The user hides this second bar when it is not useful.
 - Choosing an advanced tool acts a bit like a mode: what the editor does depends on what the user wants to do. Whether it is really a mode is not decided.
 - The advanced tools work on shapes that already exist.

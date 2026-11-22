@@ -2,13 +2,13 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Data model
 
-Status: the whole schema of Metadata and the list of its entities, being validated with the Product Owner. Each entity is written whole, with its JSON Schema and the JSON Schema of its file, in [Entities](entities/README.md); the rules every file follows are in [Files](files.md); the reading notes and the open questions are in [Data model: notes](data-model-notes.md).
+Status: the whole schema of Metadata and the list of its entities, being validated. Each entity is written whole, with its JSON Schema and the JSON Schema of its file, in [Entities](entities/README.md); the rules every file follows are in [Files](files.md); the reading notes and the open questions are in [Data model: notes](data-model-notes.md).
 
 ## The schema
 
 The schema reads from the top: the type, then its parts in the order of the keys of its file, then the quantities, the enums and the designations its fields point to. Palettes and icon sets stand apart, on the left beside the appearance: an appearance copies the color and the drawing it picks, and keeps no link to them. A click on a box opens its entity file.
 
-Colour of a box's title: orange, the last version of its entity file is not validated yet; green, it is validated by the Product Owner.
+Colour of a box's title: orange, the last version of its entity file is not validated yet; green, it is validated.
 
 ```mermaid
 ---

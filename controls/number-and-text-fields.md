@@ -2,19 +2,19 @@
 
 > [Home](../README.md) › [Controls](README.md) › Number and text fields
 
-Status: draft, from the Product Owner's description of 2026-11-15. Not validated.
+Status: draft. Not validated.
 
 ## Rules
 
 ### One component each
 
-- Every number field of the application is the same component, with the same behaviour. The same holds for every text field (Product Owner, 2026-11-15).
+- Every number field of the application is the same component, with the same behaviour. The same holds for every text field.
 - They are components of the design system, written once and used by every part.
 
 ### Number field
 
 - The up and down arrows of the keyboard add or remove **1**.
-- With a modifier key held, they add or remove **10** (Product Owner, 2026-11-15).
+- With a modifier key held, they add or remove **10**.
 - The key: Shift, "or the same key" as the [precise move](../symbols/03-editor/precise-move.md), which does the opposite with the mouse (slower instead of faster). Proposal of the assistant: **Shift**, the usual key for a step of 10 in drawing software; the precise move then takes another key.
 - The value stays within the bounds of the field, when it has some (assumption of the assistant).
 

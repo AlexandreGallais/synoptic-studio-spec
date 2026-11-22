@@ -4,7 +4,7 @@
 
 What the Figma file of the design system holds, and the ways of Figma a later session needs to go on. Kept up to date at each session that draws in it. File: [Synoptic Studio · Design System](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL).
 
-The id of each icon, component and screen is in its sheet: [Icons](icons/README.md), [Atoms](atoms/README.md), [Molecules](molecules/README.md), [Organisms](organisms/README.md), [Templates](templates/README.md), [Screens of Metadata](metadata/README.md).
+The id of each icon, component and screen is in its sheet: [Icons](05-icons/README.md), [Atoms](06-atoms/README.md), [Molecules](07-molecules/README.md), [Organisms](08-organisms/README.md), [Templates](09-templates/README.md), [Screens of Metadata](10-screens/01-metadata/README.md).
 
 ## Pages
 
@@ -38,7 +38,7 @@ A colour bound to a variable takes its opacity from the variable: a fill bound t
 
 ## How a page shows its components
 
-Since 2026-11-22 (Product Owner: "un tableau d'états et de types [...] plutôt que plein de texte"), each component is shown as a table, with no text to read around it:
+Since 2026-11-22, each component is shown as a table, with no text to read around it:
 
 - one frame `table/<component>`, its title the name of the component;
 - one column per state (`default`, `hover`, `pressed`, `focus`, `disabled`, then the states the component adds), its header the name of the state;
@@ -66,7 +66,7 @@ How the files of the sheets are made (2026-11-22), to make them again after a ch
 
 - **Icons**: each icon is cloned off the canvas, its lines turned into outlines (`outlineStroke`), joined (`union`, then `flatten`), filled black, exported as SVG, the black replaced by `currentColor`, then the clone removed. Figma keeps its lines.
 - **Tables and screens**: the frame `table/<component>`, or the screen, exported as SVG, the texts turned into outlines, so that the files show the same without the fonts. Since 2026-11-23, through the Figma connector's `download_assets` (format `svg`), its file then fetched with `node`.
-- **Where they go** (Product Owner, 2026-11-23): the table of a component in the folder `images` of its level, named `table-<component>.svg`, next to its sheet `<component>.md`; the screens of Metadata in `metadata/images`, under their own names.
+- **Where they go**: the table of a component in the folder `images` of its level, named `table-<component>.svg`, next to its sheet `<component>.md`; the screens of a part in the folder `images` of its folder under `10-screens` (`10-screens/01-metadata/images`), under their own names.
 - A table or a screen changed in Figma is exported again in the same session.
 
 ## Components
@@ -96,14 +96,14 @@ Every component is prototyped (hover, press, click): try them from the frame `pl
 - **Icons swapped**: an icon swapped into a `button` or an `icon-button` keeps only the colour overrides of the lines its default icon has (`icon/add` has two): every line of the new icon gets the colour of its variant by hand.
 - **Nested sizes**: an instance nested in another one keeps the size of its main component: in a screen, a column gets its width only as the content of a slot. After a script fills a slot, Figma may draw a cell that fills its line at its old width: setting it to a fixed width, then back to fill, draws it right.
 - **Structure changes**: after a change of structure in a component, an instance may draw the old positions until its main component's frame is touched again (a padding set then reset).
-- **Focus in the SVG export**: Figma exports a spread shadow as an SVG filter that grows the shape pixel by pixel, from the transparency of the shape. Two faults follow, seen by the Product Owner on 2026-11-23: on a round control the focus comes out square-cornered (the radio), and on a control with a transparent background (a hover veil) the inner focus fills the whole line with dark violet (the tree-row). So every control draws its focus as two lines instead of the effect styles (Product Owner, 2026-11-23: "partout en deux traits"): two ellipses behind a round control (`focus-outer`, `focus-inner`), two frames with a 2 px inside stroke elsewhere (`focus-line` in `focus`, `focus-line-inset` in `focus-inset`), absolute and stretched, outside the control for `focus-ring`, inside for `focus-ring-inset`; the outer frame's radius is the control's plus 4, the inner one's plus 2. A variant in `focus` does not clip its content, so the lines show whole. No component uses the effect styles any more.
+- **Focus in the SVG export**: Figma exports a spread shadow as an SVG filter that grows the shape pixel by pixel, from the transparency of the shape. Two faults follow: on a round control the focus comes out square-cornered (the radio), and on a control with a transparent background (a hover veil) the inner focus fills the whole line with dark violet (the tree-row). So every control draws its focus as two lines instead of the effect styles: two ellipses behind a round control (`focus-outer`, `focus-inner`), two frames with a 2 px inside stroke elsewhere (`focus-line` in `focus`, `focus-line-inset` in `focus-inset`), absolute and stretched, outside the control for `focus-ring`, inside for `focus-ring-inset`; the outer frame's radius is the control's plus 4, the inner one's plus 2. A variant in `focus` does not clip its content, so the lines show whole. No component uses the effect styles any more.
 - **Radius 999**: Figma has no radius in percent; `radius-full` (999) is cut to half the shortest side, which makes a circle of a square and a pill of a rectangle, as `border-radius: 999px` does in CSS (50 % would make an ellipse of a rectangle).
 - **Text properties in every variant**: a text bound to a text property in some variants and not in others shows the default text when a screen switches to those variants (2026-11-23: a selected tree-row named "Centrifugal pump" turned to "Pump" on hover). Every text of a component set is bound in all its variants; checked on all the component sets on 2026-11-23 (fixed: the `selected-hover` of `tree-row`, the `open-focus` of `select-trigger`, one variant of `list-title`).
 - **Overlays**: the plugin API cannot set the place of an overlay, and a centred overlay shows in the middle of the page: a list that opens is drawn as a transparent frame of the size of the screen, its content right under its button, closed by a click anywhere. The dimmed background behind the delete warning is set by hand.
 
 ## Screens of Metadata
 
-The page Metadata holds one Figma section per screen of [Screens of Metadata](../screens/metadata.md), from top to bottom in the order of the type and of the rail: General (with the type tree), Documentation, Signals, Commands, Flags, Presets, Units, Enums, Designations, then the overlays (Delete warning, Add a link, Formatting). The frames and their ids: [Screens of Metadata](metadata/README.md).
+The page Metadata holds one Figma section per screen of [Screens of Metadata](../screens/metadata.md), from top to bottom in the order of the type and of the rail: General (with the type tree), Documentation, Signals, Commands, Flags, Presets, Units, Enums, Designations, then the overlays (Delete warning, Add a link, Formatting). The frames and their ids: [Screens of Metadata](10-screens/01-metadata/README.md).
 
 The prototype has one starting point per screen: General, Documentation, Signals, Commands, Flags, Presets, Units, Enums, Designations. On every screen, the rail and the list of the parts lead to their screen, with their hover kept. From General: the modes of the documentation and of a preset lead to their screen; the two add icons of Links open their overlay; the button "Delete the preset" opens the warning; the delete button of General and of each own signal opens the warning, whose two buttons close it.
 

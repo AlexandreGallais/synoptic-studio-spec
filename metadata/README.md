@@ -4,7 +4,7 @@
 
 The first part of Synoptic Studio: the data and documentation a symbol can be attached to. It is the model side (what an object is, what goes in and out of it), not the front side (how it looks).
 
-Since 2026-11-19, at the Product Owner's request, the documentation of Metadata is written again, clean, in one file per theme. The first theme is the data model, its schema first.
+The documentation of Metadata is written in one file per theme. The first theme is the data model, its schema first.
 
 ## What it contains
 

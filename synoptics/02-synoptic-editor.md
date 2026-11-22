@@ -83,7 +83,7 @@ Missing in the whole application so far (screens inventory). Proposed for the sy
 
 ### Performance
 
-- The goals of the project hold here: under the maximum the Product Owner sets between a gesture and its display, and 120 images per second on a 120 Hz screen as a goal (criteria C14 and C15). Moving a symbol with ten pipes is the case to measure: only the segments touched are recomputed (see the research summary in [Pipes](../symbols/pipes/README.md#computing-pipes)).
+- The goals of the project hold here: under the maximum set between a gesture and its display, and 120 images per second on a 120 Hz screen as a goal (criteria C14 and C15). Moving a symbol with ten pipes is the case to measure: only the segments touched are recomputed (see the research summary in [Pipes](../symbols/pipes/README.md#computing-pipes)).
 
 ## Example
 

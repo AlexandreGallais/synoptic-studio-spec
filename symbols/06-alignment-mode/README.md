@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › Alignment mode · Previous: [Point editing mode](../05-point-editing-mode/README.md) · Next: [Interaction mode](../07-interaction-mode/README.md)
 
-Status: draft, from the Product Owner's descriptions of 2026-11-11. Not validated.
+Status: draft. Not validated.
 
 The mode of the [editor](../03-editor/README.md) in which shapes are placed in relation to each other.
 
@@ -35,7 +35,7 @@ The user chooses how the shapes to place are anchored on the reference (see [Anc
 | Inside | The shape to place goes inside the limit of the reference, held by the anchor chosen. |
 | Outside | The shape to place goes outside the limit of the reference, held by the anchor chosen. |
 
-- The outside placement puts a shape **next to** another, on their common limit: the two shapes touch along the limit of the reference. This is the practical case the Product Owner wants.
+- The outside placement puts a shape **next to** another, on their common limit: the two shapes touch along the limit of the reference. This is the practical case wanted.
 
 ```mermaid
 flowchart LR

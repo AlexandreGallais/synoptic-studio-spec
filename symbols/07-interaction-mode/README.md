@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › Interaction mode · Previous: [Alignment mode](../06-alignment-mode/README.md) · Next: [Animation mode](../08-animation-mode/README.md)
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+Status: draft. Not validated.
 
 The mode of the [editor](../03-editor/README.md) in which the user says what happens when a gesture is done on the symbol. An interaction says: when the user does a gesture on a place of the symbol, a command is sent. The name "interaction" is provisional (see [Open questions](../10-open-questions.md)).
 
@@ -12,10 +12,10 @@ The mode of the [editor](../03-editor/README.md) in which the user says what hap
 - Right-hand panel: the interactions of the selected place.
 - Only for a symbol with a type. A symbol without a type has no command to send (see [Libraries and symbols](../01-libraries-and-symbols.md)).
 - The places offered for an interaction are: the zones the user drew, the bounding box of the whole symbol, and a layer. A layer is clickable as its real shape, not as the square around it, and stays clickable when its fill is transparent (see [Select](../03-editor/select.md)). Example: a button drawn on its own layer can be the place.
-- Several gestures are possible on a place: left click, right click, double click, and others (the Product Owner wants more than these three; the list is to settle).
+- Several gestures are possible on a place: left click, right click, double click, and others (the list is to settle).
 - Each interaction links a place, a gesture and what happens. What happens is one of two things:
   - a command of the type (see [Commands](../../metadata/draft.md#commands)): a command that sets a signal, or a trigger;
-  - **opening the faceplate** of the element (decided by the Product Owner, 2026-11-11): the user says "this opens the faceplate of the element" (see [Type, preset and faceplate](../02-type-and-faceplate.md)).
+  - **opening the faceplate** of the element: the user says "this opens the faceplate of the element" (see [Type, preset and faceplate](../02-type-and-faceplate.md)).
 - What the opened faceplate allows (display only, or display with commands) is **not** decided in the symbol editor. It is set later, once the symbol is placed, in the synoptic part (not written yet).
 - A symbol uses only the commands it links: a preset never chooses commands.
 

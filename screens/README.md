@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › Screens
 
-Status: draft, written by the assistant on 2026-11-11 from the pages of [Metadata](../metadata/README.md) and [Symbols](../symbols/README.md). It adds no rule: it only shows, screen by screen, what the specs already say. Where the specs say nothing, it says so. The only rules written here are the [layout rules](#layout-rules), which hold for every screen (Product Owner, 2026-11-16).
+Status: draft, written by the assistant on 2026-11-11 from the pages of [Metadata](../metadata/README.md) and [Symbols](../symbols/README.md). It adds no rule: it only shows, screen by screen, what the specs already say. Where the specs say nothing, it says so. The only rules written here are the [layout rules](#layout-rules), which hold for every screen.
 
 This folder is the **inventory of the screens and menus** of Synoptic Studio. For each screen it answers three questions at a glance:
 
@@ -16,11 +16,11 @@ The rules stay in the pages of each part. When a page changes, the screen that s
 
 The screens are also drawn as wireframes on the page **"Spec"** of the Figma file of the design system, one frame per screen, named by its identifier (`MD-04 · Signals`).
 
-- **Every decision that changes a screen changes, in the same go, the pages of the part, this inventory and the wireframe in Figma** (Product Owner, 2026-11-17: "à chaque décision qui change un écran [...] faut changer les specs et les écrans sur Figma"). Never one without the others.
+- **Every decision that changes a screen changes, in the same go, the pages of the part, this inventory and the wireframe in Figma**. Never one without the others.
 - The change in Figma is checked on a capture of the frame before it is said done.
 - The texts of the wireframes are in English, like these specs; their notes cite the decision and its date.
 - The designed screens of Metadata, made of the components of the [design system](../design-system/README.md), are on the page **"Metadata"** of the same file, one frame per screen and per content state, with their prototype (2026-11-22; see [Figma file](../design-system/04-figma-file.md#screens-of-metadata)). The wireframes of the page "Spec" stay as they are.
-- Two sections were added on 2026-11-20, at the Product Owner's request: **"Synoptic · SN-00 to SN-12"**, the screens of [Synoptic](synoptics.md), extrapolated by the assistant; and **"Symbol editor · ideas"** (SY-I1 to SY-I8), ideas for the symbol mode drawn in Figma only, which change none of the pages of [Symbols](../symbols/README.md).
+- Two more sections: **"Synoptic · SN-00 to SN-12"**, the screens of [Synoptic](synoptics.md), extrapolated by the assistant; and **"Symbol editor · ideas"** (SY-I1 to SY-I8), ideas for the symbol mode drawn in Figma only, which change none of the pages of [Symbols](../symbols/README.md).
 
 ## What it contains
 
@@ -33,7 +33,7 @@ The screens are also drawn as wireframes on the page **"Spec"** of the Figma fil
 
 ## Layout rules
 
-Set by the Product Owner on 2026-11-16, while reviewing the wireframes. They hold for every screen.
+They hold for every screen.
 
 ### Columns, not rows
 
@@ -49,21 +49,19 @@ block-beta
 
 ### Add buttons above the list
 
-Decided by the Product Owner on 2026-11-16, for every screen ("il faut que tu appliques cette méthode partout").
-
 - The buttons that add an item to a list always sit **above the list**, never under it.
 - A button under a list moves down as the list grows, and gets harder and harder to reach.
 - It does not change the + shown on hover on each type of the type tree, which creates a child of that type (see [Types](../metadata/draft.md#types)).
 
 ### A title and a small + on its right
 
-Decided by the Product Owner on 2026-11-16, while reviewing the wireframes ("ça doit être un petit +, une petite icône à côté du titre, et il faut appliquer ça un peu partout"). It makes the rule above precise, for every list and every table.
+It makes the rule above precise, for every list and every table.
 
 - Each list and each table has a **title** that names what it holds: "Type tree", "Signals", "Commands", "Links", "Presets", "Enums", "Items"...
 - The button that adds an item is a **small + icon on the line of that title, on its right**. No button with a text ("+ Add a signal"), no button on a line of its own.
-- The title is the title of the list, not of the whole page: the page itself has no big title that repeats it (Product Owner: "Preset, ça ne doit pas être le titre de toute la page. Tu dois juste mettre Preset comme titre de la liste et avoir un petit + à droite"). The room saved goes to the content: the switch of a preset, for example, moves up.
-- When a list takes items of several kinds, there is **one small icon per kind, each with a small +**, side by side on the line of the title, rather than one + that opens a menu: two clicks at most, with no menu to read (Product Owner, 2026-11-16, for the links: "ça va pas rapide, alors que là, tu peux faire clac-clac. C'est beaucoup plus rapide"). For the links: a path icon with a + and a URL icon with a +. For the five elements of the faceplate builder: the same rule, confirmed by the Product Owner on 2026-11-16.
-- It holds in the symbol mode and for the pipes too (Product Owner, 2026-11-16): the + that creates a Symbol Lib, a pipe style, an override of a pipe style, and a segment of a dash sequence sits on the right of the title of its list.
+- The title is the title of the list, not of the whole page: the page itself has no big title that repeats it. The room saved goes to the content: the switch of a preset, for example, moves up.
+- When a list takes items of several kinds, there is **one small icon per kind, each with a small +**, side by side on the line of the title, rather than one + that opens a menu: two clicks at most, with no menu to read. For the links: a path icon with a + and a URL icon with a +. For the five elements of the faceplate builder: the same rule.
+- It holds in the symbol mode and for the pipes too: the + that creates a Symbol Lib, a pipe style, an override of a pipe style, and a segment of a dash sequence sits on the right of the title of its list.
 - It is the rule the type tree and the Enums page already followed: a + on the line of their title.
 
 ```mermaid
@@ -77,38 +75,30 @@ block-beta
 
 ### Columns of buttons have no header
 
-Decided by the Product Owner on 2026-11-16, while reviewing the wireframes: "pas besoin de mettre de titre pour les boutons Delete, un peu comme pour les poignées de déplacement".
-
 - In a table, the column of the **delete buttons** has **no header**, like the column of the **handles** that move a line. Everyone knows what the icon does.
 - Both columns take the **least room possible**: the width of their icon.
 
 ### Handles to choose the order
 
-Decided by the Product Owner on 2026-11-16 for the signals, then for the commands and the links of the documentation, while reviewing the wireframes ("il faut pouvoir changer de place [...] Les petits trucs de changement de position, c'est super").
-
 - A list or a table whose order the user chooses has a **handle** at the very left of each line: held and dragged, it moves the line; the order is kept.
 - Lines the user cannot change here (the inherited signals and commands) have no handle.
-- Where it holds: the signals, the commands, the links of the documentation, the flags (2026-11-17), the elements of the faceplate builder (proposed for the builder).
-- Where it does not: the items of an enum (Product Owner, 2026-11-17: "On peut pas changer l'ordre, ça me chante pas").
+- Where it holds: the signals, the commands, the links of the documentation, the flags, the elements of the faceplate builder (proposed for the builder).
+- Where it does not: the items of an enum.
 
 ### Tables take the whole width
-
-Asked by the Product Owner on 2026-11-17, while reviewing the wireframes ("ces tableaux ne prennent jamais l'entièreté de la page").
 
 - A table fills the **whole width of the panel** that holds it. The column of text that can be long (a description) takes the room left; the others take the width of their content; the columns of handles and of delete buttons take the width of their icon.
 
 ### Delete with a button and a warning, in Metadata
 
-Decided by the Product Owner on 2026-11-16, while reviewing the wireframes. It replaces the delete by right click decided earlier the same day.
-
-- **No right click in Metadata.** Its menu held only Delete, and deleting is "une option un peu vénère": it must not hide behind a right click.
+- **No right click in Metadata.** Deleting is a heavy action: it must not hide behind a right click.
 - Deleting is done with a **delete button** (an icon):
   - on a line of a table or a list, in the **last column, on the far right**: links of the documentation, signals, commands, presets, elements of the faceplate builder, enums and their items;
   - for a **type**, in its **General** part, not in the tree.
-- A click on the button opens a **warning message** that asks to confirm. Nothing is deleted before the user confirms. So deleting is never "aussi simple que ça".
+- A click on the button opens a **warning message** that asks to confirm. Nothing is deleted before the user confirms.
 - The same warning everywhere, for a type as for a line.
 - The application keeps no versions: what is deleted is taken back only with Git, on the JSON files (decision 0053; see [Always editable, no versions](../metadata/draft.md#always-editable-no-versions)).
-- **The warning never says what the delete breaks** (Product Owner, 2026-11-17: "c'est à la personne de savoir qu'elle supprime quelque chose et qu'il faut faire attention [...] sinon ça va le dire tout le temps et ça ne sert à rien"). What is broken is listed in the symbol mode and in the synoptic mode (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#when-metadata-changes)). The wording of the warning for a type: [MD-02.8](metadata.md#md-02--general); for the other deletes: to settle.
+- **The warning never says what the delete breaks**. What is broken is listed in the symbol mode and in the synoptic mode (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#when-metadata-changes)). The wording of the warning for a type: [MD-02.8](metadata.md#md-02--general); for the other deletes: to settle.
 
 ```mermaid
 flowchart LR
@@ -119,21 +109,21 @@ flowchart LR
 
 ### Tables for the parts of a type
 
-Decided by the Product Owner on 2026-11-16: the signals and the commands of a type are shown in one table each, one line per item and one column per field, taking as much room as possible (see [Signals](../metadata/draft.md#the-table-of-signals) and [Commands](../metadata/draft.md#the-table-of-commands)). The selected preset is a table of its signals in its mode Values, and a list of elements in its mode Faceplate, the two modes chosen by a switch at the top of the right side (see [Presets](../metadata/draft.md#two-modes-chosen-by-a-switch)). They replace, for these parts, the panel of the selected item on the right.
+The signals and the commands of a type are shown in one table each, one line per item and one column per field, taking as much room as possible (see [Signals](../metadata/draft.md#the-table-of-signals) and [Commands](../metadata/draft.md#the-table-of-commands)). The selected preset is a table of its signals in its mode Values, and a list of elements in its mode Faceplate, the two modes chosen by a switch at the top of the right side (see [Presets](../metadata/draft.md#two-modes-chosen-by-a-switch)). They replace, for these parts, the panel of the selected item on the right.
 
 ### Navigation bar on the left
 
 - A narrow bar of icons sits on the far left of the window (a "rail").
-- In Metadata, it holds one icon per page: **Types**, **Units**, **Enums** (decided), then **Designations** (2026-11-18, place to confirm; called Identifiers until 2026-11-22, decision 0064). The **Versions** icon added on 2026-11-16 was removed on 2026-11-21 (decision 0053; see [Always editable, no versions](../metadata/draft.md#always-editable-no-versions)). The Product Owner first named an icon for the libraries too, then removed the libraries of types in the same review.
+- In Metadata, it holds one icon per page: **Types**, **Units**, **Enums** (decided), then **Designations** (place to confirm; decision 0064). No Versions icon: the application keeps no versions (decision 0053; see [Always editable, no versions](../metadata/draft.md#always-editable-no-versions)).
 - In the symbol mode, it holds a **Libraries** button (a kind of "home"), a separator, then the list of every Symbol Lib (decided): see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode).
 - There is one bar per part. Going from one part to another is done in the top bar (below).
 
 ### Top bar of the window
 
-Decided by the Product Owner on 2026-11-16. From left to right:
+From left to right:
 
-1. The **logo**: a valve, like the logo already in the Figma file (Product Owner, 2026-11-16). The word "Epipasta" heard earlier was a transcription error; the wireframes said "Logo · a valve" until the Product Owner pointed to the logo of the page "Cover" (2026-11-17); since then every top bar of the wireframes holds an instance of its component "App mark", size 24.
-2. Three icons, one per part: **Metadata**, **Symbols**, **Synoptic** (part 3, extrapolated on 2026-11-20, see [Synoptic](synoptics.md)), **right after the logo, with the normal gap of the bar**: no wide empty space between the logo and the three parts (Product Owner, 2026-11-17: "il y a un espace de taré, ça fait ultra moche").
+1. The **logo**: a valve, the logo of the page "Cover" of the Figma file; every top bar of the wireframes holds an instance of its component "App mark", size 24.
+2. Three icons, one per part: **Metadata**, **Symbols**, **Synoptic** (part 3, extrapolated, see [Synoptic](synoptics.md)), **right after the logo, with the normal gap of the bar**: no wide empty space between the logo and the three parts.
 3. On the right, the window buttons **minimise, maximise, close**, as in Windows.
 
 ```mermaid
@@ -185,7 +175,7 @@ When the specs do not say the kind, the table says "not said" and gives the most
 
 | Status | Meaning |
 | --- | --- |
-| Decided | Written in the specs from the Product Owner's words. |
+| Decided | Settled in the specs. |
 | Proposed | Proposed by a research or by the assistant, written "to confirm" in the specs. |
 | Implied | Needed by a rule of the specs, but the specs never describe the control itself (example: a rule says signals are created, but no page says there is an "Add a signal" button). |
 | Open | An open question of the specs. |

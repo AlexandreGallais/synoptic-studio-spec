@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Pipes](README.md) › Test display
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+Status: draft. Not validated.
 
 When the user edits the base pipe style or a pipe style in a Symbol Lib (body, border, junctions, crossings and end shapes), a test display shows it on every case a pipe can meet. It lets the user understand what an edit does without drawing a synoptic.
 

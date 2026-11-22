@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Screens](README.md) › Synoptic
 
-Status: extrapolated by the assistant on 2026-11-20 from the pages of [Synoptics](../synoptics/README.md), themselves an extrapolation, at the Product Owner's request. Almost every line is **Proposed**; the few **Decided** ones come from Metadata, Symbols and Pipes. Kinds and statuses are explained in the [guide of this folder](README.md). The wireframes are on the page "Spec" of the Figma file, section "Synoptic · SN-00 to SN-12".
+Status: extrapolated by the assistant from the pages of [Synoptics](../synoptics/README.md), themselves an extrapolation. Almost every line is **Proposed**; the few **Decided** ones come from Metadata, Symbols and Pipes. Kinds and statuses are explained in the [guide of this folder](README.md). The wireframes are on the page "Spec" of the Figma file, section "Synoptic · SN-00 to SN-12".
 
 ```mermaid
 flowchart TD
@@ -200,4 +200,4 @@ Path: General › Publish, or the top of the editor. A dialog.
 
 Gaps:
 
-- Everything here waits for the Product Owner's review: the whole part is an extrapolation, except the lines marked Decided.
+- Everything here waits for review: the whole part is an extrapolation, except the lines marked Decided.

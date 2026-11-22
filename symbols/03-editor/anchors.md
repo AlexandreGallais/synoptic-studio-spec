@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Editor](README.md) › Anchors
 
-Status: draft, written by the assistant to put one word for one idea, from the pages of the Product Owner's descriptions of 2026-11-11. Not validated.
+Status: draft, written by the assistant to put one word for one idea. Not validated.
 
 The word "anchor" is used by several pages. They all mean the same thing, and this page says it once.
 

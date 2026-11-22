@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Documentation plan
 
-The kinds of documents Metadata needs, what each one holds, those already written and those still missing. Each kind has a name, so that a new document is written as the others of its kind. Written by the assistant on 2026-11-22, at the Product Owner's request; nothing here is validated.
+The kinds of documents Metadata needs, what each one holds, those already written and those still missing. Each kind has a name, so that a new document is written as the others of its kind. Nothing here is validated.
 
 ## The kinds of documents
 
@@ -57,8 +57,8 @@ Each one gathers rules spread today across the entity files and the [whole draft
 Not part of the specification of the product, but to carry to the software architecture (repository `synoptic-studio-spec`, programme architecture):
 
 - The branded types of JavaScript, one per type of the fields: see [For the development](data-model-notes.md#for-the-development).
-- The writing rules of the entity files: to become the skill `write-a-metadata-entity-file` of the assistant, in `.claude/skills/` of the programme (Product Owner, 2026-11-22); until then in [Writing rules](data-model-notes.md#writing-rules-of-the-entity-files-to-become-a-skill).
+- The writing rules of the entity files: to become the skill `write-a-metadata-entity-file` of the assistant, in `.claude/skills/` of the programme; until then in [Writing rules](data-model-notes.md#writing-rules-of-the-entity-files-to-become-a-skill).
 
 ## Open questions
 
-- The order of the missing documents after the glossary, the inheritance of types, deleting, checks and errors, identity and renaming, and units on screen, written in that order (Product Owner, 2026-11-22). Editing without versions comes next, when the specification resumes.
+- The order of the missing documents after the glossary, the inheritance of types, deleting, checks and errors, identity and renaming, and units on screen, written in that order. Editing without versions comes next, when the specification resumes.

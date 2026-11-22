@@ -4,7 +4,7 @@
 
 The second part of Synoptic Studio: creating symbols. A symbol is a drawing, attached to a type from [Metadata](../metadata/README.md), that can be animated by the signals of that type and that can react to clicks. It is the front side of a type: how it looks and behaves.
 
-Status: draft, written from the Product Owner's oral description of 2026-11-11. Nothing here is validated yet. The words are provisional: the Product Owner asked to be very critical about every name before keeping it (see [Open questions](10-open-questions.md)).
+Status: draft. Nothing here is validated yet. The words are provisional: every name is to be challenged before it is kept (see [Open questions](10-open-questions.md)).
 
 ## The big picture
 
@@ -28,7 +28,7 @@ flowchart LR
 
 ## One kind of symbol
 
-There is one list of symbols and one kind of symbol (Product Owner, 2026-11-15): no "static" or "dynamic" symbol any more.
+There is one list of symbols and one kind of symbol: no "static" or "dynamic" symbol any more.
 
 | A symbol... | Type | Preset and faceplate | Animation | Interactions |
 | --- | --- | --- | --- | --- |
@@ -37,7 +37,7 @@ There is one list of symbols and one kind of symbol (Product Owner, 2026-11-15):
 
 The type is never imposed: it can be chosen when the symbol is created, or later in the right-hand panel of the editor. Removing it only hides the preset, animations and interactions; choosing it again restores them. In a synoptic, a symbol with a type can be placed and left unwired (this belongs to part 3).
 
-The only kind of library is the **Symbol Lib**, which sorts symbols. There are no libraries of types (Product Owner, 2026-11-16): a symbol picks its type among all the types of Metadata.
+The only kind of library is the **Symbol Lib**, which sorts symbols. There are no libraries of types: a symbol picks its type among all the types of Metadata.
 
 ## What it contains
 

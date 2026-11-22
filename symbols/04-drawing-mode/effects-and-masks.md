@@ -2,9 +2,9 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › Effects and masks
 
-Status: draft, from the Product Owner's description of 2026-11-11 and the research report of 2026-11-11. Not validated.
+Status: draft and the research report of 2026-11-11. Not validated.
 
-Effects and masks are set from the right-hand panel, like the [fill and border](fill-and-border.md). The Product Owner does not know SVG filters well: the editor offers them in a menu, and the user writes nothing.
+Effects and masks are set from the right-hand panel, like the [fill and border](fill-and-border.md). The editor offers them in a menu, and the user writes nothing.
 
 ## Rules
 
@@ -27,7 +27,7 @@ Source: the research report (`research/t1-…/rapport.md`, in the project, not c
 | Safari, Tauri on macOS (WKWebView) and Linux (WebKitGTK) | WebKit | No (open WebKit bug since 2023) |
 
 - WebKit renders at 60 frames per second by default. The embedded view (WKWebView) has no public way to ask for 120. With a WebKit window, the 120 Hz objective cannot be reached by default, with or without effects.
-- The choice of the desktop window (embedded Chromium or the system view) weighs more than any effect setting. It is the Product Owner's, not made yet.
+- The choice of the desktop window (embedded Chromium or the system view) weighs more than any effect setting. It is not made yet.
 
 ### What makes the cost vary
 
@@ -77,7 +77,7 @@ Source: the research report (`research/t1-…/rapport.md`, in the project, not c
 
 - Engines to cover: Chromium, Firefox 132 or later, WebKit (Safari, then the desktop window if it is WebKit).
 - What is measured: the work time of each frame during the gesture, in milliseconds, read in the browser profiler (the time between two frames is not enough: a 60 Hz engine lengthens it without being slow). P0 and P2 first.
-- Decision threshold proposed: 95 % of the frames at 8.3 ms or less and none above 16.7 ms at the most demanding setting offered, in each engine aimed at: offer. The rule holds up to a setting, then breaks: offer with that limit. It breaks at the smallest useful setting: refuse. The maximum stays the one the Product Owner sets.
+- Decision threshold proposed: 95 % of the frames at 8.3 ms or less and none above 16.7 ms at the most demanding setting offered, in each engine aimed at: offer. The rule holds up to a setting, then breaks: offer with that limit. It breaks at the smallest useful setting: refuse. The maximum stays the one set by criterion C14.
 
 ### POC added by the second research
 
@@ -112,7 +112,7 @@ The second report (`research/t4-…/rapport.md`) proposes four more POC, in the 
 
 The report's questions that the specs cannot answer alone:
 
-1. Which desktop window: embedded Chromium or the system view? It fixes the engine to measure first. **Postponed by the Product Owner (2026-11-11), not decided.** He wants the lightest and simplest to maintain for an open source application, so possibly Tauri, possibly Electron. Chromium is probably the best for effects and 120 Hz; he wondered whether Chromium can be used without Electron: the second research answers above. Linked question: does the criterion "all the code in JavaScript" allow a shell in Rust?
+1. Which desktop window: embedded Chromium or the system view? It fixes the engine to measure first. **Postponed, not decided.** The aim is the lightest and simplest to maintain for an open source application, so possibly Tauri, possibly Electron. Chromium is probably the best for effects and 120 Hz; whether Chromium can be used without Electron: the second research answers above. Linked question: does the criterion "all the code in JavaScript" allow a shell in Rust?
 2. Which browsers must the front hold at 8.3 ms when plugged into a browser: Chromium only, or Firefox and Safari too?
 3. Is an effect suspended during the gesture and restored at release an acceptable concession (if the drop shadow does not hold in WebKit)?
 4. Can a colour filter be replaced by recomputed colours, or must it stay a filter in the exported SVG?

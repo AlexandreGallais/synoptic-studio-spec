@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Pipes](README.md) › Pipe styles
 
-Status: draft, from the Product Owner's descriptions of 2026-11-11 (the base style and its overrides were described on 2026-11-11, after the second research). Not validated.
+Status: draft (the base style and its overrides were described on 2026-11-11, after the second research). Not validated.
 
 How a pipe looks. A Symbol Lib has **one base pipe style**, shared by all its pipes, and **pipe styles** (water, gas, steam...) that only change what differs from it: by default, the colours.
 
@@ -26,7 +26,7 @@ How a pipe looks. A Symbol Lib has **one base pipe style**, shared by all its pi
 | Crossings | What happens where a pipe passes over another: bridge, gap, none (see [Crossings](crossings.md)). |
 | Start and end shapes | The shapes a pipe can have at its start and at its end (see [Pipe ends](ends.md)). |
 
-- Junctions, crossings and end shapes are parts of the style, not separate lists of the Symbol Lib (decided by the Product Owner, 2026-11-11). They are computed from the style; the user never draws them on each pipe.
+- Junctions, crossings and end shapes are parts of the style, not separate lists of the Symbol Lib. They are computed from the style; the user never draws them on each pipe.
 
 ### Pipe styles: overrides of the base style
 
@@ -52,7 +52,7 @@ flowchart TD
 
 ### Dash sequences
 
-The Product Owner's rule (2026-11-11), for pipes and for **every border** of the software (the borders of shapes too, see [Fill and border](../04-drawing-mode/fill-and-border.md)):
+The rule, for pipes and for **every border** of the software (the borders of shapes too, see [Fill and border](../04-drawing-mode/fill-and-border.md)):
 
 - Dashes are not "a dash length and a gap". They are a **sequence of segments**, each with a **length** and a **colour**, repeated along the line.
 - A gap is simply a segment with a **transparent** colour. Classic dashes: black 4 px, transparent 4 px. Two-colour dashes: red 4 px, black 4 px, repeated.
@@ -71,11 +71,9 @@ Example:
 
 - Everything about a pipe is computed, the dashes too: they are computed from the drawn pipe, so that they follow it, corners and arcs included.
 - The computation aims for the cleanest result: dashes that run continuously along the pipe, with no odd piece where it can be avoided.
-- It is not a hard requirement (Product Owner, 2026-11-11): where a dash cuts a little oddly in a corner, it is accepted as it is.
+- It is not a hard requirement: where a dash cuts a little oddly in a corner, it is accepted as it is.
 
 ### Moving dashes
-
-Decided by the Product Owner (2026-11-11).
 
 - A style has an option to make its dashes **move**: they travel along the pipe to show the flow.
 - The user chooses the **direction** of the movement: from the start of the pipe to its end, or the other way.
@@ -84,15 +82,13 @@ Decided by the Product Owner (2026-11-11).
 
 ### A pipe style linked to a type
 
-Decided by the Product Owner (2026-11-11).
-
 - A pipe style **can** be linked to a type of Metadata, if the user wants it. It is optional: a style with no type is a drawing, with fixed or moving dashes as set above.
-- Linked to a type, the style is animated by the model, like a symbol with a type (see [Animation mode](../08-animation-mode/README.md)). Examples given by the Product Owner:
+- Linked to a type, the style is animated by the model, like a symbol with a type (see [Animation mode](../08-animation-mode/README.md)). Examples:
   - the **speed** of the moving dashes follows a value of the model;
   - the **colours** (body, border) change with what happens;
   - the **direction** of the movement changes with the model;
   - and other properties of the style, "plenty of things like that".
-- The type is chosen among all the types of Metadata, as for a symbol: there are no libraries of types (Product Owner, 2026-11-16).
+- The type is chosen among all the types of Metadata, as for a symbol: there are no libraries of types.
 - Assumption of the assistant, to confirm: only output signals animate, with the same shapes of mapping as for symbols (bounded linear, by ranges, two values for a boolean, state table for an enum).
 - Each pipe of the synoptic then gets its own values from the model, as a placed symbol does (to write in part 3).
 
@@ -137,12 +133,12 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.2, 
 | A · Two strokes on top of each other | A wide stroke (the border) under a narrower one (the body), on the same centre line. It is what the archived Figma page does ("Pipe — outline", "Pipe — core"). | Native, no outline to compute, native dashes possible. | These are SVG strokes; native dashes have one colour only. |
 | B · Computed outlines | The engine computes the polygons of the body and of each border by offset. | Follows "a border is a fill"; inside, middle and outside borders; dash sequences of several colours. | Computed at each move of a point. |
 
-- The Product Owner's rules (border inside, in the middle or outside; dash sequences of several colours; "everything is computed") match **way B**. Inference of the assistant, to confirm with the POC P9 (cost of the computation).
+- The rules (border inside, in the middle or outside; dash sequences of several colours; everything computed) match **way B**. Inference of the assistant, to confirm with the POC P9 (cost of the computation).
 
 ### Flow dashes
 
-- Native dashes (`stroke-dasharray`, moved by `stroke-dashoffset`) exist only on a stroke and have **one colour**. A sequence of several colours is therefore computed, as the Product Owner asked.
-- The report advised a separate native stroke for the flow dashes. **Superseded**: the dashes are now a fill of the body or of the border, computed (Product Owner, 2026-11-11).
+- Native dashes (`stroke-dasharray`, moved by `stroke-dashoffset`) exist only on a stroke and have **one colour**. A sequence of several colours is therefore computed.
+- The report advised a separate native stroke for the flow dashes. **Superseded**: the dashes are now a fill of the body or of the border, computed.
 - Animating dashes redraws the pipe at every frame; a WebKit bug reports a high load with a single `stroke-dashoffset` animation. An animation that lasts more than five seconds must be possible to pause (WCAG), and the system setting "reduce motion" can be read by the browser.
 - The cost follows the number of dashes: the POC P8 (number of dashes) and P10 (animated dashes on 10 to 500 pipes) still apply, now on computed dashes.
 
@@ -151,7 +147,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.2, 
 | Option | Principle | Opinion of the report |
 | --- | --- | --- |
 | A · Nothing | The pipe is a drawing; its dashes are fixed. | The simplest; poor compared with SCADA tools (ThingsBoard: fluid present, flow present, direction, speed, leak). |
-| B · The pipe has a type of Metadata | A "dynamic" pipe style is linked to a type (signals: flow present, direction, state), like a dynamic symbol. | **Advised**, limited to three signals: a boolean "flow present" (dashes moving or still), a direction (forward, backward), an enum of state that changes the style (hot, cold). A speed proportional to the flow is refused first: the eye cannot read it. Confidence: low (one tool source). **Chosen by the Product Owner (2026-11-11), without the limit to three signals: the speed can follow the model.** |
+| B · The pipe has a type of Metadata | A "dynamic" pipe style is linked to a type (signals: flow present, direction, state), like a dynamic symbol. | **Advised**, limited to three signals: a boolean "flow present" (dashes moving or still), a direction (forward, backward), an enum of state that changes the style (hot, cold). A speed proportional to the flow is refused first: the eye cannot read it. Confidence: low (one tool source). **Chosen, without the limit to three signals: the speed can follow the model.** |
 | C · The pipe borrows a signal of a neighbouring symbol | In the synoptic, a signal of a connected symbol is picked. | Quick, but links a drawing to another in a fragile way. |
 
 ## Open questions

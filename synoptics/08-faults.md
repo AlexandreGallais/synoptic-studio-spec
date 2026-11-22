@@ -10,10 +10,10 @@ The **faults** list everything in a synoptic that is broken or still to complete
 
 ### What is decided elsewhere
 
-- Metadata never warns about what a change breaks; the symbol mode and the synoptic mode show **a list of what is broken** (Product Owner, 2026-11-17, [When Metadata changes](../symbols/01-libraries-and-symbols.md#when-metadata-changes)).
+- Metadata never warns about what a change breaks; the symbol mode and the synoptic mode show **a list of what is broken** ([When Metadata changes](../symbols/01-libraries-and-symbols.md#when-metadata-changes)).
 - A broken item has a **small red mark**; nothing is repaired by itself: the user redoes the link (same page).
 - A placed symbol whose template enum is not completed shows a **small warning**, and the user can go on working (Metadata draft, [Enums](../metadata/draft.md#global-enums-and-templates)).
-- A sub-symbol whose parent changes type goes **into fault**, and the application says so; "a list of faults" is to write (Product Owner, 2026-11-18, [Sub-symbols](../symbols/12-sub-symbols.md#open-questions)). This page proposes it for the synoptic.
+- A sub-symbol whose parent changes type goes **into fault**, and the application says so; "a list of faults" is to write ([Sub-symbols](../symbols/12-sub-symbols.md#open-questions)). This page proposes it for the synoptic.
 
 ### Three levels
 
@@ -38,7 +38,7 @@ Proposed:
 | A link points to a synoptic or a placed symbol that no longer exists | Error | Proposed |
 | A reference of a view points to a placed symbol deleted from its installation | Error | Proposed |
 | A template enum of a placed symbol has no item | Warning | Decided (Metadata) |
-| A required designation is empty, on any placed symbol | Warning | Decided (Product Owner, 2026-11-21: "Avertir sans bloquer"; [Designation](../metadata/entities/11-designation.md)) |
+| A required designation is empty, on any placed symbol | Warning | Decided ([Designation](../metadata/entities/11-designation.md)) |
 | A designation that is not required is empty | Not a fault: it may stay empty | Proposed (was a warning when used by the faceplate, before `required` existed) |
 | A designation text is used by two placed symbols | Warning | Proposed ("meant to be unique", Metadata) |
 | A pipe has a free end, or a connection point it was attached to was deleted | Warning | Proposed |

@@ -23,32 +23,32 @@ Each rule: what it says, the skill it adds to or contradicts, its status.
 
 ### R1 · The pages of the library
 
-- **Rule**: the Figma file has the pages Foundations, Icons, Atoms, Molecules, Organisms, Templates, then Metadata, the screens of Metadata, in the library file itself (Product Owner, 2026-11-22).
+- **Rule**: the Figma file has the pages Foundations, Icons, Atoms, Molecules, Organisms, Templates, then Metadata, the screens of Metadata, in the library file itself.
 - **Skill**: `name-and-organise-components-layers-and-pages` asks for the pages Foundations, Atoms, Molecules, Organisms, Templates, and puts screens in **product files**, one page per flow, outside the library.
 - **Differences**: a page Icons (adds to the skill); the screens of Metadata in the library file, not in a product file.
 - **Status**: Kept over the skill.
 
 ### R2 · One theme, on Warm Sand
 
-- **Rule**: one theme, built on the colours of the old Warm Sand theme; only the colours needed are kept (Product Owner, 2026-11-22).
+- **Rule**: one theme, built on the colours of the old Warm Sand theme; only the colours needed are kept.
 - **Skill**: `layer-tokens-primitive-semantic-component` puts the themes as modes of the semantic collection: one mode `sand` here.
 - **Status**: Added.
 
 ### R3 · Dense, but larger than Figma
 
-- **Rule**: dense screens, with every control larger than Figma's, for people from 20 to 77 (Product Owner, 2026-11-22). Controls 32 px high, text 14 px (proposed in [Foundations](02-foundations.md#sizes)).
+- **Rule**: dense screens, with every control larger than Figma's, for people from 20 to 77. Controls 32 px high, text 14 px (proposed in [Foundations](02-foundations.md#sizes)).
 - **Skill**: `check-accessibility-in-the-design` asks for targets of at least 24 × 24 px: the rule asks for more.
 - **Status**: Added.
 
 ### R4 · Screens in 16:9, at least 1600 × 900
 
-- **Rule**: every screen in 16:9; the smallest window is 1600 × 900, and nothing is promised below it, under the exemption of WCAG for two-dimensional layouts (Product Owner, 2026-11-22).
+- **Rule**: every screen in 16:9; the smallest window is 1600 × 900, and nothing is promised below it, under the exemption of WCAG for two-dimensional layouts.
 - **Skill**: `check-accessibility-in-the-design` asks that every screen works at **320 px wide** without horizontal scrolling (WCAG 2.2, criterion 1.4.10 Reflow). WCAG exempts what needs a two-dimensional layout, such as an editor or a data table.
 - **Status**: Kept over the skill.
 
 ### R5 · Every component with its states
 
-- **Rule**: every component drawn whole, with its variants and its states; never an empty or hollow component (Product Owner, 2026-11-22).
+- **Rule**: every component drawn whole, with its variants and its states; never an empty or hollow component.
 - **Skill**: the same as `build-a-new-component-bottom-up` and `document-every-component-and-its-states`.
 - **Status**: Added (confirms the skills).
 
@@ -60,19 +60,19 @@ Each rule: what it says, the skill it adds to or contradicts, its status.
 
 ### R7 · Focus as a double line
 
-- **Rule**: the keyboard focus of every component is two lines: a light one against the component, then a dark violet one around it, so it shows on a light or a dark component (Product Owner, 2026-11-22: "une ligne claire et une ligne avec ton violet foncé"). For this design system only. Its values are the tokens `focus-ring` (outside a control) and `focus-ring-inset` (inside a line of a list, a tree or a table): see [Foundations](02-foundations.md#shadows). In Figma, every control draws them as two lines, so that the SVG export shows them right ([Figma file](04-figma-file.md#ways-of-figma-to-keep-in-mind)).
+- **Rule**: the keyboard focus of every component is two lines: a light one against the component, then a dark violet one around it, so it shows on a light or a dark component. For this design system only. Its values are the tokens `focus-ring` (outside a control) and `focus-ring-inset` (inside a line of a list, a tree or a table): see [Foundations](02-foundations.md#shadows). In Figma, every control draws them as two lines, so that the SVG export shows them right ([Figma file](04-figma-file.md#ways-of-figma-to-keep-in-mind)).
 - **Skill**: `check-accessibility-in-the-design` asks for a visible focus with 3:1 contrast; one line in `focus` passes against a light background but not against a dark control (the toggle on). The rule adds to the skill.
 - **Status**: Added.
 
 ### R8 · Components prototyped on their own
 
-- **Rule**: every interactive component is prototyped as an interactive component of Figma (hover, press, click to the next state), before any screen is (Product Owner, 2026-11-22).
+- **Rule**: every interactive component is prototyped as an interactive component of Figma (hover, press, click to the next state), before any screen is.
 - **Skill**: `prototype-with-interactive-components-and-variables` says the same; the rule sets the order: the components first, the screens later.
 - **Status**: Added (confirms the skill).
 
 ### R9 · Components shown as tables, and described in sheets
 
-- **Rule**: in the Figma file, each component is shown as a clean table: one column per state (default, hover, pressed, focus, disabled…), one line per variant, each line and each column named, so one sees at once which variant and which state each cell is. No documentation frame and no descriptive text in Figma (Product Owner, 2026-11-22: "un tableau d'états et de types [...] plutôt que plein de texte à la con qui ne sert à rien"). The components of a page are grouped by family. How it is drawn: [Figma file](04-figma-file.md#how-a-page-shows-its-components).
-- **The sheets**: the description goes in the specification, one Markdown sheet per component, in the folder of its level (`atoms/`, `molecules/`, `organisms/`, `templates/`), beside the table exported as SVG: what it is, its inputs and outputs, its behaviour, its link in Figma, the components it is made of, never where it is used (Product Owner, the same day: "ça va remplacer tes petites fiches [...] vu que c'est en Markdown, ce sera beaucoup plus propre"). Only the components the screens of Metadata use have a sheet for now. What a sheet holds: [Components](03-components.md#what-a-sheet-holds). It replaces both the frames `Docs/<component>` removed that day and the Storybook first chosen for the descriptions.
+- **Rule**: in the Figma file, each component is shown as a clean table: one column per state (default, hover, pressed, focus, disabled…), one line per variant, each line and each column named, so one sees at once which variant and which state each cell is. No documentation frame and no descriptive text in Figma. The components of a page are grouped by family. How it is drawn: [Figma file](04-figma-file.md#how-a-page-shows-its-components).
+- **The sheets**: the description goes in the specification, one Markdown sheet per component, in the folder of its level (`atoms/`, `molecules/`, `organisms/`, `templates/`), beside the table exported as SVG: what it is, its inputs and outputs, its behaviour, its link in Figma, the components it is made of, never where it is used. Only the components the screens of Metadata use have a sheet for now. What a sheet holds: [Components](03-components.md#what-a-sheet-holds). It replaces both the frames `Docs/<component>` removed that day and the Storybook first chosen for the descriptions.
 - **Skill**: `document-every-component-and-its-states` asks for a frame `Docs/<component>` in twelve sections (usage, anatomy, behaviours, content, accessibility, do and don't…) before a component is published. The rule keeps the variants and states in Figma, as a table, and moves the rest, shorter, to the Markdown sheet: overview, inputs, outputs, behaviour, what it is made of. The skill `write-the-specification-with-the-product-owner` asks for a "Where it is used" table on every concept: a sheet has none.
 - **Status**: Kept over the skill.

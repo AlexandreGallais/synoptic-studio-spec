@@ -49,7 +49,7 @@ Where the reports are, in the `synoptic-studio-spec` project (folders ignored by
 
 ### 6. Interaction: the list of gestures and the name of the concept
 
-Asked by the Product Owner (2026-11-11): the assistant must answer these two points itself, in its research, without asking the Product Owner. No priority: it goes in the next research that is launched, whatever it is. Noted here so that it is not forgotten.
+The research answers these two points itself, with no question back. No priority: it goes in the next research that is launched, whatever it is.
 
 - Context: see [Interaction mode](07-interaction-mode/README.md). An interaction links a place, a gesture and what happens (a command, or opening the faceplate). The Product Owner wants more gestures than left click, right click and double click.
 - Question 6a: which gestures do supervision (SCADA, HMI), design and prototyping software offer on an element (click, double click, right click, hover, long press, drag, wheel, key...), which ones exist on every desktop platform and in a browser, and which ones should the list hold? Propose a list, labelled as an opinion.
@@ -57,7 +57,7 @@ Asked by the Product Owner (2026-11-11): the assistant must answer these two poi
 
 ### 7. Animation: animatable properties, mapping, enum
 
-Asked by the Product Owner (2026-11-11), who does not want to read the animation page and its open questions: the assistant answers them in its next research and proposes. No priority, same rule as question 6.
+The research answers the open questions of the animation page and proposes. No priority, same rule as question 6.
 
 - Context: see [Animation mode](08-animation-mode/README.md). A signal animates a shape, a layer or a text.
 - Question 7a: which properties of an SVG drawing can a signal drive, with a good performance and natively in SVG (rotation, position, size, colour, opacity, visibility, blinking, dash offset, gradient...)? Which ones to refuse? Propose a list, labelled as an opinion.
@@ -190,4 +190,4 @@ Written as questions to the Product Owner in the pages: the desktop window and t
 
 ## What stays out of the research
 
-The code, the performance measures (they come from the POC), the geometric engine and the intersection calculations (another research), the SaaS, phones and tablets, and the final choice of effects (the Product Owner decides, on the report and the POC).
+The code, the performance measures (they come from the POC), the geometric engine and the intersection calculations (another research), the SaaS, phones and tablets, and the final choice of effects.

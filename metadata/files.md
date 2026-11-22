@@ -60,8 +60,8 @@ To come: one global JSON Schema will hold the types every entity shares, and the
 
 ## Open questions
 
-- JSON files rather than a database: a leaning of the Product Owner, not settled.
-- Which files are configuration files, in the two folders, beside the palettes and the icon sets: the catalogue of quantities, others? Left for later by the Product Owner (2026-11-22: "on verra ça après").
+- JSON files rather than a database: a leaning, not settled.
+- Which files are configuration files, in the two folders, beside the palettes and the icon sets: the catalogue of quantities, others? Left for later.
 - The same `internal_id` under two different file names, in the software's folder and in the user's: which one is offered?
-- **The format of the `id`s, an idea of the Product Owner (2026-11-22), not settled**: a settings page where the user chooses the format each kind of `id` must follow, as a regular expression kept in the settings configuration file; the software tells when an `id` typed does not follow it, and the user writes their own expressions in that file. Open: whether a format is set by default or none (the rule of 2026-11-17 says no rule on how an ID is written); a message only, or the `id` refused; one format per entity or shared ones. See [Data model notes](data-model-notes.md#noted-on-2026-11-22-format-of-the-ids-idea).
+- **The format of the `id`s, an idea not settled**: a settings page where the user chooses the format each kind of `id` must follow, as a regular expression kept in the settings configuration file; the software tells when an `id` typed does not follow it, and the user writes their own expressions in that file. Open: whether a format is set by default or none (today no rule says how an ID is written); a message only, or the `id` refused; one format per entity or shared ones. See [Data model notes](data-model-notes.md#noted-on-2026-11-22-format-of-the-ids-idea).
 - The other open questions on files stay in the [whole draft](draft.md#files).

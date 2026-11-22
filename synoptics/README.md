@@ -4,11 +4,11 @@
 
 The third part of Synoptic Studio: building synoptics. A **synoptic** is a drawing of the installation. The user places symbols taken from Symbol Libs, connects them with pipes, and fills in, for each placed symbol, what Metadata leaves to the synoptic: its designations, its flags, the items of its template enums and its preset. The runtime displays what is built here, and the configuration files describe it.
 
-Status: **extrapolated by the assistant** on 2026-11-20, at the Product Owner's request ("j'aimerais bien que tu extrapoles sur la partie synoptique [...] le plus possible"). It starts from what [Metadata](../metadata/README.md), [Symbols](../symbols/README.md) and [Pipes](../symbols/pipes/README.md) already say. Nothing here is validated: it is a base of ideas for the Product Owner's review. Each rule says where it comes from:
+Status: **extrapolated by the assistant**. It starts from what [Metadata](../metadata/README.md), [Symbols](../symbols/README.md) and [Pipes](../symbols/pipes/README.md) already say. Nothing here is validated: it is a base of ideas, to review. Each rule says where it comes from:
 
 | Mark | Meaning |
 | --- | --- |
-| **Decided** | Already said by the Product Owner in another part, with its source. |
+| **Decided** | Already decided in another part, with its source. |
 | **Proposed** | The assistant's extrapolation, to review. |
 | **Open** | A question the extrapolation cannot settle. |
 

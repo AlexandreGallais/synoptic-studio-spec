@@ -198,7 +198,7 @@ The focus is two lines: `focus-inset` against the control, then `focus` around i
 
 ## Typography
 
-One family for the whole interface, **IBM Plex Sans**, one for code (the Markdown mode, formulas), **IBM Plex Mono**: both free (SIL Open Font License), chosen by the Product Owner on 2026-11-22.
+One family for the whole interface, **IBM Plex Sans**, one for code (the Markdown mode, formulas), **IBM Plex Mono**: both free (SIL Open Font License).
 
 ```tokens
 {
@@ -248,7 +248,7 @@ The line height is given as a ratio of the size, as DTCG asks; the description g
 
 ### Styles of a description
 
-The text a user writes in the visual editor of a description ([markdown-editor](organisms/markdown-editor.md)). Its paragraph is `body`, its bold `body-strong`, its code `code`. Every heading is larger than the paragraph, down to Heading 6, so that a bold line never reads as a heading (Product Owner, 2026-11-23). Sizes proposed.
+The text a user writes in the visual editor of a description ([markdown-editor](08-organisms/markdown-editor.md)). Its paragraph is `body`, its bold `body-strong`, its code `code`. Every heading is larger than the paragraph, down to Heading 6, so that a bold line never reads as a heading. Sizes proposed.
 
 ```tokens
 {

@@ -2,11 +2,11 @@
 
 > [Home](../README.md) › [Screens](README.md) › Symbol editor
 
-Status: draft, written by the assistant on 2026-11-11 from the [Symbols](../symbols/README.md) pages, themselves a draft, then updated with the Product Owner's review of 2026-11-15 (one list of symbols, left-hand panel, layers, floating bars, precise move), of 2026-11-16 (no libraries of types, navigation bar) and of the end of 2026-11-17 (pages of a Symbol Lib in the navigation bar, columns of the Enums page). It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md). The pipes are in [Pipes](pipes.md).
+Status: draft, written by the assistant from the [Symbols](../symbols/README.md) pages, themselves a draft, then reviewed. It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md). The pipes are in [Pipes](pipes.md).
 
 ## SY-00 · Navigation bar of the symbol mode
 
-Path: Symbols. On the far left of every screen of the symbol mode (Product Owner, 2026-11-16; changed by him at the end of 2026-11-17).
+Path: Symbols. On the far left of every screen of the symbol mode.
 
 ```mermaid
 block-beta
@@ -21,7 +21,7 @@ block-beta
 | --- | --- | --- | --- | --- | --- |
 | SY-00.1 | Create a Symbol Lib | Button (small +), at the top | Replaces the Libraries button and its page SY-01 (end of 2026-11-17). Asks a name only. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
 | SY-00.3 | Symbol Libs | List (one item each) | Every Symbol Lib, directly: the libraries are listed here only. One click selects a library. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
-| SY-00.2 | Separator | — | Between the list of the Symbol Libs and the pages of the selected one (end of 2026-11-17: "un divider"). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
+| SY-00.2 | Separator | — | Between the list of the Symbol Libs and the pages of the selected one. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
 | SY-00.4 | Pages of the selected Symbol Lib | Buttons, at the bottom of the bar | In this order: General ([SY-01](#sy-01--general-page-of-a-symbol-lib)), Enums ([SY-12](#sy-12--enums-of-a-symbol-lib)), Symbols ([SY-02](#sy-02--left-hand-panel-of-the-pages-symbols-and-pipes)), Pipes ([Pipes](pipes.md)). Shown only once a Symbol Lib is selected (end of 2026-11-17). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
 
 Gaps:
@@ -107,7 +107,7 @@ Gaps:
 
 Path: Symbols › a Symbol Lib › a symbol.
 
-The layout is decided (Product Owner, 2026-11-15), except the place of the tool bar (bottom or top) and of the zoom field.
+The layout is decided, except the place of the tool bar (bottom or top) and of the zoom field.
 
 ```mermaid
 block-beta
@@ -420,7 +420,7 @@ mindmap
 | SY-08.3 | Property | Select | Rotation, position, opacity, visibility, fill or border colour, fill level, blink (proposed list). | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.4 | Mapping | Select + fields | Bounded linear (input range, output range), by ranges (table), two values (boolean). | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.4c | Column of the enum | Select | For an enum signal: a column added to its enum on the Enums page of the Symbol Lib ([SY-12](#sy-12--enums-of-a-symbol-lib)); the property takes that column's value for the current item (2026-11-17). Only columns whose kind fits the property (assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#used-by-an-animation) |
-| SY-08.4b | Input range of a bounded linear | Two fields: minimum, maximum | Each a signal of the type, input or output, or a number typed (the number: to confirm); the value animated stays an output (Product Owner, 2026-11-17). | Decided (signal in or out), Proposed (number) | [Animation mode](../symbols/08-animation-mode/README.md#the-input-range-of-a-bounded-linear-animation) |
+| SY-08.4b | Input range of a bounded linear | Two fields: minimum, maximum | Each a signal of the type, input or output, or a number typed (the number: to confirm); the value animated stays an output. | Decided (signal in or out), Proposed (number) | [Animation mode](../symbols/08-animation-mode/README.md#the-input-range-of-a-bounded-linear-animation) |
 | SY-08.5 | Transition | Radio + number field | None, or a short linear duration. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.6 | Pivot | 9-point grid or a point | Centre by default. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.7 | Text: what it shows | Radio | Written text, the value of a signal, or the unit of a signal only. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
@@ -538,7 +538,7 @@ Gaps:
 
 ## SY-12 · Enums of a Symbol Lib
 
-Path: Symbols › a Symbol Lib › Enums, second page of the library in the navigation bar ([SY-00.4](#sy-00--navigation-bar-of-the-symbol-mode)). Product Owner, 2026-11-17.
+Path: Symbols › a Symbol Lib › Enums, second page of the library in the navigation bar ([SY-00.4](#sy-00--navigation-bar-of-the-symbol-mode)).
 
 Following the layout rules, the list of enums is on the left and the selected enum on the right, as on [MD-09](metadata.md#md-09--enums).
 
@@ -574,7 +574,7 @@ mindmap
 | SY-12.6 | Kind of value of a column | Global enum: set by the first value; template: small icon in the header | Global enum: the first value typed in the column chooses its kind (colour, text, number...), and the other values of the column follow it. Template: it has no values, so a small icon in the header of the column chooses its kind (end of 2026-11-17). The full list of kinds is open. | Decided (list: Open) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.7 | Value of a column for an item | Field of the kind (colour picker, text field, number field) | Global enum only: one per item. For a template, filled with its items on each placed symbol, in the synoptic (end of 2026-11-17; the columns with the items: assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.8 | Delete a column | not said (button) | A column can be deleted (end of 2026-11-17). | Decided (control: not said) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
-| SY-12.9 | Order of the columns | — | Not changed: no handle (end of 2026-11-17: "Est-ce qu'il faut pouvoir le modifier ? Non, je pense pas"). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
+| SY-12.9 | Order of the columns | — | Not changed: no handle. | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 
 Gaps:
 

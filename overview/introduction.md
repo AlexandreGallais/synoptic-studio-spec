@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Overview](README.md) › Introduction
 
-Status: draft, written from the Product Owner's oral introduction. Nothing here is validated yet.
+Status: draft. Nothing here is validated yet.
 
 ## What Synoptic Studio is
 
@@ -19,7 +19,7 @@ It lets a company have synoptics animated in JavaScript without using a SCADA. T
 
 ## The three parts of the application
 
-The Product Owner splits the application in three parts.
+The application has three parts.
 
 | Part | What it holds | Specified in |
 | --- | --- | --- |
@@ -72,8 +72,7 @@ These specs cover only the open source desktop application.
 
 ## Open questions
 
-- **The third part** of the application: extrapolated by the assistant on 2026-11-20 ([Synoptics](../synoptics/README.md)), to review with the Product Owner. It proposes an answer to the question on simulation below, not decided.
+- **The third part** of the application: extrapolated by the assistant ([Synoptics](../synoptics/README.md)), to review. It proposes an answer to the question on simulation below, not decided.
 - **Runtime.** It is not one of the 7 validated projects. Option advised: note it apart, specify the editor first and the view file format the runtime will read.
-- **The "big drawing"** mentioned by the Product Owner was not received (the message held only text).
 - **Symbol types.** Who defines them: a built-in library, the user, or both? Partly answered by the Metadata part (the user creates types in a tree; there are no libraries of types since 2026-11-16); a built-in set of types is still to confirm.
 - **Simulation.** What exactly does the editor do for it: describe the circuit only, or run something? Not asked yet.

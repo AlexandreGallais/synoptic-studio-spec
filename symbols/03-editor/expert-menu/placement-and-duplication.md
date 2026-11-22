@@ -2,7 +2,7 @@
 
 > [Home](../../../README.md) › [Symbols](../../README.md) › [Editor](../README.md) › [Advanced tools](README.md) › Placement and duplication
 
-Status: draft, from the Product Owner's description of 2026-11-11. Not validated.
+Status: draft. Not validated.
 
 ## Rules
 
@@ -16,7 +16,7 @@ Source: the second research report (`research/t4-…/rapport.md`, section 3.19).
 
 - AutoCAD: **polar** array (centre, count, angle between items, total angle, items rotated or not); array **along a path** (line, polyline, spline, arc, circle, ellipse; by count or by interval; items tangent or parallel); an array is "associative" (one linked object) or made of independent objects.
 - Opinion of the report: three rules, **polar**, **along a path**, **grid**; options: count or spacing, start and end angle, copies rotated or not; independent copies, gathered in a group. Confidence: medium.
-- Name: the report proposes **Advanced tools** instead of "expert menu" (see the [editor](../README.md)); the Product Owner used this name on 2026-11-15.
+- Name: the report proposes **Advanced tools** instead of "expert menu" (see the [editor](../README.md)); it is the name kept.
 
 ## Open questions
 

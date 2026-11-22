@@ -17,21 +17,21 @@ flowchart LR
     M --> O["Organisms: tree, data-table, dialog"]
     O --> TE["Template: editor"]
     TE --> S["Screens of the page Metadata: MD-04 Signals"]
-    %% link A atoms/README.md
-    %% link M molecules/README.md
-    %% link O organisms/README.md
-    %% link TE templates/README.md
-    %% link S metadata/README.md
+    %% link A 06-atoms/README.md
+    %% link M 07-molecules/README.md
+    %% link O 08-organisms/README.md
+    %% link TE 09-templates/README.md
+    %% link S 10-screens/01-metadata/README.md
 ```
 
 | Level | Folder | Sheets |
 | --- | --- | --- |
-| Icons | [icons](icons/README.md) | 50 icons, exported as SVG |
-| Atoms | [atoms](atoms/README.md) | 16 |
-| Molecules | [molecules](molecules/README.md) | 16 |
-| Organisms | [organisms](organisms/README.md) | 14 |
-| Templates | [templates](templates/README.md) | 1 |
-| Screens | [metadata](metadata/README.md) | the 42 frames of the page Metadata |
+| Icons | [05-icons](05-icons/README.md) | 50 icons, exported as SVG |
+| Atoms | [06-atoms](06-atoms/README.md) | 16 |
+| Molecules | [07-molecules](07-molecules/README.md) | 16 |
+| Organisms | [08-organisms](08-organisms/README.md) | 14 |
+| Templates | [09-templates](09-templates/README.md) | 1 |
+| Screens | [10-screens](10-screens/README.md) | one folder per part; [01-metadata](10-screens/01-metadata/README.md): the 42 frames of the page Metadata |
 
 Only the components the screens of Metadata use have a sheet; each level's README lists the ones left out.
 

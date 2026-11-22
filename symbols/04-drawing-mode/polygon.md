@@ -2,14 +2,14 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › Polygon
 
-Status: draft, from the Product Owner's description of 2026-11-11 and the research report of 2026-11-11. Not validated.
+Status: draft and the research report of 2026-11-11. Not validated.
 
 The polygon is drawn by dragging a box, like the rectangle and the ellipse. It becomes a path, with one point per side. A polygon does not always touch all the sides of its box, so the tool has options, set in the right-hand panel.
 
 ## Rules
 
 - **Number of sides**: chosen by the user, from 3 to 20.
-- **How the polygon fills its box**: two modes wanted by the Product Owner, never a blend of both.
+- **How the polygon fills its box**: two modes, never a blend of both.
 
 | Mode | The polygon... |
 | --- | --- |
@@ -44,8 +44,8 @@ Source: the research report (`research/t1-…/rapport.md`).
 | C · Inscribed ellipse | Vertices on the ellipse inscribed in the box. | Top always; bottom if even; sides if multiple of 4. | Only if the box is square. | Figma. |
 | D · Centre and radius | A centre, a radius, an angle. | No dragged box. | Always. | Inkscape. |
 
-- Filled is A, Equilateral is B: the Product Owner's two modes are exactly the two states Illustrator and CorelDRAW offer.
-- Opinion of the report: **do not keep a third mode "like Figma" (C)**. It blends the two others (regular in a square box, stretched elsewhere, never filled), which the Product Owner does not want. Its only own advantage, a centre and radius that do not move when the number of sides changes, matters little in a tool that draws by dragging a box. D is not kept either: it does not start from a box. Confidence: medium. The Product Owner decides.
+- Filled is A, Equilateral is B: the two modes are exactly the two states Illustrator and CorelDRAW offer.
+- Opinion of the report: **do not keep a third mode "like Figma" (C)**. It blends the two others (regular in a square box, stretched elsewhere, never filled), which is not wanted. Its only own advantage, a centre and radius that do not move when the number of sides changes, matters little in a tool that draws by dragging a box. D is not kept either: it does not start from a box. Confidence: medium. The Product Owner decides.
 
 ### Geometry by number of sides
 

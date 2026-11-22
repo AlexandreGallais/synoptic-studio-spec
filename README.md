@@ -2,7 +2,7 @@
 
 The specifications of **Synoptic Studio**, the open source desktop application to create and edit synoptics (animated process views of an industrial installation).
 
-Status: the Metadata part is validated by the Product Owner (2026-11-11). The Symbols part is a draft (2026-11-11). The third part, Synoptics, is an extrapolation by the assistant (2026-11-20), to review.
+Status: the Metadata part is validated. The Symbols part is a draft. The third part, Synoptics, is an extrapolation by the assistant, to review.
 
 ## What Synoptic Studio is
 
@@ -25,7 +25,7 @@ Read the full story in the [introduction](overview/introduction.md).
 
 ## The three parts of the application
 
-The Product Owner splits the application in three parts. The first is validated, the second is a draft, the third is an extrapolation to review.
+The application has three parts. The first is validated, the second is a draft, the third is an extrapolation to review.
 
 ```mermaid
 flowchart TD
@@ -51,6 +51,7 @@ flowchart TD
 | [`controls/`](controls/README.md) | The controls shared by every screen: one number field, one text field, with the same behaviour everywhere. Draft. | [Number and text fields](controls/number-and-text-fields.md) |
 | [`screens/`](screens/README.md) | The inventory of the screens and menus: for each screen, a map, every button, field and list with its status, and what is missing. | [Map of the screens](screens/README.md) |
 | [`design-system/`](design-system/README.md) | The design system before it is drawn: principles, tokens, icons, components and their states, the pages of the Figma file. First draft. | [Principles](design-system/01-principles.md) |
+| [`notes/`](notes/README.md) | Working notes, not specification: what was said and when. | [Notes](notes/README.md) |
 
 Metadata is being written again, one file per theme (2026-11-19): the first is the [Data model](metadata/data-model.md), its schema to validate. Until each theme is done, the earlier pages are gathered in the [whole draft](metadata/draft.md), in this reading order:
 

@@ -2,13 +2,13 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › Editor · Previous: [Type, preset and faceplate](../02-type-and-faceplate.md) · Next: [Drawing mode](../04-drawing-mode/README.md)
 
-Status: draft, from the Product Owner's description of 2026-11-11, reviewed on 2026-11-15 (layout, floating bars, layers, precise move). Not validated.
+Status: draft, reviewed on 2026-11-15 (layout, floating bars, layers, precise move). Not validated.
 
 The symbol editor is a vector drawing editor, close to Figma and Inkscape for what it needs. It works with **modes** and **tools**. This page holds what is common to every mode; each mode has its own folder, with its tools inside.
 
 ## Layout
 
-Decided by the Product Owner on 2026-11-15, unless said otherwise.
+Decided, unless said otherwise.
 
 ```mermaid
 block-beta
@@ -20,7 +20,7 @@ block-beta
 | --- | --- |
 | Left-hand panel | The symbols and the pipe styles of the Symbol Lib, then the [layers](layers.md) of the open symbol (see [Libraries and symbols](../01-libraries-and-symbols.md)). |
 | Modes menu | A floating menu at the **top left of the drawing area**: every mode, and the switch from one to another. |
-| Tool bar | A floating bar over the drawing area, with the tools of the current mode. Its place is open: at the **bottom** (the Product Owner's leaning: "for people, the bottom will be better") or at the top. |
+| Tool bar | A floating bar over the drawing area, with the tools of the current mode. Its place is open: at the **bottom** or at the top. |
 | Advanced tools bar | A button of the tool bar shows or hides a second floating bar, **just above the tool bar**, with all the [advanced tools](expert-menu/README.md). |
 | Right-hand panel | The options of the selection; the type and the preset of the symbol (see [Type, preset and faceplate](../02-type-and-faceplate.md)). |
 
@@ -40,7 +40,7 @@ Not placed yet: the zoom field, undo and redo, save.
 - A **tool** is what the mouse does in the drawing: select, draw a rectangle, write a text.
 - A **mode** changes what the editor is for. Switching mode changes the tools of the tool bar and what the right-hand panel shows.
 - Nothing is hidden behind a double click: to edit points, the user switches to the point editing mode.
-- **Same keys on every platform** (Product Owner, 2026-11-11). Windows, macOS and Linux behave the same. Only keys that exist on all three are used: Shift, Ctrl and Alt (the Option key on a Mac), with letters, digits, arrows and function keys. No Command, Option or Windows key in the specs. Whenever a page asks which key to use, this rule applies first.
+- **Same keys on every platform**. Windows, macOS and Linux behave the same. Only keys that exist on all three are used: Shift, Ctrl and Alt (the Option key on a Mac), with letters, digits, arrows and function keys. No Command, Option or Windows key in the specs. Whenever a page asks which key to use, this rule applies first.
 - Key shortcuts and modifier keys are allowed, as in every drawing software, but never alone: each one has a visible equivalent (an option in the panel or the tool bar). The software is used by everyone, including an expert of 80 who makes synoptics.
 - Everything drawn stays a path, in the layers of an SVG, so the symbol stays a real SVG. A text stays a text, because it can show a value or a unit (see [Animation mode](../08-animation-mode/README.md)).
 - The name "layer" is provisional. A layer can be the target of an animation or of an interaction.
@@ -58,7 +58,7 @@ Not placed yet: the zoom field, undo and redo, save.
 | [Run](../09-run-mode/README.md) | Try the symbol with test values and see it at the size of another screen. | Hand | The test values, and the simulated screen |
 | [Connection](../pipes/connection-points.md) (provisional) | Place the connection points where pipes attach. | Select, Hand, Connection point | The options of the selected point |
 
-- The Connection mode is an assumption of the assistant: the Product Owner did not say which mode places the connection points (see [Connection points](../pipes/connection-points.md)).
+- The Connection mode is an assumption of the assistant: which mode places the connection points is not decided (see [Connection points](../pipes/connection-points.md)).
 - The Interaction, Animation and Run modes need a type: a symbol without a type has no interaction, no animation and nothing to test with signals (see [Libraries and symbols](../01-libraries-and-symbols.md)).
 - The [advanced tools](expert-menu/README.md) add a second bar just above the tool bar of the current mode.
 - Other modes may be added later.
@@ -109,7 +109,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.15,
 | Layer | Keep | Inkscape marks a group as a layer |
 | Interaction, gesture | Keep | Figma |
 | Zone | Interaction zone | "Hotspot" in Figma |
-| Static, dynamic | Keep (dropped by the Product Owner on 2026-11-15: one kind of symbol) | Same words in the archived Figma file |
+| Static, dynamic | Keep | Same words in the archived Figma file |
 | Expert menu | Advanced tools | Name of a page of the archived Figma file |
 | Free form | Path | Word of SVG |
 | Fit, fixed; absolute child | Keep | — |
