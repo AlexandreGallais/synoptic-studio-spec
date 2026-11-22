@@ -6,22 +6,32 @@ Status: the whole schema of Metadata and the list of its entities, being validat
 
 ## The schema
 
-The schema reads from the top: the type, then its parts in the order of the keys of its file, then the enums, the quantities and the designations its fields point to. Palettes and icon sets stand apart: an appearance copies the color and the drawing it picks, and keeps no link to them. A click on a box opens its entity file.
+The schema reads from the top: the type, then its parts in the order of the keys of its file, then the quantities, the enums and the designations its fields point to. Palettes and icon sets stand apart, on the left beside the appearance: an appearance copies the color and the drawing it picks, and keeps no link to them. A click on a box opens its entity file.
 
 Colour of a box's title: orange, the last version of its entity file is not validated yet; green, it is validated by the Product Owner.
 
 ```mermaid
 ---
 config:
-  themeCSS: "[id*='entity-TYPE-'] .outer-path path, [id*='entity-APPEARANCE-'] .outer-path path, [id*='entity-DOCUMENTATION-'] .outer-path path, [id*='entity-LINK-'] .outer-path path, [id*='entity-SIGNAL-'] .outer-path path, [id*='entity-VALUE_TYPE-'] .outer-path path, [id*='entity-COMMAND-'] .outer-path path, [id*='entity-COMMAND_TARGET-'] .outer-path path, [id*='entity-FLAG-'] .outer-path path, [id*='entity-PRESET-'] .outer-path path, [id*='entity-PRESET_VALUE-'] .outer-path path, [id*='entity-DISPLAY_FORMAT-'] .outer-path path, [id*='entity-BOOLEAN_TEXTS-'] .outer-path path, [id*='entity-FACEPLATE_ELEMENT-'] .outer-path path, [id*='entity-SIGNAL_FIELD-'] .outer-path path, [id*='entity-RANGE-'] .outer-path path, [id*='entity-BOUND-'] .outer-path path, [id*='entity-COMMAND_BUTTON-'] .outer-path path, [id*='entity-TEXT_CONTENT-'] .outer-path path, [id*='entity-ENUM-'] .outer-path path, [id*='entity-ENUM_ITEM-'] .outer-path path, [id*='entity-QUANTITY-'] .outer-path path, [id*='entity-UNIT_SYSTEM-'] .outer-path path, [id*='entity-UNIT-'] .outer-path path, [id*='entity-CONVERSION-'] .outer-path path, [id*='entity-DESIGNATION-'] .outer-path path, [id*='entity-PALETTE-'] .outer-path path, [id*='entity-COLOR-'] .outer-path path, [id*='entity-ICON_SET-'] .outer-path path, [id*='entity-ICON-'] .outer-path path { fill: #f8b26a !important; }"
+  themeCSS: "[id*='entity-PALETTE-'] .outer-path path, [id*='entity-COLOR-'] .outer-path path, [id*='entity-ICON_SET-'] .outer-path path, [id*='entity-ICON-'] .outer-path path, [id*='entity-TYPE-'] .outer-path path, [id*='entity-APPEARANCE-'] .outer-path path, [id*='entity-DOCUMENTATION-'] .outer-path path, [id*='entity-LINK-'] .outer-path path, [id*='entity-SIGNAL-'] .outer-path path, [id*='entity-VALUE_TYPE-'] .outer-path path, [id*='entity-QUANTITY-'] .outer-path path, [id*='entity-UNIT_SYSTEM-'] .outer-path path, [id*='entity-UNIT-'] .outer-path path, [id*='entity-CONVERSION-'] .outer-path path, [id*='entity-ENUM-'] .outer-path path, [id*='entity-ENUM_ITEM-'] .outer-path path, [id*='entity-COMMAND-'] .outer-path path, [id*='entity-COMMAND_TARGET-'] .outer-path path, [id*='entity-FLAG-'] .outer-path path, [id*='entity-PRESET-'] .outer-path path, [id*='entity-PRESET_VALUE-'] .outer-path path, [id*='entity-DISPLAY_FORMAT-'] .outer-path path, [id*='entity-BOOLEAN_TEXTS-'] .outer-path path, [id*='entity-FACEPLATE_ELEMENT-'] .outer-path path, [id*='entity-SIGNAL_FIELD-'] .outer-path path, [id*='entity-RANGE-'] .outer-path path, [id*='entity-BOUND-'] .outer-path path, [id*='entity-COMMAND_BUTTON-'] .outer-path path, [id*='entity-TEXT_CONTENT-'] .outer-path path, [id*='entity-DESIGNATION-'] .outer-path path { fill: #f8b26a !important; }"
 ---
 erDiagram
+    %% link PALETTE entities/02-palette.md
+    %% link COLOR entities/01-color.md
+    %% link ICON_SET entities/04-icon-set.md
+    %% link ICON entities/03-icon.md
     %% link TYPE entities/30-type.md
     %% link APPEARANCE entities/12-appearance.md
     %% link DOCUMENTATION entities/14-documentation.md
     %% link LINK entities/13-link.md
     %% link SIGNAL entities/16-signal.md
     %% link VALUE_TYPE entities/15-value-type.md
+    %% link QUANTITY entities/10-quantity.md
+    %% link UNIT_SYSTEM entities/09-unit-system.md
+    %% link UNIT entities/08-unit.md
+    %% link CONVERSION entities/07-conversion.md
+    %% link ENUM entities/06-enum.md
+    %% link ENUM_ITEM entities/05-enum-item.md
     %% link COMMAND entities/18-command.md
     %% link COMMAND_TARGET entities/17-command-target.md
     %% link FLAG entities/19-flag.md
@@ -35,17 +45,25 @@ erDiagram
     %% link BOUND entities/23-bound.md
     %% link COMMAND_BUTTON entities/26-command-button.md
     %% link TEXT_CONTENT entities/27-text-content.md
-    %% link ENUM entities/06-enum.md
-    %% link ENUM_ITEM entities/05-enum-item.md
-    %% link QUANTITY entities/10-quantity.md
-    %% link UNIT_SYSTEM entities/09-unit-system.md
-    %% link UNIT entities/08-unit.md
-    %% link CONVERSION entities/07-conversion.md
     %% link DESIGNATION entities/11-designation.md
-    %% link PALETTE entities/02-palette.md
-    %% link COLOR entities/01-color.md
-    %% link ICON_SET entities/04-icon-set.md
-    %% link ICON entities/03-icon.md
+    PALETTE {
+        uuid internal_id PK
+        text name
+    }
+    COLOR {
+        uuid internal_id PK
+        text name
+        rgba value
+    }
+    ICON_SET {
+        uuid internal_id PK
+        text name
+    }
+    ICON {
+        uuid internal_id PK
+        text name
+        svg drawing
+    }
     TYPE {
         uuid internal_id PK
         text id
@@ -75,6 +93,37 @@ erDiagram
         uuid enum FK
         uuid quantity FK
         boolean relative_quantity
+    }
+    QUANTITY {
+        uuid internal_id PK
+        text name
+        uuid default_unit FK
+        boolean offers_relative_quantity
+    }
+    UNIT_SYSTEM {
+        uuid internal_id PK
+        text name
+    }
+    UNIT {
+        uuid internal_id PK
+        text name
+        text symbol
+    }
+    CONVERSION {
+        expression to_default
+        expression from_default
+    }
+    ENUM {
+        uuid internal_id PK
+        enum_kind kind
+        text id
+        text description
+    }
+    ENUM_ITEM {
+        uuid internal_id PK
+        integer key
+        text display_name
+        text description
     }
     COMMAND {
         uuid internal_id PK
@@ -131,75 +180,38 @@ erDiagram
         uuid designation FK
         text typed_text
     }
-    ENUM {
-        uuid internal_id PK
-        enum_kind kind
-        text id
-        text description
-    }
-    ENUM_ITEM {
-        uuid internal_id PK
-        integer key
-        text display_name
-        text description
-    }
-    QUANTITY {
-        uuid internal_id PK
-        text name
-        uuid default_unit FK
-        boolean offers_relative_quantity
-    }
-    UNIT_SYSTEM {
-        uuid internal_id PK
-        text name
-    }
-    UNIT {
-        uuid internal_id PK
-        text name
-        text symbol
-    }
-    CONVERSION {
-        expression to_default
-        expression from_default
-    }
     DESIGNATION {
         uuid internal_id PK
         text id
         boolean required
         text description
     }
-    PALETTE {
-        uuid internal_id PK
-        text name
-    }
-    COLOR {
-        uuid internal_id PK
-        text name
-        rgba value
-    }
-    ICON_SET {
-        uuid internal_id PK
-        text name
-    }
-    ICON {
-        uuid internal_id PK
-        text name
-        svg drawing
-    }
+    PALETTE ||--|{ COLOR : "holds"
+    ICON_SET ||--|{ ICON : "holds"
     TYPE |o--o{ TYPE : "parent"
     TYPE ||--|| APPEARANCE : "has"
     TYPE ||--|| DOCUMENTATION : "has"
     DOCUMENTATION ||--o{ LINK : "holds"
     TYPE ||--o{ SIGNAL : "holds"
     SIGNAL ||--|| VALUE_TYPE : "has"
+    VALUE_TYPE }o--o| QUANTITY : "quantity"
+    QUANTITY ||--|{ UNIT_SYSTEM : "holds"
+    UNIT_SYSTEM ||--|{ UNIT : "holds, sorted by size"
+    QUANTITY }o--|| UNIT : "default_unit"
+    UNIT ||--o| CONVERSION : "has, except the default unit"
+    VALUE_TYPE }o--o| ENUM : "enum"
+    ENUM ||--o{ ENUM_ITEM : "holds"
     TYPE ||--o{ COMMAND : "holds"
     COMMAND ||--o| COMMAND_TARGET : "has, when kind is set_input_signal or override_output_signal"
     SIGNAL ||--o{ COMMAND_TARGET : "signal"
+    COMMAND_TARGET }o--o| ENUM_ITEM : "value"
     TYPE ||--o{ FLAG : "holds"
     TYPE ||--o{ PRESET : "holds"
     PRESET ||--o{ PRESET_VALUE : "holds, one per signal of the type"
     SIGNAL ||--o{ PRESET_VALUE : "signal"
+    PRESET_VALUE }o--o| ENUM_ITEM : "start_value"
     PRESET_VALUE ||--o| DISPLAY_FORMAT : "has, when the signal is an integer or a real"
+    DISPLAY_FORMAT }o--|| UNIT : "unit"
     PRESET_VALUE ||--o| BOOLEAN_TEXTS : "has, when the signal is a boolean"
     PRESET ||--o{ FACEPLATE_ELEMENT : "holds"
     FACEPLATE_ELEMENT |o--o{ FACEPLATE_ELEMENT : "holds, when kind is group"
@@ -212,57 +224,45 @@ erDiagram
     FACEPLATE_ELEMENT ||--o| COMMAND_BUTTON : "has, when kind is command"
     COMMAND ||--o{ COMMAND_BUTTON : "command"
     FACEPLATE_ELEMENT ||--o| TEXT_CONTENT : "has, when kind is title or paragraph"
-    VALUE_TYPE }o--o| ENUM : "enum"
-    ENUM ||--o{ ENUM_ITEM : "holds"
-    COMMAND_TARGET }o--o| ENUM_ITEM : "value"
-    PRESET_VALUE }o--o| ENUM_ITEM : "start_value"
-    VALUE_TYPE }o--o| QUANTITY : "quantity"
-    QUANTITY ||--|{ UNIT_SYSTEM : "holds"
-    UNIT_SYSTEM ||--|{ UNIT : "holds, sorted by size"
-    QUANTITY }o--|| UNIT : "default_unit"
-    UNIT ||--o| CONVERSION : "has, except the default unit"
-    DISPLAY_FORMAT }o--|| UNIT : "unit"
     TEXT_CONTENT }o--o| DESIGNATION : "designation"
-    PALETTE ||--|{ COLOR : "holds"
-    ICON_SET ||--|{ ICON : "holds"
 ```
 
 ## The entities
 
-Every entity of the schema, in the order of its number: the file it is kept in, the parts and lists it has or holds, and the entities its fields point to.
+Every entity of the schema, in the order of its number, with the file it is kept in.
 
-| # | Entity | Box | Kept in | Has or holds | Points to |
-| --- | --- | --- | --- | --- | --- |
-| 01 | [Color](entities/01-color.md) | `COLOR` | `<name>.palette.json` | — | — |
-| 02 | [Palette](entities/02-palette.md) | `PALETTE` | `<name>.palette.json` | `COLOR` | — |
-| 03 | [Icon](entities/03-icon.md) | `ICON` | `<name>.icon-set.json` | — | — |
-| 04 | [Icon set](entities/04-icon-set.md) | `ICON_SET` | `<name>.icon-set.json` | `ICON` | — |
-| 05 | [Enum item](entities/05-enum-item.md) | `ENUM_ITEM` | `enums.json` | — | — |
-| 06 | [Enum](entities/06-enum.md) | `ENUM` | `enums.json` | `ENUM_ITEM` | — |
-| 07 | [Conversion](entities/07-conversion.md) | `CONVERSION` | `<name>.quantity.json` | — | — |
-| 08 | [Unit](entities/08-unit.md) | `UNIT` | `<name>.quantity.json` | `CONVERSION` | — |
-| 09 | [Unit system](entities/09-unit-system.md) | `UNIT_SYSTEM` | `<name>.quantity.json` | `UNIT` | — |
-| 10 | [Quantity](entities/10-quantity.md) | `QUANTITY` | `<name>.quantity.json` | `UNIT_SYSTEM` | `UNIT` (`default_unit`) |
-| 11 | [Designation](entities/11-designation.md) | `DESIGNATION` | `designations.json` | — | — |
-| 12 | [Appearance](entities/12-appearance.md) | `APPEARANCE` | `<id>.type.json` | — | — |
-| 13 | [Link entity](entities/13-link.md) | `LINK` | `<id>.type.json` | — | — |
-| 14 | [Documentation](entities/14-documentation.md) | `DOCUMENTATION` | `<id>.type.json` | `LINK` | — |
-| 15 | [Value type](entities/15-value-type.md) | `VALUE_TYPE` | `<id>.type.json` | — | `ENUM` (`enum`), `QUANTITY` (`quantity`) |
-| 16 | [Signal](entities/16-signal.md) | `SIGNAL` | `<id>.type.json` | `VALUE_TYPE` | — |
-| 17 | [Command target](entities/17-command-target.md) | `COMMAND_TARGET` | `<id>.type.json` | — | `SIGNAL` (`signal`), `ENUM_ITEM` (`value`) |
-| 18 | [Command](entities/18-command.md) | `COMMAND` | `<id>.type.json` | `COMMAND_TARGET` | — |
-| 19 | [Flag](entities/19-flag.md) | `FLAG` | `<id>.type.json` | — | — |
-| 20 | [Display format](entities/20-display-format.md) | `DISPLAY_FORMAT` | `<id>.type.json` | — | `UNIT` (`unit`) |
-| 21 | [Boolean texts](entities/21-boolean-texts.md) | `BOOLEAN_TEXTS` | `<id>.type.json` | — | — |
-| 22 | [Preset value](entities/22-preset-value.md) | `PRESET_VALUE` | `<id>.type.json` | `DISPLAY_FORMAT`, `BOOLEAN_TEXTS` | `SIGNAL` (`signal`), `ENUM_ITEM` (`start_value`) |
-| 23 | [Bound](entities/23-bound.md) | `BOUND` | `<id>.type.json` | — | `SIGNAL` (`signal`) |
-| 24 | [Range](entities/24-range.md) | `RANGE` | `<id>.type.json` | `BOUND` (as `min`, as `max`) | — |
-| 25 | [Signal field](entities/25-signal-field.md) | `SIGNAL_FIELD` | `<id>.type.json` | `RANGE` | `SIGNAL` (`signal`) |
-| 26 | [Command button](entities/26-command-button.md) | `COMMAND_BUTTON` | `<id>.type.json` | — | `COMMAND` (`command`) |
-| 27 | [Text content](entities/27-text-content.md) | `TEXT_CONTENT` | `<id>.type.json` | — | `DESIGNATION` (`designation`) |
-| 28 | [Faceplate element](entities/28-faceplate-element.md) | `FACEPLATE_ELEMENT` | `<id>.type.json` | `SIGNAL_FIELD`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `FACEPLATE_ELEMENT` | — |
-| 29 | [Preset](entities/29-preset.md) | `PRESET` | `<id>.type.json` | `PRESET_VALUE`, `FACEPLATE_ELEMENT` | — |
-| 30 | [Type](entities/30-type.md) | `TYPE` | `<id>.type.json` | `APPEARANCE`, `DOCUMENTATION`, `SIGNAL`, `COMMAND`, `FLAG`, `PRESET` | `TYPE` (`parent`) |
+| # | Entity | Kept in |
+| --- | --- | --- |
+| 01 | [Color](entities/01-color.md) | `<name>.palette.json` |
+| 02 | [Palette](entities/02-palette.md) | `<name>.palette.json` |
+| 03 | [Icon](entities/03-icon.md) | `<name>.icon-set.json` |
+| 04 | [Icon set](entities/04-icon-set.md) | `<name>.icon-set.json` |
+| 05 | [Enum item](entities/05-enum-item.md) | `enums.json` |
+| 06 | [Enum](entities/06-enum.md) | `enums.json` |
+| 07 | [Conversion](entities/07-conversion.md) | `<name>.quantity.json` |
+| 08 | [Unit](entities/08-unit.md) | `<name>.quantity.json` |
+| 09 | [Unit system](entities/09-unit-system.md) | `<name>.quantity.json` |
+| 10 | [Quantity](entities/10-quantity.md) | `<name>.quantity.json` |
+| 11 | [Designation](entities/11-designation.md) | `designations.json` |
+| 12 | [Appearance](entities/12-appearance.md) | `<id>.type.json` |
+| 13 | [Link entity](entities/13-link.md) | `<id>.type.json` |
+| 14 | [Documentation](entities/14-documentation.md) | `<id>.type.json` |
+| 15 | [Value type](entities/15-value-type.md) | `<id>.type.json` |
+| 16 | [Signal](entities/16-signal.md) | `<id>.type.json` |
+| 17 | [Command target](entities/17-command-target.md) | `<id>.type.json` |
+| 18 | [Command](entities/18-command.md) | `<id>.type.json` |
+| 19 | [Flag](entities/19-flag.md) | `<id>.type.json` |
+| 20 | [Display format](entities/20-display-format.md) | `<id>.type.json` |
+| 21 | [Boolean texts](entities/21-boolean-texts.md) | `<id>.type.json` |
+| 22 | [Preset value](entities/22-preset-value.md) | `<id>.type.json` |
+| 23 | [Bound](entities/23-bound.md) | `<id>.type.json` |
+| 24 | [Range](entities/24-range.md) | `<id>.type.json` |
+| 25 | [Signal field](entities/25-signal-field.md) | `<id>.type.json` |
+| 26 | [Command button](entities/26-command-button.md) | `<id>.type.json` |
+| 27 | [Text content](entities/27-text-content.md) | `<id>.type.json` |
+| 28 | [Faceplate element](entities/28-faceplate-element.md) | `<id>.type.json` |
+| 29 | [Preset](entities/29-preset.md) | `<id>.type.json` |
+| 30 | [Type](entities/30-type.md) | `<id>.type.json` |
 
 ## The types of the fields
 

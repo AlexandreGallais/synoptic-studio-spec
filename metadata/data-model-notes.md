@@ -692,7 +692,8 @@ Asked by the Product Owner on 2026-11-22 ("tu vas pouvoir supprimer [...] le sch
 
 - **The JSON examples leave the [Data model](data-model.md)**: the JSON Schemas of each [entity file](entities/README.md) replace them. The sections [How the schema becomes JSON](#how-the-schema-becomes-json), [What the type shows](#what-the-type-shows) and [What the quantity shows](#what-the-quantity-shows) stay above as notes on the removed examples.
 - **The schema is written from the top**: the type, its parts in the order of the keys of its file, then the enums, the quantities and the designations, then the palettes and the icon sets; a link to a signal or a command from further down the type is written from the signal or the command, so that they stay just under the type. Each box opens its entity file. Nothing changes in the boxes nor in the links; every box stays orange.
-- **A table of every entity** follows the schema: its number, its box, the file it is kept in, what it has or holds, and what its fields point to.
+- **A table of every entity** follows the schema: its number and the file it is kept in. The columns of the box, of what it has or holds and of what it points to were removed the same day ("ça sert à rien"; "Kept in, ça, ça sert").
+- **Read again by the Product Owner the same day**: the palettes and the icon sets go to the left, beside the appearance; the quantity, then the enum, then the display format. The diagram declares them in that order (palettes and icon sets first, the quantity and the enum right after the value type), since the drawing follows the order of the boxes and of the links.
 - **The entity files are numbered again**, the folder staying flat: the files a type picks from, in the order the type uses them, then the parts of the type in the order of its keys, the type last (rule written in [Writing rules](#writing-rules-of-the-entity-files-to-become-a-skill)).
 - **A census of the types** of the fields, with the reason for each name, and the choice lists moved there from these notes (Product Owner, same day: "lister tous les types qu'il y a dans le modèle entier [...] un tableau qui explique pourquoi un type s'appelle de telle ou telle manière"). The reasons are the assistant's, to validate with the data model.
 - **The guide of [Entities](entities/README.md) keeps only a short description and the table**; the rules on how an entity file is written move to [Writing rules](#writing-rules-of-the-entity-files-to-become-a-skill), until they become a skill.
@@ -748,7 +749,7 @@ Never a status sentence, a "Where it is used", a "Product Owner context", a tabl
 ### The data model, in the same session
 
 - The box of the entity reads exactly as the schema of its entity file.
-- The diagram is written from the top: the type, its parts in key order, then the entities they point to. A FK to a signal or a command from further down the type is written from the signal or the command (`SIGNAL ||--o{ BOUND : "signal"`).
+- The diagram is written from the top: the palettes and the icon sets first, so that they stand on the left beside the appearance; then the type and its parts in key order, each entity they point to right after the part that points to it first (the quantity, then the enum, after the value type). A FK to a signal or a command from further down the type is written from the signal or the command (`SIGNAL ||--o{ BOUND : "signal"`).
 - Each box has its `%% link` line to its entity file.
 - Only the title of a box is coloured, by its rule in the `themeCSS` line (`[id*='entity-NAME-'] .outer-path path`): orange `#f8b26a` while its last version is `Draft`, green once validated; never a `style` line.
 - The table of the entities and the census of the types follow the change.
