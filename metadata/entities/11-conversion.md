@@ -42,7 +42,3 @@ erDiagram
   }
 }
 ```
-
-## Open questions
-
-- The syntax of the formulas (operators, π, powers, logarithms): chosen with the architecture, evaluated without `eval`.
