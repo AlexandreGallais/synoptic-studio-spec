@@ -15,9 +15,9 @@ What a synoptic gives to the world outside the editor: to the runtime, to the pe
 - The signals of a type are the **inputs and outputs of the model**: they define in advance what simulation models connect to ([Introduction](../overview/introduction.md#more-than-synoptics-modeling-and-simulation)).
 - All reading and writing of files goes through the server (criterion C10).
 
-### Five outputs
+### Six outputs
 
-Proposed:
+The first five are proposed; the interface description of the models is the Product Owner's (2026-11-22).
 
 | Output | For whom | What it holds | Format |
 | --- | --- | --- | --- |
@@ -26,6 +26,15 @@ Proposed:
 | **Configuration file** | The software outside (controllers, gateway, model) | One entry per placed symbol, references counted once: instance ID, type `id`, preset values with the changes of the synoptic (in the default unit), flags ticked, designation texts, template items. | JSON |
 | **Signal list** | Whoever wires the controllers or the model | One line per placed symbol and signal: address `P-101.speed`, direction, value kind, quantity and default unit, enum. | CSV and JSON |
 | **Connection graph** | Those who simulate a circuit | Which placed symbol is connected to which, through which pipes and connection points. | JSON |
+| **Interface description of the models** | Those who build the models | For each type used, all its signals, and among them the ones the project really needs, given its synoptics. See below. | Open |
+
+### The interface description of the models
+
+Once the synoptics are done, the editor writes, for the models, a kind of interface description document (IDD): for each type used in the project, it shows every signal of the type, and says which ones the project really needs, given how its symbols are used in the synoptics (Product Owner, 2026-11-22).
+
+Example: in a project, the pumps use a preset whose faceplate is turned off; on the synoptics, a pump only animates its speed and offers two actions, start and stop. The description lists all the signals of the type Pump, and says that this project's pump only needs its speed and the two signals of start and stop. The model built for the project can stop there.
+
+How "really needed" is computed, by type or by placed symbol, and the format of the document, are not said yet: see the open questions.
 
 - **Publish** is a command of the synoptic (in its General page and in the top of the editor): it writes the published view, the configuration file and the signal list in an output folder of the project. Proposed.
 - The publish dialog lists the faults first; publishing with errors is allowed after a warning (see [Faults](08-faults.md#open-questions)). Proposed.
@@ -73,8 +82,10 @@ Signal list of `P-101`, extract:
 | Published view | Publish | No | Write |
 | Configuration file, signal list | Publish | No | Write |
 | Connection graph | Publish | No | Write |
+| Interface description of the models | Open | No | Write |
 
 ## Open questions
 
 - Does the runtime read the synoptic file and the Symbol Libs, or a published view (advised)?
 - Which format for the connection graph: one of the project, or SSP?
+- Interface description of the models: a signal is "needed" when an animation, an interaction, a faceplate element or a configuration of the synoptics uses it; is a signal of a preset value or of a flag needed too? Is the description written per type, per preset, or per placed symbol? Which format?

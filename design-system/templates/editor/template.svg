@@ -1,0 +1,123 @@
+<svg width="1602" height="902" viewBox="0 0 1602 902" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1602" height="902" fill="#F5F5F5"/>
+<g id="Templates">
+<path d="M-47 -93C-47 -94.1046 -46.1046 -95 -45 -95H3343C3344.1 -95 3345 -94.1046 3345 -93V947C3345 948.105 3344.1 949 3343 949H-45C-46.1046 949 -47 948.105 -47 947V-93Z" fill="#DFD9C9"/>
+<path d="M-45 -95V-94H3343V-95V-96H-45V-95ZM3345 -93H3344V947H3345H3346V-93H3345ZM3343 949V948H-45V949V950H3343V949ZM-47 947H-46V-93H-47H-48V947H-47ZM-45 949V948C-45.5523 948 -46 947.552 -46 947H-47H-48C-48 948.657 -46.6569 950 -45 950V949ZM3345 947H3344C3344 947.552 3343.55 948 3343 948V949V950C3344.66 950 3346 948.657 3346 947H3345ZM3343 -95V-94C3343.55 -94 3344 -93.5523 3344 -93H3345H3346C3346 -94.6568 3344.66 -96 3343 -96V-95ZM-45 -95V-96C-46.6568 -96 -48 -94.6569 -48 -93H-47H-46C-46 -93.5523 -45.5523 -94 -45 -94V-95Z" fill="#D4CDBE"/>
+<g id="template/editor">
+<g clip-path="url(#clip0_630_108)">
+<mask id="path-3-outside-1_630_108" maskUnits="userSpaceOnUse" x="0" y="0" width="1602" height="902" fill="black">
+<rect fill="white" width="1602" height="902"/>
+<path d="M1 1H1601V901H1V1Z"/>
+</mask>
+<path d="M1 1H1601V901H1V1Z" fill="#DFD9C9"/>
+<g id="top-bar">
+<path d="M1 1H1601V41H1V1Z" fill="#E9E2D3"/>
+<g id="app-mark">
+<g id="mark">
+<path id="stroke" d="M17.5 15.5L25 20.5L17.5 25.5V15.5Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#6C539C"/>
+<path id="stroke_2" d="M32.5 15.5L25 20.5L32.5 25.5V15.5Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#6C539C"/>
+</g>
+</g>
+<g id="metadata">
+<g id="button">
+<path d="M53 8.5C53 6.29086 54.7909 4.5 57 4.5H81C83.2091 4.5 85 6.29086 85 8.5V32.5C85 34.7091 83.2091 36.5 81 36.5H57C54.7909 36.5 53 34.7091 53 32.5V8.5Z" fill="#D6CDED"/>
+<g id="icon/metadata">
+<path id="stroke_3" d="M73.5 18L70 14.5H64.5V26.5H73.5V18ZM70 14.5V18H73.5M67 21H71M67 23.5H71" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#6C539C"/>
+</g>
+</g>
+<rect id="indicator" x="53" y="38.5" width="32" height="2" fill="#6C539C"/>
+</g>
+<g id="symbols">
+<g id="button_2">
+<g id="icon/symbols">
+<path id="stroke_4" d="M103 14.5H108V19.5H103V14.5Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+<path id="stroke_5" d="M115 17C115 18.3807 113.881 19.5 112.5 19.5C111.119 19.5 110 18.3807 110 17C110 15.6193 111.119 14.5 112.5 14.5C113.881 14.5 115 15.6193 115 17Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+<path id="stroke_6" d="M109 21.5L112.5 26.5H105.5L109 21.5Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+</g>
+</g>
+</g>
+<g id="synoptic">
+<g id="button_3">
+<g id="icon/synoptic">
+<path id="stroke_7" d="M142.5 15H147.5V19H142.5V15Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+<path id="stroke_8" d="M150.5 22H155.5V26H150.5V22Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+<path id="stroke_9" d="M145 19V24H150.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+</g>
+</g>
+</g>
+<g id="window-controls">
+<g id="minimise">
+<g id="icon">
+<path id="stroke_10" d="M1481 20.5H1491" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+</g>
+</g>
+<g id="maximise">
+<g id="icon_2">
+<path id="stroke_11" d="M1527 15.5H1537V25.5H1527V15.5Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+</g>
+</g>
+<g id="close">
+<g id="icon_3">
+<path id="stroke_12" d="M1573.5 16L1582.5 25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+<path id="stroke_13" d="M1582.5 16L1573.5 25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+</g>
+</g>
+</g>
+</g>
+<g id="body">
+<g id="divider">
+<rect width="1" height="860" transform="translate(369 41)" fill="#D4CDBE"/>
+</g>
+<g id="nav-rail">
+<path d="M1 41H49V901H1V41Z" fill="#E9E2D3"/>
+<g id="types">
+<g id="button_4">
+<path d="M5 49C5 46.7909 6.79086 45 9 45H41C43.2091 45 45 46.7909 45 49V81C45 83.2091 43.2091 85 41 85H9C6.79086 85 5 83.2091 5 81V49Z" fill="#D6CDED"/>
+<g id="icon_4">
+<path id="stroke_14" d="M21.5 62V69.5H26M21.5 64.5H26M19 59H24V62H19V59ZM26 63.25H31V65.75H26V63.25ZM26 68.25H31V70.75H26V68.25Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#6C539C"/>
+</g>
+</g>
+</g>
+<g id="divider_2">
+<rect width="47" height="1" transform="translate(1 89)" fill="#D4CDBE"/>
+</g>
+<g id="units">
+<g id="button_5">
+<g id="icon_5">
+<path id="stroke_15" d="M18.5 117L28 107.5L31.5 111L22 120.5L18.5 117Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+<path id="stroke_16" d="M21.5 114L23 115.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+<path id="stroke_17" d="M23.5 112L25.5 114" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+<path id="stroke_18" d="M25.5 110L27 111.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+</g>
+</g>
+</g>
+<g id="enums">
+<g id="button_6">
+<g id="icon_6">
+<path id="stroke_19" d="M19.5 152.5H22.5V155.5H19.5V152.5Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+<path id="stroke_20" d="M24.5 154H30.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+<path id="stroke_21" d="M19.5 160.5H22.5V163.5H19.5V160.5Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+<path id="stroke_22" d="M24.5 162H30.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+</g>
+</g>
+</g>
+<g id="designations">
+<g id="button_7">
+<g id="icon_7">
+<path id="stroke_23" d="M19 197.5H25.5L30.5 202L25.5 206.5H19V197.5Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+<path id="stroke_24" d="M23 202C23 202.552 22.5523 203 22 203C21.4477 203 21 202.552 21 202C21 201.448 21.4477 201 22 201C22.5523 201 23 201.448 23 202Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#181612"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<path d="M1 1V0H0V1H1ZM1601 1H1602V0H1601V1ZM1601 901V902H1602V901H1601ZM1 901H0V902H1V901ZM1 1V2H1601V1V0H1V1ZM1601 1H1600V901H1601H1602V1H1601ZM1601 901V900H1V901V902H1601V901ZM1 901H2V1H1H0V901H1Z" fill="#D4CDBE" mask="url(#path-3-outside-1_630_108)"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_630_108">
+<path d="M1 1H1601V901H1V1Z" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -67,7 +67,7 @@ These rules come from the other parts; this part only applies them.
 | [Navigation links](07-navigation-links.md) | Going from one synoptic to another. |
 | [Faults](08-faults.md) | The list of what is broken or incomplete, and how it is shown. |
 | [Test mode](09-test-mode.md) | Trying a whole synoptic without a model. |
-| [Outputs](10-outputs.md) | The view file, the configuration files, the signal list, the connection graph. |
+| [Outputs](10-outputs.md) | The view file, the configuration files, the signal list, the connection graph, the interface description of the models. |
 | [Data model](11-data-model.md) | A first schema of a synoptic file, written like the one of Metadata. |
 | [Open questions](12-open-questions.md) | Every open question of this part, with the option the assistant advises. |
 

@@ -4,6 +4,8 @@
 
 Status: first draft, written by the assistant on 2026-11-22 from the [kinds of control](../screens/README.md#kinds-of-control), the [layout rules](../screens/README.md#layout-rules) and the [screens of Metadata](../screens/metadata.md). Not validated.
 
+The rules every component follows. Each component has its own sheet, in the folder of its level: what it is, its link in Figma, the table of its variants and states exported from Figma, its inputs and outputs, its behaviour, and the components it is made of.
+
 Every component is named after its structure, never after a screen; the same name in Figma and in code (`text-input` is `atoms/text-input/` in `synoptic-studio-design-system`). Variants are written `property=value`.
 
 ## The levels
@@ -15,8 +17,39 @@ flowchart LR
     T["Tokens"] --> A["Atoms: button, text-input"]
     A --> M["Molecules: list-title, tree-row"]
     M --> O["Organisms: tree, data-table, dialog"]
-    O --> S["Screens of the page Metadata: MD-04 Signals"]
+    O --> TE["Template: editor"]
+    TE --> S["Screens of the page Metadata: MD-04 Signals"]
+    %% link A atoms/README.md
+    %% link M molecules/README.md
+    %% link O organisms/README.md
+    %% link TE templates/README.md
+    %% link S metadata/README.md
 ```
+
+| Level | Folder | Sheets |
+| --- | --- | --- |
+| Icons | [icons](icons/README.md) | 50 icons, exported as SVG |
+| Atoms | [atoms](atoms/README.md) | 16 |
+| Molecules | [molecules](molecules/README.md) | 16 |
+| Organisms | [organisms](organisms/README.md) | 14 |
+| Templates | [templates](templates/README.md) | 1 |
+| Screens | [metadata](metadata/README.md) | the 42 frames of the page Metadata |
+
+Only the components the screens of Metadata use have a sheet (Product Owner, 2026-11-22: "que les composants qui sont vraiment dans les métadatas, et rien d'autre pour l'instant"). Each level's README lists the components left out.
+
+## What a sheet holds
+
+| Section | What it says |
+| --- | --- |
+| Title and first line | Its name, what it is, and when another component fits better. |
+| Figma | A table of its nodes: its component or component set, and the variants worth reaching, each id linked to it. |
+| Variants and states | The table of the Figma file, exported as SVG. |
+| Inputs | What the code gives it: name, type, default, and the Figma property it matches. |
+| Outputs | What it tells the code: the event, when, and its value. |
+| Behaviour | What the table cannot show: mouse, keyboard, overflow, the decisions of the Product Owner. |
+| Made of | The components it holds and their role; none for an atom. |
+
+A state that comes from the mouse or the keyboard (`hover`, `pressed`, `focus`) is never an input. A sheet says what a component is made of, never where it is used (Product Owner, 2026-11-22: "j'ai pas besoin de savoir où il est utilisé en amont").
 
 ## States every interactive component has
 
@@ -28,93 +61,22 @@ flowchart LR
 | `focus` | Reached with the keyboard: the double focus line (`focus-ring`, or `focus-ring-inset` on a line), on the hover background when the component has none. |
 | `disabled` | Cannot be used. |
 
-A line of a list, a tree or a table (`tree-row`, `list-row`, `part-item`, `menu-item`, `data-table-row`) has rounded corners, `radius-sm`, like every control (Product Owner, 2026-11-22: "si on met un border radius, j'aimerais bien qu'il soit partout"). Its list (`tree`, `part-list`, `list-panel`, `data-table`) leaves `spacing-03` on each side and `spacing-01` between lines, so a line in `hover` or `selected` never touches the edges. A line has no line under it: a stroke on a rounded shape thins at its corners; lines are told apart by the `spacing-01` between them, and only the header of a table keeps a straight line under it.
+A field (`text-input`, `number-input`, `text-area`) has no `pressed`: a click puts it in `focus`.
 
-The tables below add the states each component needs on top of these. A field (`text-input`, `number-input`, `text-area`) has no `pressed`: a click puts it in `focus`.
+## Rules for every component
 
-What is selected and cannot be clicked again (the item of a `segmented-control`, a line of a list or a tree, a part, an item of the rail or of the top bar, a swatch) does not react to the mouse: no hover, no press, no click (Product Owner, 2026-11-22: "il est censé ne rien donner. Je ne suis pas censé pouvoir recliquer dessus"). A `toggle-button` turned on still reacts, since a click turns it off.
-
-The hover, the press and the drag are a dark veil laid over the component's own background (`layer-hover`, `layer-pressed`, `layer-active` on top of `layer-02`, `layer-01` or nothing). At rest the component holds the same veil, transparent (`layer-transparent`), so that the change only fades the veil in (Product Owner, 2026-11-22: the hover of the tables went dark, then lighter).
-
-A list that opens over the page (a menu, a select, a picker) is 280 high at most: beyond, it scrolls inside, with a `scrollbar`, and it always stays `spacing-04` from the edge of the window (Product Owner, 2026-11-22: "une scroll bar à l'intérieur pour ne pas que ça dépasse une taille [...] pour que ça reste élégant. Un peu penser à ça partout"). The height of 280 is the assistant's choice.
-
-The double focus line is drawn outside the control: no frame without a background cuts what overflows it (no clip), so the line shows whole even when a field touches the edge of its column, its cell or its slot (Product Owner, 2026-11-22: a field in focus was cut on the right in Documentation, on the left in Units). Only a surface with a background and rounded corners (a table, a panel, a screen) cuts, and it leaves room for the line with its padding.
-
-A text on one line (a field, a select, a line of a list, a tree or a table) never wraps: what does not fit ends with "…".
-
-A part whose content changes from one screen to the next is a slot, filled on the screen with instances: the lines of `tree`, `list-panel` and `data-table` (`rows`), the column headers of `data-table-header` (`columns`), the cells of `data-table-row` (`cells`), the add buttons of `list-title` with several kinds (`actions`), the fields of `faceplate-element` (`fields`), and the add buttons and the elements of a group (`actions`, `elements`). So a table has the columns of its screen, and a list as many lines as its content.
-
-Every component is shown in the Figma file as a table of its variants and its states, grouped by family: see [Figma file](05-figma-file.md#how-a-page-shows-its-components) and [Skill rules R9](skill-rules.md#r9--components-shown-as-tables-of-variants-and-states).
-
-Every interactive component is prototyped in its component set: `hover` while the mouse is over it, `pressed` while its button is down, and a click to the next state (checked, on, open, selected, expanded). See [Skill rules R8](skill-rules.md#r8--components-prototyped-on-their-own).
-
-Leaving `focus` or `open` always goes back to a `default`, the state that has the hover: a second click on a field, a click on an open select, a click on a checkbox, a radio or a toggle in focus (to its next value). Never to a state without hover, or the component stops reacting to the mouse (Product Owner, 2026-11-22: "dès que je focus/defocus, après, le hover ne fonctionne plus").
-
-## Atoms
-
-| Component | Variants | States added | Screens |
-| --- | --- | --- | --- |
-| `icon` | One component per icon of [Icons](03-icons.md), `icon/<name>`; the size is set on the instance, `size-icon-sm` (16) or `size-icon-md` (20), never a variant | — | Everywhere |
-| `button` | `kind=primary, secondary, ghost, danger`; `size=md, lg`; leading icon on or off | — | Dialogs: Cancel, Delete |
-| `icon-button` | `kind=ghost, quiet` (quiet: `icon-secondary`, the + on hover); `size=sm, md` | `selected`; `ghost` and `quiet` have the same hover (`layer-hover`) and press (`layer-pressed`): on a line already in hover the two veils add up, so the button still shows (Product Owner, 2026-11-22: "ton hover n'a pas toujours la même teinte") | Every + of a title, delete, reset, search, full page |
-| `toggle-button` | `state=off, on`: an `icon-button` ghost, at rest or `selected`; a click turns it on or off | — | Bold, italic of the formatting tool bar (MD-03.4d), showing the state of the selection (Product Owner, 2026-11-22) |
-| `text-input` | `size=sm, md` (sm in a table cell); with or without a trailing icon | `filled`, `read-only`, `error`; a click gives the focus, a second click takes it back (as `number-input`) | MD-02.1, MD-03.8, every ID |
-| `number-input` | `size=sm, md`; with or without a unit; with or without the `variable` icon | `filled`, `read-only`, `error`, `variable` (the value comes from a signal) | MD-07.13, MD-07.22, MD-08.13, MD-09.6 |
-| `text-area` | — | `filled`, `read-only`, `error` | MD-09.11, the description element |
-| `select-trigger` | `size=sm, md`; with or without a leading icon | `open`, `filled`, `read-only`, `error` | MD-04.7 to MD-04.12, MD-05.4, MD-07.12; with the icon `signal-input` or `signal-output` for a direction (MD-04.12, MD-07.9), `quantity` or `difference` for a quantity (MD-04.9) |
-| `checkbox` | `checked=false, true, mixed` | — | MD-13.8 |
-| `radio` | `checked=false, true` | — | MD-07.11 |
-| `toggle` | `on=false, true` | — | Boolean input of a faceplate (MD-07.10) |
-| `drag-handle` | — | `dragging` | Every ordered table |
-| `label` | `required=false, true` | — | Every field outside a table |
-| `tooltip` | `placement=top, right, bottom, left` | — | Every icon alone |
-| `scrollbar` | `direction=vertical, horizontal` (Product Owner, 2026-11-22: "t'as pas fait la scroll bar horizontale"); a thumb of `border-strong`, 4 thick, `radius` 2, no track, no arrows; its length is set on the instance | — | Every list that reaches its highest size; a table wider than its panel |
-| `colour-swatch` | `size=sm, md` | `hover`: a 2 px `border-strong` line (grey) and `shadow-raised`, to be seen (Product Owner, 2026-11-22: "il se voit presque pas"); `selected`: a 2 px `text-primary` line (near black), no shadow, so it never looks like the hover (Product Owner, 2026-11-22: "le selected et le over [...] je vois exactement les mêmes couleurs") | MD-02.6 |
-| `divider` | `direction=horizontal, vertical` | — | Rail, panels |
-| `column-header` | — (text `label`; its width is the width of its column) | — | The head of every column of a `data-table-header` |
-
-## Molecules
-
-| Component | Made of | Variants | States added | Screens |
-| --- | --- | --- | --- | --- |
-| `field` | `label` + one input atom + help text | `layout=stacked, inline` | `error` (help in `danger`) | General, Units |
-| `menu-item` | `icon` + text + check | with or without icon | `selected` | Every select |
-| `menu` | `menu-item` × 5, two more behind the booleans `item-6`, `item-7`; 280 high at most, then it scrolls inside with a `scrollbar` | — | — | Every select; the heading level of the formatting tool bar (seven items) |
-| `menu-group-title` | text `caption`, `text-secondary`, padding `spacing-03` and `spacing-02` under it | — | — | The unit systems in the list of display units |
-| `menu-grouped` | the surface of `menu`, then for each group a `menu-group-title` and its `menu-item` (no icon), a `scrollbar` on its right; 280 high at most, it scrolls inside | — | — | The display unit of a preset (MD-07.12) |
-| `table-size-picker` | a grid of 8 × 6 cells, those from the top left to the mouse lit (`layer-selected`, `accent`), and the caption columns × rows | — | — | The table button of the formatting tool bar (MD-03.4d) |
-| `select` | `select-trigger` + `menu` | — | `open` | Every select |
-| `segmented-control` | two or three `button` side by side | `items=2, 3`; `selected=1, 2, 3` (the item selected) | — | MD-07.2b Values / Faceplate, MD-03.4b Visual / Markdown, MD-08.15 Quantity / Difference |
-| `radio-group` | `radio` × n + labels | `orientation=horizontal, vertical` | — | MD-07.11, enum input of a faceplate |
-| `list-title` | text `body-strong` + `icon-button` × n (one + per kind, search), the buttons `spacing-02` apart | `actions=add, search-add, several-add, tree`; `several-add` holds its buttons in the slot `actions`, empty for a title with no button (Quantities, Unit systems); `tree`: open all, close all, search, + (MD-01.7) | `searching` (the title becomes a `text-input`, the + a `dismiss`) | Every list and table: Type tree, Signals, Links, Elements |
-| `nav-rail-item` | `icon-button` + `tooltip`; a square of `size-control-lg` in the rail, a square of `size-top-bar` with a `size-control-md` button and the same margin on every side in the top bar | `placement=rail, top-bar` | `tooltip`: after 0.8 s of hover, the `tooltip` with the name of the page, on the right in the rail, under it in the top bar; it goes with the mouse (MD-00.8); `selected`: the `layer-selected` background; in the top bar, a bar of `accent` under it too, no bar in the rail (Product Owner, 2026-11-22: "la barre [...] devrait être en bas"; in the rail, "à toi de choisir") | MD-00, top bar |
-| `tree-row` | `icon` chevron + type `icon` in its colour + name + quiet `add` | `depth=0…n`; `has-children=false, true` | `selected`, `expanded` | MD-01.1, MD-01.3 |
-| `list-row` | name + the icons `quantity` and `difference`, each optional + `icon-button` delete | with or without delete; `quantity-icon`, `difference-icon` (Product Owner, 2026-11-22) | `selected` | Presets (without delete since 2026-11-22: a preset is deleted by its red button), Enums, Unit systems, Quantities (MD-08.1: one line per quantity, its icons) |
-| `part-item` | text of a part | — | `selected` | MD-01.5 |
-| `link-cell` | `folder` or `link` icon + path or URL | `kind=path, url` | — | MD-03.9 |
-| `quantity-cell` | `quantity` or `difference` icon + name | `kind=quantity, difference` | — | Deprecated (2026-11-22): the quantity is chosen in the table, so its cell is a `select-trigger` with the icon (Product Owner: "ça doit pouvoir être sélectionné autant que les autres") |
-| `direction-cell` | `signal-input` or `signal-output` icon + text; the icon in `icon-primary`, the same colour for both directions | `direction=input, output` | — | Deprecated (2026-11-22): the direction is a select too (MD-04.12), a `select-trigger` with the icon |
-| `toolbar-group` | `icon-button` × n | — | — | MD-03.4d |
-| `window-controls` | minimise, maximise or restore, close | `platform=windows, macos` | — | Top bar |
-
-## Organisms
-
-| Component | Made of | Variants | States added | Screens |
-| --- | --- | --- | --- | --- |
-| `top-bar` | `app-mark` + `nav-rail-item` × 3 (`placement=top-bar`, the parts) + `window-controls` | `platform=windows, macos, browser` | one part `selected` | Every screen |
-| `nav-rail` | `nav-rail-item` × n + `divider`; in Metadata, the divider sits after Types: the type, then what the types use (Units, Enums, Designations) | — | one item `selected` | MD-00, SY-00 |
-| `tree` | `list-title` (`actions=tree`) + `tree-row` × n | — | `searching`, `empty` | MD-01; a `divider` separates it from the `part-list` under it (MD-01.8) |
-| `part-list` | `part-item` × n | — | one part `selected` | MD-01.5 |
-| `data-table` | `list-title` + `data-table-header` + `data-table-row` × n (`drag-handle`, inputs, cell molecules, delete), on `layer-01` with `radius-md`; padding `spacing-04` top and bottom, `spacing-03` left and right, so the buttons of its corners sit 16 from each edge (Product Owner, 2026-11-22: the same margin at the top, the bottom and the sides); a table with no title (Units, preset Values) has `spacing-03` at the top and `spacing-04` at the bottom, its fields 16 from every edge; a read-only table uses rows `kind=inherited`: the line lights on hover, to read it, but nothing happens on a click (Product Owner, 2026-11-22: "pouvoir cliquer dessus, c'est très chelou") | — | table `empty` | MD-03.5, MD-04, MD-05, MD-07.7, MD-08.7, MD-09.5, MD-12, MD-13 |
-| `data-table-header` | the room of the handle, the slot `columns` of `column-header`, the room of the delete button | — | — | Every data-table |
-| `data-table-row` | `drag-handle`, the slot `cells`, the delete `icon-button`; its default cells are the columns of Signals | `kind=default, inherited, error`; no background per direction (Product Owner, 2026-11-22: the direction is told by its icon only) | `hover` (no line under it: the hover is enough, Product Owner, 2026-11-22); a click on the line does nothing; `dragging` (only when held by its handle: `layer-selected` and `shadow-raised`), own lines only; no `selected`, a line of a table is never selected; `inherited`: read only, no handle nor delete, nothing that tells its parent (Product Owner, 2026-11-22: the tree already shows it) | Every data-table |
-| `list-panel` | `list-title` + `list-row` × n | — | `empty` | MD-07.1, MD-08.1, MD-09.1 |
-| `dialog` | `heading` + text + `button` × 2; `kind=form`: `heading` + `field` × n + Cancel and a primary button | `kind=warning, danger, form` | — | Every delete; `form`: Add a URL (MD-03.7) |
-| `formatting-toolbar` | heading `select-trigger` (Paragraph, Heading 1 to 6), its list opening right under it + `toolbar-group` × n (bold and italic are `toggle-button`, `spacing-02` after the heading select, the other groups `spacing-03` apart with a divider: Product Owner, 2026-11-22, the gap between Paragraph and bold was too wide; the table button opens `table-size-picker` right under it and stays `selected` while it is open) + `segmented-control` (two items: Visual, Markdown) + full-page `icon-button`; the same groups in both modes | `mode=visual, markdown` | — | MD-03.4d |
-| `markdown-editor` | `list-title` "Description" (no action) + `formatting-toolbar` + editing area | `mode=visual, markdown` (no read-only, Product Owner, 2026-11-22) | `full-page`: the editing area fills down to the bottom | MD-03.1b to MD-03.4c |
-| `faceplate-element` | `drag-handle` + kind `icon` + the slot `fields` + delete; a signal in write or override is always on two lines, whatever its input: the first ends with read or write (read or override), the second holds the rest, the kind of input, then for a number the minimum and the maximum, of the same width (Product Owner, 2026-11-22: "dès que ça commence à être un signal [...] tout le temps en deux lignes"); a group adds the slot `actions` (its five add buttons), and its delete follows them `spacing-02` apart, as one row of buttons (Product Owner, 2026-11-22: the gap before the delete was wider than between the add buttons); under it, the slot `elements` (its own elements, indented by `spacing-07`) | `kind=signal, command, title, paragraph, group` | `selected` | MD-07.18 to MD-07.20; read or write is a horizontal `radio-group` (MD-07.11) |
-| `palette-picker` | `colour-swatch` × n + `reset`; the swatches show sample colours until the palette of the project is known | — | — | MD-02.6, MD-02.7 |
-| `icon-picker` | `icon-button` × n + `reset` | — | — | MD-02.5, MD-02.7 |
+- **Lines of a list.** A line of a list, a tree or a table has rounded corners, `radius-sm`, like every control (Product Owner, 2026-11-22: "si on met un border radius, j'aimerais bien qu'il soit partout"). Its list leaves `spacing-03` on each side and `spacing-01` between lines, so a line in `hover` or `selected` never touches the edges. A line has no line under it: only the header of a table keeps a straight line under it.
+- **What is selected does not react.** What is selected and cannot be clicked again (the item of a `segmented-control`, a line of a list, a part, an item of the rail or of the top bar, a swatch, the chosen item of a menu) does not react to the mouse: no hover, no press, no click (Product Owner, 2026-11-22). Two exceptions: a `toggle-button` turned on still reacts, since a click turns it off; a selected `tree-row` still shows its + on hover, since a sub-type can be added to it (Product Owner, 2026-11-22).
+- **Dragging.** A line turns violet (`dragging`) only while its handle is held, never on a click of the line (Product Owner, 2026-11-22): tables and faceplate elements alike.
+- **Veils.** The hover, the press and the drag are a dark veil laid over the component's own background (`layer-hover`, `layer-pressed`, `layer-active`). At rest the component holds the same veil, transparent (`layer-transparent`), so that the change only fades the veil in.
+- **Lists that open.** A list that opens over the page (a menu, a select, a picker) is 280 high at most: beyond, it scrolls inside, with a `scrollbar`, and it always stays `spacing-04` from the edge of the window. The height of 280 is the assistant's choice. Once scrolled to the end, its last item keeps the same margin as the first (Product Owner, 2026-11-22).
+- **Focus outside.** The double focus line is drawn outside the control: no frame without a background cuts what overflows it, so the line shows whole even when a field touches the edge of its column, its cell or its slot. Only a surface with a background and rounded corners cuts, and it leaves room for the line with its padding.
+- **Strokes do not move the content.** A line that gets thicker in a state (`open`, `error`, `selected`) is drawn over the padding: the text and the icons stay in place (Product Owner, 2026-11-22: "le texte se déplace alors qu'il ne devrait pas").
+- **One line of text.** A text on one line (a field, a select, a line of a list, a tree or a table) never wraps: what does not fit ends with "…".
+- **Slots.** A part whose content changes from one screen to the next is a slot, filled on the screen with instances: the lines of `tree`, `list-panel` and `data-table`, the column headers, the cells of a line, the add buttons of `list-title`, the fields and elements of `faceplate-element`.
+- **Leaving focus.** Leaving `focus` or `open` always goes back to `default`, the state that has the hover: a second click on a field, a click on an open select, a click on a checkbox, a radio or a toggle in focus (to its next value) (Product Owner, 2026-11-22).
+- **Shown as tables.** Every component is shown in the Figma file as a table of its variants and its states, grouped by family: see [Figma file](05-figma-file.md#how-a-page-shows-its-components) and [Skill rules R9](skill-rules.md#r9--components-shown-as-tables-and-described-in-sheets).
+- **Prototyped.** Every interactive component is prototyped in its component set: `hover` while the mouse is over it, `pressed` while its button is down, and a click to the next state. See [Skill rules R8](skill-rules.md#r8--components-prototyped-on-their-own).
 
 ## Content states drawn on the page Metadata
 
@@ -135,4 +97,4 @@ Each screen of Metadata is drawn with real content, then once for each state it 
 | --- | --- |
 | [Screens](../screens/README.md) | Every control of every screen is one of these components. |
 | [Number and text fields](../controls/number-and-text-fields.md) | `number-input`, `text-input`. |
-| Repository `synoptic-studio-design-system` | The same components, presentational, with the same names. |
+| Repository `synoptic-studio-design-system` | The same components, presentational, with the same names, inputs and outputs. |
