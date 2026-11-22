@@ -502,7 +502,8 @@ Said by the Product Owner on 2026-11-22 ("les enums, non, c'est un truc d'entrep
 - **Two entity files** (the Product Owner's proposal): [Enum item](entities/04-enum-item.md), its box and its schema only, kept inside its enum; [Enum](entities/05-enum.md), its box, its schema and the schema of its file.
 - The example of the [Data model](data-model.md) now shows the file `enums.json`, with a global enum and a template.
 - **A template keeps its items** in `enum_items`, unused, so that going back to global finds them (draft, Enums: changing the kind loses nothing). Assistant's reading of that rule in the file.
-- Open on the entity files: whether the items of a template on a placed symbol follow the schema of an enum item.
+- **The items of a template follow the schema of an enum item exactly** (Product Owner, 2026-11-22: "ça follow exactement la même chose, sauf que ce sera défini par les gens qui font les vues"): `internal_id`, `key`, `display_name`, `description` (which may be `null`), filled on each placed symbol. A template is for enums known only on the view, such as the positions of a switch. Written in the introduction of [Enum item](entities/04-enum-item.md).
+- Extra properties hung on the items of an enum or a template (a color per position, for example) will be another object, linked to the enum, settled with the symbol editor: nothing is added to the item (Product Owner, same day: "faut pas intégrer ça dans l'item pour l'instant").
 
 ## Settled on 2026-11-22 (unique ids of enums and designations)
 
