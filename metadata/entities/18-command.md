@@ -11,6 +11,11 @@ A command is what the front sends to the model with one click: a fixed value to 
 ## The entity
 
 ```mermaid
+---
+config:
+  er:
+    minEntityWidth: 180
+---
 erDiagram
     COMMAND {
         uuid internal_id PK
