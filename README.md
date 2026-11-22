@@ -43,7 +43,7 @@ flowchart TD
 
 | Folder | What it holds | Start with |
 | --- | --- | --- |
-| [`overview/`](overview/README.md) | The general presentation of the software. | [Introduction](overview/introduction.md) |
+| [`overview/`](overview/README.md) | The general presentation of the software, and the glossary of the whole specification. | [Introduction](overview/introduction.md), then the [Glossary](overview/glossary.md) |
 | [`metadata/`](metadata/README.md) | Part 1 of the application: the data and documentation a symbol can be attached to. | [Metadata overview](metadata/README.md) |
 | [`symbols/`](symbols/README.md) | Part 2 of the application: symbol libraries, drawing, animation, interactions. Draft. | [Symbols overview](symbols/README.md) |
 | [`synoptics/`](synoptics/README.md) | Part 3 of the application: placing symbols, pipes, identity of each placed symbol, faults, test, outputs. Extrapolated by the assistant, to review. | [Synoptics overview](synoptics/README.md) |

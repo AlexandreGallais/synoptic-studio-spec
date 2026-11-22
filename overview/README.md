@@ -9,6 +9,7 @@ The general presentation of Synoptic Studio.
 | File | What it holds |
 | --- | --- |
 | [`introduction.md`](introduction.md) | What Synoptic Studio is, the problem it answers, the three parts of the application, its two modes, and the open questions. |
+| [`glossary.md`](glossary.md) | Each word of the whole specification, its one meaning, its name in the files, and the words not to use for it. |
 
 ## See also
 

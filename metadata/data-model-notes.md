@@ -705,7 +705,12 @@ Answers of the Product Owner to the questionnaire of Travail, same day.
 
 - **The kind of [Files](files.md) and [Formulas](formulas.md) is the Topic** ("Topic (thème)"): one theme, the question it raises and how it is settled. Written in the [Documentation plan](documentation-plan.md).
 - **The writing rules of the entity files become a skill** of the assistant, in `.claude/skills/` of the programme ("Skill .claude/skills/"), on condition that the assistant reads it again when it writes an entity file. Writing there was refused twice (permission not granted): the rules stay in the section below until it is allowed. At the end of the project, these skills are to be offered to Arsenal as general skills (noted in the feedback of the session).
-- **The glossary is written first** ("Glossaire"): [Glossary](glossary.md), from the data model, the entities and the research reports T2 and T5. It says both meanings of "symbol", which this file left open.
+- **The glossary is written first** ("Glossaire"): [Glossary](../overview/glossary.md), from the data model, the entities and the research reports T2 and T5. It says both meanings of "symbol", which this file left open.
+
+Second questionnaire, same day:
+
+- **The glossary is the one of the whole specification** ("Toute la spec"): moved to [`overview/glossary.md`](../overview/glossary.md), Metadata's words under a heading of their own; each part adds its words when it is written again.
+- **The next document is the inheritance of types** ("Héritage des types"): [Inheritance of types](inheritance.md), a topic that gathers the rules already written (decisions 0003, 0013, 0033, 0047, 0079, the draft, the entity files) and decides nothing new. It leaves five questions open there: the presets and the documentation of a sub-type, an `id` taken twice when a parent receives a line, a command removed from a parent, a bound or a command target whose inherited signal is removed.
 
 ## Writing rules of the entity files (to become a skill)
 

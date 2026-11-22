@@ -13,13 +13,15 @@ Since 2026-11-19, at the Product Owner's request, the documentation of Metadata 
 | [Data model](data-model.md) | The whole schema of Metadata, the table of its entities with the file each one is kept in, and the types of the fields. |
 | [Files](files.md) | The rules every file of Metadata follows: the `format_version` key, the two keys of an entity, how the schema becomes JSON, the order of the keys, the names of the files and what each file holds. |
 | [Formulas](formulas.md) | How the two formulas of a conversion are written and computed: what a formula holds, priorities, refused forms, grammar, precision, computing without `eval`, out of domain, checks of the catalogue. From research T6 (decisions 0076, 0077). |
-| [Glossary](glossary.md) | Each word of Metadata, its one meaning, its name in the files, and the words not to use for it. |
+| [Inheritance of types](inheritance.md) | What a sub-type takes from its parents, what it may change, the order of the inherited lines, and what happens when a parent changes or is missing. |
 | [Documentation plan](documentation-plan.md) | The kinds of documents of Metadata (data model, entities, topics, catalogues, screens, journeys...), those written and those missing. |
 | [Entities](entities/README.md) | One file per entity (a box of the schema), written whole: its box and the JSON Schema of its file. Every box of the data model has one since 2026-11-22. |
 | [Data model: notes](data-model-notes.md) | Everything written around the schema from 2026-11-19 to 2026-11-21: the rules of the names, the faceplate box by box, the writing rules of the entity files, notes for the development, the reading notes by date and the open questions. |
 | [Whole draft](draft.md) | Every page written up to 2026-11-18, gathered in one file, content unchanged: types, icons, documentation, signals, units, enums, commands, presets, editing without versions, flags, identifiers, the first data model, who changes what, open questions. The source of the final pages, until each theme replaces its part. |
 
 ## See also
+
+- [Glossary](../overview/glossary.md): each word of the specification, Metadata's first, its one meaning and the words not to use for it.
 
 - [Storage](../storage/README.md): how the files that types generate are saved.
 - [Screens of Metadata](../screens/metadata.md): every screen of this part, with its buttons, fields and lists, and what is missing.

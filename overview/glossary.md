@@ -1,15 +1,17 @@
 # Glossary
 
-> [Home](../README.md) › [Metadata](README.md) › Glossary
+> [Home](../README.md) › [Overview](README.md) › Glossary
 
-Each word of Metadata, its one meaning, the name it has in the files, and the words not to use for it. Written by the assistant on 2026-11-22, at the Product Owner's request, from the [Data model](data-model.md), the [entities](entities/README.md) and the research reports T2 and T5; nothing here is validated. A word to avoid gives its reason and its source; "Analysis" marks the assistant's own reason.
+Each word of Synoptic Studio, its one meaning, the name it has in the files, and the words not to use for it: one glossary for the whole specification, so that a word keeps one meaning in every part. The words of Metadata were written by the assistant on 2026-11-22, at the Product Owner's request, from the [Data model](../metadata/data-model.md), the [entities](../metadata/entities/README.md) and the research reports T2 and T5; those of the other parts are added as each part is written again. Nothing here is validated. A word to avoid gives its reason and its source; "Analysis" marks the assistant's own reason.
 
-## The type and what it holds
+## Metadata
+
+### The type and what it holds
 
 | Word | Meaning | In the files | Not to use |
 | --- | --- | --- | --- |
 | **Type** | What a symbol represents, at one level of detail: a pump, a centrifugal pump. Types form a tree. | `TYPE`, `<id>.type.json` | Template: the word of AutomationML for a type (T2, 3.12). Type Lib: removed on 2026-11-16. |
-| **Parent**, **sub-type** | The type a type inherits from, set when it is created and never changed; a sub-type inherits the signals, the commands and the flags of its parents. | `TYPE.parent` | — |
+| **Parent**, **sub-type** | The type a type inherits from, set when it is created and never changed; a sub-type inherits the signals, the commands, the flags and the appearance of its parents (see [Inheritance of types](../metadata/inheritance.md)). | `TYPE.parent` | — |
 | **Signal** | A value that goes between the front and the model, as an input or an output. | `SIGNAL` | Property: a metadata in OPC UA, a visual attribute on the front. Variable: too general (FMI). Tag: a controller address, a data point in supervision (T2, 3.12; T5). |
 | **Input**, **output** | The direction of a signal: the model receives an input, and sends an output. | `SIGNAL.direction`: `input`, `output` | — |
 | **Command** | What the front sends with one click: a fixed value to an input, an override of an output, or a trigger. | `COMMAND` | Control: an element of an interface; in French, « contrôle » means a check (T2, 3.12). |
@@ -19,7 +21,7 @@ Each word of Metadata, its one meaning, the name it has in the files, and the wo
 | **Documentation** | What explains a type to people: a description in Markdown and links. | `DOCUMENTATION`, `LINK` | — |
 | **Appearance** | The icon and the color a type shows, copied when picked; empty, those of its parent. | `APPEARANCE` | — |
 
-## The preset and the faceplate
+### The preset and the faceplate
 
 | Word | Meaning | In the files | Not to use |
 | --- | --- | --- | --- |
@@ -31,7 +33,7 @@ Each word of Metadata, its one meaning, the name it has in the files, and the wo
 | **Command button** | A button of the faceplate that sends one command. | `COMMAND_BUTTON` | — |
 | **Range** | The values a person may type in a number field, between a minimum and a maximum. | `RANGE`, `BOUND` | — |
 
-## Values and units
+### Values and units
 
 | Word | Meaning | In the files | Not to use |
 | --- | --- | --- | --- |
@@ -48,7 +50,7 @@ Each word of Metadata, its one meaning, the name it has in the files, and the wo
 | **Enum item** | One value of an enum: the number the model receives, and the name people read. | `ENUM_ITEM`: `key`, `display_name` | Key for the name: here the key is the number (TypeScript calls the names keys). |
 | **Global enum**, **template enum** | A global enum has its items written once, the same everywhere; a template enum has its items completed on each placed symbol. | `enum_kind`: `global`, `template` | Template in any other sense in Metadata. |
 
-## Names and keys of the files
+### Names and keys of the files
 
 | Word | Meaning | In the files | Not to use |
 | --- | --- | --- | --- |
@@ -59,20 +61,19 @@ Each word of Metadata, its one meaning, the name it has in the files, and the wo
 | **description** | A text that explains, for people. | `description` | — |
 | **Designation** | What identifies the equipment of a placed symbol: Metadata defines it once (`tag`, `location`), its text is written on each placed symbol (`P-101`, `Hall B`). | `DESIGNATION`, `designations.json` | Identifier, Tag, Attribute, Parameter: each has another strong meaning for the users (T5, 3.3). |
 
-## Words of the other parts
+## The other parts
 
-Used by Metadata, defined in their own part.
+The words Metadata uses from the other parts, as their pages say them today. Each part completes this section when it is written again.
 
 | Word | Meaning | Defined in |
 | --- | --- | --- |
 | **Symbol** | A drawing, made in a Symbol Lib, that stands for a piece of equipment; it has a type or not yet. | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | **Placed symbol** | A symbol put in a synoptic: it has the texts of the designations and the flags of its type on or off. | [Synoptics](../synoptics/README.md) |
 | **Synoptic** | An animated view of an installation, built by placing symbols and drawing pipes. | [Synoptics](../synoptics/README.md) |
-| **Model** | The simulation model: it receives the inputs and sends the outputs. | [Introduction](../overview/introduction.md) |
+| **Model** | The simulation model: it receives the inputs and sends the outputs. | [Introduction](introduction.md) |
 
 ## Open questions
 
-- The name of the layer above the model, which receives the triggers: open in the [draft](draft.md#open-questions-4).
-- The names of the two quantities for numbers that measure nothing physical, "ratio" and "count": working names ([notes](data-model-notes.md#open)).
-- The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names ([notes](data-model-notes.md#open)).
-- Whether this glossary stays the one of Metadata, or becomes the glossary of the whole specification (symbols, synoptics, screens).
+- The name of the layer above the model, which receives the triggers: open in the [draft](../metadata/draft.md#open-questions-4).
+- The names of the two quantities for numbers that measure nothing physical, "ratio" and "count": working names ([notes](../metadata/data-model-notes.md#open)).
+- The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names ([notes](../metadata/data-model-notes.md#open)).
