@@ -90,10 +90,6 @@ mindmap
     ID
       Always editable
       Unique in the whole tree
-    Parent
-      Name and icon
-      Read only, never changed
-      Or a list of the tree indented with dashes, asked
     Icon
       Predefined list
       Reset icon
@@ -109,7 +105,7 @@ mindmap
 | MD-02.1 | ID | Text field | Labelled "ID", as for the signals, the commands, the flags, the enums and the designations (2026-11-22, decision 0084; replaces "Name"). Always editable (2026-11-16). The model identifier, readable (`centrifugal_pump`), unique in the whole tree; an ID already taken is refused when typed (decisions 0047, 0083). A rename breaks the model; nothing warns, it is seen in Git (2026-11-21). | Decided | [Types](../metadata/draft.md#types) |
 | MD-02.2 | Edit | — | Removed (2026-11-16): everything is editable all the time. | Decided | [Always editable](../metadata/draft.md#always-editable-no-versions) |
 | MD-02.3 | Save | — | Removed (2026-11-16): each change is kept as it is made. | Decided | [Always editable](../metadata/draft.md#always-editable-no-versions) |
-| MD-02.4 | Parent | Read only: name and icon | Set at creation, never changed (2026-11-16, decision 0013). A wrong parent: delete the type and create it again. The Product Owner then described it as a select showing the whole tree, indented with dashes: asked. | Decided (read only), Open (select) | [Types](../metadata/draft.md#a-list-of-types-shows-the-tree-indented) |
+| MD-02.4 | Parent | — | Removed (Product Owner, 2026-11-22): General does not show the parent, which the tree already shows. The parent is set at creation and never changed (decision 0013); a wrong parent: delete the type and create it again. | Decided | [Types](../metadata/draft.md#types) |
 | MD-02.5 | Icon | List of icons | One icon of the predefined SVG list. No import. Validated (2026-11-16). | Decided | [Icons](../metadata/draft.md#type-icons) |
 | MD-02.6 | Colour | Colour (palette only) | One colour of a fixed palette; no free colour. Validated (2026-11-16). | Decided | [Icons](../metadata/draft.md#type-icons) |
 | MD-02.7 | Reset icon, reset colour | Button (icon) | Shown when the type overrides its parent's choice; makes it follow the parent again. An icon, no text label (2026-11-16). | Decided | [Icons](../metadata/draft.md#type-icons) |

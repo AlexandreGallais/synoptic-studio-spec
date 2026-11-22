@@ -93,7 +93,7 @@ flowchart TD
 
 ### Rules
 
-- The General part holds the name, the parent, and an icon with its colour (see [Icons](#type-icons)). The description and the links are in a separate documentation page (see [Documentation](#type-documentation)).
+- The General part holds the name (labelled "ID"), and an icon with its colour (see [Icons](#type-icons)); it does not show the parent, which the tree already shows (Product Owner, 2026-11-22). The description and the links are in a separate documentation page (see [Documentation](#type-documentation)).
 - The name is the type's identifier for the model, like a signal's name. No second label. It must be readable and exact, because model authors use it to know what the type is (example: `centrifugal_pump`). Where a standard already names things, the type takes that name.
 - A type also has an internal identifier, set by the software, that never changes. It exists on the application side only and never goes to the model. It is needed to define the parent and for symbols to point to the type, so renaming a type breaks nothing in the application.
 - So there are two identifiers: the name (seen by the model, meaningful) and the internal one (seen by the application only, meaningless).
@@ -112,14 +112,14 @@ flowchart LR
 - The type tree is on the **left** of the screen, as in a code editor (IDE), where every tree sits on the left (Product Owner, 2026-11-11). It sits just right of the navigation bar of Metadata (see [Screens](../screens/README.md#layout-rules)).
 - There are no libraries of types: every type of the tree can be chosen everywhere (Product Owner, 2026-11-16).
 - The name is changed in the General part only. Double-clicking an item in the tree does not rename it: hidden options are avoided.
-- **The parent never changes** (Product Owner, 2026-11-16; decision 0013; asked again after the review of the wireframes, see [A list of types shows the tree](#a-list-of-types-shows-the-tree-indented)). It is set when the type is created, by the + of the type under which it is created (or the + of the title, for a root type). General shows it, read only: its name with its icon.
+- **The parent never changes** (Product Owner, 2026-11-16; decision 0013; confirmed on 2026-11-22: "on n'est pas censé le bouger"). It is set when the type is created, by the + of the type under which it is created (or the + of the title, for a root type). Only the tree shows it: General does not (Product Owner, 2026-11-22: "afficher le parent dans le truc général, ça sert pas à grand-chose").
   - Why: moving a type to another parent changes the signals it inherits and breaks what uses it. No signal goes from one parent to another "aussi bêtement que ça". Metadata must stay strict ("ça doit être carré").
   - A type created under the wrong parent is deleted and created again under the right one; it is never moved.
 
 ```mermaid
 flowchart LR
     C["+ on a type, or + on the title"] --> P["Parent set at creation"]
-    P --> F["Fixed: shown in General, read only"]
+    P --> F["Fixed: shown by the tree only"]
     W["Wrong parent"] --> D["Delete the type"] --> N["Create it again under the right parent"]
 ```
 
@@ -161,12 +161,12 @@ block-beta
     t2["Search field, typing filters"] b2["×"]
 ```
 
-- The General part holds the name, the parent, the icon and the colour, and the **Delete button** of the type (Product Owner, 2026-11-11, confirmed on 2026-11-16; the Delete button added the same day).
+- The General part holds the name, the icon and the colour, and the **Delete button** of the type (Product Owner, 2026-11-11, confirmed on 2026-11-16; the Delete button added the same day; the parent removed from it on 2026-11-22).
 - The field of the name is labelled **"ID"**, as for the signals, the commands, the flags, the enums and the designations (Product Owner, 2026-11-22, questionnaire: "ID"; decision 0084). It was open since 2026-11-16 ("Je ne sais pas s'il faut mettre vraiment un nom ou plutôt un ID").
 
 #### A list of types shows the tree, indented
 
-Said by the Product Owner on 2026-11-16, for the list of the parent in General.
+Said by the Product Owner on 2026-11-16, for a list of the parent in General that is no longer drawn: General does not show the parent (2026-11-22). The display holds for any list of types.
 
 - When a list of types opens (a select), it shows **the whole type tree**, each type with its icon and its name.
 - The level of a type is shown by **small dashes before the icon**, one per level, each taking a wide square of space, so that the indentation reads as in the tree ("des petits tirets, mais qui prennent un gros carré d'espacement"). Example: `Pump`, then `— Centrifugal pump`, then `— — …`.
@@ -181,8 +181,6 @@ block-beta
     d["— — [icon] pneumatic_positive_displacement_pump"]
     e["[icon] valve"]
 ```
-
-À trancher: the Product Owner described the parent in General as "une liste qu'il faut choisir". Decision 0013 (accepted on 2026-11-16) says the parent is fixed at creation and shown read only. Asked to the Product Owner whether the parent becomes changeable through this list; until the answer, the rule above (fixed parent) holds.
 
 - **Icon and colour:** a list of icons and a list of colours, each with its reset button, validated (Product Owner, 2026-11-16). The colours, and the icons, may take more than one line: where the reset button goes then is to find with the design ("il faudra trouver une autre disposition, mais dans le général, là, ça suffit").
 - In General, the name is **always editable**: no Edit or Save button (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps"). The resets to the parent (icon, colour) are **icon buttons**, without a text label.
@@ -306,7 +304,6 @@ flowchart LR
 
 ### Open questions
 
-- The parent: fixed at creation (decision 0013), or chosen in a list of the whole tree, indented with dashes, as described during the review of the wireframes?
 - The search: does the filtered tree keep the parents of a type that matches, so that its place is seen?
 - Where the reset buttons of the icon and the colour go when their lists take several lines.
 
@@ -380,7 +377,7 @@ A type has a documentation page, where people put what explains the type: a desc
 
 ```mermaid
 flowchart TD
-    T[Type] --> G["General: name, parent, icon"]
+    T[Type] --> G["General: ID, icon, colour"]
     T --> D[Documentation page]
     D --> D1["Description (Markdown)"]
     D --> D2["Links: file, folder or URL, each with a description"]
@@ -1904,7 +1901,7 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 
 | Thing | Created and changed in | In a symbol | In a synoptic |
 | --- | --- | --- | --- |
-| Type (name, parent, icon) | Metadata, General (the parent: set at creation, never changed) | Choose its type among all the types (only here) | No |
+| Type (name, parent, icon) | Metadata, General (the parent: set at creation in the tree, never changed, not shown in General) | Choose its type among all the types (only here) | No |
 | Type documentation | Metadata | No | No |
 | Signal, its direction, ID and description | Metadata | No | No |
 | Quantity, families, conversions, default unit | Nowhere in the application: catalogue files of the software, completed by contributors; read only on the Units page | No | No |
@@ -1945,7 +1942,7 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 
 | Question | Page | Written as |
 | --- | --- | --- |
-| Parent fixed (decision 0013) or chosen in a list of the tree indented with dashes; parents kept in a filtered tree; place of the reset buttons | [Types](#types) | Raised while reviewing the wireframes (2026-11-16); the tree, its + and its search icon validated the same day. |
+| Parents kept in a filtered tree; place of the reset buttons | [Types](#types) | Raised while reviewing the wireframes (2026-11-16); the tree, its + and its search icon validated the same day. |
 | Palette, icon list and default icon and colour; place of the reset buttons when a list takes several lines | [Icons](#type-icons) | To define with the design system. |
 | Folder, generated files and conflicts between people | [Files and conflicts](../storage/files-and-conflicts.md) | Open, not about metadata. |
 | Source and licence of the ready-made catalogue of units; where the model unit of each quantity is set (catalogue for good, a configuration file of the project, or an annex page) | [Units](#units) | Licences of UCUM, QUDT, CLDR and NIST not checked, to settle before release. The model unit left the signal at the end of 2026-11-16: one per quantity, the same everywhere, set outside Metadata; the Product Owner leans towards the catalogue but will think it over. Once settled, it will be decision 0029. |
