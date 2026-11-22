@@ -47,3 +47,5 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 | [Unit](12-unit.md) | One way to count a quantity, with its name, its symbol and its conversion. | Draft |
 | [Unit system](13-unit-system.md) | The units of a quantity that belong to one system, such as metric or imperial. | Draft |
 | [Quantity](14-quantity.md) | What a value measures, with its default unit and its unit systems; one file each. | Draft |
+| [Value type](15-value-type.md) | What kind of value a signal holds, and for a number, the quantity it measures. | Draft |
+| [Signal](16-signal.md) | A value that goes between the front and the model, as an input or an output. | Draft |
