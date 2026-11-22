@@ -672,7 +672,7 @@ Answers of the Product Owner to the questionnaire of Travail, same day (decision
 - **The formulas are read by a small parser of the project** ("Un petit analyseur propre au projet"), no `eval`, no library: a quantity file may come from a third party.
 - **`-x^2` is refused**, with a message asking for parentheses ("Il le refuse et demande des parenthèses"); `10^-3` stays allowed.
 - **Out of the domain of a formula, only the result is checked** ("Contrôle du résultat seulement"): no domain in the JSON; a result that is not a finite number shows a mark, and a typed value that gives one is refused. A value near the edge (`tan` near 90°) gives a huge number, shown as it is.
-- **Every other rule of [Formulas](formulas.md) is validated** ("Je valide tout le reste"): the variable `x` only, `pi` and `e`, `+ - * / ^`, the seven functions, `^` from right to left, the round trip within 1e-9. The file is validated.
+- **Every other rule of [Formulas](formulas.md) is validated** ("Je valide tout le reste"): the variable `x` only, `pi` and `e`, `+ - * / ^`, the seven functions, `^` from right to left, the round trip within 1e-9. The file stays `Draft`, version 1, until the Product Owner validates the documentation.
 - **A conversion stays inside its quantity, with contexts later** ("La garder, avec des contextes plus tard"; decision 0077): no conversion between two quantities (Nm³/h to m³/h, ppm to mg/m³, mass to volume) in version 1. A context with named parameters, as in Pint, may come later; the names other than `x` stay reserved for it.
 
 ## Not in the schema yet

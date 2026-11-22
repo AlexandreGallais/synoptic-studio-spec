@@ -4,9 +4,7 @@
 
 | Version | Date | Status | Change |
 | --- | --- | --- | --- |
-| 1 | 2026-11-22 | Draft | Creation of the file, from research T6 |
-| 2 | 2026-11-22 | Draft | Parser of the project, `-x^2` refused, result checked out of domain: decided (decision 0076) |
-| 3 | 2026-11-22 | Validated | Every rule of the file validated by the Product Owner (decision 0076) |
+| 1 | 2026-11-22 | Draft | Creation of the file |
 
 How the two formulas of a [conversion](entities/11-conversion.md) are written and computed: `to_default` and `from_default`, each a formula in `x`. The rules come from the advice of research T6 (`research/t6-recherche-documentaire-conversions-d-unites-tout/rapport.md`, 3.6 to 3.13 and 6, decision 3) and are decided by the Product Owner (decision 0076). A conversion stays inside its quantity (decision 0077).
 
