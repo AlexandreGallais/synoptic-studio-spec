@@ -7,7 +7,7 @@ Status: first draft, written by the assistant on 2026-11-22 from the screens of 
 ## Rules
 
 - One component per icon, named `icon/<name>`, drawn on a 16 px grid and scaled to 20 px without a second drawing.
-- Drawn in lines: a stroke of 1.5 px, round ends and round corners, no fill; the drawing stays inside the 16 px square, its line included, and two lines never touch where they should not (Product Owner, 2026-11-22: "passe sur chacune de tes icônes minutieusement"). On that day `metadata`, `types`, `reset`, `group`, `paragraph` were redrawn: the folded corner, the boxes of the tree, the arrow joined to its circle, the inner boxes apart, the two stems apart.
+- Drawn in lines: a stroke of 1.5 px, round ends and round corners, no fill; the drawing stays inside the 16 px square, its line included, and two lines never touch where they should not (Product Owner, 2026-11-22: "passe sur chacune de tes icônes minutieusement"). On that day `metadata`, `types`, `reset`, `group`, `description` were redrawn: the folded corner, the boxes of the tree, the arrow joined to its circle, the inner boxes apart, the two stems apart.
 - An icon "-add" is its icon, smaller, in the top left, with a + in the bottom right, both inside the 16 px square.
 - An icon takes its colour from a token (`icon-primary`, `icon-secondary`, `accent`, `danger`), never a fixed colour.
 - An icon alone on a button always has an accessible name and a tooltip ([Components](04-components.md#atoms)).
@@ -37,13 +37,13 @@ Status: first draft, written by the assistant on 2026-11-22 from the screens of 
 | `folder` | A path link | MD-03.9 |
 | `link` | A URL link | MD-03.9 |
 | `folder-add`, `link-add` | Add a path, add a URL: the icon with a small + at its bottom right | MD-03.6, MD-03.7 |
-| `signal-add`, `command-add`, `title-add`, `paragraph-add`, `group-add` | Add an element to a faceplate: the icon of its kind, smaller, with the small + at its bottom right (Product Owner, 2026-11-22: without the +, "on ne sait pas vraiment si c'est pour ajouter") | MD-07.18, MD-07.20 |
+| `signal-add`, `command-add`, `title-add`, `description-add`, `group-add` | Add an element to a faceplate: the icon of its kind, smaller, with the small + at its bottom right (Product Owner, 2026-11-22: without the +, "on ne sait pas vraiment si c'est pour ajouter") | MD-07.18, MD-07.20 |
 | `full-page`, `exit-full-page` | The description on the whole editing part | MD-03.4c |
 | `bold`, `italic`, `heading`, `list-bulleted`, `list-numbered`, `table`, `code`, `quote` | The formatting tool bar (content proposed) | MD-03.4d |
 | `signal-input`, `signal-output` | The direction of a signal | MD-04.12, MD-07.9 |
 | `quantity`, `difference` | A quantity or a difference | MD-04.9 |
 | `command` | A command element | MD-07.18 |
-| `title`, `paragraph` | A title element, a description element | MD-07.18 |
+| `title`, `description` | A title element, a description element; `description` is a pilcrow (¶) and named after the word of the screens, not the kind `paragraph` of the data model (Product Owner, 2026-11-22) | MD-07.18 |
 | `group` | A group element | MD-07.18 |
 | `variable` | Take a value from a signal or a designation, as Figma's "Apply variable" | MD-07.22, MD-07.23 |
 | `warning` | A warning dialog, a warning in a line | Every delete, MD-09.10 |
