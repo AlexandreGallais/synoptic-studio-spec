@@ -588,7 +588,7 @@ Said by the Product Owner after the research above was written ("je veux bien qu
 - **Doubts of the Product Owner, left to the research**:
   - a conversion between unit systems, such as metric and imperial ("potentiellement [...] on verra"), while today a unit system only groups the units of its quantity ([Unit system](entities/13-unit-system.md));
   - a conversion from one quantity to another ("peut-être que c'est de quantité à quantité"), while today a conversion only exists inside its quantity (decision 0049);
-  - an idea, to look at after the research ("on verra ça après la recherche"): each unit system with a default unit of its own, and a conversion between the default units of the unit systems ("un truc de conversion [...] entre unités par défaut").
+  - an idea, to look at after the research ("on verra ça après la recherche"): each unit system with a default unit of its own, and a conversion between the default units of the unit systems ("un truc de conversion [...] entre unités par défaut"). Looked at in the section [from one unit system to another](#noted-on-2026-11-22-from-one-unit-system-to-another).
   - the default unit of a quantity needs no mark of its own: it is the one whose `to_default` and `from_default` are both `x`. Should it then have no conversion at all ("est-ce qu'on n'y a pas de conversion ?")?
   - a default unit system per quantity, marked in the quantity file ("il faudrait peut-être un système par défaut").
   - unit systems in a file of their own, as a closed list shared by all quantities, like an enum ("est-ce que ce n'est pas une sorte d'énum, les systèmes ?"). The Product Owner leans the other way, without settling it: stay simple, keep the unit systems inside each quantity file, and take care there ("il faut rester simple, je pense").
@@ -641,6 +641,21 @@ The Product Owner answered the three questions of the preset values in the quest
   - The browser's `Intl.NumberFormat` shows at most 3 decimals by default, without trailing zeros ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat)).
   - Not opened: FactoryTalk View's page on its decimals setting (403 refused), and a third-party blog that says Ignition's tables default to 3 decimals; neither is used.
   - Analysis: 2 is the value Grafana's example lands on and the one the Product Owner advised; 3 is the browser's maximum, not a fixed count. A fixed count of 2 keeps the faceplate's columns aligned; a preset that needs more changes it.
+
+## Noted on 2026-11-22 (from one unit system to another)
+
+Asked by the Product Owner after research T6 ("dans une quantité, on puisse passer de chaque valeur, de chaque unité, à une autre, de la façon la plus simple possible [...] il ne faut pas venir polluer l'objet JSON"; example: a metre into a mile). The quantity files take nothing of the research but two corrections. Nothing below is settled.
+
+- **It already works with one pivot**: any unit goes to any other of its quantity, whatever their unit systems, by `to_default` of the first then `from_default` of the second. A metre into a mile: `x` (the metre is the default unit), then `x / 1609.344`. Written as one sentence in [Conversion](entities/11-conversion.md).
+- **The idea of the Product Owner, looked at** ("une unité par défaut dans les unités de système", each unit converting to its system's default unit, and that one to the quantity's): two pivots instead of one.
+  - Analysis: it adds a field to every unit system, a second step to every conversion out of the system (one more rounding, research T2 3.10), and makes a unit's formula depend on another unit: changing the yard would change the mile.
+  - Analysis: it saves nothing to write, since the imperial units are defined in metres exactly (1 yd = 0.9144 m, 1 mi = 1609.344 m), so each keeps a single factor to the metre.
+  - The sources read by research T6 keep one reference unit per quantity and no table from unit to unit (report, 3.1 and 3.2).
+  - Assistant's advice: keep the single pivot; no field added.
+- **What a default unit of a unit system would be good for**: a preferred unit for display, so that a preset shows every signal "in imperial" at once (option P of research T6, 3.2 and 6). A choice of the Product Owner, asked in the questionnaire; the advice of the research is to group only for now.
+- **Corrections taken from the research**:
+  - [Unit system](entities/13-unit-system.md): two steps equal in theory may differ at the 14th digit, so they compare within a relative tolerance of 1e-9 (research T6, 3.11; the tolerance is PEP 485's default).
+  - Gauge pressure as a shift of absolute pressure (decision 0050, the draft) contradicts QUDT, POSC Caesar and AVEVA (research T6, 3.5): asked in the questionnaire, not changed.
 
 ## Not in the schema yet
 

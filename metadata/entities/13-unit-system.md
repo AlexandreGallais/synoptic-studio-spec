@@ -41,7 +41,7 @@ erDiagram
       "examples": ["metric"]
     },
     "units": {
-      "description": "Every unit of the system, in any order: the software sorts them by the size of one step in the default unit, smallest first, then by name. The units of a quantity whose conversions give no finite step keep the order of the file.",
+      "description": "Every unit of the system, in any order: the software sorts them by the size of one step in the default unit, smallest first, then by name; two steps equal within a relative tolerance of 1e-9 count as equal. The units of a quantity whose conversions give no finite step keep the order of the file.",
       "type": "array",
       "minItems": 1,
       "items": { "$ref": "unit.schema.json" }
