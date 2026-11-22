@@ -546,6 +546,13 @@ Said by the Product Owner on 2026-11-22, answering the questionnaire ("Unique da
 
 - **The `id` of a flag is unique among the flags of its type and of the types it inherits from**: a placed symbol has the flags of its type and of its parents, so two flags with the same `id` would write the same key twice in the configuration files. Written in the `description` of `id` in [Flag](entities/08-flag.md). It answers the question left open in the [whole draft](draft.md#flags) on 2026-11-17; the format of an `id` stays free.
 
+## Settled on 2026-11-22 (descriptions of the documentation)
+
+Said by the Product Owner on 2026-11-22, answering the questionnaire ("Facultative", twice). Flag v1 stays `Draft` at their request.
+
+- **The description of a link is optional**: without it, only the path or the URL is shown. Written in [the Link entity](entities/09-link.md) and in the [whole draft](draft.md#the-links).
+- **The description of the documentation of a type is optional**: a new type has none. Written in [Documentation](entities/10-documentation.md) and in the [whole draft](draft.md#the-description).
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.

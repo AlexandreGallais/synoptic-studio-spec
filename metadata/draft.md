@@ -421,6 +421,7 @@ Said by the Product Owner on 2026-11-16, while reviewing the wireframes.
   - **the type tree stays visible** (Product Owner, 2026-11-16): only the editing part takes the whole page, the rest of the screen does not move;
   - the same button brings the page back.
 - The description is written in the documentation page, not in General. It does not go to the model.
+- The description is **optional** (Product Owner, 2026-11-22: "Facultative"): a new type has none until someone writes it.
 
 ```mermaid
 flowchart LR
@@ -440,7 +441,7 @@ flowchart LR
 - **No column "Open"** (Product Owner, 2026-11-16: "la colonne open, elle sert à rien"): a click on the path or on the URL itself opens it, as below. A **small icon at the start** of the path or of the URL says which kind it is (a folder or a link) and shows that it can be clicked ("une icône avant dans le path ou l'URL").
 - **The user chooses the order of the links** (Product Owner, 2026-11-16, reviewing the wireframes: "dans les liens de la documentation [...] il faudrait pouvoir changer de place"): each line has a **handle** at its very left, held and dragged to move it, as in the table of signals; the order is kept (see [Signals](#the-order-of-the-lines)).
 - The columns of the handle and of the delete button have no header (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
-- Each link has a description: a short text in plain text (not Markdown) that says what is attached. It is a description, not a name.
+- Each link has a description: a short text in plain text (not Markdown) that says what is attached. It is a description, not a name. **Optional** (Product Owner, 2026-11-22: "Facultative"): without it, only the path or the URL is shown.
 - The list of links is **always editable**: its fields are changed in place, like everything in Metadata (validated by the Product Owner on 2026-11-16: "on ajoute un path ou une URL. Donc ça, c'est très bien").
 - **Deleting a link:** a delete button (an icon) in the **last column of its line, on the far right**; a click opens a warning that asks to confirm (Product Owner, 2026-11-16: "Tu me rajoutes un bouton de suppression [...] il y a un message de warning quand on clique sur Supprimer"). No right click (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
 - A link to a file or a folder can be opened directly, with a click on its path, so the user does not lose time. Opening **always opens a folder, never a file** (Product Owner, 2026-11-11):

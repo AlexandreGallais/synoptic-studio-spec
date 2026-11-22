@@ -41,7 +41,3 @@ erDiagram
   }
 }
 ```
-
-## Open questions
-
-- Is the description of a type optional, like every other description of Metadata? Written optional for now.

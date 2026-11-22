@@ -46,7 +46,7 @@ erDiagram
       "examples": ["W:/projects/line-1/datasheets/P-101.pdf", "https://example.com/datasheets/centrifugal-pump"]
     },
     "description": {
-      "description": "What the link leads to, in plain text.",
+      "description": "What the link leads to, in plain text. Empty, only the path or the URL is shown.",
       "type": ["string", "null"],
       "minLength": 1,
       "examples": ["Datasheet"]
@@ -54,7 +54,3 @@ erDiagram
   }
 }
 ```
-
-## Open questions
-
-- Is the description of a link optional, like every other description of Metadata? Written optional for now.
