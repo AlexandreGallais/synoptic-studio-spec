@@ -15,7 +15,7 @@ Status: everything written around the schema of the [Data model](data-model.md) 
 - `display_name`: a label people read, for a thing that has an `id` or a key: it is shown in place of that `id` or key, and never goes to the model (an enum item, a signal field, a command button). A designation has none: its `id` is shown (2026-11-21). Empty, the `id` or the key is shown.
 - `key` of an enum item: the whole number sent to the model, never the item's name (TypeScript calls the names keys; here the key is the number).
 - `description`: a text that explains, for people; plain text everywhere, Markdown only in `DOCUMENTATION`.
-- A choice of the software (`kind`, `direction`, `access`...) is written in the JSON as an English word (`"input"`, `"real"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). A value of several words is joined by underscores (`set_signal`, `number_field`), the same in the schema and in the JSON. The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
+- A choice of the software (`kind`, `direction`, `access`...) is written in the JSON as an English word (`"input"`, `"real"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). A value of several words is joined by underscores (`set_input_signal`, `number_field`), the same in the schema and in the JSON. The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
 - The field that says which alternative a box is: `kind` when the alternative changes what the thing is (a link is a path or a URL, an element is a signal field or a button); `source` when the thing stays the same and only its value comes from elsewhere (a bound is always a number, typed or read from a signal; a text is always a text, typed or read from a designation), each value of `source` naming the field that then holds the value (`typed` → `typed_value` or `typed_text`, `signal` → `signal`, `designation` → `designation`); `direction`, `access` and `input_kind` where their own word says more. Never `type`, which already names `TYPE` and `VALUE_TYPE`.
 - One idea, one word, across the whole JSON: a value that is a gap between two points is a `relative_quantity` everywhere in the files (`VALUE_TYPE.relative_quantity`, `QUANTITY.offers_relative_quantity`); the screens keep "difference" for people.
 - A list of choices is named after its field; a field called `kind` or `source`, which several boxes have, takes its box as prefix (`command_kind`, `bound_source`). Every list is in [The choice lists](#the-choice-lists).
@@ -40,7 +40,7 @@ How the boxes become JSON, one rule for each, with no exception (the names of th
 - A list (`holds`) is an array named after the box it holds, in lower case and in the plural (`signals`, `enum_items`, `preset_values`, `faceplate_elements`, `units`): the same list has the same name everywhere, in a preset and in a group.
 - The field order is the rule of the head of this file; the parts and the lists come after the fields of their box.
 - A field or a part that does not exist in this case (its `when` is false) is left out; one that exists but is empty is `null` (no parent, no color, no display name).
-- A choice of several words is joined by underscores: `"set_signal"`, `"number_field"`, `"radio_horizontal"`.
+- A choice of several words is joined by underscores: `"set_input_signal"`, `"number_field"`, `"radio_horizontal"`.
 - A file adds one key that no box shows: `"format_version"`, the version of the file format, first key of the file. It belongs to the file, not to an object, so it is described in the rules of the files only ([Files](draft.md#files)), never in the schema (Product Owner, 2026-11-21, see [Settled on 2026-11-21 (format key)](#settled-on-2026-11-21-format-key)).
 
 ### What the type shows
@@ -152,7 +152,7 @@ Every field whose value is one word from a fixed list. Each is written in the JS
 | `link_kind` | `LINK.kind` | path, url | A path to a file or a folder, or a web address; held in `LINK.address`. |
 | `direction` | `SIGNAL.direction` | input, output | The model receives it, or the model sends it. |
 | `value_type_kind` | `VALUE_TYPE.kind` | integer, real, boolean, enum | A whole number, a number, true or false, an item of an enum. |
-| `command_kind` | `COMMAND.kind` | set_signal, trigger, override | Send a fixed value to an input; tell the model something happened; replace the value of an output. |
+| `command_kind` | `COMMAND.kind` | set_input_signal, trigger, override_output_signal | Send a fixed value to an input signal; tell the model something happened; replace the value of an output signal by a fixed value. |
 | `enum_kind` | `ENUM.kind` | global, template | Items written on the Enums page, the same everywhere; or items completed on each placed symbol. |
 | `faceplate_element_kind` | `FACEPLATE_ELEMENT.kind` | signal, command, title, paragraph, group | See [The faceplate, box by box](#the-faceplate-box-by-box). |
 | `access` | `SIGNAL_FIELD.access` | read, write, override | Shown only; typed in, for an input; typed in, for an output. |
@@ -174,7 +174,7 @@ Asked by the Product Owner on 2026-11-21 ("une longue recherche et une comparais
 - **Changed in the schema, to follow rules already written** (assistant; nothing new decided, the JSON examples do not change):
   - `ICON` and `COLOUR`: `name` before `drawing` and `value`, by the order of the fields (the name before the values), as `UNIT` and `QUANTITY` already do.
   - `ENUM_ITEM.display_name` and `IDENTIFIER.display_name` say what is shown when they are empty (the key, the `id`), by the rule of `display_name`, as `SIGNAL_FIELD` and `COMMAND_BUTTON` already did.
-  - `COMMAND_TARGET.signal` says which signal each kind takes: an input for `set_signal`, an output for `override`, as the list `command_kind` says.
+  - `COMMAND_TARGET.signal` says which signal each kind takes: an input for `set_input_signal`, an output for `override_output_signal`, as the list `command_kind` says.
   - `SIGNAL_FIELD.input_kind` says which choices go with which value type, as the list `input_kind` says.
   - `DISPLAY_FORMAT.unit` says it is a unit of the signal's quantity; `QUANTITY.default_unit` says it is one of its units.
 - **Checked and unchanged**: `RANGE` is drawn without fields of its own, since it only holds its two bounds; `IDENTIFIER`, `ICON` and `PALETTE` have no owner in this schema, since they live in files of their own.
@@ -454,7 +454,7 @@ Asked by the Product Owner on 2026-11-22 ("applique ce que la recherche a trouv�
   - `FAMILY` → `UNIT_SYSTEM`, `families` → `unit_systems`: a system of units, and "family" also names families of equipment;
   - the kind of faceplate element `description` → `paragraph`: `"kind": "description"` read like the description of the element;
   - the file key `format` → `format_version`: `format` is a keyword of JSON Schema.
-- **Kept, with their meaning written**: `ENUM_ITEM.key` (the number sent to the model, at the head of this file), `override` (the same word in `command_kind` and `access`), `default_value`, `name` (a label here, an identifier in FMI), `display_name`, `description` and every other name.
+- **Kept, with their meaning written**: `ENUM_ITEM.key` (the number sent to the model, at the head of this file), `override` (the same word in `command_kind` and `access`; in `command_kind`, replaced by `override_output_signal` later on 2026-11-22, see below), `default_value`, `name` (a label here, an identifier in FMI), `display_name`, `description` and every other name.
 - The screens and the draft keep their words for people for now; the other parts (synoptics, symbols, screens) still say "identifier": to change once the Product Owner confirms `DESIGNATION`.
 
 ## Settled on 2026-11-22 (names, answers of the Product Owner)
@@ -601,6 +601,14 @@ Said by the Product Owner on 2026-11-22 ("il n'y a plus besoin de mettre les UID
 - **`APPEARANCE` holds two values, no FK**: `icon_drawing` (an SVG) and `color_value` (`#rrggbbaa`). Picking an icon or a color copies its value into the type ("on vient juste appliquer un truc"); the icon set and the palette are no longer linked, so changing or removing them changes no type.
 - **Each value is either set or `null`**; `null` means inherited: the type shows its parent's value, which may itself be inherited, and a type without a parent shows the software's default ("ça vient toujours choper le truc du parent [...] sinon le truc par défaut"). This is the inheritance of the [whole draft](draft.md#icon-and-colour-are-inherited), now written in the file; the reset of a child sets its value back to `null`.
 - Written in [Appearance](entities/19-appearance.md); the box and the example of the [Data model](data-model.md) lose `icon` and `color` and their links to `ICON` and `COLOR`.
+
+## Changed on 2026-11-22 (kinds of a command)
+
+Asked by the Product Owner on 2026-11-22 ("j'aimerais bien que ce soit plus explicite [...] `set input signal`, et `override`, ce serait `override output signal`").
+
+- **The list `command_kind` is `set_input_signal`, `trigger`, `override_output_signal`**: each name says which signal it acts on. It replaces `set_signal` and `override`; `trigger` stays.
+- `SIGNAL_FIELD.access` keeps `read`, `write`, `override`: only the kinds of a command change, so `override` is no longer the same word in both lists (section of 2026-11-22, names, above).
+- Written in [Command](entities/18-command.md), [Command target](entities/17-command-target.md), the [Data model](data-model.md) and [Files](files.md).
 
 ## Not in the schema yet
 

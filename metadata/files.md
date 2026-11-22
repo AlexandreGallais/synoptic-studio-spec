@@ -32,7 +32,7 @@ The rules every file of Metadata follows. An [entity file](entities/README.md) g
 - A part (`has`) is a nested object named after its box, in lower case; two parts of the same box are named by their role (`min`, `max`).
 - A list (`holds`) is an array named after the box it holds, in lower case and in the plural (`designations`, `signals`, `enum_items`); the same list has the same name everywhere.
 - A field or a part that does not exist in this case (its `when` is false) is left out; one that exists but is empty is `null`.
-- A choice of several words is joined by underscores (`"set_signal"`).
+- A choice of several words is joined by underscores (`"set_input_signal"`).
 
 ## The order of the keys
 

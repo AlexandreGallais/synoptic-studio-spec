@@ -168,7 +168,7 @@ erDiagram
     VALUE_TYPE }o--o| ENUM : "enum"
     VALUE_TYPE }o--o| QUANTITY : "quantity"
     ENUM ||--o{ ENUM_ITEM : "holds"
-    COMMAND ||--o| COMMAND_TARGET : "has, when kind is set_signal or override"
+    COMMAND ||--o| COMMAND_TARGET : "has, when kind is set_input_signal or override_output_signal"
     COMMAND_TARGET }o--|| SIGNAL : "signal"
     COMMAND_TARGET }o--o| ENUM_ITEM : "value"
     PRESET ||--o{ PRESET_VALUE : "holds, one per signal of the type"
@@ -295,7 +295,7 @@ erDiagram
       },
       {
         "internal_id": "01a1f800-0000-7000-8000-000000000031",
-        "kind": "set_signal",
+        "kind": "set_input_signal",
         "id": "switch_to_auto",
         "description": "Puts the pump in automatic mode.",
         "command_target": {
@@ -305,7 +305,7 @@ erDiagram
       },
       {
         "internal_id": "01a1f800-0000-7000-8000-000000000032",
-        "kind": "override",
+        "kind": "override_output_signal",
         "id": "force_speed",
         "description": "Replaces the speed computed by the model, for a test.",
         "command_target": {

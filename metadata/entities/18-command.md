@@ -18,7 +18,7 @@ erDiagram
         text id
         text description
     }
-    COMMAND ||--o| COMMAND_TARGET : "has, when kind is set_signal or override"
+    COMMAND ||--o| COMMAND_TARGET : "has, when kind is set_input_signal or override_output_signal"
 ```
 
 ```json
@@ -37,8 +37,8 @@ erDiagram
       "readOnly": true
     },
     "kind": {
-      "description": "set_signal: sends a fixed value to an input; trigger: tells the model something happened, the model decides what to do; override: replaces the value of an output by a fixed value.",
-      "enum": ["set_signal", "trigger", "override"]
+      "description": "set_input_signal: sends a fixed value to an input signal; trigger: tells the model something happened, the model decides what to do; override_output_signal: replaces the value of an output signal by a fixed value.",
+      "enum": ["set_input_signal", "trigger", "override_output_signal"]
     },
     "id": {
       "description": "The name of the command for the model; unique among the commands of its type and of the types it inherits from.",
@@ -56,7 +56,7 @@ erDiagram
       "$ref": "command-target.schema.json"
     }
   },
-  "if": { "properties": { "kind": { "enum": ["set_signal", "override"] } } },
+  "if": { "properties": { "kind": { "enum": ["set_input_signal", "override_output_signal"] } } },
   "then": { "required": ["command_target"] },
   "else": { "properties": { "command_target": false } }
 }
