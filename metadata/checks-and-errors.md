@@ -5,8 +5,9 @@
 | Version | Date | Status | Change |
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
+| 2 | 2026-11-22 | Draft | An integer typed in another unit that gives no whole number: refused (decision 0085) |
 
-What the software checks in Metadata, when, and what each check gives: a change refused, a thing flagged in error, a mark in place of a value, or nothing. The rules come from decisions 0038, 0042, 0043, 0047, 0051, 0071, 0076, 0078, 0079, 0080, 0081, 0082 and 0083, [Identity and renaming](identity-and-renaming.md), [Files](files.md), [Formulas](formulas.md), [Inheritance of types](inheritance.md), [Deleting and its consequences](deleting.md), the [entity files](entities/README.md) and the [Screens of Metadata](../screens/metadata.md).
+What the software checks in Metadata, when, and what each check gives: a change refused, a thing flagged in error, a mark in place of a value, or nothing. The rules come from decisions 0038, 0042, 0043, 0047, 0051, 0071, 0076, 0078, 0079, 0080, 0081, 0082, 0083 and 0085, [Identity and renaming](identity-and-renaming.md), [Files](files.md), [Formulas](formulas.md), [Inheritance of types](inheritance.md), [Deleting and its consequences](deleting.md), the [entity files](entities/README.md) and the [Screens of Metadata](../screens/metadata.md).
 
 ## Where it is used
 
@@ -64,6 +65,7 @@ flowchart LR
 | A value typed in a number field of the faceplate outside its range | Faceplate | [Range](entities/24-range.md) (assistant's reading) |
 | A value typed (a start value, a value in the faceplate) whose conversion gives no finite number | MD-07.14, faceplate | Decisions 0051, 0076 |
 | A decimal typed for an integer signal | MD-07.14, faceplate | Decisions 0003, 0043 |
+| A number typed for an integer signal in another display unit that gives no whole number in the default unit (24.17 rps is 1450.2 rpm) | MD-07.14, faceplate | Decision 0085 |
 | A key of an enum item beyond 9 007 199 254 740 991, the largest whole number exact in JavaScript | MD-09.6 | [Whole draft](draft.md) |
 | A formula that does not follow the grammar, or one of its refused forms (`-x^2`, `**`, `log`, implied multiplication, a name other than `x`), each with a message that says how to write it | Quantity files | [Formulas](formulas.md#refused-forms), decision 0076 |
 
@@ -120,7 +122,6 @@ flowchart LR
 - **A duplicate found in a file changed by hand**: two keys that must be unique, read from the file; typing refuses them (decision 0083), reading a file does not say.
 - **A formula or a check of the catalogue that fails when a quantity file is read**: the unit left out of the catalogue, or shown in error (gap of MD-08).
 - **A file whose `format_version` the software does not know**, written by a later Synoptic Studio.
-- **A number typed for an integer signal in another display unit** that gives no whole number in the default unit (24.17 rps is 1450.2 rpm): rounded or refused ([Data model: notes](data-model-notes.md#open)).
 - **A number field whose two bounds, read from signals, give a minimum greater than the maximum** ([Range](entities/24-range.md)).
 - **A format for the `id`s**, a regular expression per kind of `id` in the settings: a message only, or the `id` refused ([Files](files.md#open-questions)).
 - **A quantity whose file is missing**: the signals and display formats that point to it flagged in error and kept as written, as for a parent: assistant's reading of rule 7 of [Deleting and its consequences](deleting.md#the-rules).

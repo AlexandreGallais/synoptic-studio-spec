@@ -61,4 +61,4 @@ Not part of the specification of the product, but to carry to the software archi
 
 ## Open questions
 
-- The order of the missing documents after the glossary, the inheritance of types, deleting, checks and errors, identity and renaming, and units on screen, written in that order (Product Owner, 2026-11-22).
+- The order of the missing documents after the glossary, the inheritance of types, deleting, checks and errors, identity and renaming, and units on screen, written in that order (Product Owner, 2026-11-22). Editing without versions comes next, when the specification resumes.

@@ -745,6 +745,12 @@ Eighth questionnaire, same day (decision 0084), each time the advised option:
 - **The `id` of a type is labelled "ID" in General** ("ID"), as everywhere else; it replaces "Name" on screen MD-02.1 and closes the question open since 2026-11-16 in the [whole draft](draft.md#the-type-tree-search-create-delete-product-owner-2026-11-16).
 - **The next document is units on screen** ("Unités à l'écran"): [Units on screen](units-on-screen.md), a topic that gathers the rules already written and decides nothing new. Screen MD-08 is aligned with decisions already taken: no default decimal places (0050), no reference family (0049), units sorted smallest first (2026-11-19), "unit system" for "family" (research T5); MD-07.12 starts at the default unit.
 
+Ninth questionnaire, same day (decision 0085), each time the advised option:
+
+- **A number typed for an integer signal in another display unit, which gives no whole number in the default unit, is refused** ("Refusé à la saisie"), as a decimal typed for an integer: 24.17 rps (1450.2 rpm) is refused. Written in [Units on screen](units-on-screen.md#rounding) and [Checks and errors](checks-and-errors.md#refused).
+- **The converter of the Units page starts at 1, and its values are rounded to 12 significant digits** ("Oui, les deux"): the assistant's reading is validated. Written in [Units on screen](units-on-screen.md#on-the-units-page) and screens MD-08.13, MD-08.14.
+- **The next topic is editing without versions** ("Édition sans versions"), to write when the specification resumes: the Product Owner moved to the Figma design system the same day (F3), and asked for fewer questionnaires.
+
 ## Writing rules of the entity files (to become a skill)
 
 Moved here from [Entities](entities/README.md) on 2026-11-22 at the Product Owner's request ("c'est plutôt un skill [...] on fait pas une spec de spec"): how the specification is written is not the specification. These rules wait here until they become the skill `write-a-metadata-entity-file` (see [Settled on 2026-11-22 (documentation plan)](#settled-on-2026-11-22-documentation-plan)); they were brought up to date when moved.
@@ -813,7 +819,6 @@ Never a status sentence, a "Where it is used", a "Product Owner context", a tabl
 ## Open
 
 - The default unit and the model unit (decision 0024): open in [Quantity](entities/10-quantity.md#open-questions).
-- An integer signal shown in another unit than its default unit: a number typed there may not give a whole number in the default unit (24.17 rps is 1450.2 rpm). Rounded to the nearest whole number, or refused?
 - The names of the two quantities added for numbers that measure nothing physical: "ratio" and "count" for now.
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
 - Whether the two texts of a boolean are ever written in the configuration files sent with the model: open in [Boolean texts](entities/21-boolean-texts.md#open-questions).

@@ -5,8 +5,9 @@
 | Version | Date | Status | Change |
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
+| 2 | 2026-11-22 | Draft | An integer that gives no whole number refused; the converter of the Units page settled (decision 0085) |
 
-In which unit a number of Metadata is kept, shown, typed and sent to the model, with how many decimals, and how it is rounded. The rules come from decisions 0003, 0024, 0043, 0049, 0050, 0051, 0056, 0075 and 0076, [Formulas](formulas.md), the [entity files](entities/README.md), the [whole draft](draft.md#units), the [notes](data-model-notes.md) and the [Screens of Metadata](../screens/metadata.md).
+In which unit a number of Metadata is kept, shown, typed and sent to the model, with how many decimals, and how it is rounded. The rules come from decisions 0003, 0024, 0043, 0049, 0050, 0051, 0056, 0075, 0076 and 0085, [Formulas](formulas.md), the [entity files](entities/README.md), the [whole draft](draft.md#units), the [notes](data-model-notes.md) and the [Screens of Metadata](../screens/metadata.md).
 
 ## Where it is used
 
@@ -19,7 +20,7 @@ In which unit a number of Metadata is kept, shown, typed and sent to the model, 
 | [Display format](entities/20-display-format.md) | The display unit and the decimals of a signal in a preset. |
 | [Preset value](entities/22-preset-value.md), [Command target](entities/17-command-target.md), [Bound](entities/23-bound.md) | A number typed, kept in the default unit. |
 | [Formulas](formulas.md) | How a conversion is computed; a result that is not a finite number. |
-| [Checks and errors](checks-and-errors.md) | A decimal typed for an integer, a value with no finite conversion: refused. |
+| [Checks and errors](checks-and-errors.md) | A decimal typed for an integer, an integer that gives no whole number in the default unit, a value with no finite conversion: refused. |
 | [MD-04.9](../screens/metadata.md#md-04--signals), [MD-07.12, MD-07.13, MD-07.14, MD-07.22](../screens/metadata.md#md-07--presets), [MD-08](../screens/metadata.md#md-08--units) | Where a unit, a difference or decimals show on screen. |
 | Symbols and synoptics | They show a value in the display unit and with the decimals of the preset, and may change both. |
 
@@ -83,22 +84,20 @@ flowchart LR
 | A value shown in a preset, a faceplate, a symbol | To the decimals of the preset | Decision 0050 |
 | A value typed in the display unit | Turned back to the default unit, then rounded to 12 significant digits before it is kept or sent: 100.03999999999999 becomes 100.04 | [Whole draft](draft.md#the-units-page) |
 | A decimal typed for an integer signal | Refused | Decisions 0003, 0043 |
-| A whole number typed for an integer signal in another unit, which gives no whole number in the default unit (24.17 rps is 1450.2 rpm) | Open: rounded or refused | Decision 0051 |
-| A value of the converter of the Units page | 12 significant digits (assistant's reading) | MD-08.14 |
+| A number typed for an integer signal in another unit, which gives no whole number in the default unit (24.17 rps is 1450.2 rpm) | Refused | Decision 0085 |
+| A value of the converter of the Units page | 12 significant digits | Decision 0085, MD-08.14 |
 
 ## On the Units page
 
 - **The page is read only** (MD-08): it lists the quantities, each difference under its quantity; a quantity shows its default unit and its unit systems; a unit system shows a converter and the table of its units.
-- **The converter is a number field in the default unit**, 1 to start with (assistant's reading): its value is shown in every unit of the table, and nothing is kept.
+- **The converter is a number field in the default unit**, 1 to start with (decision 0085): its value is shown in every unit of the table, and nothing is kept.
 - **The table of units**: Unit (its name, with its variant: US gallon), Symbol, Value, Formula (how the unit is computed from the default unit). The line of the default unit is marked (assistant's reading).
 - **The units are sorted by the software**: smallest first, by the size of one step in the default unit, then by name; a quantity whose formulas give no finite step keeps the order of its file ([Unit system](entities/09-unit-system.md)).
 
 ## Open questions
 
 - **Where the model unit is set**: once and for good in the catalogue, once per project in a configuration file, or on an annex page (decision 0024). If it leaves the catalogue, it becomes a field of its own, and the default unit stays the unit of the formulas ([Quantity](entities/10-quantity.md#open-questions)).
-- **A whole number typed for an integer in another unit** that gives no whole number in the default unit: rounded to the nearest whole number, or refused ([Data model: notes](data-model-notes.md#open)).
 - **The names "ratio" and "count"**, working names ([Data model: notes](data-model-notes.md#open)).
-- **The converter of the Units page**: starting at 1, and its rounding to 12 significant digits, are the assistant's reading (MD-08.13, MD-08.14).
 - **Finding a quantity or a unit** in a catalogue that holds every unit: a search field (gap of MD-08).
 - **The source and the licence of the catalogue data** (UCUM, QUDT, CLDR, NIST not checked; MD-08.11).
 - **A quantity whose file is missing**: what the signals and display formats that point to it show ([Checks and errors](checks-and-errors.md#open-questions)).
