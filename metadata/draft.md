@@ -477,7 +477,7 @@ flowchart TD
 
 ## Signals
 
-Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table, always editable, direction first, line coloured by direction; no display name on the signal, it moved to the preset; a handle on each line to choose the order; the quantity says "quantity" or "difference"). Reviewing the wireframes later that day, he confirmed the ID and the removal of the display name, put the inherited signals first, read only, from the top of the tree down, marked a quantity and a difference by two icons, and replaced the delete by right click by a delete button with a warning. At the end of the day he removed the model unit from the signal (it is one per quantity, set outside Metadata), kept only the icons in the column Quantity, and left the columns of the handle and of the delete button without a header. On 2026-11-17 he removed the minimum and the maximum from the signal: a bound is a signal of its own. Later that day he made a bound a plain signal with no tie to the one it bounds (usually an input), named the column "Quantity / Difference", kept decimal places out of Metadata, and refused the bubble on an enum name. On 2026-11-18 he removed the type text: a word shown goes through an enum. On 2026-11-20 he gave the signal a description (decision 0052). Open points are listed in [Open questions](#metadata-open-questions).
+Status: validated by the Product Owner on 2026-11-11; changed by him on 2026-11-16 (signals shown in a table, always editable, direction first, line coloured by direction; no display name on the signal, it moved to the preset; a handle on each line to choose the order; the quantity says "quantity" or "difference"). Reviewing the wireframes later that day, he confirmed the ID and the removal of the display name, put the inherited signals first, read only, from the top of the tree down, marked a quantity and a difference by two icons, and replaced the delete by right click by a delete button with a warning. At the end of the day he removed the model unit from the signal (it is one per quantity, set outside Metadata), kept only the icons in the column Quantity, and left the columns of the handle and of the delete button without a header. On 2026-11-17 he removed the minimum and the maximum from the signal: a bound is a signal of its own. Later that day he made a bound a plain signal with no tie to the one it bounds (usually an input), named the column "Quantity / Difference", kept decimal places out of Metadata, and refused the bubble on an enum name. On 2026-11-18 he removed the type text: a word shown goes through an enum. On 2026-11-20 he gave the signal a description (decision 0052). On 2026-11-22 he removed the colour of the lines: the direction is told by its icon only. Open points are listed in [Open questions](#metadata-open-questions).
 
 A signal is what goes between the front and the model: an input or an output of the model. Only these are defined here. Values that stay inside the model are not defined in Metadata: the people who write the model name them as they wish, and they are invisible to the application.
 
@@ -494,7 +494,7 @@ A signal is what goes between the front and the model: an input or an output of 
 - A signal has an **ID**: its name for the model, the identifier above, set once (Product Owner, 2026-11-16).
 - **A signal has no display name** (Product Owner, 2026-11-16, later the same day): since the faceplate is built by the preset, the name people see is written in the preset, one per signal, in its faceplate builder (see [Presets](#mode-faceplate-the-faceplate-builder)). It replaces the display name on the signal decided earlier that day. Confirmed while reviewing the wireframes: "Dans Signal, le display name ne sert à rien. Je te le dis très clairement."
 - **A signal has a description** (Product Owner, 2026-11-20: "il faut pouvoir expliquer ce qu'on veut dire au modeleur"; decision 0052): it says what the signal means, for the person who writes the model. It replaces "a signal has no description" (2026-11-16). Plain text: assistant's reading. **Optional**, as for the flags and the enum items (Product Owner, 2026-11-20). **Written in the configuration files sent with the model**, but edited in Metadata only (Product Owner, 2026-11-20: "on ne peut la modifier que dans la metadata").
-- **The line of a signal is coloured by its direction** (Product Owner, 2026-11-16): an input line and an output line have two different colours, so that the two are told apart at a glance. The colours are chosen with the design system.
+- **The direction of a signal is told by its icon only** (Product Owner, 2026-11-22: "pas de fond, juste l'icône de direction [...] je veux vraiment que ce soit plus calme"): the line has no background colour of its own; the column Direction shows an icon for an input and another for an output, both in the same colour. It replaces the line coloured by its direction (2026-11-16).
 - **A signal has no model unit** (Product Owner, 2026-11-16, end of the day: "« model unit », ça, on enlève. C'est pas ici qu'il faut mettre ça"). For one quantity, and for one difference, the model always uses **the same unit, everywhere**, so that there are no odd conversions. That unit is set once, outside Metadata (see [Units](#model-unit-and-display-unit)). It replaces the model unit chosen per signal (decision 0024, accepted on 2026-11-16).
 - **A signal has no minimum and no maximum** (Product Owner, 2026-11-17: "le min et le max, ça doit être un signal à part entière et pas une propriété de ce signal-là [...] comme ça, ça simplifie"). A bound is **a signal of its own**, declared in the table like any other, with its direction, ID, type and quantity. It replaces the bounds kept on the signal on 2026-11-16 (decision 0026, accepted on 2026-11-17).
 - **A bound is a plain signal** (Product Owner, 2026-11-17: "c'est un signal ordinaire"; decision 0027, accepted on 2026-11-17): it has **no tie** to the signal it bounds. `speed_setpoint_max` is a signal like any other; its name is only a convention of the people who write it, and the application reads nothing in it.
@@ -577,7 +577,7 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 - The columns of the handle and of the delete button have no header and take the least room possible (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
 
 - Every line is always editable: a field is changed in place, with no Edit or Save step (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps, rapidement"). See [Always editable, no versions](#always-editable-no-versions).
-- An input line and an output line have two different colours.
+- An input line and an output line have the same background; the icon of the column Direction tells them apart (2026-11-22).
 - The fields that do not apply to a line stay empty (no enum for a real, no quantity for a boolean).
 - The line of an enum signal shows the name of the enum it points to (Product Owner, 2026-11-11). **No bubble** lists its items when the mouse rests on that name (Product Owner, 2026-11-17: "je vois pas où tu pourrais mettre l'info-bulle pour l'instant. Fais pas ça"). The enums themselves are made on their own page (see [Enums](#enums)), never in the table of signals.
 - The table shows the signals of the type and the signals it inherits from its parents. Inherited lines cannot be edited here: they are edited in the type that declares them.
@@ -589,27 +589,17 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 - The button that adds a signal is a small **+ icon on the right of the title "Signals"**, above the table (see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)).
 - **Deleting a signal** is done with the delete button in the last column of its line, then a warning that asks to confirm (Product Owner, 2026-11-16: "une icône de suppression et pas le clic droit"). There is no right click in Metadata (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)). The handle at the left of a line is not a button: it only moves the line.
 
-The block below shows the order of the columns; the two lines have the colours of an input and of an output.
+The block below shows the order of the columns, with an input line and an output line.
 
 ```mermaid
 block-beta
     columns 8
     h0[" "] h8["Direction"] h1["ID"] h2["Type"] h3["Enum"] h4["Quantity / Difference"] h5["Description"] h9[" "]
-    r0["handle"] r8["input"] r1["running"] r2["boolean"] r3["-"] r4["-"] r5["True to run the pump"] r9["bin icon"]
-    s0["handle"] s8["output"] s1["flow"] s2["real"] s3["-"] s4["● flow"] s5["Flow through the pump"] s9["bin icon"]
-    style r8 fill:#dbeafe
-    style r1 fill:#dbeafe
-    style r2 fill:#dbeafe
-    style r3 fill:#dbeafe
-    style r4 fill:#dbeafe
-    style r5 fill:#dbeafe
-    style s8 fill:#fef3c7
-    style s1 fill:#fef3c7
-    style s2 fill:#fef3c7
-    style s3 fill:#fef3c7
-    style s4 fill:#fef3c7
-    style s5 fill:#fef3c7
+    r0["handle"] r8["→ input"] r1["running"] r2["boolean"] r3["-"] r4["-"] r5["True to run the pump"] r9["bin icon"]
+    s0["handle"] s8["← output"] s1["flow"] s2["real"] s3["-"] s4["● flow"] s5["Flow through the pump"] s9["bin icon"]
 ```
+
+→ and ← stand for the icons of an input and of an output (`signal-input`, `signal-output` of the design system).
 
 ### The order of the lines
 

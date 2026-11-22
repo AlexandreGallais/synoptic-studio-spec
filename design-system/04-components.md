@@ -30,6 +30,8 @@ flowchart LR
 
 The tables below add the states each component needs on top of these. A field (`text-input`, `number-input`, `text-area`) has no `pressed`: a click puts it in `focus`.
 
+Every component is documented in the Figma file, in its frame `Docs/<component>`: see [Figma file](05-figma-file.md#documentation) and [Skill rules R9](skill-rules.md#r9--the-documentation-of-the-components-lives-in-figma).
+
 Every interactive component is prototyped in its component set: `hover` while the mouse is over it, `pressed` while its button is down, and a click to the next state (checked, on, open, selected, expanded). See [Skill rules R8](skill-rules.md#r8--components-prototyped-on-their-own).
 
 ## Atoms
@@ -69,7 +71,7 @@ Every interactive component is prototyped in its component set: `hover` while th
 | `part-item` | text of a part | — | `selected` | MD-01.5 |
 | `link-cell` | `folder` or `link` icon + path or URL | `kind=path, url` | — | MD-03.9 |
 | `quantity-cell` | `quantity` or `difference` icon + name | `kind=quantity, difference` | — | MD-04.9 |
-| `direction-cell` | `signal-input` or `signal-output` icon + text | `direction=input, output` | — | MD-04.12, MD-07.9 |
+| `direction-cell` | `signal-input` or `signal-output` icon + text; the icon in `icon-primary`, the same colour for both directions | `direction=input, output` | — | MD-04.12, MD-07.9 |
 | `toolbar-group` | `icon-button` × n | — | — | MD-03.4d |
 | `window-controls` | minimise, maximise or restore, close | `platform=windows, macos` | — | Top bar |
 
@@ -83,7 +85,7 @@ Every interactive component is prototyped in its component set: `hover` while th
 | `part-list` | `part-item` × n | — | one part `selected` | MD-01.5 |
 | `data-table` | `list-title` + `data-table-header` + `data-table-row` × n (`drag-handle`, inputs, cell molecules, delete) | — | table `empty` | MD-03.5, MD-04, MD-05, MD-07.7, MD-08.7, MD-09.5, MD-12, MD-13 |
 | `data-table-header` | the name of each column, `caption` | — | — | Every data-table |
-| `data-table-row` | the cells of one line, drawn with the columns of Signals | `kind=default, inherited, signal-input, signal-output, error` | `hover`, `selected`; `inherited`: read only, no handle nor delete, the name of its parent | Every data-table |
+| `data-table-row` | the cells of one line, drawn with the columns of Signals | `kind=default, inherited, error`; no background per direction (Product Owner, 2026-11-22: the direction is told by the icon of `direction-cell` only) | `hover`, `selected`; `inherited`: read only, no handle nor delete, the name of its parent | Every data-table |
 | `list-panel` | `list-title` + `list-row` × n | — | `empty` | MD-07.1, MD-08.1, MD-09.1 |
 | `dialog` | `heading` + text + `button` × 2 | `kind=warning, danger` | — | Every delete |
 | `formatting-toolbar` | `toolbar-group` × n + `segmented-control` + full-page `icon-button` | `mode=visual, markdown` | — | MD-03.4d |

@@ -185,7 +185,7 @@ The signals are shown in **one table** that takes as much room as possible: one 
 block-beta
     columns 2
     title["Signals"] add["+"]
-    table["Table: (handle) | Direction | ID | Type | Enum | Quantity / Difference | Description | (delete); inherited signals first, from the top of the tree, then own ones; a colour per direction; no header over the handle and the delete button"]:2
+    table["Table: (handle) | Direction | ID | Type | Enum | Quantity / Difference | Description | (delete); inherited signals first, from the top of the tree, then own ones; the direction told by its icon, no colour per line; no header over the handle and the delete button"]:2
 ```
 
 How the fields depend on each other: the type decides which fields exist. There is no model unit on the signal: it is one per quantity, set outside Metadata (2026-11-16). There is no minimum or maximum on the signal: a bound is a plain signal of its own, on a line of its own, usually an input (2026-11-17). There are no decimals on the signal (2026-11-17).
@@ -207,7 +207,7 @@ mindmap
         Next parent, down the branch
       Own signals last
       Always editable
-      Line coloured by direction
+      Direction told by its icon, no colour per line
       Handle at the left of each own line, drag to reorder, no header
       Columns
         Direction, input or output, first
@@ -231,7 +231,7 @@ mindmap
 | MD-04.3 | Inherited signals | Lines of the table | First, read only: the signals of the first parent at the top of the tree, then of the next parent, then the type's own (2026-11-16). Edited in the type that declares them. Their look (greyed, with the parent's name) is not said. | Decided (order), Open (look) | [Signals](../metadata/draft.md#the-table-of-signals) |
 | MD-04.4 | Add a signal | Button (+), small icon | On the right of the title "Signals", above the table (2026-11-16). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
 | MD-04.5 | Edit, Save | — | Removed (2026-11-16): the table is always editable. | Decided | [Always editable](../metadata/draft.md#always-editable-no-versions) |
-| MD-04.5b | Colour of a line | Background of the line | One colour for an input, another for an output (2026-11-16). The colours: with the design system. | Decided | [Signals](../metadata/draft.md#the-table-of-signals) |
+| MD-04.5b | Colour of a line | — | Removed (2026-11-22): no background per direction, the icon of the column Direction tells an input from an output, both icons in the same colour. Replaces one colour per direction (2026-11-16). | Decided | [Signals](../metadata/draft.md#the-table-of-signals) |
 | MD-04.6 | ID | Column, text field | Second column, after Direction. Model identifier; header "ID" (2026-11-16). Unique along the branch: a sub-type cannot reuse an inherited ID. An ID already taken is refused when typed (decisions 0080, 0081, 0083). | Decided | [Signals](../metadata/draft.md#signals) |
 | MD-04.6b | Display name | — | Removed (2026-11-16), confirmed while reviewing the wireframes: the name people see is written in the faceplate builder of the preset ([MD-07](#md-07--presets)). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-04.7 | Type | Column, select | Integer, real (64-bit double), boolean, enum. No text (2026-11-18). | Decided | [Signals](../metadata/draft.md#signals) |

@@ -22,14 +22,16 @@ What the Figma file of the design system holds, with the ids a later session nee
 
 | Collection | Id | Modes | Variables |
 | --- | --- | --- | --- |
-| `primitives` | `VariableCollectionId:630:111` | `value` | 39: 23 colours (`sand/`, `white`, `black`, accents, tints), `black/a60`, 15 steps of `scale/` |
-| `semantic` | `VariableCollectionId:630:149` | `sand` (`630:1`) | 50: the roles, spacing, sizes, radii and widths of [Foundations](02-foundations.md) |
+| `primitives` | `VariableCollectionId:630:111` | `value` | 37: 21 colours (`sand/`, `white`, `black`, accents), `black/a60`, 15 steps of `scale/` |
+| `semantic` | `VariableCollectionId:630:149` | `sand` (`630:1`) | 49: the roles, spacing, sizes, radii and widths of [Foundations](02-foundations.md) |
+
+The tints `blue/05` and `green/05`, and the roles `signal-input` and `signal-output`, were removed on 2026-11-22 with the background of the signal lines.
 
 ## Styles
 
 | Kind | Styles |
 | --- | --- |
-| Text | `caption`, `body`, `body-strong`, `heading`, `title` (Inter), `code` (JetBrains Mono) |
+| Text | `caption`, `body`, `body-strong`, `heading`, `title` (IBM Plex Sans), `code` (IBM Plex Mono) |
 | Effect | `shadow-raised`, `shadow-overlay`, `focus-ring`, `focus-ring-inset` |
 
 ## Components
@@ -39,6 +41,7 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Page | Component | Id |
 | --- | --- | --- |
 | Foundations | specimen board | `630:203` |
+| Foundations | documentation kit `docs/kit`: `docs/header`, `docs/section`, `docs/caption`, `docs/do-dont` | `646:2` |
 | Icons | 44 icons `icon/<name>`, in the frame `icons/components` | `631:2` |
 | Atoms | `button` | `632:209` |
 | Atoms | `icon-button` | `633:98` |
@@ -88,7 +91,21 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Organisms | `faceplate-element` | `642:1828` |
 | Organisms | `playground/organisms` | `643:2487` |
 
+`data-table-row` and `data-table-header` have the columns of Signals since 2026-11-22: handle, Direction, ID, Type, Enum, Quantity / Difference, Description, delete, on lines 1120 wide. `direction-cell` has no text property: its word follows its direction.
+
+## Documentation
+
+Each component has a frame `Docs/<component>` on its page, under the components, built from instances of the documentation kit ([Skill rules R9](skill-rules.md#r9--the-documentation-of-the-components-lives-in-figma)). The twelve sections, in order: overview, when to use, variants, anatomy, sizes and spacing, states, behaviours, content, interactions, accessibility, do and don't, code. Variants, anatomy, sizes and states are read from the component itself; the other sections are written. The overview and the use are also in the description of the component.
+
+| Page | Frames |
+| --- | --- |
+| Icons | `Docs/icon` (`650:2`), for the 44 icons |
+| Atoms | 14, `Docs/button` (`647:159`) to `Docs/divider` (`647:2140`) |
+| Molecules | 16, `Docs/field` (`648:556`) to `Docs/window-controls` (`648:2567`) |
+| Organisms | 14, `Docs/top-bar` (`649:1838`) to `Docs/faceplate-element` (`649:4668`) |
+
+The contrasts the frames give are computed from the values of the variables, not measured on screen.
+
 ## Left to draw
 
-- The documentation of each component (variants, states, usage): only its description in Figma so far.
 - The page Templates and the page Metadata.

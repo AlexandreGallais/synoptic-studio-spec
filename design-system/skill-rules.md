@@ -69,3 +69,9 @@ Each rule: what it says, the skill it adds to or contradicts, its status.
 - **Rule**: every interactive component is prototyped as an interactive component of Figma (hover, press, click to the next state), before any screen is (Product Owner, 2026-11-22).
 - **Skill**: `prototype-with-interactive-components-and-variables` says the same; the rule sets the order: the components first, the screens later.
 - **Status**: Added (confirms the skill).
+
+### R9 · The documentation of the components lives in Figma
+
+- **Rule**: each component is documented in the Figma file, in a frame `Docs/<component>` beside the components of its page, so that whoever reads the Figma file has everything (Product Owner, 2026-11-22: "si sur Figma quelqu'un lit le Figma, il a vraiment tout"). No Markdown copy of that documentation: [Components](04-components.md) keeps only the list, the variants and the screens. A Storybook comes with the code, in the repository `synoptic-studio-design-system`, and documents the coded components; it does not replace the Figma documentation (assistant's choice, left to it by the Product Owner).
+- **Skill**: `document-every-component-and-its-states` asks for the same frame and its twelve sections; the rule adds where the documentation does not go.
+- **Status**: Added (confirms the skill).

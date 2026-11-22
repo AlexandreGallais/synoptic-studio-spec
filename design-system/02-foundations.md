@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Design system](README.md) › Foundations
 
-Status: first draft, written by the assistant on 2026-11-22, drawn on the page Foundations of the Figma file the same day. Every value here is **proposed**, to review on screen. The colours are those of the Warm Sand theme of the old design system, read in Figma.
+Status: first draft, written by the assistant on 2026-11-22, drawn on the page Foundations of the Figma file the same day. The families are chosen; every other value here is **proposed**, to review on screen. The colours are those of the Warm Sand theme of the old design system, read in Figma.
 
 ## How the tokens are layered
 
@@ -10,7 +10,7 @@ Two layers to start with; a third only when a component must differ from the sha
 
 ```mermaid
 flowchart TD
-    P["Primitives: raw values, one mode, hidden"] -->|"alias"| S["Semantic: roles, one mode Fog"]
+    P["Primitives: raw values, one mode, hidden"] -->|"alias"| S["Semantic: roles, one mode sand"]
     S -->|"bound"| L["Layers of the components"]
     S -.->|"alias, only when needed"| C["Component tokens"]
 ```
@@ -54,15 +54,13 @@ The roles the components of the specs need, with their value in the theme `sand`
 | `danger-hover` | A danger button under the mouse or pressed. | `#6b3633` | `danger/hover` |
 | `warning` | A warning that does not block (a required designation left empty). | `#7c5619` | `warning/default` |
 | `success` | A check that passed. | `#30693f` | `success/default` |
-| `signal-input` | The background of a line of an input signal ([MD-04.5b](../screens/metadata.md#md-04--signals)). | `#dde3ec` | new |
-| `signal-output` | The background of a line of an output signal. | `#dbe6d6` | new |
 | `overlay` | The veil behind a dialog. | `#000000` at 60 % | `overlay/scrim` |
 
 Every pair of text and background passes 4.5:1, every border and icon of a control 3:1 against its neighbour (WCAG 2.2 AA); disabled text is exempt.
 
 ## Typography
 
-One family for the whole interface, **Inter**, one for code (the Markdown mode, formulas), **JetBrains Mono**: both free (SIL Open Font License), proposed. See [Open questions](open-questions.md).
+One family for the whole interface, **IBM Plex Sans**, one for code (the Markdown mode, formulas), **IBM Plex Mono**: both free (SIL Open Font License). Chosen by the Product Owner on 2026-11-22, over Inter and JetBrains Mono: no measured gain in legibility at small sizes was found to justify leaving IBM Plex.
 
 | Style | Size / line | Weight | Used for |
 | --- | --- | --- | --- |
