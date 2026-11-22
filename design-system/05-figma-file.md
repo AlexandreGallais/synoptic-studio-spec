@@ -48,7 +48,9 @@ Since 2026-11-22 (Product Owner: "un tableau d'états et de types [...] plutôt 
 - the component set itself is the body of the table: its variants are laid out on the grid of the table, so the table is never out of step with the component;
 - a component with no `state` shows its widest property as columns when it is narrow, else one column `preview`; a component with no variant, one cell `default`.
 
-The tables of a page are grouped by family, one Figma section each. The frame `playground/…` of each page has its own section, `Playground`.
+The tables of a page are grouped by family, one Figma section each. The frame `playground/…` of each page has its own section, `Playground`. A section holds all its tables, 48 from its edges, and the next section starts 160 below it: a table that grows makes its section grow and pushes the ones below (Product Owner, 2026-11-22: the section Forms did not hold its tables).
+
+A tooltip is centred on the icon it names, whatever the length of its text: its frame keeps a centre constraint on the axis of its arrow (Product Owner, 2026-11-22: the tooltip of `nav-rail-item` in the top bar was not centred on the icon).
 
 | Page | Sections, in order |
 | --- | --- |
