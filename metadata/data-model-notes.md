@@ -730,6 +730,10 @@ Fifth questionnaire, same day (decision 0082), each time the advised option:
 - **A signal deleted, own or inherited, removes the bounds read from it and flags in error the commands that target it** ("Borne retirée, commande en erreur"): the range then has no minimum or no maximum; the command is kept as written. Written in [Deleting and its consequences](deleting.md), [Inheritance of types](inheritance.md#when-a-parent-changes), [Bound](entities/23-bound.md) and [Command target](entities/17-command-target.md).
 - **An enum, an enum item or a designation deleted while used flags in error what uses it** ("Utilisateurs marqués en erreur"), kept as written, as for a missing parent (decision 0079): the signal of its value type, the preset value of its start value, the command of its value, the faceplate element of its text content. Written in [Deleting and its consequences](deleting.md), [Value type](entities/15-value-type.md), [Preset value](entities/22-preset-value.md), [Command target](entities/17-command-target.md), [Text content](entities/27-text-content.md) and screens MD-09.8 and MD-13.7.
 
+Sixth questionnaire, same day:
+
+- **The next document is checks and errors** ("Contrôles et erreurs"): [Checks and errors](checks-and-errors.md), a topic that gathers the rules already written and decides nothing new. It takes over two questions of [Deleting and its consequences](deleting.md): how a refusal and a thing in error show, and a quantity whose file is missing. Screens MD-13.4 and MD-09.7 now say the uniqueness settled the same day (see [unique ids of enums and designations](#settled-on-2026-11-22-unique-ids-of-enums-and-designations)).
+
 ## Writing rules of the entity files (to become a skill)
 
 Moved here from [Entities](entities/README.md) on 2026-11-22 at the Product Owner's request ("c'est plutôt un skill [...] on fait pas une spec de spec"): how the specification is written is not the specification. These rules wait here until they become the skill `write-a-metadata-entity-file` (see [Settled on 2026-11-22 (documentation plan)](#settled-on-2026-11-22-documentation-plan)); they were brought up to date when moved.

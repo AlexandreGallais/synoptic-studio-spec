@@ -96,8 +96,7 @@ Never deleted in the software:
 
 ## Open questions
 
-- **How a refused delete and a thing in error show** in Metadata (a disabled button or a message; a mark on the line, a list): with the topic Checks and errors of the [Documentation plan](documentation-plan.md#the-topics-missing).
 - **The last preset of a type**: a type needs one to be chosen in a symbol or a synoptic.
 - **A preset deleted that symbols use**: with the synoptic (gap of MD-07).
-- **A quantity whose file is missing**: the signals and display formats that point to it flagged in error and kept as written, as rule 7 says for a parent: assistant's reading.
 - **An undo in Metadata**: open in the [whole draft](draft.md#metadata-open-questions).
+- How a refused delete and a thing in error show, and a quantity whose file is missing: moved to [Checks and errors](checks-and-errors.md#open-questions).

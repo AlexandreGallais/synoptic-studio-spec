@@ -33,7 +33,7 @@ flowchart TD
 | --- | --- | --- | --- |
 | **Data model** | The whole schema, the table of the entities, the types of the fields. | [Data model](data-model.md) | — |
 | **Entity** | One kind of thing kept: what it is, its schema, its JSON Schema, the JSON Schema of its file. | 30, in [Entities](entities/README.md) | — |
-| **Topic** | One theme, the question it raises and how it is settled, across several entities. | [Files](files.md), [Formulas](formulas.md), [Inheritance of types](inheritance.md), [Deleting and its consequences](deleting.md) | See [The topics missing](#the-topics-missing). |
+| **Topic** | One theme, the question it raises and how it is settled, across several entities. | [Files](files.md), [Formulas](formulas.md), [Inheritance of types](inheritance.md), [Deleting and its consequences](deleting.md), [Checks and errors](checks-and-errors.md) | See [The topics missing](#the-topics-missing). |
 | **Catalogue** | The data Synoptic Studio ships: each item, its values, its source. | — | Quantities and units; palettes; icon sets. |
 | **Glossary** | Each word of the product, its one meaning, and the words not to use for it; one for the whole specification. | [Glossary](../overview/glossary.md), Metadata's words | The words of the other parts, as each is written again. |
 | **Screen** | One screen: its identifier, its map, every button, field and list, its states and messages. | [Screens of Metadata](../screens/metadata.md), written before the entities | Each screen read again against the entities: names, fields, lists. |
@@ -50,7 +50,6 @@ Each one gathers rules spread today across the entity files and the [whole draft
 | Topic | The question it settles | Where it is today |
 | --- | --- | --- |
 | Identity and renaming | `id` and `internal_id`, what renaming breaks (the models, the file name), how a rename is done. | [Files](files.md#the-two-keys-of-an-entity), [draft](draft.md#renaming-is-breaking-on-purpose) |
-| Checks and errors | Every check of the software, when it runs, what it shows, and what is refused or only reported. | [Files](files.md#each-file) (a file with errors is still read), entity files |
 | Editing without versions | Everything stays editable; what a change does to the synoptics already built. | [draft](draft.md#always-editable-no-versions) |
 | Units on screen | Default unit, display unit, model unit, decimals, differences, rounding of an integer. | [Quantity](entities/10-quantity.md), [Display format](entities/20-display-format.md), [draft](draft.md#units) |
 | Who changes what | Which person changes which part of Metadata, and where. | [draft](draft.md#who-changes-what-and-where) |
@@ -64,4 +63,4 @@ Not part of the specification of the product, but to carry to the software archi
 
 ## Open questions
 
-- The order of the missing documents after the glossary, the inheritance of types and deleting, written first, second and third (Product Owner, 2026-11-22).
+- The order of the missing documents after the glossary, the inheritance of types, deleting, and checks and errors, written in that order (Product Owner, 2026-11-22).
