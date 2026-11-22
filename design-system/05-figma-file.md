@@ -22,8 +22,8 @@ What the Figma file of the design system holds, with the ids a later session nee
 
 | Collection | Id | Modes | Variables |
 | --- | --- | --- | --- |
-| `primitives` | `VariableCollectionId:630:111` | `value` | 37: 21 colours (`sand/`, `white`, `black`, accents), `black/a60`, 15 steps of `scale/` |
-| `semantic` | `VariableCollectionId:630:149` | `sand` (`630:1`) | 49: the roles, spacing, sizes, radii and widths of [Foundations](02-foundations.md) |
+| `primitives` | `VariableCollectionId:630:111` | `value` | 39: 23 colours (`sand/25` and `sand/30` added on 2026-11-22 for the hover) (`sand/`, `white`, `black`, accents), `black/a60`, 15 steps of `scale/` |
+| `semantic` | `VariableCollectionId:630:149` | `sand` (`630:1`) | 50 (`layer-active` added on 2026-11-22): the roles, spacing, sizes, radii and widths of [Foundations](02-foundations.md) |
 
 The tints `blue/05` and `green/05`, and the roles `signal-input` and `signal-output`, were removed on 2026-11-22 with the background of the signal lines.
 

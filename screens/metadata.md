@@ -16,6 +16,7 @@ Path: on the far left of every screen of Metadata (Product Owner, 2026-11-16).
 | MD-00.4 | Versions | — | Removed (2026-11-21, decision 0053): no versions in the application, the JSON files are versioned with Git by the user. | Decided | [Always editable, no versions](../metadata/draft.md#always-editable-no-versions) |
 | MD-00.5 | Flags | — | Removed (2026-11-17): flags are a part of the type, not a page of the bar (see [MD-12](#md-12--flags-a-part-of-the-type)). | Decided | [Flags](../metadata/draft.md#flags) |
 | MD-00.6 | Designations | Button (icon) | Opens [MD-13](#md-13--designations). A page of the bar, like Units and Enums (2026-11-18: "C'est une page de type unit enum version"). Last, after Enums: assistant's reading. Named Designations on 2026-11-22 (decision 0064), "Identifiers" until then. | Decided (page of the bar, name), Proposed (place) | [Designation](../metadata/entities/11-designation.md) |
+| MD-00.7 | Divider | — | After Types: the types on one side, what they use on the other, Units, Enums and Designations (2026-11-22: the divider before Designations alone had no meaning, the Product Owner asked to keep it only if it had one; assistant's choice). | Proposed | [Layout rules](README.md#layout-rules) |
 
 Gaps:
 

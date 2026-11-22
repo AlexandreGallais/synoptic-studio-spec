@@ -46,7 +46,7 @@ Every interactive component is prototyped in its component set: `hover` while th
 | --- | --- | --- | --- |
 | `icon` | One component per icon of [Icons](03-icons.md), `icon/<name>`; the size is set on the instance, `size-icon-sm` (16) or `size-icon-md` (20), never a variant | — | Everywhere |
 | `button` | `kind=primary, secondary, ghost, danger`; `size=md, lg`; leading icon on or off | — | Dialogs: Cancel, Delete |
-| `icon-button` | `kind=ghost, quiet` (quiet: `icon-secondary`, the + on hover); `size=sm, md` | `selected`; the hover of `quiet` is `layer-pressed` and its press `border-subtle`, so that it shows on a line already in hover (Product Owner, 2026-11-22: the + of the tree had no visible hover) | Every + of a title, delete, reset, search, full page |
+| `icon-button` | `kind=ghost, quiet` (quiet: `icon-secondary`, the + on hover); `size=sm, md` | `selected`; the hover of `quiet` is `layer-pressed` and its press `layer-active`, so that it shows on a line already in hover (Product Owner, 2026-11-22: the + of the tree had no visible hover) | Every + of a title, delete, reset, search, full page |
 | `toggle-button` | `state=off, on`: an `icon-button` ghost, at rest or `selected`; a click turns it on or off | — | Bold, italic of the formatting tool bar (MD-03.4d), showing the state of the selection (Product Owner, 2026-11-22) |
 | `text-input` | `size=sm, md` (sm in a table cell); with or without a trailing icon | `filled`, `read-only`, `error` | MD-02.1, MD-03.8, every ID |
 | `number-input` | `size=sm, md`; with or without a unit; with or without the `variable` icon | `filled`, `read-only`, `error`, `variable` (the value comes from a signal) | MD-07.13, MD-07.22, MD-08.13, MD-09.6 |
@@ -89,7 +89,7 @@ Every interactive component is prototyped in its component set: `hover` while th
 | Component | Made of | Variants | States added | Screens |
 | --- | --- | --- | --- | --- |
 | `top-bar` | `app-mark` + `nav-rail-item` × 3 (`placement=top-bar`, the parts) + `window-controls` | `platform=windows, macos, browser` | one part `selected` | Every screen |
-| `nav-rail` | `nav-rail-item` × n + `divider` | — | one item `selected` | MD-00, SY-00 |
+| `nav-rail` | `nav-rail-item` × n + `divider`; in Metadata, the divider sits after Types: the type, then what the types use (Units, Enums, Designations) | — | one item `selected` | MD-00, SY-00 |
 | `tree` | `list-title` + `tree-row` × n | — | `searching`, `empty` | MD-01 |
 | `part-list` | `part-item` × n | — | one part `selected` | MD-01.5 |
 | `data-table` | `list-title` + `data-table-header` + `data-table-row` × n (`drag-handle`, inputs, cell molecules, delete), on `layer-01` with `radius-md`; padding `spacing-04` top and bottom, `spacing-03` left and right, so the buttons of its corners sit 16 from each edge (Product Owner, 2026-11-22: the same margin at the top, the bottom and the sides) | — | table `empty` | MD-03.5, MD-04, MD-05, MD-07.7, MD-08.7, MD-09.5, MD-12, MD-13 |
