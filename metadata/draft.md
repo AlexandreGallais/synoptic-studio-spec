@@ -549,12 +549,12 @@ In the column Quantity, ● stands for the icon of a quantity and Δ for the ico
 | own | input | `speed_setpoint` | integer |  | ● rotational speed | Speed asked of the motor. |
 | own | input | `speed_setpoint_max` | integer |  | ● rotational speed | Highest speed that may be asked. |
 | own | output | `inlet_pressure` | real |  | ● pressure | Pressure at the inlet. |
-| own | output | `pressure_rise` | real |  | Δ pressure | Pressure gained between inlet and outlet. |
+| own | output | `pressure_rise` | real |  | ● pressure | Pressure gained between inlet and outlet. |
 | own | output | `bearing_temperature` | real |  | ● temperature | Temperature of the motor bearing. |
 
 `speed_setpoint_max` is a bound: a plain input signal, given to the model, with no tie to `speed_setpoint` (Product Owner, 2026-11-17). A minimum would be one more line, the same way.
 
-Flow and rotational speed have no difference in the list: their value and their difference convert the same way.
+Flow, rotational speed and pressure have no difference in the list: their value and their difference convert the same way. So `pressure_rise`, a gap between two pressures, is a plain pressure (decision 0075).
 
 ### The table of signals
 
@@ -567,7 +567,7 @@ The signals of a type are shown in **one table**, one line per signal, one colum
 | ID | The model identifier (Product Owner, 2026-11-16: "l'ID, qui est le modèle identifiant"). |
 | Type | Integer, real, boolean, enum. |
 | Enum | For an enum signal only: the enum it points to. |
-| Quantity / Difference | Header **"Quantity / Difference"** (Product Owner, 2026-11-17: "quantity, c'est le rond, et différence, c'est le petit triangle. Du coup, c'est quantity/différence"). Optional, integers and reals only. One column holds the choice of the quantity or of its difference: its list offers the pressure and the pressure difference (Product Owner, 2026-11-16). Only the quantities whose conversion changes (temperature, gauge pressure...) have the two items; the others are offered once (see [Units](#value-or-difference-chosen-in-the-signal)). **An icon before the name** says which it is: one icon for a quantity, another for a difference, so that the two are told apart at a glance (Product Owner, 2026-11-16: "on met un symbole, une icône. Comme ça, c'est beaucoup plus simple à reconnaître"). **The icon alone**: no "(quantity)" or "(difference)" after the name (Product Owner, 2026-11-16: "pas besoin de mettre (quantité) ou (différence) [...] quand on connaît les icônes"). The icons are chosen with the design system. |
+| Quantity / Difference | Header **"Quantity / Difference"** (Product Owner, 2026-11-17: "quantity, c'est le rond, et différence, c'est le petit triangle. Du coup, c'est quantity/différence"). Optional, integers and reals only. One column holds the choice of the quantity or of its difference: its list offers the temperature and the temperature difference (Product Owner, 2026-11-16). Only the quantities whose conversion changes (temperature) have the two items; the others are offered once (see [Units](#value-or-difference-chosen-in-the-signal)). **An icon before the name** says which it is: one icon for a quantity, another for a difference, so that the two are told apart at a glance (Product Owner, 2026-11-16: "on met un symbole, une icône. Comme ça, c'est beaucoup plus simple à reconnaître"). **The icon alone**: no "(quantity)" or "(difference)" after the name (Product Owner, 2026-11-16: "pas besoin de mettre (quantité) ou (différence) [...] quand on connaît les icônes"). The icons are chosen with the design system. |
 | Description | What the signal means, for the person who writes the model (Product Owner, 2026-11-20, decision 0052). Last column of values: the short fields first and the long one last, as for the enum items and the flags (assistant's reading). It takes the room left. |
 | Delete | A delete button (an icon), in the last column, on the far right, with **no header**; a click opens a warning before anything is deleted (Product Owner, 2026-11-16). Not on the inherited lines. |
 
@@ -767,10 +767,11 @@ All of it stays in pure JavaScript.
 
 Decided by the Product Owner on 2026-11-16: "quand on choisit une quantité, il faudrait pouvoir choisir si c'est une quantité ou si c'est un écart."
 
-- When the user gives a signal a quantity, they also say whether its value is **the quantity itself** or **a difference** of it. Example: the pressure, or the pressure difference.
+- When the user gives a signal a quantity, they also say whether its value is **the quantity itself** or **a difference** of it. Example: the temperature, or the temperature difference.
 - The conversion follows this choice: a difference of 25 °C is a difference of 45 °F, a value of 25 °C is 77 °F (see above).
-- **One column "Quantity"** in the table of signals holds the choice (Product Owner, 2026-11-16): its list offers the pressure and the pressure difference side by side, each with its **icon** (one for a quantity, one for a difference), and no "(quantity)" or "(difference)" written after the name. No column of its own: one column less in a table that is already wide.
-- **Only the quantities whose conversion changes offer a difference** (Product Owner, 2026-11-16): those where a value and a difference are not converted the same way, because of an offset (temperature, gauge pressure...). The other quantities are offered once: their value and their difference convert the same way.
+- **One column "Quantity"** in the table of signals holds the choice (Product Owner, 2026-11-16): its list offers the temperature and the temperature difference side by side, each with its **icon** (one for a quantity, one for a difference), and no "(quantity)" or "(difference)" written after the name. No column of its own: one column less in a table that is already wide.
+- **Only the quantities whose conversion changes offer a difference** (Product Owner, 2026-11-16): those where a value and a difference are not converted the same way, because of an offset (temperature). The other quantities are offered once: their value and their difference convert the same way.
+- **Gauge pressure is a quantity of its own**, with no conversion to pressure (Product Owner, 2026-11-22, decision 0075): the atmosphere varies, so no fixed offset turns bar g into bar a. Both only multiply between their own units, so neither offers a difference.
 - Which quantities have a difference is written in the catalogue files, with the difference itself (Product Owner: "ce sera configuré"); the user never decides it.
 
 ### The Units page
