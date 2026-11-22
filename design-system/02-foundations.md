@@ -350,7 +350,7 @@ A scale on a 4 px base. Usual gaps: 8 between two controls, 12 between a label a
 
 ## Shadows
 
-`focus-ring` and `focus-ring-inset` are effect styles in Figma, each two spreads with no blur: 2 px of `focus-inset`, then 2 px of `focus`. The focus follows the shape of its control: round on a radio, rounded on a button.
+`focus-ring` and `focus-ring-inset` are each two spreads with no blur: 2 px of `focus-inset`, then 2 px of `focus`. The focus follows the shape of its control: round on a radio, rounded on a button. In Figma every control draws them as two lines, since the SVG export of a spread is wrong ([Figma file](04-figma-file.md#ways-of-figma-to-keep-in-mind)).
 
 ```tokens
 {

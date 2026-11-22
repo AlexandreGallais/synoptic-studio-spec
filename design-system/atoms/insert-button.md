@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Design system](../README.md) › [Atoms](README.md) › insert-button
 
-A small round + that inserts a line or a column of a table of a description. It shows only while the mouse is on the table: between two lines, between two columns, under the table and on its right ([content-table](../molecules/content-table.md)).
+A small round + that inserts a line or a column of a table of a description. It shows only while the mouse is on the table, at the limit nearest to the mouse: between two lines, between two columns, under the table or on its right ([content-table](../molecules/content-table.md)).
 
 ## Figma
 
@@ -27,7 +27,6 @@ None: where it inserts is given by its place in the table.
 ## Behaviour
 
 - 16 px round, `layer-01` with a `border-strong` line at rest, so that it shows on the table and on the page; `accent` under the mouse, `accent-pressed` while pressed, its + in `text-on-accent`.
-- Its focus is drawn as two round lines, as the radio's ([Figma file](../04-figma-file.md#ways-of-figma-to-keep-in-mind)).
 - Proposed by the assistant (2026-11-23), to review on screen.
 
 ## Made of

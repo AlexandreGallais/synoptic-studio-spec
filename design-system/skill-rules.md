@@ -60,7 +60,7 @@ Each rule: what it says, the skill it adds to or contradicts, its status.
 
 ### R7 · Focus as a double line
 
-- **Rule**: the keyboard focus of every component is two lines: a light one against the component, then a dark violet one around it, so it shows on a light or a dark component (Product Owner, 2026-11-22: "une ligne claire et une ligne avec ton violet foncé"). For this design system only. Drawn with the effect styles `focus-ring` (outside a control) and `focus-ring-inset` (inside a line of a list, a tree or a table): see [Foundations](02-foundations.md#shadows); as two lines instead on a round or transparent control, so that the SVG export shows it right ([Figma file](04-figma-file.md#ways-of-figma-to-keep-in-mind)).
+- **Rule**: the keyboard focus of every component is two lines: a light one against the component, then a dark violet one around it, so it shows on a light or a dark component (Product Owner, 2026-11-22: "une ligne claire et une ligne avec ton violet foncé"). For this design system only. Its values are the tokens `focus-ring` (outside a control) and `focus-ring-inset` (inside a line of a list, a tree or a table): see [Foundations](02-foundations.md#shadows). In Figma, every control draws them as two lines, so that the SVG export shows them right ([Figma file](04-figma-file.md#ways-of-figma-to-keep-in-mind)).
 - **Skill**: `check-accessibility-in-the-design` asks for a visible focus with 3:1 contrast; one line in `focus` passes against a light background but not against a dark control (the toggle on). The rule adds to the skill.
 - **Status**: Added.
 

@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Design system](../README.md) › [Molecules](README.md) › content-table
 
-A table of a description, as the visual editor shows it: a header line, then its lines, each cell a text. Under the mouse, small + insert a line or a column where they sit ([MD-03.13](../../screens/metadata.md#md-03--documentation)).
+A table of a description, as the visual editor shows it: a header line, then its lines, each cell a text. Under the mouse, a small + inserts a line or a column where it sits ([MD-03.13](../../screens/metadata.md#md-03--documentation)).
 
 ## Figma
 
@@ -19,7 +19,6 @@ A table of a description, as the visual editor shows it: a header line, then its
 | Input | Type | Default | Figma |
 | --- | --- | --- | --- |
 | `rows` | the lines of the Markdown table, the first one its header | — | the texts of its cells (a sample of 3 columns and 3 lines) |
-| `hover` | boolean | `false` | `state=hover` |
 
 ## Outputs
 
@@ -33,7 +32,8 @@ A table of a description, as the visual editor shows it: a header line, then its
 ## Behaviour
 
 - Header line on `layer-02` in `body-strong`, the other lines in `body`; lines of `border-subtle` between cells and around the table, radius `radius-sm`.
-- Under the mouse, every + of the table shows at once (assistant's reading); a + sits half outside the table, so the component keeps 8 px on its left and top and 24 px on its right and bottom in both states: the table never moves.
+- Under the mouse, two + show (Product Owner, 2026-11-23): the one of the line limit nearest to the mouse (between two lines, or under the table near the bottom edge) and the one of the column limit nearest to it (between two columns, or on the right near the right edge). `state=hover` shows the mouse in the middle of the table, `state=hover-edge` near its bottom right corner.
+- A + sits half outside the table, so the component keeps 8 px on its left and top and 24 px on its right and bottom in every state: the table never moves.
 - Each + is an [insert-button](../atoms/insert-button.md).
 - No hover per cell: a cell is edited as text, as in a word processor.
 

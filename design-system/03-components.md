@@ -4,9 +4,7 @@
 
 Status: first draft, written by the assistant on 2026-11-22 from the [kinds of control](../screens/README.md#kinds-of-control), the [layout rules](../screens/README.md#layout-rules) and the [screens of Metadata](../screens/metadata.md). Not validated.
 
-The rules every component follows. Each component has its own sheet, in the folder of its level: what it is, its link in Figma, the table of its variants and states exported from Figma, its inputs and outputs, its behaviour, and the components it is made of.
-
-Every component is named after its structure, never after a screen; the same name in Figma and in code (`text-input` is `atoms/text-input/` in `synoptic-studio-design-system`). Variants are written `property=value`.
+The rules every component follows. Each component has its own sheet, in the folder of its level. A component is named after its structure, never after a screen, with the same name in Figma and in code (`text-input` is `atoms/text-input/` in `synoptic-studio-design-system`); variants are written `property=value`.
 
 ## The levels
 
@@ -35,21 +33,21 @@ flowchart LR
 | Templates | [templates](templates/README.md) | 1 |
 | Screens | [metadata](metadata/README.md) | the 42 frames of the page Metadata |
 
-Only the components the screens of Metadata use have a sheet (Product Owner, 2026-11-22: "que les composants qui sont vraiment dans les métadatas, et rien d'autre pour l'instant"). Each level's README lists the components left out.
+Only the components the screens of Metadata use have a sheet; each level's README lists the ones left out.
 
 ## What a sheet holds
 
 | Section | What it says |
 | --- | --- |
 | Title and first line | Its name, what it is, and when another component fits better. |
-| Figma | A table of its nodes: its component or component set, and the variants worth reaching, each id linked to it. |
+| Figma | A table of its nodes, each id linked to it. |
 | Variants and states | The table of the Figma file, exported as SVG. |
 | Inputs | What the code gives it: name, type, default, and the Figma property it matches. |
 | Outputs | What it tells the code: the event, when, and its value. |
-| Behaviour | What the table cannot show: mouse, keyboard, overflow, the decisions of the Product Owner. |
+| Behaviour | What the table cannot show: mouse, keyboard, overflow. |
 | Made of | The components it holds and their role; none for an atom. |
 
-A state that comes from the mouse or the keyboard (`hover`, `pressed`, `focus`) is never an input. A sheet says what a component is made of, never where it is used (Product Owner, 2026-11-22: "j'ai pas besoin de savoir où il est utilisé en amont").
+A state that comes from the mouse or the keyboard is never an input. A sheet says what a component is made of, never where it is used.
 
 ## States every interactive component has
 
@@ -57,27 +55,25 @@ A state that comes from the mouse or the keyboard (`hover`, `pressed`, `focus`) 
 | --- | --- |
 | `default` | At rest. |
 | `hover` | The mouse is over it. |
-| `pressed` | The mouse button is down on it. |
-| `focus` | Reached with the keyboard: the double focus line (`focus-ring`, or `focus-ring-inset` on a line), on the hover background when the component has none. It follows the shape of the control: round on a radio. On a control with a transparent background or a round shape, Figma draws it as two lines rather than an effect ([Figma file](04-figma-file.md#ways-of-figma-to-keep-in-mind)). |
+| `pressed` | The mouse button is down on it; a field has none, a click puts it in `focus`. |
+| `focus` | Reached with the keyboard: the double focus line (`focus-ring`, or `focus-ring-inset` on a line), following the shape of the control, on the hover background when the component has none. |
 | `disabled` | Cannot be used. |
-
-A field (`text-input`, `number-input`, `text-area`) has no `pressed`: a click puts it in `focus`.
 
 ## Rules for every component
 
-- **Lines of a list.** A line of a list, a tree or a table has rounded corners, `radius-sm`, like every control (Product Owner, 2026-11-22: "si on met un border radius, j'aimerais bien qu'il soit partout"). Its list leaves `spacing-03` on each side and `spacing-01` between lines, so a line in `hover` or `selected` never touches the edges. A line has no line under it: only the header of a table keeps a straight line under it.
-- **What is selected does not react.** What is selected and cannot be clicked again (the item of a `segmented-control`, a line of a list, a part, an item of the rail or of the top bar, a swatch, the chosen item of a menu) does not react to the mouse: no hover, no press, no click (Product Owner, 2026-11-22). Two exceptions: a `toggle-button` turned on still reacts, since a click turns it off; a selected `tree-row` still shows its + on hover, since a sub-type can be added to it (Product Owner, 2026-11-22).
-- **Dragging.** A line turns violet (`dragging`) only while its handle is held, never on a click of the line (Product Owner, 2026-11-22): tables and faceplate elements alike.
-- **Veils.** The hover, the press and the drag are a dark veil laid over the component's own background (`layer-hover`, `layer-pressed`, `layer-active`). At rest the component holds the same veil, transparent (`layer-transparent`), so that the change only fades the veil in.
-- **Lists that open.** A list that opens over the page (a menu, a select, a picker) is 280 high at most: beyond, it scrolls inside, with a `scrollbar`, and it always stays `spacing-04` from the edge of the window. The height of 280 is the assistant's choice. Once scrolled to the end, its last item keeps the same margin as the first (Product Owner, 2026-11-22).
-- **Focus outside.** The double focus line is drawn outside the control: no frame without a background cuts what overflows it, so the line shows whole even when a field touches the edge of its column, its cell or its slot. Only a surface with a background and rounded corners cuts, and it leaves room for the line with its padding.
-- **Strokes do not move the content.** A line that gets thicker in a state (`open`, `error`, `selected`) is drawn over the padding: the text and the icons stay in place (Product Owner, 2026-11-22: "le texte se déplace alors qu'il ne devrait pas").
-- **One line of text.** A text on one line (a field, a select, a line of a list, a tree or a table) never wraps: what does not fit ends with "…".
-- **Slots.** A part whose content changes from one screen to the next is a slot, filled on the screen with instances: the lines of `tree`, `list-panel` and `data-table`, the column headers, the cells of a line, the add buttons of `list-title`, the fields and elements of `faceplate-element`.
-- **Open with the keyboard.** A control that opens a list keeps the double focus line while open only when the keyboard opened it (`open-focus`); opened with the mouse, it shows the line of `open` alone (Product Owner, 2026-11-22).
-- **Leaving focus.** Leaving `focus` or `open` always goes back to `default`, the state that has the hover: a second click on a field, a click on an open select, a click on a checkbox, a radio or a toggle in focus (to its next value) (Product Owner, 2026-11-22).
-- **Shown as tables.** Every component is shown in the Figma file as a table of its variants and its states, grouped by family: see [Figma file](04-figma-file.md#how-a-page-shows-its-components) and [Skill rules R9](skill-rules.md#r9--components-shown-as-tables-and-described-in-sheets).
-- **Prototyped.** Every interactive component is prototyped in its component set: `hover` while the mouse is over it, `pressed` while its button is down, and a click to the next state. See [Skill rules R8](skill-rules.md#r8--components-prototyped-on-their-own).
+- **Lines of a list**: rounded (`radius-sm`), `spacing-03` from the sides of their list and `spacing-01` apart, with no line under them except the header of a table.
+- **Selected**: what is selected and cannot be clicked again does not react to the mouse, except a `toggle-button` on and the + of a selected `tree-row`.
+- **Dragging**: a line turns `dragging` only while its handle is held.
+- **Veils**: hover, press and drag are a dark veil over the component's background, transparent at rest (`layer-transparent`, `layer-hover`, `layer-pressed`, `layer-active`).
+- **Lists that open**: 280 high at most, then they scroll inside, `spacing-04` from the window's edge, the last item with the same margin as the first.
+- **Focus outside**: the focus line is drawn outside the control and never cut, except by a surface with a background, which leaves room for it.
+- **Strokes**: a line that thickens in a state never moves the content.
+- **One line of text**: it never wraps; what does not fit ends with "…".
+- **Slots**: a part whose content changes from one screen to the next is a slot, filled with instances.
+- **Open with the keyboard**: a control that opens a list keeps the focus line while open only when the keyboard opened it (`open-focus`).
+- **Leaving focus**: leaving `focus` or `open` always goes back to `default`.
+- **Shown as tables**: every component is shown in Figma as a table of its variants and states ([Figma file](04-figma-file.md#how-a-page-shows-its-components)).
+- **Prototyped**: every interactive component is prototyped in its component set: hover, press, and a click to the next state ([Skill rules R8](skill-rules.md#r8--components-prototyped-on-their-own)).
 
 ## Content states drawn on the page Metadata
 
