@@ -291,7 +291,7 @@ erDiagram
         "internal_id": "01a1f800-0000-7000-8000-000000000030",
         "kind": "trigger",
         "id": "start",
-        "description": "Asks the model to start the pump."
+        "description": "Tells that the start of the pump was asked."
       },
       {
         "internal_id": "01a1f800-0000-7000-8000-000000000031",

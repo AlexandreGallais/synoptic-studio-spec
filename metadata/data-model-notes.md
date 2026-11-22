@@ -152,7 +152,7 @@ Every field whose value is one word from a fixed list. Each is written in the JS
 | `link_kind` | `LINK.kind` | path, url | A path to a file or a folder, or a web address; held in `LINK.address`. |
 | `direction` | `SIGNAL.direction` | input, output | The model receives it, or the model sends it. |
 | `value_type_kind` | `VALUE_TYPE.kind` | integer, real, boolean, enum | A whole number, a number, true or false, an item of an enum. |
-| `command_kind` | `COMMAND.kind` | set_input_signal, trigger, override_output_signal | Send a fixed value to an input signal; tell the model something happened; replace the value of an output signal by a fixed value. |
+| `command_kind` | `COMMAND.kind` | set_input_signal, trigger, override_output_signal | Send a fixed value to an input signal; tell the layer above the model that an action happened (never the model); replace the value of an output signal by a fixed value. |
 | `enum_kind` | `ENUM.kind` | global, template | Items written on the Enums page, the same everywhere; or items completed on each placed symbol. |
 | `faceplate_element_kind` | `FACEPLATE_ELEMENT.kind` | signal, command, title, paragraph, group | See [The faceplate, box by box](#the-faceplate-box-by-box). |
 | `access` | `SIGNAL_FIELD.access` | read, write, override | Shown only; typed in, for an input; typed in, for an output. |
@@ -609,6 +609,14 @@ Asked by the Product Owner on 2026-11-22 ("j'aimerais bien que ce soit plus expl
 - **The list `command_kind` is `set_input_signal`, `trigger`, `override_output_signal`**: each name says which signal it acts on. It replaces `set_signal` and `override`; `trigger` stays.
 - `SIGNAL_FIELD.access` keeps `read`, `write`, `override`: only the kinds of a command change, so `override` is no longer the same word in both lists (section of 2026-11-22, names, above).
 - Written in [Command](entities/18-command.md), [Command target](entities/17-command-target.md), the [Data model](data-model.md) and [Files](files.md).
+
+## Changed on 2026-11-22 (who receives a trigger)
+
+Said by the Product Owner on 2026-11-22 ("le trigger, c'est pas du tout pour le modèle, parce que le modèle, il a que des inputs et des outputs [...] c'est pour dire un truc au-dessus du modèle, de lui envoyer tel ou tel truc en fonction du trigger").
+
+- **A trigger never goes to the model**: it tells the layer above the model that an action happened, and that layer decides what to send to the model. It replaces "the model decides what to do" (decision 0019).
+- Its description says what that layer is expected to do. The name and the nature of that layer are an open question of the [draft](draft.md#open-questions-4).
+- Written in [Command](entities/18-command.md), the example of the [Data model](data-model.md), the list `command_kind` above, the [draft](draft.md#commands) and [MD-05.12](../screens/metadata.md#md-05--commands).
 
 ## Not in the schema yet
 

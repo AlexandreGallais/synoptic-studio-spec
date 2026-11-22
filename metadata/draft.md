@@ -967,10 +967,10 @@ A command is how the front acts with one click. Three kinds, kept apart because 
 | Kind | Meaning | What the user edits |
 | --- | --- | --- |
 | Set a signal | "This input must take this value". | Its ID, the signal targeted (an input of the model, picked by its ID in the list of signals), the value sent, fixed in Metadata, and its description. |
-| Trigger | "This happened, deal with it". | Its ID and its description, defined by the user. It targets nothing: the model decides what to do. |
+| Trigger | "An action happened". | Its ID and its description, defined by the user. It targets nothing and never goes to the model, which only has inputs and outputs: it goes to the layer above the model, which decides what to send to the model for it (Product Owner, 2026-11-22). |
 | Override an output | "I want this output to show this value instead of the model's". | Its ID, the signal targeted (an output of the model, picked by its ID in the list of signals), the value, fixed in Metadata, and its description. |
 
-A command has an **ID** and a kind (Product Owner, 2026-11-16: the column is called ID, as for the signals, never "name"), and a **description** (Product Owner, 2026-11-20: "commande, pareil"; decision 0052): what the command means, for the person who writes the model. It matters most for a trigger, whose ID is all the model gets. Plain text: assistant's reading. Optional, written in the configuration files sent with the model and edited in Metadata only, as for the signals (Product Owner, 2026-11-20).
+A command has an **ID** and a kind (Product Owner, 2026-11-16: the column is called ID, as for the signals, never "name"), and a **description** (Product Owner, 2026-11-20: "commande, pareil"; decision 0052): what the command means, for the person who writes the model. It matters most for a trigger, whose ID is all the layer above the model gets. Plain text: assistant's reading. Optional, written in the configuration files sent with the model and edited in Metadata only, as for the signals (Product Owner, 2026-11-20).
 
 ```mermaid
 flowchart TD
@@ -979,7 +979,7 @@ flowchart TD
     C --> O[Override an output]
     S --> TS["Target: an input, picked by its ID"]
     S --> F["Fixed value, of the target's type"]
-    E --> N["Its ID only; no target"]
+    E --> N["Its ID only, to the layer above the model; no target"]
     O --> TO["Target: an output, picked by its ID"]
     O --> FO["Fixed value, of the target's type"]
 ```
@@ -1045,7 +1045,7 @@ The commands of a type are shown in **one table**, like the signals (Product Own
 | Description | What the command means, for the person who writes the model (Product Owner, 2026-11-20, decision 0052). Last column of values, as for the signals (assistant's reading). It takes the room left. |
 | Delete | A delete button (an icon), in the last column, on the far right, with no header; a click opens a warning before anything is deleted (Product Owner, 2026-11-16). Not on the inherited lines. |
 
-- A trigger leaves the target and the value empty; its description says what the model is expected to do with it.
+- A trigger leaves the target and the value empty; its description says what the layer above the model is expected to do with it.
 - The button that adds a command is a small **+ icon on the right of the title "Commands"**, above the table (see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)).
 - The columns of the handle and of the delete button have no header and take the least room possible (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
 - A command is deleted with the delete button of its line, then a warning that asks to confirm; there is no right click in Metadata (Product Owner, 2026-11-16; see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
@@ -1064,8 +1064,8 @@ The commands of `centrifugal_pump`, with every kind and every type of value (Pro
 | `pump`, read only | Override an output | `force_flow_zero` | `flow` (real output) | 0 | Shows a flow of zero, whatever the model says. |
 | own | Set a signal | `auto_mode` | `mode` (enum input) | Automatic (key 2) | Hands the pump to the automatic control. |
 | own | Set a signal | `nominal_speed` | `speed_setpoint` (integer input) | 1450 | Asks the nominal speed of the motor. |
-| own | Trigger | `reset_fault` |  |  | Asks the model to clear the fault if its cause is gone. |
-| own | Trigger | `request_maintenance` |  |  | Tells the model a maintenance was asked. |
+| own | Trigger | `reset_fault` |  |  | Tells that a reset of the fault was asked; the layer above the model clears it if its cause is gone. |
+| own | Trigger | `request_maintenance` |  |  | Tells that a maintenance was asked. |
 
 ### Where it is used
 
@@ -1081,6 +1081,7 @@ A text of a symbol that becomes an input when clicked writes an **input signal**
 
 - Override an output: who applies the override (the model, the server, the front), what the model and the other screens see while it holds, and how it ends (a second click, a command that lifts it, a time limit)? If the answer is the server, it must be checked against decision 0001 (proposed): the server only communicates with files.
 - Since 2026-11-17 an output can also be overridden by a value a person types in the faceplate, when its signal element is set to "override" (an input is set to "write"; see [Presets](#typing-a-value)). The same answer will serve both ways.
+- The layer above the model, which receives the triggers (Product Owner, 2026-11-22): its name in the specs, and what it is (part of the simulation, the software that runs the model...). It is not the server of Synoptic Studio, which only communicates with files (decision 0001, proposed).
 
 ## Presets and their faceplate
 
@@ -1866,7 +1867,7 @@ An earlier example, with made-up identifiers. Replaced on 2026-11-21 by [The sch
       "id": "start",
       "targetSignalInternalId": null,
       "value": null,
-      "description": "Asks the model to start the pump."
+      "description": "Tells that the start of the pump was asked."
     }
   ],
   "flags": []

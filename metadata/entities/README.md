@@ -54,5 +54,5 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 | [Value type](15-value-type.md) | What kind of value a signal holds, and for a number, the quantity it measures. | Draft |
 | [Signal](16-signal.md) | A value that goes between the front and the model, as an input or an output. | Draft |
 | [Command target](17-command-target.md) | The signal a command sends its value to, and that fixed value. | Draft |
-| [Command](18-command.md) | What the front sends to the model with one click: a fixed value to an input, a trigger, or an override of an output. | Draft |
+| [Command](18-command.md) | What the front sends with one click: a fixed value to an input, an override of an output, or a trigger for the layer above the model. | Draft |
 | [Appearance](19-appearance.md) | The icon and the color a type shows, copied when picked; null, those of its parent. | Draft |

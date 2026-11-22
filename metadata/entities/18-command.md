@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A command is what the front sends to the model with one click: a fixed value to an input, a trigger, or a fixed value that overrides an output. A command that sends a value has a [command target](17-command-target.md): the signal and the value. A command exists only inside its type, in the type's list of commands (see the [Data model](../data-model.md)); a sub-type inherits the commands of its parent. Its `id` is the contract with the model: renaming it breaks the models that use it.
+A command is what the front sends with one click: a fixed value to an input, a fixed value that overrides an output, or a trigger. A trigger never goes to the model, which only has inputs and outputs: it tells the layer above the model that an action happened, and that layer decides what to send to the model. A command that sends a value has a [command target](17-command-target.md): the signal and the value. A command exists only inside its type, in the type's list of commands (see the [Data model](../data-model.md)); a sub-type inherits the commands of its parent. Its `id` is a contract: renaming it breaks what uses it, such as the layer above the model for a trigger.
 
 ## The entity
 
@@ -42,7 +42,7 @@ erDiagram
       "readOnly": true
     },
     "kind": {
-      "description": "set_input_signal: sends a fixed value to an input signal; trigger: tells the model something happened, the model decides what to do; override_output_signal: replaces the value of an output signal by a fixed value.",
+      "description": "set_input_signal: sends a fixed value to an input signal; trigger: tells the layer above the model that an action happened, never the model itself; that layer decides what to send to the model; override_output_signal: replaces the value of an output signal by a fixed value.",
       "enum": ["set_input_signal", "trigger", "override_output_signal"]
     },
     "id": {
@@ -52,7 +52,7 @@ erDiagram
       "examples": ["start"]
     },
     "description": {
-      "description": "What the command means, for the person who writes the model; written in the configuration files sent with the model.",
+      "description": "What the command means, for the person who writes the model, or, for a trigger, what the layer above the model is expected to do; written in the configuration files sent with the model.",
       "type": ["string", "null"],
       "minLength": 1
     },
