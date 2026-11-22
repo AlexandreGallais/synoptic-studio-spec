@@ -18,8 +18,8 @@ A quantity is what a value measures, such as mass or temperature: a signal whose
 erDiagram
     QUANTITY {
         uuid internal_id PK
-        uuid default_unit FK
         text name
+        uuid default_unit FK
         boolean offers_relative_quantity
     }
     QUANTITY ||--|{ UNIT_SYSTEM : "holds"
@@ -32,7 +32,7 @@ erDiagram
   "$id": "quantity.schema.json",
   "title": "Synoptic Studio quantity",
   "type": "object",
-  "required": ["internal_id", "default_unit", "name", "offers_relative_quantity", "unit_systems"],
+  "required": ["internal_id", "name", "default_unit", "offers_relative_quantity", "unit_systems"],
   "additionalProperties": false,
   "properties": {
     "internal_id": {
@@ -41,16 +41,16 @@ erDiagram
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
       "readOnly": true
     },
-    "default_unit": {
-      "description": "Foreign key to one of its own units: every conversion of the quantity is written against it.",
-      "type": "string",
-      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
-    },
     "name": {
       "description": "Unique among the quantities.",
       "type": "string",
       "minLength": 1,
       "examples": ["temperature"]
+    },
+    "default_unit": {
+      "description": "Foreign key to one of its own units: every conversion of the quantity is written against it.",
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
     },
     "offers_relative_quantity": {
       "description": "Whether a signal of this quantity may hold a difference. Only for a quantity whose conversions all multiply then shift, such as temperature, as the tests of the catalogue check.",

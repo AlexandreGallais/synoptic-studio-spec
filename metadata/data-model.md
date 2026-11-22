@@ -16,8 +16,8 @@ config:
 erDiagram
     TYPE {
         uuid internal_id PK
-        uuid parent FK
         text id
+        uuid parent FK
     }
     APPEARANCE {
         uuid icon FK "the icon picked in an icon set"
@@ -121,8 +121,8 @@ erDiagram
     }
     QUANTITY {
         uuid internal_id PK
-        uuid default_unit FK "one of its units"
         text name
+        uuid default_unit FK "one of its units"
         boolean offers_relative_quantity "a signal of it may have relative_quantity true"
     }
     UNIT_SYSTEM {
@@ -208,8 +208,8 @@ erDiagram
   "format_version": 1,
   "type": {
     "internal_id": "01a1f800-0000-7000-8000-000000000001",
-    "parent": "01a1f800-0000-7000-8000-000000000000",
     "id": "centrifugal_pump",
+    "parent": "01a1f800-0000-7000-8000-000000000000",
     "appearance": {
       "icon": "01a1f800-0000-7000-8000-000000000700",
       "icon_drawing": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\"/></svg>",
@@ -507,8 +507,8 @@ erDiagram
   "format_version": 1,
   "quantity": {
     "internal_id": "01a1f800-0000-7000-8000-000000000910",
-    "default_unit": "01a1f800-0000-7000-8000-000000000911",
     "name": "temperature",
+    "default_unit": "01a1f800-0000-7000-8000-000000000911",
     "offers_relative_quantity": true,
     "unit_systems": [
       {
