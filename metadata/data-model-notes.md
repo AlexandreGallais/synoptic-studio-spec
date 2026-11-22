@@ -574,8 +574,20 @@ The Product Owner answered the three questions of the quantity files in the ques
 ## Noted on 2026-11-22 (syntax of the formulas)
 
 - **The syntax of the formulas of a conversion goes to a documentary research** (Product Owner: "il va falloir faire une grosse recherche documentaire"), a task of the specification feature: the operators, functions and constants needed to convert from one unit to another of the same quantity, the grammar, and an evaluation without `eval`. It replaces "chosen with the architecture" of decision 0049.
-- Its scope is one quantity at a time, never everything into everything (Product Owner: "pas convertir tout en tout"): converting a temperature into an energy would need other quantities and stays out.
+- Its scope is one quantity at a time, never everything into everything (Product Owner: "pas convertir tout en tout"): converting a temperature into an energy would need other quantities and stays out. Widened the same day to the whole subject of conversions (next section).
 - **Its result is written in a file of its own in Metadata, not in the entity files** (Product Owner: "ça n'ira pas dans les entités"); [Conversion](entities/11-conversion.md) will link to it. The question left the open questions of Conversion and of this page.
+
+## Noted on 2026-11-22 (the whole subject of conversions)
+
+Said by the Product Owner after the research above was written ("je veux bien que tu fasses une recherche sur tout le sujet [...] peut-être qu'il me manque un truc"). Nothing here is settled: the research says what is missing, then the Product Owner decides.
+
+- **The research covers the whole subject of conversions, not only the syntax of the formulas**: what the product must be able to convert, then how the formulas are written.
+- **Kept as the goal**: any unit of a quantity into any other of the same quantity (decigrams into hectograms or milligrams), including those that do not only multiply, such as degrees Celsius into Fahrenheit, whose formula is fixed (Product Owner: "c'est des trucs qui sont fixes").
+- **Refused**: a conversion that means nothing, such as a mass into a molar mass (Product Owner: "ça fait aucun sens").
+- **Doubts of the Product Owner, left to the research**:
+  - a conversion between unit systems, such as metric and imperial ("potentiellement [...] on verra"), while today a unit system only groups the units of its quantity ([Unit system](entities/13-unit-system.md));
+  - a conversion from one quantity to another ("peut-être que c'est de quantité à quantité"), while today a conversion only exists inside its quantity (decision 0049).
+- Until the research and a decision, the entity files keep the rules of decision 0049.
 
 ## Not in the schema yet
 
