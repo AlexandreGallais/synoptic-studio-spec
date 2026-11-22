@@ -41,3 +41,5 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 | [Icon](06-icon.md) | One drawing of an icon set, picked for the appearance of a type. | Draft |
 | [Icon set](07-icon-set.md) | A set of icons of one style or one origin: the icons a type can pick. | Draft |
 | [Flag](08-flag.md) | A key each placed symbol of a type has on or off, written in the configuration files for a program outside. | Draft |
+| [Link entity](09-link.md) | A path to a file or a folder, or a URL, in the documentation of a type. | Draft |
+| [Documentation](10-documentation.md) | What explains a type to people: a description in Markdown and links. | Draft |
