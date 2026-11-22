@@ -35,7 +35,7 @@ erDiagram
       "readOnly": true
     },
     "id": {
-      "description": "The key written in the configuration files when the flag is on.",
+      "description": "The key written in the configuration files when the flag is on; unique among the flags of its type and of the types it inherits from.",
       "type": "string",
       "minLength": 1,
       "examples": ["under_maintenance"]
@@ -48,7 +48,3 @@ erDiagram
   }
 }
 ```
-
-## Open questions
-
-- Is the `id` of a flag unique in its type and the types it inherits from? Two flags with the same `id` would write the same key twice in the configuration files.

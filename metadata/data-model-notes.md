@@ -540,6 +540,12 @@ Said by the Product Owner on 2026-11-22 ("c'est un peu comme les couleurs [...] 
 - **The icon sets the software ships are drawn for it, following its own rules** (Product Owner, same day: "on va les faire selon des règles"): no licence of others to keep.
 - **Which icon sets ship, and their names, are chosen in due time**, as for the palettes. The Product Owner gave, with a doubt, an example of a file name: `synoptic-studio.icon-set.json` ("un truc du genre. J'en ai aucune idée").
 
+## Settled on 2026-11-22 (unique id of a flag)
+
+Said by the Product Owner on 2026-11-22, answering the questionnaire ("Unique dans le type et ses parents").
+
+- **The `id` of a flag is unique among the flags of its type and of the types it inherits from**: a placed symbol has the flags of its type and of its parents, so two flags with the same `id` would write the same key twice in the configuration files. Written in the `description` of `id` in [Flag](entities/08-flag.md). It answers the question left open in the [whole draft](draft.md#flags) on 2026-11-17; the format of an `id` stays free.
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
