@@ -1882,8 +1882,8 @@ An earlier example, with made-up identifiers. Replaced on 2026-11-21 by [The sch
   - The check before saving works file by file (see [Files and conflicts](../storage/files-and-conflicts.md)): two people who change two different types never collide.
   - A change in Git shows one small file.
   - Checking that an ID is unique in the whole tree (decision 0047) needs every type read: they all are, when Metadata opens.
-- **Proposal: the file is named by internal ID** (`types/<internal ID>.json`), never by ID: renaming an ID must break nothing.
-- **Proposal: one file per global enum too**, for the same reasons (`enums/<internal ID>.json`).
+- **Proposal: the file is named by internal ID** (`types/<internal ID>.json`), never by ID: renaming an ID must break nothing. _Replaced on 2026-11-22: a file's name means something to a person, never an internal ID; a type's file is `<id>.type.json` ([Files](files.md#the-name-of-a-file), [Type](entities/30-type.md))._
+- **Proposal: one file per global enum too**, for the same reasons (`enums/<internal ID>.json`). _Replaced on 2026-11-22: every enum is in one file, `enums.json` (decision 0072)._
 - **Each file starts with the version of its format**, `"format": 1`, its first key, so that a later Synoptic Studio can still read an older file. It is the version of the file format, not of Metadata (decision 0053).
   - It belongs to the file, not to an object: it is described here, in the rules of the files, and never in the schema of the [Data model](data-model.md) (Product Owner, 2026-11-21, answering the questionnaire: "Règles des fichiers seulement"). A box `FILE` in the schema was the other way; not chosen.
 

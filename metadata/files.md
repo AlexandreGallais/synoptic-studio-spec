@@ -44,9 +44,9 @@ The rules every file of Metadata follows. An [entity file](entities/README.md) g
 - An entity with a file of its own gives the file's name in its tag `File`.
 - **A file's name means something to a person**, never an `internal_id`: the files are read and shared by people.
 - **One file for the whole list**: the name of its list, then `.json` (`designations.json`). That name is reserved for that entity: no other file may take it.
-- **One file per thing** (a palette): the file name of its `name`, then the entity's name, then `.json` (`pompes-bleues.palette.json`). Renaming the thing renames its file.
-- **The file name of a `name`, in kebab-case**: in lower case, without accents, each run of characters other than a letter or a digit becoming one hyphen `-`, without a hyphen at either end ("Pompes bleues" gives `pompes-bleues`). The same on Windows, macOS and Linux. The hyphen, not the underscore: it is the usual separator in file names and web addresses, and keeps file names apart from the snake_case keys inside the files.
-- **Two things of the same entity never give the same file name**: a `name` whose file name is taken, or that gives an empty one, is refused.
+- **One file per thing** (a palette, a type): the file name of its `name`, or of its `id` when it has one, then the entity's name, then `.json` (`pompes-bleues.palette.json`, `centrifugal-pump.type.json`). Renaming the thing renames its file.
+- **The file name of a `name` or an `id`, in kebab-case**: in lower case, without accents, each run of characters other than a letter or a digit becoming one hyphen `-`, without a hyphen at either end ("Pompes bleues" gives `pompes-bleues`). The same on Windows, macOS and Linux. The hyphen, not the underscore: it is the usual separator in file names and web addresses, and keeps file names apart from the snake_case keys inside the files.
+- **Two things of the same entity never give the same file name**: a `name` or an `id` whose file name is taken, or that gives an empty one, is refused (`centrifugal_pump` and `centrifugal-pump` both give `centrifugal-pump`).
 
 ## The two configuration folders
 

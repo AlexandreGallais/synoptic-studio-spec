@@ -59,3 +59,11 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 | [Display format](20-display-format.md) | The unit and the decimals a preset shows an integer or a real with. | Draft |
 | [Boolean texts](21-boolean-texts.md) | The words a preset shows for true and for false. | Draft |
 | [Preset value](22-preset-value.md) | How a preset starts and shows one signal: its start value, and its display format or its boolean texts. | Draft |
+| [Bound](23-bound.md) | The minimum or the maximum of a range: a typed number, or the value of an input signal. | Draft |
+| [Range](24-range.md) | The values a person may type in a number field of the faceplate. | Draft |
+| [Signal field](25-signal-field.md) | A signal shown in the faceplate, with its label, and how a person types it when its access allows. | Draft |
+| [Command button](26-command-button.md) | A button of the faceplate that sends one command. | Draft |
+| [Text content](27-text-content.md) | The text of a title or a paragraph of the faceplate: typed, or the text of a designation. | Draft |
+| [Faceplate element](28-faceplate-element.md) | One line of the faceplate builder: a signal, a command, a title, a paragraph or a group. | Draft |
+| [Preset](29-preset.md) | The defaults a symbol and a synoptic start from: the preset values and the faceplate. | Draft |
+| [Type](30-type.md) | What a symbol represents, in a tree of types, with everything it holds; one file each. | Draft |
