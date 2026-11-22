@@ -6,7 +6,7 @@ Status: everything written around the schema of the [Data model](data-model.md) 
 
 ## Rules of the schema
 
-- `internal_id`: the UUID set by the software, always a UUID; every FK holds one. It is the surrogate key and never leaves the software (its match in the standards: [Files](files.md#the-two-keys-of-an-entity)).
+- `internal_id`: the UUID set by the software, always a UUID; every FK holds one. It is the surrogate key and never leaves the software (its match in the standards: [Identity and renaming](identity-and-renaming.md#the-two-keys)).
   - Every UUID of Synoptic Studio is a **UUID version 7** (Product Owner, 2026-11-21: "le format qui a un timestamp [...] ça permettra d'avoir des trucs plus propres si jamais on met ça dans une base de données"). Version 7 starts with the time of its creation, in milliseconds since 1970 (UTC), so that UUIDs sort in the order they were made; RFC 9562 (May 2024, section 5.7) advises it over versions 1 and 6, the other two with a timestamp.
   - Written in lower case, 36 characters with the dashes; the 13th digit is always `7`.
   - The made-up UUIDs of the examples follow this shape (`01a1f800-0000-7000-8000-…`).
@@ -733,6 +733,11 @@ Fifth questionnaire, same day (decision 0082), each time the advised option:
 Sixth questionnaire, same day:
 
 - **The next document is checks and errors** ("Contrôles et erreurs"): [Checks and errors](checks-and-errors.md), a topic that gathers the rules already written and decides nothing new. It takes over two questions of [Deleting and its consequences](deleting.md): how a refusal and a thing in error show, and a quantity whose file is missing. Screens MD-13.4 and MD-09.7 now say the uniqueness settled the same day (see [unique ids of enums and designations](#settled-on-2026-11-22-unique-ids-of-enums-and-designations)).
+
+Seventh questionnaire, same day (decision 0083), each time the advised option:
+
+- **A key or a name typed that must be unique and is already taken is refused** ("Refusé à la saisie"): the value that was there stays, as for a file name already taken or an `id` taken along a branch. It holds for the `id` of an enum or a designation, the key and the display name of an enum item in its enum, the name of a preset in its type, the `id` of a signal, a command or a flag in its type. Written in [Checks and errors](checks-and-errors.md#refused), [Identity and renaming](identity-and-renaming.md) and screens MD-04.6, MD-05.3, MD-07.3, MD-09.3, MD-09.6, MD-09.7, MD-12.3 and MD-13.4. MD-12.3 no longer says the uniqueness of a flag's `id` is open: it was settled earlier the same day.
+- **The next document is identity and renaming** ("Identité et renommage"): [Identity and renaming](identity-and-renaming.md), a topic that gathers the rules already written and decides nothing new. The two keys and their match in the standards move there from [Files](files.md).
 
 ## Writing rules of the entity files (to become a skill)
 

@@ -17,14 +17,7 @@ The rules every file of Metadata follows. An [entity file](entities/README.md) g
 
 ## The two keys of an entity
 
-- **`internal_id` is always a UUID version 7**, set by the software. It is the surrogate key: every link (FK) holds one, and it never leaves the software.
-- **`id` is never a UUID**: the key the user writes, shown on screen, sent to the model and written in the configuration files.
-- **When a file is exported to a standard**, each key goes to its match there, never the other way round:
-
-| Synoptic Studio | AutomationML | OPC UA | FMI |
-| --- | --- | --- | --- |
-| `internal_id` | `ID` | `NodeId` | — |
-| `id` | `Name` | `BrowseName` | `name` |
+- **`internal_id`, set by the software, and `id`, written by the user**: their rules, their uniqueness and their match in the standards are in [Identity and renaming](identity-and-renaming.md#the-two-keys).
 
 ## From the schema to JSON
 

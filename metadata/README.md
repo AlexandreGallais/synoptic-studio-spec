@@ -11,10 +11,11 @@ Since 2026-11-19, at the Product Owner's request, the documentation of Metadata 
 | File | What it holds |
 | --- | --- |
 | [Data model](data-model.md) | The whole schema of Metadata, the table of its entities with the file each one is kept in, and the types of the fields. |
-| [Files](files.md) | The rules every file of Metadata follows: the `format_version` key, the two keys of an entity, how the schema becomes JSON, the order of the keys, the names of the files and what each file holds. |
+| [Files](files.md) | The rules every file of Metadata follows: the `format_version` key, how the schema becomes JSON, the order of the keys, the names of the files and what each file holds. |
 | [Formulas](formulas.md) | How the two formulas of a conversion are written and computed: what a formula holds, priorities, refused forms, grammar, precision, computing without `eval`, out of domain, checks of the catalogue. From research T6 (decisions 0076, 0077). |
 | [Inheritance of types](inheritance.md) | What a sub-type takes from its parents, what it may change, the order of the inherited lines, and what happens when a parent changes or is missing. |
 | [Deleting and its consequences](deleting.md) | What can be deleted in Metadata, how, and what happens to what points to the deleted thing, in Metadata, in the presets and in the symbols. |
+| [Identity and renaming](identity-and-renaming.md) | How each thing is known: `internal_id` and `id`, the key of each entity and where it is unique, what a rename changes in the software and breaks outside it. |
 | [Checks and errors](checks-and-errors.md) | What the software checks in Metadata, when, and what each check gives: a change refused, a thing flagged in error, a mark in place of a value, or nothing. |
 | [Documentation plan](documentation-plan.md) | The kinds of documents of Metadata (data model, entities, topics, catalogues, screens, journeys...), those written and those missing. |
 | [Entities](entities/README.md) | One file per entity (a box of the schema), written whole: its box and the JSON Schema of its file. Every box of the data model has one since 2026-11-22. |

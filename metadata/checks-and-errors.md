@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-What the software checks in Metadata, when, and what each check gives: a change refused, a thing flagged in error, a mark in place of a value, or nothing. The rules come from decisions 0038, 0042, 0043, 0047, 0051, 0071, 0076, 0078, 0079, 0080, 0081 and 0082, [Files](files.md), [Formulas](formulas.md), [Inheritance of types](inheritance.md), [Deleting and its consequences](deleting.md), the [entity files](entities/README.md) and the [Screens of Metadata](../screens/metadata.md).
+What the software checks in Metadata, when, and what each check gives: a change refused, a thing flagged in error, a mark in place of a value, or nothing. The rules come from decisions 0038, 0042, 0043, 0047, 0051, 0071, 0076, 0078, 0079, 0080, 0081, 0082 and 0083, [Identity and renaming](identity-and-renaming.md), [Files](files.md), [Formulas](formulas.md), [Inheritance of types](inheritance.md), [Deleting and its consequences](deleting.md), the [entity files](entities/README.md) and the [Screens of Metadata](../screens/metadata.md).
 
 ## Where it is used
 
@@ -16,10 +16,11 @@ What the software checks in Metadata, when, and what each check gives: a change 
 | [Formulas](formulas.md) | The refused forms of a formula, a result that is not a finite number, the checks of the catalogue. |
 | [Inheritance of types](inheritance.md) | An `id` already taken along the branch is refused; a type whose parent is missing is flagged in error. |
 | [Deleting and its consequences](deleting.md) | A type that has sub-types is never deleted; what points to a deleted thing is flagged in error. |
+| [Identity and renaming](identity-and-renaming.md) | A key or a name already taken in its list is refused when typed. |
 | [Type](entities/30-type.md), [Signal](entities/16-signal.md), [Command](entities/18-command.md), [Flag](entities/19-flag.md), [Enum](entities/06-enum.md), [Enum item](entities/05-enum-item.md), [Designation](entities/11-designation.md), [Preset](entities/29-preset.md) | Their uniqueness, said in the `description` of their key. |
 | [Range](entities/24-range.md), [Bound](entities/23-bound.md) | A typed value outside the range, a minimum greater than the maximum: refused. |
 | [Command target](entities/17-command-target.md), [Value type](entities/15-value-type.md), [Preset value](entities/22-preset-value.md), [Text content](entities/27-text-content.md) | Flagged in error when what they point to is gone. |
-| [MD-02.8](../screens/metadata.md#md-02--general), [MD-04.6](../screens/metadata.md#md-04--signals), [MD-07.14, MD-07.22](../screens/metadata.md#md-07--presets), [MD-08.10](../screens/metadata.md#md-08--units), [MD-09.6](../screens/metadata.md#md-09--enums), [MD-13.4](../screens/metadata.md#md-13--designations) | Where a check shows on screen. |
+| [MD-02.8](../screens/metadata.md#md-02--general), [MD-04.6](../screens/metadata.md#md-04--signals), [MD-05.3](../screens/metadata.md#md-05--commands), [MD-07.3, MD-07.14, MD-07.22](../screens/metadata.md#md-07--presets), [MD-08.10](../screens/metadata.md#md-08--units), [MD-09.3, MD-09.6, MD-09.7](../screens/metadata.md#md-09--enums), [MD-12.3](../screens/metadata.md#md-12--flags-a-part-of-the-type), [MD-13.4](../screens/metadata.md#md-13--designations) | Where a check shows on screen. |
 | [Faults](../synoptics/08-faults.md) | What a change of Metadata breaks in a synoptic, listed there, never in Metadata. |
 
 ## What a check gives
@@ -56,6 +57,7 @@ flowchart LR
 | --- | --- | --- |
 | A `name` or an `id` whose file name is already taken, or empty | Every entity with a file of its own | [Files](files.md#the-name-of-a-file) |
 | The `id` of a type already taken in the whole tree | MD-02 | Decision 0047 |
+| A key or a name already taken in its list: the `id` of an enum or a designation, the key or the display name of an enum item in its enum, the name of a preset in its type, the `id` of a signal, a command or a flag in its type | MD-04.6, MD-05.3, MD-07.3, MD-09.3, MD-09.6, MD-09.7, MD-12.3, MD-13.4 | Decision 0083 |
 | An `id` of a signal, a command or a flag already taken along the branch: added or renamed in a parent while a sub-type has it as its own line, or reused by a sub-type | MD-04.6, MD-05, MD-12 | Decisions 0080, 0081 |
 | Deleting a type that has sub-types | MD-02.8 | Decision 0082 |
 | A minimum typed greater than the maximum, in the faceplate builder | MD-07.22 | Decision 0079 |
@@ -115,7 +117,7 @@ flowchart LR
 
 - **How a refusal shows**: a message beside the field, a button disabled (the delete of a type that has sub-types), their wording: with the design system.
 - **How a thing in error shows in Metadata**: a mark on the line, on the type in the tree, a list or a counter.
-- **A uniqueness broken by typing**: the `id` of an enum or a designation, the key or the display name of an enum item, the name of a preset, the `id` of a signal in its own type. Refused, as a file name already taken, or flagged in error?
+- **A duplicate found in a file changed by hand**: two keys that must be unique, read from the file; typing refuses them (decision 0083), reading a file does not say.
 - **A formula or a check of the catalogue that fails when a quantity file is read**: the unit left out of the catalogue, or shown in error (gap of MD-08).
 - **A file whose `format_version` the software does not know**, written by a later Synoptic Studio.
 - **A number typed for an integer signal in another display unit** that gives no whole number in the default unit (24.17 rps is 1450.2 rpm): rounded or refused ([Data model: notes](data-model-notes.md#open)).
