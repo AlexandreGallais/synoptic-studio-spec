@@ -77,5 +77,4 @@ erDiagram
 
 ## Open questions
 
-- A type whose color belonged to a palette that was removed: does it follow its parent's color, as when its color is empty?
-- Which palettes ship with the software, and whether the user can add their own: defined with the design system.
+- Which palettes ship with the software: defined with the design system.

@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A color is one color of a [Palette](03-palette.md), picked for the appearance of a type. It exists only inside its palette's file. A type points to it by its `internal_id`: changing its value changes every type that uses it.
+A color is one color of a [Palette](03-palette.md), picked for the appearance of a type. It exists only inside its palette's file.
 
 ## The entity
 

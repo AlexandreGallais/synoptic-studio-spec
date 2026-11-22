@@ -47,7 +47,13 @@ The rules every file of Metadata follows. An [entity file](entities/README.md) g
 - **One file per thing** (a palette): the file name of its `name`, then the entity's name, then `.json` (`pompes-bleues.palette.json`). Renaming the thing renames its file.
 - **The file name of a `name`, in kebab-case**: in lower case, without accents, each run of characters other than a letter or a digit becoming one hyphen `-`, without a hyphen at either end ("Pompes bleues" gives `pompes-bleues`). The same on Windows, macOS and Linux. The hyphen, not the underscore: it is the usual separator in file names and web addresses, and keeps file names apart from the snake_case keys inside the files.
 - **Two things of the same entity never give the same file name**: a `name` whose file name is taken, or that gives an empty one, is refused.
-- Where the files are placed is settled by the software architecture, not here.
+
+## The two configuration folders
+
+- **The configuration files, such as the palettes, are kept in two folders**: the software's and the user's. The software reads both, and offers what it finds in both.
+- **The software's folder** holds what Synoptic Studio ships. The user may change its files by hand; a file they break is read like any file with errors.
+- **The user's folder** holds what the user adds; they do with it what they want.
+- Where the two folders are on each system, and where the other files are placed, is settled by the software architecture, not here.
 
 ## What a file holds
 
@@ -62,4 +68,6 @@ To come: one global JSON Schema will hold the types every entity shares, and the
 
 - JSON files rather than a database: a leaning of the Product Owner, not settled.
 - The catalogue of quantities: one file with one `format_version` at its top, or one file per quantity.
+- Which files are configuration files, in the two folders, beside the palettes: the icons, the catalogue of quantities, others?
+- The same file name, or the same `internal_id`, in the software's folder and in the user's: which one is offered?
 - The other open questions on files stay in the [whole draft](draft.md#files).

@@ -21,7 +21,8 @@ erDiagram
     }
     APPEARANCE {
         uuid icon FK
-        uuid color FK
+        uuid color FK "the color picked in a palette"
+        rgba color_value "a copy of its value, kept when its palette is removed"
     }
     DOCUMENTATION {
         markdown description
@@ -147,7 +148,7 @@ erDiagram
     }
     COLOR {
         uuid internal_id PK
-        text name "optional, shown on hover"
+        text name
         rgba value
     }
     TYPE |o--o{ TYPE : "parent"
@@ -205,7 +206,8 @@ erDiagram
     "id": "centrifugal_pump",
     "appearance": {
       "icon": "01a1f800-0000-7000-8000-000000000700",
-      "color": null
+      "color": null,
+      "color_value": null
     },
     "documentation": {
       "description": "A **centrifugal** pump, driven by a variable speed motor.",
