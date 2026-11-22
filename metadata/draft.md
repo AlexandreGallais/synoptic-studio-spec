@@ -1357,7 +1357,7 @@ Metadata is always editable, and the application keeps no versions of it: the ty
 #### No versions in the application: Git is enough
 
 - **No Versions page** (decision 0053, 2026-11-21): no list of differences, no change log, no undo before a version, no major, minor or patch number. The navigation bar of Metadata holds Types, Units, Enums and Identifiers.
-- **The types are saved as clean JSON files, one per type** (see [As JSON](#as-json)). The user puts them under Git if they want, outside the application; the application does not run Git.
+- **The types are saved as clean JSON files, one per type** (see [As JSON](#as-json)). They are saved in the Git repository of the project, with the Symbol Libs and the synoptics, through a simple Git page of the application (Product Owner, 2026-11-22, which replaces "the application does not run Git"; see [Git](../storage/git.md)).
 - The reason: a free version kept simple; a history kept by the application in files is easy to corrupt ("avec les fichiers, ça fait vite fait chier"), while Git already shows the differences of a clean JSON file and can go back (Product Owner, 2026-11-20).
 - What follows: nothing in the application warns that a change breaks the model (a rename, an enum key changed, a signal removed). The user sees it in the differences of Git. So the JSON files must stay readable and stable, for their differences to be clear.
 - The `"format"` number at the top of each file stays: it is the version of the file format, not a version of Metadata.
@@ -1372,7 +1372,7 @@ flowchart LR
 
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
-| JSON file of a type, versioned with Git by the user | Every page of Metadata, written as it is changed | Git, outside the application; model authors | No | No |
+| JSON file of a type, in the Git repository of the project | Every page of Metadata, written as it is changed | The [Git page](../storage/git.md); model authors | No | No |
 
 ### Open questions
 

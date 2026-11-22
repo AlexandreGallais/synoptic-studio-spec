@@ -11,6 +11,7 @@ Status: draft, written from the Product Owner's oral description on 2026-11-10. 
 | File | What it holds |
 | --- | --- |
 | [`files-and-conflicts.md`](files-and-conflicts.md) | The folder the application points to, the files it generates, and how conflicts between people working on the same folder are avoided. |
+| [`git.md`](git.md) | One Git repository per project for all its files, and a simple Git page to commit, push and create branches; noted for later. |
 
 ## See also
 
