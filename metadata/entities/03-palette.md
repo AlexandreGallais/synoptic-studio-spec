@@ -74,7 +74,3 @@ erDiagram
   }
 }
 ```
-
-## Open questions
-
-- Which palettes ship with the software: defined with the design system.
