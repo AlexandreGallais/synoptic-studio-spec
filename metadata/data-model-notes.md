@@ -482,13 +482,15 @@ Said by the Product Owner on 2026-11-22 ("les couleurs sont dans des palettes [.
 
 ## Settled on 2026-11-22 (color of a type, configuration folders)
 
-Said by the Product Owner on 2026-11-22, answering the two open questions of the [Palette](entities/03-palette.md). Decision to record.
+Said by the Product Owner on 2026-11-22, answering the two open questions of the [Palette](entities/03-palette.md), then the questionnaire that followed (decisions 0070 and 0071).
 
 - **A type keeps the color it picked, even when its palette is removed** (Product Owner: "j'ai pas envie que ça soit cassant [...] inscrire que la couleur vient d'une palette, mais qu'on mette aussi la couleur. Comme ça, si la palette est supprimée, la couleur, elle reste"). `APPEARANCE` holds both: `color`, the FK to the color picked in a palette, and `color_value`, a copy of its value (`#rrggbbaa`). The rule belongs to the type, not to the palette (Product Owner: "j'ai pas l'impression que ce soit dans la palette"), so the [Color](entities/02-color.md) file no longer says that a type points to it.
   - Removing a palette never empties the color of a type: the type does not follow its parent's color then. This answers the first open question of the palette.
   - Assistant's reading, to confirm: `color` is kept as written when its palette is removed, so that putting the palette's file back links the type again; both are `null` when the type has no color of its own.
-  - Still open: when the value of a color changes in its palette, does a type that uses it follow (the copy refreshed), or keep its copy?
+  - **While its palette exists, a type follows the value of its color** (Product Owner, answering the questionnaire the same day; decision 0070): when the color changes in its palette, `color_value` is refreshed. The copy is only used once the palette is gone.
 - **Two configuration folders** (Product Owner: "un dossier de configuration logiciel et un dossier de configuration de l'utilisateur"): the software's holds what it ships, the user's what the user adds. The user may change the software's files by hand ("s'il les casse, c'est de sa faute, et point barre"); their own files are theirs. Written in [Files](files.md#the-two-configuration-folders). It answers the second open question of the palette: the user adds their own palettes in their folder; which palettes ship stays with the design system.
+  - **The same file name in both folders: the user's file is offered** (Product Owner, answering the questionnaire the same day; decision 0071).
+  - Which files go in the two folders beside the palettes: left for later ("on verra ça après"), open in [Files](files.md#open-questions).
 - Also done: the box `COLOR` of the [Data model](data-model.md) loses "optional, shown on hover", as its entity file already did.
 
 ## Not in the schema yet
@@ -510,5 +512,4 @@ Said by the Product Owner on 2026-11-22, answering the two open questions of the
 - The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `UNIT_SYSTEM`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated.
 - Is the `name` of a preset, a quantity, a unit or an icon unique in its list? (A palette's is: settled on 2026-11-22.) To say on each entity file (research T5, open question 3).
 - What the screens show for a color without a name (its value, for example): to write with the screens of the palette (decision 0066).
-- When the value of a color changes in its palette, does a type that uses it follow, or keep its `color_value`?
 - `UNIT.symbol` and the symbol of Synoptic Studio (the drawing placed) share a word: a glossary should say both meanings (research T5, 3.8).

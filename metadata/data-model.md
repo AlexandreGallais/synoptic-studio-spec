@@ -22,7 +22,7 @@ erDiagram
     APPEARANCE {
         uuid icon FK
         uuid color FK "the color picked in a palette"
-        rgba color_value "a copy of its value, kept when its palette is removed"
+        rgba color_value "a copy of its value, refreshed while its palette exists, kept when it is removed"
     }
     DOCUMENTATION {
         markdown description
