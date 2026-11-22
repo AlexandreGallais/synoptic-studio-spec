@@ -40,7 +40,7 @@ erDiagram
       "readOnly": true
     },
     "id": {
-      "description": "The key of the designation, such as tag or location.",
+      "description": "The key of the designation, such as tag or location; unique among the designations.",
       "type": "string",
       "minLength": 1
     },

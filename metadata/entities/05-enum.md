@@ -45,7 +45,7 @@ erDiagram
       "enum": ["global", "template"]
     },
     "id": {
-      "description": "The key of the enum, such as operating_mode.",
+      "description": "The key of the enum, such as operating_mode; unique among the enums.",
       "type": "string",
       "minLength": 1
     },
@@ -85,7 +85,3 @@ erDiagram
   }
 }
 ```
-
-## Open questions
-
-- Is the `id` of an enum unique among the enums?

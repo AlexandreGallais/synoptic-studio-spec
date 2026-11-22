@@ -40,7 +40,7 @@ erDiagram
       "type": "integer"
     },
     "display_name": {
-      "description": "What people read in place of the key; empty, the key is shown.",
+      "description": "What people read in place of the key; unique in its enum, while another enum may hold the same name. Empty, the key is shown.",
       "type": ["string", "null"],
       "minLength": 1
     },

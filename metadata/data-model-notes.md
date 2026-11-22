@@ -502,7 +502,14 @@ Said by the Product Owner on 2026-11-22 ("les enums, non, c'est un truc d'entrep
 - **Two entity files** (the Product Owner's proposal): [Enum item](entities/04-enum-item.md), its box and its schema only, kept inside its enum; [Enum](entities/05-enum.md), its box, its schema and the schema of its file.
 - The example of the [Data model](data-model.md) now shows the file `enums.json`, with a global enum and a template.
 - **A template keeps its items** in `enum_items`, unused, so that going back to global finds them (draft, Enums: changing the kind loses nothing). Assistant's reading of that rule in the file.
-- Open on the entity files: whether the `id` of an enum is unique; whether the items of a template on a placed symbol follow the schema of an enum item.
+- Open on the entity files: whether the items of a template on a placed symbol follow the schema of an enum item.
+
+## Settled on 2026-11-22 (unique ids of enums and designations)
+
+Said by the Product Owner on 2026-11-22, answering the questionnaire ("Unique, pour les enums et les désignations"), with a note on the items.
+
+- **The `id` of an enum is unique among the enums**, and **the `id` of a designation unique among the designations**: both are written in configuration files and picked in lists. Written in the `description` of each `id`.
+- **The name of an item is unique in its enum, not across enums** (Product Owner: "tu peux avoir deux enums avec une même désignation à l'intérieur, parce que c'est deux thèmes différents"): two enums may both hold an item named the same. Assistant's reading of the note, which says "désignation" for the name of an item (`display_name`), to confirm. Written in the `description` of `display_name` in [Enum item](entities/04-enum-item.md).
 
 ## Not in the schema yet
 
