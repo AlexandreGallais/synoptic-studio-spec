@@ -533,7 +533,9 @@ Said by the Product Owner on 2026-11-22 ("c'est un peu comme les couleurs [...] 
 - **The `name` of an icon is optional, and two icons of a set may share it** (Product Owner, answering the questionnaire the same day), as for a color: the key is always written, `null` when empty. What the hover and the search show for an icon without a name is left to the screens.
 - **The drawing of an icon is an ordinary SVG**, which may have a `viewBox` (Product Owner, same day: "c'est un SVG normal").
 - **An icon is drawn with fills only, never strokes**, even its thin lines (Product Owner: "même si c'est des bords fins [...] faut que ce soit du fil, et puis basta"): the color of the type goes on the fills.
-- Open: how the color of the type reaches the fills, the software putting it on every fill or the drawing saying where with `currentColor` (Product Owner: "j'en ai aucune idée"); what the software does with an icon drawn with a stroke; whether a set says its origin and its licence.
+- **The software puts the color of the type on every fill of the drawing**, whatever color the drawing gives it: an icon is always of one color, and any icon set works as it is, with nothing to prepare (Product Owner, answering the questionnaire the same day). `currentColor` is not used.
+- **An icon drawn with a stroke, against the rule, is shown as it is** (Product Owner, same questionnaire): the software does not check the drawings; its stroke may not take the color of the type.
+- Open: whether a set says its origin and its licence.
 
 ## Not in the schema yet
 
