@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A command is what the front sends to the model with one click: a fixed value to an input, a trigger, or a fixed value that overrides an output. A command that sends a value has a [command target](18-command-target.md): the signal and the value. A command exists only inside its type, in the type's list of commands (see the [Data model](../data-model.md)); a sub-type inherits the commands of its parent. Its `id` is the contract with the model: renaming it breaks the models that use it.
+A command is what the front sends to the model with one click: a fixed value to an input, a trigger, or a fixed value that overrides an output. A command that sends a value has a [command target](17-command-target.md): the signal and the value. A command exists only inside its type, in the type's list of commands (see the [Data model](../data-model.md)); a sub-type inherits the commands of its parent. Its `id` is the contract with the model: renaming it breaks the models that use it.
 
 ## The entity
 

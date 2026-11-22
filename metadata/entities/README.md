@@ -18,6 +18,7 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
   - Only a change made after a validation adds a line: the next version, `Draft`, whose `Change` cell lists every change made since the last validation, until it is validated in turn.
   - The `Status` column of [What it contains](#what-it-contains) repeats the status of each file's last version, changed in the same session.
 - **The table of tags** has two columns, `Tag` and `Value`: `File`, with the file's name, when the entity has a file of its own.
+- **A part is numbered just before the entity that has or holds it** (Product Owner, 2026-11-22): Enum item before Enum, Value type before Signal, Command target before Command.
 - **An entity kept inside another one's file** (a [Color](02-color.md), in its [Palette](03-palette.md)) has no table of tags and no section **The file**: its introduction says where it is kept, and the file is described on the entity that has it.
 - **Two JSON Schemas**: the entity's (`$id`: its name, then `.schema.json`, as `designation.schema.json`) and the file's, which refers to the entity's by its `$id` and never repeats its fields. The file's `$id` is the file's name with `.schema.json` (`designations.schema.json`) when the file holds the whole list; the entity's name with `-file.schema.json` (`palette-file.schema.json`) when there is one file per thing.
 - **The JSON Schema says every rule it can**: a text never empty (`minLength: 1`), a default (`default`), a field set by the software (`readOnly`). What it cannot say (a primary key, a uniqueness) goes in the field's `description`.
@@ -52,6 +53,6 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 | [Quantity](14-quantity.md) | What a value measures, with its default unit and its unit systems; one file each. | Draft |
 | [Value type](15-value-type.md) | What kind of value a signal holds, and for a number, the quantity it measures. | Draft |
 | [Signal](16-signal.md) | A value that goes between the front and the model, as an input or an output. | Draft |
-| [Command](17-command.md) | What the front sends to the model with one click: a fixed value to an input, a trigger, or an override of an output. | Draft |
-| [Command target](18-command-target.md) | The signal a command sends its value to, and that fixed value. | Draft |
+| [Command target](17-command-target.md) | The signal a command sends its value to, and that fixed value. | Draft |
+| [Command](18-command.md) | What the front sends to the model with one click: a fixed value to an input, a trigger, or an override of an output. | Draft |
 | [Appearance](19-appearance.md) | The icon and the color a type shows, copied when picked; null, those of its parent. | Draft |

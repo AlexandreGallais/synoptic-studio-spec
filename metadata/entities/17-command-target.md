@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-The command target says which [signal](16-signal.md) a [command](17-command.md) sends its value to, and that value, fixed in Metadata: the person who clicks never types it. A command `set_signal` targets an input, a command `override` an output; a trigger has none. It is kept inside its command; it has no `internal_id`, since nothing points to it.
+The command target says which [signal](16-signal.md) a [command](18-command.md) sends its value to, and that value, fixed in Metadata: the person who clicks never types it. A command `set_signal` targets an input, a command `override` an output; a trigger has none. It is kept inside its command; it has no `internal_id`, since nothing points to it.
 
 ## The entity
 
