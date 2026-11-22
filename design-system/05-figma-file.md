@@ -67,7 +67,7 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Page | Component | Id |
 | --- | --- | --- |
 | Foundations | specimen board | `630:203` |
-| Icons | 46 icons `icon/<name>`, in the section `Icons`; `folder-add` (`673:13125`) and `link-add` (`673:13131`) since 2026-11-22, then `signal-add` (`680:12952`), `command-add` (`680:12964`), `title-add` (`680:12974`), `description-add` (`680:12985`, renamed from `paragraph-add`, as `paragraph` became `description`, on 2026-11-22) and `group-add` (`680:12997`), `expand-all` (`699:13751`) and `collapse-all` (`699:13755`); 53 icons | `656:7343` |
+| Icons | 46 icons `icon/<name>`, in the section `Icons`; `folder-add` (`673:13125`) and `link-add` (`673:13131`) since 2026-11-22, then `signal-add` (`680:12952`), `command-add` (`680:12964`), `title-add` (`680:12974`), `description-add` (`680:12985`, renamed from `paragraph-add` on 2026-11-22, after the word of the screens; the data model keeps the kind `paragraph`) and `group-add` (`680:12997`), `expand-all` (`699:13751`) and `collapse-all` (`699:13755`); 53 icons | `656:7343` |
 | Atoms | `button` | `632:209` |
 | Atoms | `icon-button` | `633:98` |
 | Atoms | `checkbox` | `633:144` |

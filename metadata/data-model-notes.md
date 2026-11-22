@@ -450,6 +450,7 @@ The Product Owner reviewed what was applied above (questionnaire of 2026-11-22).
 
 - **`DESIGNATION` is kept** ("Garder Designation"). The synoptics and the screens say "designation" too: the page Designations (MD-13), the designation texts of a placed symbol. The draft and the earlier decisions keep "identifier", as written when they were settled.
 - **The six other names are kept** ("Tous OK"): `color`, `address`, `radio_horizontal` / `radio_vertical`, `UNIT_SYSTEM`, `paragraph`, `format_version`.
+- **`paragraph` confirmed, the screens say "Description"** (questionnaire of 2026-11-22, after the icons were named `description`): the element is a paragraph, typed on one line and wrapped onto more when it overflows; `"kind": "description"` would read like the description of the element. Only the screens (MD-07.19) and the icons (`description`, `description-add`) say "Description".
 - **`PRESET_VALUE.default_value` becomes `start_value`** (answer: "Valeur au démarrage"): the value the model gets when it starts, the word of FMI (`start`). It is also the value shown before the model sends anything. The screens say "Start value"; the value a synoptic changes for a placed symbol is the start value too (`VALUE_CHANGE.start_value`).
 
 ## Settled on 2026-11-22 (palettes)
