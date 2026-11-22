@@ -48,6 +48,8 @@ Every component is shown in the Figma file as a table of its variants and its st
 
 Every interactive component is prototyped in its component set: `hover` while the mouse is over it, `pressed` while its button is down, and a click to the next state (checked, on, open, selected, expanded). See [Skill rules R8](skill-rules.md#r8--components-prototyped-on-their-own).
 
+Leaving `focus` or `open` always goes back to a `default`, the state that has the hover: a second click on a field, a click on an open select, a click on a checkbox, a radio or a toggle in focus (to its next value). Never to a state without hover, or the component stops reacting to the mouse (Product Owner, 2026-11-22: "dès que je focus/defocus, après, le hover ne fonctionne plus").
+
 ## Atoms
 
 | Component | Variants | States added | Screens |
