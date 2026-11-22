@@ -18,7 +18,7 @@ A [menu](../menu/README.md) whose items are grouped under [menu-group-title](../
 
 | Input | Type | Default | Figma |
 | --- | --- | --- | --- |
-| `groups` | list of groups: a title and its items | three groups | `menu-group-title` and `menu-item` (no icon) |
+| `groups` | list of groups: a title and its items | two groups: Metric (Pa, kPa, MPa, bar, mbar), US customary (psi, inHg, inH2O, ftH2O) | `menu-group-title` and `menu-item` (no icon) |
 | `value` | the chosen item | none | the `menu-item` in `state=selected` |
 
 ## Outputs

@@ -27,7 +27,7 @@ The id of each icon, component and screen is in its sheet: [Icons](icons/README.
 | `primitives` | `VariableCollectionId:630:111` | `value` | 43: 23 colours (`sand/25` and `sand/30` added on 2026-11-22 for the hover) (`sand/`, `white`, `black`, accents), `black/a60`, the veils `black/a00`, `black/a07`, `black/a13`, `black/a17` (aliased by `layer-transparent`, `layer-hover`, `layer-pressed`, `layer-active`), 15 steps of `scale/` |
 | `semantic` | `VariableCollectionId:630:149` | `sand` (`630:1`) | 51: the roles, spacing, sizes, radii and widths of [Foundations](02-foundations.md) |
 
-The effect style `focus-ring` does not show behind its node (`showShadowBehindNode` false): behind a transparent veil, its light line made the whole control look light.
+The effect style `focus-ring` does not show behind its node (`showShadowBehindNode` false): behind a transparent veil, its light line made the whole control look light. With this setting, Figma draws it only on a frame that clips its content: `open-focus` of `select-trigger` clips, as `focus` does (2026-11-22).
 
 A colour bound to a variable takes its opacity from the variable: a fill bound to `layer-hover` set to 0 % still shows at 7 %. A transparent start needs its own variable (`layer-transparent`).
 
