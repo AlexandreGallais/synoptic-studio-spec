@@ -14,12 +14,10 @@ The value type says what kind of value a [signal](16-signal.md) holds: a whole n
 erDiagram
     VALUE_TYPE {
         value_type_kind kind
-        uuid enum FK
-        uuid quantity FK
-        boolean relative_quantity
+        uuid enum FK "when kind is enum"
+        uuid quantity FK "when kind is integer or real"
+        boolean relative_quantity "when kind is integer or real"
     }
-    VALUE_TYPE }o--o| ENUM : "enum, when kind is enum"
-    VALUE_TYPE }o--o| QUANTITY : "quantity, when kind is integer or real"
 ```
 
 ```json
