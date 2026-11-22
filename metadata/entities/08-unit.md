@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A unit is one way to count a [quantity](14-quantity.md): the kilogram is a unit of the mass. It exists only inside its [unit system](13-unit-system.md), in its quantity's file. A unit is flat: m³/h is one unit with its own [conversion](11-conversion.md), nothing is deduced from its parts.
+A unit is one way to count a [quantity](10-quantity.md): the kilogram is a unit of the mass. It exists only inside its [unit system](09-unit-system.md), in its quantity's file. A unit is flat: m³/h is one unit with its own [conversion](07-conversion.md), nothing is deduced from its parts.
 
 ## The entity
 

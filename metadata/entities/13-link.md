@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A link points from the [Documentation](10-documentation.md) of a type to a file, a folder or a web page. It exists only inside its documentation, in the type's file. Only the address is kept: no document is ever loaded, copied or embedded.
+A link points from the [Documentation](14-documentation.md) of a type to a file, a folder or a web page. It exists only inside its documentation, in the type's file. Only the address is kept: no document is ever loaded, copied or embedded.
 
 ## The entity
 

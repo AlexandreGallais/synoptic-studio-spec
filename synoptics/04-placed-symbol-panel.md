@@ -34,7 +34,7 @@ flowchart TD
 ### Identity
 
 - **Instance ID**: the key of the placed symbol in the configuration files and in the signal list (`pump_p101.speed`). Decided on 2026-11-20: every placed symbol has an instance ID of its own, a field apart from the designations of Metadata; the tag is never the key. Proposed: set by the software from the type's `id` and a number (`centrifugal_pump_3`), changed by the user, unique in the folder. Its name is open: the research on names (T5) covered Metadata only.
-- **Designations**: one text field per [designation](../metadata/entities/01-designation.md) of Metadata, in the order of the Designations page, labelled by their ID (a designation has no display name since 2026-11-21).
+- **Designations**: one text field per [designation](../metadata/entities/11-designation.md) of Metadata, in the order of the Designations page, labelled by their ID (a designation has no display name since 2026-11-21).
   - **Every required designation** is shown on every placed symbol, whether or not the faceplate of its preset uses it, and marked as required (Product Owner, 2026-11-21: "Sur tous les symboles placés").
   - **A required text left empty warns, never blocks** (Product Owner, 2026-11-21: "Avertir sans bloquer"): the field is marked, the section shows the small warning mark, the placed symbol is listed in the [faults](08-faults.md) as a warning, and the synoptic is saved anyway.
   - **A designation that is not required** is shown when the faceplate of the preset uses it (decided in Metadata: the designations used give the synoptic its list to fill). Proposed: the others are not shown.

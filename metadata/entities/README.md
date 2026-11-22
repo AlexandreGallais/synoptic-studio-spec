@@ -6,9 +6,9 @@ The entities of Metadata, one file each, written whole. An entity is a kind of t
 
 ## How an entity file is written
 
-Settled with the Product Owner on 2026-11-21, on the file [Designation](01-designation.md) (then named Identifier), whose plan was validated that day as the model of every entity file (its text is not validated yet):
+Settled with the Product Owner on 2026-11-21, on the file [Designation](11-designation.md) (then named Identifier), whose plan was validated that day as the model of every entity file (its text is not validated yet):
 
-- **Every entity file follows [Designation](01-designation.md) exactly**: the same sections, the same tables, the same two schemas, nothing added.
+- **Every entity file follows [Designation](11-designation.md) exactly**: the same sections, the same tables, the same two schemas, nothing added.
 - **Short texts**: the introduction in a few sentences, each field's `description` in one or two; never what the JSON Schema already says by a keyword (`required`, `minLength`, `default`).
 - **The Product Owner validates each entity file, one by one**, its structure and its text ("je te valide la structuration de toutes les entités à chaque fois").
 - **The same sections, in the same order**: the title and its breadcrumb; the table of versions; the table of tags; a short introduction that says what the entity is; **The entity** (the schema, then the JSON Schema of the entity; no table of the fields, which would repeat the JSON Schema); **The file** (its JSON Schema only, no text, no example); **Open questions**, only when one is left. No status sentence, no **Where it is used** (the pages that use an entity link to it; the whole picture is the [Data model](../data-model.md)), no **Product Owner context**.
@@ -19,7 +19,8 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
   - The `Status` column of [What it contains](#what-it-contains) repeats the status of each file's last version, changed in the same session.
 - **The table of tags** has two columns, `Tag` and `Value`: `File`, with the file's name, when the entity has a file of its own.
 - **A part is numbered just before the entity that has or holds it** (Product Owner, 2026-11-22): Enum item before Enum, Value type before Signal, Command target before Command.
-- **An entity kept inside another one's file** (a [Color](02-color.md), in its [Palette](03-palette.md)) has no table of tags and no section **The file**: its introduction says where it is kept, and the file is described on the entity that has it.
+- **The entities are numbered file by file** (2026-11-22, order left to the assistant by the Product Owner): first the files a type picks from, in the order the type uses them (palettes, icon sets, enums, quantities, designations), then the parts of the type in the order of the keys of its file, the type last. The folder stays flat, one file per entity.
+- **An entity kept inside another one's file** (a [Color](01-color.md), in its [Palette](02-palette.md)) has no table of tags and no section **The file**: its introduction says where it is kept, and the file is described on the entity that has it.
 - **Two JSON Schemas**: the entity's (`$id`: its name, then `.schema.json`, as `designation.schema.json`) and the file's, which refers to the entity's by its `$id` and never repeats its fields. The file's `$id` is the file's name with `.schema.json` (`designations.schema.json`) when the file holds the whole list; the entity's name with `-file.schema.json` (`palette-file.schema.json`) when there is one file per thing.
 - **The JSON Schema says every rule it can**: a text never empty (`minLength: 1`), a default (`default`), a field set by the software (`readOnly`). What it cannot say (a primary key, a uniqueness) goes in the field's `description`.
 - **The schema shows only the structure**: for each field its type, its name and its key (`PK`, `FK`), nothing else. Mermaid accepts only `PK`, `FK` and `UK` as keys, so the constraints go in the JSON Schema.
@@ -37,25 +38,25 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 
 | File | What it holds | Status |
 | --- | --- | --- |
-| [Designation](01-designation.md) | What identifies the equipment of a placed symbol, such as its tag or its location. | Draft |
-| [Color](02-color.md) | One color of a palette, picked for the appearance of a type. | Draft |
-| [Palette](03-palette.md) | A set of colors: the only colors a type can pick. | Draft |
-| [Enum item](04-enum-item.md) | One value of an enum: the number the model receives and the name people read. | Draft |
-| [Enum](05-enum.md) | A named list of items, picked by a signal whose value is an enum. | Draft |
-| [Icon](06-icon.md) | One drawing of an icon set, picked for the appearance of a type. | Draft |
-| [Icon set](07-icon-set.md) | A set of icons of one style or one origin: the icons a type can pick. | Draft |
-| [Flag](08-flag.md) | A key each placed symbol of a type has on or off, written in the configuration files for a program outside. | Draft |
-| [Link entity](09-link.md) | A path to a file or a folder, or a URL, in the documentation of a type. | Draft |
-| [Documentation](10-documentation.md) | What explains a type to people: a description in Markdown and links. | Draft |
-| [Conversion](11-conversion.md) | The two formulas that turn a value of a unit into the default unit of its quantity, and back. | Draft |
-| [Unit](12-unit.md) | One way to count a quantity, with its name, its symbol and its conversion. | Draft |
-| [Unit system](13-unit-system.md) | The units of a quantity that belong to one system, such as metric or imperial. | Draft |
-| [Quantity](14-quantity.md) | What a value measures, with its default unit and its unit systems; one file each. | Draft |
+| [Color](01-color.md) | One color of a palette, picked for the appearance of a type. | Draft |
+| [Palette](02-palette.md) | A set of colors: the only colors a type can pick. | Draft |
+| [Icon](03-icon.md) | One drawing of an icon set, picked for the appearance of a type. | Draft |
+| [Icon set](04-icon-set.md) | A set of icons of one style or one origin: the icons a type can pick. | Draft |
+| [Enum item](05-enum-item.md) | One value of an enum: the number the model receives and the name people read. | Draft |
+| [Enum](06-enum.md) | A named list of items, picked by a signal whose value is an enum. | Draft |
+| [Conversion](07-conversion.md) | The two formulas that turn a value of a unit into the default unit of its quantity, and back. | Draft |
+| [Unit](08-unit.md) | One way to count a quantity, with its name, its symbol and its conversion. | Draft |
+| [Unit system](09-unit-system.md) | The units of a quantity that belong to one system, such as metric or imperial. | Draft |
+| [Quantity](10-quantity.md) | What a value measures, with its default unit and its unit systems; one file each. | Draft |
+| [Designation](11-designation.md) | What identifies the equipment of a placed symbol, such as its tag or its location. | Draft |
+| [Appearance](12-appearance.md) | The icon and the color a type shows, copied when picked; null, those of its parent. | Draft |
+| [Link entity](13-link.md) | A path to a file or a folder, or a URL, in the documentation of a type. | Draft |
+| [Documentation](14-documentation.md) | What explains a type to people: a description in Markdown and links. | Draft |
 | [Value type](15-value-type.md) | What kind of value a signal holds, and for a number, the quantity it measures. | Draft |
 | [Signal](16-signal.md) | A value that goes between the front and the model, as an input or an output. | Draft |
 | [Command target](17-command-target.md) | The signal a command sends its value to, and that fixed value. | Draft |
 | [Command](18-command.md) | What the front sends with one click: a fixed value to an input, an override of an output, or a trigger for the layer above the model. | Draft |
-| [Appearance](19-appearance.md) | The icon and the color a type shows, copied when picked; null, those of its parent. | Draft |
+| [Flag](19-flag.md) | A key each placed symbol of a type has on or off, written in the configuration files for a program outside. | Draft |
 | [Display format](20-display-format.md) | The unit and the decimals a preset shows an integer or a real with. | Draft |
 | [Boolean texts](21-boolean-texts.md) | The words a preset shows for true and for false. | Draft |
 | [Preset value](22-preset-value.md) | How a preset starts and shows one signal: its start value, and its display format or its boolean texts. | Draft |

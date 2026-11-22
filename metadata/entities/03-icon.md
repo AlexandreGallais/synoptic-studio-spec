@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-An icon is one drawing of an [Icon set](07-icon-set.md), picked for the appearance of a type. It exists only inside its icon set's file.
+An icon is one drawing of an [Icon set](04-icon-set.md), picked for the appearance of a type. It exists only inside its icon set's file.
 
 ## The entity
 

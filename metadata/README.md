@@ -10,7 +10,7 @@ Since 2026-11-19, at the Product Owner's request, the documentation of Metadata 
 
 | File | What it holds |
 | --- | --- |
-| [Data model](data-model.md) | Final page, being written: the schema and its JSON alone, to validate entity by entity before each one gets its documentation. |
+| [Data model](data-model.md) | The whole schema of Metadata and the table of its entities, with the file each one is kept in. |
 | [Files](files.md) | The rules every file of Metadata follows: the `format_version` key, the two keys of an entity, how the schema becomes JSON, the order of the keys, the names of the files and what each file holds. |
 | [Formulas](formulas.md) | How the two formulas of a conversion are written and computed: what a formula holds, priorities, refused forms, grammar, precision, computing without `eval`, out of domain, checks of the catalogue. From research T6 (decisions 0076, 0077). |
 | [Entities](entities/README.md) | One file per entity (a box of the schema), written whole: its box and the JSON Schema of its file. Every box of the data model has one since 2026-11-22. |

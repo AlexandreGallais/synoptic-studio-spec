@@ -31,7 +31,7 @@ Status: everything written around the schema of the [Data model](data-model.md) 
 
 ## How the schema becomes JSON
 
-Asked by the Product Owner on 2026-11-21 ("que tu me construises juste en dessous du schéma l'objet JSON [...] qui représente un peu tout ce qu'il pourrait avoir"). One made-up type that uses every box of a type at least once, without trying every combination; then a global enum and a quantity of the catalogue, which live in files of their own. The designations, the icons and the palettes are left out; the file of the designations is in [Designation](entities/01-designation.md) since 2026-11-21. The internal IDs are made up, and only their last digits differ, to read them easily.
+Asked by the Product Owner on 2026-11-21 ("que tu me construises juste en dessous du schéma l'objet JSON [...] qui représente un peu tout ce qu'il pourrait avoir"). One made-up type that uses every box of a type at least once, without trying every combination; then a global enum and a quantity of the catalogue, which live in files of their own. The designations, the icons and the palettes are left out; the file of the designations is in [Designation](entities/11-designation.md) since 2026-11-21. The internal IDs are made up, and only their last digits differ, to read them easily.
 
 How the boxes become JSON, one rule for each, with no exception (the names of the lists confirmed by the Product Owner on 2026-11-21, decision 0057):
 
@@ -54,7 +54,7 @@ What the example of a type shows, beyond the fields themselves:
 - **The texts of a boolean are in the preset** (decision 0058): `running` shows "Running" or "Stopped" with the preset `Standard`; another preset of the same type may say "On" and "Off".
 - **`display_name: null`**: the field of `speed` shows the signal's `id`.
 - **A difference**: `bearing_temperature_rise` holds a gap of temperature, shown in °C (`…912`), kept in kelvins.
-- The title shows the designation `…800` (`tag`, say `P-101`) of each placed symbol; the designations have their file of their own ([Designation](entities/01-designation.md)).
+- The title shows the designation `…800` (`tag`, say `P-101`) of each placed symbol; the designations have their file of their own ([Designation](entities/11-designation.md)).
 
 ### What the quantity shows
 
@@ -414,7 +414,7 @@ The Product Owner answered the question of the check of the schema against the J
 Asked by the Product Owner on 2026-11-21 ("dans l'identifiant, on va dégager display name [...] on voit que l'ID [...] Pour une première version, ça va rien casser [...] faut laisser la description").
 
 - **`IDENTIFIER.display_name` is removed**: an identifier has its `internal_id`, its `id` and its `description`. Its `id` is shown wherever it is picked or filled. The earlier sections keep the field, as written when they were settled.
-- **The page Identifier (now [Designation](entities/01-designation.md)) draws the identifier alone**, without `TEXT_CONTENT` (assistant's choice, left to it by the Product Owner: "je te laisse décider"): a text content belongs to the faceplate of a preset, and points to the identifier; it stays drawn in the schema of the [Data model](data-model.md), with its link.
+- **The page Identifier (now [Designation](entities/11-designation.md)) draws the identifier alone**, without `TEXT_CONTENT` (assistant's choice, left to it by the Product Owner: "je te laisse décider"): a text content belongs to the faceplate of a preset, and points to the identifier; it stays drawn in the schema of the [Data model](data-model.md), with its link.
 - Screen MD-13 loses its column Display name; the identifiers of the placed symbol panel are labelled by their `id`.
 - **`IDENTIFIER.required` is added**, a boolean (Product Owner, later the same day: "j'ai complètement besoin de dire si c'est required ou non"). `true`: every placed symbol must have its text (a control ID); `false`: it may stay empty (a location, for context).
 - Settled in the questionnaire the same day: a required text is asked on **every placed symbol**, whether or not its faceplate shows it ("Sur tous les symboles placés"); left empty, it **warns and never blocks** ("Avertir sans bloquer").
@@ -446,7 +446,7 @@ Asked by the Product Owner on 2026-11-21 ("c'est des règles globales").
 Asked by the Product Owner on 2026-11-22 ("applique ce que la recherche a trouvé [...] je te dirai si je suis d'accord ou pas"): the advice of the research T5 (`research/t5-recherche-documentaire-les-noms-de-tous/rapport.md`, sections 3.2, 3.3 and 6) is applied, to be reviewed by the Product Owner. Decision 0064 (proposed) records it. The earlier sections keep the old names, as written when they were settled.
 
 - **`id` and `internal_id` stay** (report, 3.2): a readable key written by the user and a surrogate key set by the software, as Home Assistant, Google and Kubernetes do. The risk is the swap with standards where `ID` is the UUID (AutomationML); three rules answer it, written in [Files](files.md#the-two-keys-of-an-entity) and at the head of this file: `id` is never a UUID, `internal_id` always is and every FK holds one, `internal_id` never leaves the software; plus a table of matches for any export.
-- **`IDENTIFIER` becomes `DESIGNATION`** (report, 3.3, confidence low): the word of IEC 81346, which covers the tag (`P-101`) and the location; "identifier" also named `id` and `internal_id` in French, and promised a uniqueness that a location has not. File `designations.json`, value `designation` of `text_content_source`, field `TEXT_CONTENT.designation`; the entity file is now [Designation](entities/01-designation.md).
+- **`IDENTIFIER` becomes `DESIGNATION`** (report, 3.3, confidence low): the word of IEC 81346, which covers the tag (`P-101`) and the location; "identifier" also named `id` and `internal_id` in French, and promised a uniqueness that a location has not. File `designations.json`, value `designation` of `text_content_source`, field `TEXT_CONTENT.designation`; the entity file is now [Designation](entities/11-designation.md).
 - **Six names changed for a precise collision** (report, 6, decision 3):
   - `colour` → `color`, `COLOUR` → `COLOR`, `colours` → `colors`: the word of design tokens, CSS and SVG;
   - `LINK.target` → `address`: in HTML, `target` says where a link opens, not where it goes;
@@ -471,7 +471,7 @@ Said by the Product Owner on 2026-11-22 ("les couleurs sont dans des palettes [.
 
 - **A color is kept only inside its palette**, never in a file or a list of its own.
 - **One palette per file**, never every palette in one file: a palette is added or removed with its file.
-- **Two entity files** (the Product Owner's proposal): [Color](entities/02-color.md), its box and its schema only; [Palette](entities/03-palette.md), its box, its schema and the schema of its file.
+- **Two entity files** (the Product Owner's proposal): [Color](entities/01-color.md), its box and its schema only; [Palette](entities/02-palette.md), its box, its schema and the schema of its file.
 - **A palette's file is named after the palette**, never after its `internal_id` (answer to the questionnaire: "Faut que ça ait un sens pour un humain [...] Si on met un internal ID, c'est incompréhensible"). So a palette's `name` is unique, and renaming a palette renames its file. How a name becomes a file name is written in [Files](files.md#the-name-of-a-file): simplified (answer: "Simplifié"), in kebab-case, the Product Owner leaving the choice between kebab-case and snake_case to the assistant.
 - **The `name` of a color is optional** (Product Owner, later the same day: "le nom des couleurs, pour moi, faut pas qu'ils soient obligatoires [...] Le RGBA, il va suffire"; decision 0066, which replaces 0065): a palette can be made of values only. As every empty field, a color without a name has `name` set to `null`.
 - **The `name` of a color, when given, is not unique**: two colors of a palette may share it (answer to the questionnaire of 2026-11-22: "Non, deux couleurs peuvent avoir le même nom"). This replaces the earlier answer "Non, unique", given while the name was required.
@@ -482,10 +482,10 @@ Said by the Product Owner on 2026-11-22 ("les couleurs sont dans des palettes [.
 
 ## Settled on 2026-11-22 (color of a type, configuration folders)
 
-Said by the Product Owner on 2026-11-22, answering the two open questions of the [Palette](entities/03-palette.md), then the questionnaire that followed (decisions 0070 and 0071).
+Said by the Product Owner on 2026-11-22, answering the two open questions of the [Palette](entities/02-palette.md), then the questionnaire that followed (decisions 0070 and 0071).
 
 - _Replaced the same day: the appearance keeps only the copied values, with no FK and no refresh (see [Settled on 2026-11-22 (appearance)](#settled-on-2026-11-22-appearance)). The two points below are kept as they were said._
-- **A type keeps the color it picked, even when its palette is removed** (Product Owner: "j'ai pas envie que ça soit cassant [...] inscrire que la couleur vient d'une palette, mais qu'on mette aussi la couleur. Comme ça, si la palette est supprimée, la couleur, elle reste"). `APPEARANCE` holds both: `color`, the FK to the color picked in a palette, and `color_value`, a copy of its value (`#rrggbbaa`). The rule belongs to the type, not to the palette (Product Owner: "j'ai pas l'impression que ce soit dans la palette"), so the [Color](entities/02-color.md) file no longer says that a type points to it.
+- **A type keeps the color it picked, even when its palette is removed** (Product Owner: "j'ai pas envie que ça soit cassant [...] inscrire que la couleur vient d'une palette, mais qu'on mette aussi la couleur. Comme ça, si la palette est supprimée, la couleur, elle reste"). `APPEARANCE` holds both: `color`, the FK to the color picked in a palette, and `color_value`, a copy of its value (`#rrggbbaa`). The rule belongs to the type, not to the palette (Product Owner: "j'ai pas l'impression que ce soit dans la palette"), so the [Color](entities/01-color.md) file no longer says that a type points to it.
   - Removing a palette never empties the color of a type: the type does not follow its parent's color then. This answers the first open question of the palette.
   - Assistant's reading, to confirm: `color` is kept as written when its palette is removed, so that putting the palette's file back links the type again; both are `null` when the type has no color of its own.
   - **While its palette exists, a type follows the value of its color** (Product Owner, answering the questionnaire the same day; decision 0070): when the color changes in its palette, `color_value` is refreshed. The copy is only used once the palette is gone.
@@ -500,10 +500,10 @@ Said by the Product Owner on 2026-11-22, answering the two open questions of the
 Said by the Product Owner on 2026-11-22 ("les enums, non, c'est un truc d'entreprise, tu vas pas les partager [...] y a qu'un fichier, un peu comme les désignations"). Decision 0072 records it.
 
 - **Every enum is kept in one file, `enums.json`**, like the designations: enums belong to one company and are not shared, while a palette may be exported and imported, hence one file per palette. An enum per file would also make very small files.
-- **Two entity files** (the Product Owner's proposal): [Enum item](entities/04-enum-item.md), its box and its schema only, kept inside its enum; [Enum](entities/05-enum.md), its box, its schema and the schema of its file.
+- **Two entity files** (the Product Owner's proposal): [Enum item](entities/05-enum-item.md), its box and its schema only, kept inside its enum; [Enum](entities/06-enum.md), its box, its schema and the schema of its file.
 - The example of the [Data model](data-model.md) now shows the file `enums.json`, with a global enum and a template.
 - **A template keeps its items** in `enum_items`, unused, so that going back to global finds them (draft, Enums: changing the kind loses nothing). Assistant's reading of that rule in the file.
-- **The items of a template follow the schema of an enum item exactly** (Product Owner, 2026-11-22: "ça follow exactement la même chose, sauf que ce sera défini par les gens qui font les vues"): `internal_id`, `key`, `display_name`, `description` (which may be `null`), filled on each placed symbol. A template is for enums known only on the view, such as the positions of a switch. Written in the introduction of [Enum item](entities/04-enum-item.md).
+- **The items of a template follow the schema of an enum item exactly** (Product Owner, 2026-11-22: "ça follow exactement la même chose, sauf que ce sera défini par les gens qui font les vues"): `internal_id`, `key`, `display_name`, `description` (which may be `null`), filled on each placed symbol. A template is for enums known only on the view, such as the positions of a switch. Written in the introduction of [Enum item](entities/05-enum-item.md).
 - Extra properties hung on the items of an enum or a template (a color per position, for example) will be another object, linked to the enum, settled with the symbol editor: nothing is added to the item (Product Owner, same day: "faut pas intégrer ça dans l'item pour l'instant").
 
 ## Settled on 2026-11-22 (unique ids of enums and designations)
@@ -511,7 +511,7 @@ Said by the Product Owner on 2026-11-22 ("les enums, non, c'est un truc d'entrep
 Said by the Product Owner on 2026-11-22, answering the questionnaire ("Unique, pour les enums et les désignations"), with a note on the items.
 
 - **The `id` of an enum is unique among the enums**, and **the `id` of a designation unique among the designations**: both are written in configuration files and picked in lists. Written in the `description` of each `id`.
-- **The name of an item is unique in its enum, not across enums** (Product Owner: "tu peux avoir deux enums avec une même désignation à l'intérieur, parce que c'est deux thèmes différents"): two enums may both hold an item named the same. Assistant's reading of the note, which says "désignation" for the name of an item (`display_name`), to confirm. Written in the `description` of `display_name` in [Enum item](entities/04-enum-item.md).
+- **The name of an item is unique in its enum, not across enums** (Product Owner: "tu peux avoir deux enums avec une même désignation à l'intérieur, parce que c'est deux thèmes différents"): two enums may both hold an item named the same. Assistant's reading of the note, which says "désignation" for the name of an item (`display_name`), to confirm. Written in the `description` of `display_name` in [Enum item](entities/05-enum-item.md).
 
 ## Noted on 2026-11-22 (format of the ids, idea)
 
@@ -528,7 +528,7 @@ Said by the Product Owner on 2026-11-22 ("c'est un peu comme les couleurs [...] 
 
 - **The icons are kept in icon sets, one set per file**, as the colors in their palettes: a set gathers icons of one style or one origin (Carbon's, Microsoft's…), and is added or removed with its file.
 - **`ICON_SET`** (the name left to the assistant: "il va falloir que tu trouves un nom"): "icon set" is the usual word for such a set; "library" is kept for the symbols, and "pack" says less. Its `name` is unique, since it names the file (`carbon.icon-set.json`).
-- **Two entity files** (the Product Owner's request): [Icon](entities/06-icon.md), its box and its schema only, kept inside its set; [Icon set](entities/07-icon-set.md), its box, its schema and the schema of its file.
+- **Two entity files** (the Product Owner's request): [Icon](entities/03-icon.md), its box and its schema only, kept inside its set; [Icon set](entities/04-icon-set.md), its box, its schema and the schema of its file.
 - **The user's sets go in their configuration folder**; a user's set of the same file name replaces the software's (decision 0071): that is how the icons the software ships are overridden (Product Owner, answering the questionnaire the same day). Only whole sets are replaced: neither one icon of a set nor the icons of the software's own interface.
 - **A type keeps the icon it picked, even when its icon set is removed** (Product Owner, answering the questionnaire the same day), as for its color: `APPEARANCE` holds `icon`, the FK to the icon picked in a set, and `icon_drawing`, a copy of its SVG, refreshed while the set exists. Both are `null` when the type has no icon of its own (assistant's reading, as for the color). _Replaced the same day: no FK and no refresh (see [Settled on 2026-11-22 (appearance)](#settled-on-2026-11-22-appearance))._
 - **The `name` of an icon is optional, and two icons of a set may share it** (Product Owner, answering the questionnaire the same day), as for a color: the key is always written, `null` when empty.
@@ -545,21 +545,21 @@ Said by the Product Owner on 2026-11-22 ("c'est un peu comme les couleurs [...] 
 
 Said by the Product Owner on 2026-11-22, answering the questionnaire ("Unique dans le type et ses parents").
 
-- **The `id` of a flag is unique among the flags of its type and of the types it inherits from**: a placed symbol has the flags of its type and of its parents, so two flags with the same `id` would write the same key twice in the configuration files. Written in the `description` of `id` in [Flag](entities/08-flag.md). It answers the question left open in the [whole draft](draft.md#flags) on 2026-11-17; the format of an `id` stays free.
+- **The `id` of a flag is unique among the flags of its type and of the types it inherits from**: a placed symbol has the flags of its type and of its parents, so two flags with the same `id` would write the same key twice in the configuration files. Written in the `description` of `id` in [Flag](entities/19-flag.md). It answers the question left open in the [whole draft](draft.md#flags) on 2026-11-17; the format of an `id` stays free.
 
 ## Settled on 2026-11-22 (descriptions of the documentation)
 
 Said by the Product Owner on 2026-11-22, answering the questionnaire ("Facultative", twice). Flag v1 stays `Draft` at their request.
 
-- **The description of a link is optional**: without it, only the path or the URL is shown. Written in [the Link entity](entities/09-link.md) and in the [whole draft](draft.md#the-links).
-- **The description of the documentation of a type is optional**: a new type has none. Written in [Documentation](entities/10-documentation.md) and in the [whole draft](draft.md#the-description).
+- **The description of a link is optional**: without it, only the path or the URL is shown. Written in [the Link entity](entities/13-link.md) and in the [whole draft](draft.md#the-links).
+- **The description of the documentation of a type is optional**: a new type has none. Written in [Documentation](entities/14-documentation.md) and in the [whole draft](draft.md#the-description).
 
 ## Settled on 2026-11-22 (one file per quantity)
 
 Said by the Product Owner on 2026-11-22 ("on va avoir un fichier par quantité [...] ça, ça contient tout ça"), who left the rest to the assistant ("à toi de gérer").
 
 - **Each quantity is one file, `<name>.quantity.json`**, which holds the whole quantity: its unit systems, their units and the conversion of each unit. It answers the open question of the format key and of [Files](files.md#open-questions).
-- **Four entity files**: [Conversion](entities/11-conversion.md), [Unit](entities/12-unit.md) and [Unit system](entities/13-unit-system.md), kept inside the quantity's file; [Quantity](entities/14-quantity.md), with the schema of its file. The example of the [Data model](data-model.md) now shows the whole file.
+- **Four entity files**: [Conversion](entities/07-conversion.md), [Unit](entities/08-unit.md) and [Unit system](entities/09-unit-system.md), kept inside the quantity's file; [Quantity](entities/10-quantity.md), with the schema of its file. The example of the [Data model](data-model.md) now shows the whole file.
 - **The `name` of a quantity is unique**, since it names its file, by the rule of [Files](files.md#the-name-of-a-file). Assistant's reading of that rule.
 - **`offers_relative_quantity` is `false` unless set** (assistant's reading): most quantities only multiply.
 - Which configuration folder holds the quantity files stays open in [Files](files.md#open-questions).
@@ -568,15 +568,15 @@ Said by the Product Owner on 2026-11-22 ("on va avoir un fichier par quantité [
 
 The Product Owner answered the three questions of the quantity files in the questionnaire, each with the advised choice.
 
-- **The `name` of a unit system is unique among the unit systems of its quantity, and the `name` of a unit among the units of its quantity** ("Uniques dans leur grandeur"): two "metric" or two "kelvin" in one quantity would mean nothing. Written in [Unit system](entities/13-unit-system.md) and [Unit](entities/12-unit.md).
-- **A unit's `symbol` may be `null`** ("Symbole facultatif"): nothing is written after the value, such as the unit 1 of a count (12, not 12 1). Written in [Unit](entities/12-unit.md).
-- **A difference shows the same symbol as a value** ("Le même : « °C »"): a rise of 5 °C is written 5 °C, never Δ°C; the column Quantity of the table of signals already shows the icon of a difference. Written in [Unit](entities/12-unit.md).
+- **The `name` of a unit system is unique among the unit systems of its quantity, and the `name` of a unit among the units of its quantity** ("Uniques dans leur grandeur"): two "metric" or two "kelvin" in one quantity would mean nothing. Written in [Unit system](entities/09-unit-system.md) and [Unit](entities/08-unit.md).
+- **A unit's `symbol` may be `null`** ("Symbole facultatif"): nothing is written after the value, such as the unit 1 of a count (12, not 12 1). Written in [Unit](entities/08-unit.md).
+- **A difference shows the same symbol as a value** ("Le même : « °C »"): a rise of 5 °C is written 5 °C, never Δ°C; the column Quantity of the table of signals already shows the icon of a difference. Written in [Unit](entities/08-unit.md).
 
 ## Noted on 2026-11-22 (syntax of the formulas)
 
 - **The syntax of the formulas of a conversion goes to a documentary research** (Product Owner: "il va falloir faire une grosse recherche documentaire"), a task of the specification feature: the operators, functions and constants needed to convert from one unit to another of the same quantity, the grammar, and an evaluation without `eval`. It replaces "chosen with the architecture" of decision 0049.
 - Its scope is one quantity at a time, never everything into everything (Product Owner: "pas convertir tout en tout"): converting a temperature into an energy would need other quantities and stays out. Widened the same day to the whole subject of conversions (next section).
-- **Its result is written in a file of its own in Metadata, not in the entity files** (Product Owner: "ça n'ira pas dans les entités"); [Conversion](entities/11-conversion.md) will link to it. The question left the open questions of Conversion and of this page.
+- **Its result is written in a file of its own in Metadata, not in the entity files** (Product Owner: "ça n'ira pas dans les entités"); [Conversion](entities/07-conversion.md) will link to it. The question left the open questions of Conversion and of this page.
 
 ## Noted on 2026-11-22 (the whole subject of conversions)
 
@@ -586,7 +586,7 @@ Said by the Product Owner after the research above was written ("je veux bien qu
 - **Kept as the goal**: any unit of a quantity into any other of the same quantity (decigrams into hectograms or milligrams), including those that do not only multiply, such as degrees Celsius into Fahrenheit, whose formula is fixed (Product Owner: "c'est des trucs qui sont fixes").
 - **Refused**: a conversion that means nothing, such as a mass into a molar mass (Product Owner: "ça fait aucun sens").
 - **Doubts of the Product Owner, left to the research**:
-  - a conversion between unit systems, such as metric and imperial ("potentiellement [...] on verra"), while today a unit system only groups the units of its quantity ([Unit system](entities/13-unit-system.md)). Settled on 2026-11-22: a unit system only groups (see [from one unit system to another](#settled-on-2026-11-22-from-one-unit-system-to-another));
+  - a conversion between unit systems, such as metric and imperial ("potentiellement [...] on verra"), while today a unit system only groups the units of its quantity ([Unit system](entities/09-unit-system.md)). Settled on 2026-11-22: a unit system only groups (see [from one unit system to another](#settled-on-2026-11-22-from-one-unit-system-to-another));
   - a conversion from one quantity to another ("peut-être que c'est de quantité à quantité"), while today a conversion only exists inside its quantity (decision 0049). Settled on 2026-11-22: kept inside its quantity, contexts later (see [formulas](#settled-on-2026-11-22-formulas));
   - an idea, to look at after the research ("on verra ça après la recherche"): each unit system with a default unit of its own, and a conversion between the default units of the unit systems ("un truc de conversion [...] entre unités par défaut"). Refused on 2026-11-22, see [from one unit system to another](#settled-on-2026-11-22-from-one-unit-system-to-another).
   - the default unit of a quantity needs no mark of its own: it is the one whose `to_default` and `from_default` are both `x`. Should it then have no conversion at all ("est-ce qu'on n'y a pas de conversion ?")?
@@ -600,7 +600,7 @@ Said by the Product Owner on 2026-11-22 ("il n'y a plus besoin de mettre les UID
 
 - **`APPEARANCE` holds two values, no FK**: `icon_drawing` (an SVG) and `color_value` (`#rrggbbaa`). Picking an icon or a color copies its value into the type ("on vient juste appliquer un truc"); the icon set and the palette are no longer linked, so changing or removing them changes no type.
 - **Each value is either set or `null`**; `null` means inherited: the type shows its parent's value, which may itself be inherited, and a type without a parent shows the software's default ("ça vient toujours choper le truc du parent [...] sinon le truc par défaut"). This is the inheritance of the [whole draft](draft.md#icon-and-colour-are-inherited), now written in the file; the reset of a child sets its value back to `null`.
-- Written in [Appearance](entities/19-appearance.md); the box and the example of the [Data model](data-model.md) lose `icon` and `color` and their links to `ICON` and `COLOR`.
+- Written in [Appearance](entities/12-appearance.md); the box and the example of the [Data model](data-model.md) lose `icon` and `color` and their links to `ICON` and `COLOR`.
 
 ## Changed on 2026-11-22 (kinds of a command)
 
@@ -646,22 +646,22 @@ The Product Owner answered the three questions of the preset values in the quest
 
 Asked by the Product Owner after research T6 ("dans une quantité, on puisse passer de chaque valeur, de chaque unité, à une autre, de la façon la plus simple possible [...] il ne faut pas venir polluer l'objet JSON"; example: a metre into a mile). The quantity files take nothing of the research but two corrections. The Product Owner answered the three questions in the questionnaire the same day; decision 0075 records them.
 
-- **One pivot, the default unit of the quantity** (Product Owner: "Un seul pivot"): any unit goes to any other of its quantity, whatever their unit systems, by `to_default` of the first then `from_default` of the second. A metre into a mile: `x` (the metre is the default unit), then `x / 1609.344`. Written as one sentence in [Conversion](entities/11-conversion.md); no field added.
+- **One pivot, the default unit of the quantity** (Product Owner: "Un seul pivot"): any unit goes to any other of its quantity, whatever their unit systems, by `to_default` of the first then `from_default` of the second. A metre into a mile: `x` (the metre is the default unit), then `x / 1609.344`. Written as one sentence in [Conversion](entities/07-conversion.md); no field added.
   - The idea of a default unit in each unit system, converting to the quantity's, is refused: it added a field to every unit system, a second step to every conversion out of the system (one more rounding, research T2 3.10), and made a unit's formula depend on another unit (changing the yard would change the mile). It saved nothing to write, since the imperial units are defined in metres exactly (1 yd = 0.9144 m, 1 mi = 1609.344 m).
   - The sources read by research T6 keep one reference unit per quantity and no table from unit to unit (report, 3.1 and 3.2).
-- **A unit system only groups, with no preferred unit** (Product Owner: "Non, pas maintenant"): a preset has no setting to show every signal "in imperial" at once (option P of research T6, refused for now). Each signal picks its display unit in the preset. [Unit system](entities/13-unit-system.md) already says so.
+- **A unit system only groups, with no preferred unit** (Product Owner: "Non, pas maintenant"): a preset has no setting to show every signal "in imperial" at once (option P of research T6, refused for now). Each signal picks its display unit in the preset. [Unit system](entities/09-unit-system.md) already says so.
 - **Gauge pressure is a quantity of its own, with no conversion to pressure** (Product Owner: "Deux grandeurs séparées, sans conversion entre elles"): QUDT, POSC Caesar and AVEVA know no fixed offset between them, since the atmosphere varies (research T6, 3.5; 2 bar g is 3.01325 bar a with the standard atmosphere, 2.95 bar a with 0.95 bar).
   - Both only multiply between their own units, so neither offers a difference; a gap between two pressures (a pressure drop) is a plain pressure. Only the temperatures multiply then shift.
   - The simulation model says which of the two it sends; a preset cannot show in bar a a value received in bar g.
   - Written in the [draft](draft.md#value-or-difference-chosen-in-the-signal) (its examples now use the temperature, and `pressure_rise` is a plain pressure), in [MD-04.9](../screens/metadata.md#md-04--signals) and in the notes of 2026-11-19 above.
 - **The names of the two pressures** (Product Owner, questionnaire, same day): `pressure` (absolute pressure and any gap between two pressures) and `gauge_pressure`, as `Pressure` and `GaugePressure` in QUDT.
-- **Correction taken from the research**: [Unit system](entities/13-unit-system.md): two steps equal in theory may differ at the 14th digit, so they compare within a relative tolerance of 1e-9 (research T6, 3.11; the tolerance is PEP 485's default).
+- **Correction taken from the research**: [Unit system](entities/09-unit-system.md): two steps equal in theory may differ at the 14th digit, so they compare within a relative tolerance of 1e-9 (research T6, 3.11; the tolerance is PEP 485's default).
 
 ## Written on 2026-11-22 (formulas)
 
 Asked by the Product Owner in the questionnaire ("Le fichier de syntaxe des formules"), as noted in [syntax of the formulas](#noted-on-2026-11-22-syntax-of-the-formulas).
 
-- **[Formulas](formulas.md)**, a file of its own in Metadata, cited by [Conversion](entities/11-conversion.md), not written in the entity files.
+- **[Formulas](formulas.md)**, a file of its own in Metadata, cited by [Conversion](entities/07-conversion.md), not written in the entity files.
 - Its rules are the advice of research T6 (3.6 to 3.13, decision 3), all **proposed**: the variable `x` only; `pi` and `e`; `+ - * / ^`; seven functions (`sqrt exp ln log10 log2 tan atan`); `^` from right to left; `-x^2`, implied multiplication, `**` and `log` refused; a parser of the project, no `eval`; formulas parsed once when the catalogue is read; round trip within 1e-9.
 - Open there: the absolute tolerance near zero, scales defined by tables, the look of the mark shown for a result that is not a number.
 
@@ -699,13 +699,22 @@ Second questionnaire, same day (decision 0079):
 - **Preset values follow the signals** ("Ajoutée et retirés automatiquement"): a signal added to a type or a parent adds its preset value to every preset of the type and its sub-types; a signal removed removes its preset value and the faceplate elements that show it. Written in [Preset](entities/29-preset.md).
 - **A type whose parent's file is missing is shown, flagged in error** ("Affiché, marqué en erreur"), the missing parent named; its file is left as it is. Written in [Type](entities/30-type.md).
 
+## Changed on 2026-11-22 (data model page)
+
+Asked by the Product Owner on 2026-11-22 ("tu vas pouvoir supprimer [...] le schéma as JSON, parce que ça me sert plus à rien [...] le schéma en entier, j'aimerais bien que tu me le laisses"; the order of the schema and of the entities left to the assistant; "laisser plat dans un premier temps").
+
+- **The JSON examples leave the [Data model](data-model.md)**: the JSON Schemas of each [entity file](entities/README.md) replace them. The sections [How the schema becomes JSON](#how-the-schema-becomes-json), [What the type shows](#what-the-type-shows) and [What the quantity shows](#what-the-quantity-shows) stay above as notes on the removed examples.
+- **The schema is written from the top**: the type, its parts in the order of the keys of its file, then the enums, the quantities and the designations, then the palettes and the icon sets; a link to a signal or a command from further down the type is written from the signal or the command, so that they stay just under the type. Each box opens its entity file. Nothing changes in the boxes nor in the links; every box stays orange.
+- **A table of every entity** follows the schema: its number, its box, the file it is kept in, what it has or holds, and what its fields point to.
+- **The entity files are numbered again**, the folder staying flat: the files a type picks from, in the order the type uses them, then the parts of the type in the order of its keys, the type last (rule written in [Entities](entities/README.md#how-an-entity-file-is-written)).
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
 
 ## Open
 
-- The default unit and the model unit (decision 0024): open in [Quantity](entities/14-quantity.md#open-questions).
+- The default unit and the model unit (decision 0024): open in [Quantity](entities/10-quantity.md#open-questions).
 - An integer signal shown in another unit than its default unit: a number typed there may not give a whole number in the default unit (24.17 rps is 1450.2 rpm). Rounded to the nearest whole number, or refused?
 - The names of the two quantities added for numbers that measure nothing physical: "ratio" and "count" for now.
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.

@@ -10,7 +10,7 @@
 | --- | --- |
 | File | `<name>.quantity.json` |
 
-A quantity is what a value measures, such as mass or temperature: a signal whose value is an integer or a real picks one. Its [units](12-unit.md) are grouped in [unit systems](13-unit-system.md), and each converts to its default unit. Quantities ship with the software, one file each, read only in it; contributors add those that are missing.
+A quantity is what a value measures, such as mass or temperature: a signal whose value is an integer or a real picks one. Its [units](08-unit.md) are grouped in [unit systems](09-unit-system.md), and each converts to its default unit. Quantities ship with the software, one file each, read only in it; contributors add those that are missing.
 
 ## The entity
 

@@ -10,7 +10,7 @@
 | --- | --- |
 | File | `enums.json` |
 
-An enum is a named list of [items](04-enum-item.md), picked by a signal whose value is an enum. A global enum is the same everywhere; a template has only its `id` and its description here, its items being completed on each placed symbol. Every enum is kept in one file.
+An enum is a named list of [items](05-enum-item.md), picked by a signal whose value is an enum. A global enum is the same everywhere; a template has only its `id` and its description here, its items being completed on each placed symbol. Every enum is kept in one file.
 
 ## The entity
 

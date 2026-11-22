@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-The value type says what kind of value a [signal](16-signal.md) holds: a whole number, a number, true or false, or an item of an [enum](05-enum.md). An integer or a real measures a [quantity](14-quantity.md), or a difference of it. Each signal has exactly one, kept inside the signal; it has no `internal_id`, since nothing points to it.
+The value type says what kind of value a [signal](16-signal.md) holds: a whole number, a number, true or false, or an item of an [enum](06-enum.md). An integer or a real measures a [quantity](10-quantity.md), or a difference of it. Each signal has exactly one, kept inside the signal; it has no `internal_id`, since nothing points to it.
 
 ## The entity
 

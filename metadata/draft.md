@@ -319,7 +319,7 @@ An icon helps to recognise a type at a glance, in addition to its name. It is on
 
 ### Rules
 
-- The icons come from a predefined list of SVG files that ships with the program. The user cannot import their own icon. To add one by hand, the file of the list is edited, and that is all. Replaced on 2026-11-22 (decision 0073): the icons come in icon sets, one file each, and the user adds their own sets in their configuration folder (see [Icon set](entities/07-icon-set.md)).
+- The icons come from a predefined list of SVG files that ships with the program. The user cannot import their own icon. To add one by hand, the file of the list is edited, and that is all. Replaced on 2026-11-22 (decision 0073): the icons come in icon sets, one file each, and the user adds their own sets in their configuration folder (see [Icon set](entities/04-icon-set.md)).
 - The list can already hold icons for common objects (for example, several pumps).
 - The colour comes from a fixed palette of predefined colours. The user cannot pick any other colour.
 - For a type, the user picks one icon in the list, then one colour in the palette.
@@ -663,7 +663,7 @@ Decided by the Product Owner on 2026-11-16: "il n'y a pas d'édition possible. T
 - The aim is the whole catalogue at once: every unit that can be imagined is in it from the first launch (Product Owner: "toutes les unités possibles, imaginables, on peut viser juste pour toutes les mettre à l'intérieur instantanément").
 - **The Units page is read only.** The user browses the quantities, families and units and reads their conversions; there is no + button, no field to change, nothing to delete. It replaces the rule of 2026-11-11 by which the user could add and change quantities, families and units.
 - The catalogue is kept in **files of the software itself**, delivered with the application. Synoptic Studio is open source: when a unit or a quantity is missing, a contributor adds it to these files, and it comes to everyone with the next version of the software (Product Owner: "s'il manque des unités, des quantités, il faudrait pouvoir venir les rajouter").
-- Each quantity is one file of the catalogue, `<name>.quantity.json`, described in [Quantity](entities/14-quantity.md) (Product Owner, 2026-11-22). The repository that holds them is chosen with the architecture.
+- Each quantity is one file of the catalogue, `<name>.quantity.json`, described in [Quantity](entities/10-quantity.md) (Product Owner, 2026-11-22). The repository that holds them is chosen with the architecture.
 
 ```mermaid
 flowchart LR
@@ -1459,7 +1459,7 @@ In the synoptic "Line 1", the pump P-101 has `show_in_overview` and `export_to_m
 
 Answered by the Product Owner on 2026-11-17: the description is optional; a flag has an internal identifier; no warning about what a delete breaks; no rule on an ID; the order chosen with a handle; the flags inherited. Left:
 
-- Must an ID be unique in the type and its tree? Answered by the Product Owner on 2026-11-22: unique among the flags of the type and of its parents (see [Flag](entities/08-flag.md)).
+- Must an ID be unique in the type and its tree? Answered by the Product Owner on 2026-11-22: unique among the flags of the type and of its parents (see [Flag](entities/19-flag.md)).
 - The description kept out of the configuration files: assistant's reading, to confirm.
 
 ## Identifiers
@@ -1832,7 +1832,7 @@ Every field of the schema has a JSON equivalent; the links between objects stay 
 - Finding a line by its internal ID uses an index the software builds when it reads the files. Assistant's reading: there is little data, so it costs little.
 - Enum items follow the same rule: nested in their enum. Assistant's reading, to confirm.
 
-An earlier example, with made-up identifiers. Replaced on 2026-11-21 by [The schema as JSON](data-model.md#the-schema-as-json), which uses the names of the schema (`internal_id`, `parent`, nested parts); this one is kept as a trace only:
+An earlier example, with made-up identifiers. Replaced on 2026-11-21 by the JSON examples of the [Data model](data-model.md), which used the names of the schema (`internal_id`, `parent`, nested parts), themselves replaced on 2026-11-22 by the JSON Schemas of the [entity files](entities/README.md); this one is kept as a trace only:
 
 ```json
 {

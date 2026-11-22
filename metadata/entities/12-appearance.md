@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-The appearance is the icon and the color a type shows in the type tree and wherever types are listed. Each type has exactly one, kept inside the type; it has no `internal_id`, since nothing points to it. It holds values, never links: the drawing of an [icon](06-icon.md) and the value of a [color](02-color.md) are copied when the user picks them, and changing or removing their [icon set](07-icon-set.md) or [palette](03-palette.md) afterwards changes nothing here. Each value left `null` is inherited: the type shows its parent's, and a type without a parent shows the software's default.
+The appearance is the icon and the color a type shows in the type tree and wherever types are listed. Each type has exactly one, kept inside the type; it has no `internal_id`, since nothing points to it. It holds values, never links: the drawing of an [icon](03-icon.md) and the value of a [color](01-color.md) are copied when the user picks them, and changing or removing their [icon set](04-icon-set.md) or [palette](02-palette.md) afterwards changes nothing here. Each value left `null` is inherited: the type shows its parent's, and a type without a parent shows the software's default.
 
 ## The entity
 

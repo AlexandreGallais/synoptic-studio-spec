@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-An enum item is one value of an [Enum](05-enum.md): the whole number the model receives, and the name people read in its place. It exists only inside its enum. The items of a template, completed on each placed symbol by the people who make the views, follow this same schema (`TEMPLATE_ITEM` of the [synoptics data model](../../synoptics/11-data-model.md)).
+An enum item is one value of an [Enum](06-enum.md): the whole number the model receives, and the name people read in its place. It exists only inside its enum. The items of a template, completed on each placed symbol by the people who make the views, follow this same schema (`TEMPLATE_ITEM` of the [synoptics data model](../../synoptics/11-data-model.md)).
 
 ## The entity
 

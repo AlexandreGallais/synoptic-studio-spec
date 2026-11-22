@@ -38,7 +38,7 @@ Proposed:
 | A link points to a synoptic or a placed symbol that no longer exists | Error | Proposed |
 | A reference of a view points to a placed symbol deleted from its installation | Error | Proposed |
 | A template enum of a placed symbol has no item | Warning | Decided (Metadata) |
-| A required designation is empty, on any placed symbol | Warning | Decided (Product Owner, 2026-11-21: "Avertir sans bloquer"; [Designation](../metadata/entities/01-designation.md)) |
+| A required designation is empty, on any placed symbol | Warning | Decided (Product Owner, 2026-11-21: "Avertir sans bloquer"; [Designation](../metadata/entities/11-designation.md)) |
 | A designation that is not required is empty | Not a fault: it may stay empty | Proposed (was a warning when used by the faceplate, before `required` existed) |
 | A designation text is used by two placed symbols | Warning | Proposed ("meant to be unique", Metadata) |
 | A pipe has a free end, or a connection point it was attached to was deleted | Warning | Proposed |

@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A conversion turns a value of a [unit](12-unit.md) into the default unit of its [quantity](14-quantity.md), and back, by two formulas in `x`, written as [Formulas](../formulas.md) says. Every unit but the default unit has one, kept inside the unit; it has no `internal_id`, since nothing points to it. Any unit goes to any other of its quantity, whatever their unit systems, through the default unit: `to_default` of the first, then `from_default` of the second (metre to mile: `x`, then `x / 1609.344`). A difference is converted by the software from the same two formulas: `to_default(x) − to_default(0)`, and back `from_default(x) − from_default(0)`.
+A conversion turns a value of a [unit](08-unit.md) into the default unit of its [quantity](10-quantity.md), and back, by two formulas in `x`, written as [Formulas](../formulas.md) says. Every unit but the default unit has one, kept inside the unit; it has no `internal_id`, since nothing points to it. Any unit goes to any other of its quantity, whatever their unit systems, through the default unit: `to_default` of the first, then `from_default` of the second (metre to mile: `x`, then `x / 1609.344`). A difference is converted by the software from the same two formulas: `to_default(x) − to_default(0)`, and back `from_default(x) − from_default(0)`.
 
 ## The entity
 

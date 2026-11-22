@@ -12,7 +12,7 @@ A **placed symbol** is a symbol of a Symbol Lib put in a synoptic. It shows the 
 
 - The **type** of a placed symbol is the type of its symbol and **can never be changed** in the synoptic; only the **preset** can (Metadata draft, [Type and symbol](../metadata/draft.md#type-and-symbol)).
 - A symbol with a type can be placed and **left unwired** (Symbols, 2026-11-15).
-- Each placed symbol has its own **flags**, **designation texts** and **template enum items** (Metadata, [Flags](../metadata/draft.md#flags), [Designation](../metadata/entities/01-designation.md), [Enums](../metadata/draft.md#global-enums-and-templates)). They are filled in its [panel](04-placed-symbol-panel.md).
+- Each placed symbol has its own **flags**, **designation texts** and **template enum items** (Metadata, [Flags](../metadata/draft.md#flags), [Designation](../metadata/entities/11-designation.md), [Enums](../metadata/draft.md#global-enums-and-templates)). They are filled in its [panel](04-placed-symbol-panel.md).
 - A symbol can be **connected to a pipe** and then only slides along it (Pipes, 2026-11-11; see [Pipes](05-pipes.md#symbols-on-a-pipe)).
 
 ### A linked instance

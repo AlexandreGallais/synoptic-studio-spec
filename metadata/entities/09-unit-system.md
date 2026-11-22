@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A unit system groups the [units](12-unit.md) of a [quantity](14-quantity.md) that belong to one system, such as metric or imperial. It only groups them for reading: every unit converts to the default unit of its quantity, never to another system. It exists only inside its quantity's file.
+A unit system groups the [units](08-unit.md) of a [quantity](10-quantity.md) that belong to one system, such as metric or imperial. It only groups them for reading: every unit converts to the default unit of its quantity, never to another system. It exists only inside its quantity's file.
 
 ## The entity
 

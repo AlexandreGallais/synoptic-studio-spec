@@ -6,14 +6,14 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-How the two formulas of a [conversion](entities/11-conversion.md) are written and computed: `to_default` and `from_default`, each a formula in `x`. The rules come from the advice of research T6 (`research/t6-recherche-documentaire-conversions-d-unites-tout/rapport.md`, 3.6 to 3.13 and 6, decision 3) and are decided by the Product Owner (decision 0076). A conversion stays inside its quantity (decision 0077).
+How the two formulas of a [conversion](entities/07-conversion.md) are written and computed: `to_default` and `from_default`, each a formula in `x`. The rules come from the advice of research T6 (`research/t6-recherche-documentaire-conversions-d-unites-tout/rapport.md`, 3.6 to 3.13 and 6, decision 3) and are decided by the Product Owner (decision 0076). A conversion stays inside its quantity (decision 0077).
 
 ## Where it is used
 
 | Where | What it takes from here |
 | --- | --- |
-| [Conversion](entities/11-conversion.md) | The two strings `to_default` and `from_default` follow this syntax. |
-| [Quantity](entities/14-quantity.md), its file | The checks of the catalogue below run on every quantity file, shipped or added by the user. |
+| [Conversion](entities/07-conversion.md) | The two strings `to_default` and `from_default` follow this syntax. |
+| [Quantity](entities/10-quantity.md), its file | The checks of the catalogue below run on every quantity file, shipped or added by the user. |
 | [MD-08 · Units](../screens/metadata.md#md-08--units) | The column Formula shows `from_default` of each unit. |
 | Presets and typed values (decision 0051) | A value is shown with `from_default` and kept with `to_default`; a difference is computed from them (decision 0050). |
 
@@ -120,7 +120,7 @@ Run on every quantity file when it is read, and by the tests of the shipped cata
 1. Each formula follows the grammar and the refused forms; its only name is `x`.
 2. **Round trip**: on a sample of values, those for which both formulas give a finite number, `from_default(to_default(x))` gives `x` back within a relative tolerance of 1e-9 (the default of PEP 485; research T6, 3.11). °F → K → °F passes on 100,000 values from −459 to 911, with a largest relative error of 1.2 × 10⁻¹¹.
 3. **Multiplies then shifts**, for a quantity with `offers_relative_quantity`: `to_default(x) − to_default(0)` equals `k · x`, with `k = to_default(1) − to_default(0)`, on the same sample (decision 0050).
-4. The same tolerance compares two units of equal step when they are sorted ([Unit system](entities/13-unit-system.md)).
+4. The same tolerance compares two units of equal step when they are sorted ([Unit system](entities/09-unit-system.md)).
 
 ## Examples
 

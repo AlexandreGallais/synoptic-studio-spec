@@ -10,7 +10,7 @@
 | --- | --- |
 | File | `<name>.palette.json` |
 
-A palette is a set of [colors](02-color.md): the only colors a type can pick.
+A palette is a set of [colors](01-color.md): the only colors a type can pick.
 
 ## The entity
 

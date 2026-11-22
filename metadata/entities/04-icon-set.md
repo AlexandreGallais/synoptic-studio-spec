@@ -10,7 +10,7 @@
 | --- | --- |
 | File | `<name>.icon-set.json` |
 
-An icon set is a set of [icons](06-icon.md) of one style or one origin, such as Carbon's or Microsoft's: the icons a type can pick. A user's icon set of the same file name replaces the software's: that is how the icon sets the software ships are overridden. An icon set says nothing of where its icons come from nor of their licence.
+An icon set is a set of [icons](03-icon.md) of one style or one origin, such as Carbon's or Microsoft's: the icons a type can pick. A user's icon set of the same file name replaces the software's: that is how the icon sets the software ships are overridden. An icon set says nothing of where its icons come from nor of their licence.
 
 ## The entity
 

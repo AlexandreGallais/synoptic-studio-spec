@@ -2,18 +2,50 @@
 
 > [Home](../README.md) › [Metadata](README.md) › Data model
 
-Status: the schema and its JSON, being validated with the Product Owner. The rules, the reading notes and the open questions are in [Data model: notes](data-model-notes.md).
-
-Colour of a box's title: orange, the entity has its own page in [Entities](entities/README.md), whose last version is not validated yet; green, the last version of its page is validated by the Product Owner; no colour, not written yet.
+Status: the whole schema of Metadata and the list of its entities, being validated with the Product Owner. Each entity is written whole, with its JSON Schema and the JSON Schema of its file, in [Entities](entities/README.md); the rules every file follows are in [Files](files.md); the reading notes and the open questions are in [Data model: notes](data-model-notes.md).
 
 ## The schema
+
+The schema reads from the top: the type, then its parts in the order of the keys of its file, then the enums, the quantities and the designations its fields point to. Palettes and icon sets stand apart: an appearance copies the color and the drawing it picks, and keeps no link to them. A click on a box opens its entity file.
+
+Colour of a box's title: orange, the last version of its entity file is not validated yet; green, it is validated by the Product Owner.
 
 ```mermaid
 ---
 config:
-  themeCSS: "[id*='entity-DESIGNATION-'] .outer-path path, [id*='entity-PALETTE-'] .outer-path path, [id*='entity-COLOR-'] .outer-path path, [id*='entity-ENUM-'] .outer-path path, [id*='entity-ENUM_ITEM-'] .outer-path path, [id*='entity-ICON-'] .outer-path path, [id*='entity-ICON_SET-'] .outer-path path, [id*='entity-FLAG-'] .outer-path path, [id*='entity-LINK-'] .outer-path path, [id*='entity-DOCUMENTATION-'] .outer-path path, [id*='entity-QUANTITY-'] .outer-path path, [id*='entity-UNIT_SYSTEM-'] .outer-path path, [id*='entity-UNIT-'] .outer-path path, [id*='entity-CONVERSION-'] .outer-path path, [id*='entity-SIGNAL-'] .outer-path path, [id*='entity-VALUE_TYPE-'] .outer-path path, [id*='entity-COMMAND-'] .outer-path path, [id*='entity-COMMAND_TARGET-'] .outer-path path, [id*='entity-APPEARANCE-'] .outer-path path, [id*='entity-PRESET_VALUE-'] .outer-path path, [id*='entity-DISPLAY_FORMAT-'] .outer-path path, [id*='entity-BOOLEAN_TEXTS-'] .outer-path path, [id*='entity-BOUND-'] .outer-path path, [id*='entity-RANGE-'] .outer-path path, [id*='entity-SIGNAL_FIELD-'] .outer-path path, [id*='entity-COMMAND_BUTTON-'] .outer-path path, [id*='entity-TEXT_CONTENT-'] .outer-path path, [id*='entity-FACEPLATE_ELEMENT-'] .outer-path path, [id*='entity-PRESET-'] .outer-path path, [id*='entity-TYPE-'] .outer-path path { fill: #f8b26a !important; }"
+  themeCSS: "[id*='entity-TYPE-'] .outer-path path, [id*='entity-APPEARANCE-'] .outer-path path, [id*='entity-DOCUMENTATION-'] .outer-path path, [id*='entity-LINK-'] .outer-path path, [id*='entity-SIGNAL-'] .outer-path path, [id*='entity-VALUE_TYPE-'] .outer-path path, [id*='entity-COMMAND-'] .outer-path path, [id*='entity-COMMAND_TARGET-'] .outer-path path, [id*='entity-FLAG-'] .outer-path path, [id*='entity-PRESET-'] .outer-path path, [id*='entity-PRESET_VALUE-'] .outer-path path, [id*='entity-DISPLAY_FORMAT-'] .outer-path path, [id*='entity-BOOLEAN_TEXTS-'] .outer-path path, [id*='entity-FACEPLATE_ELEMENT-'] .outer-path path, [id*='entity-SIGNAL_FIELD-'] .outer-path path, [id*='entity-RANGE-'] .outer-path path, [id*='entity-BOUND-'] .outer-path path, [id*='entity-COMMAND_BUTTON-'] .outer-path path, [id*='entity-TEXT_CONTENT-'] .outer-path path, [id*='entity-ENUM-'] .outer-path path, [id*='entity-ENUM_ITEM-'] .outer-path path, [id*='entity-QUANTITY-'] .outer-path path, [id*='entity-UNIT_SYSTEM-'] .outer-path path, [id*='entity-UNIT-'] .outer-path path, [id*='entity-CONVERSION-'] .outer-path path, [id*='entity-DESIGNATION-'] .outer-path path, [id*='entity-PALETTE-'] .outer-path path, [id*='entity-COLOR-'] .outer-path path, [id*='entity-ICON_SET-'] .outer-path path, [id*='entity-ICON-'] .outer-path path { fill: #f8b26a !important; }"
 ---
 erDiagram
+    %% link TYPE entities/30-type.md
+    %% link APPEARANCE entities/12-appearance.md
+    %% link DOCUMENTATION entities/14-documentation.md
+    %% link LINK entities/13-link.md
+    %% link SIGNAL entities/16-signal.md
+    %% link VALUE_TYPE entities/15-value-type.md
+    %% link COMMAND entities/18-command.md
+    %% link COMMAND_TARGET entities/17-command-target.md
+    %% link FLAG entities/19-flag.md
+    %% link PRESET entities/29-preset.md
+    %% link PRESET_VALUE entities/22-preset-value.md
+    %% link DISPLAY_FORMAT entities/20-display-format.md
+    %% link BOOLEAN_TEXTS entities/21-boolean-texts.md
+    %% link FACEPLATE_ELEMENT entities/28-faceplate-element.md
+    %% link SIGNAL_FIELD entities/25-signal-field.md
+    %% link RANGE entities/24-range.md
+    %% link BOUND entities/23-bound.md
+    %% link COMMAND_BUTTON entities/26-command-button.md
+    %% link TEXT_CONTENT entities/27-text-content.md
+    %% link ENUM entities/06-enum.md
+    %% link ENUM_ITEM entities/05-enum-item.md
+    %% link QUANTITY entities/10-quantity.md
+    %% link UNIT_SYSTEM entities/09-unit-system.md
+    %% link UNIT entities/08-unit.md
+    %% link CONVERSION entities/07-conversion.md
+    %% link DESIGNATION entities/11-designation.md
+    %% link PALETTE entities/02-palette.md
+    %% link COLOR entities/01-color.md
+    %% link ICON_SET entities/04-icon-set.md
+    %% link ICON entities/03-icon.md
     TYPE {
         uuid internal_id PK
         text id
@@ -111,12 +143,6 @@ erDiagram
         text display_name
         text description
     }
-    DESIGNATION {
-        uuid internal_id PK
-        text id
-        boolean required
-        text description
-    }
     QUANTITY {
         uuid internal_id PK
         text name
@@ -136,14 +162,11 @@ erDiagram
         expression to_default
         expression from_default
     }
-    ICON_SET {
+    DESIGNATION {
         uuid internal_id PK
-        text name
-    }
-    ICON {
-        uuid internal_id PK
-        text name
-        svg drawing
+        text id
+        boolean required
+        text description
     }
     PALETTE {
         uuid internal_id PK
@@ -154,393 +177,89 @@ erDiagram
         text name
         rgba value
     }
+    ICON_SET {
+        uuid internal_id PK
+        text name
+    }
+    ICON {
+        uuid internal_id PK
+        text name
+        svg drawing
+    }
     TYPE |o--o{ TYPE : "parent"
     TYPE ||--|| APPEARANCE : "has"
     TYPE ||--|| DOCUMENTATION : "has"
     DOCUMENTATION ||--o{ LINK : "holds"
     TYPE ||--o{ SIGNAL : "holds"
+    SIGNAL ||--|| VALUE_TYPE : "has"
     TYPE ||--o{ COMMAND : "holds"
+    COMMAND ||--o| COMMAND_TARGET : "has, when kind is set_input_signal or override_output_signal"
+    SIGNAL ||--o{ COMMAND_TARGET : "signal"
     TYPE ||--o{ FLAG : "holds"
     TYPE ||--o{ PRESET : "holds"
-    ICON_SET ||--|{ ICON : "holds"
-    PALETTE ||--|{ COLOR : "holds"
-    SIGNAL ||--|| VALUE_TYPE : "has"
-    VALUE_TYPE }o--o| ENUM : "enum"
-    VALUE_TYPE }o--o| QUANTITY : "quantity"
-    ENUM ||--o{ ENUM_ITEM : "holds"
-    COMMAND ||--o| COMMAND_TARGET : "has, when kind is set_input_signal or override_output_signal"
-    COMMAND_TARGET }o--|| SIGNAL : "signal"
-    COMMAND_TARGET }o--o| ENUM_ITEM : "value"
     PRESET ||--o{ PRESET_VALUE : "holds, one per signal of the type"
-    PRESET_VALUE }o--|| SIGNAL : "signal"
-    PRESET_VALUE }o--o| ENUM_ITEM : "start_value"
+    SIGNAL ||--o{ PRESET_VALUE : "signal"
     PRESET_VALUE ||--o| DISPLAY_FORMAT : "has, when the signal is an integer or a real"
-    DISPLAY_FORMAT }o--|| UNIT : "unit"
     PRESET_VALUE ||--o| BOOLEAN_TEXTS : "has, when the signal is a boolean"
     PRESET ||--o{ FACEPLATE_ELEMENT : "holds"
     FACEPLATE_ELEMENT |o--o{ FACEPLATE_ELEMENT : "holds, when kind is group"
     FACEPLATE_ELEMENT ||--o| SIGNAL_FIELD : "has, when kind is signal"
-    FACEPLATE_ELEMENT ||--o| COMMAND_BUTTON : "has, when kind is command"
-    FACEPLATE_ELEMENT ||--o| TEXT_CONTENT : "has, when kind is title or paragraph"
-    SIGNAL_FIELD }o--|| SIGNAL : "signal"
+    SIGNAL ||--o{ SIGNAL_FIELD : "signal"
     SIGNAL_FIELD ||--o| RANGE : "has, when input_kind is number_field"
     RANGE ||--o| BOUND : "has, as min"
     RANGE ||--o| BOUND : "has, as max"
-    BOUND }o--o| SIGNAL : "signal"
-    COMMAND_BUTTON }o--|| COMMAND : "command"
-    TEXT_CONTENT }o--o| DESIGNATION : "designation"
+    SIGNAL |o--o{ BOUND : "signal"
+    FACEPLATE_ELEMENT ||--o| COMMAND_BUTTON : "has, when kind is command"
+    COMMAND ||--o{ COMMAND_BUTTON : "command"
+    FACEPLATE_ELEMENT ||--o| TEXT_CONTENT : "has, when kind is title or paragraph"
+    VALUE_TYPE }o--o| ENUM : "enum"
+    ENUM ||--o{ ENUM_ITEM : "holds"
+    COMMAND_TARGET }o--o| ENUM_ITEM : "value"
+    PRESET_VALUE }o--o| ENUM_ITEM : "start_value"
+    VALUE_TYPE }o--o| QUANTITY : "quantity"
     QUANTITY ||--|{ UNIT_SYSTEM : "holds"
     UNIT_SYSTEM ||--|{ UNIT : "holds, sorted by size"
     QUANTITY }o--|| UNIT : "default_unit"
     UNIT ||--o| CONVERSION : "has, except the default unit"
+    DISPLAY_FORMAT }o--|| UNIT : "unit"
+    TEXT_CONTENT }o--o| DESIGNATION : "designation"
+    PALETTE ||--|{ COLOR : "holds"
+    ICON_SET ||--|{ ICON : "holds"
 ```
 
-## The schema as JSON
+## The entities
 
-### A type
+Every entity of the schema, in the order of its number: the file it is kept in, the parts and lists it has or holds, and the entities its fields point to.
 
-```json
-{
-  "format_version": 1,
-  "type": {
-    "internal_id": "01a1f800-0000-7000-8000-000000000001",
-    "id": "centrifugal_pump",
-    "parent": "01a1f800-0000-7000-8000-000000000000",
-    "appearance": {
-      "icon_drawing": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\"/></svg>",
-      "color_value": null
-    },
-    "documentation": {
-      "description": "A **centrifugal** pump, driven by a variable speed motor.",
-      "links": [
-        {
-          "internal_id": "01a1f800-0000-7000-8000-000000000010",
-          "kind": "url",
-          "address": "https://example.com/datasheets/centrifugal-pump",
-          "description": "Datasheet"
-        }
-      ]
-    },
-    "signals": [
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000020",
-        "direction": "input",
-        "id": "speed_setpoint",
-        "description": "Speed asked of the motor.",
-        "value_type": {
-          "kind": "real",
-          "quantity": "01a1f800-0000-7000-8000-000000000900",
-          "relative_quantity": false
-        }
-      },
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000021",
-        "direction": "input",
-        "id": "speed_max",
-        "description": "Highest speed the operator may ask for.",
-        "value_type": {
-          "kind": "real",
-          "quantity": "01a1f800-0000-7000-8000-000000000900",
-          "relative_quantity": false
-        }
-      },
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000022",
-        "direction": "output",
-        "id": "speed",
-        "description": "Speed of the motor, computed by the model.",
-        "value_type": {
-          "kind": "real",
-          "quantity": "01a1f800-0000-7000-8000-000000000900",
-          "relative_quantity": false
-        }
-      },
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000023",
-        "direction": "output",
-        "id": "running",
-        "description": "True while the pump turns.",
-        "value_type": {
-          "kind": "boolean"
-        }
-      },
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000024",
-        "direction": "input",
-        "id": "mode",
-        "description": "How the pump is driven.",
-        "value_type": {
-          "kind": "enum",
-          "enum": "01a1f800-0000-7000-8000-000000000500"
-        }
-      },
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000025",
-        "direction": "output",
-        "id": "bearing_temperature_rise",
-        "description": "How much the bearing is warmer than the room.",
-        "value_type": {
-          "kind": "real",
-          "quantity": "01a1f800-0000-7000-8000-000000000910",
-          "relative_quantity": true
-        }
-      }
-    ],
-    "commands": [
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000030",
-        "kind": "trigger",
-        "id": "start",
-        "description": "Tells that the start of the pump was asked."
-      },
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000031",
-        "kind": "set_input_signal",
-        "id": "switch_to_auto",
-        "description": "Puts the pump in automatic mode.",
-        "command_target": {
-          "signal": "01a1f800-0000-7000-8000-000000000024",
-          "value": "01a1f800-0000-7000-8000-000000000502"
-        }
-      },
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000032",
-        "kind": "override_output_signal",
-        "id": "force_speed",
-        "description": "Replaces the speed computed by the model, for a test.",
-        "command_target": {
-          "signal": "01a1f800-0000-7000-8000-000000000022",
-          "value": 151.8436
-        }
-      }
-    ],
-    "flags": [
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000040",
-        "id": "under_maintenance",
-        "description": "The pump is out of service for maintenance."
-      }
-    ],
-    "presets": [
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000050",
-        "name": "Standard",
-        "preset_values": [
-          {
-            "signal": "01a1f800-0000-7000-8000-000000000020",
-            "start_value": 0,
-            "display_format": {
-              "unit": "01a1f800-0000-7000-8000-000000000902",
-              "decimals": 0
-            }
-          },
-          {
-            "signal": "01a1f800-0000-7000-8000-000000000021",
-            "start_value": 157.0796,
-            "display_format": {
-              "unit": "01a1f800-0000-7000-8000-000000000902",
-              "decimals": 0
-            }
-          },
-          {
-            "signal": "01a1f800-0000-7000-8000-000000000022",
-            "start_value": 0,
-            "display_format": {
-              "unit": "01a1f800-0000-7000-8000-000000000902",
-              "decimals": 1
-            }
-          },
-          {
-            "signal": "01a1f800-0000-7000-8000-000000000023",
-            "start_value": false,
-            "boolean_texts": {
-              "true_text": "Running",
-              "false_text": "Stopped"
-            }
-          },
-          {
-            "signal": "01a1f800-0000-7000-8000-000000000024",
-            "start_value": "01a1f800-0000-7000-8000-000000000501"
-          },
-          {
-            "signal": "01a1f800-0000-7000-8000-000000000025",
-            "start_value": 0,
-            "display_format": {
-              "unit": "01a1f800-0000-7000-8000-000000000912",
-              "decimals": 1
-            }
-          }
-        ],
-        "faceplate_elements": [
-          {
-            "internal_id": "01a1f800-0000-7000-8000-000000000060",
-            "kind": "title",
-            "text_content": {
-              "source": "designation",
-              "designation": "01a1f800-0000-7000-8000-000000000800"
-            }
-          },
-          {
-            "internal_id": "01a1f800-0000-7000-8000-000000000061",
-            "kind": "paragraph",
-            "text_content": {
-              "source": "typed",
-              "typed_text": "Feed pump of the main loop."
-            }
-          },
-          {
-            "internal_id": "01a1f800-0000-7000-8000-000000000062",
-            "kind": "group",
-            "faceplate_elements": [
-              {
-                "internal_id": "01a1f800-0000-7000-8000-000000000063",
-                "kind": "signal",
-                "signal_field": {
-                  "signal": "01a1f800-0000-7000-8000-000000000020",
-                  "access": "write",
-                  "input_kind": "number_field",
-                  "display_name": "Speed setpoint",
-                  "range": {
-                    "min": {
-                      "source": "typed",
-                      "typed_value": 0
-                    },
-                    "max": {
-                      "source": "signal",
-                      "signal": "01a1f800-0000-7000-8000-000000000021"
-                    }
-                  }
-                }
-              },
-              {
-                "internal_id": "01a1f800-0000-7000-8000-000000000064",
-                "kind": "signal",
-                "signal_field": {
-                  "signal": "01a1f800-0000-7000-8000-000000000022",
-                  "access": "read",
-                  "display_name": null
-                }
-              },
-              {
-                "internal_id": "01a1f800-0000-7000-8000-000000000065",
-                "kind": "signal",
-                "signal_field": {
-                  "signal": "01a1f800-0000-7000-8000-000000000023",
-                  "access": "read",
-                  "display_name": "State"
-                }
-              }
-            ]
-          },
-          {
-            "internal_id": "01a1f800-0000-7000-8000-000000000066",
-            "kind": "signal",
-            "signal_field": {
-              "signal": "01a1f800-0000-7000-8000-000000000024",
-              "access": "write",
-              "input_kind": "radio_horizontal",
-              "display_name": "Mode"
-            }
-          },
-          {
-            "internal_id": "01a1f800-0000-7000-8000-000000000067",
-            "kind": "command",
-            "command_button": {
-              "command": "01a1f800-0000-7000-8000-000000000030",
-              "display_name": "Start"
-            }
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-### The enums
-
-```json
-{
-  "format_version": 1,
-  "enums": [
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000500",
-      "kind": "global",
-      "id": "operating_mode",
-      "description": "How a piece of equipment is driven.",
-      "enum_items": [
-        {
-          "internal_id": "01a1f800-0000-7000-8000-000000000501",
-          "key": 0,
-          "display_name": "Manual",
-          "description": "Driven by the operator."
-        },
-        {
-          "internal_id": "01a1f800-0000-7000-8000-000000000502",
-          "key": 1,
-          "display_name": "Auto",
-          "description": "Driven by the control loop."
-        }
-      ]
-    },
-    {
-      "internal_id": "01a1f800-0000-7000-8000-000000000510",
-      "kind": "template",
-      "id": "switch_positions",
-      "description": "The positions of a switch.",
-      "enum_items": []
-    }
-  ]
-}
-```
-
-### A quantity
-
-```json
-{
-  "format_version": 1,
-  "quantity": {
-    "internal_id": "01a1f800-0000-7000-8000-000000000910",
-    "name": "temperature",
-    "default_unit": "01a1f800-0000-7000-8000-000000000911",
-    "offers_relative_quantity": true,
-    "unit_systems": [
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000915",
-        "name": "metric",
-        "units": [
-          {
-            "internal_id": "01a1f800-0000-7000-8000-000000000911",
-            "name": "kelvin",
-            "symbol": "K"
-          },
-          {
-            "internal_id": "01a1f800-0000-7000-8000-000000000912",
-            "name": "degree Celsius",
-            "symbol": "°C",
-            "conversion": {
-              "to_default": "x + 273.15",
-              "from_default": "x - 273.15"
-            }
-          }
-        ]
-      },
-      {
-        "internal_id": "01a1f800-0000-7000-8000-000000000916",
-        "name": "imperial",
-        "units": [
-          {
-            "internal_id": "01a1f800-0000-7000-8000-000000000913",
-            "name": "degree Fahrenheit",
-            "symbol": "°F",
-            "conversion": {
-              "to_default": "(x + 459.67) * 5 / 9",
-              "from_default": "x * 9 / 5 - 459.67"
-            }
-          }
-        ]
-      }
-    ]
-  }
-}
-```
+| # | Entity | Box | Kept in | Has or holds | Points to |
+| --- | --- | --- | --- | --- | --- |
+| 01 | [Color](entities/01-color.md) | `COLOR` | `<name>.palette.json` | — | — |
+| 02 | [Palette](entities/02-palette.md) | `PALETTE` | `<name>.palette.json` | `COLOR` | — |
+| 03 | [Icon](entities/03-icon.md) | `ICON` | `<name>.icon-set.json` | — | — |
+| 04 | [Icon set](entities/04-icon-set.md) | `ICON_SET` | `<name>.icon-set.json` | `ICON` | — |
+| 05 | [Enum item](entities/05-enum-item.md) | `ENUM_ITEM` | `enums.json` | — | — |
+| 06 | [Enum](entities/06-enum.md) | `ENUM` | `enums.json` | `ENUM_ITEM` | — |
+| 07 | [Conversion](entities/07-conversion.md) | `CONVERSION` | `<name>.quantity.json` | — | — |
+| 08 | [Unit](entities/08-unit.md) | `UNIT` | `<name>.quantity.json` | `CONVERSION` | — |
+| 09 | [Unit system](entities/09-unit-system.md) | `UNIT_SYSTEM` | `<name>.quantity.json` | `UNIT` | — |
+| 10 | [Quantity](entities/10-quantity.md) | `QUANTITY` | `<name>.quantity.json` | `UNIT_SYSTEM` | `UNIT` (`default_unit`) |
+| 11 | [Designation](entities/11-designation.md) | `DESIGNATION` | `designations.json` | — | — |
+| 12 | [Appearance](entities/12-appearance.md) | `APPEARANCE` | `<id>.type.json` | — | — |
+| 13 | [Link entity](entities/13-link.md) | `LINK` | `<id>.type.json` | — | — |
+| 14 | [Documentation](entities/14-documentation.md) | `DOCUMENTATION` | `<id>.type.json` | `LINK` | — |
+| 15 | [Value type](entities/15-value-type.md) | `VALUE_TYPE` | `<id>.type.json` | — | `ENUM` (`enum`), `QUANTITY` (`quantity`) |
+| 16 | [Signal](entities/16-signal.md) | `SIGNAL` | `<id>.type.json` | `VALUE_TYPE` | — |
+| 17 | [Command target](entities/17-command-target.md) | `COMMAND_TARGET` | `<id>.type.json` | — | `SIGNAL` (`signal`), `ENUM_ITEM` (`value`) |
+| 18 | [Command](entities/18-command.md) | `COMMAND` | `<id>.type.json` | `COMMAND_TARGET` | — |
+| 19 | [Flag](entities/19-flag.md) | `FLAG` | `<id>.type.json` | — | — |
+| 20 | [Display format](entities/20-display-format.md) | `DISPLAY_FORMAT` | `<id>.type.json` | — | `UNIT` (`unit`) |
+| 21 | [Boolean texts](entities/21-boolean-texts.md) | `BOOLEAN_TEXTS` | `<id>.type.json` | — | — |
+| 22 | [Preset value](entities/22-preset-value.md) | `PRESET_VALUE` | `<id>.type.json` | `DISPLAY_FORMAT`, `BOOLEAN_TEXTS` | `SIGNAL` (`signal`), `ENUM_ITEM` (`start_value`) |
+| 23 | [Bound](entities/23-bound.md) | `BOUND` | `<id>.type.json` | — | `SIGNAL` (`signal`) |
+| 24 | [Range](entities/24-range.md) | `RANGE` | `<id>.type.json` | `BOUND` (as `min`, as `max`) | — |
+| 25 | [Signal field](entities/25-signal-field.md) | `SIGNAL_FIELD` | `<id>.type.json` | `RANGE` | `SIGNAL` (`signal`) |
+| 26 | [Command button](entities/26-command-button.md) | `COMMAND_BUTTON` | `<id>.type.json` | — | `COMMAND` (`command`) |
+| 27 | [Text content](entities/27-text-content.md) | `TEXT_CONTENT` | `<id>.type.json` | — | `DESIGNATION` (`designation`) |
+| 28 | [Faceplate element](entities/28-faceplate-element.md) | `FACEPLATE_ELEMENT` | `<id>.type.json` | `SIGNAL_FIELD`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `FACEPLATE_ELEMENT` | — |
+| 29 | [Preset](entities/29-preset.md) | `PRESET` | `<id>.type.json` | `PRESET_VALUE`, `FACEPLATE_ELEMENT` | — |
+| 30 | [Type](entities/30-type.md) | `TYPE` | `<id>.type.json` | `APPEARANCE`, `DOCUMENTATION`, `SIGNAL`, `COMMAND`, `FLAG`, `PRESET` | `TYPE` (`parent`) |
