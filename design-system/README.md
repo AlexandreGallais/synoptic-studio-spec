@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › Design system
 
-Status: first draft, written by the assistant on 2026-11-22 from the Product Owner's brief of the same day. Not validated. The values marked "proposed" are to review on screen, in Figma.
+Status: first draft, written by the assistant on 2026-11-22 from the Product Owner's brief of the same day, and drawn in Figma the same day (foundations, icons, atoms, molecules, organisms, prototyped). Not validated. The values marked "proposed" are to review on screen, in Figma.
 
 What the design system of Synoptic Studio is made of, before it is drawn in the Figma file (https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL). The design system is reusable outside Synoptic Studio; its code is the library of the repository `synoptic-studio-design-system`.
 
@@ -14,6 +14,7 @@ What the design system of Synoptic Studio is made of, before it is drawn in the 
 | [Foundations](02-foundations.md) | The tokens: colours, typography, spacing, sizes, radii, borders, shadows. |
 | [Icons](03-icons.md) | The icons the screens of the specs call for. |
 | [Components](04-components.md) | Every component by atomic level, with its variants, its states and the screens that use it. |
+| [Figma file](05-figma-file.md) | What the Figma file holds, with the id of each page, collection and component. |
 | [Skill rules](skill-rules.md) | What the Product Owner adds to, or changes in, the design-system skills of the assistant. |
 | [Open questions](open-questions.md) | What is left to decide. |
 

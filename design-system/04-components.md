@@ -25,16 +25,18 @@ flowchart LR
 | `default` | At rest. |
 | `hover` | The mouse is over it. |
 | `pressed` | The mouse button is down on it. |
-| `focus` | Reached with the keyboard: the focus ring. |
+| `focus` | Reached with the keyboard: the double focus line (`focus-ring`, or `focus-ring-inset` on a line), on the hover background when the component has none. |
 | `disabled` | Cannot be used. |
 
-The tables below add the states each component needs on top of these.
+The tables below add the states each component needs on top of these. A field (`text-input`, `number-input`, `text-area`) has no `pressed`: a click puts it in `focus`.
+
+Every interactive component is prototyped in its component set: `hover` while the mouse is over it, `pressed` while its button is down, and a click to the next state (checked, on, open, selected, expanded). See [Skill rules R8](skill-rules.md#r8--components-prototyped-on-their-own).
 
 ## Atoms
 
 | Component | Variants | States added | Screens |
 | --- | --- | --- | --- |
-| `icon` | One per icon of [Icons](03-icons.md); `size=16, 20` | — | Everywhere |
+| `icon` | One component per icon of [Icons](03-icons.md), `icon/<name>`; the size is set on the instance, `size-icon-sm` (16) or `size-icon-md` (20), never a variant | — | Everywhere |
 | `button` | `kind=primary, secondary, ghost, danger`; `size=md, lg`; leading icon on or off | — | Dialogs: Cancel, Delete |
 | `icon-button` | `kind=ghost, quiet` (quiet: `icon-secondary`, the + on hover); `size=sm, md` | `selected` | Every + of a title, delete, reset, search, full page |
 | `text-input` | `size=sm, md` (sm in a table cell); with or without a trailing icon | `filled`, `read-only`, `error` | MD-02.1, MD-03.8, every ID |
@@ -58,7 +60,7 @@ The tables below add the states each component needs on top of these.
 | `menu-item` | `icon` + text + check | with or without icon | `selected` | Every select |
 | `menu` | `menu-item` × n | — | — | Every select |
 | `select` | `select-trigger` + `menu` | — | `open` | Every select |
-| `segmented-control` | two or three `button` side by side | `items=2, 3` | one item `selected` | MD-07.2b Values / Faceplate, MD-03.4b Read only / Visual / Markdown |
+| `segmented-control` | two or three `button` side by side | `items=2, 3`; `selected=1, 2, 3` (the item selected) | — | MD-07.2b Values / Faceplate, MD-03.4b Read only / Visual / Markdown |
 | `radio-group` | `radio` × n + labels | `orientation=horizontal, vertical` | — | MD-07.11, enum input of a faceplate |
 | `list-title` | text `body-strong` + `icon-button` × n (one + per kind, search) | `actions=add, search-add, several-add` | `searching` (the title becomes a `text-input`, the + a `dismiss`) | Every list and table: Type tree, Signals, Links, Elements |
 | `nav-rail-item` | `icon-button` + `tooltip` | — | `selected` | MD-00 |
@@ -79,7 +81,9 @@ The tables below add the states each component needs on top of these.
 | `nav-rail` | `nav-rail-item` × n + `divider` | — | one item `selected` | MD-00, SY-00 |
 | `tree` | `list-title` + `tree-row` × n | — | `searching`, `empty` | MD-01 |
 | `part-list` | `part-item` × n | — | one part `selected` | MD-01.5 |
-| `data-table` | `list-title` + header row + rows of cells (`drag-handle`, inputs, cell molecules, delete) | with or without handles; with or without delete | rows `inherited` (read only, no handle, `text-secondary`), `signal-input`, `signal-output`, `error`; table `empty` | MD-03.5, MD-04, MD-05, MD-07.7, MD-08.7, MD-09.5, MD-12, MD-13 |
+| `data-table` | `list-title` + `data-table-header` + `data-table-row` × n (`drag-handle`, inputs, cell molecules, delete) | — | table `empty` | MD-03.5, MD-04, MD-05, MD-07.7, MD-08.7, MD-09.5, MD-12, MD-13 |
+| `data-table-header` | the name of each column, `caption` | — | — | Every data-table |
+| `data-table-row` | the cells of one line, drawn with the columns of Signals | `kind=default, inherited, signal-input, signal-output, error` | `hover`, `selected`; `inherited`: read only, no handle nor delete, the name of its parent | Every data-table |
 | `list-panel` | `list-title` + `list-row` × n | — | `empty` | MD-07.1, MD-08.1, MD-09.1 |
 | `dialog` | `heading` + text + `button` × 2 | `kind=warning, danger` | — | Every delete |
 | `formatting-toolbar` | `toolbar-group` × n + `segmented-control` + full-page `icon-button` | `mode=visual, markdown` | — | MD-03.4d |

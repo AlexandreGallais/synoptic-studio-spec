@@ -28,10 +28,10 @@ Each rule: what it says, the skill it adds to or contradicts, its status.
 - **Differences**: a page Icons (adds to the skill); the screens of Metadata in the library file, not in a product file.
 - **Status**: Kept over the skill.
 
-### R2 · One theme, on Neutral Fog
+### R2 · One theme, on Warm Sand
 
-- **Rule**: one theme, built on the colours of the old Neutral Fog theme, not on Neutral Graphite; only the colours needed are kept (Product Owner, 2026-11-22).
-- **Skill**: `layer-tokens-primitive-semantic-component` puts the themes as modes of the semantic collection: one mode `fog` here.
+- **Rule**: one theme, built on the colours of the old Warm Sand theme; only the colours needed are kept (Product Owner, 2026-11-22).
+- **Skill**: `layer-tokens-primitive-semantic-component` puts the themes as modes of the semantic collection: one mode `sand` here.
 - **Status**: Added.
 
 ### R3 · Dense, but larger than Figma
@@ -55,5 +55,17 @@ Each rule: what it says, the skill it adds to or contradicts, its status.
 ### R6 · No Carbon
 
 - **Rule**: the design system is made from zero; it does not follow IBM Carbon.
-- **Skill**: `lay-out-templates-on-the-carbon-2x-grid` and `theme-with-carbon-tokens-as-modes` hold only for a design system built on Carbon, as they say themselves; `check-accessibility-in-the-design` cites Carbon's focus token, read here as the token `focus` of [Foundations](02-foundations.md#colours).
+- **Skill**: `lay-out-templates-on-the-carbon-2x-grid` and `theme-with-carbon-tokens-as-modes` hold only for a design system built on Carbon, as they say themselves; `check-accessibility-in-the-design` cites Carbon's focus token, read here as the tokens `focus` and `focus-inset` of [Foundations](02-foundations.md#colours).
 - **Status**: Added.
+
+### R7 · Focus as a double line
+
+- **Rule**: the keyboard focus of every component is two lines: a light one against the component, then a dark violet one around it, so it shows on a light or a dark component (Product Owner, 2026-11-22: "une ligne claire et une ligne avec ton violet foncé"). For this design system only. Drawn with the effect styles `focus-ring` (outside a control) and `focus-ring-inset` (inside a line of a list, a tree or a table): see [Foundations](02-foundations.md#radii-borders-shadows).
+- **Skill**: `check-accessibility-in-the-design` asks for a visible focus with 3:1 contrast; one line in `focus` passes against a light background but not against a dark control (the toggle on). The rule adds to the skill.
+- **Status**: Added.
+
+### R8 · Components prototyped on their own
+
+- **Rule**: every interactive component is prototyped as an interactive component of Figma (hover, press, click to the next state), before any screen is (Product Owner, 2026-11-22).
+- **Skill**: `prototype-with-interactive-components-and-variables` says the same; the rule sets the order: the components first, the screens later.
+- **Status**: Added (confirms the skill).

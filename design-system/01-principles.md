@@ -20,8 +20,8 @@ Status: first draft, from the Product Owner's brief of 2026-11-22. Not validated
 
 ### One theme
 
-- One theme only, built on the colours of the old **Neutral Fog** theme (light), not on Neutral Graphite (Product Owner, 2026-11-22: "c'est le logiciel, il est open source. Pour l'instant, il y a qu'un truc, point barre").
-- Neutral Fog is a base, not a list to copy: only the colours the components need are kept (Product Owner: "je te demande absolument pas de remettre toutes les couleurs du Neutral Fog").
+- One theme only, `sand`, built on the colours of the old **Warm Sand** theme (light) (Product Owner, 2026-11-22: "c'est le logiciel, il est open source. Pour l'instant, il y a qu'un truc, point barre"; "c'est warm sand").
+- Warm Sand is a base, not a list to copy: only the colours the components need are kept.
 - The colours are still variables, so a theme can be added later as a mode without changing a component.
 
 ### Screens in 16:9, at least 1600 × 900
