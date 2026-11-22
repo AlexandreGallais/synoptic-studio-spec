@@ -34,6 +34,7 @@ Status: first draft, written by the assistant on 2026-11-22 from the screens of 
 | `folder` | A path link | MD-03.9 |
 | `link` | A URL link | MD-03.9 |
 | `folder-add`, `link-add` | Add a path, add a URL: the icon with a small + at its bottom right | MD-03.6, MD-03.7 |
+| `signal-add`, `command-add`, `title-add`, `paragraph-add`, `group-add` | Add an element to a faceplate: the icon of its kind, smaller, with the small + at its bottom right (Product Owner, 2026-11-22: without the +, "on ne sait pas vraiment si c'est pour ajouter") | MD-07.18, MD-07.20 |
 | `full-page`, `exit-full-page` | The description on the whole editing part | MD-03.4c |
 | `bold`, `italic`, `heading`, `list-bulleted`, `list-numbered`, `table`, `code`, `quote` | The formatting tool bar (content proposed) | MD-03.4d |
 | `signal-input`, `signal-output` | The direction of a signal | MD-04.12, MD-07.9 |

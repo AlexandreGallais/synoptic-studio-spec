@@ -1104,6 +1104,7 @@ Decided by the Product Owner on 2026-11-16: "Faceplate et preset, il faut fusion
 - The list of presets is on the left. Its title is **"Presets"**, with a small **+ on its right** that creates a preset (Product Owner, 2026-11-16: "Preset, ça ne doit pas être le titre de toute la page. Tu dois juste mettre Preset comme titre de la liste et avoir un petit + à droite"; see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)). The page has no big title above.
 - The selected preset is on the right: the switch of the two modes **at the top**, where the page title was ("ça te permettra de remonter le truc Values / Faceplate"), then its name, then the mode chosen.
 - A preset has a name, which tells two presets of a type apart (Product Owner, 2026-11-16). Its field sits under the switch of the two modes, and stays the same in both.
+- **A preset is deleted with a red button "Delete the preset"**, on the line of its name, on the right of the field, as the type is deleted from General; a click opens the warning. The list of presets has no delete button on its lines (Product Owner, 2026-11-22: "on le fait nulle part, donc je préfère que tu mettes un bouton delete [...] un bouton rouge, un peu comme delete type"; the place left to the assistant).
 
 #### Two modes, chosen by a switch
 
@@ -1134,7 +1135,7 @@ A table with **every signal of the type**, own and inherited, one per line (Prod
 | Signal | An icon of its direction, then the signal's ID, read only | Which signal the line is about (see [Signals](#signals)). The icon says whether it is an input or an output of the model (Product Owner, 2026-11-17: "il faudrait qu'on puisse savoir si c'est un input ou un output [...] ça donne juste une icône"), so that the default value is read right. |
 | Display unit | Select | Only with a quantity. Among the units of the signal's quantity; starts as the model unit of the quantity. Kept (Product Owner, 2026-11-17: "Display unit pareil"). |
 | Decimals | Number field | Integers and reals only. Starts at 2, the one default number of decimals (see [Decimal places](#decimal-places)). Display only. Kept (Product Owner, 2026-11-17: "les décimales ici servent"). |
-| True / False | Two short text fields | Booleans only: the text of the true state and of the false state ("Open" and "Closed", "Running" and "Stopped"), shown in the faceplate for a signal in read (Product Owner, 2026-11-21: "le boolean text, ça serait plutôt dans les presets"; decision 0058, which moves them from the signal, decision 0054). Never sent to the model, which gets true or false. Optional: "true" and "false" are shown when empty (Product Owner, 2026-11-22). Header and place after Decimals: assistant's reading, to confirm. |
+| False / True | Two short text fields | Booleans only: the text of the false state, then of the true state ("Closed" and "Open", "Stopped" and "Running"): false on the left, true on the right, as 0 then 1 read from left to right (Product Owner, 2026-11-22, with a doubt, the choice left to the assistant: "c'est de 0 à 1"). The texts are shown in the faceplate for a signal in read (Product Owner, 2026-11-21: "le boolean text, ça serait plutôt dans les presets"; decision 0058, which moves them from the signal, decision 0054). Never sent to the model, which gets true or false. Optional: "true" and "false" are shown when empty (Product Owner, 2026-11-22). Header and place after Decimals: assistant's reading, to confirm. |
 | Default value | Field of the signal's type | See [The default value](#the-default-value) below. A boolean: true or false. An integer or a real: a number, typed. An enum: an item, picked by its display name (Product Owner, 2026-11-16: "si c'est un nombre, on peut écrire une valeur par défaut, et puis basta"). |
 
 ##### The default value
@@ -1163,12 +1164,13 @@ sequenceDiagram
 - No "Shown", no "Display name", no "Input", no "Read or write", no "Read or override" here: they belong to the builder, since they only say how the faceplate shows a signal.
 - There is no "add an entry": the whole list is always there.
 - The lines come in the order of the table of [Signals](#the-order-of-the-lines): inherited signals first, then the type's own; no handle and no sort here.
+- Since no line is moved or deleted here, the table has **no room for a handle nor for a delete button**: its columns take the whole width (Product Owner, 2026-11-22: "il y a la place pour la poubelle et Déplacer, qui est pas là").
 
 ```mermaid
 block-beta
     columns 5
-    h1["Signal"] h2["Display unit"] h3["Decimals"] h5["True / False"] h4["Default value"]
-    a1["input · running"] a2["-"] a3["-"] a5["Running / Stopped"] a4["false"]
+    h1["Signal"] h2["Display unit"] h3["Decimals"] h5["False / True"] h4["Default value"]
+    a1["input · running"] a2["-"] a3["-"] a5["Stopped / Running"] a4["false"]
     b1["input · mode"] b2["-"] b3["-"] b5["-"] b4["Automatic"]
     c1["output · inlet_pressure"] c2["bar"] c3["2"] c5["-"] c4["1.5"]
 ```

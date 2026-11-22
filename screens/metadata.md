@@ -346,7 +346,7 @@ block-beta
     columns 4
     list["Presets +, then the list"] sw["Switch, at the top: Values | Faceplate"]:3
     space name["Name of the preset"]:3
-    space values["Values: Signal (icon input or output, ID) | Display unit | Decimals | True / False | Start value"]:3
+    space values["Values: Signal (icon input or output, ID) | Display unit | Decimals | False / True | Start value"]:3
 ```
 
 ```mermaid
@@ -363,30 +363,31 @@ mindmap
   root((MD-07 Presets))
     List of presets
       Title Presets, small plus on its right
-      Name of each preset
-      Delete button, far right, warning
+      Name of each preset, no delete button
     A preset
       Switch, at the top, above the name
         Values
         Faceplate
       Name
+        Red button Delete the preset, on its right, warning
       Mode Values
         Table, every signal of the type
+          No handle, no delete, the whole width
           Signal, an icon input or output, then its ID
           Display unit
           Decimals
-          True / False, booleans only
+          False / True, booleans only
           Start value
         No command
       Mode Faceplate, the builder
         No title nor description by default
         Title Elements, one small icon with a plus per kind
-        Signal element
+        Signal element, on two lines in write or override
           Signal, by its ID
           Display name
-          Input, number field with a minimum and a maximum
           Read or write, for an input
           Read or override, for an output
+          Second line, the input, number field with a minimum and a maximum of the same width
         Command element
           Command, by its ID
           Display name on the button
@@ -407,23 +408,23 @@ mindmap
 | MD-07.4 | Faceplate title | — | Removed (2026-11-16): no title by default; a title element is added if wanted ([MD-07.19](#md-07--presets)). | Decided | [Presets](../metadata/draft.md#only-elements-in-elements) |
 | MD-07.5 | Faceplate description | — | Removed (2026-11-16): no description by default; a description element is added if wanted ([MD-07.19](#md-07--presets)). | Decided | [Presets](../metadata/draft.md#only-elements-in-elements) |
 | MD-07.6 | Show the faceplate | — | Removed (2026-11-16): the faceplate is seen in the mode Faceplate; the Faceplate part ([MD-06](#md-06--faceplate-removed)) was removed too. | Decided | [Presets](../metadata/draft.md#no-faceplate-part) |
-| MD-07.7 | Table of values | Table | Mode Values: every signal of the type, own and inherited, in the order of Signals; one line each; no "add an entry"; no command (2026-11-16). | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
+| MD-07.7 | Table of values | Table | Mode Values: every signal of the type, own and inherited, in the order of Signals; one line each; no "add an entry"; no command (2026-11-16). No room for a handle nor a delete button: the columns take the whole width (2026-11-22). | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
 | MD-07.8 | Shown | — | Removed (2026-11-16): what is in the builder is shown. | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.9 | Signal | Column, read only | Mode Values: an icon of the signal's direction, input or output, then its ID (2026-11-17), so that the start value reads right. | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
 | MD-07.12 | Display unit | Column, select | Mode Values. For every integer and real (each has a quantity, 2026-11-19, decision 0051); starts as the default unit of the quantity ([Units on screen](../metadata/units-on-screen.md#three-units)). Changing it never changes the start value: only how it is shown. | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
 | MD-07.13 | Decimals | Column, number field | Mode Values. Integers and reals; starts as the one default number of decimals, the same everywhere (2026-11-19, decision 0050). Display only. Kept by the Product Owner on 2026-11-17. | Decided | [Units](../metadata/draft.md#decimal-places) |
-| MD-07.13b | True / False | Column, two short text fields | Mode Values. Booleans only: the text of the true state and of the false state ("Running" / "Stopped"), shown in the faceplate for a signal in read; never sent to the model (2026-11-21, decisions 0054 and 0058; never in a title, decision 0055). Header "True / False", its place after Decimals, and "true" / "false" shown when empty: assistant's reading. | Decided (field in the preset), Proposed (place, header, empty) | [Data model](../metadata/data-model-notes.md#changed-on-2026-11-21-boolean-texts) |
+| MD-07.13b | False / True | Column, two short text fields | Mode Values. Booleans only: the text of the false state, then of the true state ("Stopped" / "Running"), false on the left as 0 then 1 (2026-11-22, the choice left to the assistant); shown in the faceplate for a signal in read; never sent to the model (2026-11-21, decisions 0054 and 0058; never in a title, decision 0055). Header "False / True", its place after Decimals, and "true" / "false" shown when empty: assistant's reading. | Decided (field in the preset), Proposed (place, header, empty) | [Data model](../metadata/data-model-notes.md#changed-on-2026-11-21-boolean-texts) |
 | MD-07.14 | Start value | Column, field of the signal's type | Mode Values. For an input, the first value sent to the model; for an input and an output, the value shown before the model sends anything (2026-11-17). Called "Default value" until 2026-11-22: `start_value`, the word of FMI (decision 0064). True or false, a number, a text, or an enum item. A number is shown and typed in the display unit, and kept in the default unit of the quantity (2026-11-19, decision 0051). | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
-| MD-07.18 | Add an element | Buttons (small icons with a +) | Mode Faceplate, on the right of the title "Elements": one icon per kind, a signal, a command, a title, a description, a group, no menu (2026-11-16, the rule of the links, confirmed by the Product Owner the same day). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
+| MD-07.18 | Add an element | Buttons (small icons with a +) | Mode Faceplate, on the right of the title "Elements": one icon per kind, a signal, a command, a title, a description, a group, no menu (2026-11-16, the rule of the links, confirmed by the Product Owner the same day). Each icon carries its small + at its bottom right, as the icons of Links, so that it reads as "add" (2026-11-22: "y a pas de petit + dessus [...] on ne sait pas vraiment si c'est pour ajouter"). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.9b | Signal element | Element of the builder | The signal, picked by its ID; its display name (plain text, never sent to the model; empty: the ID is shown; called "name shown" until 2026-11-21, decision 0055); read or write (input) or read or override (output); its input. | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.10 | Input | Select, in a signal element | Chosen in the builder (end of 2026-11-17: "on met input number, par exemple"). Enum: radio on one line, radio on several lines, select; its items in the order of the handles of [MD-09.12](#md-09--enums) (end of 2026-11-17). Number: a number field, with its bounds ([MD-07.22](#md-07--presets)). Boolean: a switch (2026-11-21). Shown for write or override only; in read, the faceplate shows the text of the value alone (2026-11-21). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.11 | Read or write, read or override | Radio, in a signal element | Input: read or write. Output: read or override (end of 2026-11-17: "c'est read write pour un input et read override pour un output"; corrects the single "read or override" written earlier that day). Write or override: a person types a value; what the model side does with it is up to it. | Decided | [Presets](../metadata/draft.md#typing-a-value) |
-| MD-07.22 | Minimum, maximum of a number field | Number field each, with a small icon inside to pick a signal | Each typed by hand, or taken from a signal of the type through the small icon in the field, as Figma's "Apply variable" (end of 2026-11-17). The small icon offers the input signals only, never an output (2026-11-21, decision 0055), and only those of the same quantity as the signal shown (2026-11-21, decision 0056). A typed bound is shown in the display unit of the preset. A value outside them is refused (assistant's reading). | Decided (refusal: Proposed) | [Presets](../metadata/draft.md#bounds-of-a-number-field) |
+| MD-07.22 | Minimum, maximum of a number field | Number field each, with a small icon inside to pick a signal | On the second line of the signal element, after the kind of input, both of the same width (2026-11-22: "le min max, j'ai l'impression qu'ils sont pas la même taille"; two lines: assistant's choice to make room). Each typed by hand, or taken from a signal of the type through the small icon in the field, as Figma's "Apply variable" (end of 2026-11-17). The small icon offers the input signals only, never an output (2026-11-21, decision 0055), and only those of the same quantity as the signal shown (2026-11-21, decision 0056). A typed bound is shown in the display unit of the preset. A value outside them is refused (assistant's reading). | Decided (refusal: Proposed) | [Presets](../metadata/draft.md#bounds-of-a-number-field) |
 | MD-07.15 | Command element | Element of the builder | The command, picked by its ID; the display name on its button (plain text, never sent to the model; empty: the command's ID is shown; called "button text" until 2026-11-21, decision 0057). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.19 | Title element, description element | Text fields | A heading or a paragraph inside the faceplate or a group; the only way to give either a title or a description (2026-11-16). Description: plain text, line breaks kept. | Decided | [Presets](../metadata/draft.md#only-elements-in-elements) |
 | MD-07.23 | Fixed text or variable | Small icon, on the right of the text field of a title or description element | As Figma's "Apply variable" (2026-11-18): a fixed text typed by the user, or a variable, a designation of [MD-13](#md-13--designations). Never a signal (2026-11-21, decision 0055): a signal element in read shows a value. A designation is filled on each placed symbol, in the synoptic. One variable alone in the field, never mixed with text: assistant's reading. | Decided (icon, designation only), Proposed (one variable, whole) | [Presets](../metadata/draft.md#fixed-text-or-a-variable) |
 | MD-07.20 | Group element | Element of the builder | No title nor description of its own (confirmed 2026-11-17). At its top, the five small icons with a + (Signal, Command, Title, Description, Group), then its own elements; a group can hold a group (2026-11-16). The icons confirmed on 2026-11-17, after a doubt the same day: they save time. | Decided | [Presets](../metadata/draft.md#only-elements-in-elements) |
-| MD-07.21 | Delete an element, delete a preset | Button (icon), then a warning | At the far right of the element or of the preset's line (2026-11-16). | Decided | [Layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata) |
+| MD-07.21 | Delete an element, delete a preset | Button, then a warning | An element: an icon at its far right (2026-11-16). A preset: a red button "Delete the preset" on the line of its name, on the right of the field, as "Delete the type" in General; no delete on the lines of the list (Product Owner, 2026-11-22; the place: assistant's choice). | Decided (button), Proposed (place) | [Layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata) |
 | MD-07.17 | Order | Rule | Mode Values: the order of Signals, no handle, no sort. Mode Faceplate: the order of the builder, moved with a handle (end of 2026-11-17: "il y a déjà les poignées là"). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.16 | Description per signal | — | Removed (2026-11-16): no description per signal or command in the faceplate; the builder has description elements instead. The description a signal and a command got in Metadata on 2026-11-20 ([MD-04.16](#md-04--signals), [MD-05.12](#md-05--commands)) is for the model author and is not shown in the faceplate: assistant's reading. | Decided | [Presets](../metadata/draft.md#presets-and-their-faceplate) |
 

@@ -63,7 +63,7 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Page | Component | Id |
 | --- | --- | --- |
 | Foundations | specimen board | `630:203` |
-| Icons | 46 icons `icon/<name>`, in the section `Icons`; `folder-add` (`673:13125`) and `link-add` (`673:13131`) since 2026-11-22 | `656:7343` |
+| Icons | 46 icons `icon/<name>`, in the section `Icons`; `folder-add` (`673:13125`) and `link-add` (`673:13131`) since 2026-11-22, then `signal-add` (`680:12952`), `command-add` (`680:12964`), `title-add` (`680:12974`), `paragraph-add` (`680:12985`) and `group-add` (`680:12997`) | `656:7343` |
 | Atoms | `button` | `632:209` |
 | Atoms | `icon-button` | `633:98` |
 | Atoms | `checkbox` | `633:144` |
@@ -153,7 +153,7 @@ The page Metadata holds one Figma section per screen of [Screens of Metadata](..
 | MD-13 · Designations | `666:8401` | default (`666:8402`), empty, error |
 | Delete warning | `670:13025` | `MD-02 · Delete warning` (`670:13026`), the frame the delete buttons open as an overlay |
 
-The prototype starts at `MD-02 · General` (flow "Metadata"): the rail, the list of the parts, the modes of the documentation and of a preset lead to their screen; the two add icons of Links open their overlay; the delete button of General and of each own signal opens the warning, whose two buttons close it. The dimmed background behind the warning is set by hand in Figma (the plugin API cannot set it).
+The prototype starts at `MD-02 · General` (flow "Metadata"): the rail, the list of the parts, the modes of the documentation and of a preset lead to their screen; the two add icons of Links open their overlay; the button "Delete the preset" opens the warning; the delete button of General and of each own signal opens the warning, whose two buttons close it. The dimmed background behind the warning is set by hand in Figma (the plugin API cannot set it).
 
 ## Left to draw
 
