@@ -498,7 +498,7 @@ Said by the Product Owner on 2026-11-22 ("les enums, non, c'est un truc d'entrep
 Said by the Product Owner on 2026-11-22, answering the questionnaire ("Unique, pour les enums et les désignations"), with a note on the items.
 
 - **The `id` of an enum is unique among the enums**, and **the `id` of a designation unique among the designations**: both are written in configuration files and picked in lists. Written in the `description` of each `id`.
-- **The name of an item is unique in its enum, not across enums** (Product Owner: "tu peux avoir deux enums avec une même désignation à l'intérieur, parce que c'est deux thèmes différents"): two enums may both hold an item named the same. Assistant's reading of the note, which says "désignation" for the name of an item (`display_name`), to confirm. Written in the `description` of `display_name` in [Enum item](entities/05-enum-item.md).
+- **The name of an item is unique in its enum, not across enums** (Product Owner: "tu peux avoir deux enums avec une même désignation à l'intérieur, parce que c'est deux thèmes différents"): two enums may both hold an item named the same. The note says "désignation" for the name of an item (`display_name`): the assistant's reading, confirmed by the Product Owner later the same day (eighth questionnaire, decision 0084). Written in the `description` of `display_name` in [Enum item](entities/05-enum-item.md).
 
 ## Noted on 2026-11-22 (format of the ids, idea)
 
@@ -738,6 +738,12 @@ Seventh questionnaire, same day (decision 0083), each time the advised option:
 
 - **A key or a name typed that must be unique and is already taken is refused** ("Refusé à la saisie"): the value that was there stays, as for a file name already taken or an `id` taken along a branch. It holds for the `id` of an enum or a designation, the key and the display name of an enum item in its enum, the name of a preset in its type, the `id` of a signal, a command or a flag in its type. Written in [Checks and errors](checks-and-errors.md#refused), [Identity and renaming](identity-and-renaming.md) and screens MD-04.6, MD-05.3, MD-07.3, MD-09.3, MD-09.6, MD-09.7, MD-12.3 and MD-13.4. MD-12.3 no longer says the uniqueness of a flag's `id` is open: it was settled earlier the same day.
 - **The next document is identity and renaming** ("Identité et renommage"): [Identity and renaming](identity-and-renaming.md), a topic that gathers the rules already written and decides nothing new. The two keys and their match in the standards move there from [Files](files.md).
+
+Eighth questionnaire, same day (decision 0084), each time the advised option:
+
+- **The `display_name` of an enum item is unique in its enum** ("Oui, unique dans son enum"), while another enum may hold the same: the assistant's reading of the note of the same day is confirmed. Written in [Identity and renaming](identity-and-renaming.md) and screen MD-09.7.
+- **The `id` of a type is labelled "ID" in General** ("ID"), as everywhere else; it replaces "Name" on screen MD-02.1 and closes the question open since 2026-11-16 in the [whole draft](draft.md#the-type-tree-search-create-delete-product-owner-2026-11-16).
+- **The next document is units on screen** ("Unités à l'écran"): [Units on screen](units-on-screen.md), a topic that gathers the rules already written and decides nothing new. Screen MD-08 is aligned with decisions already taken: no default decimal places (0050), no reference family (0049), units sorted smallest first (2026-11-19), "unit system" for "family" (research T5); MD-07.12 starts at the default unit.
 
 ## Writing rules of the entity files (to become a skill)
 

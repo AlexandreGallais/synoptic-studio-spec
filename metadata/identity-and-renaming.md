@@ -5,8 +5,9 @@
 | Version | Date | Status | Change |
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
+| 2 | 2026-11-22 | Draft | The `id` of a type labelled "ID"; the `display_name` of an enum item unique in its enum, confirmed (decision 0084) |
 
-How each thing of Metadata is known, by the software and by people, what must be unique, and what a rename changes. The rules come from decisions 0038, 0047, 0053, 0060, 0064, 0080, 0081 and 0083, [Files](files.md), the [whole draft](draft.md#renaming-is-breaking-on-purpose), the [entity files](entities/README.md) and the [Screens of Metadata](../screens/metadata.md).
+How each thing of Metadata is known, by the software and by people, what must be unique, and what a rename changes. The rules come from decisions 0038, 0047, 0053, 0060, 0064, 0080, 0081, 0083 and 0084, [Files](files.md), the [whole draft](draft.md#renaming-is-breaking-on-purpose), the [entity files](entities/README.md) and the [Screens of Metadata](../screens/metadata.md).
 
 ## Where it is used
 
@@ -55,7 +56,7 @@ flowchart LR
 | Enum | `id` | Among the enums | The configuration files |
 | Designation | `id` | Among the designations | The configuration files |
 | Enum item | `key`, a whole number | In its enum | The model |
-| Enum item | `display_name` | In its enum, while another enum may hold the same (assistant's reading, to confirm) | No |
+| Enum item | `display_name` | In its enum, while another enum may hold the same (decision 0084) | No |
 | Preset | `name` | Among the presets of its type | No |
 | Palette, icon set, quantity | `name` | Among its kind, since it names a file | Its file |
 | Unit, unit system | `name` | Among those of its quantity | No |
@@ -64,6 +65,7 @@ flowchart LR
 
 - **A key or a name already taken in its list is refused when typed** (decision 0083): the change does not happen, the value that was there stays. The same for an `id` taken along a branch (decisions 0080, 0081) and for a `name` or an `id` whose file name is taken ([Files](files.md#the-name-of-a-file)).
 - **How an `id` is written is free**: no rule on its characters (whole draft, 2026-11-17).
+- **Every `id` is labelled "ID" on screen**, the `id` of a type in General too (decision 0084).
 
 ## A rename never breaks the software
 
@@ -94,8 +96,6 @@ A key is meant to be set at the start and never to change: the more keys change,
 
 ## Open questions
 
-- **The label of the `id` of a type in General**: "Name", as MD-02.1 says today, or "ID", as for the signals, the commands, the flags, the enums and the designations (whole draft, open since 2026-11-16).
-- **The uniqueness of the `display_name` of an enum item in its enum**: the assistant's reading of the Product Owner's note of 2026-11-22.
 - **The `id` of a flag, an enum or a designation renamed**: what it breaks in the configuration files of the synoptics already made.
 - **A file renamed by hand**, whose name no longer gives the `id` or the `name` it holds.
 - **The format of the `id`s**, a regular expression per kind of `id` in the settings: open in [Files](files.md#open-questions).

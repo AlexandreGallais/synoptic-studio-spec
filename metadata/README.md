@@ -17,6 +17,7 @@ Since 2026-11-19, at the Product Owner's request, the documentation of Metadata 
 | [Deleting and its consequences](deleting.md) | What can be deleted in Metadata, how, and what happens to what points to the deleted thing, in Metadata, in the presets and in the symbols. |
 | [Identity and renaming](identity-and-renaming.md) | How each thing is known: `internal_id` and `id`, the key of each entity and where it is unique, what a rename changes in the software and breaks outside it. |
 | [Checks and errors](checks-and-errors.md) | What the software checks in Metadata, when, and what each check gives: a change refused, a thing flagged in error, a mark in place of a value, or nothing. |
+| [Units on screen](units-on-screen.md) | In which unit a number is kept, shown, typed and sent to the model: default, display and model unit, a value or a difference, the decimals, the rounding, the Units page. |
 | [Documentation plan](documentation-plan.md) | The kinds of documents of Metadata (data model, entities, topics, catalogues, screens, journeys...), those written and those missing. |
 | [Entities](entities/README.md) | One file per entity (a box of the schema), written whole: its box and the JSON Schema of its file. Every box of the data model has one since 2026-11-22. |
 | [Data model: notes](data-model-notes.md) | Everything written around the schema from 2026-11-19 to 2026-11-21: the rules of the names, the faceplate box by box, the writing rules of the entity files, notes for the development, the reading notes by date and the open questions. |

@@ -87,9 +87,9 @@ Path: Metadata › Types › a type › General. Complete: nothing more is neede
 ```mermaid
 mindmap
   root((MD-02 General))
-    Name
+    ID
       Always editable
-      Label Name or ID, open
+      Unique in the whole tree
     Parent
       Name and icon
       Read only, never changed
@@ -106,7 +106,7 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-02.1 | Name | Text field | Always editable (2026-11-16). The model identifier, readable (`centrifugal_pump`). A rename breaks the model; nothing warns, it is seen in Git (2026-11-21). | Decided | [Types](../metadata/draft.md#types) |
+| MD-02.1 | ID | Text field | Labelled "ID", as for the signals, the commands, the flags, the enums and the designations (2026-11-22, decision 0084; replaces "Name"). Always editable (2026-11-16). The model identifier, readable (`centrifugal_pump`), unique in the whole tree; an ID already taken is refused when typed (decisions 0047, 0083). A rename breaks the model; nothing warns, it is seen in Git (2026-11-21). | Decided | [Types](../metadata/draft.md#types) |
 | MD-02.2 | Edit | — | Removed (2026-11-16): everything is editable all the time. | Decided | [Always editable](../metadata/draft.md#always-editable-no-versions) |
 | MD-02.3 | Save | — | Removed (2026-11-16): each change is kept as it is made. | Decided | [Always editable](../metadata/draft.md#always-editable-no-versions) |
 | MD-02.4 | Parent | Read only: name and icon | Set at creation, never changed (2026-11-16, decision 0013). A wrong parent: delete the type and create it again. The Product Owner then described it as a select showing the whole tree, indented with dashes: asked. | Decided (read only), Open (select) | [Types](../metadata/draft.md#a-list-of-types-shows-the-tree-indented) |
@@ -118,7 +118,6 @@ mindmap
 Gaps:
 
 - Which icons for Reset (to choose with the design system).
-- The label of the name: "Name" or "ID" (open).
 - The palette and the icons may take several lines: where the reset buttons go then.
 - The wording of the warning.
 - How the refused delete of a type with sub-types shows: open in [Checks and errors](../metadata/checks-and-errors.md#open-questions).
@@ -413,7 +412,7 @@ mindmap
 | MD-07.7 | Table of values | Table | Mode Values: every signal of the type, own and inherited, in the order of Signals; one line each; no "add an entry"; no command (2026-11-16). | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
 | MD-07.8 | Shown | — | Removed (2026-11-16): what is in the builder is shown. | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.9 | Signal | Column, read only | Mode Values: an icon of the signal's direction, input or output, then its ID (2026-11-17), so that the start value reads right. | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
-| MD-07.12 | Display unit | Column, select | Mode Values. For every integer and real (each has a quantity, 2026-11-19, decision 0051); starts as the model unit of the quantity. Changing it never changes the start value: only how it is shown. | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
+| MD-07.12 | Display unit | Column, select | Mode Values. For every integer and real (each has a quantity, 2026-11-19, decision 0051); starts as the default unit of the quantity ([Units on screen](../metadata/units-on-screen.md#three-units)). Changing it never changes the start value: only how it is shown. | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
 | MD-07.13 | Decimals | Column, number field | Mode Values. Integers and reals; starts as the one default number of decimals, the same everywhere (2026-11-19, decision 0050). Display only. Kept by the Product Owner on 2026-11-17. | Decided | [Units](../metadata/draft.md#decimal-places) |
 | MD-07.13b | True / False | Column, two short text fields | Mode Values. Booleans only: the text of the true state and of the false state ("Running" / "Stopped"), shown in the faceplate for a signal in read; never sent to the model (2026-11-21, decisions 0054 and 0058; never in a title, decision 0055). Header "True / False", its place after Decimals, and "true" / "false" shown when empty: assistant's reading. | Decided (field in the preset), Proposed (place, header, empty) | [Data model](../metadata/data-model-notes.md#changed-on-2026-11-21-boolean-texts) |
 | MD-07.14 | Start value | Column, field of the signal's type | Mode Values. For an input, the first value sent to the model; for an input and an output, the value shown before the model sends anything (2026-11-17). Called "Default value" until 2026-11-22: `start_value`, the word of FMI (decision 0064). True or false, a number, a text, or an enum item. A number is shown and typed in the display unit, and kept in the default unit of the quantity (2026-11-19, decision 0051). | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
@@ -439,16 +438,16 @@ Gaps:
 
 Path: Metadata › Units (navigation bar).
 
-The page goes from the list of quantities to a quantity, then to a family. Following the [layout rules](README.md#layout-rules), they sit in columns from left to right: the list, the selected quantity, the selected family.
+The page goes from the list of quantities to a quantity, then to a unit system (called "family" until 2026-11-22, research T5: the word also names families of equipment). Following the [layout rules](README.md#layout-rules), they sit in columns from left to right: the list, the selected quantity, the selected unit system. How a unit is shown elsewhere: [Units on screen](../metadata/units-on-screen.md).
 
-**The whole page is read only** (Product Owner, 2026-11-16): the catalogue ships with the software, and contributors complete its files; no +, no field that changes the catalogue, no delete. The only field is the converter of a family, which tries a value and keeps nothing (2026-11-17).
+**The whole page is read only** (Product Owner, 2026-11-16): the catalogue ships with the software, and contributors complete its files; no +, no field that changes the catalogue, no delete. The only field is the converter of a unit system, which tries a value and keeps nothing (2026-11-17).
 
-Reviewed by the Product Owner on 2026-11-17 on the wireframe of the mass: the name said once, "Default unit" and "Default decimal places", a converter, the formula of each unit in the table, no ratio.
+Reviewed by the Product Owner on 2026-11-17 on the wireframe of the mass: the name said once, "Default unit", a converter, the formula of each unit in the table, no ratio. "Default decimal places" was removed on 2026-11-19 (decision 0050).
 
 ```mermaid
 flowchart LR
     L["List of quantities, each difference under its quantity"] -->|"click"| Q["A quantity"]
-    Q -->|"click"| F["A family"]
+    Q -->|"click"| F["A unit system"]
 ```
 
 ```mermaid
@@ -462,9 +461,8 @@ mindmap
     A quantity
       Its name as title, not repeated
       Default unit
-      Default decimal places
-      Families
-    A family
+      Unit systems
+    A unit system
       Its name as title
       Converter, a field in the default unit
       Table of units, whole width
@@ -478,14 +476,14 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | MD-08.1 | List of quantities | List | Mass, volume, flow... Each difference is shown under its quantity, and stays a quantity of its own. | Decided | [Units](../metadata/draft.md#units) |
-| MD-08.2 | Add a quantity, a family, a unit | — | Removed (Product Owner, 2026-11-16): the page is read only; a missing unit is added by a contributor to the catalogue files. | Decided | [Units](../metadata/draft.md#a-ready-made-catalogue-read-only) |
+| MD-08.2 | Add a quantity, a unit system, a unit | — | Removed (Product Owner, 2026-11-16): the page is read only; a missing unit is added by a contributor to the catalogue files. | Decided | [Units](../metadata/draft.md#a-ready-made-catalogue-read-only) |
 | MD-08.12 | Name of the quantity | Title | The title of the quantity's column; not written again under it (2026-11-17: "ça sert à rien de remettre le nom juste en dessous"). | Decided | [Units](../metadata/draft.md#the-units-page) |
-| MD-08.3 | Default unit | Text, read only | Labelled "Default unit" (2026-11-17, replaces "Model unit"): the model unit of the quantity, the same for every signal (2026-11-16), and the display unit until a preset chooses another. From the catalogue; whether a project can set its own: open. | Decided (label, one per quantity), Open (where set) | [Units](../metadata/draft.md#model-unit-and-display-unit) |
-| MD-08.4 | Default decimal places | Text, read only | Labelled "Default decimal places" (2026-11-17). Fixed by the catalogue; a preset can change it for a signal (Product Owner, 2026-11-16). | Decided | [Units](../metadata/draft.md#decimal-places) |
-| MD-08.5 | Reference family | — | Not shown any more (2026-11-17): the Product Owner did not see what it was for, and the formulas now go from the default unit. Kept or removed from the catalogue: asked. | Proposed | [Units](../metadata/draft.md#quantities-families-and-conversions) |
-| MD-08.6 | Families | List | Named after their system: Metric, Imperial... (2026-11-17). A click opens the family (kept 2026-11-17). | Decided | [Units](../metadata/draft.md#units) |
-| MD-08.13 | Converter | Number field | At the top of the family, in the default unit of the quantity, 1 to start with (assistant's reading). Its value is converted on every line of the table; nothing is kept (2026-11-17: "je mets 1 kg et [...] je vois combien de pounds ça fait et combien d'ounces"). | Decided (field), Proposed (starts at 1) | [Units](../metadata/draft.md#the-units-page) |
-| MD-08.7 | Table of units | Table, read only, whole width | One line per unit. Columns: Unit (name with its variant: US gallon), Symbol, Value, Formula. Flat units (`m³/h` is one unit). No ratio column (2026-11-17: the ratio "1/16" is "présenté de la pire des manières"). Units from the largest to the smallest: stone, pound, ounce, like kilogram, gram, milligram (2026-11-17: "faut de la cohérence"). The line of the default unit is marked (assistant's reading). | Decided | [Units](../metadata/draft.md#the-units-page) |
+| MD-08.3 | Default unit | Text, read only | Labelled "Default unit" (2026-11-17, replaces "Model unit"): the unit every formula of the quantity is written against, and the display unit until a preset chooses another (decisions 0049, 0051). It stands for the model unit, the same for every signal (decision 0024), while the model unit stays in the catalogue; whether a project can set its own: open. | Decided (label, one per quantity), Open (where the model unit is set) | [Units on screen](../metadata/units-on-screen.md#three-units) |
+| MD-08.4 | Default decimal places | — | Removed (2026-11-19, decision 0050): a quantity has no decimals; they are set in the preset only, starting at 2 ([MD-07.13](#md-07--presets)). | Decided | [Units on screen](../metadata/units-on-screen.md#decimals) |
+| MD-08.5 | Reference family | — | Removed (2026-11-19, decision 0049): every unit converts to the default unit of its quantity and back. | Decided | [Conversion](../metadata/entities/07-conversion.md) |
+| MD-08.6 | Unit systems | List | Named after their system: Metric, Imperial... (2026-11-17); they only group the units (decision 0075). A click opens the unit system (kept 2026-11-17). | Decided | [Unit system](../metadata/entities/09-unit-system.md) |
+| MD-08.13 | Converter | Number field | At the top of the unit system, in the default unit of the quantity, 1 to start with (assistant's reading). Its value is converted on every line of the table; nothing is kept (2026-11-17: "je mets 1 kg et [...] je vois combien de pounds ça fait et combien d'ounces"). | Decided (field), Proposed (starts at 1) | [Units](../metadata/draft.md#the-units-page) |
+| MD-08.7 | Table of units | Table, read only, whole width | One line per unit. Columns: Unit (name with its variant: US gallon), Symbol, Value, Formula. Flat units (`m³/h` is one unit). No ratio column (2026-11-17: the ratio "1/16" is "présenté de la pire des manières"). Units sorted by the software, smallest first, by the size of one step in the default unit, then by name (2026-11-19: "C'est plus simple comme ça"; replaces "from the largest to the smallest" of 2026-11-17); a quantity whose formulas give no finite step keeps the order of its file. The line of the default unit is marked (assistant's reading). | Decided | [Units](../metadata/draft.md#the-units-page) |
 | MD-08.14 | Value | Column, read only | The value of the converter in this unit, rounded to 12 significant digits (assistant's reading). | Decided (column), Proposed (rounding) | [Units](../metadata/draft.md#the-units-page) |
 | MD-08.8 | Formula | Column, read only | How this unit is computed from the default unit, on its own line, never in a line under the table (2026-11-17): `lb = kg ÷ 0.45359237`, `°F = °C × 9/5 + 32`. It replaces the conversion of the family to the reference family, shown going and back. | Decided | [Units](../metadata/draft.md#the-units-page) |
 | MD-08.9 | Parameters of the form | — | Merged into the formula: shown, never typed. | Decided | [Units](../metadata/draft.md#units) |
@@ -532,7 +530,7 @@ mindmap
 | MD-09.5 | Items | Table | Columns in this order: the handle with no header, Key, Display name, Description, then the delete button with no header (2026-11-17: the short field first, the long one last; replaces Key, Description, Display name of 2026-11-16). A new line takes its place by key, smallest first (end of 2026-11-17: "un tri automatique pour que ça aille dans l'ordre"); then the handle moves it to the order of meaning, without changing its key, and the order is kept (questionnaire, end of 2026-11-17: "Tri par clé, puis poignées"; decision 0038). Once items were moved, a new line goes right after the item with the next smaller key (questionnaire, end of 2026-11-17: "Juste après l'item de clé inférieure"; decision 0039). | Decided | [Enums](../metadata/draft.md#rules-5) |
 | MD-09.12 | Handle of an item | Grip, dragged, no header | At the very left of each item: moves it; the key does not change (end of 2026-11-17, decision 0038). Same behaviour as [MD-04.14](#md-04--signals). | Decided | [Layout rules](README.md#handles-to-choose-the-order) |
 | MD-09.6 | Key | Whole number field | Typed by the user, any whole number, gaps allowed (0, 2, 4), for a global enum and for the items of a template (end of 2026-11-17). Unique in its enum; what the model receives (2026-11-16). A key already taken is refused when typed (decision 0083). It can still be changed once given: breaking for the model, with no warning (decision 0038); the Versions page that showed it was removed on 2026-11-21 (decision 0053), the change is seen in Git. Changing it never moves the line (questionnaire, end of 2026-11-17: "Il reste où il est"; decision 0039). | Decided | [Enums](../metadata/draft.md#rules-5) |
-| MD-09.7 | Display name | Text field | After the key. What the faceplate, the symbol texts and the test values show. Not breaking. Called "Display text" until 2026-11-21: renamed for the same word as a signal field (decision 0056). Unique in its enum, while two enums may hold the same (2026-11-22, assistant's reading of the Product Owner's note, to confirm: [Enum item](../metadata/entities/05-enum-item.md)); while it holds, a name already taken is refused when typed (decision 0083). | Decided | [Enums](../metadata/draft.md#enums) |
+| MD-09.7 | Display name | Text field | After the key. What the faceplate, the symbol texts and the test values show. Not breaking. Called "Display text" until 2026-11-21: renamed for the same word as a signal field (decision 0056). Unique in its enum, while two enums may hold the same (2026-11-22, confirmed by the Product Owner, decision 0084: [Enum item](../metadata/entities/05-enum-item.md)); a name already taken in its enum is refused when typed (decision 0083). | Decided | [Enums](../metadata/draft.md#enums) |
 | MD-09.9 | Description | Text field | Last, after the display name (2026-11-17): what the item means, plain text, never sent to the model (2026-11-16). Optional, shown on this page only (2026-11-16). | Decided | [Enums](../metadata/draft.md#enums) |
 | MD-09.8 | Add, delete an item | Button (+), delete button (icon) | The small + on the right of the title "Items"; the delete button at the far right of an item, with no header, then a warning (2026-11-16; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). An enum is deleted the same way. Deleting one still used is allowed: the signals, start values and commands that use it are flagged in error (decision 0082). | Decided | [Enums](../metadata/draft.md#enums) |
 

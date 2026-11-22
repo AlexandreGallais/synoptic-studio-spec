@@ -162,7 +162,7 @@ block-beta
 ```
 
 - The General part holds the name, the parent, the icon and the colour, and the **Delete button** of the type (Product Owner, 2026-11-11, confirmed on 2026-11-16; the Delete button added the same day).
-- Open: should the field of the name be labelled "Name" or "ID", as for the signals and the commands? The Product Owner hesitates (2026-11-16: "Je ne sais pas s'il faut mettre vraiment un nom ou plutôt un ID"). On 2026-11-18 he leans towards "ID" for the public identifier and "internal ID" for the UUID, to settle with a documentary research (see [Data model](#the-names-of-the-two-identifiers)).
+- The field of the name is labelled **"ID"**, as for the signals, the commands, the flags, the enums and the designations (Product Owner, 2026-11-22, questionnaire: "ID"; decision 0084). It was open since 2026-11-16 ("Je ne sais pas s'il faut mettre vraiment un nom ou plutôt un ID").
 
 #### A list of types shows the tree, indented
 
@@ -306,7 +306,6 @@ flowchart LR
 
 ### Open questions
 
-- The label of the name in General: "Name" or "ID"?
 - The parent: fixed at creation (decision 0013), or chosen in a list of the whole tree, indented with dashes, as described during the review of the wireframes?
 - The search: does the filtered tree keep the parents of a type that matches, so that its place is seen?
 - Where the reset buttons of the icon and the colour go when their lists take several lines.
@@ -1956,7 +1955,7 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 
 | Question | Page | Written as |
 | --- | --- | --- |
-| Label of the name in General ("Name" or "ID"); parent fixed (decision 0013) or chosen in a list of the tree indented with dashes; parents kept in a filtered tree; place of the reset buttons | [Types](#types) | Raised while reviewing the wireframes (2026-11-16); the tree, its + and its search icon validated the same day. |
+| Parent fixed (decision 0013) or chosen in a list of the tree indented with dashes; parents kept in a filtered tree; place of the reset buttons | [Types](#types) | Raised while reviewing the wireframes (2026-11-16); the tree, its + and its search icon validated the same day. |
 | Palette, icon list and default icon and colour; place of the reset buttons when a list takes several lines | [Icons](#type-icons) | To define with the design system. |
 | Folder, generated files and conflicts between people | [Files and conflicts](../storage/files-and-conflicts.md) | Open, not about metadata. |
 | Source and licence of the ready-made catalogue of units; where the model unit of each quantity is set (catalogue for good, a configuration file of the project, or an annex page) | [Units](#units) | Licences of UCUM, QUDT, CLDR and NIST not checked, to settle before release. The model unit left the signal at the end of 2026-11-16: one per quantity, the same everywhere, set outside Metadata; the Product Owner leans towards the catalogue but will think it over. Once settled, it will be decision 0029. |
