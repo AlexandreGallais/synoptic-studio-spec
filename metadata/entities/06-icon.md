@@ -35,8 +35,8 @@ erDiagram
       "readOnly": true
     },
     "name": {
-      "description": "What the icon shows, read on hover and searched in the list; unique in its icon set.",
-      "type": "string",
+      "description": "A name for people, read on hover and searched in the list; two icons of a set may share it.",
+      "type": ["string", "null"],
       "minLength": 1,
       "examples": ["centrifugal-pump"]
     },

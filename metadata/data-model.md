@@ -20,7 +20,8 @@ erDiagram
         text id
     }
     APPEARANCE {
-        uuid icon FK
+        uuid icon FK "the icon picked in an icon set"
+        svg icon_drawing "a copy of its drawing, refreshed while its icon set exists, kept when it is removed"
         uuid color FK "the color picked in a palette"
         rgba color_value "a copy of its value, refreshed while its palette exists, kept when it is removed"
     }
@@ -143,7 +144,7 @@ erDiagram
     }
     ICON {
         uuid internal_id PK
-        text name "shown on hover"
+        text name
         svg drawing
     }
     PALETTE {
@@ -211,6 +212,7 @@ erDiagram
     "id": "centrifugal_pump",
     "appearance": {
       "icon": "01a1f800-0000-7000-8000-000000000700",
+      "icon_drawing": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\"/></svg>",
       "color": null,
       "color_value": null
     },
