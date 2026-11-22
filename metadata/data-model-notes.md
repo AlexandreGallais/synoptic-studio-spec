@@ -511,6 +511,15 @@ Said by the Product Owner on 2026-11-22, answering the questionnaire ("Unique, p
 - **The `id` of an enum is unique among the enums**, and **the `id` of a designation unique among the designations**: both are written in configuration files and picked in lists. Written in the `description` of each `id`.
 - **The name of an item is unique in its enum, not across enums** (Product Owner: "tu peux avoir deux enums avec une même désignation à l'intérieur, parce que c'est deux thèmes différents"): two enums may both hold an item named the same. Assistant's reading of the note, which says "désignation" for the name of an item (`display_name`), to confirm. Written in the `description` of `display_name` in [Enum item](entities/04-enum-item.md).
 
+## Noted on 2026-11-22 (format of the ids, idea)
+
+An idea of the Product Owner, said on 2026-11-22 as a note, not a decision ("ça me passe par la tête"). Nothing in the schema changes for now.
+
+- **A settings page to choose the format of every `id`**: a regular expression per kind of `id`, kept in the settings configuration file ("dans le fichier de config des paramètres"). When an `id` typed in the software does not follow it, the software says so ("ça ne respecte pas le format attendu").
+- **The user writes their own expressions in that file** and adds others there ("qu'on puisse faire sa propre regex en fichier de conf et rajouter des trucs en fichier de conf").
+- The Product Owner first hesitated on where the expression is kept ("qui ne serait pas du tout dans les fichiers de config, ou je ne sais pas quoi"), then said the settings file: assistant's reading, to confirm.
+- Open: whether the software ships a format or none, since the Product Owner wanted no rule on how an ID is written (2026-11-17, [whole draft](draft.md#flags)); a message only or the `id` refused; one expression per entity (type, signal, enum, designation…) or shared ones; which configuration folder holds the settings file ([Files](files.md#the-two-configuration-folders)).
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
