@@ -588,6 +588,9 @@ Said by the Product Owner after the research above was written ("je veux bien qu
   - a conversion between unit systems, such as metric and imperial ("potentiellement [...] on verra"), while today a unit system only groups the units of its quantity ([Unit system](entities/13-unit-system.md));
   - a conversion from one quantity to another ("peut-être que c'est de quantité à quantité"), while today a conversion only exists inside its quantity (decision 0049);
   - an idea, to look at after the research ("on verra ça après la recherche"): each unit system with a default unit of its own, and a conversion between the default units of the unit systems ("un truc de conversion [...] entre unités par défaut").
+  - the default unit of a quantity needs no mark of its own: it is the one whose `to_default` and `from_default` are both `x`. Should it then have no conversion at all ("est-ce qu'on n'y a pas de conversion ?")?
+  - a default unit system per quantity, marked in the quantity file ("il faudrait peut-être un système par défaut").
+  - unit systems in a file of their own, as a closed list shared by all quantities, like an enum ("est-ce que ce n'est pas une sorte d'énum, les systèmes ?"). The Product Owner leans the other way, without settling it: stay simple, keep the unit systems inside each quantity file, and take care there ("il faut rester simple, je pense").
 - Until the research and a decision, the entity files keep the rules of decision 0049.
 
 ## Not in the schema yet
