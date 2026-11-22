@@ -148,7 +148,7 @@ The page Metadata holds one Figma section per screen of [Screens of Metadata](..
 | MD-05 · Commands | `666:3777` | default (`666:3778`), empty, error |
 | MD-12 · Flags | `666:6541` | default (`666:6542`), empty, error |
 | MD-07 · Presets | `668:9609` | Values (`668:9610`), Faceplate (`668:11695`), empty, error |
-| MD-08 · Units | `669:11672` | Mass in Imperial (`669:11673`), Temperature in Imperial |
+| MD-08 · Units | `669:11672` | Mass in Imperial (`669:11673`), Temperature in Imperial (`669:13261`, with its switch Quantity or Difference); the quantities are a `list-panel` of `list-row` with their icons since 2026-11-22 |
 | MD-09 · Enums | `669:14179` | global (`669:14180`), template, empty, error |
 | MD-13 · Designations | `666:8401` | default (`666:8402`), empty, error |
 | Delete warning | `670:13025` | `MD-02 · Delete warning` (`670:13026`), the frame the delete buttons open as an overlay |

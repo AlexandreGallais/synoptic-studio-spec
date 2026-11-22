@@ -151,8 +151,8 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | MD-03.1 | Description, read only | — | Removed (Product Owner, 2026-11-22): only Visual and Markdown. | Decided | [Documentation](../metadata/draft.md#the-description) |
-| MD-03.1b | Title "Description" | Title, above the editor | Tells what the text is, as "Links" does for the links (Product Owner, 2026-11-22, with a doubt; assistant's choice). | Proposed | [Documentation](../metadata/draft.md#the-description) |
-| MD-03.2 | Description, visual editor | Editor (visual) | A "what you see is what you get" editor with a formatting tool bar. Proposed as the mode that opens first. | Decided (mode), Proposed (first) | [Documentation](../metadata/draft.md#type-documentation) |
+| MD-03.1b | Title "Description" | Title, above the editor | Tells what the text is, as "Links" does for the links (Product Owner, 2026-11-22, questionnaire: "Oui, le garder"). | Decided | [Documentation](../metadata/draft.md#the-description) |
+| MD-03.2 | Description, visual editor | Editor (visual) | A "what you see is what you get" editor with a formatting tool bar. The mode that opens first (2026-11-22, questionnaire). | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.3 | Description, Markdown | Editor (raw text) | For those who write Markdown faster, with the same formatting tool bar; the user switches between the two modes at any time. | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.4 | Go to edit, Save | — | None: switching mode is not an Edit step, nothing to save or confirm (2026-11-16). | Decided | [Always editable](../metadata/draft.md#always-editable-no-versions) |
 | MD-03.4b | Visual, Markdown | Buttons (switch) | On the right of the formatting tool bar, on the same line (2026-11-16); Read only removed (2026-11-22). | Decided | [Documentation](../metadata/draft.md#type-documentation) |
@@ -163,14 +163,12 @@ mindmap
 | MD-03.6 | Add a path | Button (icon with a small +), then the selection window of the computer | On the right of the title "Links", first of two icons (2026-11-16). The server opens the selection window of the computer; only the path is kept (`W:/...`). A file or a folder. The new link goes at the end of the list. In the mockups, the window is a stand-in frame (2026-11-22). | Decided (window), Proposed (stand-in) | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
 | MD-03.7 | Add a URL | Button (icon with a small +), then a window "Add a URL" | Next to MD-03.6 (2026-11-16): two icons, no menu, "clac-clac". The window has a URL field (typed or pasted) and a description field (optional), then Cancel and Add; the new link goes at the end of the list (2026-11-22). | Decided (icon), Proposed (window) | [Documentation](../metadata/draft.md#the-links) |
 | MD-03.11 | Handle of a link | Grip, dragged, no header | At the very left of each link: moves it; the order is kept (2026-11-16). | Decided | [Documentation](../metadata/draft.md#the-links) |
-| MD-03.8 | Description of a link | Text field | Plain text, not Markdown. | Decided | [Documentation](../metadata/draft.md#type-documentation) |
+| MD-03.8 | Description of a link | Text field | Plain text, not Markdown. Once a link is added, the only thing that changes in it: its path or URL stays; a wrong link is deleted and added again (2026-11-22, questionnaire). | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.9 | Open | Click on the path or the URL, an icon at its start | No column Open (2026-11-16). A click on a path opens a folder: the one that contains the file, or the folder itself; never a file or a program. A click on a URL opens it in the default browser. The icon at the start says folder or link. | Decided | [Documentation](../metadata/draft.md#the-links) |
 | MD-03.10 | Delete a link | Button (icon), then a warning | In the last column of the line, on the far right, with no header; a click opens a warning (2026-11-16). No right click. | Decided | [Layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata) |
 
 Gaps:
 
-- How is a link edited in place, now that a click on its path or URL opens it? Can it be changed at all once added?
-- Which mode opens first: Visual (proposed) or Markdown?
 - The exact content of the formatting tool bar.
 
 ## MD-04 · Signals
@@ -417,7 +415,7 @@ mindmap
 | MD-07.14 | Start value | Column, field of the signal's type | Mode Values. For an input, the first value sent to the model; for an input and an output, the value shown before the model sends anything (2026-11-17). Called "Default value" until 2026-11-22: `start_value`, the word of FMI (decision 0064). True or false, a number, a text, or an enum item. A number is shown and typed in the display unit, and kept in the default unit of the quantity (2026-11-19, decision 0051). | Decided | [Presets](../metadata/draft.md#mode-values-one-table-of-the-signals) |
 | MD-07.18 | Add an element | Buttons (small icons with a +) | Mode Faceplate, on the right of the title "Elements": one icon per kind, a signal, a command, a title, a description, a group, no menu (2026-11-16, the rule of the links, confirmed by the Product Owner the same day). Each icon carries its small + at its bottom right, as the icons of Links, so that it reads as "add" (2026-11-22: "y a pas de petit + dessus [...] on ne sait pas vraiment si c'est pour ajouter"). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.9b | Signal element | Element of the builder | The signal, picked by its ID; its display name (plain text, never sent to the model; empty: the ID is shown; called "name shown" until 2026-11-21, decision 0055); read or write (input) or read or override (output); its input. | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
-| MD-07.10 | Input | Select, in a signal element | Chosen in the builder (end of 2026-11-17: "on met input number, par exemple"). Enum: radio on one line, radio on several lines, select; its items in the order of the handles of [MD-09.12](#md-09--enums) (end of 2026-11-17). Number: a number field, with its bounds ([MD-07.22](#md-07--presets)). Boolean: a switch (2026-11-21). Shown for write or override only; in read, the faceplate shows the text of the value alone (2026-11-21). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
+| MD-07.10 | Input | Select, in a signal element | Chosen in the builder (end of 2026-11-17: "on met input number, par exemple"). Enum: radio on one line, radio on several lines, select; its items in the order of their keys (2026-11-22, [MD-09.5](#md-09--enums)). Number: a number field, with its bounds ([MD-07.22](#md-07--presets)). Boolean: a switch (2026-11-21). Shown for write or override only; in read, the faceplate shows the text of the value alone (2026-11-21). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.11 | Read or write, read or override | Radio, in a signal element | Input: read or write. Output: read or override (end of 2026-11-17: "c'est read write pour un input et read override pour un output"; corrects the single "read or override" written earlier that day). Write or override: a person types a value; what the model side does with it is up to it. | Decided | [Presets](../metadata/draft.md#typing-a-value) |
 | MD-07.22 | Minimum, maximum of a number field | Number field each, with a small icon inside to pick a signal | On the second line of the signal element, after the kind of input, both of the same width (2026-11-22: "le min max, j'ai l'impression qu'ils sont pas la même taille"; two lines: assistant's choice to make room). Each typed by hand, or taken from a signal of the type through the small icon in the field, as Figma's "Apply variable" (end of 2026-11-17). The small icon offers the input signals only, never an output (2026-11-21, decision 0055), and only those of the same quantity as the signal shown (2026-11-21, decision 0056). A typed bound is shown in the display unit of the preset. A value outside them is refused (assistant's reading). | Decided (refusal: Proposed) | [Presets](../metadata/draft.md#bounds-of-a-number-field) |
 | MD-07.15 | Command element | Element of the builder | The command, picked by its ID; the display name on its button (plain text, never sent to the model; empty: the command's ID is shown; called "button text" until 2026-11-21, decision 0057). | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
@@ -445,7 +443,7 @@ Reviewed by the Product Owner on 2026-11-17 on the wireframe of the mass: the na
 
 ```mermaid
 flowchart LR
-    L["List of quantities, each difference under its quantity"] -->|"click"| Q["A quantity"]
+    L["List of quantities, one line each, icons quantity and difference"] -->|"click"| Q["A quantity, switch Quantity or Difference"]
     Q -->|"click"| F["A unit system"]
 ```
 
@@ -453,12 +451,12 @@ flowchart LR
 mindmap
   root((MD-08 Units))
     List of quantities
-      Temperature
-        Temperature difference
-      Mass
-      Flow
+      Temperature, icons quantity and difference
+      Mass, icon quantity
+      Flow, icon quantity
     A quantity
       Its name as title, not repeated
+      Switch Quantity or Difference, when it has a difference
       Default unit
       Unit systems
     A unit system
@@ -474,7 +472,8 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-08.1 | List of quantities | List | Mass, volume, flow... Each difference is shown under its quantity, and stays a quantity of its own. | Decided | [Units](../metadata/draft.md#units) |
+| MD-08.1 | List of quantities | List | Mass, volume, flow... One line per quantity, its difference included: its name, then the small icon `quantity`, and the icon `difference` when it has one (Product Owner, 2026-11-22; replaces the difference shown under its quantity). The difference stays a quantity of its own in the catalogue. | Decided | [Units](../metadata/draft.md#the-units-page) |
+| MD-08.15 | Quantity or difference | Switch (two buttons) | At the top of a quantity that has a difference, under its title: Quantity or Difference; the same page in both, default unit, unit systems, converter and table (Product Owner, 2026-11-22). The quantity opens first (assistant's reading). | Decided (switch), Proposed (first) | [Units](../metadata/draft.md#the-units-page) |
 | MD-08.2 | Add a quantity, a unit system, a unit | — | Removed (Product Owner, 2026-11-16): the page is read only; a missing unit is added by a contributor to the catalogue files. | Decided | [Units](../metadata/draft.md#a-ready-made-catalogue-read-only) |
 | MD-08.12 | Name of the quantity | Title | The title of the quantity's column; not written again under it (2026-11-17: "ça sert à rien de remettre le nom juste en dessous"). | Decided | [Units](../metadata/draft.md#the-units-page) |
 | MD-08.3 | Default unit | Text, read only | Labelled "Default unit" (2026-11-17, replaces "Model unit"): the unit every formula of the quantity is written against, and the display unit until a preset chooses another (decisions 0049, 0051). It stands for the model unit, the same for every signal (decision 0024), while the model unit stays in the catalogue; whether a project can set its own: open. | Decided (label, one per quantity), Open (where the model unit is set) | [Units on screen](../metadata/units-on-screen.md#three-units) |
@@ -515,7 +514,7 @@ mindmap
         Display name, shown to people
         Description, what the item means
         Delete button, no header
-        Placed by key, then moved by handle
+        Sorted by key, no handle
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
@@ -526,9 +525,9 @@ mindmap
 | MD-09.10 | Kind: Global or Template | Choice when the enum is made (control not said) | Global: the items are written here, the same everywhere. Template: an ID and a description only, no items here; the items are completed on each placed symbol, in the synoptic, with a small warning until they are (end of 2026-11-17). The difference must be explicit on screen; how is for the design system (2026-11-17). The kind can be changed at any time, signals or not, with no warning; going back to global brings back its items (end of 2026-11-17). | Decided (control: Open) | [Enums](../metadata/draft.md#global-enums-and-templates) |
 | MD-09.11 | Description of the enum | Text field (several lines) | What the enum is about as a whole, for a template and for a global enum alike (Product Owner, end of 2026-11-17). Plain text, never sent to the model. | Decided | [Enums](../metadata/draft.md#global-enums-and-templates) |
 | MD-09.4 | Kind of key | — | Removed (Product Owner, 2026-11-16): a key is always a number, there are no string keys. | Decided | [Enums](../metadata/draft.md#enums) |
-| MD-09.5 | Items | Table | Columns in this order: the handle with no header, Key, Display name, Description, then the delete button with no header (2026-11-17: the short field first, the long one last; replaces Key, Description, Display name of 2026-11-16). A new line takes its place by key, smallest first (end of 2026-11-17: "un tri automatique pour que ça aille dans l'ordre"); then the handle moves it to the order of meaning, without changing its key, and the order is kept (questionnaire, end of 2026-11-17: "Tri par clé, puis poignées"; decision 0038). Once items were moved, a new line goes right after the item with the next smaller key (questionnaire, end of 2026-11-17: "Juste après l'item de clé inférieure"; decision 0039). | Decided | [Enums](../metadata/draft.md#rules-5) |
-| MD-09.12 | Handle of an item | Grip, dragged, no header | At the very left of each item: moves it; the key does not change (end of 2026-11-17, decision 0038). Same behaviour as [MD-04.14](#md-04--signals). | Decided | [Layout rules](README.md#handles-to-choose-the-order) |
-| MD-09.6 | Key | Whole number field | Typed by the user, any whole number, gaps allowed (0, 2, 4), for a global enum and for the items of a template (end of 2026-11-17). Unique in its enum; what the model receives (2026-11-16). A key already taken is refused when typed (decision 0083). It can still be changed once given: breaking for the model, with no warning (decision 0038); the Versions page that showed it was removed on 2026-11-21 (decision 0053), the change is seen in Git. Changing it never moves the line (questionnaire, end of 2026-11-17: "Il reste où il est"; decision 0039). | Decided | [Enums](../metadata/draft.md#rules-5) |
+| MD-09.5 | Items | Table | Columns in this order: Key, Display name, Description, then the delete button with no header (2026-11-17: the short field first, the long one last; replaces Key, Description, Display name of 2026-11-16). The lines are in the order of their keys, smallest first, and nothing else: no handle, no move (Product Owner, 2026-11-22: "les trier par numéro et puis point barre"; replaces decisions 0038 and 0039 on the order). | Decided | [Enums](../metadata/draft.md#rules-5) |
+| MD-09.12 | Handle of an item | — | Removed (Product Owner, 2026-11-22: "les trier par numéro et puis point barre"): the items are in the order of their keys only. | Decided | [Enums](../metadata/draft.md#rules-5) |
+| MD-09.6 | Key | Whole number field | Typed by the user, any whole number, gaps allowed (0, 2, 4), for a global enum and for the items of a template (end of 2026-11-17). Unique in its enum; what the model receives (2026-11-16). A key already taken is refused when typed (decision 0083). It can still be changed once given: breaking for the model, with no warning (decision 0038); the Versions page that showed it was removed on 2026-11-21 (decision 0053), the change is seen in Git. Changing it moves the line to its new place by key (2026-11-22; replaces decision 0039). | Decided | [Enums](../metadata/draft.md#rules-5) |
 | MD-09.7 | Display name | Text field | After the key. What the faceplate, the symbol texts and the test values show. Not breaking. Called "Display text" until 2026-11-21: renamed for the same word as a signal field (decision 0056). Unique in its enum, while two enums may hold the same (2026-11-22, confirmed by the Product Owner, decision 0084: [Enum item](../metadata/entities/05-enum-item.md)); a name already taken in its enum is refused when typed (decision 0083). | Decided | [Enums](../metadata/draft.md#enums) |
 | MD-09.9 | Description | Text field | Last, after the display name (2026-11-17): what the item means, plain text, never sent to the model (2026-11-16). Optional, shown on this page only (2026-11-16). | Decided | [Enums](../metadata/draft.md#enums) |
 | MD-09.8 | Add, delete an item | Button (+), delete button (icon) | The small + on the right of the title "Items"; the delete button at the far right of an item, with no header, then a warning (2026-11-16; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). An enum is deleted the same way. Deleting one still used is allowed: the signals, start values and commands that use it are flagged in error (decision 0082). | Decided | [Enums](../metadata/draft.md#enums) |

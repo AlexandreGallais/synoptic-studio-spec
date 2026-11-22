@@ -391,11 +391,11 @@ flowchart TD
 
 | Mode | What the user sees | When |
 | --- | --- | --- |
-| Visual | A visual editor (what you see is what you get), with the formatting tool bar. | Assistant's proposal, to confirm: the mode that opens first. |
+| Visual | A visual editor (what you see is what you get), with the formatting tool bar. | The mode that opens first (Product Owner, 2026-11-22, questionnaire: "Visual"). |
 | Markdown | The raw text, for those who write Markdown faster, with the same formatting tool bar. | When the user switches to it. |
 
 - Switching mode is not an Edit button: there is nothing to save or to confirm.
-- The description has a **title, "Description"**, above its editor, as the links have theirs, so that the user knows what the text is (Product Owner, 2026-11-22: "on sait pas que c'est une description [...] je sais pas s'il faudrait un petit titre au-dessus"). Assistant's choice, to confirm.
+- The description has a **title, "Description"**, above its editor, as the links have theirs, so that the user knows what the text is (Product Owner, 2026-11-22: "on sait pas que c'est une description [...] je sais pas s'il faudrait un petit titre au-dessus"; then, questionnaire: "Oui, le garder").
 - The application holds its own **Markdown editor** (Product Owner, 2026-11-16: "il faudra faire un éditeur Markdown"), with its two ways to type:
   - **Markdown**: the raw text shows its marks, for example the `#` of a heading;
   - **Visual**: the text is laid out, "comme un éditeur de texte Word".
@@ -448,7 +448,7 @@ flowchart LR
 - **The user chooses the order of the links** (Product Owner, 2026-11-16, reviewing the wireframes: "dans les liens de la documentation [...] il faudrait pouvoir changer de place"): each line has a **handle** at its very left, held and dragged to move it, as in the table of signals; the order is kept (see [Signals](#the-order-of-the-lines)).
 - The columns of the handle and of the delete button have no header (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
 - Each link has a description: a short text in plain text (not Markdown) that says what is attached. It is a description, not a name. **Optional** (Product Owner, 2026-11-22: "Facultative"): without it, only the path or the URL is shown.
-- The list of links is **always editable**: its fields are changed in place, like everything in Metadata (validated by the Product Owner on 2026-11-16: "on ajoute un path ou une URL. Donc ça, c'est très bien").
+- Once a link is added, **only its description changes**, in place; its path or its URL does not: a wrong link is deleted and added again, and a click on the path or the URL always opens it (Product Owner, 2026-11-22, questionnaire: "Seule sa description change").
 - **Deleting a link:** a delete button (an icon) in the **last column of its line, on the far right**; a click opens a warning that asks to confirm (Product Owner, 2026-11-16: "Tu me rajoutes un bouton de suppression [...] il y a un message de warning quand on clique sur Supprimer"). No right click (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
 - A link to a file or a folder can be opened directly, with a click on its path, so the user does not lose time. Opening **always opens a folder, never a file** (Product Owner, 2026-11-11):
   - a link to a file opens the folder that contains the file;
@@ -478,10 +478,7 @@ flowchart TD
 
 ### Open questions
 
-- Which mode opens first: Visual (proposed) or Markdown?
-- Whether a link can be changed once added ("Est-ce qu'ils deviennent [...] une fois ajoutés ?", 2026-11-22, the word not understood).
 - The content of the formatting tool bar (proposed above) and no text colour: to confirm.
-- How a link is edited in place, now that a click on its path or URL opens it (a pencil, a double click, the description only?).
 
 ## Signals
 
@@ -776,12 +773,13 @@ Decided by the Product Owner on 2026-11-16: "quand on choisit une quantité, il 
 Reviewed by the Product Owner on 2026-11-17, on the wireframe of the mass. What he asked: the name of the quantity said once, the words "by default", the conversions shown in the table instead of ratios, and a field to try a value.
 
 - The page is read only (see [A ready-made catalogue, read only](#a-ready-made-catalogue-read-only)): nothing typed there changes the catalogue.
-- The page lists the quantities. Each difference is shown under its quantity.
+- The page lists the quantities, **one line each, its difference included**: the line shows the name of the quantity ("Temperature"), then the small icon `quantity`, and the icon `difference` when the catalogue gives the quantity a difference; one icon or two (Product Owner, 2026-11-22: "au lieu de mettre « température » et « température différence » [...] juste « température » avec des petites icônes"). It replaces the difference shown as a line of its own under its quantity.
+- **On the page of a quantity that has a difference, a switch Quantity | Difference** sits at the top: the same page in both modes, the default unit, the unit systems, the converter and the table, for the quantity or for its difference (Product Owner, 2026-11-22: "on peut passer en mode quantité ou en mode différence, et ça garde tout pareil"). The quantity opens first (assistant's reading). The catalogue does not change: the difference stays a quantity of its own, with its own internal ID.
+- The conversions go through the default unit of the quantity, whatever the unit system: confirmed by the Product Owner on 2026-11-22, on the screens ("ça fait sens, même si ça change d'unité système [...] le modèle de données, il reste simple").
 - A click on a quantity opens it. **Its name is its title, and is not written again under it** (Product Owner, 2026-11-17: "Tu mets déjà quantité, masse. Ça sert à rien de remettre le nom juste en dessous [...] vu que c'est redondant"). Under the title:
   - **Default unit**: the model unit of the quantity, which is also the display unit until a preset chooses another (Product Owner, 2026-11-17: "Le modèle unit : faudrait mettre unité par défaut"; see [Model unit and display unit](#model-unit-and-display-unit)).
-  - **Default decimal places** (Product Owner: "Pareil, decimal place par défaut").
-  - **Families**: the list of its families; a click opens one (kept by the Product Owner on 2026-11-17: "ça fait sens").
-- A click on a family opens, on the right, **a converter and the table of its units** (Product Owner, 2026-11-17):
+  - **Unit systems** (called "families" until 2026-11-22): the list of its unit systems; a click opens one (kept by the Product Owner on 2026-11-17: "ça fait sens"). The default decimal places were removed on 2026-11-19 (decision 0050).
+- A click on a unit system opens, on the right, **a converter and the table of its units** (Product Owner, 2026-11-17):
   - **A number field at the top, in the default unit** of the quantity, 1 to start with (assistant's reading). Typing a value there converts it into every unit of the table: "je mets 1 kg et, avec 1 kg, je vois combien de pounds ça fait et combien d'ounces ça fait". It only tries a value: nothing is kept.
   - **The table of the units**, one line per unit, taking the whole width: **Unit** (its name, with its variant), **Symbol**, **Value** (the value of the field, converted into this unit), **Formula** (how this unit is computed from the default unit, e.g. `lb = kg ÷ 0.45359237`, `°F = °C × 9/5 + 32`).
   - **The formula is in the table, on the line of its unit**, never in a line under the table (Product Owner: "il faudra que ce soit dans le tableau, le calcul. Il faudrait dire que le kilogramme se calcule de telle manière").
@@ -791,8 +789,8 @@ Reviewed by the Product Owner on 2026-11-17, on the wireframe of the mass. What 
 
 ```mermaid
 flowchart LR
-    L["List of quantities, each difference under its quantity"] -->|"click a quantity"| Q["Quantity, its name as title: default unit, default decimal places, families"]
-    Q -->|"click a family"| F["Family: a field in the default unit, then the table Unit, Symbol, Value, Formula"]
+    L["List of quantities, one line each, icons quantity and difference"] -->|"click a quantity"| Q["Quantity, its name as title: switch Quantity or Difference, default unit, unit systems"]
+    Q -->|"click a unit system"| F["Unit system: a field in the default unit, then the table Unit, Symbol, Value, Formula"]
 ```
 
 Example, the mass, family Imperial, with 1 typed in the field (default unit: kilogram):
@@ -886,11 +884,9 @@ flowchart LR
   - the **description** explains what the item means, for the people who make the types and the symbols (Product Owner, 2026-11-16, end of the day: "il faut pouvoir décrire quand même ce que vaut l'enum [...] une description, c'est peut-être pas mal pour avoir des explications sur les enums"); plain text; it never goes to the model; **optional, and shown only on the Enums page**: the faceplate never shows it (Product Owner, 2026-11-16);
   - the **display name** is what people read: the faceplate, a text of a symbol and the test values show it, never the key. Called "display text" until 2026-11-21, renamed for the same word as an identifier and a signal field (Product Owner: "Oui, display_name"; decision 0056);
   - each item also has an **internal ID**, set by the software, that never changes and never goes to the model: a command's fixed value points to the item through it, so a key changed later is followed (Product Owner, 2026-11-18, decision 0047, answering the questionnaire: "Oui, un internal ID par item"; see [Data model](#the-commands)).
-- The items are shown in a table whose columns come in this order: the handle with no header (end of 2026-11-17, see below), **Key, Display name, Description**, then the delete button, with no header (Product Owner, 2026-11-17, reviewing the wireframes: "Faudrait peut-être inverser la description et le display name [...] le display name, il est assez court. La description, elle est plutôt grande, donc la description, elle irait après"). The short field first, the long one last. It replaces the order Key, Description, Display name of 2026-11-16 (decision 0032, accepted on 2026-11-17, which changes decision 0025 on this point).
+- The items are shown in a table whose columns come in this order: **Key, Display name, Description**, then the delete button, with no header; no handle (removed on 2026-11-22, see below) (Product Owner, 2026-11-17, reviewing the wireframes: "Faudrait peut-être inverser la description et le display name [...] le display name, il est assez court. La description, elle est plutôt grande, donc la description, elle irait après"). The short field first, the long one last. It replaces the order Key, Description, Display name of 2026-11-16 (decision 0032, accepted on 2026-11-17, which changes decision 0025 on this point).
 - **The items are sorted by key automatically**, from the smallest key to the largest: a line added with the key 3 goes between 2 and 4 (Product Owner, end of 2026-11-17: "en fonction des chiffres qu'on met, il y ait un tri automatique pour que ça aille dans l'ordre quand même. Il ne faut pas déconner"). It replaces "a new item goes at the end" (assistant's reading of the same day; decision 0037, which changes decision 0032 on this point).
-- **Then handles put the items in the order of their meaning, without changing their keys** (Product Owner, end of 2026-11-17, answering the questionnaire: "Tri par clé, puis poignées"). A new item takes its place by key; the user can then move any item with its handle, at the very left of its line, and the order chosen is kept. Example: the key 6 "Maintenance", added later, goes after 2 by key; its handle moves it between Off and Manual, and its key stays 6. Only the order shown changes: the model still receives the keys. It replaces the refusal of handles said earlier the same day ("On peut pas changer l'ordre, ça me chante pas") and decision 0032 on that point (decision 0038, accepted on 2026-11-17).
-- **An item added once items were moved goes right after the item with the next smaller key**, wherever the handles put that item (Product Owner, end of 2026-11-17, answering the questionnaire: "Juste après l'item de clé inférieure"). Example: Off 0, Maintenance 6, Manual 1, Automatic 2 after a move; a new key 3 goes right after Automatic (key 2). A key smaller than every other one goes first (confirmed by the Product Owner at the end of 2026-11-17: "Oui"). Decision 0039, accepted on 2026-11-17.
-- **An item whose key changes stays where it is**: changing a key never moves the line (Product Owner, end of 2026-11-17, answering the questionnaire: "Il reste où il est"). Decision 0039, accepted on 2026-11-17.
+- **The order of the items is the order of their keys, and nothing else**: no handle, no move (Product Owner, 2026-11-22: "les trier par numéro et puis point barre [...] Ça fera beaucoup moins compliqué"). An item whose key changes takes its new place by key. It replaces the handles after the sort by key (decision 0038, end of 2026-11-17) and the place of a new item after a move and of an item whose key changes (decision 0039).
 - **A key can still be changed once given**, which is breaking for the model. The screen does not forbid it and does not warn (decision 0038, accepted on 2026-11-17). The Versions page that showed the change (Product Owner, end of 2026-11-17: "Oui, la page Versions le signale") was removed on 2026-11-21 (decision 0053): the change is seen in the differences of Git, on the JSON files.
 - No string keys (Product Owner, 2026-11-16). Why: every enum can be checked in one place, the Enums page, and the configuration files are generated from it; so the model never needs a readable key, and the display name is enough for people.
 - When the user picks an item, the signal receives exactly its key.
@@ -934,7 +930,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A["Create an enum on the Enums page"] --> B["Add its items: a whole number key picked by the user, display name, description; placed by key, then moved by handle if needed"]
+    A["Create an enum on the Enums page"] --> B["Add its items: a whole number key picked by the user, display name, description; sorted by key"]
     B --> C["On a signal of type enum, pick the enum"]
     C --> D["The signal follows the enum: no copy"]
 ```
@@ -946,7 +942,7 @@ flowchart LR
 | Global enum, its description, its items (key, display name, description) | Enums page | Signal: picks one as a link | Its columns added by the Symbol Lib, used by animations | No |
 | Template (a name and a description, no items) | Enums page | Signal: picks one as a link | Its columns added by the Symbol Lib, used by animations | Its items, completed on each placed symbol; a small warning until they are |
 
-The faceplate builder of a preset chooses how an enum is shown in the faceplate (radio on one line, radio on several lines, select), see [Presets](#mode-faceplate-the-faceplate-builder). **The radio buttons and the select show the items in the order chosen with the handles** on the Enums page, not sorted by key (Product Owner, end of 2026-11-17, answering the questionnaire asked again in plain words: "Oui, l'ordre des poignées").
+The faceplate builder of a preset chooses how an enum is shown in the faceplate (radio on one line, radio on several lines, select), see [Presets](#mode-faceplate-the-faceplate-builder). **The radio buttons and the select show the items in the order of their keys**, the only order of the Enums page since 2026-11-22 (it replaces "l'ordre des poignées", end of 2026-11-17).
 
 ### Left for later
 
@@ -1184,7 +1180,7 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas juste bêtement avoi
 
 | Element | What it holds | Rule |
 | --- | --- | --- |
-| Signal | The signal, picked by its ID; the **display name**; **read or write** for an input, **read or override** for an output; the **input**. | Display name: plain text, the name people see in the faceplate, never sent to the model; empty, the ID is shown (decision 0018); it exists only in the builder (decision 0022). Called "name shown" until 2026-11-21, renamed for the same word as an identifier's (Product Owner: "faudrait homogénéiser ça partout"; decision 0055). Read or write, read or override: see [Typing a value](#typing-a-value). Input: chosen in the builder (Product Owner, end of 2026-11-17: "on le choisit : on met input number, par exemple"); for an enum, radio on one line, radio on several lines or select, its items in the order chosen with the handles on the Enums page (Product Owner, end of 2026-11-17: "Oui, l'ordre des poignées"); for a number, a number field, with its [bounds](#bounds-of-a-number-field); for a boolean, a switch (Product Owner, 2026-11-21: "Interrupteur (switch)"). Chosen for write or override only: in read, the value is shown as text (see [Typing a value](#typing-a-value)). |
+| Signal | The signal, picked by its ID; the **display name**; **read or write** for an input, **read or override** for an output; the **input**. | Display name: plain text, the name people see in the faceplate, never sent to the model; empty, the ID is shown (decision 0018); it exists only in the builder (decision 0022). Called "name shown" until 2026-11-21, renamed for the same word as an identifier's (Product Owner: "faudrait homogénéiser ça partout"; decision 0055). Read or write, read or override: see [Typing a value](#typing-a-value). Input: chosen in the builder (Product Owner, end of 2026-11-17: "on le choisit : on met input number, par exemple"); for an enum, radio on one line, radio on several lines or select, its items in the order of their keys (2026-11-22; the order of the handles of 2026-11-17 is gone); for a number, a number field, with its [bounds](#bounds-of-a-number-field); for a boolean, a switch (Product Owner, 2026-11-21: "Interrupteur (switch)"). Chosen for write or override only: in read, the value is shown as text (see [Typing a value](#typing-a-value)). |
 | Command | The command, picked by its ID; the **display name** on the button. | Plain text, never sent to the model; empty, the command's ID is shown. Called the text of the button until 2026-11-21, renamed for the same word as a signal element's (decision 0057). The faceplate shows a button that sends the command. |
 | Title | A text: fixed, or a variable (an identifier, never a signal). | A heading inside the faceplate or inside a group. A small icon on the right of its field chooses a fixed text or a variable (Product Owner, 2026-11-18; see [Fixed text or a variable](#fixed-text-or-a-variable)). |
 | Description | A text, plain: no Markdown, no links; line breaks kept. Fixed, or a variable (an identifier, never a signal). | A paragraph inside the faceplate or inside a group. The same small icon as the title (Product Owner, 2026-11-18). |
@@ -1959,7 +1955,7 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | Folder, generated files and conflicts between people | [Files and conflicts](../storage/files-and-conflicts.md) | Open, not about metadata. |
 | Source and licence of the ready-made catalogue of units; where the model unit of each quantity is set (catalogue for good, a configuration file of the project, or an annex page) | [Units](#units) | Licences of UCUM, QUDT, CLDR and NIST not checked, to settle before release. The model unit left the signal at the end of 2026-11-16: one per quantity, the same everywhere, set outside Metadata; the Product Owner leans towards the catalogue but will think it over. Once settled, it will be decision 0029. |
 | An element twice; what a symbol or a synoptic changes in the built faceplate | [Presets](#presets-and-their-faceplate) | Raised when the preset was split into Values and the faceplate builder (2026-11-16). The order by handle, the input chosen in the builder, the bounds of a number field and read or write (input) against read or override (output) were settled at the end of 2026-11-17. Not to be asked again in the chat. |
-| Which mode of the description opens first (Visual or Markdown); content of the formatting tool bar and no text colour; editing of a link in place, now that a click on it opens it | [Documentation](#type-documentation) | Raised while reviewing the wireframes (2026-11-16); the read-only mode removed on 2026-11-22. The order of the links (a handle), the two add icons and the click that opens were decided at the end of the day. |
+| Content of the formatting tool bar and no text colour | [Documentation](#type-documentation) | Raised while reviewing the wireframes (2026-11-16); on 2026-11-22 the read-only mode was removed, Visual opens first and only the description of a link changes once added. The order of the links (a handle), the two add icons and the click that opens were decided at the end of the day. |
 | Override an output: who applies it, what is seen while it holds, how it ends | [Commands](#commands), [Presets](#typing-a-value) | The kind is decided (2026-11-16); its mechanism is open. Since 2026-11-17, a signal element of the faceplate set to "override" also overrides an output; the Product Owner leaves it to what is behind the faceplate. |
 | An undo (Ctrl+Z) in Metadata; each change written to the files at once | [Always editable, no versions](#always-editable-no-versions) | Raised when the Versions page was removed (decision 0053, 2026-11-21): versions are left to Git on clean JSON files. |
 | The description kept out of the configuration files | [Flags](#flags) | Settled by the Product Owner on 2026-11-17: the description optional, an internal identifier, no warning on delete, no rule on how an ID is written, the order by handle, the inheritance; on 2026-11-22: an ID unique in the type and its parents. |
