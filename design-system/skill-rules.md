@@ -70,8 +70,8 @@ Each rule: what it says, the skill it adds to or contradicts, its status.
 - **Skill**: `prototype-with-interactive-components-and-variables` says the same; the rule sets the order: the components first, the screens later.
 - **Status**: Added (confirms the skill).
 
-### R9 · The documentation of the components lives in Figma
+### R9 · Components shown as tables of variants and states
 
-- **Rule**: each component is documented in the Figma file, in a frame `Docs/<component>` beside the components of its page, so that whoever reads the Figma file has everything (Product Owner, 2026-11-22: "si sur Figma quelqu'un lit le Figma, il a vraiment tout"). No Markdown copy of that documentation: [Components](04-components.md) keeps only the list, the variants and the screens. A Storybook comes with the code, in the repository `synoptic-studio-design-system`, and documents the coded components; it does not replace the Figma documentation (assistant's choice, left to it by the Product Owner).
-- **Skill**: `document-every-component-and-its-states` asks for the same frame and its twelve sections; the rule adds where the documentation does not go.
-- **Status**: Added (confirms the skill).
+- **Rule**: in the Figma file, each component is shown as a clean table: one column per state (default, hover, pressed, focus, disabled…), one line per variant, each line and each column named, so one sees at once which variant and which state each cell is. No documentation frame and no descriptive text (Product Owner, 2026-11-22: "un tableau d'états et de types [...] plutôt que plein de texte à la con qui ne sert à rien"). The components of a page are grouped by family. A description, when one is really needed, goes in the Storybook of the code, in the repository `synoptic-studio-design-system`. How it is drawn: [Figma file](05-figma-file.md#how-a-page-shows-its-components). It replaces, the same day, the frames `Docs/<component>` in twelve sections, removed.
+- **Skill**: `document-every-component-and-its-states` asks for a frame `Docs/<component>` in twelve sections (usage, anatomy, behaviours, content, accessibility, do and don't…) before a component is published. The rule keeps only its variants and states, as a table, and sends the rest to Storybook.
+- **Status**: Kept over the skill.

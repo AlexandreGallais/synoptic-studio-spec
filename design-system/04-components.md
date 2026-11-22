@@ -28,9 +28,11 @@ flowchart LR
 | `focus` | Reached with the keyboard: the double focus line (`focus-ring`, or `focus-ring-inset` on a line), on the hover background when the component has none. |
 | `disabled` | Cannot be used. |
 
+A line of a list, a tree or a table (`tree-row`, `list-row`, `part-item`, `menu-item`, `data-table-row`) has rounded corners, `radius-sm`, like every control (Product Owner, 2026-11-22: "si on met un border radius, j'aimerais bien qu'il soit partout"). Its list (`tree`, `part-list`, `list-panel`, `data-table`) leaves `spacing-03` on each side and `spacing-01` between lines, so a line in `hover` or `selected` never touches the edges.
+
 The tables below add the states each component needs on top of these. A field (`text-input`, `number-input`, `text-area`) has no `pressed`: a click puts it in `focus`.
 
-Every component is documented in the Figma file, in its frame `Docs/<component>`: see [Figma file](05-figma-file.md#documentation) and [Skill rules R9](skill-rules.md#r9--the-documentation-of-the-components-lives-in-figma).
+Every component is shown in the Figma file as a table of its variants and its states, grouped by family: see [Figma file](05-figma-file.md#how-a-page-shows-its-components) and [Skill rules R9](skill-rules.md#r9--components-shown-as-tables-of-variants-and-states).
 
 Every interactive component is prototyped in its component set: `hover` while the mouse is over it, `pressed` while its button is down, and a click to the next state (checked, on, open, selected, expanded). See [Skill rules R8](skill-rules.md#r8--components-prototyped-on-their-own).
 

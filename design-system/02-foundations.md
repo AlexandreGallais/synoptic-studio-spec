@@ -108,7 +108,7 @@ Usual gaps: 8 between two controls, 12 between a label and its control, 16 from 
 
 | Token | Value | Used for |
 | --- | --- | --- |
-| `radius-sm` | 4 | Controls: button, field, checkbox, menu item. |
+| `radius-sm` | 4 | Controls: button, field, checkbox, menu item; every line of a list, a tree or a table. |
 | `radius-md` | 8 | Panels, menus, dialogs. |
 | `radius-full` | 999 | Toggle, round badges. |
 | `border-width` | 1 | Every border. |
