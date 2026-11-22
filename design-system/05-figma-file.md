@@ -158,7 +158,7 @@ The page Metadata holds one Figma section per screen of [Screens of Metadata](..
 | MD-13 · Designations | `666:8401` | default (`666:8402`), empty, error |
 | Delete warning | `670:13025` | `MD-02 · Delete warning` (`670:13026`), the frame the delete buttons open as an overlay |
 
-The prototype starts at `MD-02 · General` (flow "Metadata"): the rail, the list of the parts, the modes of the documentation and of a preset lead to their screen; the two add icons of Links open their overlay; the button "Delete the preset" opens the warning; the delete button of General and of each own signal opens the warning, whose two buttons close it. The dimmed background behind the warning is set by hand in Figma (the plugin API cannot set it).
+The prototype has one starting point per screen (Product Owner, 2026-11-22: "je peux pas faire play sur toutes les pages"): General, Documentation, Signals, Commands, Flags, Presets, Units, Enums, Designations. On every screen, the rail and the list of the parts lead to their screen, with their hover kept. From General: the rail, the list of the parts, the modes of the documentation and of a preset lead to their screen; the two add icons of Links open their overlay; the button "Delete the preset" opens the warning; the delete button of General and of each own signal opens the warning, whose two buttons close it. The dimmed background behind the warning is set by hand in Figma (the plugin API cannot set it).
 
 ## Left to draw
 
