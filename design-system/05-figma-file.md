@@ -79,6 +79,7 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Atoms | `colour-swatch` | `635:167` |
 | Atoms | `divider` | `635:170` |
 | Atoms | `column-header` | `664:6368` |
+| Atoms | `toggle-button` | `684:2199` |
 | Atoms | `playground/atoms` | `643:2164` |
 | Molecules | `field` | `637:53` |
 | Molecules | `menu-item` | `637:102` |
@@ -96,6 +97,7 @@ The id of each component set (or component), to go on from it. Every one is prot
 | Molecules | `direction-cell` | `638:884` |
 | Molecules | `toolbar-group` | `638:885` |
 | Molecules | `window-controls` | `638:936` |
+| Molecules | `table-size-picker` | `684:2760` |
 | Molecules | `playground/molecules` | `643:2262` |
 | Organisms | `top-bar` | `640:200` |
 | Organisms | `nav-rail` | `640:201` |
@@ -117,6 +119,8 @@ The id of each component set (or component), to go on from it. Every one is prot
 
 `data-table-row` holds its cells in the slot `cells`, and `data-table-header` its column headers in the slot `columns`: a screen puts in them the columns of its table, each cell as wide as its `column-header`. Their default content is the columns of Signals. `data-table` has the corners `radius-md` and the padding `spacing-04` at the top and the bottom: the add button of its title and the delete button of its last line are 16 from the edges, as on the sides. `quantity-cell` and `direction-cell` are deprecated: their description says what replaces them. `data-table-row` has no line under it and its states are `default`, `hover` and `dragging` (no `dragging` for `kind=inherited`); in the prototype, pressing a line in `hover` shows it `dragging`.
 
+An instance given a click of its own (open an overlay, go to a screen) loses the hover of its component unless it is set again with it: on 2026-11-22, 160 instances got their hover back (Delete the type, the buttons of the warning, the rail...). Any new click is set next to the hover, never in its place.
+
 An icon swapped into a `button` or an `icon-button` keeps only the colour overrides of the lines its default icon has (`icon/add` has two): every line of the new icon gets the colour of its variant by hand, the label's colour in a `button` (fixed on 2026-11-22: the delete icon of a danger button was half white, half black).
 
 An instance nested in another one keeps the size of its main component: in a screen, a column gets its width only as the content of a slot. After a script fills a slot, Figma may draw a cell that fills its line at its old width: setting it to a fixed width, then back to fill, draws it right.
@@ -137,12 +141,13 @@ block-beta
 
 ## Screens of Metadata
 
-The page Metadata holds one Figma section per screen of [Screens of Metadata](../screens/metadata.md). Each screen is an instance of `template/editor`, named `MD-xx · <screen>`, then `· <state>` for each content state.
+The page Metadata holds one Figma section per screen of [Screens of Metadata](../screens/metadata.md), from top to bottom in the order of the type and of the rail (Product Owner, 2026-11-22): General (with the type tree), Documentation, Signals, Commands, Flags, Presets, Units, Enums, Designations, then the overlays (Delete warning, Add a link, Formatting). Each screen is an instance of `template/editor`, named `MD-xx · <screen>`, then `· <state>` for each content state.
 
 | Section | Id | Frames |
 | --- | --- | --- |
 | MD-01 · Types and MD-02 · General | `667:6125` | General (`667:6126`), error, long text; Types: many, searching, empty |
 | MD-03 · Documentation | `667:9805` | visual (`667:10608`), markdown, full page, no link, long text; no read only (removed on 2026-11-22) |
+| MD-03 · Formatting | `684:14751` | `MD-03 · Heading level` (`684:14752`), the list of the heading select; `MD-03 · Insert a table` (`684:14867`), the grid of the table button |
 | MD-03 · Add a link | `679:15292` | `MD-03 · Add a URL` (`679:15293`), the overlay of the URL icon; `MD-03 · Add a path · window of the computer` (`679:15322`), a stand-in for the system's window, opened by the path icon |
 | MD-04 · Signals | `665:4990` | default (`665:4991`), empty, many, long text, error |
 | MD-05 · Commands | `666:3777` | default (`666:3778`), empty, error |

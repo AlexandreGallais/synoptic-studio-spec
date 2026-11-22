@@ -46,7 +46,8 @@ Every interactive component is prototyped in its component set: `hover` while th
 | --- | --- | --- | --- |
 | `icon` | One component per icon of [Icons](03-icons.md), `icon/<name>`; the size is set on the instance, `size-icon-sm` (16) or `size-icon-md` (20), never a variant | — | Everywhere |
 | `button` | `kind=primary, secondary, ghost, danger`; `size=md, lg`; leading icon on or off | — | Dialogs: Cancel, Delete |
-| `icon-button` | `kind=ghost, quiet` (quiet: `icon-secondary`, the + on hover); `size=sm, md` | `selected` | Every + of a title, delete, reset, search, full page |
+| `icon-button` | `kind=ghost, quiet` (quiet: `icon-secondary`, the + on hover); `size=sm, md` | `selected`; the hover of `quiet` is `layer-pressed` and its press `border-subtle`, so that it shows on a line already in hover (Product Owner, 2026-11-22: the + of the tree had no visible hover) | Every + of a title, delete, reset, search, full page |
+| `toggle-button` | `state=off, on`: an `icon-button` ghost, at rest or `selected`; a click turns it on or off | — | Bold, italic of the formatting tool bar (MD-03.4d), showing the state of the selection (Product Owner, 2026-11-22) |
 | `text-input` | `size=sm, md` (sm in a table cell); with or without a trailing icon | `filled`, `read-only`, `error` | MD-02.1, MD-03.8, every ID |
 | `number-input` | `size=sm, md`; with or without a unit; with or without the `variable` icon | `filled`, `read-only`, `error`, `variable` (the value comes from a signal) | MD-07.13, MD-07.22, MD-08.13, MD-09.6 |
 | `text-area` | — | `filled`, `read-only`, `error` | MD-09.11, the description element |
@@ -57,7 +58,7 @@ Every interactive component is prototyped in its component set: `hover` while th
 | `drag-handle` | — | `dragging` | Every ordered table |
 | `label` | `required=false, true` | — | Every field outside a table |
 | `tooltip` | `placement=top, right, bottom, left` | — | Every icon alone |
-| `colour-swatch` | `size=sm, md` | `selected` | MD-02.6 |
+| `colour-swatch` | `size=sm, md` | `selected`; `hover`: a 2 px `border-strong` line and `shadow-raised`, to be seen (Product Owner, 2026-11-22: "il se voit presque pas") | MD-02.6 |
 | `divider` | `direction=horizontal, vertical` | — | Rail, panels |
 | `column-header` | — (text `label`; its width is the width of its column) | — | The head of every column of a `data-table-header` |
 
@@ -67,9 +68,10 @@ Every interactive component is prototyped in its component set: `hover` while th
 | --- | --- | --- | --- | --- |
 | `field` | `label` + one input atom + help text | `layout=stacked, inline` | `error` (help in `danger`) | General, Units |
 | `menu-item` | `icon` + text + check | with or without icon | `selected` | Every select |
-| `menu` | `menu-item` × n | — | — | Every select |
+| `menu` | `menu-item` × 5, two more behind the booleans `item-6`, `item-7` | — | — | Every select; the heading level of the formatting tool bar (seven items) |
+| `table-size-picker` | a grid of 8 × 6 cells, those from the top left to the mouse lit (`layer-selected`, `accent`), and the caption columns × rows | — | — | The table button of the formatting tool bar (MD-03.4d) |
 | `select` | `select-trigger` + `menu` | — | `open` | Every select |
-| `segmented-control` | two or three `button` side by side | `items=2, 3`; `selected=1, 2, 3` (the item selected) | — | MD-07.2b Values / Faceplate, MD-03.4b Read only / Visual / Markdown |
+| `segmented-control` | two or three `button` side by side | `items=2, 3`; `selected=1, 2, 3` (the item selected) | — | MD-07.2b Values / Faceplate, MD-03.4b Visual / Markdown, MD-08.15 Quantity / Difference |
 | `radio-group` | `radio` × n + labels | `orientation=horizontal, vertical` | — | MD-07.11, enum input of a faceplate |
 | `list-title` | text `body-strong` + `icon-button` × n (one + per kind, search) | `actions=add, search-add, several-add`; `several-add` holds its buttons in the slot `actions`, empty for a title with no button (Quantities, Unit systems) | `searching` (the title becomes a `text-input`, the + a `dismiss`) | Every list and table: Type tree, Signals, Links, Elements |
 | `nav-rail-item` | `icon-button` + `tooltip`; a square of `size-control-lg` in the rail, a square of `size-top-bar` with a `size-control-md` button and the same margin on every side in the top bar | `placement=rail, top-bar` | `selected`: the `layer-selected` background; in the top bar, a bar of `accent` under it too, no bar in the rail (Product Owner, 2026-11-22: "la barre [...] devrait être en bas"; in the rail, "à toi de choisir") | MD-00, top bar |
@@ -95,7 +97,7 @@ Every interactive component is prototyped in its component set: `hover` while th
 | `data-table-row` | `drag-handle`, the slot `cells`, the delete `icon-button`; its default cells are the columns of Signals | `kind=default, inherited, error`; no background per direction (Product Owner, 2026-11-22: the direction is told by its icon only) | `hover`; `dragging` (held by its handle: `layer-selected` and `shadow-raised`), own lines only; no `selected`, a line of a table is never selected; `inherited`: read only, no handle nor delete, nothing that tells its parent (Product Owner, 2026-11-22: the tree already shows it) | Every data-table |
 | `list-panel` | `list-title` + `list-row` × n | — | `empty` | MD-07.1, MD-08.1, MD-09.1 |
 | `dialog` | `heading` + text + `button` × 2; `kind=form`: `heading` + `field` × n + Cancel and a primary button | `kind=warning, danger, form` | — | Every delete; `form`: Add a URL (MD-03.7) |
-| `formatting-toolbar` | `toolbar-group` × n + `segmented-control` (two items: Visual, Markdown) + full-page `icon-button`; the same groups in both modes | `mode=visual, markdown` | — | MD-03.4d |
+| `formatting-toolbar` | heading `select-trigger` (Paragraph, Heading 1 to 6) + `toolbar-group` × n (bold and italic are `toggle-button`; the table button opens `table-size-picker`) + `segmented-control` (two items: Visual, Markdown) + full-page `icon-button`; the same groups in both modes | `mode=visual, markdown` | — | MD-03.4d |
 | `markdown-editor` | `list-title` "Description" (no action) + `formatting-toolbar` + editing area | `mode=visual, markdown` (no read-only, Product Owner, 2026-11-22) | `full-page`: the editing area fills down to the bottom | MD-03.1b to MD-03.4c |
 | `faceplate-element` | `drag-handle` + kind `icon` + the slot `fields` + delete; a signal in write or override puts its input on a second line, under its fields: the kind of input, then the minimum and the maximum, of the same width (Product Owner, 2026-11-22); a group adds the slot `actions` (its five add buttons) and, under it, the slot `elements` (its own elements, indented by `spacing-07`) | `kind=signal, command, title, paragraph, group` | `selected` | MD-07.18 to MD-07.20; read or write is a horizontal `radio-group` (MD-07.11) |
 | `palette-picker` | `colour-swatch` × n + `reset`; the swatches show sample colours until the palette of the project is known | — | — | MD-02.6, MD-02.7 |

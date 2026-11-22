@@ -129,6 +129,9 @@ mindmap
       No Edit step
       Formatting tool bar, the same in Visual and in Markdown
         Headings, lists, tables, the rest of Markdown
+        Bold, italic: toggles showing the selection
+        Heading: a select, Paragraph, Heading 1 to 6
+        Table: a grid of columns and rows
         No text colour
         On its right, Visual, Markdown
         Full page button
@@ -156,7 +159,7 @@ mindmap
 | MD-03.3 | Description, Markdown | Editor (raw text) | For those who write Markdown faster, with the same formatting tool bar; the user switches between the two modes at any time. | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.4 | Go to edit, Save | — | None: switching mode is not an Edit step, nothing to save or confirm (2026-11-16). | Decided | [Always editable](../metadata/draft.md#always-editable-no-versions) |
 | MD-03.4b | Visual, Markdown | Buttons (switch) | On the right of the formatting tool bar, on the same line (2026-11-16); Read only removed (2026-11-22). | Decided | [Documentation](../metadata/draft.md#type-documentation) |
-| MD-03.4d | Formatting tool bar | Buttons | In Visual and in Markdown (2026-11-16). Like a word processor: heading levels, lists, tables and the rest of Markdown (proposed list in [Documentation](../metadata/draft.md#the-formatting-tool-bar)); no text colour. | Decided (both modes), Proposed (content) | [Documentation](../metadata/draft.md#the-formatting-tool-bar) |
+| MD-03.4d | Formatting tool bar | Buttons | In Visual and in Markdown (2026-11-16). Like a word processor: heading levels, lists, tables and the rest of Markdown (proposed list in [Documentation](../metadata/draft.md#the-formatting-tool-bar)); no text colour. Bold, italic, strikethrough: toggles that show the state of the selection; the heading: a select, Paragraph or Heading 1 to 6; the table: a grid to pick its columns and rows (Product Owner, 2026-11-22; grid of 8 × 6: assistant's reading). | Decided (both modes), Proposed (content) | [Documentation](../metadata/draft.md#the-formatting-tool-bar) |
 | MD-03.4c | Full page | Button (icon), in the tool bar | The description takes the whole editing part; the links are hidden; the window, the menus of the application and the type tree stay. The same button brings the page back (2026-11-16). The editing area goes down to the bottom of the page, whatever the length of the text (2026-11-22). | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.5 | Links | List | Each link: a path or a URL, and a description. | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.12 | Documentation of a sub-type | Rule | A sub-type shows its own description and links only, never its parent's, even when they are empty (2026-11-22, decision 0081). | Decided | [Inheritance of types](../metadata/inheritance.md#what-a-sub-type-inherits) |
