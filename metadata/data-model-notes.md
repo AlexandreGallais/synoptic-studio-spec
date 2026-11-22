@@ -685,6 +685,14 @@ Asked by the Product Owner on 2026-11-22 ("faceplate élément et tous les trucs
 - **Assistant's readings, written in the JSON Schemas**: a range always holds `min` and `max`, `null` when there is no bound; a typed text is `null` while nothing is typed; a type's lists hold its own signals, commands and flags, never those it inherits; a group holds `faceplate_elements` even when empty.
 - **Open questions moved to their entity files**: a signal or a command added twice to the builder ([Faceplate element](entities/28-faceplate-element.md)); the uniqueness of a preset's `name` ([Preset](entities/29-preset.md)). New ones: a minimum greater than the maximum ([Range](entities/24-range.md)); the preset values when a signal is added or removed ([Preset](entities/29-preset.md)); a type whose parent's file is missing ([Type](entities/30-type.md)).
 
+## Settled on 2026-11-22 (faceplate, preset and type)
+
+Answers of the Product Owner to the questionnaire of Travail, same day (decision 0078):
+
+- **The file of a type is `<id>.type.json`** ("<id>.type.json"): the assistant's reading above is validated; [Files](files.md#the-name-of-a-file) already says the rule.
+- **The `name` of a preset is unique among the presets of its type** ("Unique dans son type"): it is the only thing that tells two presets apart on screen. Written in [Preset](entities/29-preset.md).
+- **The same signal or the same command may be in several elements of a faceplate** ("Oui, permis"): read in one group and written in another, for instance. Written in [Faceplate element](entities/28-faceplate-element.md).
+
 ## Not in the schema yet
 
 - The texts filled on each placed symbol: with the synoptic.
@@ -697,4 +705,5 @@ Asked by the Product Owner on 2026-11-22 ("faceplate élément et tous les trucs
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
 - Whether the two texts of a boolean are ever written in the configuration files sent with the model: open in [Boolean texts](entities/21-boolean-texts.md#open-questions).
 - `SIGNAL_FIELD` starts with its signal, then `access`: the assistant's reading of the order of the keys, to confirm.
-- The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `UNIT_SYSTEM`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated; asked on [Faceplate element](entities/28-faceplate-element.md#open-questions).- `UNIT.symbol` and the symbol of Synoptic Studio (the drawing placed) share a word: a glossary should say both meanings (research T5, 3.8).
+- The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `UNIT_SYSTEM`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated; asked on [Faceplate element](entities/28-faceplate-element.md#open-questions).
+- `UNIT.symbol` and the symbol of Synoptic Studio (the drawing placed) share a word: a glossary should say both meanings (research T5, 3.8).

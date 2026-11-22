@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A faceplate element is one line of the faceplate builder of a preset: a signal, a command button, a title, a paragraph or a group. Its kind gives it exactly one part, or, for a group, its own list of elements, of the same five kinds, at any depth. The faceplate shows the elements in the order of the list, and shows nothing that is not in it. An element is kept inside its [preset](29-preset.md), or inside its group.
+A faceplate element is one line of the faceplate builder of a preset: a signal, a command button, a title, a paragraph or a group. Its kind gives it exactly one part, or, for a group, its own list of elements, of the same five kinds, at any depth. The faceplate shows the elements in the order of the list, and shows nothing that is not in it. The same signal or the same command may be in several elements, for instance read in one group and written in another. An element is kept inside its [preset](29-preset.md), or inside its group.
 
 ## The entity
 
@@ -91,5 +91,4 @@ erDiagram
 
 ## Open questions
 
-- Can the same signal or the same command be added twice to the faceplate of a preset?
 - Nothing points to a faceplate element in this schema: keep its `internal_id`, for stable files and for links to come, or remove it?
