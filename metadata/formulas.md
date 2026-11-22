@@ -6,8 +6,9 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file, from research T6 |
 | 2 | 2026-11-22 | Draft | Parser of the project, `-x^2` refused, result checked out of domain: decided (decision 0076) |
+| 3 | 2026-11-22 | Validated | Every rule of the file validated by the Product Owner (decision 0076) |
 
-How the two formulas of a [conversion](entities/11-conversion.md) are written and computed: `to_default` and `from_default`, each a formula in `x`. Every rule of this file comes from the advice of research T6 (`research/t6-recherche-documentaire-conversions-d-unites-tout/rapport.md`, 3.6 to 3.13 and 6, decision 3). Three are **decided** by the Product Owner (decision 0076): the parser of the project, `-x^2` refused, and a value out of domain caught by checking the result. The others are **proposed** until the Product Owner validates the file.
+How the two formulas of a [conversion](entities/11-conversion.md) are written and computed: `to_default` and `from_default`, each a formula in `x`. The rules come from the advice of research T6 (`research/t6-recherche-documentaire-conversions-d-unites-tout/rapport.md`, 3.6 to 3.13 and 6, decision 3) and are decided by the Product Owner (decision 0076). A conversion stays inside its quantity (decision 0077).
 
 ## Where it is used
 
@@ -22,7 +23,7 @@ How the two formulas of a [conversion](entities/11-conversion.md) are written an
 
 | Element | Written | Note |
 | --- | --- | --- |
-| The variable | `x` | The only name of a value. Any other name is refused; names stay free for parameters, if conversions between quantities come one day (research T6, decision 1). |
+| The variable | `x` | The only name of a value. Any other name is refused; names stay free for the parameters of contexts, if conversions between quantities come later (decision 0077). |
 | Numbers | `0.45359237`, `1609.344`, `1.4e3`, `22e-3` | Decimal point only, exponent with `e`; no thousands separator, no decimal comma (the file is JSON). |
 | Constants | `pi`, `e` | Only these two. A constant of definition (g₀ = 9.80665, 0.45359237 for the pound) is written in figures. |
 | Operators | `+` `-` `*` `/` `^`, and `-` before a value | `^` is the power. |

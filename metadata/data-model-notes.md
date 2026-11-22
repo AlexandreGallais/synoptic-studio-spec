@@ -587,7 +587,7 @@ Said by the Product Owner after the research above was written ("je veux bien qu
 - **Refused**: a conversion that means nothing, such as a mass into a molar mass (Product Owner: "ça fait aucun sens").
 - **Doubts of the Product Owner, left to the research**:
   - a conversion between unit systems, such as metric and imperial ("potentiellement [...] on verra"), while today a unit system only groups the units of its quantity ([Unit system](entities/13-unit-system.md)). Settled on 2026-11-22: a unit system only groups (see [from one unit system to another](#settled-on-2026-11-22-from-one-unit-system-to-another));
-  - a conversion from one quantity to another ("peut-être que c'est de quantité à quantité"), while today a conversion only exists inside its quantity (decision 0049);
+  - a conversion from one quantity to another ("peut-être que c'est de quantité à quantité"), while today a conversion only exists inside its quantity (decision 0049). Settled on 2026-11-22: kept inside its quantity, contexts later (see [formulas](#settled-on-2026-11-22-formulas));
   - an idea, to look at after the research ("on verra ça après la recherche"): each unit system with a default unit of its own, and a conversion between the default units of the unit systems ("un truc de conversion [...] entre unités par défaut"). Refused on 2026-11-22, see [from one unit system to another](#settled-on-2026-11-22-from-one-unit-system-to-another).
   - the default unit of a quantity needs no mark of its own: it is the one whose `to_default` and `from_default` are both `x`. Should it then have no conversion at all ("est-ce qu'on n'y a pas de conversion ?")?
   - a default unit system per quantity, marked in the quantity file ("il faudrait peut-être un système par défaut").
@@ -672,7 +672,8 @@ Answers of the Product Owner to the questionnaire of Travail, same day (decision
 - **The formulas are read by a small parser of the project** ("Un petit analyseur propre au projet"), no `eval`, no library: a quantity file may come from a third party.
 - **`-x^2` is refused**, with a message asking for parentheses ("Il le refuse et demande des parenthèses"); `10^-3` stays allowed.
 - **Out of the domain of a formula, only the result is checked** ("Contrôle du résultat seulement"): no domain in the JSON; a result that is not a finite number shows a mark, and a typed value that gives one is refused. A value near the edge (`tan` near 90°) gives a huge number, shown as it is.
-- Written in [Formulas](formulas.md); the other rules of that file stay proposed.
+- **Every other rule of [Formulas](formulas.md) is validated** ("Je valide tout le reste"): the variable `x` only, `pi` and `e`, `+ - * / ^`, the seven functions, `^` from right to left, the round trip within 1e-9. The file is validated.
+- **A conversion stays inside its quantity, with contexts later** ("La garder, avec des contextes plus tard"; decision 0077): no conversion between two quantities (Nm³/h to m³/h, ppm to mg/m³, mass to volume) in version 1. A context with named parameters, as in Pint, may come later; the names other than `x` stay reserved for it.
 
 ## Not in the schema yet
 
