@@ -18,7 +18,7 @@ Status: everything written around the schema of the [Data model](data-model.md) 
 - A choice of the software (`kind`, `direction`, `access`...) is written in the JSON as an English word (`"input"`, `"real"`), never as a number, so that a file reads by itself (Product Owner, 2026-11-19). A value of several words is joined by underscores (`set_input_signal`, `number_field`), the same in the schema and in the JSON. The key of an enum item stays a whole number: it goes to the model (decisions 0012, 0016).
 - The field that says which alternative a box is: `kind` when the alternative changes what the thing is (a link is a path or a URL, an element is a signal field or a button); `source` when the thing stays the same and only its value comes from elsewhere (a bound is always a number, typed or read from a signal; a text is always a text, typed or read from a designation), each value of `source` naming the field that then holds the value (`typed` → `typed_value` or `typed_text`, `signal` → `signal`, `designation` → `designation`); `direction`, `access` and `input_kind` where their own word says more. Never `type`, which already names `TYPE` and `VALUE_TYPE`.
 - One idea, one word, across the whole JSON: a value that is a gap between two points is a `relative_quantity` everywhere in the files (`VALUE_TYPE.relative_quantity`, `QUANTITY.offers_relative_quantity`); the screens keep "difference" for people.
-- A list of choices is named after its field; a field called `kind` or `source`, which several boxes have, takes its box as prefix (`command_kind`, `bound_source`). Every list is in [The choice lists](#the-choice-lists).
+- A list of choices is named after its field; a field called `kind` or `source`, which several boxes have, takes its box as prefix (`command_kind`, `bound_source`). Every list is in [The choice lists](data-model.md#the-choice-lists).
 - A value typed in the builder is prefixed `typed_` where it stands beside a value taken elsewhere (`typed_value`, `typed_text`). A value read by the value type of its signal (a number, a boolean or an enum item) has the type `signal_value`.
 - A box without `internal_id` is a part of its owner (a nested object in the JSON), never pointed to.
 - Fields that only exist together go in a part of their own (`RANGE`, `DISPLAY_FORMAT`), with one exception: the `quantity` of a number and its `relative_quantity` stay on `VALUE_TYPE`, in the words of FMI (decision 0059).
@@ -86,7 +86,7 @@ flowchart LR
 | Field | What it holds | When |
 | --- | --- | --- |
 | `internal_id` | The UUID set by the software. | Always. |
-| `kind` | Signal, command, title, paragraph or group (see [The choice lists](#the-choice-lists)). | Always. |
+| `kind` | Signal, command, title, paragraph or group (see [The choice lists](data-model.md#the-choice-lists)). | Always. |
 | `faceplate_elements` | The elements inside a group, in order, with the same five kinds; the same name as the list of the preset. | When `kind` is group. |
 
 ### `SIGNAL_FIELD`: a signal shown in the faceplate
@@ -97,7 +97,7 @@ A labelled field that shows the value of one signal, and lets a person type it w
 | --- | --- | --- |
 | `signal` | The signal shown: one of the type, own or inherited. | Always. |
 | `access` | `read`: the field only shows the value, as text alone: in the display unit and with the decimals of the preset, an enum by the display name of its item, a boolean by the text of its state (the `BOOLEAN_TEXTS` of the preset). `write`, for an input: a person types the value the model receives. `override`, for an output: a person types a value that replaces the model's. | Always. Write is offered for an input only, override for an output only (decision 0040). |
-| `input_kind` | How the value is typed: `number_field`, `radio_horizontal`, `radio_vertical`, `select` or `switch` (see [The choice lists](#the-choice-lists)). | When `access` is write or override. The choices depend on the value type of the signal. |
+| `input_kind` | How the value is typed: `number_field`, `radio_horizontal`, `radio_vertical`, `select` or `switch` (see [The choice lists](data-model.md#the-choice-lists)). | When `access` is write or override. The choices depend on the value type of the signal. |
 | `display_name` | The label beside the field, for people; never sent to the model (decision 0055). | Always; empty, the signal's `id` is shown (decision 0018). |
 | `range` | A `RANGE`: the values a person may type. | When `input_kind` is `number_field`. |
 
@@ -145,20 +145,7 @@ The text a title or a paragraph element shows, and where it comes from. The smal
 
 ## The choice lists
 
-Every field whose value is one word from a fixed list. Each is written in the JSON as that word in English (see the head of this file).
-
-| List | Field | Values | Meaning |
-| --- | --- | --- | --- |
-| `link_kind` | `LINK.kind` | path, url | A path to a file or a folder, or a web address; held in `LINK.address`. |
-| `direction` | `SIGNAL.direction` | input, output | The model receives it, or the model sends it. |
-| `value_type_kind` | `VALUE_TYPE.kind` | integer, real, boolean, enum | A whole number, a number, true or false, an item of an enum. |
-| `command_kind` | `COMMAND.kind` | set_input_signal, trigger, override_output_signal | Send a fixed value to an input signal; tell the layer above the model that an action happened (never the model); replace the value of an output signal by a fixed value. |
-| `enum_kind` | `ENUM.kind` | global, template | Items written on the Enums page, the same everywhere; or items completed on each placed symbol. |
-| `faceplate_element_kind` | `FACEPLATE_ELEMENT.kind` | signal, command, title, paragraph, group | See [The faceplate, box by box](#the-faceplate-box-by-box). |
-| `access` | `SIGNAL_FIELD.access` | read, write, override | Shown only; typed in, for an input; typed in, for an output. |
-| `input_kind` | `SIGNAL_FIELD.input_kind` | number_field, radio_horizontal, radio_vertical, select, switch | `number_field`: for an integer or a real. `radio_horizontal` (the buttons on one line), `radio_vertical` (one button per line), `select`: for an enum, its items in the order of the handles of the Enums page. Switch: for a boolean, one click turns it on or off. |
-| `bound_source` | `BOUND.source` | typed, signal | See `BOUND`. |
-| `text_content_source` | `TEXT_CONTENT.source` | typed, designation | See `TEXT_CONTENT`. |
+Moved on 2026-11-22 to [The choice lists](data-model.md#the-choice-lists) of the data model, with the census of every type of the schema.
 
 ## Checked on 2026-11-21 (schema against JSON)
 
@@ -293,7 +280,7 @@ The Product Owner read the preset, its values and the faceplate again. The value
 - **The preset keeps a `name`, not an `id`** (assistant's choice, left to it by the Product Owner, who leaned that way: "peut-être que non, c'est mieux là, parce que ça va pas être utilisé comme un ID"). Nothing points to it, every link goes through its `internal_id`, and it never goes to the model: it only tells two presets of a type apart for people. The head of the file now says what `id` and `name` each mean, so that the difference is a rule and not an exception. Screen MD-07.3 already says "Name of the preset".
 - **`DISPLAY` becomes `DISPLAY_FORMAT`, not "display unit"** (assistant's choice, asked by the Product Owner: "Pourquoi pas display unit ?"). The part holds two things that go together, the display unit and the decimals, so "display unit" would name only half of it; "display" alone said too little. Its `unit` field is the display unit, said in the schema.
 - **The faceplate is described box by box**, in [The faceplate, box by box](#the-faceplate-box-by-box): what each field holds and when, with a diagram of which part goes with which kind of element.
-- **Every choice list is described**, in [The choice lists](#the-choice-lists), with its values and their meaning (Product Owner: "Input kind : c'est un enum pour moi, mais du coup, tu décris pas l'enum").
+- **Every choice list is described**, in [The choice lists](data-model.md#the-choice-lists), with its values and their meaning (Product Owner: "Input kind : c'est un enum pour moi, mais du coup, tu décris pas l'enum").
 - **Fields renamed so that they say what they hold** (Product Owner: "Je veux bien que tu repasses sur les noms des propriétés"):
   - `SIGNAL_FIELD.input` becomes `input_kind`, the Product Owner's own reading, so that it is never mistaken for an input of the model; its values are written in the schema;
   - `access` says in the schema which value goes with which direction: write for an input, override for an output;
@@ -421,7 +408,7 @@ Asked by the Product Owner on 2026-11-21 ("dans l'identifiant, on va dégager di
 - **Field order `internal_id`, `id`, `required`, `description`** (assistant's choice, left to it by the Product Owner: "un ordre le plus logique possible [...] à toi de décider"): what the identifier is, what it asks for, then the text that explains it, last as in every box. It follows the rule of the head of this file.
 - Usually three identifiers, four at most (Product Owner: "trois, quatre grands max"): an order of size, not a limit.
 - **`required` is `false` for a new identifier** (Product Owner, later the same day: "Le booléen required, ce serait genre false").
-- **The schema of an entity page shows only the structure** (Product Owner, same day): type, name, key, required or optional and the default value; what a field means is in the table below it. Written in [Entities](entities/README.md#how-an-entity-file-is-written).
+- **The schema of an entity page shows only the structure** (Product Owner, same day): type, name, key, required or optional and the default value; what a field means is in the table below it. Written in [Entities](#writing-rules-of-the-entity-files-to-become-a-skill).
 
 ## Changed on 2026-11-21 (entity files and global rules)
 
@@ -706,7 +693,71 @@ Asked by the Product Owner on 2026-11-22 ("tu vas pouvoir supprimer [...] le sch
 - **The JSON examples leave the [Data model](data-model.md)**: the JSON Schemas of each [entity file](entities/README.md) replace them. The sections [How the schema becomes JSON](#how-the-schema-becomes-json), [What the type shows](#what-the-type-shows) and [What the quantity shows](#what-the-quantity-shows) stay above as notes on the removed examples.
 - **The schema is written from the top**: the type, its parts in the order of the keys of its file, then the enums, the quantities and the designations, then the palettes and the icon sets; a link to a signal or a command from further down the type is written from the signal or the command, so that they stay just under the type. Each box opens its entity file. Nothing changes in the boxes nor in the links; every box stays orange.
 - **A table of every entity** follows the schema: its number, its box, the file it is kept in, what it has or holds, and what its fields point to.
-- **The entity files are numbered again**, the folder staying flat: the files a type picks from, in the order the type uses them, then the parts of the type in the order of its keys, the type last (rule written in [Entities](entities/README.md#how-an-entity-file-is-written)).
+- **The entity files are numbered again**, the folder staying flat: the files a type picks from, in the order the type uses them, then the parts of the type in the order of its keys, the type last (rule written in [Writing rules](#writing-rules-of-the-entity-files-to-become-a-skill)).
+- **A census of the types** of the fields, with the reason for each name, and the choice lists moved there from these notes (Product Owner, same day: "lister tous les types qu'il y a dans le modèle entier [...] un tableau qui explique pourquoi un type s'appelle de telle ou telle manière"). The reasons are the assistant's, to validate with the data model.
+- **The guide of [Entities](entities/README.md) keeps only a short description and the table**; the rules on how an entity file is written move to [Writing rules](#writing-rules-of-the-entity-files-to-become-a-skill), until they become a skill.
+- **A plan of the documentation** of Metadata lists the kinds of documents and those still missing: [Documentation plan](documentation-plan.md).
+
+## Writing rules of the entity files (to become a skill)
+
+Moved here from [Entities](entities/README.md) on 2026-11-22 at the Product Owner's request ("c'est plutôt un skill [...] on fait pas une spec de spec"): how the specification is written is not the specification. These rules wait here until they become a skill of the assistant; they were brought up to date when moved.
+
+### The model
+
+- Every entity file follows [Designation](entities/11-designation.md) exactly: the same sections, the same tables, the same two schemas, nothing added.
+- The Product Owner validates each entity file, one by one, its structure and its text.
+
+### The sections, in this order
+
+1. The title and its breadcrumb.
+2. The table of versions.
+3. The table of tags, only when the entity has a file of its own.
+4. A short introduction: what the entity is, and where it is kept when it lives inside another entity's file.
+5. **The entity**: its schema, then its JSON Schema.
+6. **The file**: its JSON Schema only, no text, no example; only when the entity has a file of its own.
+7. **Open questions**: only while one is left.
+
+Never a status sentence, a "Where it is used", a "Product Owner context", a table of the fields, or a sentence that only counts the fields.
+
+### The table of versions
+
+- Four columns: `Version`, `Date`, `Status`, `Change`. Two statuses only: `Draft`, then `Validated` on the same line once the Product Owner validates it.
+- Version 1 says only "Creation of the file". While the last version is `Draft`, every change stays in it and no line is added; validating adds no line.
+- Only a change made after a validation adds a line: the next version, `Draft`, whose `Change` lists every change since the last validation.
+- The `Status` column of the table of [Entities](entities/README.md) repeats the status of each file's last version, changed in the same session.
+
+**The table of tags**: two columns, `Tag` and `Value`; one tag for now, `File`, with the file's name.
+
+### The schema
+
+- Each field shows its type, its name and its key (`PK`, `FK`), nothing else: no comment, not even for a field that exists in some cases only.
+- It draws the entity and the entities it has or holds; a FK to an entity kept outside it is only its column.
+- Its types are those of [The types of the fields](data-model.md#the-types-of-the-fields); a new type is added there first, with the reason for its name.
+
+### The two JSON Schemas
+
+- The entity's: `$id` its name then `.schema.json` (`designation.schema.json`).
+- The file's: refers to the entity's by its `$id`, never repeats its fields. Its `$id` is the file's name with `.schema.json` when it holds the whole list (`designations.schema.json`), the entity's name with `-file.schema.json` when there is one file per thing (`palette-file.schema.json`).
+- Every rule JSON Schema can say is said there: a text never empty (`minLength: 1`), a default, a field set by the software (`readOnly`). What it cannot say (a primary key, a uniqueness) goes in the field's `description`.
+- Each field is described once, in its `description`: what it is for the user and what must be respected, in one or two sentences; never what everyone knows, never a rule of another page.
+
+**What never goes on an entity**: what holds for every file (it is in [Files](files.md)); the history of the discussion, quotes, "chosen by", a reason already given by a description.
+
+**Numbering**: file by file, first the files a type picks from, in the order the type uses them (palettes, icon sets, enums, quantities, designations), then the parts of the type in the order of the keys of its file, the type last; a part just before the entity that has or holds it; the folder stays flat.
+
+### The data model, in the same session
+
+- The box of the entity reads exactly as the schema of its entity file.
+- The diagram is written from the top: the type, its parts in key order, then the entities they point to. A FK to a signal or a command from further down the type is written from the signal or the command (`SIGNAL ||--o{ BOUND : "signal"`).
+- Each box has its `%% link` line to its entity file.
+- Only the title of a box is coloured, by its rule in the `themeCSS` line (`[id*='entity-NAME-'] .outer-path path`): orange `#f8b26a` while its last version is `Draft`, green once validated; never a `style` line.
+- The table of the entities and the census of the types follow the change.
+
+**Figma** follows later: the screens are gone over once the text is validated.
+
+## For the development
+
+- **Branded types** (Product Owner, 2026-11-22, a note for the development): in JavaScript, each type of [The types of the fields](data-model.md#the-types-of-the-fields) becomes a branded type, made only by a parser that checks the value, so that a `text` is never passed where a `uuid` is expected and every value read from a file is parsed before use. To carry into the software architecture.
 
 ## Not in the schema yet
 

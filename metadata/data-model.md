@@ -263,3 +263,39 @@ Every entity of the schema, in the order of its number: the file it is kept in, 
 | 28 | [Faceplate element](entities/28-faceplate-element.md) | `FACEPLATE_ELEMENT` | `<id>.type.json` | `SIGNAL_FIELD`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `FACEPLATE_ELEMENT` | — |
 | 29 | [Preset](entities/29-preset.md) | `PRESET` | `<id>.type.json` | `PRESET_VALUE`, `FACEPLATE_ELEMENT` | — |
 | 30 | [Type](entities/30-type.md) | `TYPE` | `<id>.type.json` | `APPEARANCE`, `DOCUMENTATION`, `SIGNAL`, `COMMAND`, `FLAG`, `PRESET` | `TYPE` (`parent`) |
+
+## The types of the fields
+
+Every type a field of the schema has. A type is named after what the value is for Synoptic Studio, never after the JSON type that holds it: `text`, `markdown`, `svg` and `expression` are all JSON strings, but each is read and checked its own way. Empty is always `null`, never an empty string.
+
+### The values
+
+| Type | In JSON | Fields | Why this name |
+| --- | --- | --- | --- |
+| `uuid` | A string: a UUID version 7, in lower case, 36 characters. | Every `internal_id` (`PK`) and every link (`FK`). | The name of the format (RFC 9562); every key the software sets is one. |
+| `text` | A string, plain text. | `id`, `name`, `description` (but that of a documentation), `display_name`, `address`, `symbol`, `true_text`, `false_text`, `typed_text`. | A text people write or read, without markup; `string` would only say how JSON holds it. |
+| `markdown` | A string in Markdown. | `DOCUMENTATION.description`. | The only text shown with its formatting, so the only one named after its format. |
+| `svg` | A string holding an SVG drawing. | `ICON.drawing`, `APPEARANCE.icon_drawing`. | The format of the drawing, which the software draws and recolours. |
+| `rgba` | A string `#rrggbbaa`: red, green, blue in sRGB, then the opacity. | `COLOR.value`, `APPEARANCE.color_value`. | Its four channels, the opacity last, as CSS writes them. |
+| `boolean` | `true` or `false`. | `DESIGNATION.required`, `VALUE_TYPE.relative_quantity`, `QUANTITY.offers_relative_quantity`. | The usual word, also a kind of value of a signal. |
+| `integer` | A whole number. | `ENUM_ITEM.key`, `DISPLAY_FORMAT.decimals`. | The word of FMI and of `value_type_kind`, kept apart from `real`. |
+| `real` | A number, with or without decimals. | `BOUND.typed_value`. | The word of FMI and of `value_type_kind` for a number that is not whole. |
+| `expression` | A string: a formula in `x`, written as [Formulas](formulas.md) says. | `CONVERSION.to_default`, `CONVERSION.from_default`. | A formula the software reads and computes, never a text shown as it is. |
+| `signal_value` | A number, `true` or `false`, or the `uuid` of an enum item, as the value type of the signal says. | `COMMAND_TARGET.value`, `PRESET_VALUE.start_value`. | A value whose kind is read from the signal it goes with. |
+
+### The choice lists
+
+A choice list is a field whose value is one word of a fixed list, written in English, several words joined by `_`. It is named after its field; a field named `kind` or `source`, which several boxes have, takes its box as prefix.
+
+| List | Field | Values | Meaning |
+| --- | --- | --- | --- |
+| `link_kind` | `LINK.kind` | `path`, `url` | A path to a file or a folder, or a web address; held in `LINK.address`. |
+| `direction` | `SIGNAL.direction` | `input`, `output` | The model receives it, or the model sends it. |
+| `value_type_kind` | `VALUE_TYPE.kind` | `integer`, `real`, `boolean`, `enum` | A whole number, a number, true or false, an item of an enum. |
+| `command_kind` | `COMMAND.kind` | `set_input_signal`, `trigger`, `override_output_signal` | Send a fixed value to an input signal; tell the layer above the model that an action happened, never the model; replace the value of an output signal by a fixed value. |
+| `enum_kind` | `ENUM.kind` | `global`, `template` | Items written once, the same everywhere; or items completed on each placed symbol. |
+| `faceplate_element_kind` | `FACEPLATE_ELEMENT.kind` | `signal`, `command`, `title`, `paragraph`, `group` | A signal field, a command button, a title, a paragraph, or a group of elements. |
+| `access` | `SIGNAL_FIELD.access` | `read`, `write`, `override` | Shown only; typed in, for an input; typed in, for an output. |
+| `input_kind` | `SIGNAL_FIELD.input_kind` | `number_field`, `radio_horizontal`, `radio_vertical`, `select`, `switch` | A number field, for an integer or a real; buttons on one line, one button per line, or a list, for an enum; a switch, for a boolean. |
+| `bound_source` | `BOUND.source` | `typed`, `signal` | A number typed in the builder, or the value of an input signal. |
+| `text_content_source` | `TEXT_CONTENT.source` | `typed`, `designation` | A text typed in the builder, or the text of a designation on each placed symbol. |
