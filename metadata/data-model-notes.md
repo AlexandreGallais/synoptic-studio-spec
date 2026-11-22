@@ -484,6 +484,7 @@ Said by the Product Owner on 2026-11-22 ("les couleurs sont dans des palettes [.
 
 Said by the Product Owner on 2026-11-22, answering the two open questions of the [Palette](entities/03-palette.md), then the questionnaire that followed (decisions 0070 and 0071).
 
+- _Replaced the same day: the appearance keeps only the copied values, with no FK and no refresh (see [Settled on 2026-11-22 (appearance)](#settled-on-2026-11-22-appearance)). The two points below are kept as they were said._
 - **A type keeps the color it picked, even when its palette is removed** (Product Owner: "j'ai pas envie que ça soit cassant [...] inscrire que la couleur vient d'une palette, mais qu'on mette aussi la couleur. Comme ça, si la palette est supprimée, la couleur, elle reste"). `APPEARANCE` holds both: `color`, the FK to the color picked in a palette, and `color_value`, a copy of its value (`#rrggbbaa`). The rule belongs to the type, not to the palette (Product Owner: "j'ai pas l'impression que ce soit dans la palette"), so the [Color](entities/02-color.md) file no longer says that a type points to it.
   - Removing a palette never empties the color of a type: the type does not follow its parent's color then. This answers the first open question of the palette.
   - Assistant's reading, to confirm: `color` is kept as written when its palette is removed, so that putting the palette's file back links the type again; both are `null` when the type has no color of its own.
@@ -529,7 +530,7 @@ Said by the Product Owner on 2026-11-22 ("c'est un peu comme les couleurs [...] 
 - **`ICON_SET`** (the name left to the assistant: "il va falloir que tu trouves un nom"): "icon set" is the usual word for such a set; "library" is kept for the symbols, and "pack" says less. Its `name` is unique, since it names the file (`carbon.icon-set.json`).
 - **Two entity files** (the Product Owner's request): [Icon](entities/06-icon.md), its box and its schema only, kept inside its set; [Icon set](entities/07-icon-set.md), its box, its schema and the schema of its file.
 - **The user's sets go in their configuration folder**; a user's set of the same file name replaces the software's (decision 0071): that is how the icons the software ships are overridden (Product Owner, answering the questionnaire the same day). Only whole sets are replaced: neither one icon of a set nor the icons of the software's own interface.
-- **A type keeps the icon it picked, even when its icon set is removed** (Product Owner, answering the questionnaire the same day), as for its color: `APPEARANCE` holds `icon`, the FK to the icon picked in a set, and `icon_drawing`, a copy of its SVG, refreshed while the set exists. Both are `null` when the type has no icon of its own (assistant's reading, as for the color).
+- **A type keeps the icon it picked, even when its icon set is removed** (Product Owner, answering the questionnaire the same day), as for its color: `APPEARANCE` holds `icon`, the FK to the icon picked in a set, and `icon_drawing`, a copy of its SVG, refreshed while the set exists. Both are `null` when the type has no icon of its own (assistant's reading, as for the color). _Replaced the same day: no FK and no refresh (see [Settled on 2026-11-22 (appearance)](#settled-on-2026-11-22-appearance))._
 - **The `name` of an icon is optional, and two icons of a set may share it** (Product Owner, answering the questionnaire the same day), as for a color: the key is always written, `null` when empty.
 - **The drawing of an icon is an ordinary SVG**, which may have a `viewBox` (Product Owner, same day: "c'est un SVG normal").
 - **An icon is drawn with fills only, never strokes**, even its thin lines (Product Owner: "même si c'est des bords fins [...] faut que ce soit du fil, et puis basta"): the color of the type goes on the fills.
@@ -592,6 +593,14 @@ Said by the Product Owner after the research above was written ("je veux bien qu
   - a default unit system per quantity, marked in the quantity file ("il faudrait peut-être un système par défaut").
   - unit systems in a file of their own, as a closed list shared by all quantities, like an enum ("est-ce que ce n'est pas une sorte d'énum, les systèmes ?"). The Product Owner leans the other way, without settling it: stay simple, keep the unit systems inside each quantity file, and take care there ("il faut rester simple, je pense").
 - Until the research and a decision, the entity files keep the rules of decision 0049.
+
+## Settled on 2026-11-22 (appearance)
+
+Said by the Product Owner on 2026-11-22 ("il n'y a plus besoin de mettre les UID des icônes, des couleurs [...] T'es censé juste mettre la color value et l'icone drawing, et rien d'autre"). It replaces the FK and the refresh of decisions 0068 and 0070, and the same rule for the icons (icon sets section above).
+
+- **`APPEARANCE` holds two values, no FK**: `icon_drawing` (an SVG) and `color_value` (`#rrggbbaa`). Picking an icon or a color copies its value into the type ("on vient juste appliquer un truc"); the icon set and the palette are no longer linked, so changing or removing them changes no type.
+- **Each value is either set or `null`**; `null` means inherited: the type shows its parent's value, which may itself be inherited, and a type without a parent shows the software's default ("ça vient toujours choper le truc du parent [...] sinon le truc par défaut"). This is the inheritance of the [whole draft](draft.md#icon-and-colour-are-inherited), now written in the file; the reset of a child sets its value back to `null`.
+- Written in [Appearance](entities/19-appearance.md); the box and the example of the [Data model](data-model.md) lose `icon` and `color` and their links to `ICON` and `COLOR`.
 
 ## Not in the schema yet
 

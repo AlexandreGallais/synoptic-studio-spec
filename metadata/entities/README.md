@@ -54,3 +54,4 @@ Settled with the Product Owner on 2026-11-21, on the file [Designation](01-desig
 | [Signal](16-signal.md) | A value that goes between the front and the model, as an input or an output. | Draft |
 | [Command](17-command.md) | What the front sends to the model with one click: a fixed value to an input, a trigger, or an override of an output. | Draft |
 | [Command target](18-command-target.md) | The signal a command sends its value to, and that fixed value. | Draft |
+| [Appearance](19-appearance.md) | The icon and the color a type shows, copied when picked; null, those of its parent. | Draft |
