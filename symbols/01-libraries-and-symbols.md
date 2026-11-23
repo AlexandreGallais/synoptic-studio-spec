@@ -33,14 +33,14 @@ From top to bottom:
 1. A **small +**, in a square like the libraries under it: it creates a Symbol Lib and asks its name only.
 2. Under it, the list of **every Symbol Lib**, one item each, as quick links: one click selects the library.
 3. A **separator**.
-4. The buttons of the **pages of the selected Symbol Lib**, at the bottom of the bar, each an icon and its name written: **General** (its name and its deletion, see [General page](#general-page-of-a-symbol-lib)), **Enums** (see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)), **Pipes** (the pipe styles, see [Pipes](pipes/README.md)) and **Symbols** (the symbols and the editor). General first, then Enums, Pipes, Symbols, in this order (Product Owner, 2026-11-23).
+4. The buttons of the **pages of the selected Symbol Lib**, at the bottom of the bar, each an icon alone: **General** (its name and its deletion, see [General page](#general-page-of-a-symbol-lib)), **Enums** (see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)), **Pipes** (the pipe styles, see [Pipes](pipes/README.md)) and **Symbols** (the symbols and the editor). General first, then Enums, Pipes, Symbols, in this order (Product Owner, 2026-11-23).
 
 There is no page of all the Symbol Libs: the list of the bar is the only one ("il n'y aura pas de page librairie").
 
 The following holds:
 
 - The separator and the page buttons **sit at the bottom of the bar**, and never move, whatever the number of libraries (Product Owner, 2026-11-23). The list of the Symbol Libs takes the room between the + and the separator: it grows with each new library until it reaches the separator.
-- Each page button shows **its icon and its name written under it**, always, not on hover only (Product Owner, 2026-11-23). It has no frame, unlike the squares of the libraries, so it is not taken for a library; the page shown has a filled background and its name in bold. Why: an icon without its name is easily missed, and a name only on hover is not seen (research of 2026-11-23, in decision 0089).
+- Each page button shows **its icon alone**, its name in a tooltip on hover, as the pages of Metadata (Product Owner, 2026-11-23; see [nav-rail-item](../design-system/07-molecules/nav-rail-item.md)). It has no frame, unlike the squares of the libraries, so it is not taken for a library; the page shown has a filled background. The user learns the four icons: they never move and are the same in every Symbol Lib.
 - When the libraries no longer fit, the list **never scrolls**. It is cut into **parts**, each as long as the room allows, and an **arrow** opens the next part ("il y a X pages, allez voir la deuxième partie des liens rapides").
 - The arrows show **only when the list is cut into parts**, so that most users never see them (Product Owner, 2026-11-23). Then **both** show, at every part: an arrow up at the top of the list, an arrow down at the bottom; the one that leads nowhere (up on the first part, down on the last) is **greyed**. On hover, "Part 1 of 2". They stay in the same place from one part to the next.
 - The page buttons **show only once a Symbol Lib is selected** (kept from the end of 2026-11-17). With no Symbol Lib yet, the bar shows the + only; what the rest of the screen shows then: open.
@@ -54,7 +54,7 @@ block-beta
     add["Small +: create a Symbol Lib"]
     list["Every Symbol Lib, one item each; when too many: parts and two arrows, never a scroll"]
     sep["Separator"]
-    pages["General, Enums, Pipes, Symbols of the selected Symbol Lib, at the bottom: an icon and its name each"]
+    pages["General, Enums, Pipes, Symbols of the selected Symbol Lib, at the bottom: an icon each, its name on hover"]
 ```
 
 ```mermaid

@@ -33,10 +33,12 @@ The kind of a column is **a kind of animation, not a type of the model** (Produc
 
 | Kind | A value | Drives | Status |
 | --- | --- | --- | --- |
-| Colour | Red, green, blue and opacity (RGBA), written `#RRGGBB` with an opacity in % | Fill, border, text colour | Decided (colour), Proposed (RGBA) |
+| Colour | Red, green, blue and opacity (RGBA), written `#RRGGBB` with an opacity in % | Fill, border, text colour | Decided |
 | Text | A short text | The content of a text of the symbol | Decided |
 | Number | A decimal number, without unit | Rotation (degrees), position, opacity, fill level | Decided |
-| Yes / no | A tick | Visibility, blinking | Proposed |
+| Yes / no | A tick | Visibility, blinking | Decided |
+
+The four kinds and RGBA: Product Owner, 2026-11-23 (decision 0090).
 
 The list stays open to more kinds (a sub-symbol to show, a named colour of the Symbol Lib): see [Open questions](#open-questions).
 
