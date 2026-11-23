@@ -11,6 +11,10 @@ The screens of the application as drawn in the Figma file, one folder per part, 
 
 Synoptics gets its folder (`03-synoptics`) once its screens are drawn.
 
+## Rules
+
+- **The examples are in order** (Product Owner, 2026-11-23): in a Figma section and in the table of its page, the frames follow the order of the application, left to right then top to bottom. The pages in the order of the navigation bar first (General first), then the states of a list (empty, few, many, last part).
+
 ## Where it is used
 
 | Where | What it uses |

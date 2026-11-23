@@ -30,10 +30,10 @@ The symbol mode has a navigation bar on the far left, like the one of Metadata (
 
 From top to bottom:
 
-1. A **small +**: it creates a Symbol Lib and asks its name only.
+1. A **small +**, in a square like the libraries under it: it creates a Symbol Lib and asks its name only.
 2. Under it, the list of **every Symbol Lib**, one item each, as quick links: one click selects the library.
 3. A **separator**.
-4. The buttons of the **pages of the selected Symbol Lib**, at the bottom of the bar: **General** (its name and its deletion, see [General page](#general-page-of-a-symbol-lib)), **Enums** (see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)), **Pipes** (the pipe styles, see [Pipes](pipes/README.md)) and **Symbols** (the symbols and the editor). Enums, Pipes, Symbols in this order (Product Owner); General first, as in the synoptic mode: proposed.
+4. The buttons of the **pages of the selected Symbol Lib**, at the bottom of the bar: **General** (its name and its deletion, see [General page](#general-page-of-a-symbol-lib)), **Enums** (see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)), **Pipes** (the pipe styles, see [Pipes](pipes/README.md)) and **Symbols** (the symbols and the editor). General first, then Enums, Pipes, Symbols, in this order (Product Owner, 2026-11-23).
 
 There is no page of all the Symbol Libs: the list of the bar is the only one ("il n'y aura pas de page librairie").
 
@@ -64,7 +64,7 @@ flowchart TD
 
 ### General page of a Symbol Lib
 
-- The first page of the selected Symbol Lib (proposed place), as the General page of a type in Metadata.
+- The first page of the selected Symbol Lib, as the General page of a type in Metadata.
 - Its **name**, in a text field.
 - **Delete the Symbol Lib**: a button, then a warning, as "Delete the type" in General of Metadata (see [Layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)). The library is deleted with its symbols and its pipe styles (assistant's reading, to confirm).
 - What else the page shows: open.
@@ -187,7 +187,6 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.5, 
 - Before a type is chosen, are the Interaction, Animation and Run modes hidden, greyed, or shown with a message?
 - Is the base pipe style the first item of the pipe styles list, or elsewhere?
 - How does a Symbol Lib look in the navigation bar (icon, initials, name)?
-- The place of General: first, as in the synoptic mode, or last?
 - The arrows of a list cut into parts: two arrows shown only when the list is cut, the useless one greyed, as proposed, or one arrow that goes round?
 - What the General page shows besides the name and the deletion; what a deletion takes with it.
 - What the symbol mode shows when there is no Symbol Lib yet.
