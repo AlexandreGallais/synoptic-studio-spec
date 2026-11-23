@@ -105,7 +105,7 @@ flowchart LR
 | Changing the `id` of a type, a signal, a command or a flag: breaking for the model, never for the software, whose links go through the `internal_id`. | [Inheritance of types](inheritance.md#when-a-parent-changes) |
 | Changing the key of an enum item: breaking for the model. | Decision 0038 |
 | Changing the kind of an enum, global or template, even while signals use it. | Decision 0042 |
-| Deleting: the warning asks to confirm, never lists what the delete breaks. | [Deleting and its consequences](deleting.md#how-a-delete-is-done) |
+| Deleting: a line goes at once; a whole type or preset asks to confirm; the warning never lists what the delete breaks. | [Deleting and its consequences](deleting.md#how-a-delete-is-done) |
 | How an `id` is written: no rule. | [Whole draft](draft.md#flags), 2026-11-17 |
 | The drawing of an icon: a stroke, against the rule, is shown as it is. | [Data model: notes](data-model-notes.md#settled-on-2026-11-22-icon-sets) |
 | The value of a command target, by its own field: it is read by the value type of the signal it targets. | [Data model: notes](data-model-notes.md) |

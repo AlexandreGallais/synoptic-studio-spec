@@ -66,12 +66,10 @@ Proposed, from the minimum set the research advised for the symbol editor (repor
 - Snapping to the grid, to the **connection points** of the symbols (pipes), to the edges and centres of the other objects, with temporary guides of alignment and of equal spacing.
 - Arrow keys move the selection by 1 px, with Shift by 10 px.
 
-### Undo, redo, save, copy, paste
+### Undo, redo, copy, paste
 
-Missing in the whole application so far (screens inventory). Proposed for the synoptic:
-
-- **Undo and redo** with the usual keys; one history per open synoptic, kept until it is closed.
-- **Save**: the synoptic is saved by the server, with the conflict check of [Storage](../storage/files-and-conflicts.md).
+- **Undo and redo** with the usual keys: the undo history keeps every action, as everywhere in the application (Product Owner, 2026-11-23, decision 0093; see [Undo history](../storage/files-and-conflicts.md#undo-history)). One history per open synoptic, kept until it is closed: proposed, open with the history.
+- **No Save button**: each change is written to the synoptic file as it is made, by the server, with the conflict check of [Storage](../storage/files-and-conflicts.md#saving) (Product Owner, 2026-11-23).
 - **Copy and paste**, also between two synoptics. A pasted placed symbol is a **new** placed symbol: it keeps the symbol, the preset and its values, but its designations are **emptied**, since a tag is meant to be unique. Paste as reference is offered when the copy comes from an installation and is pasted into a view.
 - **Duplicate** (Ctrl + D): the same as copy and paste, beside the original.
 

@@ -140,7 +140,7 @@ Validated by the Product Owner on 2026-11-16, while reviewing the wireframes ("c
   - It replaces the search field always shown under the title, drawn earlier the same day.
 - **No double click:** double-clicking a type does not rename it; hidden options are avoided.
 - **No right click** in the tree, nor anywhere in Metadata (Product Owner, 2026-11-16: "on ne peut juste pas avoir de clic droit du tout"). Its menu held only Delete, and a delete must not be that easy to reach.
-- **Delete:** a **Delete button in the General part** of the type. A click opens a **warning message** that asks to confirm, as for every delete of Metadata (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)). It replaces the right click and the "no warning" decided earlier the same day. The application keeps no versions: a delete is taken back only through Git, on the JSON files (see [Always editable, no versions](#always-editable-no-versions)).
+- **Delete:** a **Delete button in the General part** of the type. A click opens a **warning message** that asks to confirm: a whole type is one of the few deletes that warn (see the [layout rules](../screens/README.md#delete-a-warning-only-for-a-whole-thing), decision 0093). It replaces the right click and the "no warning" decided earlier the same day. A delete is taken back with the undo history (see [Files and conflicts](../storage/files-and-conflicts.md#undo-history)).
 
 ```mermaid
 flowchart LR
@@ -453,7 +453,7 @@ flowchart LR
 - The columns of the handle and of the delete button have no header (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
 - Each link has a description: a short text in plain text (not Markdown) that says what is attached. It is a description, not a name. **Optional** (Product Owner, 2026-11-22: "Facultative"): without it, only the path or the URL is shown.
 - Once a link is added, **only its description changes**, in place; its path or its URL does not: a wrong link is deleted and added again, and a click on the path or the URL always opens it (Product Owner, 2026-11-22, questionnaire: "Seule sa description change").
-- **Deleting a link:** a delete button (an icon) in the **last column of its line, on the far right**; a click opens a warning that asks to confirm (Product Owner, 2026-11-16: "Tu me rajoutes un bouton de suppression [...] il y a un message de warning quand on clique sur Supprimer"). No right click (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
+- **Deleting a link:** a delete button (an icon) in the **last column of its line, on the far right** (Product Owner, 2026-11-16: "Tu me rajoutes un bouton de suppression"); a click deletes the link at once, with no warning (decision 0093, which replaces the warning of 2026-11-16). No right click (see the [layout rules](../screens/README.md#delete-a-warning-only-for-a-whole-thing)).
 - A link to a file or a folder can be opened directly, with a click on its path, so the user does not lose time. Opening **always opens a folder, never a file** (Product Owner, 2026-11-11):
   - a link to a file opens the folder that contains the file;
   - a link to a folder opens that folder.
@@ -596,7 +596,7 @@ The signals of a type are shown in **one table**, one line per signal, one colum
   3. last, the signals of the type itself.
   Example for `pneumatic_positive_displacement_pump`: the signals of `pump`, then of `positive_displacement_pump`, then its own. The column "From" of the example above is only there to explain the order; whether the table shows which parent a line comes from is left to the design.
 - The button that adds a signal is a small **+ icon on the right of the title "Signals"**, above the table (see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)).
-- **Deleting a signal** is done with the delete button in the last column of its line, then a warning that asks to confirm (Product Owner, 2026-11-16: "une icône de suppression et pas le clic droit"). There is no right click in Metadata (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)). The handle at the left of a line is not a button: it only moves the line.
+- **Deleting a signal** is done with the delete button in the last column of its line (Product Owner, 2026-11-16: "une icône de suppression et pas le clic droit"), at once, with no warning (decision 0093). There is no right click in Metadata (see the [layout rules](../screens/README.md#delete-a-warning-only-for-a-whole-thing)). The handle at the left of a line is not a button: it only moves the line.
 
 The block below shows the order of the columns, with an input line and an output line.
 
@@ -899,7 +899,7 @@ flowchart LR
 - Unlike the units, which are a read-only catalogue (see [Units](#a-ready-made-catalogue-read-only)), enums are made by the user: each has its name, and the user builds its items (Product Owner, 2026-11-16: "Les enums, par contre, il faut pouvoir en créer").
 - The button that creates an enum is a small **+ icon on the line of the title "Enums"**, on its right, above the list (Product Owner, 2026-11-16: "il faut qu'il soit au niveau des enums pour que ça fasse joli avec une icône", then, reviewing the wireframes: "ça doit être un petit +, une petite icône à côté du titre"). The same for the items: a small + on the right of the title "Items" (see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)).
 - A new enum goes into the list of the Enums page. The list can be filled in advance, before any signal uses it.
-- An enum, or an item of an enum, is deleted with the delete button at the far right of its line, then a warning that asks to confirm; there is no right click in Metadata (Product Owner, 2026-11-16; see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
+- An enum, or an item of an enum, is deleted with the delete button at the far right of its line; there is no right click in Metadata (Product Owner, 2026-11-16). An item goes at once, with no warning (decision 0093); a whole enum asks to confirm, as a whole type (assistant's reading, to confirm). See the [layout rules](../screens/README.md#delete-a-warning-only-for-a-whole-thing).
 - A signal of the type enum picks one enum of the list. It is a link to the existing enum, never a copy.
 - Several signals can point to the same enum.
 - Changing an enum changes it for every signal that points to it: that is the point of a link.
@@ -1046,7 +1046,7 @@ The commands of a type are shown in **one table**, like the signals (Product Own
 - A trigger leaves the target and the value empty; its description says what the layer above the model is expected to do with it.
 - The button that adds a command is a small **+ icon on the right of the title "Commands"**, above the table (see the [layout rules](../screens/README.md#a-title-and-a-small--on-its-right)).
 - The columns of the handle and of the delete button have no header and take the least room possible (see the [layout rules](../screens/README.md#columns-of-buttons-have-no-header)).
-- A command is deleted with the delete button of its line, then a warning that asks to confirm; there is no right click in Metadata (Product Owner, 2026-11-16; see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
+- A command is deleted with the delete button of its line, at once, with no warning (decision 0093); there is no right click in Metadata (Product Owner, 2026-11-16; see the [layout rules](../screens/README.md#delete-a-warning-only-for-a-whole-thing)).
 - **The inherited commands come first, read only**, from the first parent at the top of the tree down to the type's own commands, as for the signals (Product Owner, 2026-11-16, said for the signals; the commands are inherited the same way; see [The table of signals](#the-table-of-signals)).
 - **The user chooses the order of the type's own commands** with the handle at the left of each line, the same way as for the signals (Product Owner, 2026-11-16: "pouvoir trier l'ordre dans les tableaux"). The order is kept, a new command goes at the end, and a change of order changes nothing for the model. See [The order of the lines](#the-order-of-the-lines). The faceplate places its command buttons in the order of its builder (see [Presets](#mode-faceplate-the-faceplate-builder)).
 
@@ -1209,7 +1209,7 @@ Decided by the Product Owner on 2026-11-16: "il ne faut pas donner un titre et u
 - **What is in the builder is what the faceplate shows.** There is no "Shown" checkbox any more ("on montrerait ce qu'on veut"): a signal or a command that is not added is not in the faceplate.
 - The display name and the name on the button exist **only in the builder**: they serve the faceplate alone (Product Owner: "le display name, qui ne sert que pour la pop-up").
 - The **order of the faceplate is the order of the builder**: it no longer follows the order of the table of Signals. An element is moved with a **handle** at its left, as in the tables of Metadata and as on the wireframes (Product Owner, end of 2026-11-17: "il y a déjà les poignées là").
-- Deleting an element: a delete button at its right, with a warning, as everywhere in Metadata (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
+- Deleting an element: a delete button at its right; the element goes at once, with no warning (Product Owner, 2026-11-23: "côté preset faceplate, les poubelles [...] même pas"; decision 0093; see the [layout rules](../screens/README.md#delete-a-warning-only-for-a-whole-thing)).
 - All the commands of the type stay available to the symbol, which links them to clicks on its parts, whether or not the builder holds them (see [Commands](#commands)).
 - An enum is always shown by the display names of its items, never by their keys (see [Enums](#enums)).
 
@@ -1367,6 +1367,7 @@ Metadata is always editable, and the application keeps no versions of it: the ty
 - The units are not in this list: they are a read-only catalogue that the user never changes (Product Owner, 2026-11-16; see [Units](#a-ready-made-catalogue-read-only)).
 - It replaces every Edit and Save step decided before (the name of a type, the whole signal, the tables).
 - Each change is written to the files as it is made, since there is no Save button (Product Owner, 2026-11-23; see [Files and conflicts](../storage/files-and-conflicts.md#saving)).
+- **Every change can be undone**: the undo history keeps each action (Product Owner, 2026-11-23, decision 0093; see [Undo history](../storage/files-and-conflicts.md#undo-history)). It is not a version: it takes back the last actions, while Git keeps the states of the files.
 
 #### No versions in the application: Git is enough
 
@@ -1390,7 +1391,7 @@ flowchart LR
 
 ### Open questions
 
-- An undo (Ctrl+Z) in Metadata, now that no Versions page takes a mistake back? One change at a time, and how far back?
+- How far back the undo history goes, and whether it survives closing the application: see [Files and conflicts](../storage/files-and-conflicts.md#open-questions).
 
 ## Flags
 
@@ -1407,7 +1408,7 @@ A flag is a key that a symbol placed in a synoptic has or does not have. Synopti
   - **The ID** is the key written in the configuration files. **No rule on how it is written**: the users name their IDs as they want, and keep them consistent themselves (Product Owner, 2026-11-17: "il faut laisser le choix de les nommer comme ils veulent [...] à eux de faire attention à ce que tout soit nommé de la même façon"). Words joined by an underscore, as in the example below, suit him.
   - **The description** says in a few words what the flag is for, so that the user understands it when editing a synoptic (Product Owner, 2026-11-17: "c'est juste pour quand on est en édition du synoptique, qu'on puisse avoir la description de ce qu'est le flag"). Plain text, as the description of an enum item (see [Enums](#enums)). **Optional** (Product Owner: "complètement facultative"). Never written in the configuration files: assistant's reading, since it only serves the editing.
 - **Each flag has an internal identifier**, like every other thing of Metadata (Product Owner, 2026-11-17: "il y a bien un identifiant interne pour le flag, comme pour tous les autres"): a renamed ID is followed by the synoptics that have the flag on.
-- **Deleting a flag gives no particular warning** about the synoptics that have it on (Product Owner, 2026-11-17: "si on le supprime, il n'y a pas de warning pour autant. Comme partout, c'est à la personne de savoir qu'elle supprime quelque chose"). The delete button asks to confirm, as everywhere in Metadata, without saying what breaks; the synoptic mode lists what is broken (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#when-metadata-changes)).
+- **Deleting a flag gives no particular warning** about the synoptics that have it on (Product Owner, 2026-11-17: "si on le supprime, il n'y a pas de warning pour autant. Comme partout, c'est à la personne de savoir qu'elle supprime quelque chose"). The delete button deletes the flag at once, as every line (decision 0093); the synoptic mode lists what is broken (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#when-metadata-changes)).
 - **The user chooses the order of the flags** with a handle at the left of each line (Product Owner, 2026-11-17: "je veux bien qu'on puisse changer l'ordre juste pour qu'ils puissent trier comme ils veulent").
 - The internal identifier, the optional description, the order by handle and the inheritance of the flags are written in decision 0033 (accepted on 2026-11-17).
 - **A flag means nothing to Synoptic Studio** (Product Owner: "une option qui n'a rien à voir avec le soft, avec mon soft à moi"). The application never reads it to draw, animate or check anything.
@@ -1500,7 +1501,7 @@ An identifier is a named key that each placed symbol fills with its own text in 
 
 - **The identifiers are shown in a table** (Product Owner: "faire un tableau").
 - **The user chooses their order** (Product Owner: "Il faut pouvoir leur donner un ordre"), with a handle at the very left of each line, as everywhere in Metadata (see the [layout rules](../screens/README.md#handles-to-choose-the-order)).
-- **An identifier can be deleted** (Product Owner: "et les supprimer"): the delete button at the far right of its line, then a warning, as everywhere in Metadata (see the [layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)).
+- **An identifier can be deleted** (Product Owner: "et les supprimer"): the delete button at the far right of its line, at once, with no warning, as every line (decision 0093; see the [layout rules](../screens/README.md#delete-a-warning-only-for-a-whole-thing)).
 - A new identifier is added with the small + on the right of the title "Identifiers" (the [layout rule](../screens/README.md#a-title-and-a-small--on-its-right) of every list of Metadata): assistant's reading.
 - Columns, in this order: the handle with no header, ID, Required, Description, then the delete button with no header. The short fields first and the long one last, as for the enum items (see [Enums](#rules-5)): assistant's reading.
 - Identifiers are part of Metadata, so they are always editable, with no Edit or Save step (see [Always editable, no versions](#always-editable-no-versions)).
@@ -1965,7 +1966,7 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | An element twice; what a symbol or a synoptic changes in the built faceplate | [Presets](#presets-and-their-faceplate) | Raised when the preset was split into Values and the faceplate builder (2026-11-16). The order by handle, the input chosen in the builder, the bounds of a number field and read or write (input) against read or override (output) were settled at the end of 2026-11-17. Not to be asked again in the chat. |
 | Content of the formatting tool bar and no text colour | [Documentation](#type-documentation) | Raised while reviewing the wireframes (2026-11-16); on 2026-11-22 the read-only mode was removed, Visual opens first and only the description of a link changes once added. The order of the links (a handle), the two add icons and the click that opens were decided at the end of the day. |
 | Override an output: who applies it, what is seen while it holds, how it ends | [Commands](#commands), [Presets](#typing-a-value) | The kind is decided (2026-11-16); its mechanism is open. Since 2026-11-17, a signal element of the faceplate set to "override" also overrides an output; the Product Owner leaves it to what is behind the faceplate. |
-| An undo (Ctrl+Z) in Metadata | [Always editable, no versions](#always-editable-no-versions) | Raised when the Versions page was removed (decision 0053, 2026-11-21): versions are left to Git on clean JSON files. |
+| How far back the undo history goes, and whether it survives closing | [Always editable, no versions](#always-editable-no-versions) | Raised when the Versions page was removed (decision 0053, 2026-11-21); the undo itself settled on 2026-11-23: a history keeps every action (decision 0093). |
 | The description kept out of the configuration files | [Flags](#flags) | Settled by the Product Owner on 2026-11-17: the description optional, an internal identifier, no warning on delete, no rule on how an ID is written, the order by handle, the inheritance; on 2026-11-22: an ID unique in the type and its parents. |
 | Left for later: the warning of an uncompleted template (part 3); how the screen shows global against template (design system); the keys of a template in the configuration files | [Enums](#left-for-later) | Noted, not to be asked again (Product Owner, end of 2026-11-17). The description of a global enum, the change of kind and the place of the smallest key were settled the same evening. |
 | The words "ID" and "internal ID" (documentary research); the tables of the presets; JSON files instead of a database, the names of the files and the enums | [Data model](#open-questions-9) | Raised when the Product Owner described the tables on 2026-11-18; the presets left out by him the same day. Settled the same day: one line of links per type, deleted with it; an internal ID on each enum item; a type's ID unique in the whole tree; if JSON, lines nested in their type and one file per type. |

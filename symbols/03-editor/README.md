@@ -33,7 +33,7 @@ block-beta
     space tools["Tool bar of the mode (bottom, place open)"] space
 ```
 
-Not placed yet: the zoom field, undo and redo, save.
+Not placed yet: the zoom field, undo and redo. There is no save: each change is written as it is made, and the undo history keeps every action (decision 0093; see [Files and conflicts](../../storage/files-and-conflicts.md#undo-history)).
 
 ## Rules
 

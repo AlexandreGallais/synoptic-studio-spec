@@ -163,7 +163,7 @@ mindmap
 | SY-03.13 | Search the layers | Button (search icon), then a text field | On the line of the title "Layers", under a separator; opens a field over the title that filters by name. No + on this title (2026-11-23). | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.14 | Unfold all, fold all | Button each | Every group of the tree. | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.15 | Line of a layer | — | Name; icon of its kind, hide, lock proposed. | Decided (name), Proposed (the rest) | [Layers](../symbols/03-editor/layers.md) |
-| SY-03.16 | Undo, redo, save | not said | Listed as missing by the research. | Proposed | [Editor](../symbols/03-editor/README.md) |
+| SY-03.16 | Undo, redo | not said | The undo history keeps every action (decision 0093). No save: each change is written as it is made. | Decided (history, no save), Open (place) | [Files and conflicts](../storage/files-and-conflicts.md#undo-history) |
 | SY-03.17 | Grid, snapping, guides | not said | Minimum set proposed by the research. | Proposed | [Editor](../symbols/03-editor/README.md) |
 
 Gaps:
@@ -171,7 +171,7 @@ Gaps:
 - Does the right-hand panel show the type and preset only when nothing is selected (assumption)?
 - How a layer is named, and whether the tree order is the stacking order.
 - Frame of the symbol (size, fit to content): proposed by the research, not placed in a screen.
-- Place of the zoom field, of undo and redo, of save.
+- Place of the zoom field, of undo and redo.
 
 ## SY-04 · Drawing mode
 
@@ -557,7 +557,7 @@ mindmap
         Plus adds a column at once, no form
         Header: bin, name field, kind select, changed at any time
         Kinds: colour, text, number, yes or no
-        Kind changed: values converted, earlier ones kept in memory
+        Kind changed: values start empty, earlier ones kept in memory
         Blocks: a column that does not fit goes to a new block below
         A value per item, global enum only
         Template: headers only, no line
@@ -572,9 +572,9 @@ mindmap
 | SY-12.3 | Key, Display name, Description | Read-only columns | From Metadata, in the order of decision 0032; changed in Metadata only. A template has no items, so no lines: its name and its description are shown instead, read only (end of 2026-11-17). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.4 | Add a column | Button (+) on the right of the title "Columns" | As many columns as needed. The + adds the column at once, at the end of the last block, without a form (decision 0091, which replaces the form of 0090). The new column: name field focused and empty, kind Text by default, values empty text fields (Product Owner, 2026-11-23, replacing "Choose a kind"). The place of the + follows the [layout rules](README.md#a-title-and-a-small--on-its-right). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.5 | Name of a column | Text field, always visible in the header of the column, above the kind | Edited at any time (end of 2026-11-17): `color`, `display name short`... | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
-| SY-12.6 | Kind of value of a column | Select always visible in the header of the column, under the name | Chosen in the header once the column is added, for a global enum as for a template (decision 0090, which replaces "the first value chooses the kind"); changed at any time, without opening anything (decision 0091). A kind of animation, not a type of the model: Colour (RGBA), Text, Number, Yes / no (see [Kinds of value](../symbols/11-enums-of-a-symbol-lib.md#kinds-of-value)). On a change, the values that convert are kept (45 gives "45"), the others emptied in the file; the application remembers the values of the earlier kinds while it runs and gives them back if an earlier kind is chosen again (decision 0092). A notice, not a blocking warning, says what was emptied (assistant's reading). | Decided (select in the header, change at any time, conversion and memory), Proposed (notice, conversions other than Number to Text) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#changing-the-kind) |
+| SY-12.6 | Kind of value of a column | Select always visible in the header of the column, under the name | Chosen in the header once the column is added, for a global enum as for a template (decision 0090, which replaces "the first value chooses the kind"); changed at any time, without opening anything (decision 0091). A kind of animation, not a type of the model: Colour (RGBA), Text, Number, Yes / no (see [Kinds of value](../symbols/11-enums-of-a-symbol-lib.md#kinds-of-value)). On a change, nothing is converted: the new kind starts with empty values; the application remembers the values of the earlier kinds while it runs and gives them back if an earlier kind is chosen again (decision 0092). The change shows nothing, no warning, no notice (decision 0093). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#changing-the-kind) |
 | SY-12.7 | Value of a column for an item | Field of the kind (colour picker, text field, number field, checkbox) | Global enum only: one per item. For a template, filled with its items on each placed symbol, in the synoptic (end of 2026-11-17; the columns with the items: assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
-| SY-12.8 | Delete a column | Icon button (bin), at the top of the header of the column, on the right, above the name | A column can be deleted (end of 2026-11-17); the bin is above the name (decision 0091). At once when the column is empty; a confirmation first when it has values or an animation uses it (assistant's choice). | Decided (bin above the name), Proposed (confirmation) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
+| SY-12.8 | Delete a column | Icon button (bin), at the top of the header of the column, on the right, above the name | A column can be deleted (end of 2026-11-17); the bin is above the name (decision 0091). Deleted at once, with no confirmation, even with values: the undo history takes it back (decision 0093). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.9 | Order of the columns | — | Not changed: no handle. | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.10 | Blocks of columns | Several tables, one under the other | No column narrowed, no sideways scroll: the added column that does not fit starts a new block below. Display name and Description in the first block only; each next block repeats the Key alone (Product Owner, 2026-11-23). Same lines in every block; the blocks follow the width of the window (decision 0091). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#when-the-columns-do-not-fit) |
 
@@ -582,4 +582,3 @@ Gaps:
 
 - What a deleted column breaks in the animations.
 - How the words Global and Template look in the list (a tag on the right of the line, in the test screen): for the design system.
-- The conversions of a kind change other than Number to Text, and the look of the notice.

@@ -67,7 +67,7 @@ block-beta
 | SN-02.6 | Minimap | Floating, on demand | The visible part as a rectangle. | Proposed | idem |
 | SN-02.7 | Search on the canvas | Text field | `P-101` selects and zooms. | Proposed | idem |
 | SN-02.8 | Grid, snapping | Toggles + number field | Grid step 8 px by default. | Proposed | [Synoptic editor](../synoptics/02-synoptic-editor.md#grid-snapping-guides) |
-| SN-02.9 | Undo, redo, save | Buttons and keys | One history per open synoptic. | Proposed | [Synoptic editor](../synoptics/02-synoptic-editor.md#undo-redo-save-copy-paste) |
+| SN-02.9 | Undo, redo | Buttons and keys | The undo history keeps every action (decision 0093). No Save button: each change is written as it is made (Product Owner, 2026-11-23). | Decided (history, no save), Proposed (buttons) | [Synoptic editor](../synoptics/02-synoptic-editor.md#undo-redo-copy-paste) |
 | SN-02.10 | Faults drawer | Drawer, bottom | Folded to the counts; see [SN-08](#sn-08--faults). | Proposed | [Faults](../synoptics/08-faults.md#where-the-faults-are-shown) |
 | SN-02.11 | Right-hand panel, nothing selected | Panel | The settings of the synoptic (as SN-01). | Proposed | [Synoptic editor](../synoptics/02-synoptic-editor.md#layout) |
 

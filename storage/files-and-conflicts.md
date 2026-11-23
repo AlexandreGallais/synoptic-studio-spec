@@ -14,9 +14,22 @@ The open source application has access to a folder. Everything it generates (typ
 
 ## Saving
 
-- **Each change is written to its file as it is made** (Product Owner, 2026-11-23): there is no Save step; what is in the file is what the user sees.
+- **Each change is written to its file as it is made** (Product Owner, 2026-11-23): there is no Save step and no Save button anywhere, in Metadata, the symbol mode or the synoptic; what is in the file is what the user sees.
 - **The application may also keep a memory while it runs**, never written to a file: the values of an enum column under its earlier kinds, so the user can switch and go back (see [Changing the kind](../symbols/11-enums-of-a-symbol-lib.md#changing-the-kind), decision 0092).
 - **Closing the application forgets that memory**; reopening shows what the files hold.
+
+## Undo history
+
+- **Every action is kept in a history**, in every part of the application: the user can always go back, whatever was done (Product Owner, 2026-11-23, decision 0093).
+- **The history, not a warning, protects from a mistake.** So nothing asks to confirm, except deleting a whole thing (see [Delete: a warning only for a whole thing](../screens/README.md#delete-a-warning-only-for-a-whole-thing)).
+- **Undo and redo** use the usual keys.
+
+```mermaid
+flowchart LR
+    A["An action: a line deleted, a kind changed, a field typed"] --> F["Written to its file at once"]
+    A --> H["Kept in the history"]
+    H -->|"undo"| B["The action is taken back, and the file written again"]
+```
 
 ## Avoiding conflicts
 
@@ -43,6 +56,7 @@ sequenceDiagram
 
 - Are the check and the refresh options, or always on? Open.
 - What does the application do on a conflict: warn and stop, or offer to reload? Open.
-- The synoptic editor proposes a Save button ([SN-02.9](../screens/synoptics.md)): does it stay, now that each change is written as it is made? Open.
-- Does the memory kept while the application runs serve elsewhere than for the kinds of an enum column (an undo, for example)? Open.
+- How far back does the undo history go, and does it survive closing the application? Decision 0053 refused a history kept in files for the versions of Metadata. Open.
+- One history for the whole application, one per part, or one per file (the synoptic editor proposed one per open synoptic)? Open.
+- Is the memory of the earlier kinds of an enum column a part of the history? Open.
 - Which files are generated and under which names and sub-folders? To be specified. JSON files with no database are a leaning, not settled; for Metadata, see [Data model](../metadata/draft.md#as-json).

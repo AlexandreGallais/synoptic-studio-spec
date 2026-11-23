@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Enums of a Symbol Lib · Previous: [Open questions](10-open-questions.md) · Next: [Sub-symbols](12-sub-symbols.md)
 
-Status: draft. The page and its added columns are carried by decisions 0036, 0090, 0091 and 0092; the assistant's readings below stay to confirm. Not validated. Open points are listed in [Open questions](#open-questions).
+Status: draft. The page and its added columns are carried by decisions 0036, 0090, 0091, 0092 and 0093; the assistant's readings below stay to confirm. Not validated. Open points are listed in [Open questions](#open-questions).
 
 Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, read only, and lets the user add **columns** to them: a colour, a short text, a number... The animations of the symbols of this library then use these columns: when an enum signal changes value, a property of the drawing takes the value of the chosen column for that item.
 
@@ -32,7 +32,7 @@ Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, rea
   - the **kind of value**, a select of the [kinds](#kinds-of-value).
 - **The name and the kind are changed at any time, right in the header**, without opening a menu or a form.
 - Changing the kind of a column that has values: see [Changing the kind](#changing-the-kind).
-- **Deleting a column** (proposed): at once when it is empty; a confirmation first when it has values or an animation uses it.
+- **Deleting a column** is done at once, with no confirmation: the undo history takes it back (decision 0093; see [Files and conflicts](../storage/files-and-conflicts.md#undo-history)).
 - **The order of the columns does not change**: no handle.
 - **A template shows only its columns**: it has no items here, so the table has its headers and no lines; its name, its kind and its description are shown read only.
 
@@ -73,20 +73,13 @@ The list stays open to more kinds (a sub-symbol to show, a named colour of the S
 
 ## Changing the kind
 
-The kind of a filled column can change at any time without losing work: what converts is kept, and the rest comes back if the user goes back to the earlier kind while the application is open (Product Owner, 2026-11-23, decision 0092).
+The kind of a filled column can change at any time without losing work: the new kind starts again from empty values, and the values of an earlier kind come back when the user chooses it again while the application is open (Product Owner, 2026-11-23, decision 0092).
 
-- **The values that convert are kept** in the new kind; the others are emptied in the file.
-
-| From | To | A value |
-| --- | --- | --- |
-| Number | Text | Kept as its text: 45 gives "45" (decided) |
-| Text | Number | Kept when it reads as a number: "45" gives 45; emptied otherwise (proposed) |
-| Any other change |  | Emptied (proposed) |
-
+- **Nothing is converted**: the new kind starts with empty values, or with the values the column last had under that kind.
 - **The application remembers the values of every kind the column had**, while it runs: choosing an earlier kind again gives back the values the column last had under it. The user can switch, test and go back as often as needed.
 - **This memory is never written to the file**: the file holds the current kind and its values only, written at each change, like every change (see [Files and conflicts](../storage/files-and-conflicts.md#saving)).
 - **Closing the application forgets the memory**; reopening shows what the file holds.
-- **No warning blocks the change**: a short notice says how many values were emptied, and that choosing the earlier kind again brings them back while the application is open (assistant's reading, to confirm).
+- **The change shows nothing**: no warning, no notice (decision 0093).
 
 The column `level` of `pump_mode` goes from Number to Yes / no, then back to Number in the same session.
 
@@ -145,7 +138,7 @@ In the symbol of a pump, an animation gives the body of the pump the colour of t
 Noted, not to be asked now: they come up at the review of the part.
 
 - More kinds of value: a sub-symbol or a layer to show? Is a number always without unit (an angle in degrees, a position in px)?
-- Changing the kind: the conversions other than Number to Text (a text that reads as a number, a yes / no, a colour), and a notice rather than a warning (proposed).
+- Is the memory of the earlier kinds a part of the undo history (decision 0093)?
 - More about the name of a column may come (said with a doubt).
 - An item added later in Metadata: its added columns are empty; what does the animation show then (a default value per column)?
 - Deleting a column used by an animation breaks it, with the small red mark (see [What breaks a link](01-libraries-and-symbols.md#what-breaks-a-link)): to confirm.

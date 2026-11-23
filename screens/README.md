@@ -102,22 +102,24 @@ block-beta
 
 - A table fills the **whole width of the panel** that holds it. The column of text that can be long (a description) takes the room left; the others take the width of their content; the columns of handles and of delete buttons take the width of their icon.
 
-### Delete with a button and a warning, in Metadata
+### Delete: a warning only for a whole thing
 
-- **No right click in Metadata.** Deleting is a heavy action: it must not hide behind a right click.
-- Deleting is done with a **delete button** (an icon):
-  - on a line of a table or a list, in the **last column, on the far right**: links of the documentation, signals, commands, presets, elements of the faceplate builder, enums and their items;
-  - for a **type**, in its **General** part, not in the tree.
-- A click on the button opens a **warning message** that asks to confirm. Nothing is deleted before the user confirms.
-- The same warning everywhere, for a type as for a line.
-- The application keeps no versions: what is deleted is taken back only with Git, on the JSON files (decision 0053; see [Always editable, no versions](../metadata/draft.md#always-editable-no-versions)).
-- **The warning never says what the delete breaks**. What is broken is listed in the symbol mode and in the synoptic mode (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#when-metadata-changes)). The wording of the warning for a type: [MD-02.8](metadata.md#md-02--general); for the other deletes: to settle.
+Synoptic Studio is a tool for professionals who work fast: it does not ask to confirm, except to delete a whole thing; the undo history takes back any mistake (Product Owner, 2026-11-23, decision 0093).
+
+- **No right click in Metadata.** A delete must not hide behind a right click.
+- **A line is deleted with a delete button** (a bin icon) in the **last column, on the far right**: links of the documentation, signals, commands, flags, elements of the faceplate builder, items of an enum, designations, columns of an enum in a Symbol Lib. **It goes at once**: no warning, no message.
+- **A whole thing is deleted with a red button** and a **warning** that asks to confirm: a **type**, in its General part; a **preset**, on the line of its name; a **Symbol Lib**, in its General page. Nothing is deleted before the user confirms. Assistant's reading, to confirm: a whole enum, a symbol, a pipe style and a synoptic are whole things too.
+- **Nothing else asks to confirm**: changing a kind, a field, a value shows no warning and no message.
+- **Every delete can be undone** with the undo history (see [Files and conflicts](../storage/files-and-conflicts.md#undo-history)).
+- **The warning never says what the delete breaks**. What is broken is listed in the symbol mode and in the synoptic mode (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#when-metadata-changes)). The wording of the warning for a type: [MD-02.8](metadata.md#md-02--general).
 
 ```mermaid
 flowchart LR
-    B["Delete button: far right of a line, or General of a type"] --> W["Warning message"]
-    W -->|"confirm"| D["Deleted; taken back only with Git"]
+    L["Bin at the far right of a line"] --> D["Deleted at once"]
+    R["Red button of a whole thing: a type, a preset, a Symbol Lib"] --> W["Warning"]
+    W -->|"confirm"| D
     W -->|"cancel"| K["Nothing changes"]
+    D -->|"undo"| U["Back as it was"]
 ```
 
 ### Tables for the parts of a type
@@ -240,7 +242,7 @@ These gaps come back on several screens; each file lists its own.
 - **Create, rename, delete, duplicate**: the specs say what things are and how they link, rarely how the user creates, deletes or duplicates them (types, signals, commands, presets, enums, quantities, libraries, symbols, pipe styles).
 - **Order**: the order of the lines of a preset, of signals in a list, of layers in a symbol.
 - **Layers panel**: described since 2026-11-15 (see [Layers](../symbols/03-editor/layers.md)); what a line shows besides its name is still open.
-- **Undo and redo, save**: not described anywhere.
+- **Undo and redo**: an undo history keeps every action, and there is no save (decision 0093; see [Files and conflicts](../storage/files-and-conflicts.md#undo-history)); where its buttons sit is not described yet.
 - **Navigation**: decided on 2026-11-16: the top bar goes from one part to another, and a bar on the left goes inside a part (see [Layout rules](#layout-rules)).
 
 ## See also

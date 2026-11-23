@@ -21,7 +21,7 @@ The first five are proposed; the interface description of the models is decided.
 
 | Output | For whom | What it holds | Format |
 | --- | --- | --- | --- |
-| **Synoptic file** | The editor | The source: everything of the [data model](11-data-model.md). Saved at each save. | JSON |
+| **Synoptic file** | The editor | The source: everything of the [data model](11-data-model.md). Written at each change. | JSON |
 | **Published view** | The runtime | One file per view, self-contained: the drawings of the symbols used, their animations and interactions, the pipes already computed, the faceplates, and the address of every signal. The runtime needs nothing else. | JSON with SVG inside |
 | **Configuration file** | The software outside (controllers, gateway, model) | One entry per placed symbol, references counted once: instance ID, type `id`, preset values with the changes of the synoptic (in the default unit), flags ticked, designation texts, template items. | JSON |
 | **Signal list** | Whoever wires the controllers or the model | One line per placed symbol and signal: address `P-101.speed`, direction, value kind, quantity and default unit, enum. | CSV and JSON |

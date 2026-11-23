@@ -115,7 +115,7 @@ mindmap
 | MD-02.5 | Icon | List of icons | One icon of the predefined SVG list. No import. Validated (2026-11-16). | Decided | [Icons](../metadata/draft.md#type-icons) |
 | MD-02.6 | Colour | Colour (palette only) | One colour of a fixed palette; no free colour. Validated (2026-11-16). | Decided | [Icons](../metadata/draft.md#type-icons) |
 | MD-02.7 | Reset icon, reset colour | Button (icon) | Shown when the type overrides its parent's choice; makes it follow the parent again. An icon, no text label (2026-11-16). | Decided | [Icons](../metadata/draft.md#type-icons) |
-| MD-02.8 | Delete the type | Button, then a warning (dialog) | In General (2026-11-16): the only way to delete a type. A click opens a warning that asks to confirm. Refused while the type has sub-types: they are deleted first (decision 0082). The warning says "Delete centrifugal_pump?" (the ID of the type), then "The type is deleted at once. Only Git can bring it back.". | Decided | [Types](../metadata/draft.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
+| MD-02.8 | Delete the type | Button, then a warning (dialog) | In General (2026-11-16): the only way to delete a type. A click opens a warning that asks to confirm. Refused while the type has sub-types: they are deleted first (decision 0082). The warning says "Delete centrifugal_pump?" (the ID of the type), then "The type is deleted with everything it holds." (2026-11-23: "Only Git can bring it back" removed, since the undo history takes a delete back, decision 0093). A whole type is one of the few deletes that warn (decision 0093). | Decided | [Types](../metadata/draft.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
 
 Gaps:
 
@@ -154,7 +154,7 @@ mindmap
         A URL opens in the default browser
       Description of the link
       No column Open
-      Delete button, far right, no header, warning
+      Delete button, far right, no header, deletes at once
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
@@ -176,7 +176,7 @@ mindmap
 | MD-03.11 | Handle of a link | Grip, dragged, no header | At the very left of each link: moves it; the order is kept (2026-11-16). | Decided | [Documentation](../metadata/draft.md#the-links) |
 | MD-03.8 | Description of a link | Text field | Plain text, not Markdown. Once a link is added, the only thing that changes in it: its path or URL stays; a wrong link is deleted and added again (2026-11-22, questionnaire). | Decided | [Documentation](../metadata/draft.md#type-documentation) |
 | MD-03.9 | Open | Click on the path or the URL, an icon at its start | No column Open (2026-11-16). A click on a path opens a folder: the one that contains the file, or the folder itself; never a file or a program. A click on a URL opens it in the default browser. The icon at the start says folder or link. | Decided | [Documentation](../metadata/draft.md#the-links) |
-| MD-03.10 | Delete a link | Button (icon), then a warning | In the last column of the line, on the far right, with no header; a click opens a warning (2026-11-16). No right click. | Decided | [Layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata) |
+| MD-03.10 | Delete a link | Button (icon) | In the last column of the line, on the far right, with no header (2026-11-16). A click deletes the link at once, with no warning (decision 0093, which replaces the warning of 2026-11-16). No right click. | Decided | [Layout rules](README.md#delete-a-warning-only-for-a-whole-thing) |
 
 Gaps:
 
@@ -223,7 +223,7 @@ mindmap
         Enum, for an enum
         Quantity / Difference, required for an integer or a real, the icon alone says which
         Description, for the model author, takes the room left
-        Delete button, last, no header, warning
+        Delete button, last, no header, deletes at once
     No model unit
     No minimum or maximum, a bound is a plain signal
     No decimals
@@ -248,7 +248,7 @@ mindmap
 | MD-04.11 | Minimum, maximum | — | Removed (2026-11-17): a bound is a plain signal of its own, on a line of its own, with no tie to the signal it bounds; its direction is chosen as for any signal, usually an input (example: `speed_setpoint_max`). | Decided | [Signals](../metadata/draft.md#rules-3) |
 | MD-04.15 | Decimals | — | None (2026-11-17): the model takes the whole value; decimals, if needed, are set once for the project, outside Metadata. | Decided | [Signals](../metadata/draft.md#rules-3) |
 | MD-04.12 | Direction | Column, select | First column (2026-11-16). Input or output of the model. | Decided | [Signals](../metadata/draft.md#signals) |
-| MD-04.13 | Delete a signal | Button (icon), then a warning | Last column, on the far right of each own line, with no header and the least width; a click opens a warning (2026-11-16). No right click ([layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). | Decided | [Signals](../metadata/draft.md#the-table-of-signals) |
+| MD-04.13 | Delete a signal | Button (icon) | Last column, on the far right of each own line, with no header and the least width (2026-11-16). A click deletes the signal at once, with no warning (decision 0093). No right click ([layout rules](README.md#delete-a-warning-only-for-a-whole-thing)). | Decided | [Signals](../metadata/draft.md#the-table-of-signals) |
 | MD-04.14 | Handle of a line | Grip, dragged, no header | At the very left of each own line, before Direction: held and dragged to move the line; the order chosen is kept (2026-11-16). Inherited lines have none. A new signal goes at the end: to confirm. Its look: with the design system. | Decided | [Signals](../metadata/draft.md#the-order-of-the-lines) |
 | MD-04.16 | Description | Column, text field, takes the room left | What the signal means, for the person who writes the model (2026-11-20, decision 0052). After Quantity / Difference, before the delete button: the long field last, as for flags and enum items (assistant's reading). Plain text: assistant's reading. Optional; written in the configuration files sent with the model (2026-11-20). | Decided (field, optional, in the files), Proposed (place, plain text) | [Signals](../metadata/draft.md#rules-3) |
 | MD-04.17 | True / False | — | Removed (2026-11-21, decision 0058): the two texts of a boolean are set in the preset ([MD-07.13b](#md-07--presets)), not on the signal. | Decided | [Data model](../metadata/data-model-notes.md#changed-on-2026-11-21-boolean-texts) |
@@ -284,7 +284,7 @@ mindmap
         True or false
         Enum item picked
       Description, for the model author, takes the room left
-      Delete button, last, no header, warning
+      Delete button, last, no header, deletes at once
     No right click
 ```
 
@@ -298,7 +298,7 @@ mindmap
 | MD-05.6 | Value: fixed or typed | — | Removed (2026-11-16): the value is always fixed. | Decided | [Commands](../metadata/draft.md#the-value-is-always-fixed) |
 | MD-05.7 | Value | Column, field of the target signal's type | Fixed, written in Metadata: a number, true or false, or an item of the enum; never a text (2026-11-18, decision 0043). Empty for a trigger. A number is typed and kept in the default unit of the target signal's quantity (2026-11-19, decision 0051). | Decided | [Commands](../metadata/draft.md#the-value-is-always-fixed) |
 | MD-05.8 | Typed value | — | Removed (2026-11-16): a person types a value in the faceplate, for a signal set to write in the preset. | Decided | [Presets](../metadata/draft.md#typing-a-value) |
-| MD-05.9 | Delete a command | Button (icon), then a warning | Last column, on the far right of each own line, with no header; a click opens a warning (2026-11-16). No right click. | Decided | [Commands](../metadata/draft.md#the-table-of-commands) |
+| MD-05.9 | Delete a command | Button (icon) | Last column, on the far right of each own line, with no header (2026-11-16). A click deletes the command at once, with no warning (decision 0093). No right click. | Decided | [Commands](../metadata/draft.md#the-table-of-commands) |
 | MD-05.10 | Handle of a line | Grip, dragged, no header | At the very left of each own line, before Kind; same behaviour as [MD-04.14](#md-04--signals) (2026-11-16, confirmed at the end of the day). | Decided | [Commands](../metadata/draft.md#the-table-of-commands) |
 | MD-05.11 | Inherited commands | Lines of the table | First, read only, from the first parent at the top of the tree down; then the type's own (2026-11-16, as for the signals). | Decided | [Commands](../metadata/draft.md#the-table-of-commands) |
 | MD-05.12 | Description | Column, text field, takes the room left | What the command means, for the person who writes the model; for a trigger, what the layer above the model is expected to do (2026-11-20, decision 0052; the trigger goes to that layer, never to the model: 2026-11-22). After Value, before the delete button, as on [MD-04.16](#md-04--signals) (assistant's reading). Optional; written in the configuration files sent with the model (2026-11-20). | Decided (field, optional, in the files), Proposed (place, plain text) | [Commands](../metadata/draft.md#commands) |
@@ -320,7 +320,7 @@ mindmap
       Handle, own lines
       ID, no rule on how it is written
       Description, optional
-      Delete button, far right, no header, warning
+      Delete button, far right, no header, deletes at once
     Ticked in the synoptic, part 3
 ```
 
@@ -331,7 +331,7 @@ mindmap
 | MD-12.6 | Handle of a line | Grip, dragged, no header | At the very left of each own line: the users sort the flags as they want (2026-11-17). | Decided | [Layout rules](README.md#handles-to-choose-the-order) |
 | MD-12.3 | ID | Text field | Always editable, as everything in Metadata. No rule on how it is written: the users name it as they want (2026-11-17). Followed through an internal identifier when renamed (2026-11-17). Unique among the flags of its type, of its parents and of its sub-types (2026-11-22; decision 0080); an ID already taken is refused when typed (decision 0083). | Decided | [Flags](../metadata/draft.md#flags) |
 | MD-12.5 | Description | Text field, takes the room left | After the ID: what the flag is for, plain text, optional (2026-11-17). Shown when editing a synoptic; kept out of the configuration files: assistant's reading. | Decided (optional), Proposed (not in the files) | [Flags](../metadata/draft.md#flags) |
-| MD-12.4 | Delete a flag | Button (icon), then a warning | At the far right of the line, with no header ([layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). The warning never says which synoptics have the flag on (2026-11-17); the synoptic mode lists what is broken. | Decided | [Flags](../metadata/draft.md#flags) |
+| MD-12.4 | Delete a flag | Button (icon) | At the far right of the line, with no header ([layout rules](README.md#delete-a-warning-only-for-a-whole-thing)). Deleted at once, with no warning (decision 0093); nothing says which synoptics have the flag on (2026-11-17); the synoptic mode lists what is broken. | Decided | [Flags](../metadata/draft.md#flags) |
 
 Gaps:
 
@@ -406,7 +406,7 @@ mindmap
         Group element
           Five small icons with a plus, at its top
           Its own elements, a group included
-        Delete button on each element, warning
+        Delete button on each element, deletes at once
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
@@ -437,7 +437,7 @@ mindmap
 | MD-07.19 | Title element, description element | Text fields | A heading or a paragraph inside the faceplate or a group; the only way to give either a title or a description (2026-11-16). Description: plain text, line breaks kept. | Decided | [Presets](../metadata/draft.md#only-elements-in-elements) |
 | MD-07.23 | Fixed text or variable | Small icon, on the right of the text field of a title or description element | As Figma's "Apply variable" (2026-11-18): a fixed text typed by the user, or a variable, a designation of [MD-13](#md-13--designations). Never a signal (2026-11-21, decision 0055): a signal element in read shows a value. A designation is filled on each placed symbol, in the synoptic. One variable alone in the field, never mixed with text: assistant's reading. | Decided (icon, designation only), Proposed (one variable, whole) | [Presets](../metadata/draft.md#fixed-text-or-a-variable) |
 | MD-07.20 | Group element | Element of the builder | No title nor description of its own (confirmed 2026-11-17). At its top, the five small icons with a + (Signal, Command, Title, Description, Group), then its own elements; a group can hold a group (2026-11-16). The icons confirmed on 2026-11-17, after a doubt the same day: they save time. | Decided | [Presets](../metadata/draft.md#only-elements-in-elements) |
-| MD-07.21 | Delete an element, delete a preset | Button, then a warning | An element: an icon at its far right (2026-11-16). A preset: a red button "Delete the preset" on the line of its name, on the right of the field, as "Delete the type" in General; no delete on the lines of the list (the place: assistant's choice). | Decided (button), Proposed (place) | [Layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata) |
+| MD-07.21 | Delete an element, delete a preset | Button; a warning for a preset only | An element: an icon at its far right (2026-11-16), deleted at once, with no warning (Product Owner, 2026-11-23, decision 0093). A preset, a whole thing, asks to confirm: a red button "Delete the preset" on the line of its name, on the right of the field, as "Delete the type" in General; no delete on the lines of the list (the place: assistant's choice). | Decided (button, warning), Proposed (place) | [Layout rules](README.md#delete-a-warning-only-for-a-whole-thing) |
 | MD-07.17 | Order | Rule | Mode Values: the order of Signals, no handle, no sort. Mode Faceplate: the order of the builder, moved with a handle. | Decided | [Presets](../metadata/draft.md#mode-faceplate-the-faceplate-builder) |
 | MD-07.16 | Description per signal | — | Removed (2026-11-16): no description per signal or command in the faceplate; the builder has description elements instead. The description a signal and a command got in Metadata on 2026-11-20 ([MD-04.16](#md-04--signals), [MD-05.12](#md-05--commands)) is for the model author and is not shown in the faceplate: assistant's reading. | Decided | [Presets](../metadata/draft.md#presets-and-their-faceplate) |
 
@@ -545,7 +545,7 @@ mindmap
 | MD-09.6 | Key | Whole number field | Typed by the user, any whole number, gaps allowed (0, 2, 4), for a global enum and for the items of a template (end of 2026-11-17). Unique in its enum; what the model receives (2026-11-16). A key already taken is refused when typed (decision 0083). It can still be changed once given: breaking for the model, with no warning (decision 0038); the Versions page that showed it was removed on 2026-11-21 (decision 0053), the change is seen in Git. Changing it moves the line to its new place by key (2026-11-22; replaces decision 0039). | Decided | [Enums](../metadata/draft.md#rules-5) |
 | MD-09.7 | Display name | Text field | After the key. What the faceplate, the symbol texts and the test values show. Not breaking. The same word as a signal field (decision 0056). Unique in its enum, while two enums may hold the same (decision 0084: [Enum item](../metadata/entities/05-enum-item.md)); a name already taken in its enum is refused when typed (decision 0083). | Decided | [Enums](../metadata/draft.md#enums) |
 | MD-09.9 | Description | Text field | Last, after the display name (2026-11-17): what the item means, plain text, never sent to the model (2026-11-16). Optional, shown on this page only (2026-11-16). | Decided | [Enums](../metadata/draft.md#enums) |
-| MD-09.8 | Add, delete an item | Button (+), delete button (icon) | The small + on the right of the title "Items"; the delete button at the far right of an item, with no header, then a warning (2026-11-16; [layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). An enum is deleted the same way. Deleting one still used is allowed: the signals, start values and commands that use it are flagged in error (decision 0082). | Decided | [Enums](../metadata/draft.md#enums) |
+| MD-09.8 | Add, delete an item | Button (+), delete button (icon) | The small + on the right of the title "Items"; the delete button at the far right of an item, with no header (2026-11-16); the item goes at once, with no warning (decision 0093; [layout rules](README.md#delete-a-warning-only-for-a-whole-thing)). An enum is deleted with the delete button of its line, then a warning, as a whole type (assistant's reading). Deleting one still used is allowed: the signals, start values and commands that use it are flagged in error (decision 0082). | Decided (item), Proposed (warning for an enum) | [Enums](../metadata/draft.md#enums) |
 
 Gaps:
 
@@ -572,7 +572,7 @@ mindmap
       ID
       Required, checkbox
       Description
-      Delete button, far right, no header, warning
+      Delete button, far right, no header, deletes at once
     Picked in a title or description of the faceplate builder
     Filled on each placed symbol, part 3
 ```
@@ -586,7 +586,7 @@ mindmap
 | MD-13.5 | Display name | — | Removed: the ID is shown where the designation is picked and filled. | Decided | [Designation](../metadata/entities/11-designation.md) |
 | MD-13.6 | Description | Text field, takes the room left | What the designation is. Optional: assistant's reading. | Decided (field), Proposed (optional) | [Identifiers (draft)](../metadata/draft.md#identifiers) |
 | MD-13.8 | Required | Checkbox, narrow column, between ID and Description | Checked: every placed symbol must have the text of this designation (a control ID), whether or not its faceplate shows it; left empty, a warning, never a block. Unchecked: it may stay empty (a location). A checkbox, not a switch, since a table shows several lines: assistant's reading. Unchecked for a new designation. | Decided (field, default), Proposed (control) | [Designation](../metadata/entities/11-designation.md) |
-| MD-13.7 | Delete a designation | Button (icon), then a warning | At the far right of the line, with no header ([layout rules](README.md#delete-with-a-button-and-a-warning-in-metadata)). Deleting one still used is allowed: the titles and paragraphs of the faceplate that show it are flagged in error (decision 0082). | Decided | [Identifiers (draft)](../metadata/draft.md#identifiers) |
+| MD-13.7 | Delete a designation | Button (icon) | At the far right of the line, with no header; deleted at once, with no warning, as every line (decision 0093; [layout rules](README.md#delete-a-warning-only-for-a-whole-thing)). Deleting one still used is allowed: the titles and paragraphs of the faceplate that show it are flagged in error (decision 0082). | Decided | [Identifiers (draft)](../metadata/draft.md#identifiers) |
 
 Gaps:
 
