@@ -11,8 +11,9 @@ Figma: page [Symbols](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-
 | Page | Screens | Figma section |
 | --- | --- | --- |
 | [01-navigation-bar](01-navigation-bar.md) | SY-00 Navigation bar | [`757:16361`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=757-16361) |
+| [02-general](02-general.md) | SY-01 General page of a Symbol Lib, and its delete warning | [`761:16598`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=761-16598) |
 
 ## Not done yet
 
-- The left column and the main area of these screens are empty: only the navigation bar is drawn.
+- The pages Enums, Pipes and Symbols: on the SY-00 screens, their left column and main area are empty.
 - No SVG export yet, and no starting point of the prototype.

@@ -37,13 +37,15 @@ Path: Symbols › a Symbol Lib › General (2026-11-23, decision 0089, which rem
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SY-01.1 | Name | Text field | The name of the library. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#general-page-of-a-symbol-lib) |
-| SY-01.2 | Delete the Symbol Lib | Button, then a warning (dialog) | As "Delete the type" in General of Metadata ([MD-02.8](metadata.md#md-02--general)). Takes its symbols and its pipe styles with it (2026-11-23). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#general-page-of-a-symbol-lib) |
+| SY-01.2 | Delete the Symbol Lib | Button, then a warning (dialog) | Under the name, as "Delete the type" in General of Metadata ([MD-02.8](metadata.md#md-02--general)). Takes its symbols and its pipe styles with it (2026-11-23). The warning says "Delete Plant A?" (the name of the library), then "The Symbol Lib is deleted at once, with its symbols and its pipe styles." (wording: assistant's proposal). | Decided (button, what it takes), Proposed (wording) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#general-page-of-a-symbol-lib) |
 | SY-01.3 | More information | not said | What else the page shows of a library is not said. | Open | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#general-page-of-a-symbol-lib) |
+| SY-01.4 | Left-hand panel | — | None: the page has no list, so its content starts after the navigation bar. | Proposed | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#the-left-hand-panel-of-the-symbol-mode) |
+
+Drawn in Figma: [SY-01 General](../design-system/10-screens/02-symbols/02-general.md).
 
 Gaps:
 
 - Duplicate (to change a look over time, the user creates a new Symbol Lib: is it a copy of the old one?).
-- Not drawn yet in Figma: only the navigation bar is (see [Screens of Symbols](../design-system/10-screens/02-symbols/README.md)).
 
 ## SY-02 · Left-hand panel of the pages Symbols and Pipes
 

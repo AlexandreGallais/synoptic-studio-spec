@@ -66,7 +66,7 @@ flowchart TD
 
 - The first page of the selected Symbol Lib, as the General page of a type in Metadata.
 - Its **name**, in a text field.
-- **Delete the Symbol Lib**: a button, then a warning, as "Delete the type" in General of Metadata (see [Layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)). The library is deleted with its symbols and its pipe styles (Product Owner, 2026-11-23).
+- **Delete the Symbol Lib**: a button, then a warning, as "Delete the type" in General of Metadata (see [Layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)). The library is deleted with its symbols and its pipe styles (Product Owner, 2026-11-23). The warning names the library and says what goes with it (wording proposed, see [SY-01](../screens/symbols.md#sy-01--general-page-of-a-symbol-lib)).
 - What else the page shows: open.
 
 ### Layout of the symbol mode
@@ -83,6 +83,7 @@ What the left-hand panel shows depends on the page chosen in the bar. Since 2026
 
 | Page | Left-hand panel, from top to bottom |
 | --- | --- |
+| General | None: the page has no list (proposed). |
 | Symbols | A search field (a small magnifier), a **+** button to create a symbol, then the list; a click on an item opens the symbol in the editor. Under it, the **layers** of the open symbol: see [Layers](03-editor/layers.md). |
 | Pipes | The same for the pipe styles: a magnifier, a **+** button to create a style, then the list; a click on an item opens the style. |
 
