@@ -345,7 +345,7 @@ There is no Faceplate part: the faceplate is the mode Faceplate of a preset ([MD
 
 Path: Metadata › Types › a type › Presets.
 
-On the left, two lists one above the other (decision 0087): "Parent presets", the presets of the parents, read only, each with a duplicate button shown on hover; then "Presets", the type's own, under their title and the small + on its right. A root type shows "Presets" alone. The page has no big title. The selected preset is on the right: a **switch** between its two modes at the top, then its name, then the mode chosen (the labels confirmed and the switch moved up at the end of the day):
+On the left, two lists one above the other (decision 0087): "Parent presets", the presets of the parents, read only, each with a duplicate button shown on hover, a click showing it on the right, read only (decision 0088); then "Presets", the type's own, under their title and the small + on its right. A root type shows "Presets" alone. The page has no big title. The selected preset is on the right: a **switch** between its two modes at the top, then its name, then the mode chosen (the labels confirmed and the switch moved up at the end of the day):
 
 - **Values**: one table with every signal of the type, for its display unit, decimals, texts of a boolean and start value; no command;
 - **Faceplate**: the faceplate builder, a list of elements added one by one with the + of its title.
@@ -373,6 +373,7 @@ mindmap
     Parent presets, not for a root type
       Name of each preset and its parent
       Duplicate button on hover
+      A click shows it on the right, read only
     List of presets
       Title Presets, small plus on its right
       Name of each preset, no delete button
@@ -410,8 +411,9 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-07.24 | Parent presets | List, read only | Above the list of presets: the presets of every parent up the branch, from the root down; each line its name, then the `id` of its parent in secondary text. No +, no delete; not shown for a root type (2026-11-23, decision 0087). A click on a line selects nothing (confirmed by the Product Owner, 2026-11-23). | Decided | [Presets](../metadata/draft.md#a-type-needs-a-preset), [Inheritance of types](../metadata/inheritance.md#what-a-sub-type-inherits) |
-| MD-07.25 | Duplicate a parent preset | Icon button, on hover | On the right of a line of Parent presets, shown on hover. Adds a copy of the preset to the list of presets and selects it; the copy keeps the name when free in the type, else gets " 2", " 3"... (2026-11-23, decision 0087; the name confirmed by the Product Owner the same day). | Decided | [Presets](../metadata/draft.md#a-type-needs-a-preset) |
+| MD-07.24 | Parent presets | List, read only | Above the list of presets: the presets of every parent up the branch, from the root down; each line its name, then the `id` of its parent in secondary text. No +, no delete; not shown for a root type (2026-11-23, decision 0087). A click on a line selects it and shows the preset on the right, read only ([MD-07.26](#md-07--presets); decision 0088); one line is selected across the two lists. | Decided | [Presets](../metadata/draft.md#a-type-needs-a-preset), [Inheritance of types](../metadata/inheritance.md#what-a-sub-type-inherits) |
+| MD-07.25 | Duplicate a parent preset | Icon button, on hover | On the right of a line of Parent presets, shown on hover. Adds a copy of the preset to the list of presets and selects it (2026-11-23, decision 0087). The copy is named after the preset, followed by "-" and the first number free in the type: "Default-1", "Default-2"... (decision 0088); "-" or "_" to confirm. | Decided (button, number), Proposed (separator) | [Presets](../metadata/draft.md#a-type-needs-a-preset) |
+| MD-07.26 | A parent preset, selected | Right side, read only | A line of Parent presets selected: its preset on the right, all read only, to see it before duplicating it (decision 0088). The switch of the modes, Values or Faceplate, works; the name, the table of values and the elements cannot be changed; no "Delete the preset", no + of elements, no handle nor delete on an element. | Decided | [Presets](../metadata/draft.md#a-type-needs-a-preset) |
 | MD-07.1 | List of presets | List | The type's own presets, the only ones a symbol can choose: at least one is needed to use the type in a symbol. None is created automatically, for a root type as for a sub-type, which duplicates those of its parents ([MD-07.25](#md-07--presets); 2026-11-23, decision 0087, which replaces the copy at creation of decision 0080). | Decided | [Presets](../metadata/draft.md#presets-and-their-faceplate), [Inheritance of types](../metadata/inheritance.md#what-a-sub-type-inherits) |
 | MD-07.2 | Create a preset | Button (+), small icon | On the right of the title "Presets" of the list; the page has no big title (2026-11-16). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
 | MD-07.2b | Switch of the modes | Switch (two buttons) | At the top of the right side, above the name of the preset: **Values** or **Faceplate** (2026-11-16; labels confirmed at the end of the day). | Decided | [Presets](../metadata/draft.md#two-modes-chosen-by-a-switch) |
@@ -442,6 +444,7 @@ mindmap
 Gaps:
 
 - Duplicate one of the type's own presets (a preset of a parent is duplicated with [MD-07.25](#md-07--presets)); what happens to the symbols that use a deleted preset?
+- The separator of a copy's number, "-" or "_"; must the name of a preset also differ from those of its parents' presets (decision 0088)?
 - Can an element be added twice? What can a symbol or a synoptic change in the built faceplate (the texts of its title and description elements, at least)?
 
 ## MD-08 · Units

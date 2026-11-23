@@ -14,6 +14,7 @@ The presets of a type, in two [list-panels](../../08-organisms/list-panel.md) in
 | MD-07 · Presets · empty | [`668:12629`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=668-12629) |
 | MD-07 · Presets · error | [`668:12907`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=668-12907) |
 | MD-07 · Display unit | [`706:13686`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=706-13686) |
+| MD-07 · Presets · parent preset | [`753:15416`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=753-15416) |
 
 ## Screens
 
@@ -35,8 +36,16 @@ Every signal in write is on two lines. The title Elements sits `spacing-03` (8) 
 
 ![MD-07 · Presets · error](images/md-07-presets-error.svg)
 
+The name is refused: its message under the field; the button Delete the preset stays on the line of the input, `spacing-06` (24) from the top, the height of the label and its gap.
+
 ### MD-07 · Display unit
 
 The grouped list the display unit `bar` of `pressure_out` opens: a transparent frame of the size of the screen, the list right under its select. Two groups: Metric, then US customary, which holds psi, inHg, inH2O and ftH2O.
 
 ![MD-07 · Display unit](images/md-07-display-unit.svg)
+
+### MD-07 · Presets · parent preset
+
+The preset Default of the parent pump, selected in Parent presets: on the right, every field `state=read-only` and no button Delete the preset (decision 0088). The switch still shows Values or Faceplate.
+
+![MD-07 · Presets · parent preset](images/md-07-presets-parent-preset.svg)

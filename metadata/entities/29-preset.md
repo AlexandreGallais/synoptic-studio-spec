@@ -5,11 +5,11 @@
 | Version | Date | Status | Change |
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
-| 2 | 2026-11-23 | Draft | The presets of the parents are shown and duplicated, no longer copied at creation (decision 0087) |
+| 2 | 2026-11-23 | Draft | The presets of the parents are shown and duplicated, no longer copied at creation (decision 0087); the copy is numbered (decision 0088) |
 
 A preset holds the defaults a symbol and a synoptic start from: how each signal of the type starts and is shown, its [preset values](22-preset-value.md), and the faceplate it builds, its [faceplate elements](28-faceplate-element.md). A type needs at least one preset of its own to be chosen in a symbol or a synoptic. A preset exists only inside its [type](30-type.md), in the type's list of presets; its `name` is unique there.
 
-A sub-type shows the presets of its parents in a list apart, read only, and never uses them as they are. A new sub-type starts with no preset: a preset of a parent is duplicated into the sub-type, with its preset values and its faceplate elements, and the copy then lives alone; a change in the parent's preset never reaches it. The copy gets a preset value for each signal the parent's preset does not have, with the start value and the display format a new preset value starts with.
+A sub-type shows the presets of its parents in a list apart, read only, and never uses them as they are. A new sub-type starts with no preset: a preset of a parent is duplicated into the sub-type, with its preset values and its faceplate elements, and the copy then lives alone; a change in the parent's preset never reaches it. The copy gets a preset value for each signal the parent's preset does not have, with the start value and the display format a new preset value starts with. Its name is the preset's followed by "-" and the first number free in the type ("Default-1"), so it never bears the name of the preset it comes from (decision 0088; the separator to confirm).
 
 A signal added to the type, or to one of its parents, adds its preset value to every preset of the type and of its sub-types, with the start value and the display format a new preset value starts with. A signal removed removes its preset value from these presets, and the faceplate elements that show it. A command removed removes from these presets the faceplate elements that send it.
 
