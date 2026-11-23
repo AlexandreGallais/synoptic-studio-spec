@@ -25,7 +25,7 @@ How a pipe looks. A Symbol Lib has **one base pipe style**, the shape shared by 
 | Crossings | What happens where a pipe passes over another: bridge, gap, none, with a size (see [Crossings](crossings.md)). |
 
 - Junctions and crossings are parts of the style, not separate lists of the Symbol Lib. They are computed from the style; the user never draws them on each pipe.
-- The base pipe style has no start and end shapes: where they are made is open (see [Pipe ends](ends.md)).
+- The base pipe style has no start and end shapes: they have a list of their own on the Pipes page (see [Pipe ends](ends.md)).
 
 ### Pipe styles: the fills, and some overrides
 

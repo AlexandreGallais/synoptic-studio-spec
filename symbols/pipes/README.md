@@ -21,7 +21,7 @@ Pipes are the lines that connect symbols in a synoptic. The user draws them with
 | Fills | Body fill and border fill: colour or dash sequence. | Each pipe style | [Pipe styles](pipe-styles.md) |
 | Junctions | Looks of a place where a pipe branches: kind, size, fill, border. | Base | [Junctions](junctions.md) |
 | Crossings | What happens where a pipe passes over another: bridge, gap, nothing; a size. | Base | [Crossings](crossings.md) |
-| Start and end shapes | The shapes at the start or at the end of a pipe. | Open: not in the base | [Pipe ends](ends.md) |
+| Start and end shapes | The shapes at the start or at the end of a pipe. | A list of their own, not in the styles | [Pipe ends](ends.md) |
 
 - A Symbol Lib holds one base pipe style and several pipe styles; each library has its own, so that a software or a factory has its own look (same reason as for symbols: see [Libraries and symbols](../01-libraries-and-symbols.md)).
 - A pipe is **one pipe, as a tree**: a branch drawn from a pipe belongs to that pipe. The whole tree has one pipe style and one flow (see [Junctions](junctions.md)).
@@ -138,7 +138,7 @@ flowchart TD
 - A symbol can be **connected to a pipe**: it fits onto it and can only be moved along it (see [Pipes in the synoptic](in-the-synoptic.md)).
 - Dashes can **move**, from the start of the pipe to its end, and the movement **propagates** into the branches at a junction. A pipe style can be **linked to a type** of Metadata, if the user wants it: the model then drives the speed, the direction (start to end or end to start) and the colours (see [Pipe styles](pipe-styles.md)).
 - One **base pipe style** per Symbol Lib, without colour; **pipe styles** give the fills and can override any other option but the corner radius; dashes as **sequences of coloured segments**, for pipes and for every border; dashes computed as cleanly as possible, an odd cut in a corner accepted (decision 0095).
-- The **start and end shapes** are not in the base pipe style; where they are made is open (decision 0095).
+- The **start and end shapes** are not in the base pipe style: they have a list of their own on the Pipes page, after the pipe styles (decision 0095).
 - A branch leaves **one pipe as a tree**, with one pipe style and one flow, as in the archived Figma page and in Ignition (decision 0094).
 - **No path kind per pipe**: the corner radius of the style gives the look of every angle (decision 0094).
 - The display of every case is named **Preview** (decision 0094).

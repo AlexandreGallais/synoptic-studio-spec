@@ -12,7 +12,7 @@ Status: draft. Not validated. This page belongs to part 3 (the synoptic), which 
 - The angles take the **corner radius of the style**; there is no path kind to choose on a pipe.
 - **Crossing**: where a pipe passes over another, the editor computes a bridge, a gap or nothing, according to the pipe style (see [Crossings](crossings.md)).
 - **Which pipe is on top**: when the mouse is over a crossing, the editor highlights it. A click changes which of the two pipes passes over the other.
-- The user chooses the style of each pipe among those of the Symbol Lib, then its start and end shapes, or none; where the end shapes are made is open (see [Pipe ends](ends.md)).
+- The user chooses the style of each pipe among those of the Symbol Lib, then its start and end shapes among the list of the Symbol Lib, or none (see [Pipe ends](ends.md)).
 - **What connects to what**: a pipe connects to a symbol (by its connection points) or to another pipe (a junction).
 
 ### A symbol connected to a pipe

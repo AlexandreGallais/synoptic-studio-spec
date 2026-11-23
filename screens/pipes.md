@@ -10,7 +10,7 @@ The pipes are made in a Symbol Lib, on its page Pipes ([SY-00.4](symbols.md#sy-0
 flowchart LR
     LIB["Symbol Lib, page Pipes"] --> BASE["PI-01 Base pipe style"]
     LIB --> STY["PI-02 Pipe styles: Water, Oil, Steam..."]
-    LIB -.->|"where: open"| END["PI-03 End shape editor"]
+    LIB --> END["PI-03 Start and end shapes"]
     STY --> DASH["PI-04 Dash sequence editor"]
     BASE --> PRE["PI-05 Preview"]
     STY --> PRE
@@ -24,10 +24,11 @@ The page Pipes of a Symbol Lib follows the layout rules, as [SY-12](symbols.md#s
 ```mermaid
 block-beta
     columns 4
-    rail["Navigation bar SY-00, Pipes selected"] list["Pipe styles: title, search, +; base pipe style first, separator, then the styles, each with a swatch of its body"] options["Options of the selected style, in sections, two columns"]:1 preview["Preview PI-05, always visible on the right"]
+    rail["Navigation bar SY-00, Pipes selected"] list["Base pipe style at the top; Pipe styles: title, search, +, each with a swatch of its body; Start and end shapes: title, +"] options["Options of the selected item, in sections, two columns"]:1 preview["Preview PI-05, always visible on the right"]
 ```
 
-- The base pipe style is the first item of the list, with a tag "Base", then a separator (assistant's reading, see [Libraries and symbols](../symbols/01-libraries-and-symbols.md)).
+- The left column holds, from top to bottom: the **base pipe style**, with a tag "Base"; the list of the **pipe styles**, with its small + to add one; the list of the **start and end shapes**, with its small + to add one, each set up in [PI-03](#pi-03--end-shape-editor).
+- Proposed: the base pipe style at the very top, above the title of the pipe styles (to confirm).
 - The options are grouped in sections: Body, Border, Corners, Moving dashes, Junctions, Crossings (PI-01); Fills, Other overridden options, Linked type (PI-02).
 - Every option is changed in place and written at once (see [Files and conflicts](../storage/files-and-conflicts.md#saving)).
 - Test screens in Figma, page Spec, section "Symbol mode · test screens (2026-11-23)": "PI-01 · Pipes page of a Symbol Lib · base pipe style" and "PI-02 · Pipes page of a Symbol Lib · pipe style Gas". Quick tests, no design-system component.
@@ -79,7 +80,7 @@ No colour and no dash in the base: the fills are in [PI-02](#pi-02--pipe-style).
 | PI-01.18 | Junction border | Toggle + Number field + Radio + Colour | On or off, width, position inside, middle or outside, colour: as every border. | Decided | [Junctions](../symbols/pipes/junctions.md) |
 | PI-01.13 | Crossing kind | Radio | Bridge (an arch), gap (the pipe underneath is cut in two), none (one passes over the other). | Decided | [Crossings](../symbols/pipes/crossings.md) |
 | PI-01.14 | Crossing size | Number field (px) | A setting with a default value, not computed from the width and the radius; the bridge follows the corner radius. Default value: Open. | Decided (default: Open) | [Crossings](../symbols/pipes/crossings.md) |
-| PI-01.15 | End shapes | — | Removed: the end shapes are not in the base pipe style; where they are made is open ([PI-03](#pi-03--end-shape-editor)). | Decided | [Pipe ends](../symbols/pipes/ends.md) |
+| PI-01.15 | End shapes | — | Removed: the end shapes are not in the base pipe style; they have their own list on the Pipes page ([PI-03](#pi-03--end-shape-editor)). | Decided | [Pipe ends](../symbols/pipes/ends.md) |
 | PI-01.16 | Preview | — | Always visible next to the style, redrawn at each change ([PI-05](#pi-05--preview)). | Decided | [Preview](../symbols/pipes/preview.md) |
 
 Gaps:
@@ -134,7 +135,7 @@ Gaps:
 
 ## PI-03 · End shape editor
 
-Path: open. The end shapes are no longer in the base pipe style; where they are made and presented is to decide ([Pipe ends](../symbols/pipes/ends.md)). The editor below stays as it was described.
+Path: Symbols › a Symbol Lib › Pipes › Start and end shapes › create (small +) or open one. A list of its own, after the pipe styles ([layout](#layout-of-the-page-pipes)).
 
 ```mermaid
 block-beta
@@ -166,7 +167,6 @@ mindmap
 Gaps:
 
 - Which parts follow the pipe colour (the whole shape, or only marked parts)?
-- Copy an end shape from another style (archived Figma page).
 - Does the shape turn with the last segment, and can it be mirrored?
 
 ## PI-04 · Dash sequence editor
@@ -208,7 +208,7 @@ Path: next to the base pipe style or a pipe style being edited, always visible.
 | PI-05.3 | Other angles | An angle other than 90°, a very short segment. | Decided | [Preview](../symbols/pipes/preview.md) |
 | PI-05.4 | Junction, several junctions | A pipe and one of its branches; a 3-way and a 4-way. | Decided | [Preview](../symbols/pipes/preview.md) |
 | PI-05.5 | Crossing | Both ways. | Decided | [Preview](../symbols/pipes/preview.md) |
-| PI-05.6 | Start and end | End shapes on a pipe of the style; where they come from is open. | Decided (source: Open) | [Preview](../symbols/pipes/preview.md) |
+| PI-05.6 | Start and end | End shapes of the list on a pipe of the style. | Decided | [Preview](../symbols/pipes/preview.md) |
 | PI-05.7 | Connected to a symbol | A pipe on a connection point. | Decided | [Preview](../symbols/pipes/preview.md) |
 | PI-05.8 | Base and style side by side | What the style overrides. | Proposed | [Preview](../symbols/pipes/preview.md) |
 | PI-05.9 | Symbol connected to a pipe | On a straight segment and in a bend. | Proposed | [Preview](../symbols/pipes/preview.md) |
@@ -248,7 +248,7 @@ mindmap
 | PI-06.1 | Pipe tool | Button (tool) | Click point after point, straight segments; snaps to connection points. | Decided | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
 | PI-06.2 | Branch | — | Click inside a pipe, then draw. The branch belongs to that pipe: one pipe as a tree, one style, one flow. | Decided | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
 | PI-06.3 | Pipe style | Select | Among the styles of the Symbol Lib. | Decided | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
-| PI-06.4 | Start shape, end shape | Select each | An end shape, or none; where the shapes are made is open. | Decided (source: Open) | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
+| PI-06.4 | Start shape, end shape | Select each | A shape of the list of start and end shapes, or none. | Decided | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
 | PI-06.5 | Swap a crossing | Click on the crossing | Highlighted on hover. | Decided | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
 | PI-06.6 | Connect to the pipe | not said (action on the symbol) | The symbol fits onto the pipe and only slides along it. | Decided | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
 | PI-06.7 | Free the symbol | not said | Undo "connect to the pipe". | Proposed | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |

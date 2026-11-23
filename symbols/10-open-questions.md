@@ -31,7 +31,7 @@ This file is the index of the open questions. A question sits in the file it con
 | Symbol connected to a pipe: which symbols, pipe cut under it or not, how its position is kept, what happens when the pipe changes. | [Pipes in the synoptic](pipes/in-the-synoptic.md) | Two connection points, pipe continuous under it (archived Figma page). |
 | Properties a signal can drive on a pipe style; a type on the base style; branches sharing the values of their pipe, or a branch with its own; speed of the moving dashes in each pipe style or in the base; global stop and "reduce motion". (Base style without colour, fills in the pipe styles, corner radius never overridden, direction animated only: settled on 2026-11-23. Base style with overrides, dash sequences, computed dashes, moving dashes, propagation at junctions, optional type on a pipe style: decided 2026-11-11.) | [Pipe styles](pipes/pipe-styles.md) | Global stop and "reduce motion": yes. |
 | Size of bridges and gaps; default "last drawn on top"; borders on a bridge. | [Crossings](pipes/crossings.md) | Size in the style; last drawn on top. |
-| Where the end shapes are made and presented (no longer in the base pipe style, 2026-11-23); four or nine anchors on an end shape; copy an end shape from another style; arrows of a symbol's lines. | [Pipe ends](pipes/ends.md) | Not settled by the report. |
+| Every style uses every end shape, or a style restricts them (a list of their own on the Pipes page: settled on 2026-11-23); four or nine anchors on an end shape; arrows of a symbol's lines. | [Pipe ends](pipes/ends.md) | Not settled by the report. |
 
 ## Raised by the review of 2026-11-15
 
