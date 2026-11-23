@@ -18,7 +18,7 @@ flowchart LR
     J --> E2["End of the branch"]
 ```
 
-- The look of a junction is set in the **base pipe style** of the Symbol Lib, and a pipe style can override it (see [Pipe styles](pipe-styles.md)); it is not a separate list of the Symbol Lib. It is computed; the user does not edit it by hand.
+- The look of a junction is set in the **base pipe style** of the Symbol Lib, the same for every pipe style (see [Pipe styles](pipe-styles.md)); it is not a separate list of the Symbol Lib. It is computed; the user does not edit it by hand.
 - **Propagation**: when the dashes of a pipe move, the movement goes on through the junction into the branches, following the flow (see [Pipe styles](pipe-styles.md)).
 - The junction of a pipe style is one of:
 
@@ -28,19 +28,19 @@ flowchart LR
 | Circle | A circle at the junction, bigger than the pipe, to show that it is a junction. |
 | Square | A square at the junction, bigger than the pipe. |
 
-- A junction has only two settings: its **kind** and, for a circle or a square, its **size**.
+- A junction has only two settings: its **kind** and, for a circle or a square, its **size**. When the kind is Flat, the size field is greyed out.
 - Its **border** is the border of the pipe: on or off, width and position (inside, in the middle, outside) come from the base pipe style, and its fill from the pipe style. It is never set on the junction.
 - Its **fill** is not a setting either: the junction takes the **body fill of the pipe style** (Product Owner, 2026-11-23).
 
 ## Example
 
-Base style: border on, 2 px, outside.
+Border of the base style: on, 2 px, outside.
 
-| Pipe style | Junction kind | Size | What it looks like |
+| Junction of the base style | Size | What it looks like on a Water pipe | On an Oil pipe |
 | --- | --- | --- | --- |
-| Steam | Flat | - | The pipes simply meet. |
-| Water | Circle | 12 px | A blue circle with the dark grey 2 px border of the water pipes, outside. |
-| Oil | Square | 12 px | A square filled like the oil body, with its border. |
+| Flat | greyed out | The pipes simply meet. | The same. |
+| Circle | 12 px | A blue circle with the dark grey 2 px border of the water pipes, outside. | A circle filled like the oil body, with its border. |
+| Square | 12 px | A blue square with the dark grey border. | A square filled like the oil body, with its border. |
 
 ## What the research found
 
@@ -58,5 +58,6 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.1, 
 - Where several pipes of different styles meet, which style gives the fill and the border of the junction?
 - When the body fill of the pipe style is a dash sequence, how is the junction filled?
 - Is the junction size a fixed value or a multiple of the pipe width?
+- Is the size greyed out for a circle too, or only for Flat?
 - Can the junction of a style be something else than a circle or a square (a free shape, like the ends of a pipe)?
 - How are 3-way, 4-way and more junctions, and a junction on a corner, handled by the computation?

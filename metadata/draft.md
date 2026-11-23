@@ -872,7 +872,7 @@ Decided by the Product Owner on 2026-11-17 (decision 0035, accepted on 2026-11-1
 
 ### Built-in enums
 
-Decision 0095. Some enums come **with the software**, because a part of the software needs them: the first one is **pipe direction**, which animates the direction of the moving dashes of a pipe (see [Pipe styles](../symbols/pipes/pipe-styles.md#a-pipe-style-linked-to-a-type)).
+Decision 0095. Some enums come **with the software**, because a part of the software needs them: the first one is **pipe direction**, the values of the signal that says whether the dashes of a pipe move and which way (see [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes)).
 
 - **The Enum entity does not change**: a built-in enum is an ordinary enum, with its `internal_id`. Only the interface differs.
 - The built-in enums are kept in an **internal `enums.json` of the software**, which the software needs to work (Product Owner, 2026-11-23: "un fichier d'enums internes qui sont obligatoires pour le logiciel"). The Product Owner said "enum.json"; the name of the list's file, `enums.json`, is kept.
@@ -908,7 +908,7 @@ flowchart LR
 
 | Built-in enum | Default ID | Items (key: display name) | Status |
 | --- | --- | --- | --- |
-| Pipe direction | `pipe_direction` | 0: Start to end, 1: End to start | Proposed (ID, keys and names) |
+| Pipe direction | `pipe_direction` | 0: Stopped, 1: Start to end, 2: End to start | Proposed (ID, keys and names; "Stopped" in this enum or in a second signal: open) |
 
 - Open: which other built-in enums the software needs.
 - **Adding items is the only change allowed in the copy**, besides the ID of the enum (Product Owner, 2026-11-23: "la seule chose qu'il peut faire, c'est ajouter un item").

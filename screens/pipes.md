@@ -4,7 +4,7 @@
 
 Status: draft, written by the assistant from the [Pipes](../symbols/pipes/README.md) pages, themselves a draft; its add buttons follow the layout rule "a title and a small + on its right". It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md).
 
-The pipes are made in a Symbol Lib, on its page Pipes ([SY-00.4](symbols.md#sy-00--navigation-bar-of-the-symbol-mode), end of 2026-11-17) and drawn in a synoptic (part 3, not written). One base pipe style gives the shape of every pipe of the library, without colour; each pipe style gives the fills and changes what differs from the base.
+The pipes are made in a Symbol Lib, on its page Pipes ([SY-00.4](symbols.md#sy-00--navigation-bar-of-the-symbol-mode), end of 2026-11-17) and drawn in a synoptic (part 3, not written). One base pipe style gives the shape of every pipe of the library, without colour; each pipe style gives the fills, the movement of its dashes and, when needed, its own body width.
 
 ```mermaid
 flowchart LR
@@ -29,9 +29,9 @@ block-beta
 
 - The left column holds, from top to bottom: the **base pipe style**, with a tag "Base"; the list of the **pipe styles**, with its small + to add one; the list of the **start and end shapes**, with its small + to add one, each set up in [PI-03](#pi-03--end-shape-editor).
 - Proposed: the base pipe style at the very top, above the title of the pipe styles (to confirm).
-- The options are grouped in sections: Body, Border, Corners, Junctions, Crossings (PI-01); Fills, Moving dashes, Other overridden options, Linked type (PI-02).
+- The options are grouped in **the same sections, in the same order**, for the base and for a pipe style: Body, Border, Corners, Junctions, Crossings. A pipe style adds Linked type at the top and Movement at the end (decision 0096).
 - Every option is changed in place and written at once (see [Files and conflicts](../storage/files-and-conflicts.md#saving)).
-- Test screens in Figma, page Spec, section "Symbol mode · test screens (2026-11-23)": "PI-01 · Pipes page of a Symbol Lib · base pipe style" and "PI-02 · Pipes page of a Symbol Lib · pipe style Gas". Quick tests, no design-system component.
+- Test screens in Figma, page Spec, section "Symbol mode · test screens (2026-11-23)": "PI-01 · Pipes page of a Symbol Lib · base pipe style" and "PI-02 · Pipes page of a Symbol Lib · pipe style Gas", redrawn on 2026-11-24 with the same sections (decision 0096). Quick tests, no design-system component.
 
 ## PI-01 · Base pipe style
 
@@ -46,13 +46,13 @@ mindmap
       On or off
       Width
       Position
-    Corner radius, the same for every style
+    Corners
+      Corner radius, the same for every style
     Junctions
       Kind
-      Size
+      Size, greyed out for Flat
     Crossings
       Kind
-      Size, with a default value
     Preview
 ```
 
@@ -66,16 +66,16 @@ No colour and no dash in the base: the fills are in [PI-02](#pi-02--pipe-style).
 | PI-01.4 | Border width | Number field (px) | — | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.5 | Border position | Radio | Inside, middle, outside the edge of the body. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.6 | Border fill | — | Removed: moved to the pipe styles ([PI-02.3](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-01.7 | Corner radius | Number field (px) | 0 keeps sharp angles; also shapes the bridges. The same for every pipe style: never overridden. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-01.8 | Moving dashes | — | Removed: set in each pipe style ([PI-02.10](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
-| PI-01.9 | Direction | — | Removed: always from the start to the end; the other way is an animation of a linked type ([PI-02.9](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-01.7 | Corner radius | Number field (px) | Section Corners. 0 keeps sharp angles; also shapes the bridges. The same for every pipe style. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-01.8 | Moving dashes | — | Removed: the movement comes from signals of the type of each pipe style ([PI-02.15](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
+| PI-01.9 | Direction | — | Removed: a signal of the type of each pipe style ([PI-02.15](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.10 | Speed | — | Removed: set in each pipe style ([PI-02.11](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-01.11 | Junction kind | Radio | Flat, circle, square. | Decided | [Junctions](../symbols/pipes/junctions.md) |
-| PI-01.12 | Junction size | Number field (px) | Fixed or a multiple of the width: Open. | Decided (rule: Open) | [Junctions](../symbols/pipes/junctions.md) |
+| PI-01.12 | Junction size | Number field (px) | Greyed out when the kind is Flat (for a circle too: Open). Fixed or a multiple of the width: Open. Example: 12 px. | Decided (rule: Open) | [Junctions](../symbols/pipes/junctions.md) |
 | PI-01.17 | Junction fill | — | Removed: the junction takes the body fill of the pipe style (2026-11-23). | Decided | [Junctions](../symbols/pipes/junctions.md) |
 | PI-01.18 | Junction border | — | Removed: the junction has the border of the pipe, with the same width and position. | Decided | [Junctions](../symbols/pipes/junctions.md) |
 | PI-01.13 | Crossing kind | Radio | Bridge (an arch), gap (the pipe underneath is cut in two), none (one passes over the other). | Decided | [Crossings](../symbols/pipes/crossings.md) |
-| PI-01.14 | Crossing size | Number field (px) | A setting with a default value, not computed from the width and the radius; the bridge follows the corner radius. Default value: Open. | Decided (default: Open) | [Crossings](../symbols/pipes/crossings.md) |
+| PI-01.14 | Crossing size | — | Removed (2026-11-24): computed from the body width, so that every crossing looks the same; the bridge follows the corner radius. | Decided (formula: Open) | [Crossings](../symbols/pipes/crossings.md) |
 | PI-01.15 | End shapes | — | Removed: the end shapes are not in the base pipe style; they have their own list on the Pipes page ([PI-03](#pi-03--end-shape-editor)). | Decided | [Pipe ends](../symbols/pipes/ends.md) |
 | PI-01.16 | Preview | — | Always visible next to the style, redrawn at each change ([PI-05](#pi-05--preview)). | Decided | [Preview](../symbols/pipes/preview.md) |
 
@@ -92,41 +92,45 @@ Path: Symbols › a Symbol Lib › Pipe styles › a style (Water, Oil, Steam...
 mindmap
   root((PI-02 Pipe style))
     Name
-    Fills
+    Linked type, optional
+      Type
+      Animations of the colours
+    Body
+      Width, the base's or its own
       Body fill
         Colour
         Dash sequence
+    Border
+      Border width, open
       Border fill
         Colour
         Dash sequence
-    Moving dashes
-      On or off
-      Speed
-    Override another option
-      Any option of the base style but the corner radius
-      Reset to the base
-    Linked type, optional
-      Type
-      Animations
-        Speed of the dashes
-        Direction
-        Colours
-        Other properties
+    Corners, Junctions, Crossings
+      Shown, set by the base
+    Movement
+      Direction, a signal of the type
+      Speed, a signal or a fixed value
 ```
+
+The sections are those of [PI-01](#pi-01--base-pipe-style), in the same order, with Linked type before them and Movement after.
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | PI-02.1 | Name | Text field | Free text: Water, Oil, Steam, Electricity. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-02.2 | Body fill | Radio + Colour or dash sequence | Shown first. A plain colour, or a dash sequence that runs from the start of the pipe to its end, edited in place ([PI-04](#pi-04--dash-sequence-editor)); example: black 10, transparent 20, red 2. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-02.3 | Border fill | Radio + Colour or dash sequence | Shown first, when the base style has a border. Like the body. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-02.8 | Linked type | Select | First section. Optional; any type of Metadata (no library of types). Its signals feed Movement and the animations. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#a-pipe-style-linked-to-a-type) |
+| PI-02.12 | Body width | Number field (px) | Section Body. The base's width, or a width of its own (gas pipes drawn thinner). Proposed: the field shows the base's value until the user types one; emptying it goes back to the base. | Decided (display: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md#pipe-styles) |
+| PI-02.2 | Body fill | Radio + Colour or dash sequence | Section Body. A plain colour, or a dash sequence that runs from the start of the pipe to its end, edited in place ([PI-04](#pi-04--dash-sequence-editor)); example: black 10, transparent 20, red 2. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-02.13 | Border width | Number field (px) | Section Border, like the body width. | Open | [Pipe styles](../symbols/pipes/pipe-styles.md#pipe-styles) |
+| PI-02.3 | Border fill | Radio + Colour or dash sequence | Section Border, shown when the base style has a border. Like the body. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-02.14 | Corners, Junctions, Crossings; border on or off and position | Read-only values | The base's values, shown in their sections so that the user sees the whole pipe. | Proposed | [Pipe styles](../symbols/pipes/pipe-styles.md#the-same-sections-everywhere) |
+| PI-02.15 | Direction | Select (signals of the linked type) | Section Movement. The signal that says whether the dashes move and which way: stopped, start to end, end to start (built-in enum "pipe direction"). No signal, or no type: the dashes do not move. | Decided (values: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
+| PI-02.11 | Speed | Radio (signal, fixed) + Select or Number field (unit: Open) | Section Movement, under Direction. A signal of the linked type, or a fixed value; the fixed value can always be typed, never greyed out. | Decided (unit: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
+| PI-02.9 | Animations | List, like [SY-08](symbols.md#sy-08--animation-mode) | Section Linked type. Output signals drive the colours, and more ("plenty of things"). | Decided (properties beyond these: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.4 | Dashes or not | — | Removed: the body fill and the border fill choose between a colour and a dash sequence. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-02.5 | Override another option | Button (icon with a small +) | On the right of the title of the list of overridden options ([layout rules](README.md#a-title-and-a-small--on-its-right), 2026-11-16); the title's wording is not said. Picks any option of [PI-01](#pi-01--base-pipe-style) but the corner radius; example: a smaller width for gas pipes. | Decided (title: not said) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-02.6 | Overridden options shown | Tag "Base" on an option that follows the base | The panel shows which options differ from the base: an overridden one has its reset icon, one that follows the base has the tag "Base" (test screen PI-02). | Proposed | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-02.7 | Reset to the base | Icon button (reset), on the right of the option | Per overridden option. | Proposed | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-02.8 | Linked type | Select | Optional; any type of Metadata (no library of types). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-02.9 | Animations | List, like [SY-08](symbols.md#sy-08--animation-mode) | Output signals drive the speed and the colours, and the direction of the dashes (start to end or end to start, through the built-in enum "pipe direction"), and more ("plenty of things"). | Decided (properties beyond these: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-02.10 | Moving dashes | Toggle | In the section "Moving dashes", after the fills. The dashes of this style travel along the pipe, from its start to its end; the movement goes on into the branches. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
-| PI-02.11 | Speed | Number field (unit: Open) | Under the toggle; the speed when no model drives it. | Decided (unit: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
+| PI-02.5 | Override another option | — | Removed (2026-11-24): no list of overridden options; only the body width ([PI-02.12](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#pipe-styles) |
+| PI-02.6 | Tag "Base" | — | Removed with the list of overridden options. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#pipe-styles) |
+| PI-02.7 | Reset to the base | — | Removed with the list of overridden options; the body width goes back to the base when emptied (proposed). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#pipe-styles) |
+| PI-02.10 | Moving dashes | — | Removed (2026-11-24): no on or off; the movement comes from the direction signal ([PI-02.15](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 
 Gaps:
 
@@ -191,7 +195,8 @@ mindmap
 | PI-04.2 | Length | Number field (px) | Per segment. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-04.3 | Colour | Colour, with transparent | A gap is a transparent segment. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-04.4 | Add a segment | Button (icon with a small +) | On the right of the title "Segments" ([layout rules](README.md#a-title-and-a-small--on-its-right), 2026-11-16). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
-| PI-04.5 | Remove, reorder a segment | not said | — | Implied | — |
+| PI-04.5 | Remove a segment | Icon button (trash), on the line of each segment | Removes the segment from the sequence. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#dash-sequences) |
+| PI-04.6 | Reorder a segment | not said | — | Implied | — |
 
 Gaps:
 
@@ -211,7 +216,7 @@ Path: next to the base pipe style or a pipe style being edited, always visible.
 | PI-05.5 | Crossing | Both ways. | Decided | [Preview](../symbols/pipes/preview.md) |
 | PI-05.6 | Start and end | End shapes of the list on a pipe of the style. | Decided | [Preview](../symbols/pipes/preview.md) |
 | PI-05.7 | Connected to a symbol | A pipe on a connection point. | Decided | [Preview](../symbols/pipes/preview.md) |
-| PI-05.8 | Base and style side by side | What the style overrides. | Proposed | [Preview](../symbols/pipes/preview.md) |
+| PI-05.8 | Base and style side by side | The fills and the own width of the style. | Proposed | [Preview](../symbols/pipes/preview.md) |
 | PI-05.9 | Symbol connected to a pipe | On a straight segment and in a bend. | Proposed | [Preview](../symbols/pipes/preview.md) |
 
 Gaps:

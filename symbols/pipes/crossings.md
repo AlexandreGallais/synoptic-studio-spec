@@ -8,7 +8,7 @@ A crossing is a place where a pipe passes over another one without being connect
 
 ## Rules
 
-- The user chooses the **type of crossing** in the **base pipe style**, and a pipe style can override it (see [Pipe styles](pipe-styles.md)); it is not a separate list of the Symbol Lib:
+- The user chooses the **type of crossing** in the **base pipe style**, the same for every pipe style (see [Pipe styles](pipe-styles.md)); it is not a separate list of the Symbol Lib:
 
 | Type | What happens |
 | --- | --- |
@@ -17,19 +17,22 @@ A crossing is a place where a pipe passes over another one without being connect
 | None | Nothing special: one pipe is drawn on top of the other. |
 
 - Bridges and gaps are always computed.
-- A crossing has a **size**, set in the base pipe style, with a default value. It is a plain setting: it is not computed from the width of the pipe and the corner radius.
+- The **size** of a crossing is **not a setting**: it is computed from the body width of the pipes, so that every crossing looks the same, whatever the width of each pipe style (decision 0096).
+- Proposed by the assistant, to confirm: a bridge spans the outer width of the pipe underneath plus one body width of the pipe on top on each side; a gap cuts the pipe underneath over the outer width of the pipe on top plus half its body width on each side.
 - The look of a bridge follows the **corner radius** of the pipe, so that it stays in the theme: the bigger the radius, the rounder the bridge. With a radius of 0, the bridge is rather square.
 - A gap is always the same: the interruption, nothing more.
 - In a synoptic, the user can choose which of the two pipes passes over the other (see [Pipes in the synoptic](in-the-synoptic.md)).
 
 ## Example
 
-| Pipe style | Crossing type | Corner radius of the style | Result |
+| Base pipe style of the library | Crossing type | Corner radius | Result, for every pipe style |
 | --- | --- | --- | --- |
-| Water | Bridge | 8 px | Round arch |
-| Cooling water | Bridge | 0 | Square arch |
-| Oil | Gap | any | Interruption |
-| Electricity | None | any | One over the other |
+| Plant A | Bridge | 8 px | Round arch |
+| Plant B | Bridge | 0 | Square arch |
+| Plant C | Gap | any | Interruption |
+| Plant D | None | any | One over the other |
+
+A Gas pipe of 3 px crossing a Water pipe of 6 px gets a smaller bridge than a Water pipe crossing another: the size follows the body widths.
 
 ## What the research found
 
@@ -43,7 +46,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.1, 
 
 | Point | Proposal |
 | --- | --- |
-| Size | Set in the pipe style: size of a bridge; for a gap, the width of the pipe on top plus a fixed clearance on each side. |
+| Size | Set in the pipe style: size of a bridge; for a gap, the width of the pipe on top plus a fixed clearance on each side. **Not taken**: the size is computed from the body width (decision 0096). |
 | Default rule | The **last drawn pipe passes over**; the click in the synoptic is the exception, kept per crossing. |
 | Drawing | Never with a mask: the pipe underneath is really cut, the one on top really deviated. |
 | Bridge and corner radius | Radius of the bridge equal to the corner radius, bounded by the size of the bridge; at radius 0, a square bridge (shapes that exist in Visio and yFiles). |
@@ -54,6 +57,6 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.1, 
 
 ## Open questions
 
-- The default value of the size of a crossing, and what it measures for a gap (the cut on each side of the pipe on top?).
+- The formula of the size of a bridge and of a gap, computed from the body widths (a proposal above).
 - Default rule "last drawn on top": proposed by the report, to confirm.
 - Does a bridge keep the borders of the pipe (the border follows the arch)?

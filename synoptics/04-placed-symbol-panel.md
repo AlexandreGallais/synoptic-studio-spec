@@ -46,7 +46,7 @@ flowchart TD
 - Decided on 2026-11-20: a synoptic may change, for one placed symbol, the **start values**, the **display units**, the **decimals** and the **texts** of the title and description elements of its faceplate. Nothing else of the preset changes in a synoptic.
 - Decided on 2026-11-20: these changes are **kept as changes from the preset**. A placed symbol that changes nothing follows its preset when the preset changes.
 - Under the select, a table of the values this placed symbol changes: signal, start value, display unit, decimals, then the texts. Proposed (the table).
-- A changed value shows a dot, and a **Reset to the preset** button on its line (decided on 2026-11-20); the dot is proposed, like the overrides of a pipe style.
+- A changed value shows a dot, and a **Reset to the preset** button on its line (decided on 2026-11-20); the dot is proposed.
 - A value typed is kept in the default unit of its quantity, as every number typed in Metadata (decision 0051); the screen shows it in the display unit. Proposed: the same rule here.
 
 ### Flags

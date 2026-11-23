@@ -14,7 +14,7 @@ When the user edits the base pipe style or a pipe style in a Symbol Lib (body, b
 | Case | What it shows |
 | --- | --- |
 | Straight pipe | The body fill, the width, the border, the dash sequences. |
-| Base and styles | The base pipe style next to the style being edited, to see what it overrides (proposed by the assistant). |
+| Base and styles | The base pipe style next to the style being edited, to see its fills and its own width (proposed by the assistant). |
 | Right angle | The corner radius. |
 | Other angles | An angle other than 90 degrees, a very short segment. |
 | Junction | One junction of the style, centred on the point where the branch leaves the pipe. |

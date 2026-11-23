@@ -61,7 +61,7 @@ It makes the rule above precise, for every list and every table.
 - The button that adds an item is a **small + icon on the line of that title, on its right**. No button with a text ("+ Add a signal"), no button on a line of its own.
 - The title is the title of the list, not of the whole page: the page itself has no big title that repeats it. The room saved goes to the content: the switch of a preset, for example, moves up.
 - When a list takes items of several kinds, there is **one small icon per kind, each with a small +**, side by side on the line of the title, rather than one + that opens a menu: two clicks at most, with no menu to read. For the links: a path icon with a + and a URL icon with a +. For the five elements of the faceplate builder: the same rule.
-- It holds in the symbol mode and for the pipes too: the + that creates a symbol, a pipe style, an override of a pipe style, and a segment of a dash sequence sits on the right of the title of its list. The + that creates a Symbol Lib is the exception: it sits at the top of the navigation bar (decision 0089).
+- It holds in the symbol mode and for the pipes too: the + that creates a symbol, a pipe style, and a segment of a dash sequence sits on the right of the title of its list. The + that creates a Symbol Lib is the exception: it sits at the top of the navigation bar (decision 0089).
 - It is the rule the type tree and the Enums page already followed: a + on the line of their title.
 
 ### Search: a small icon on the line of the title
