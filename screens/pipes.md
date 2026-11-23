@@ -88,7 +88,7 @@ mindmap
 | PI-01.13 | Crossing kind | Radio | Bridge, gap, none. | Decided | [Crossings](../symbols/pipes/crossings.md) |
 | PI-01.14 | Crossing size | Number field | Size of the bridge; for a gap, a clearance on each side. | Proposed | [Crossings](../symbols/pipes/crossings.md) |
 | PI-01.15 | End shapes | List + Button | The shapes a pipe of this style can have at its ends; each drawn in [PI-03](#pi-03--end-shape-editor). | Decided | [Pipe ends](../symbols/pipes/ends.md) |
-| PI-01.16 | Preview | — | Always visible next to the style, redrawn at each change ([PI-05](#pi-05--preview)). | Decided | [Test display](../symbols/pipes/test-display.md) |
+| PI-01.16 | Preview | — | Always visible next to the style, redrawn at each change ([PI-05](#pi-05--preview)). | Decided | [Preview](../symbols/pipes/preview.md) |
 
 Gaps:
 
@@ -209,20 +209,19 @@ Path: next to the base pipe style or a pipe style being edited, always visible.
 
 | ID | Case | What it shows | Status | Source |
 | --- | --- | --- | --- | --- |
-| PI-05.1 | Straight pipe | Body fill, width, border, dash sequences. | Decided | [Test display](../symbols/pipes/test-display.md) |
-| PI-05.2 | Right angle | Corner radius. | Decided | [Test display](../symbols/pipes/test-display.md) |
-| PI-05.3 | Other angles | An angle other than 90°, a very short segment. | Decided | [Test display](../symbols/pipes/test-display.md) |
-| PI-05.4 | Junction, several junctions | One junction; a 3-way and a 4-way. | Decided | [Test display](../symbols/pipes/test-display.md) |
-| PI-05.5 | Crossing | Both ways. | Decided | [Test display](../symbols/pipes/test-display.md) |
-| PI-05.6 | Start and end | The end shapes of the style. | Decided | [Test display](../symbols/pipes/test-display.md) |
-| PI-05.7 | Connected to a symbol | A pipe on a connection point. | Decided | [Test display](../symbols/pipes/test-display.md) |
-| PI-05.8 | Base and style side by side | What the style overrides. | Proposed | [Test display](../symbols/pipes/test-display.md) |
-| PI-05.9 | Symbol connected to a pipe | On a straight segment and in a bend. | Proposed | [Test display](../symbols/pipes/test-display.md) |
+| PI-05.1 | Straight pipe | Body fill, width, border, dash sequences. | Decided | [Preview](../symbols/pipes/preview.md) |
+| PI-05.2 | Right angle | Corner radius. | Decided | [Preview](../symbols/pipes/preview.md) |
+| PI-05.3 | Other angles | An angle other than 90°, a very short segment. | Decided | [Preview](../symbols/pipes/preview.md) |
+| PI-05.4 | Junction, several junctions | A pipe and one of its branches; a 3-way and a 4-way. | Decided | [Preview](../symbols/pipes/preview.md) |
+| PI-05.5 | Crossing | Both ways. | Decided | [Preview](../symbols/pipes/preview.md) |
+| PI-05.6 | Start and end | The end shapes of the style. | Decided | [Preview](../symbols/pipes/preview.md) |
+| PI-05.7 | Connected to a symbol | A pipe on a connection point. | Decided | [Preview](../symbols/pipes/preview.md) |
+| PI-05.8 | Base and style side by side | What the style overrides. | Proposed | [Preview](../symbols/pipes/preview.md) |
+| PI-05.9 | Symbol connected to a pipe | On a straight segment and in a bend. | Proposed | [Preview](../symbols/pipes/preview.md) |
 
 Gaps:
 
 - Do the dashes move in the preview?
-- Name: "Preview" proposed instead of "Test display".
 
 ## PI-06 · Pipes in a synoptic (part 3, preview)
 
@@ -234,7 +233,7 @@ mindmap
     Pipe tool
       Click point after point
       Snaps to connection points
-      Click inside a pipe for a branch
+      Click inside a pipe for a branch of it
     Panel of a pipe
       Pipe style
       Start shape
@@ -247,22 +246,20 @@ mindmap
       Slides along the pipe only
     Proposed
       Orthogonal lock
-      Path kind
       Swap all crossings
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | PI-06.1 | Pipe tool | Button (tool) | Click point after point, straight segments; snaps to connection points. | Decided | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
-| PI-06.2 | Branch | — | Click inside a pipe, then draw. | Decided | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
+| PI-06.2 | Branch | — | Click inside a pipe, then draw. The branch belongs to that pipe: one pipe as a tree, one style, one flow. | Decided | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
 | PI-06.3 | Pipe style | Select | Among the styles of the Symbol Lib. | Decided | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
 | PI-06.4 | Start shape, end shape | Select each | Among the end shapes of the style, or none. | Decided | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
 | PI-06.5 | Swap a crossing | Click on the crossing | Highlighted on hover. | Decided | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
 | PI-06.6 | Connect to the pipe | not said (action on the symbol) | The symbol fits onto the pipe and only slides along it. | Decided | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
 | PI-06.7 | Free the symbol | not said | Undo "connect to the pipe". | Proposed | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
 | PI-06.8 | Orthogonal lock | Toggle | While drawing. | Proposed | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
-| PI-06.9 | Path kind | Radio | Straight, right angles, rounded (archived Figma page). | Open | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
-| PI-06.10 | Crossings of a pipe, swap all | List + Button | Archived Figma page. | Proposed | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
+| PI-06.9 | Crossings of a pipe, swap all | List + Button | Archived Figma page. | Proposed | [Pipes in the synoptic](../symbols/pipes/in-the-synoptic.md) |
 
 Gaps:
 

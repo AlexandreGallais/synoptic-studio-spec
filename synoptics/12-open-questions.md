@@ -10,7 +10,7 @@ These change the data model; to settle first.
 
 | # | Question | Advised | Page |
 | --- | --- | --- | --- |
-| 1 | A **branch**: two pipes, or one pipe as a tree? (Already asked in Pipes.) | One pipe as a tree, as the research advised. | [Pipes](05-pipes.md#branches) |
+| 1 | A pipe that **ends on another pipe** of another style: a branch of that pipe (it takes its style), or two pipes that meet? (A pipe is one tree, decided.) | Two pipes that meet: a style is never changed by a click. | [Pipes](05-pipes.md#open-questions) |
 | 2 | Does the runtime read the synoptic file, or a **published view**? | A published view, self-contained. | [Outputs](10-outputs.md#open-questions) |
 
 ## The others
@@ -38,7 +38,7 @@ These change the data model; to settle first.
 | 21 | Is "unwired" an information worth showing? | Yes, hidden by default. | [Faults](08-faults.md#open-questions) |
 | 22 | Scenarios of the Test mode: in the synoptic file or apart? | In the synoptic file. | [Test mode](09-test-mode.md#open-questions) |
 | 23 | Format of the connection graph: the project's own, or SSP? | The project's own first; SSP to study. | [Outputs](10-outputs.md#open-questions) |
-| 24 | A pipe whose style is linked to a type: does a branch have its own values? (Already asked in Pipes.) | Its own values. | [Pipes](05-pipes.md#a-pipe-whose-style-is-linked-to-a-type) |
+| 24 | A pipe whose style is linked to a type: do its branches share its values, or can a branch have its own? | Shared: the tree is one pipe and one flow. | [Pipes](05-pipes.md#a-pipe-whose-style-is-linked-to-a-type) |
 | 25 | Interface description of the models: what makes a signal "needed", per type or per placed symbol, which format? | Per type, a signal needed as soon as one placed symbol of the project uses it; written at Publish. | [Outputs](10-outputs.md#the-interface-description-of-the-models) |
 
 ## Left for later

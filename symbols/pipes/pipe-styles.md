@@ -36,7 +36,7 @@ How a pipe looks. A Symbol Lib has **one base pipe style**, shared by all its pi
 - An option that is not overridden follows the base style: when the base style changes, every pipe style that did not override that option changes with it.
 - Proposed by the assistant, to confirm: the panel shows which options are overridden, and each override can be reset to the base value.
 - The content ("what the pipe contains") only names and groups the styles. The editor does not know what a fluid is.
-- A pipe has one pipe style, chosen in the synoptic. A pipe with no pipe style takes the base style (assumption of the assistant, to confirm).
+- A pipe has one pipe style, chosen in the synoptic; its branches have the same (a pipe is one tree, see [Junctions](junctions.md)). A pipe with no pipe style takes the base style (assumption of the assistant, to confirm).
 - A pipe style is stored in the Symbol Lib and used by identifier, as a symbol is linked to its type (the rules of broken links are to be written like for symbols).
 
 ```mermaid
@@ -77,7 +77,7 @@ Example:
 
 - A style has an option to make its dashes **move**: they travel along the pipe to show the flow.
 - The user chooses the **direction** of the movement: from the start of the pipe to its end, or the other way.
-- **Propagation**: where a pipe splits in two (a junction), the movement goes on into the branches, following the flow. The pipe is no longer a plain drawing: it behaves half like a symbol.
+- **Propagation**: where a branch leaves the pipe (a junction), the movement goes on into the branch, following the flow: the whole tree is one flow. The pipe is no longer a plain drawing: it behaves half like a symbol.
 - Assumptions of the assistant, to confirm: the speed is set in the style when no model drives it; the movement can be stopped by a global setting and by the system setting "reduce motion" (advised by the research).
 
 ### A pipe style linked to a type
@@ -106,6 +106,7 @@ flowchart LR
 - The corner radius rounds each angle of the pipe. A right angle then gets a curve, which makes the pipe a little more stylised.
 - With a radius of 0, the angles stay sharp.
 - The radius also decides the look of the bridges at crossings (see [Crossings](crossings.md)).
+- It is the only setting of the angles: there is no path kind (straight, right angles, rounded) to choose on each pipe.
 
 ## Example
 
@@ -154,7 +155,5 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.2, 
 
 - Which properties of a style a signal can drive, beyond the speed, the direction and the colours (width, dashes on or off, border on or off...)?
 - Can the base pipe style be linked to a type, or only the pipe styles?
-- Propagation: when a branch has its own values (a closed valve on one branch), does it stop the movement downstream?
-
-- Is the corner radius only in the style, or can the path kind (straight, right angles, rounded) be chosen per pipe, as in the archived Figma page?
+- A pipe linked to a type is one tree, one flow: do its branches share its values (assistant's reading), or can a branch have its own (a closed valve on one branch, stopping the movement downstream)?
 - Can a style hold several layers (the body, then a border, then a second line), or just the options above?

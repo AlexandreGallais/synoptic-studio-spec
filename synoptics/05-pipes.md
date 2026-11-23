@@ -20,7 +20,7 @@ How pipes are drawn and edited in a synoptic. What a pipe looks like (its style,
 
 Proposed, from the research (report T4, sections 3.1 and 3.3) and the tools of the symbol editor:
 
-- The **Pipe** tool of the Pipes mode. The first click starts the pipe: on a connection point, on a pipe (a branch), or anywhere (a free end).
+- The **Pipe** tool of the Pipes mode. The first click starts the pipe: on a connection point, on a pipe (a branch of that pipe, which takes its style), or anywhere (a free end).
 - From a connection point, the **first segment leaves in its direction** (a connection point has a direction, see [Connection points](../symbols/pipes/connection-points.md)).
 - Each click adds a point. **Orthogonal lock** on by default: segments are horizontal or vertical; Shift held frees the angle. A toggle in the tool bar is its visible equivalent, as for the other keys of the editor.
 - A click on a connection point, or on a pipe, ends the pipe there. A double click or Enter ends it with a free end. Escape cancels the pipe being drawn; Backspace removes its last point.
@@ -47,8 +47,8 @@ Proposed:
 ### Branches
 
 - Decided: a click inside a pipe starts a branch, and the junction is computed.
-- **To decide by the Product Owner** (already asked in [Pipes](../symbols/pipes/README.md#to-decide-by-the-product-owner)): is a branch a second pipe, the first one split in two (current specs), or one pipe as a tree (archived Figma page, Ignition, advised by the research)?
-- Whatever the answer, proposed: deleting the trunk keeps the branch, with a free end where the junction was.
+- Decided: the pipe is not cut; it stays **one pipe, as a tree**, with one pipe style and one flow (see [Junctions](../symbols/pipes/junctions.md)). Changing the style of the pipe changes it on every branch.
+- Proposed: Delete on a selected branch removes it, from its junction to its end; the rest of the tree stays. Deleting the pipe removes the whole tree.
 
 ### Crossings
 
@@ -79,7 +79,7 @@ Proposed:
 
 - Decided: a pipe style can be linked to a type of Metadata, and the model then drives the speed, the direction and the colours of its dashes.
 - Proposed: such a pipe is wired **like a placed symbol**: it gets an instance ID, designation texts, flags, template items and a preset, in the same sections of its panel. It is listed in the signal list as a placed symbol is.
-- Open (already asked): does a branch have its own values, or share those of its trunk?
+- Assistant's reading, to confirm: the branches share the values of the pipe, the tree being one flow.
 
 ## Example
 
@@ -96,7 +96,7 @@ The user draws `W-01` from the outlet of tank `T-1` to the inlet of pump `P-101`
 
 ## Open questions
 
-- A branch: two pipes or one pipe as a tree? (To decide, already asked.)
+- A pipe that ends on another pipe of another style: a branch of that pipe, or two pipes that meet?
 - A symbol on a pipe: does it follow the bends (archived page) or stay on one segment?
 - Which Symbol Lib do the pipe styles come from when a synoptic uses several? Advised: all those used, grouped by library.
 - Should the editor route a pipe around symbols by itself? Not in the first version.

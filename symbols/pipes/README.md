@@ -23,7 +23,9 @@ Pipes are the lines that connect symbols in a synoptic. The user draws them with
 | Start and end shapes | The shapes that can be drawn at the start or at the end of a pipe of this style. | [Pipe ends](ends.md) |
 
 - A Symbol Lib holds one base pipe style and several pipe styles; each library has its own, so that a software or a factory has its own look (same reason as for symbols: see [Libraries and symbols](../01-libraries-and-symbols.md)).
-- The editor of a pipe style offers a **test display** with every case a pipe can meet, to see what an edit does (see [Test display](test-display.md)).
+- A pipe is **one pipe, as a tree**: a branch drawn from a pipe belongs to that pipe. The whole tree has one pipe style and one flow (see [Junctions](junctions.md)).
+- The look of the angles comes from the **corner radius of the style** only: there is no path kind (straight, right angles, rounded) to choose on each pipe.
+- The editor of a pipe style offers a **Preview** with every case a pipe can meet, to see what an edit does (see [Preview](preview.md)).
 
 ```mermaid
 flowchart LR
@@ -31,12 +33,12 @@ flowchart LR
     B["Symbol Lib: base pipe style, with its junctions, crossings and ends"] --> L["Pipe styles: overrides, colours by default"]
     L --> P
     P --> C["Computed: corners, junctions, crossings, ends"]
-    T["Test display in the library editor"] -.->|"shows every case"| L
+    T["Preview in the library editor"] -.->|"shows every case"| L
 ```
 
 ## Everything is computed
 
-The user only gives points and styles. The editor computes: the rounded corners, the split of a pipe at a junction, the bridges or gaps at a crossing, the shape of the ends. The user does not edit these results by hand, except by choosing which pipe passes over another (see [Crossings](crossings.md)).
+The user only gives points and styles. The editor computes: the rounded corners, the junction where a branch leaves, the bridges or gaps at a crossing, the shape of the ends. The user does not edit these results by hand, except by choosing which pipe passes over another (see [Crossings](crossings.md)).
 
 ## Example
 
@@ -76,9 +78,10 @@ An archived inspiration, not a decision. It differs from these pages on several 
 | Subject | Archived Figma page | These specs |
 | --- | --- | --- |
 | Where junctions, crossings and ends live | Inside the pipe style | Inside the pipe style (decided 2026-11-11, was four separate lists) |
-| A branch | The pipe stays one pipe (a tree) | The pipe is split in two |
+| A branch | The pipe stays one pipe (a tree) | The same: one pipe as a tree (decided 2026-11-23) |
 | Anchors of an end shape | Four, at the middle of the sides; one side chosen | Nine (sides and corners) |
-| Corner radius | In the style, "for rounded paths"; the path kind (straight, right angles, rounded) is chosen per pipe | In the style only |
+| Corner radius | In the style, "for rounded paths"; the path kind (straight, right angles, rounded) is chosen per pipe | In the style only, no path kind per pipe (decided 2026-11-23) |
+| Name of the display of every case | Pipe style preview | Preview (decided 2026-11-23) |
 | Names | Core, Outline, Line, Part, Plain | Fill, Border, Flow dashes, End shape, Flat |
 | Inline symbols | Yes: a symbol with two connection points slides along the pipe | Absent |
 | Usage counter | "Used by 38 pipes" | Absent |
@@ -92,7 +95,7 @@ An archived inspiration, not a decision. It differs from these pages on several 
 | Size of a bridge or a gap, set in the style | Add (see [Crossings](crossings.md)). |
 | Default rule of which pipe is on top | Write it: the last drawn is on top; the click is the exception. |
 | Orthogonal lock while drawing a pipe | Add, like the angle lock of the pen. |
-| Path kind per pipe (straight, right angles, rounded) | To discuss with the corner radius of the style. |
+| Path kind per pipe (straight, right angles, rounded) | Not taken: the corner radius of the style is enough (decided 2026-11-23). |
 | Usage counter of a style | Add: it prepares the display of broken links. |
 | Colouring by topology (zenon) | Refuse: the editor does not know what a fluid is. |
 | Automatic routing around symbols (libavoid) | Not in the first version: a path is drawn by clicks. |
@@ -134,11 +137,9 @@ flowchart TD
 - A symbol can be **connected to a pipe**: it fits onto it and can only be moved along it (see [Pipes in the synoptic](in-the-synoptic.md)).
 - Dashes can **move**, in a direction the user chooses, and the movement **propagates** into the branches at a junction. A pipe style can be **linked to a type** of Metadata, if the user wants it: the model then drives the speed, the direction and the colours (see [Pipe styles](pipe-styles.md)).
 - One **base pipe style** per Symbol Lib, overridden by **pipe styles** (colours by default, any option when needed); dashes as **sequences of coloured segments**, for pipes and for every border; dashes computed as cleanly as possible, an odd cut in a corner accepted.
-
-## To decide by the Product Owner
-
-1. A branch: one pipe as a tree (archived page, Ignition, advised) or two pipes (current specs)?
-2. Path kind per pipe (straight, right angles, rounded) next to the corner radius of the style?
+- A branch leaves **one pipe as a tree**, with one pipe style and one flow, as in the archived Figma page and in Ignition (decision 0094).
+- **No path kind per pipe**: the corner radius of the style gives the look of every angle (decision 0094).
+- The display of every case is named **Preview** (decision 0094).
 
 ## Open questions
 

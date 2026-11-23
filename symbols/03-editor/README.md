@@ -117,7 +117,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.15,
 | Free form | Path | Word of SVG |
 | Fit, fixed; absolute child | Keep | — |
 | Reference, shapes to place | Keep | "Key object" at Adobe |
-| Test display | Preview | "Pipe style preview" in the archived Figma file |
+| Test display | Preview (kept, decision 0094) | "Pipe style preview" in the archived Figma file |
 | Run mode | Test mode | Nothing runs; the archived file has a separate "Runtime" page |
 | Connection mode | Provisional | — |
 

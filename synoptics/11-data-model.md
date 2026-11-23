@@ -87,25 +87,29 @@ erDiagram
         text description
     }
     ON_PIPE {
-        uuid pipe FK
+        uuid branch FK
         real distance
     }
     PIPE {
         uuid internal_id PK
         uuid pipe_style FK
         uuid start_shape FK
-        uuid end_shape FK
         text name
+    }
+    PIPE_BRANCH {
+        uuid internal_id PK
+        uuid parent FK "the branch it leaves; empty for the trunk"
+        real at "distance along the parent where it leaves"
+        uuid end_shape FK
     }
     PIPE_POINT {
         real x
         real y
     }
     PIPE_END {
-        pipe_end_kind kind "symbol, pipe or free"
+        pipe_end_kind kind "symbol or free"
         uuid placed_symbol FK "when kind is symbol"
         uuid connection_point FK "when kind is symbol"
-        uuid pipe FK "when kind is pipe"
     }
     CROSSING_SWAP {
         uuid over FK
@@ -142,10 +146,12 @@ erDiagram
     IDENTITY ||--o{ TEXT_CHANGE : "holds"
     IDENTITY ||--o{ TEMPLATE_ITEMS : "holds, one per signal pointing to a template"
     TEMPLATE_ITEMS ||--o{ TEMPLATE_ITEM : "holds"
-    ON_PIPE }o--|| PIPE : "pipe"
-    PIPE ||--|{ PIPE_POINT : "holds, two at least"
-    PIPE ||--|| PIPE_END : "has, start"
-    PIPE ||--|| PIPE_END : "has, end"
+    ON_PIPE }o--|| PIPE_BRANCH : "branch"
+    PIPE ||--|{ PIPE_BRANCH : "holds, the trunk first"
+    PIPE_BRANCH }o--o| PIPE_BRANCH : "parent"
+    PIPE_BRANCH ||--|{ PIPE_POINT : "holds, two at least"
+    PIPE ||--|| PIPE_END : "has, start of the trunk"
+    PIPE_BRANCH ||--|| PIPE_END : "has, end"
     PIPE ||--o| IDENTITY : "has, when its style is linked to a type"
     CROSSING_SWAP }o--|| PIPE : "over"
     CROSSING_SWAP }o--|| PIPE : "under"
@@ -160,7 +166,9 @@ erDiagram
 - **A pipe linked to a type has an identity too**, the same part, so it is wired like a placed symbol (see [Pipes](05-pipes.md#a-pipe-whose-style-is-linked-to-a-type)).
 - **Only what differs from the preset is kept** (`VALUE_CHANGE`: start value, unit, decimals; `TEXT_CHANGE`: texts of the faceplate), decided on 2026-11-20: a placed symbol that changes nothing holds nothing, and follows its preset when the preset changes.
 - **A crossing keeps only the swaps**: the default rule (the last drawn passes over) needs nothing stored; the user's click stores which pipe passes over.
-- **Junctions are not stored**: a branch is a pipe whose end is of kind `pipe`; the junction is computed from it. If one pipe as a tree is chosen, `PIPE` will hold its branches instead.
+- **A pipe is one tree** (decision 0094): `PIPE` holds its style and its branches, the trunk first. Each other branch names the branch it leaves (`parent`) and where along it (`at`). **Junctions are not stored**: they are computed from `parent` and `at`.
+- **Each branch has its own end**, and so its own end shape; the pipe has one start. Proposed by the assistant.
+- A pipe that ends on another pipe has no kind of end yet: it waits for the open question of [Junctions](../symbols/pipes/junctions.md#open-questions).
 - The content of an annotation (its shapes, its text, the signal of a value label) and of a scenario (its values) is not drawn yet.
 
 ## Open
