@@ -33,7 +33,7 @@ A colour bound to a variable takes its opacity from the variable: a fill bound t
 
 | Kind | Styles |
 | --- | --- |
-| Text | `caption`, `body`, `body-strong`, `heading`, `title` (IBM Plex Sans), `code` (IBM Plex Mono); `content-h1` to `content-h6`, the headings of a description (IBM Plex Sans SemiBold, 2026-11-23) |
+| Text | `caption`, `body`, `body-strong`, `body-italic` (2026-11-23), `heading`, `title` (IBM Plex Sans), `code` (IBM Plex Mono); `content-h1` to `content-h6`, the headings of a description (IBM Plex Sans SemiBold, 2026-11-23) |
 | Effect | `shadow-raised`, `shadow-overlay`; `focus-ring` and `focus-ring-inset` stay in the file but no component uses them since 2026-11-23 (see [Focus in the SVG export](#ways-of-figma-to-keep-in-mind)) |
 
 ## How a page shows its components

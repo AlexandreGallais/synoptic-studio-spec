@@ -230,6 +230,10 @@ The line height is given as a ratio of the size, as DTCG asks; the description g
       "$value": { "fontFamily": "IBM Plex Sans", "fontSize": { "value": 14, "unit": "px" }, "fontWeight": 600, "lineHeight": 1.429, "letterSpacing": { "value": 0, "unit": "px" } },
       "$description": "14 / 20. The title of a list, a selected part."
     },
+    "body-italic": {
+      "$value": { "fontFamily": "IBM Plex Sans", "fontSize": { "value": 14, "unit": "px" }, "fontWeight": 400, "fontStyle": "italic", "lineHeight": 1.429, "letterSpacing": { "value": 0, "unit": "px" } },
+      "$description": "14 / 20. The italic of a description."
+    },
     "heading": {
       "$value": { "fontFamily": "IBM Plex Sans", "fontSize": { "value": 16, "unit": "px" }, "fontWeight": 600, "lineHeight": 1.5, "letterSpacing": { "value": 0, "unit": "px" } },
       "$description": "16 / 24. The title of a column or a dialog."
@@ -248,7 +252,7 @@ The line height is given as a ratio of the size, as DTCG asks; the description g
 
 ### Styles of a description
 
-The text a user writes in the visual editor of a description ([markdown-editor](08-organisms/markdown-editor.md)). Its paragraph is `body`, its bold `body-strong`, its italic `body` in italic, its link `body` underlined in `accent`, its code `code`. Every heading is larger than the paragraph, down to Heading 6, so that a bold line never reads as a heading. Sizes proposed.
+The text a user writes in the visual editor of a description ([markdown-editor](08-organisms/markdown-editor.md)). Its paragraph is `body`, its bold `body-strong`, its italic `body-italic`, its link `body` underlined in `accent`, its code `code`. Every heading is larger than the paragraph, down to Heading 6, so that a bold line never reads as a heading. Sizes proposed.
 
 ```tokens
 {

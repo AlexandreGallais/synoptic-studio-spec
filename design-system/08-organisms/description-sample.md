@@ -16,7 +16,7 @@ Sample content of a description, to show how the visual editor draws what a user
 
 ## Behaviour
 
-- Each heading uses its text style `content-h1` to `content-h6`; the paragraph `body`, its bold `body-strong`, its italic `body` in italic, its link `body` underlined in `accent` ([Foundations](../02-foundations.md#styles-of-a-description)).
+- Each heading uses its text style `content-h1` to `content-h6`; the paragraph `body`, its bold `body-strong`, its italic `body-italic`, its link `body` underlined in `accent` ([Foundations](../02-foundations.md#styles-of-a-description)).
 - Every heading is larger than the paragraph, down to Heading 6.
 - Inline code: `code` on `layer-02`, a `border-subtle` border, radius `radius-sm`, `spacing-01` on each side.
 - Lists: `body`, `spacing-01` between items, `spacing-02` between the marker and its text.
