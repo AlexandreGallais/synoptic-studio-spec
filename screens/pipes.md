@@ -50,8 +50,6 @@ mindmap
     Junctions
       Kind
       Size
-      Fill, pipe colour or custom colour
-      Border, with its position
     Crossings
       Kind
       Size, with a default value
@@ -74,8 +72,8 @@ No colour and no dash in the base: the fills are in [PI-02](#pi-02--pipe-style).
 | PI-01.10 | Speed | — | Removed: set in each pipe style ([PI-02.11](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-01.11 | Junction kind | Radio | Flat, circle, square. | Decided | [Junctions](../symbols/pipes/junctions.md) |
 | PI-01.12 | Junction size | Number field (px) | Fixed or a multiple of the width: Open. | Decided (rule: Open) | [Junctions](../symbols/pipes/junctions.md) |
-| PI-01.17 | Junction fill | Radio + Colour | **Pipe colour** (the body colour of the pipe style) or **Custom colour**, then its colour. | Decided | [Junctions](../symbols/pipes/junctions.md) |
-| PI-01.18 | Junction border | Toggle + Number field + Radio + Colour | On or off, width, position inside, middle or outside, colour: as every border. | Decided | [Junctions](../symbols/pipes/junctions.md) |
+| PI-01.17 | Junction fill | — | Removed: the junction takes the body fill of the pipe style (assistant's reading, to confirm). | Proposed | [Junctions](../symbols/pipes/junctions.md) |
+| PI-01.18 | Junction border | — | Removed: the junction has the border of the pipe, with the same width and position. | Decided | [Junctions](../symbols/pipes/junctions.md) |
 | PI-01.13 | Crossing kind | Radio | Bridge (an arch), gap (the pipe underneath is cut in two), none (one passes over the other). | Decided | [Crossings](../symbols/pipes/crossings.md) |
 | PI-01.14 | Crossing size | Number field (px) | A setting with a default value, not computed from the width and the radius; the bridge follows the corner radius. Default value: Open. | Decided (default: Open) | [Crossings](../symbols/pipes/crossings.md) |
 | PI-01.15 | End shapes | — | Removed: the end shapes are not in the base pipe style; they have their own list on the Pipes page ([PI-03](#pi-03--end-shape-editor)). | Decided | [Pipe ends](../symbols/pipes/ends.md) |

@@ -20,7 +20,7 @@ How a pipe looks. A Symbol Lib has **one base pipe style**, the shape shared by 
 | Border width | The width of the border, in pixels. |
 | Border position | **Inside**, **in the middle** or **outside** the edge of the body, as for the border of a shape (see [Fill and border](../04-drawing-mode/fill-and-border.md)). Inside, the border eats into the width of the body; outside, it adds to it. |
 | Corner radius | Rounds the angles of the pipe (see below). The same for every pipe style: it is never overridden. |
-| Junctions | How a branch looks: flat, circle or square, with its size, fill and border (see [Junctions](junctions.md)). |
+| Junctions | How a branch looks: flat, circle or square, with its size; its fill and border are those of the pipe (see [Junctions](junctions.md)). |
 | Crossings | What happens where a pipe passes over another: bridge, gap, none, with a size (see [Crossings](crossings.md)). |
 
 - Junctions and crossings are parts of the style, not separate lists of the Symbol Lib. They are computed from the style; the user never draws them on each pipe.

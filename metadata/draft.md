@@ -874,18 +874,20 @@ Decided by the Product Owner on 2026-11-17 (decision 0035, accepted on 2026-11-1
 
 Decision 0095. Some enums come **with the software**, because a part of the software needs them: the first one is **pipe direction**, which animates the direction of the moving dashes of a pipe (see [Pipe styles](../symbols/pipes/pipe-styles.md#a-pipe-style-linked-to-a-type)).
 
+- **The Enum entity does not change**: a built-in enum is an ordinary enum, shipped in a read-only list of the software, as the quantities, palettes and icon sets the software ships. Only the interface differs.
 - A built-in enum **cannot be deleted**.
 - It is **read-only**: its items (keys, display names, descriptions) and its description cannot be changed.
-- It is **always global**, never a template.
-- Its **ID can be changed**: it comes with a default ID, and the user may rename it, as any enum.
+- It is **always global**, never a template: its screen shows no kind.
+- Its **ID can be changed**: it comes with a default ID, and the user may rename it, as any enum. It is the only thing that can be changed.
 - A signal points to it as to any enum.
-- The Enums page shows **two lists**: the built-in enums first, then the user's enums (Product Owner, 2026-11-23). The list of built-in enums has no + (assistant's reading: nothing can be added to it).
+- The Enums page shows **two lists**: the built-in enums first, then the user's enums (Product Owner, 2026-11-23). The list of built-in enums has no + and its lines no delete button.
 
 | Built-in enum | Default ID | Items (key: display name) | Status |
 | --- | --- | --- | --- |
 | Pipe direction | `pipe_direction` | 0: Start to end, 1: End to start | Proposed (ID, keys and names) |
 
 - Open: where a built-in enum is kept (its items come with the software, its ID is the user's), and which other built-in enums the software needs.
+- Open: can the user override a built-in enum later, as a set of icons of the same file name replaces the software's (decision 0071)? The Product Owner said "potentiellement".
 
 ```mermaid
 flowchart LR

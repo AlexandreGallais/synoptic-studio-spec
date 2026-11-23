@@ -20,7 +20,7 @@ Pipes are the lines that connect symbols in a synoptic. The user draws them with
 | Body and border | Width; border on both sides (width, inside, middle or outside); corner radius, the same for every style. | Base | [Pipe styles](pipe-styles.md) |
 | Fills | Body fill and border fill: colour or dash sequence. | Each pipe style | [Pipe styles](pipe-styles.md) |
 | Moving dashes | On or off, and the speed. | Each pipe style | [Pipe styles](pipe-styles.md#moving-dashes) |
-| Junctions | Looks of a place where a pipe branches: kind, size, fill, border. | Base | [Junctions](junctions.md) |
+| Junctions | Looks of a place where a pipe branches: kind and size; fill and border are the pipe's. | Base | [Junctions](junctions.md) |
 | Crossings | What happens where a pipe passes over another: bridge, gap, nothing; a size. | Base | [Crossings](crossings.md) |
 | Start and end shapes | The shapes at the start or at the end of a pipe. | A list of their own, not in the styles | [Pipe ends](ends.md) |
 
