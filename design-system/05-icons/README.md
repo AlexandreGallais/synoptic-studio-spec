@@ -37,6 +37,15 @@ Figma: page Icons (`630:104`), one component `icon/<name>` each, section Icons (
 | ![enums](enums.svg) | `enums` | Page Enums. | [`631:57`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=631-57) |
 | ![designations](designations.svg) | `designations` | Page Designations. | [`631:61`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=631-61) |
 
+## Pages of a Symbol Lib
+
+The pages Enums and Symbols take `enums` and `symbols` above. Figma: table "Pages of a Symbol Lib" (`779:30`).
+
+| Icon | Name | Meaning | Figma |
+| --- | --- | --- | --- |
+| ![general](general.svg) | `general` | Page General of a Symbol Lib: two sliders. | [`779:34`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=779-34) |
+| ![pipes](pipes.svg) | `pipes` | Page Pipes of a Symbol Lib: a pipe between two flanges. | [`779:38`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=779-38) |
+
 ## Actions
 
 | Icon | Name | Meaning | Figma |

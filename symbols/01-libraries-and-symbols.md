@@ -44,7 +44,8 @@ The following holds:
 - When the libraries no longer fit, the list **never scrolls**. It is cut into **parts**, each as long as the room allows, and an **arrow** opens the next part ("il y a X pages, allez voir la deuxième partie des liens rapides").
 - The arrows show **only when the list is cut into parts**, so that most users never see them (Product Owner, 2026-11-23). Then **both** show, at every part: an arrow up at the top of the list, an arrow down at the bottom; the one that leads nowhere (up on the first part, down on the last) is **greyed**. On hover, "Part 1 of 2". They stay in the same place from one part to the next.
 - The page buttons **show only once a Symbol Lib is selected** (kept from the end of 2026-11-17). With no Symbol Lib yet, the bar shows the + only; what the rest of the screen shows then: open.
-- How a Symbol Lib looks in the list: open. Proposed in the mockups: its initials in a square, its name on hover.
+- A Symbol Lib shows in the list as **letters taken from its name**, in a square: **two letters** (Product Owner, 2026-11-23). Three letters: to try, open. No colour, and no icon chosen by the user. How the letters are taken from the name: open. Its name on hover: proposed.
+- The page buttons are **icons**, the same for every Symbol Lib, so that the user gets used to them (Product Owner, 2026-11-23): `general`, `enums`, `pipes`, `symbols` (see [Icons](../design-system/05-icons/README.md#pages-of-a-symbol-lib)). Enums takes the icon of the page Enums of Metadata.
 - Why: every library is one click away, the pipes are not mixed with the symbols, the pages sit under the libraries, and the bar is the same as in the synoptic mode.
 
 ```mermaid
