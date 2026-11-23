@@ -19,7 +19,7 @@ block-beta
 | Zone | What it holds |
 | --- | --- |
 | Left-hand panel | The symbols and the pipe styles of the Symbol Lib, then the [layers](layers.md) of the open symbol (see [Libraries and symbols](../01-libraries-and-symbols.md)). |
-| Modes menu | A floating menu at the **top left of the drawing area**: every mode, and the switch from one to another. |
+| Modes menu | A floating bar at the **top left of the drawing area**, **horizontal**, made of **icons only** (the name of each mode in its tooltip): every mode, in the order of the work, and the switch from one to another (Product Owner, 2026-11-23). |
 | Tool bar | A floating bar over the drawing area, with the tools of the current mode. Its place is open: at the **bottom** or at the top. |
 | Advanced tools bar | A button of the tool bar shows or hides a second floating bar, **just above the tool bar**, with all the [advanced tools](expert-menu/README.md). |
 | Right-hand panel | The options of the selection; the type and the preset of the symbol (see [Type, preset and faceplate](../02-type-and-faceplate.md)). |
@@ -27,7 +27,7 @@ block-beta
 ```mermaid
 block-beta
     columns 3
-    modes["Modes menu (top left)"] space:2
+    modes["Modes menu (top left, horizontal, icons)"] space:2
     space:3
     space adv["Advanced tools bar, shown or hidden"] space
     space tools["Tool bar of the mode (bottom, place open)"] space
@@ -48,17 +48,20 @@ Not placed yet: the zoom field, undo and redo, save.
 
 ## Modes
 
+In the order of the modes menu, which is the order of the work: draw, edit the points, connect, align, animate, then the interactions, and run last (Product Owner, 2026-11-23).
+
 | Mode | What it is for | Tools in the tool bar | Right-hand panel |
 | --- | --- | --- | --- |
 | [Drawing](../04-drawing-mode/README.md) | The default mode: draw and arrange shapes. | Select, Hand, Group, Rectangle, Ellipse, Polygon, Pen, Text | Options of the selected shape (colours, corner radius...) |
 | [Point editing](../05-point-editing-mode/README.md) | Edit the points of a path. | Select, Hand, Pen | Options of the selected point |
+| [Connection](../pipes/connection-points.md) | Place the connection points where pipes attach. | Select, Hand, Connection point | The options of the selected point |
 | [Alignment](../06-alignment-mode/README.md) | Place shapes in relation to each other. | Select, Hand | Alignment of the selected shapes |
-| [Interaction](../07-interaction-mode/README.md) | Draw the zones that react to a gesture, and link them to commands. | Select, Hand, Interaction zone | The interactions of the selected place |
 | [Animation](../08-animation-mode/README.md) | Link the signals to the parts of the drawing. | Select, Hand | The animations of the selected part |
+| [Interaction](../07-interaction-mode/README.md) | Draw the zones that react to a gesture, and link them to commands. | Select, Hand, Interaction zone | The interactions of the selected place |
 | [Run](../09-run-mode/README.md) | Try the symbol with test values and see it at the size of another screen. | Hand | The test values, and the simulated screen |
-| [Connection](../pipes/connection-points.md) (provisional) | Place the connection points where pipes attach. | Select, Hand, Connection point | The options of the selected point |
 
-- The Connection mode is an assumption of the assistant: which mode places the connection points is not decided (see [Connection points](../pipes/connection-points.md)).
+- The Connection mode is in the menu (Product Owner, 2026-11-23); its tools and its panel are still the assistant's assumption (see [Connection points](../pipes/connection-points.md)).
+- The icon of each mode: to draw in the design system.
 - The Interaction, Animation and Run modes need a type: a symbol without a type has no interaction, no animation and nothing to test with signals (see [Libraries and symbols](../01-libraries-and-symbols.md)).
 - The [advanced tools](expert-menu/README.md) add a second bar just above the tool bar of the current mode.
 - Other modes may be added later.

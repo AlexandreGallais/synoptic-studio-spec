@@ -54,8 +54,8 @@ Path: Symbols › a Symbol Lib › Symbols, or › Pipes. Since the end of 2026-
 ```mermaid
 block-beta
     columns 2
-    sym["Page Symbols: magnifier, +, list, then the layers of the open symbol (SY-03)"]
-    pip["Page Pipes: magnifier, +, list of pipe styles"]
+    sym["Page Symbols: title, search icon, +, list; separator; layers of the open symbol (SY-03)"]
+    pip["Page Pipes: title, search icon, +, list of pipe styles"]
 ```
 
 ```mermaid
@@ -83,12 +83,12 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SY-02.1 | List of symbols | Tree | One kind of symbol: no static or dynamic. A tree, as in Metadata: a sub-symbol under its parent (2026-11-18, replaces the flat list). A click on an item opens it in the editor. | Decided | [Sub-symbols](../symbols/12-sub-symbols.md) |
-| SY-02.2 | Search the symbols | Text field (magnifier) | Filters the list. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-02.3 | Create a symbol | Button (+) | The type and preset can be chosen here, never imposed. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.2 | Search the symbols | Button (search icon), then a text field | On the line of the title "Symbols", next to the +; a click opens the field over the whole line; it filters the list (2026-11-23: no field shown all the time). | Decided | [Layout rules](README.md#search-a-small-icon-on-the-line-of-the-title) |
+| SY-02.3 | Create a symbol | Button (small +) | On the right of the title "Symbols". The type and preset can be chosen here, never imposed. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.4 | Type, at creation | Select, optional | All the types of Metadata (no library of types). How the choice stays quick in a big tree: open. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.5 | Item of the list | Thumbnail + name | The thumbnail is the symbol, or its outlines only (as Figma's outline view). | Decided (thumbnail: Open) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.6 | List of pipe styles | List | On the page Pipes (end of 2026-11-17). Flat; a click opens the style (see [Pipes](pipes.md)). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
-| SY-02.7 | Search the pipe styles | Text field (magnifier) | Filters the list. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.7 | Search the pipe styles | Button (search icon), then a text field | As SY-02.2, on the line of the title "Pipe styles". | Decided | [Layout rules](README.md#search-a-small-icon-on-the-line-of-the-title) |
 | SY-02.8 | Create a pipe style | Button (icon with a small +) | On the right of the title "Pipe styles" ([layout rules](README.md#a-title-and-a-small--on-its-right), 2026-11-16). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.9 | Base pipe style | Item of the list | First item of the pipe styles list. | Proposed | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.10 | Broken mark | — | A small red mark on a broken item. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
@@ -113,27 +113,27 @@ The layout is decided, except the place of the tool bar (bottom or top) and of t
 block-beta
     columns 4
     rail["Navigation bar SY-00"]
-    left["Left-hand panel: SY-02 symbols, then the layers"] canvas["Drawing area: modes menu floating top left; advanced tools bar above the tool bar; tool bar floating at the bottom"] panel["Right-hand panel: options of the selection, type and preset of the symbol"]
+    left["Left-hand panel: SY-02 symbols, separator, then the layers"] canvas["Drawing area: modes menu floating top left, horizontal, icons; advanced tools bar above the tool bar; tool bar floating at the bottom"] panel["Right-hand panel: options of the selection, type and preset of the symbol"]
 ```
 
 ```mermaid
 mindmap
   root((SY-03 Symbol editor))
-    Modes menu, floating top left
+    Modes menu, floating top left, icons
       SY-04 Drawing
       SY-05 Point editing
-      SY-06 Alignment
-      SY-07 Interaction
-      SY-08 Animation
-      SY-09 Run
       SY-10 Connection
+      SY-06 Alignment
+      SY-08 Animation
+      SY-07 Interaction
+      SY-09 Run
     Tool bar, floating
       Tools of the mode
       Show the advanced tools
       Precise move
     SY-11 Advanced tools bar
     Layers, in the left-hand panel
-      Search
+      Search icon, no plus
       Unfold all
       Fold all
       Tree, groups as folders
@@ -150,7 +150,7 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-03.1 | Modes menu | Floating menu | At the top left of the drawing area: Drawing, Point editing, Alignment, Interaction, Animation, Run, Connection. Interaction, Animation and Run need a type. | Decided (Connection: Proposed) | [Editor](../symbols/03-editor/README.md) |
+| SY-03.1 | Modes menu | Floating bar, horizontal, icons only (name in the tooltip) | At the top left of the drawing area, in this order: Drawing, Point editing, Connection, Alignment, Animation, Interaction, Run (2026-11-23). Interaction, Animation and Run need a type. | Decided (icons: to draw) | [Editor](../symbols/03-editor/README.md) |
 | SY-03.2 | Tool bar | Floating bar | The tools of the mode; at the bottom of the drawing area (leaning) or at the top. | Decided (place: Open) | [Editor](../symbols/03-editor/README.md) |
 | SY-03.3 | Show the advanced tools | Button (in the tool bar) | Shows or hides the [SY-11](#sy-11--advanced-tools) bar just above. | Decided | [Advanced tools](../symbols/03-editor/expert-menu/README.md) |
 | SY-03.4 | Type | Select, optional | In the right-hand panel; among all the types of Metadata; can be removed. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
@@ -162,7 +162,7 @@ mindmap
 | SY-03.10 | Entirely enclosed | Toggle | Visible equivalent of Alt during a selection rectangle. | Decided | [Select](../symbols/03-editor/select.md) |
 | SY-03.11 | Precise move | Toggle | Visible equivalent of the key that moves a dragged point or handle pixel by pixel. | Decided (key: Open) | [Precise move](../symbols/03-editor/precise-move.md) |
 | SY-03.12 | Layers | Tree | In the left-hand panel; groups as folders; one line per shape, its border included. | Decided | [Layers](../symbols/03-editor/layers.md) |
-| SY-03.13 | Search the layers | Text field (magnifier) | Filters by name. | Decided | [Layers](../symbols/03-editor/layers.md) |
+| SY-03.13 | Search the layers | Button (search icon), then a text field | On the line of the title "Layers", under a separator; opens a field over the title that filters by name. No + on this title (2026-11-23). | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.14 | Unfold all, fold all | Button each | Every group of the tree. | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.15 | Line of a layer | — | Name; icon of its kind, hide, lock proposed. | Decided (name), Proposed (the rest) | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.16 | Undo, redo, save | not said | Listed as missing by the research. | Proposed | [Editor](../symbols/03-editor/README.md) |

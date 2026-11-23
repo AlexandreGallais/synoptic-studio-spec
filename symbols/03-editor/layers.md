@@ -10,7 +10,8 @@ The layers panel shows every layer of the open symbol, as a tree. It is in the l
 
 - It works like the layers panel of Figma and like the file tree of a code editor.
 - A [group](../04-drawing-mode/group.md) is shown as a folder: it holds its children, and it can be folded and unfolded.
-- A **search field** filters the layers by name.
+- The tree has the title "Layers", under a separator that ends the list of the symbols.
+- On the line of the title: a **search** icon, which opens a field over the title that filters the layers by name, as for every list (see [Search: a small icon on the line of the title](../../screens/README.md#search-a-small-icon-on-the-line-of-the-title)). **No +**: a layer is made by drawing, never added to the list (Product Owner, 2026-11-23).
 - Two icons, as in code editors: **unfold all** the groups, and **fold all** the groups.
 - A shape with a border is one line: its border is computed, it is not a layer of its own (see [Fill and border](../04-drawing-mode/fill-and-border.md)).
 - Assumption of the assistant, to confirm: selecting a line selects the layer on the drawing, and the other way round, in every mode that has the Select tool.
@@ -18,7 +19,8 @@ The layers panel shows every layer of the open symbol, as a tree. It is in the l
 ```mermaid
 mindmap
   root((Layers))
-    Search field
+    Title Layers
+    Search icon, no plus
     Unfold all
     Fold all
     Tree

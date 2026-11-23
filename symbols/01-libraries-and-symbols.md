@@ -84,8 +84,10 @@ What the left-hand panel shows depends on the page chosen in the bar. Since 2026
 | Page | Left-hand panel, from top to bottom |
 | --- | --- |
 | General | None: the page has no list (proposed). |
-| Symbols | A search field (a small magnifier), a **+** button to create a symbol, then the list; a click on an item opens the symbol in the editor. Under it, the **layers** of the open symbol: see [Layers](03-editor/layers.md). |
-| Pipes | The same for the pipe styles: a magnifier, a **+** button to create a style, then the list; a click on an item opens the style. |
+| Symbols | The title "Symbols" with, on its right, a **search** icon and a **+** that creates a symbol; then the list; a click on an item opens the symbol in the editor. A separator, then the **layers** of the open symbol: see [Layers](03-editor/layers.md). |
+| Pipes | The same for the pipe styles: the title "Pipe styles" with a search icon and a **+**, then the list; a click on an item opens the style. |
+
+- No search field is shown all the time: a click on the search icon opens the field over the title, which it covers whole (Product Owner, 2026-11-23; see [Search: a small icon on the line of the title](../screens/README.md#search-a-small-icon-on-the-line-of-the-title)).
 
 - An item of the symbol list shows a **thumbnail** and the **name** of the symbol.
 - The thumbnail is the symbol itself, or, as Figma does for its outline view, the symbol drawn with the outline of every shape only, without fills. Which one is kept is open.
@@ -94,8 +96,8 @@ What the left-hand panel shows depends on the page chosen in the bar. Since 2026
 ```mermaid
 block-beta
     columns 2
-    sym["Page Symbols: magnifier, +, list (thumbnail and name), then the layers of the open symbol"]
-    pip["Page Pipes: magnifier, +, list (base style first)"]
+    sym["Page Symbols: title, search icon, +, list (thumbnail and name); separator; layers of the open symbol"]
+    pip["Page Pipes: title, search icon, +, list (base style first)"]
 ```
 
 ### Creating a symbol

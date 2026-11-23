@@ -61,8 +61,21 @@ It makes the rule above precise, for every list and every table.
 - The button that adds an item is a **small + icon on the line of that title, on its right**. No button with a text ("+ Add a signal"), no button on a line of its own.
 - The title is the title of the list, not of the whole page: the page itself has no big title that repeats it. The room saved goes to the content: the switch of a preset, for example, moves up.
 - When a list takes items of several kinds, there is **one small icon per kind, each with a small +**, side by side on the line of the title, rather than one + that opens a menu: two clicks at most, with no menu to read. For the links: a path icon with a + and a URL icon with a +. For the five elements of the faceplate builder: the same rule.
-- It holds in the symbol mode and for the pipes too: the + that creates a Symbol Lib, a pipe style, an override of a pipe style, and a segment of a dash sequence sits on the right of the title of its list.
+- It holds in the symbol mode and for the pipes too: the + that creates a symbol, a pipe style, an override of a pipe style, and a segment of a dash sequence sits on the right of the title of its list. The + that creates a Symbol Lib is the exception: it sits at the top of the navigation bar (decision 0089).
 - It is the rule the type tree and the Enums page already followed: a + on the line of their title.
+
+### Search: a small icon on the line of the title
+
+- A list that can be searched has **no search field shown all the time**. A small **search icon** sits on the line of its title, next to the + (Product Owner, 2026-11-23: "comme ça, on standardise tout").
+- A click on the icon opens the search field **over the title**: it takes the whole line, title and icons included, as on the type tree ([MD-01.7](metadata.md#md-01--types-the-tree-and-the-type-editor)). A dismiss icon, or Escape, closes it and gives the title back.
+- A list where nothing is added by hand (the layers of a symbol) has the search icon and no +.
+
+```mermaid
+block-beta
+    columns 3
+    title["Title of the list"] search["search icon"] add["+"]
+    field["After a click on the search icon: the search field over the whole line, and a dismiss icon"]:3
+```
 
 ```mermaid
 block-beta
