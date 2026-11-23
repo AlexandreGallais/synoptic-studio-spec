@@ -874,20 +874,44 @@ Decided by the Product Owner on 2026-11-17 (decision 0035, accepted on 2026-11-1
 
 Decision 0095. Some enums come **with the software**, because a part of the software needs them: the first one is **pipe direction**, which animates the direction of the moving dashes of a pipe (see [Pipe styles](../symbols/pipes/pipe-styles.md#a-pipe-style-linked-to-a-type)).
 
-- **The Enum entity does not change**: a built-in enum is an ordinary enum, shipped in a read-only list of the software, as the quantities, palettes and icon sets the software ships. Only the interface differs.
+- **The Enum entity does not change**: a built-in enum is an ordinary enum, with its `internal_id`. Only the interface differs.
+- The built-in enums are kept in an **internal `enums.json` of the software**, which the software needs to work (Product Owner, 2026-11-23: "un fichier d'enums internes qui sont obligatoires pour le logiciel"). The Product Owner said "enum.json"; the name of the list's file, `enums.json`, is kept.
 - A built-in enum **cannot be deleted**.
-- It is **read-only**: its items (keys, display names, descriptions) and its description cannot be changed.
+- In the interface, it is **read-only**: its items (keys, display names, descriptions) and its description cannot be changed.
 - It is **always global**, never a template: its screen shows no kind.
-- Its **ID can be changed**: it comes with a default ID, and the user may rename it, as any enum. It is the only thing that can be changed.
+- Its **ID can be changed**: it comes with a default ID, and the user may rename it, as any enum. It is the only thing the interface changes.
 - A signal points to it as to any enum.
 - The Enums page shows **two lists**: the built-in enums first, then the user's enums (Product Owner, 2026-11-23). The list of built-in enums has no + and its lines no delete button.
+
+#### Overriding a built-in enum
+
+Product Owner, 2026-11-23 ("ça viendra surcharger dans son enum.json à lui, avec le même UUID [...] Comme ça, il a vraiment la main").
+
+- **Changing the ID of a built-in enum writes a copy of the whole enum in the user's `enums.json`**, with the **same `internal_id`** and the ID the user chose.
+- **The user's copy overrides the software's**: the software finds the same `internal_id` in both files and uses the user's.
+- **The user may then change their copy by hand**, for example to add items to the enum. The interface never offers it: no + on its items.
+- The match is made by `internal_id`, not by file name: both files are called `enums.json`, and the rule of decision 0071 (the user's file of the same name replaces the software's) does not apply to them, since the user's `enums.json` also holds their own enums.
+- **The overridden enum stays a built-in enum** for the software, because its `internal_id` is in the software's list: it stays in the list of built-in enums, read-only but for its ID (assistant's reading of "par défaut, ça le met en [...]", a word not clear in the dictation; to confirm).
+
+```mermaid
+flowchart LR
+    S["Internal enums.json of the software: pipe_direction"] --> M{"Same internal_id in the user's enums.json?"}
+    U["User's enums.json: their enums, and their copies"] --> M
+    M -- "No" --> A["The software's enum is used"]
+    M -- "Yes" --> B["The user's copy is used: their ID, their items added by hand"]
+    A --> L["List of built-in enums"]
+    B --> L
+```
 
 | Built-in enum | Default ID | Items (key: display name) | Status |
 | --- | --- | --- | --- |
 | Pipe direction | `pipe_direction` | 0: Start to end, 1: End to start | Proposed (ID, keys and names) |
 
-- Open: where a built-in enum is kept (its items come with the software, its ID is the user's), and which other built-in enums the software needs.
-- Open: can the user override a built-in enum later, as a set of icons of the same file name replaces the software's (decision 0071)? The Product Owner said "potentiellement".
+- Open: which other built-in enums the software needs.
+- Open: when a new version of the software changes a built-in enum (a new item), does the user's copy still win whole, or are the new items added to it?
+- Open: what happens when a copy changed by hand lacks an item the software needs (`pipe_direction` without `1`).
+- Open: can the user go back to the default ID, that is remove their copy, from the interface?
+- Open: where the internal `enums.json` is: inside the program, or in the software's configuration folder that the user may change by hand ([Files](files.md#the-two-configuration-folders)).
 
 ```mermaid
 flowchart LR

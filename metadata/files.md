@@ -47,6 +47,7 @@ The rules every file of Metadata follows. An [entity file](entities/README.md) g
 - **The software's folder** holds what Synoptic Studio ships. The user may change its files by hand; a file they break is read like any file with errors.
 - **The user's folder** holds what the user adds; they do with it what they want.
 - **The same file name in both folders: the user's file is offered**, the software's is not (decision 0071). The user replaces a file of the software without touching the software's folder.
+- **The built-in enums are the exception, matched by `internal_id`**: the software's internal `enums.json` and the user's `enums.json` are both read, and an enum of the user with the `internal_id` of a built-in enum overrides it (see [Overriding a built-in enum](draft.md#overriding-a-built-in-enum), decision 0095).
 - Where the two folders are on each system, and where the other files are placed, is settled by the software architecture, not here.
 
 ## What a file holds

@@ -30,7 +30,7 @@ flowchart LR
 
 - A junction has only two settings: its **kind** and, for a circle or a square, its **size**.
 - Its **border** is the border of the pipe: on or off, width and position (inside, in the middle, outside) come from the base pipe style, and its fill from the pipe style. It is never set on the junction.
-- Its **fill** is not a setting either: the junction takes the body fill of the pipe style (assistant's reading of "ce n'est pas une vraie option", to confirm).
+- Its **fill** is not a setting either: the junction takes the **body fill of the pipe style** (Product Owner, 2026-11-23).
 
 ## Example
 
