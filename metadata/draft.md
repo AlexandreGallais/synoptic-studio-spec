@@ -912,9 +912,8 @@ flowchart LR
 
 - Open: which other built-in enums the software needs.
 - **Adding items is the only change allowed in the copy**, besides the ID of the enum (Product Owner, 2026-11-23: "la seule chose qu'il peut faire, c'est ajouter un item").
-- **The software checks the copy against its own built-in enum**, item by item: every item of the software must be in the copy, with the same key (Product Owner, 2026-11-23: "ce qu'il y a à l'intérieur du logiciel viendra valider l'enum surchargé [...] ça viendra vérifier que la chose est bien construite").
-- **A copy that fails the check is a file with errors**: an item removed, or an item whose key changed (`pipe_direction` without `1`). The software uses its own built-in enum instead, and lists the error (answer of 2026-11-23). See [A file with errors](checks-and-errors.md#a-file-with-errors).
-- Open: a changed display name or description of an item of the software: an error too, or accepted?
+- **The software checks the copy against its own built-in enum**, item by item: every item of the software must be in the copy, with the same key, the same display name and the same description (Product Owner, 2026-11-23: "ce qu'il y a à l'intérieur du logiciel viendra valider l'enum surchargé [...] ça viendra vérifier que la chose est bien construite").
+- **A copy that fails the check is a file with errors**: an item removed, an item whose key changed (`pipe_direction` without `1`), or an item whose display name or description changed. The software uses its own built-in enum instead, and lists the error (answers of 2026-11-23). See [A file with errors](checks-and-errors.md#a-file-with-errors).
 - **A "Restore" button removes the user's copy** from their `enums.json`: the enum goes back to its default ID and to the software's items, including those the user added by hand (answer of 2026-11-23). Shown only on an overridden built-in enum. Wording "Restore" proposed.
 
 ```mermaid
