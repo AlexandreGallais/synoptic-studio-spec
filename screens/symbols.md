@@ -554,9 +554,10 @@ mindmap
       Global or Template, read only
       Added columns
         Title Columns, small plus on its right
-        Form on add: name and kind of value
-        Header: name, a field always visible, and kind
+        Plus adds a column at once, no form
+        Header: bin, name field, kind select, changed at any time
         Kinds: colour, text, number, yes or no
+        Blocks: a column that does not fit goes to a new block below
         A value per item, global enum only
         Template: headers only, no line
         Delete a column
@@ -568,15 +569,17 @@ mindmap
 | SY-12.1 | Entry of the page | Button of the navigation bar | Enums, a page of the selected Symbol Lib ([SY-00.4](#sy-00--navigation-bar-of-the-symbol-mode), 2026-11-23). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
 | SY-12.2 | List of enums | List | Every enum of Metadata, global and template; none is made here. Each line says Global or Template (2026-11-23). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.3 | Key, Display name, Description | Read-only columns | From Metadata, in the order of decision 0032; changed in Metadata only. A template has no items, so no lines: its name and its description are shown instead, read only (end of 2026-11-17). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
-| SY-12.4 | Add a column | Button (+) on the right of the title "Columns", then a small form | As many columns as needed. The form asks the name and the kind of value of the column, then Add creates it, empty (2026-11-23, decision 0090). The place of the + follows the [layout rules](README.md#a-title-and-a-small--on-its-right) (assistant's reading). | Decided (add, name and kind asked), Proposed (place, form) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
-| SY-12.5 | Name of a column | Text field, always visible in the header of the column | Edited at any time (end of 2026-11-17): `color`, `display name short`... | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
-| SY-12.6 | Kind of value of a column | Select in the add form; shown in the header, beside the name | Chosen when the column is added, for a global enum as for a template (2026-11-23, decision 0090, which replaces "the first value chooses the kind"). A kind of animation, not a type of the model: Colour (RGBA), Text, Number, Yes / no (2026-11-23; see [Kinds of value](../symbols/11-enums-of-a-symbol-lib.md#kinds-of-value)). Changed afterwards: open. | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
+| SY-12.4 | Add a column | Button (+) on the right of the title "Columns" | As many columns as needed. The + adds the column at once, at the end of the last block, without a form (decision 0091, which replaces the form of 0090). The new column: name field focused and empty, kind select on "Choose a kind", values greyed until a kind is chosen (assistant's choice). The place of the + follows the [layout rules](README.md#a-title-and-a-small--on-its-right). | Decided (add at once, no form), Proposed (state of the new column) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
+| SY-12.5 | Name of a column | Text field, always visible in the header of the column, above the kind | Edited at any time (end of 2026-11-17): `color`, `display name short`... | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
+| SY-12.6 | Kind of value of a column | Select always visible in the header of the column, under the name | Chosen in the header once the column is added, for a global enum as for a template (decision 0090, which replaces "the first value chooses the kind"); changed at any time, without opening anything (decision 0091). A kind of animation, not a type of the model: Colour (RGBA), Text, Number, Yes / no (see [Kinds of value](../symbols/11-enums-of-a-symbol-lib.md#kinds-of-value)). What becomes of the values of a filled column: open. | Decided (select in the header, change at any time), Open (values on change) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.7 | Value of a column for an item | Field of the kind (colour picker, text field, number field, checkbox) | Global enum only: one per item. For a template, filled with its items on each placed symbol, in the synoptic (end of 2026-11-17; the columns with the items: assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
-| SY-12.8 | Delete a column | not said (button) | A column can be deleted (end of 2026-11-17). | Decided (control: not said) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
+| SY-12.8 | Delete a column | Icon button (bin), at the top of the header of the column, on the right, above the name | A column can be deleted (end of 2026-11-17); the bin is above the name (decision 0091). At once when the column is empty; a confirmation first when it has values or an animation uses it (assistant's choice). | Decided (bin above the name), Proposed (confirmation) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.9 | Order of the columns | — | Not changed: no handle. | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
+| SY-12.10 | Blocks of columns | Several tables, one under the other | No column narrowed, no sideways scroll: the added column that does not fit starts a new block below. Display name and Description in the first block only; each next block repeats the Key (assistant's reading). Same lines in every block; the blocks follow the width of the window (decision 0091). | Decided (blocks), Proposed (Key repeated) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#when-the-columns-do-not-fit) |
 
 Gaps:
 
 - What a deleted column breaks in the animations.
 - How the words Global and Template look in the list (a tag on the right of the line, in the test screen): for the design system.
-- Changing the kind of a column that has values.
+- What becomes of the values of a column whose kind changes.
+- What the next blocks repeat: the Key alone, or the Display name too.

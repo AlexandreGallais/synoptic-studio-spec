@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Enums of a Symbol Lib · Previous: [Open questions](10-open-questions.md) · Next: [Sub-symbols](12-sub-symbols.md)
 
-Status: draft. The page and its added columns are carried by decisions 0036 and 0090; the assistant's readings below stay to confirm. Not validated. Open points are listed in [Open questions](#open-questions).
+Status: draft. The page and its added columns are carried by decisions 0036, 0090 and 0091; the assistant's readings below stay to confirm. Not validated. Open points are listed in [Open questions](#open-questions).
 
 Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, read only, and lets the user add **columns** to them: a colour, a short text, a number... The animations of the symbols of this library then use these columns: when an enum signal changes value, a property of the drawing takes the value of the chosen column for that item.
 
@@ -12,7 +12,7 @@ Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, rea
 - **It lists every enum of Metadata**, the global enums and the templates (see [Enums](../metadata/draft.md#global-enums-and-templates)). The list and the selected enum say whether it is **Global** or **Template**, read only (Product Owner, 2026-11-23).
 - **What comes from Metadata is read only**: the key, the display name and the description of each item, so that the items can be understood. They are changed in Metadata only. Same columns, same order as on the Enums page of Metadata: Key, Display name, Description (decision 0032).
 - **The user adds columns, as many as needed**, with no limit. Each column has:
-  - a **title**, chosen freely by the user: `color`, `display name short`...;
+  - a **name**, chosen freely by the user: `color`, `display name short`...;
   - a **kind of value**, chosen in a list (see [Kinds of value](#kinds-of-value)).
 - **For a global enum, the user fills one value per item** in each added column: for `pump_mode`, 0 → orange, 1 → yellow, 2 → blue in the column `color`.
 - **For a template, the user adds the columns the same way**, without items, since a template has none in advance. The items of a template are completed on each placed symbol, in the synoptic, with a small warning until they are (see [Enums](../metadata/draft.md#global-enums-and-templates)). The values of these columns are filled there too, with the items (assistant's reading: the question asked both together). Here, a template shows its name and its description, read only, instead of items.
@@ -21,11 +21,40 @@ Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, rea
 
 ## Added columns
 
-- **Adding a column asks its name and its kind of value**, together, for a global enum as for a template (Product Owner, 2026-11-23; decision 0090). The + of the title "Columns" opens a small form: a name field, a select of the kinds, and Add. The new column is empty.
-- **The header of a column shows its name and its kind.** The name is a field always visible in the header, edited at any time.
-- **A column can be deleted.** **The order of the columns does not change**: no handle.
-- Changing the kind of a column afterwards: open. Proposed: possible, but its values are emptied, after a warning when there are some.
+- **The + of the title "Columns" adds a column at once**, at the end of the last block, without a form; the same for a global enum as for a template (decision 0091).
+- **A column just added** is empty (proposed):
+  - its name field takes the focus, empty;
+  - its kind select shows "Choose a kind";
+  - its values stay greyed until a kind is chosen, since the kind sets the field of each value.
+- **The header of an added column always holds, from top to bottom** (decision 0091):
+  - a **delete icon** (a bin), on the right, which removes the column;
+  - the **name**, a text field;
+  - the **kind of value**, a select of the [kinds](#kinds-of-value).
+- **The name and the kind are changed at any time, right in the header**, without opening a menu or a form.
+- Changing the kind of a column that has values: what becomes of its values is open (see [Open questions](#open-questions)).
+- **Deleting a column** (proposed): at once when it is empty; a confirmation first when it has values or an animation uses it.
+- **The order of the columns does not change**: no handle.
 - **A template shows only its columns**: it has no items here, so the table has its headers and no lines; its name, its kind and its description are shown read only.
+
+## When the columns do not fit
+
+The table never lacks room: the columns go to the next line, like words in a paragraph (decision 0091).
+
+- **No column is narrowed** below the width its header needs (the bin, the name field and the kind select), and **the table never scrolls sideways**.
+- **The added column that does not fit** in the width of the page **starts a new block below**. The columns read left to right, then block by block, top to bottom.
+- **Display name and Description are shown in the first block only.**
+- **Each block after the first repeats the Key**, read only, so that each line is known (assistant's reading, to confirm).
+- **Every block has the same lines, in the same order**: the line of an item is at the same rank in each block.
+- **The blocks follow the width of the window**: wider, a column goes back up to the block above; narrower, it goes down.
+
+The enum `pump_mode` with five added columns, in a page too narrow for them all: the first three fit beside Description, the last two go to a second block that repeats the Key.
+
+```mermaid
+block-beta
+    columns 6
+    k1["Key"] dn["Display name"] ds["Description"] c1["color · Colour"] c2["short · Text"] c3["angle · Number"]
+    k2["Key"] c4["level · Number"] c5["visible · Yes / no"] space:3
+```
 
 ## Kinds of value
 
@@ -73,7 +102,7 @@ In the symbol of a pump, an animation gives the body of the pump the colour of t
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Key, display name, description of an item | Metadata, Enums page | Shown read only here | No | No |
-| Added column (title, kind of value) | Enums page of a Symbol Lib | Animations of the symbols of this library | Chosen by an animation | No |
+| Added column (name, kind of value) | Enums page of a Symbol Lib, in the header of the column | Animations of the symbols of this library | Chosen by an animation | No |
 | Value of an added column, global enum | Enums page of a Symbol Lib | Animations | Shown through the animation | No |
 | Name and description of a template | Metadata, Enums page | Shown read only here | No | No |
 | Value of an added column, template | On each placed symbol, with the items of the template | Animations | Shown through the animation | Filled for each placed symbol; a small warning until the template is completed |
@@ -83,7 +112,9 @@ In the symbol of a pump, an animation gives the body of the pump the colour of t
 Noted, not to be asked now: they come up at the review of the part.
 
 - More kinds of value: a sub-symbol or a layer to show? Is a number always without unit (an angle in degrees, a position in px)?
-- Changing the kind of a column that has values: allowed with a warning that empties it, or refused?
+- Changing the kind of a column that has values, now allowed at any time: are its values emptied after a warning, or kept when they convert (a number into a text, a text that reads as a number), the others emptied?
+- In the blocks after the first: the Key alone, or the Display name too, so that a line reads without going back up?
+- More about the name of a column may come (said with a doubt).
 - An item added later in Metadata: its added columns are empty; what does the animation show then (a default value per column)?
 - Deleting a column used by an animation breaks it, with the small red mark (see [What breaks a link](01-libraries-and-symbols.md#what-breaks-a-link)): to confirm.
 - Does a column hold a value, or a link to a named colour of the Symbol Lib (proposed by the research, see [Fill and border](04-drawing-mode/fill-and-border.md))?
