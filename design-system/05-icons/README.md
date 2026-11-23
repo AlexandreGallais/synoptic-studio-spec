@@ -107,8 +107,8 @@ The first screens of the symbol mode use three new icons, drawn with the same ru
 
 | Name | Meaning | Figma |
 | --- | --- | --- |
-| `libraries` | The Libraries button: books on a shelf, the last one leaning. | [`757:9`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=757-9) |
+| `library` | The page General of a Symbol Lib, the library itself: books on a shelf, the last one leaning. | [`757:9`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=757-9) |
 | `pipes` | The page Pipes of a Symbol Lib: a pipe with an elbow. | [`757:17`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=757-17) |
 | `chevron-up` | The arrow back to the previous part of a list of the rail. | [`757:3`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=757-3) |
 
-The page Enums of a Symbol Lib reuses `enums`, the page Symbols reuses `symbols`, the arrow to the next part reuses `chevron-down`.
+The + that creates a Symbol Lib reuses `add`, the page Enums of a Symbol Lib reuses `enums`, the page Symbols reuses `symbols`, the arrow to the next part reuses `chevron-down`.

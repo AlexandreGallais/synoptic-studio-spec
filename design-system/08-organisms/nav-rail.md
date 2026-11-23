@@ -35,20 +35,20 @@ The table shows `part=metadata` only; `part=symbols` is not exported yet.
 | --- | --- | --- |
 | `pageChange` | A click on a page not selected. | the page |
 | `libraryChange` | `part=symbols`: a click on a library not selected. | the library |
-| `librariesOpen` | `part=symbols`: a click on Libraries. | — |
+| `libraryCreate` | `part=symbols`: a click on the +. | — |
 | `libraryPartChange` | `part=symbols`: a click on an arrow. | the part |
 
 ## Behaviour
 
 - In Metadata, the divider sits after Types: the type, then what the types use (Units, Enums, Designations).
-- In the symbol mode ([SY-00](../../screens/symbols.md#sy-00--navigation-bar-of-the-symbol-mode)): Libraries at the top; the list of the Symbol Libs takes the room down to the divider; the divider and the pages Enums, Pipes, Symbols sit at the bottom, shown only once a library is selected.
-- The list of the Symbol Libs never scrolls: at 1600 × 900 it holds 15 items. When the libraries do not fit, an arrow takes the last place, `next-part` (chevron down, "Part 1 of 2" on hover); a later part starts with `previous-part` (chevron up). The arrows are a proposal of the assistant.
+- In the symbol mode ([SY-00](../../screens/symbols.md#sy-00--navigation-bar-of-the-symbol-mode)): `add-library`, the small + (icon `add`), at the top; the list of the Symbol Libs takes the room down to the divider; the divider and the pages General, Enums, Pipes, Symbols sit at the bottom, shown only once a library is selected.
+- The list of the Symbol Libs never scrolls: at 1600 × 900 it holds 14 items. When the libraries do not fit, the list is cut into parts and both arrows show at every part: `previous-part` (chevron up) first, `next-part` (chevron down) last, "Part 1 of 2" on hover; the one that leads nowhere is in `state=disabled`. With few libraries, no arrow shows. The arrows are a proposal of the assistant.
 - The up and down arrows of the keyboard move the focus from item to item.
 
 ## Made of
 
 | Component | Role |
 | --- | --- |
-| [nav-rail-item](../07-molecules/nav-rail-item.md) | Each page, Libraries and the arrows, placement rail. |
+| [nav-rail-item](../07-molecules/nav-rail-item.md) | Each page, the + and the arrows, placement rail. |
 | [nav-rail-library](../07-molecules/nav-rail-library.md) | Each Symbol Lib, `part=symbols`. |
 | [divider](../06-atoms/divider.md) | After Types; in the symbol mode, before the pages. |

@@ -11,39 +11,38 @@ Path: Symbols. On the far left of every screen of the symbol mode.
 ```mermaid
 block-beta
     columns 1
-    lib["Libraries button: the page of all the Symbol Libs (SY-01)"]
-    libs["Every Symbol Lib, one item each; when too many: parts and an arrow"]
+    add["Small +: create a Symbol Lib"]
+    libs["Every Symbol Lib, one item each; when too many: parts and two arrows"]
     sep["Separator"]
-    pages["Pages of the selected Symbol Lib, at the bottom: Enums, Pipes, Symbols"]
+    pages["Pages of the selected Symbol Lib, at the bottom: General, Enums, Pipes, Symbols"]
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-00.1 | Libraries | Button (icon), at the top | Opens the Libraries page ([SY-01](#sy-01--libraries-page)), the page of all the Symbol Libs (2026-11-23, decision 0089; replaces the small + of the end of 2026-11-17). Selected while that page is open. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
-| SY-00.3 | Symbol Libs | List (one item each) | Under the Libraries button: every Symbol Lib, as quick links. One click selects a library and opens its page last used, or Symbols the first time (assistant's reading). The list takes the room down to the separator. An item: the initials of the library in a square, its name on hover (assistant's proposal, drawn so). | Decided (list), Proposed (look, page opened) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
-| SY-00.5 | More libraries | Button (arrow icon), in the list | When the libraries no longer fit above the separator: the list is cut into parts, never scrolled; an arrow opens the next part (2026-11-23). An arrow down at the bottom of the list while there is a next part, "Part 1 of 2" on hover; an arrow up at the top of the list on a later part, to go back (assistant's proposal). | Decided (parts, arrow), Proposed (two arrows, text on hover) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
+| SY-00.1 | Create a Symbol Lib | Button (small +), at the top | Creates a Symbol Lib; asks its name only, as SN-00.1 (2026-11-23, decision 0089: no page of all the Symbol Libs). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
+| SY-00.3 | Symbol Libs | List (one item each) | Under the +: every Symbol Lib, as quick links. One click selects a library and opens its page last used, or Symbols the first time (assistant's reading). The list takes the room down to the separator. An item: the initials of the library in a square, its name on hover (assistant's proposal, drawn so). | Decided (list), Proposed (look, page opened) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
+| SY-00.5 | Previous part, next part | Button each (arrow icon), at the top and at the bottom of the list | When the libraries no longer fit above the separator: the list is cut into parts, never scrolled; an arrow opens the next part (2026-11-23). The arrows show only when the list is cut; then both, at every part, the one that leads nowhere greyed; "Part 1 of 2" on hover (assistant's proposal). | Decided (parts, arrow), Proposed (when shown, greyed, text on hover) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
 | SY-00.2 | Separator | — | Between the list of the Symbol Libs and the pages of the selected one. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
-| SY-00.4 | Pages of the selected Symbol Lib | Buttons, at the bottom of the bar | Three: Enums ([SY-12](#sy-12--enums-of-a-symbol-lib)), Pipes ([Pipes](pipes.md)), Symbols ([SY-02](#sy-02--left-hand-panel-of-the-pages-symbols-and-pipes)), in the order the Product Owner named them (order to confirm). No General page any more (2026-11-23). Shown only once a Symbol Lib is selected (end of 2026-11-17, kept). | Decided (three pages), Proposed (order) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
+| SY-00.4 | Pages of the selected Symbol Lib | Buttons, at the bottom of the bar | Four: General ([SY-01](#sy-01--general-page-of-a-symbol-lib)), Enums ([SY-12](#sy-12--enums-of-a-symbol-lib)), Pipes ([Pipes](pipes.md)), Symbols ([SY-02](#sy-02--left-hand-panel-of-the-pages-symbols-and-pipes)). Enums, Pipes, Symbols in this order (2026-11-23); General first, as SN-00.4 (proposed). Shown only once a Symbol Lib is selected (end of 2026-11-17, kept). | Decided (pages, order of the last three), Proposed (General first) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
 
 Gaps:
 
 - Going from the symbol mode to Metadata is done in the top bar (see the [guide](README.md#top-bar-of-the-window)).
+- With no Symbol Lib yet, the bar shows the + only; what the rest of the screen shows then.
 
-## SY-01 · Libraries page
+## SY-01 · General page of a Symbol Lib
 
-Path: Symbols › Libraries (the button at the top of the navigation bar, 2026-11-23, decision 0089). It replaces the General page of a Symbol Lib, gone with it.
+Path: Symbols › a Symbol Lib › General (2026-11-23, decision 0089, which removes the page of all the Symbol Libs).
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-01.1 | List of Symbol Libs | List | Every Symbol Lib. What a line shows besides the name: open. | Decided (page), Open (content) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#libraries-page) |
-| SY-01.2 | Create a Symbol Lib | Button (small +) | On the right of the title of the list ([layout rules](README.md#a-title-and-a-small--on-its-right)). Asks a name only. | Proposed | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#libraries-page) |
-| SY-01.3 | Name | Text field | The name of the library, changed here since the library has no General page. | Proposed | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#libraries-page) |
-| SY-01.4 | More information | not said | What else the page shows of a library is not said. | Open | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#libraries-page) |
-| SY-01.5 | Open | — | Selecting the library in the bar opens it. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
+| SY-01.1 | Name | Text field | The name of the library. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#general-page-of-a-symbol-lib) |
+| SY-01.2 | Delete the Symbol Lib | Button, then a warning (dialog) | As "Delete the type" in General of Metadata ([MD-02.8](metadata.md#md-02--general)). Takes its symbols and its pipe styles with it (assistant's reading). | Decided (button), Proposed (what it takes) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#general-page-of-a-symbol-lib) |
+| SY-01.3 | More information | not said | What else the page shows of a library is not said. | Open | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#general-page-of-a-symbol-lib) |
 
 Gaps:
 
-- Duplicate (to change a look over time, the user creates a new Symbol Lib: is it a copy of the old one?), delete.
+- Duplicate (to change a look over time, the user creates a new Symbol Lib: is it a copy of the old one?).
 - Not drawn yet in Figma: only the navigation bar is (see [Screens of Symbols](../design-system/10-screens/02-symbols/README.md)).
 
 ## SY-02 · Left-hand panel of the pages Symbols and Pipes
@@ -537,7 +536,7 @@ Gaps:
 
 ## SY-12 · Enums of a Symbol Lib
 
-Path: Symbols › a Symbol Lib › Enums, second page of the library in the navigation bar ([SY-00.4](#sy-00--navigation-bar-of-the-symbol-mode)).
+Path: Symbols › a Symbol Lib › Enums, a page of the library in the navigation bar ([SY-00.4](#sy-00--navigation-bar-of-the-symbol-mode)).
 
 Following the layout rules, the list of enums is on the left and the selected enum on the right, as on [MD-09](metadata.md#md-09--enums).
 
@@ -565,7 +564,7 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-12.1 | Entry of the page | Button of the navigation bar | Enums, second page of the selected Symbol Lib ([SY-00.4](#sy-00--navigation-bar-of-the-symbol-mode), end of 2026-11-17). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
+| SY-12.1 | Entry of the page | Button of the navigation bar | Enums, a page of the selected Symbol Lib ([SY-00.4](#sy-00--navigation-bar-of-the-symbol-mode), 2026-11-23). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
 | SY-12.2 | List of enums | List | Every enum of Metadata, global and template; none is made here. | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.3 | Key, Display name, Description | Read-only columns | From Metadata, in the order of decision 0032; changed in Metadata only. A template has no items, so no lines: its name and its description are shown instead, read only (end of 2026-11-17). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.4 | Add a column | Button (+), small icon | As many columns as needed. Creates an empty column with a default name (end of 2026-11-17). The place of the + follows the [layout rules](README.md#a-title-and-a-small--on-its-right) (assistant's reading). | Decided (add), Proposed (place) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |

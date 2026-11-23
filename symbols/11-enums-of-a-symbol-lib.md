@@ -8,7 +8,7 @@ Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, rea
 
 ## Rules
 
-- **One Enums page in each Symbol Lib**. It opens from the navigation bar, as one of the three pages of the selected library (see [Libraries and symbols](01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode)).
+- **One Enums page in each Symbol Lib**. It opens from the navigation bar, as one of the four pages of the selected library (see [Libraries and symbols](01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode)).
 - **It lists every enum of Metadata**, the global enums and the templates (see [Enums](../metadata/draft.md#global-enums-and-templates)).
 - **What comes from Metadata is read only**: the key, the display name and the description of each item, so that the items can be understood. They are changed in Metadata only. Same columns, same order as on the Enums page of Metadata: Key, Display name, Description (decision 0032).
 - **The user adds columns, as many as needed**, with no limit. Each column has:
