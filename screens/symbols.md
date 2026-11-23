@@ -551,13 +551,14 @@ mindmap
         Key
         Display name
         Description
+      Global or Template, read only
       Added columns
         Title Columns, small plus on its right
-        Name of the column, a field always visible in its header
-        Kind of value
-          Global enum, set by the first value
-          Template, a small icon in the header
+        Form on add: name and kind of value
+        Header: name, a field always visible, and kind
+        Kinds: colour, text, number, yes or no
         A value per item, global enum only
+        Template: headers only, no line
         Delete a column
         No change of order
 ```
@@ -565,16 +566,17 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SY-12.1 | Entry of the page | Button of the navigation bar | Enums, a page of the selected Symbol Lib ([SY-00.4](#sy-00--navigation-bar-of-the-symbol-mode), 2026-11-23). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
-| SY-12.2 | List of enums | List | Every enum of Metadata, global and template; none is made here. | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.2 | List of enums | List | Every enum of Metadata, global and template; none is made here. Each line says Global or Template (2026-11-23). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.3 | Key, Display name, Description | Read-only columns | From Metadata, in the order of decision 0032; changed in Metadata only. A template has no items, so no lines: its name and its description are shown instead, read only (end of 2026-11-17). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
-| SY-12.4 | Add a column | Button (+), small icon | As many columns as needed. Creates an empty column with a default name (end of 2026-11-17). The place of the + follows the [layout rules](README.md#a-title-and-a-small--on-its-right) (assistant's reading). | Decided (add), Proposed (place) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
+| SY-12.4 | Add a column | Button (+) on the right of the title "Columns", then a small form | As many columns as needed. The form asks the name and the kind of value of the column, then Add creates it, empty (2026-11-23, decision 0090). The place of the + follows the [layout rules](README.md#a-title-and-a-small--on-its-right) (assistant's reading). | Decided (add, name and kind asked), Proposed (place, form) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.5 | Name of a column | Text field, always visible in the header of the column | Edited at any time (end of 2026-11-17): `color`, `display name short`... | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
-| SY-12.6 | Kind of value of a column | Global enum: set by the first value; template: small icon in the header | Global enum: the first value typed in the column chooses its kind (colour, text, number...), and the other values of the column follow it. Template: it has no values, so a small icon in the header of the column chooses its kind (end of 2026-11-17). The full list of kinds is open. | Decided (list: Open) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
-| SY-12.7 | Value of a column for an item | Field of the kind (colour picker, text field, number field) | Global enum only: one per item. For a template, filled with its items on each placed symbol, in the synoptic (end of 2026-11-17; the columns with the items: assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.6 | Kind of value of a column | Select in the add form; shown in the header, beside the name | Chosen when the column is added, for a global enum as for a template (2026-11-23, decision 0090, which replaces "the first value chooses the kind"). A kind of animation, not a type of the model: Colour (RGBA), Text, Number, Yes / no (see [Kinds of value](../symbols/11-enums-of-a-symbol-lib.md#kinds-of-value)). Changed afterwards: open. | Decided (chosen on add; colour, text, number), Proposed (RGBA, yes / no) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
+| SY-12.7 | Value of a column for an item | Field of the kind (colour picker, text field, number field, checkbox) | Global enum only: one per item. For a template, filled with its items on each placed symbol, in the synoptic (end of 2026-11-17; the columns with the items: assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.8 | Delete a column | not said (button) | A column can be deleted (end of 2026-11-17). | Decided (control: not said) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.9 | Order of the columns | — | Not changed: no handle. | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 
 Gaps:
 
 - What a deleted column breaks in the animations.
-- How a template is told apart from a global enum in the list: for the design system.
+- How the words Global and Template look in the list (a tag on the right of the line, in the test screen): for the design system.
+- Changing the kind of a column that has values.
