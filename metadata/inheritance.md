@@ -5,8 +5,9 @@
 | Version | Date | Status | Change |
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
+| 2 | 2026-11-23 | Draft | The presets of the parents are shown and duplicated (decision 0087) |
 
-What a sub-type takes from its parents, what it may change, and what happens when a parent changes or is missing. The rules come from decisions 0003, 0013, 0033, 0047, 0079, 0080, 0081 and 0082, the [whole draft](draft.md#types) and the [entity files](entities/README.md).
+What a sub-type takes from its parents, what it may change, and what happens when a parent changes or is missing. The rules come from decisions 0003, 0013, 0033, 0047, 0079, 0080, 0081, 0082 and 0087, the [whole draft](draft.md#types) and the [entity files](entities/README.md).
 
 ## Where it is used
 
@@ -16,7 +17,7 @@ What a sub-type takes from its parents, what it may change, and what happens whe
 | [Signal](entities/16-signal.md), [Command](entities/18-command.md), [Flag](entities/19-flag.md) | An `id` unique along the branch: among the lines of the type, of its parents and of its sub-types. |
 | [Appearance](entities/12-appearance.md) | A value left `null` shows the parent's. |
 | [Documentation](entities/14-documentation.md) | Never inherited: a sub-type shows its own only. |
-| [Preset](entities/29-preset.md) | A new sub-type starts with a copy of its parent's presets. |
+| [Preset](entities/29-preset.md) | The presets of the parents, shown apart and duplicated into the sub-type. |
 | [Preset value](entities/22-preset-value.md), [Signal field](entities/25-signal-field.md), [Command button](entities/26-command-button.md), [Bound](entities/23-bound.md), [Command target](entities/17-command-target.md) | A signal or a command of the type, own or inherited. |
 | [MD-04 · Signals](../screens/metadata.md#md-04--signals), [MD-05 · Commands](../screens/metadata.md#md-05--commands) | The inherited lines first, read only. |
 
@@ -47,7 +48,7 @@ flowchart TD
 | Icon, color | Yes, each one alone | A value left `null` shows the parent's, which may itself be inherited; at the root, the software's default. |
 | `id` | No | Each type has its own, unique in the tree. |
 | Documentation | No (decision 0081) | A sub-type shows its own description and links only, even when they are empty: a documentation describes one type. |
-| Presets | Copied once, at creation (decision 0080) | A new sub-type starts with a copy of each preset of its parent, with its preset values and its faceplate elements; the copy then lives alone. A root type starts with none. |
+| Presets | Shown, then duplicated on demand (decision 0087) | The presets of every parent up the branch are listed apart, read only, under "Parent presets"; they are never used as they are. A preset of a parent is duplicated into the sub-type with the duplicate button of its line, with its preset values and its faceplate elements; the copy then lives alone. A new sub-type, like a root type, starts with no preset of its own. |
 
 `pneumatic_positive_displacement_pump` has the signals `flow`, `speed`, `stroke` and `air_pressure`, and shows the pump icon in green: the icon of `pump`, the color of `positive_displacement_pump`.
 
@@ -55,7 +56,7 @@ flowchart TD
 
 - **It adds its own signals, commands and flags**, after the inherited ones.
 - **It never declares again an `id` it inherits**: the `id` of a signal, a command or a flag is unique among those of the type, of its parents and of its sub-types. No redefinition: an `id` stays one thing along the branch.
-- **Its presets are its own**: it changes, adds and removes them freely, without touching its parent's.
+- **Its presets are its own**: it changes, adds, duplicates from a parent and removes them freely, without touching its parent's.
 - **It never changes an inherited line**: a signal, a command or a flag is changed in the type that declares it, and the change reaches every sub-type.
 - **It chooses its own icon or its own color**, each one alone; its sub-types then follow it. The reset button sets the value back to `null`: the type follows its parent again.
 - **In its presets, it sets every signal**, own and inherited: its start value and its display format, and the faceplate may show an inherited signal or send an inherited command.
@@ -76,7 +77,7 @@ block-beta
 
 ## When a parent changes
 
-A change in the lines, the icon or the color of a parent reaches every sub-type at once, on purpose (decisions 0003, 0013); its presets never do. It is the one exception to "no virtual link between types", which holds between types that are not on the same branch.
+A change in the lines, the icon or the color of a parent reaches every sub-type at once, on purpose (decisions 0003, 0013); its presets reach only the list "Parent presets", never a preset of the sub-type. It is the one exception to "no virtual link between types", which holds between types that are not on the same branch.
 
 | Change in a parent | Effect on each sub-type |
 | --- | --- |
@@ -84,7 +85,7 @@ A change in the lines, the icon or the color of a parent reaches every sub-type 
 | A signal added | Its preset value is added to every preset of the type and of its sub-types, with the start value and the display format a new preset value starts with (decision 0079). |
 | A signal removed | Its preset value is removed from these presets, with the faceplate elements that show it (decision 0079) and the bounds read from it (decision 0082). A command of the sub-type that targets it is flagged in error and kept as written (decision 0082). |
 | A command removed | The faceplate elements that send it are removed from these presets (decision 0080). |
-| A preset changed, added or removed | Nothing: the presets of a sub-type are its own (decision 0080). |
+| A preset changed, added or removed | The list "Parent presets" of each sub-type shows the change; the sub-type's own presets, duplicates included, do not change (decisions 0080, 0087). |
 | A line changed (its `id`, its value type, its quantity...) | The sub-type sees the change; renaming an `id` breaks the models that use it, never the software (its links go through the `internal_id`). A rename is refused when a sub-type already has the new `id` as its own line, as an addition is (decision 0081). |
 | The icon or the color changed | Each sub-type that leaves the value `null` shows the new one. |
 

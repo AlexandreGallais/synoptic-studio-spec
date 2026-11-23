@@ -22,7 +22,7 @@ The title of a list or a table, with its buttons on the right: one + per kind of
 | --- | --- | --- | --- |
 | `title` | text | — | text property `title` |
 | `actions` | `add`, `search-add`, `several-add`, `tree` | `add` | variant `actions` |
-| `addButtons` | list of icon buttons | none | slot `actions`, for `several-add`; empty for a title with no button (Quantities, Unit systems) |
+| `addButtons` | list of icon buttons | none | slot `actions`, for `several-add`; empty for a title with no button (Quantities, Unit systems, Parent presets) |
 | `searching` | boolean | `false` | `state=searching`: the title becomes a [text-input](../06-atoms/text-input.md), the + a `dismiss` |
 | `query` | text | empty | the value of the search field |
 

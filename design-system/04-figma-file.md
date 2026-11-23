@@ -17,7 +17,7 @@ The id of each icon, component and screen is in its sheet: [Icons](05-icons/READ
 | Organisms | [`630:107`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=630-107) | The organisms. |
 | Templates | [`630:108`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=630-108) | The layout of the screens. |
 | Metadata | [`630:109`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=630-109) | The screens of Metadata. |
-| Spec | [`466:5`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=466-5) | Wireframes of the specs, drawn before the design system. Not part of the library. |
+| Spec | [`466:5`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=466-5) | Wireframes of the specs of the symbol editor, the pipes and the synoptic, drawn before the design system; those of Metadata were removed on 2026-11-23. Not part of the library. |
 | POC · … | [`5:119`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=5-119) and after | The old design system, for inspiration only; never changed. |
 
 ## Variables

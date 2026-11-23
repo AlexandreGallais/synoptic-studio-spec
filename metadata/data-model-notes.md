@@ -752,6 +752,14 @@ Ninth questionnaire, same day (decision 0085), each time the advised option:
 - **The converter of the Units page starts at 1, and its values are rounded to 12 significant digits** ("Oui, les deux"): the assistant's reading is validated. Written in [Units on screen](units-on-screen.md#on-the-units-page) and screens MD-08.13, MD-08.14.
 - **The next topic is editing without versions** ("Édition sans versions"), to write when the specification resumes: the Product Owner moved to the Figma design system the same day (F3), and asked for fewer questionnaires.
 
+## Changed on 2026-11-23 (presets of the parents)
+
+Said by the Product Owner in Travail (decision 0087), the assistant's reading to be confirmed by him.
+
+- **The presets of a type are split in two lists**: "Parent presets", read only, the presets of every parent up the branch; then "Presets", the type's own. Nothing changes in the schema: a type still holds its own presets only, and the parent presets are read from the parents' files.
+- **A line of "Parent presets" shows a duplicate button on hover**, which copies the preset into the type's own list. It replaces the copy of every preset at creation (decision 0080): a new sub-type starts with no preset of its own (assistant's reading, asked to the Product Owner).
+- Written in [Preset](entities/29-preset.md), [Inheritance of types](inheritance.md), the [whole draft](draft.md#a-type-needs-a-preset), the [glossary](../overview/glossary.md) and screens MD-07.1, MD-07.24, MD-07.25.
+
 ## Writing rules of the entity files (to become a skill)
 
 Moved here from [Entities](entities/README.md) on 2026-11-22 at the Product Owner's request ("c'est plutôt un skill [...] on fait pas une spec de spec"): how the specification is written is not the specification. These rules wait here until they become the skill `write-a-metadata-entity-file` (see [Settled on 2026-11-22 (documentation plan)](#settled-on-2026-11-22-documentation-plan)); they were brought up to date when moved.

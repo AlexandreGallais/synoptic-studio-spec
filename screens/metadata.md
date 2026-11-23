@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Screens](README.md) › Metadata
 
-Status: drafted by the assistant from the pages of [Metadata](../metadata/README.md), reviewed screen by screen on the wireframes. It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
+Status: drafted by the assistant from the pages of [Metadata](../metadata/README.md), reviewed screen by screen on wireframes, since replaced by the [designed screens](../design-system/10-screens/01-metadata/README.md). It adds no rule. Kinds, statuses and the [layout rules](README.md#layout-rules) are explained in the [guide of this folder](README.md).
 
 ## MD-00 · Navigation bar of Metadata
 
@@ -309,7 +309,7 @@ Gaps:
 
 ## MD-12 · Flags, a part of the type
 
-Path: Metadata › Types › a type › Flags, fifth part of the type, between Commands and Presets. Placed here, in the order of the parts, though its number comes after MD-07. The wireframe is the frame "MD-12 · Flags" of the page Spec in Figma, placed between MD-05 and MD-07.
+Path: Metadata › Types › a type › Flags, fifth part of the type, between Commands and Presets. Placed here, in the order of the parts, though its number comes after MD-07.
 
 ```mermaid
 mindmap
@@ -345,7 +345,7 @@ There is no Faceplate part: the faceplate is the mode Faceplate of a preset ([MD
 
 Path: Metadata › Types › a type › Presets.
 
-The list of presets is on the left, under its title "Presets" and the small + on its right; the page has no big title. The selected preset is on the right: a **switch** between its two modes at the top, then its name, then the mode chosen (the labels confirmed and the switch moved up at the end of the day):
+On the left, two lists one above the other (decision 0087): "Parent presets", the presets of the parents, read only, each with a duplicate button shown on hover; then "Presets", the type's own, under their title and the small + on its right. A root type shows "Presets" alone. The page has no big title. The selected preset is on the right: a **switch** between its two modes at the top, then its name, then the mode chosen (the labels confirmed and the switch moved up at the end of the day):
 
 - **Values**: one table with every signal of the type, for its display unit, decimals, texts of a boolean and start value; no command;
 - **Faceplate**: the faceplate builder, a list of elements added one by one with the + of its title.
@@ -353,16 +353,16 @@ The list of presets is on the left, under its title "Presets" and the small + on
 ```mermaid
 block-beta
     columns 4
-    list["Presets +, then the list"] sw["Switch, at the top: Values | Faceplate"]:3
-    space name["Name of the preset"]:3
+    parents["Parent presets: each line its name, its parent, a duplicate button on hover"] sw["Switch, at the top: Values | Faceplate"]:3
+    list["Presets +, then the list"] name["Name of the preset"]:3
     space values["Values: Signal (icon input or output, ID) | Display unit | Decimals | False / True | Start value"]:3
 ```
 
 ```mermaid
 block-beta
     columns 4
-    list["Presets +, then the list"] sw["Switch, at the top: Values | Faceplate"]:3
-    space name["Name of the preset"]:3
+    parents["Parent presets"] sw["Switch, at the top: Values | Faceplate"]:3
+    list["Presets +, then the list"] name["Name of the preset"]:3
     space add["Elements, then five small icons with a +: Signal, Command, Title, Description, Group"]:3
     space items["Elements, in order, a handle on each; a group: the same five icons at its top, then its own elements"]:3
 ```
@@ -370,6 +370,9 @@ block-beta
 ```mermaid
 mindmap
   root((MD-07 Presets))
+    Parent presets, not for a root type
+      Name of each preset and its parent
+      Duplicate button on hover
     List of presets
       Title Presets, small plus on its right
       Name of each preset, no delete button
@@ -407,7 +410,9 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| MD-07.1 | List of presets | List | At least one is needed to use the type in a symbol; none is created automatically, except for a new sub-type, which starts with a copy of each preset of its parent (2026-11-22, decision 0080). | Decided | [Presets](../metadata/draft.md#presets-and-their-faceplate), [Inheritance of types](../metadata/inheritance.md#what-a-sub-type-inherits) |
+| MD-07.24 | Parent presets | List, read only | Above the list of presets: the presets of every parent up the branch, from the root down; each line its name, then the `id` of its parent in secondary text. No +, no delete; not shown for a root type (2026-11-23, decision 0087). A click on a line selects nothing (assistant's choice). | Decided (list), Proposed (no selection) | [Presets](../metadata/draft.md#a-type-needs-a-preset), [Inheritance of types](../metadata/inheritance.md#what-a-sub-type-inherits) |
+| MD-07.25 | Duplicate a parent preset | Icon button, on hover | On the right of a line of Parent presets, shown on hover. Adds a copy of the preset to the list of presets and selects it; the copy keeps the name when free in the type, else gets " 2", " 3"... (2026-11-23, decision 0087; the name: assistant's choice). | Decided (button), Proposed (name) | [Presets](../metadata/draft.md#a-type-needs-a-preset) |
+| MD-07.1 | List of presets | List | The type's own presets, the only ones a symbol can choose: at least one is needed to use the type in a symbol. None is created automatically, for a root type as for a sub-type, which duplicates those of its parents ([MD-07.25](#md-07--presets); 2026-11-23, decision 0087, which replaces the copy at creation of decision 0080). | Decided | [Presets](../metadata/draft.md#presets-and-their-faceplate), [Inheritance of types](../metadata/inheritance.md#what-a-sub-type-inherits) |
 | MD-07.2 | Create a preset | Button (+), small icon | On the right of the title "Presets" of the list; the page has no big title (2026-11-16). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
 | MD-07.2b | Switch of the modes | Switch (two buttons) | At the top of the right side, above the name of the preset: **Values** or **Faceplate** (2026-11-16; labels confirmed at the end of the day). | Decided | [Presets](../metadata/draft.md#two-modes-chosen-by-a-switch) |
 | MD-07.3 | Name of the preset | Text field | A preset has a name (2026-11-16). Under the switch, the same in both modes. Unique among the presets of its type; a name already taken is refused when typed (decision 0083). | Decided | [Presets](../metadata/draft.md#presets-and-their-faceplate) |
@@ -436,7 +441,7 @@ mindmap
 
 Gaps:
 
-- Rename and duplicate a preset; what happens to the symbols that use a deleted preset?
+- Duplicate one of the type's own presets (a preset of a parent is duplicated with [MD-07.25](#md-07--presets)); what happens to the symbols that use a deleted preset?
 - Can an element be added twice? What can a symbol or a synoptic change in the built faceplate (the texts of its title and description elements, at least)?
 
 ## MD-08 · Units
@@ -554,7 +559,7 @@ There is no Versions page (decision 0053): the application keeps no versions, th
 
 ## MD-13 · Designations
 
-Path: Metadata › Designations (navigation bar, [MD-00.6](#md-00--navigation-bar-of-metadata)). Named Designations by decision 0064. The wireframe is the frame "MD-13 · Identifiers" of the page Spec in Figma, after MD-09, under its former name "Identifiers", as is its entry in the navigation bar of every Metadata frame.
+Path: Metadata › Designations (navigation bar, [MD-00.6](#md-00--navigation-bar-of-metadata)). Named Designations by decision 0064.
 
 ```mermaid
 mindmap

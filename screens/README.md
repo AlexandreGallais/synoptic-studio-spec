@@ -14,13 +14,13 @@ The rules stay in the pages of each part. When a page changes, the screen that s
 
 ## The wireframes in Figma
 
-The screens are also drawn as wireframes on the page **"Spec"** of the Figma file of the design system, one frame per screen, named by its identifier (`MD-04 · Signals`).
+The screens of the symbol editor, the pipes and the synoptic are drawn as wireframes on the page **"Spec"** of the Figma file of the design system, one frame per screen, named by its identifier (`SY-03 · Symbol editor`).
 
-- **Every decision that changes a screen changes, in the same go, the pages of the part, this inventory and the wireframe in Figma**. Never one without the others.
+- **Every decision that changes a screen changes, in the same go, the pages of the part, this inventory and the screen in Figma**. Never one without the others.
 - The change in Figma is checked on a capture of the frame before it is said done.
 - The texts of the wireframes are in English, like these specs; their notes cite the decision and its date.
-- The designed screens of Metadata, made of the components of the [design system](../design-system/README.md), are on the page **"Metadata"** of the same file, one frame per screen and per content state, with their prototype (2026-11-22; see [Figma file](../design-system/04-figma-file.md#screens-of-metadata)). The wireframes of the page "Spec" stay as they are.
-- Two more sections: **"Synoptic · SN-00 to SN-12"**, the screens of [Synoptic](synoptics.md), extrapolated by the assistant; and **"Symbol editor · ideas"** (SY-I1 to SY-I8), ideas for the symbol mode drawn in Figma only, which change none of the pages of [Symbols](../symbols/README.md).
+- The screens of Metadata are no longer wireframes: they are designed with the components of the [design system](../design-system/README.md), on the page **"Metadata"** of the same file, one frame per screen and per content state, with their prototype (see [Figma file](../design-system/04-figma-file.md#screens-of-metadata)). Their wireframes were removed from the page "Spec" on 2026-11-23.
+- Two more sections of the page "Spec": **"Synoptic · SN-00 to SN-12"**, the screens of [Synoptic](synoptics.md), extrapolated by the assistant; and **"Symbol editor · ideas"** (SY-I1 to SY-I8), ideas for the symbol mode drawn in Figma only, which change none of the pages of [Symbols](../symbols/README.md).
 
 ## What it contains
 
