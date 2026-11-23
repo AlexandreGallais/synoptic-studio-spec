@@ -879,7 +879,7 @@ Decision 0095. Some enums come **with the software**, because a part of the soft
 - It is **always global**, never a template.
 - Its **ID can be changed**: it comes with a default ID, and the user may rename it, as any enum.
 - A signal points to it as to any enum.
-- Proposed: the Enums page shows two lists, the built-in enums first, then the user's enums (to confirm).
+- The Enums page shows **two lists**: the built-in enums first, then the user's enums (Product Owner, 2026-11-23). The list of built-in enums has no + (assistant's reading: nothing can be added to it).
 
 | Built-in enum | Default ID | Items (key: display name) | Status |
 | --- | --- | --- | --- |

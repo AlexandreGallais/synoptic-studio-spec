@@ -17,8 +17,9 @@ Pipes are the lines that connect symbols in a synoptic. The user draws them with
 
 | Part of the pipe style | What it sets | Where | Page |
 | --- | --- | --- | --- |
-| Body and border | Width; border on both sides (width, inside, middle or outside); corner radius, the same for every style; moving dashes. | Base | [Pipe styles](pipe-styles.md) |
+| Body and border | Width; border on both sides (width, inside, middle or outside); corner radius, the same for every style. | Base | [Pipe styles](pipe-styles.md) |
 | Fills | Body fill and border fill: colour or dash sequence. | Each pipe style | [Pipe styles](pipe-styles.md) |
+| Moving dashes | On or off, and the speed. | Each pipe style | [Pipe styles](pipe-styles.md#moving-dashes) |
 | Junctions | Looks of a place where a pipe branches: kind, size, fill, border. | Base | [Junctions](junctions.md) |
 | Crossings | What happens where a pipe passes over another: bridge, gap, nothing; a size. | Base | [Crossings](crossings.md) |
 | Start and end shapes | The shapes at the start or at the end of a pipe. | A list of their own, not in the styles | [Pipe ends](ends.md) |
@@ -43,15 +44,15 @@ The user only gives points and styles. The editor computes: the rounded corners,
 
 ## Example
 
-Base style: 6 px, border 1 px outside, corner radius 8 px, moving dashes, circle junctions, bridges.
+Base style: 6 px, border 1 px outside, corner radius 8 px, circle junctions, bridges.
 
-| Pipe style | Fills | Overrides |
-| --- | --- | --- |
-| Water | Body blue; border dark grey | — |
-| Oil | Body dashes black 10, transparent 20, red 2; border dark grey | Junction square; crossing gap |
-| Steam | Body white; border dashes grey 4, transparent 4 | — |
-| Gas | Body yellow; border dark grey | Width 3 px |
-| Electricity | Body yellow | Border off; width 2 px; crossing none |
+| Pipe style | Fills | Moving dashes | Overrides |
+| --- | --- | --- | --- |
+| Water | Body blue; border dark grey | Off | — |
+| Oil | Body dashes black 10, transparent 20, red 2; border dark grey | On | Junction square; crossing gap |
+| Steam | Body white; border dashes grey 4, transparent 4 | On | — |
+| Gas | Body yellow; border dark grey | Off | Width 3 px |
+| Electricity | Body yellow | Off | Border off; width 2 px; crossing none |
 
 ## Where it is used
 
@@ -107,7 +108,7 @@ An archived inspiration, not a decision. It differs from these pages on several 
 | --- | --- | --- |
 | The pipe | pipe, connector, edge, link, schematic line | **Pipe** |
 | What it contains | service, fluid, appearance, content | **Content** (a group label; "fluid" excludes electricity; "service" is the trade word) |
-| The style | appearance, connector style, pipe style | **Pipe style** |
+| The style | appearance, connector style, pipe style | **Pipe style** (kept rather than "pipe type", decision 0095) |
 | The connection point | connection point, pin, port, anchor point | **Connection point** ("anchor" is already taken by the nine anchors) |
 | The junction | junction, branch, junction marker, waypoint | **Junction** (the place), **Junction marker** (the shape), **Branch** (the pipe that leaves) |
 | The crossing | line jump, bridge, jumpover, gap, loop | **Crossing**, of type **Bridge**, **Gap** or **None** |
@@ -136,7 +137,7 @@ flowchart TD
 
 - Junctions and crossings live **inside the pipe style**, as in the archived Figma page and as the report advised. They are computed: the user picks a style for a pipe and does not edit these parts by hand.
 - A symbol can be **connected to a pipe**: it fits onto it and can only be moved along it (see [Pipes in the synoptic](in-the-synoptic.md)).
-- Dashes can **move**, from the start of the pipe to its end, and the movement **propagates** into the branches at a junction. A pipe style can be **linked to a type** of Metadata, if the user wants it: the model then drives the speed, the direction (start to end or end to start) and the colours (see [Pipe styles](pipe-styles.md)).
+- Dashes can **move**, from the start of the pipe to its end, switched on and given a speed in each pipe style (2026-11-23), and the movement **propagates** into the branches at a junction. A pipe style can be **linked to a type** of Metadata, if the user wants it: the model then drives the speed, the direction (start to end or end to start) and the colours (see [Pipe styles](pipe-styles.md)).
 - One **base pipe style** per Symbol Lib, without colour; **pipe styles** give the fills and can override any other option but the corner radius; dashes as **sequences of coloured segments**, for pipes and for every border; dashes computed as cleanly as possible, an odd cut in a corner accepted (decision 0095).
 - The **start and end shapes** are not in the base pipe style: they have a list of their own on the Pipes page, after the pipe styles (decision 0095).
 - A branch leaves **one pipe as a tree**, with one pipe style and one flow, as in the archived Figma page and in Ignition (decision 0094).
