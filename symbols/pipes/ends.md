@@ -4,11 +4,12 @@
 
 Status: draft. Not validated.
 
-A start shape and an end shape can be set on a pipe. They are created in the **pipe style** and chosen in the synoptic.
+A start shape and an end shape can be set on a pipe, and chosen in the synoptic.
 
 ## Rules
 
-- End shapes are parts of the base pipe style, and a pipe style can override them (see [Pipe styles](pipe-styles.md)); they are not a separate list of the Symbol Lib. In the synoptic, each end of a pipe offers the shapes of its style, or none (as in the archived Figma page).
+- End shapes are **not** in the base pipe style: a list of shapes (arrow, flange) shown there is not the way to present them. Where they are made and how they are presented is open (see the questions).
+- In the synoptic, each end of a pipe offers a shape, or none (as in the archived Figma page).
 
 - An end shape is drawn in a small editor of its own: a **box** of the size the user wants, with an **anchor** at each side and each corner of the box (see [Anchors](../03-editor/anchors.md)).
 - The user draws the shape freely inside the box, with the tools of the [drawing mode](../04-drawing-mode/README.md).
@@ -35,6 +36,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.5, 
 
 ## Open questions
 
+- Where are the end shapes made and presented: in each pipe style, as a list of their own in the Symbol Lib, or as symbols of the lib?
 - Four anchors on the sides (archived Figma page) or nine (current specs)?
 - Can an end shape be copied from another pipe style (the archived Figma page allows it)?
 - The arrows of a line drawn in a symbol: their own shapes, or the end shapes of a pipe style?

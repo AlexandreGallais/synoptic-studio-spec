@@ -13,7 +13,7 @@ How pipes are drawn and edited in a synoptic. What a pipe looks like (its style,
 - A **pipe tool** draws pipes between the connection points of symbols, point after point, with straight segments; everything else is computed.
 - A **branch** starts by a click inside an existing pipe; the junction is computed, with the look of the pipe style.
 - A **crossing** gets a bridge, a gap or nothing, as the pipe style says; hovering it highlights it, a click swaps which pipe passes over.
-- Each pipe has a **pipe style**, then a **start shape** and an **end shape** among those of its style, or none.
+- Each pipe has a **pipe style**, then a **start shape** and an **end shape**, or none (where the end shapes are made is open).
 - A symbol can be **connected to a pipe**: it fits onto it and only slides along it.
 
 ### Drawing a pipe
@@ -68,7 +68,7 @@ Proposed:
 | Element | What it does | Status |
 | --- | --- | --- |
 | Pipe style | Select among the pipe styles of the Symbol Libs used, with "Edit this style" (opens it in the symbol mode). | Decided (select), Proposed (edit) |
-| Start shape, end shape | Select each, among the end shapes of the style, or none. | Decided |
+| Start shape, end shape | Select each: an end shape, or none; where the shapes are made is open (see [Pipe ends](../symbols/pipes/ends.md)). | Decided (source: Open) |
 | Connected to | Start and end: a placed symbol and its connection point, a pipe, or free. | Proposed |
 | Crossings | The list, each with which pipe passes over; Swap all. | Proposed |
 | Symbols on the pipe | The list, each with its distance. | Proposed |

@@ -17,7 +17,8 @@ A crossing is a place where a pipe passes over another one without being connect
 | None | Nothing special: one pipe is drawn on top of the other. |
 
 - Bridges and gaps are always computed.
-- The look of a bridge follows the **corner radius** of the pipe: the bigger the radius, the rounder the bridge, to follow the style of the pipe. With a radius of 0, the bridge is rather square.
+- A crossing has a **size**, set in the base pipe style, with a default value. It is a plain setting: it is not computed from the width of the pipe and the corner radius.
+- The look of a bridge follows the **corner radius** of the pipe, so that it stays in the theme: the bigger the radius, the rounder the bridge. With a radius of 0, the bridge is rather square.
 - A gap is always the same: the interruption, nothing more.
 - In a synoptic, the user can choose which of the two pipes passes over the other (see [Pipes in the synoptic](in-the-synoptic.md)).
 
@@ -53,5 +54,6 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.1, 
 
 ## Open questions
 
-- Size of a bridge or of a gap, default rule "last drawn on top": proposed by the report, to confirm.
+- The default value of the size of a crossing, and what it measures for a gap (the cut on each side of the pipe on top?).
+- Default rule "last drawn on top": proposed by the report, to confirm.
 - Does a bridge keep the borders of the pipe (the border follows the arch)?

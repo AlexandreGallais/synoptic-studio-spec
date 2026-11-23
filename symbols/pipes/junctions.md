@@ -28,16 +28,18 @@ flowchart LR
 | Circle | A circle at the junction, bigger than the pipe, to show that it is a junction. |
 | Square | A square at the junction, bigger than the pipe. |
 
-- A circle or a square has its own size, a fill and a border (size, colour...), as the shapes of the [drawing mode](../04-drawing-mode/README.md) do.
-- The junction shape follows the colour of the pipe or has its own colour (to settle, see the questions).
+- A circle or a square has:
+  - a **size**;
+  - a **fill**: **Pipe colour** (the body colour of the pipe style) or **Custom colour** (a colour picked for the junction);
+  - a **border**, as every border of the software: on or off, a width, a position **inside**, **in the middle** or **outside** the edge, and a colour (see [Fill and border](../04-drawing-mode/fill-and-border.md)).
 
 ## Example
 
 | Pipe style | Junction kind | Size | Fill | Border |
 | --- | --- | --- | --- | --- |
 | Steam | Flat | - | - | - |
-| Water | Circle | 12 px | Pipe colour | 2 px, dark grey |
-| Oil | Square | 12 px | Pipe colour | 2 px, dark grey |
+| Water | Circle | 12 px | Pipe colour | 2 px, outside, dark grey |
+| Oil | Square | 12 px | Custom colour: black | 2 px, inside, dark grey |
 
 ## What the research found
 

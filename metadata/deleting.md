@@ -15,7 +15,7 @@ What a user can delete in Metadata, how, and what happens to everything that poi
 | --- | --- |
 | [Type](entities/30-type.md), [Preset](entities/29-preset.md) | Deleted with a red button and a warning; what they hold goes with them. A type that has sub-types is never deleted. |
 | [Signal](entities/16-signal.md), [Command](entities/18-command.md), [Flag](entities/19-flag.md), [Faceplate element](entities/28-faceplate-element.md), [Link entity](entities/13-link.md) | Deleted at once with the bin of their line; what they hold goes with them. |
-| [Enum](entities/06-enum.md), [Enum item](entities/05-enum-item.md), [Designation](entities/11-designation.md) | Deleted on their page; what they hold goes with them. An item and a designation at once; an enum with a warning (proposed). |
+| [Enum](entities/06-enum.md), [Enum item](entities/05-enum-item.md), [Designation](entities/11-designation.md) | Deleted on their page; what they hold goes with them. An item and a designation at once; an enum with a warning (proposed). A built-in enum and its items are never deleted (decision 0095). |
 | [Preset value](entities/22-preset-value.md), [Signal field](entities/25-signal-field.md), [Command button](entities/26-command-button.md), [Bound](entities/23-bound.md) | Removed with the signal or the command they point to. |
 | [Command target](entities/17-command-target.md), [Value type](entities/15-value-type.md), [Preset value](entities/22-preset-value.md), [Text content](entities/27-text-content.md) | Flagged in error, kept as written, when what they point to is deleted. |
 | [Inheritance of types](inheritance.md) | A deleted line of a parent is gone from every sub-type. |

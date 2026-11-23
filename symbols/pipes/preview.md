@@ -4,7 +4,7 @@
 
 Status: draft. Not validated.
 
-When the user edits the base pipe style or a pipe style in a Symbol Lib (body, border, junctions, crossings and end shapes), the **Preview** shows it on every case a pipe can meet. It lets the user understand what an edit does without drawing a synoptic.
+When the user edits the base pipe style or a pipe style in a Symbol Lib (body, border, fills, junctions, crossings), the **Preview** shows it on every case a pipe can meet. It lets the user understand what an edit does without drawing a synoptic.
 
 ## Rules
 
@@ -17,10 +17,10 @@ When the user edits the base pipe style or a pipe style in a Symbol Lib (body, b
 | Base and styles | The base pipe style next to the style being edited, to see what it overrides (proposed by the assistant). |
 | Right angle | The corner radius. |
 | Other angles | An angle other than 90 degrees, a very short segment. |
-| Junction | One junction of the style: a pipe and one of its branches. |
+| Junction | One junction of the style, centred on the point where the branch leaves the pipe. |
 | Several junctions | A 3-way and a 4-way junction. |
 | Crossing | One crossing of the style, both ways. |
-| Start and end | The start and end shapes of the style. |
+| Start and end | End shapes on a pipe of the style (where they are made is open, see [Pipe ends](ends.md)). |
 | Connected to a symbol | A pipe that arrives on a connection point. |
 
 - The cases are not editable by the user.

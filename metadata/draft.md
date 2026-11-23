@@ -870,6 +870,23 @@ Decided by the Product Owner on 2026-11-17 (decision 0035, accepted on 2026-11-1
 - **The screen must make the difference explicit**: a global enum is the same everywhere, a template changes with each symbol. How it is shown is for the design system: the Product Owner asked the assistant to note it, not to explain it on the page itself ("il ne faut pas l'expliquer, mais toi, il faut que tu te le notes : il faudra trouver un moyen d'expliquer ça explicitement").
 - A Symbol Lib can add its own columns to a template as to a global enum (see [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md)).
 
+### Built-in enums
+
+Decision 0095. Some enums come **with the software**, because a part of the software needs them: the first one is **pipe direction**, which animates the direction of the moving dashes of a pipe (see [Pipe styles](../symbols/pipes/pipe-styles.md#a-pipe-style-linked-to-a-type)).
+
+- A built-in enum **cannot be deleted**.
+- It is **read-only**: its items (keys, display names, descriptions) and its description cannot be changed.
+- It is **always global**, never a template.
+- Its **ID can be changed**: it comes with a default ID, and the user may rename it, as any enum.
+- A signal points to it as to any enum.
+- Proposed: the Enums page shows two lists, the built-in enums first, then the user's enums (to confirm).
+
+| Built-in enum | Default ID | Items (key: display name) | Status |
+| --- | --- | --- | --- |
+| Pipe direction | `pipe_direction` | 0: Start to end, 1: End to start | Proposed (ID, keys and names) |
+
+- Open: where a built-in enum is kept (its items come with the software, its ID is the user's), and which other built-in enums the software needs.
+
 ```mermaid
 flowchart LR
     P["Enums page"] --> G["Global enum: items written here, the same everywhere"]
