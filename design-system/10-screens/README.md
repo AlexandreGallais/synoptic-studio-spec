@@ -7,9 +7,8 @@ The screens of the application as drawn in the Figma file, one folder per part, 
 | Folder | Part | Figma page |
 | --- | --- | --- |
 | [01 · Metadata](01-metadata/README.md) | Metadata | Metadata |
-| [02 · Symbols](02-symbols/README.md) | Symbols (navigation bar only, for now) | Symbols |
 
-Synoptics gets its folder (`03-synoptics`) once its screens are drawn.
+Symbols and Synoptics get their folders (`02-symbols`, `03-synoptics`) once their screens are drawn.
 
 ## Rules
 

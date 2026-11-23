@@ -38,3 +38,7 @@ A titled list with its +: a [list-title](../07-molecules/list-title.md) and [lis
 | --- | --- |
 | [list-title](../07-molecules/list-title.md) | Its title and its +. |
 | [list-row](../07-molecules/list-row.md) | Each item, in the slot rows. |
+
+## Behaviour
+
+- `placement=card`: padding `spacing-02` (4) at the top, `spacing-03` (8) at the bottom and on the sides, so that a selected last line keeps the margin of the sides. Its list-title has `spacing-01` (2) on its right, so that the + lines up with the text of the title, 16 from the edge (Product Owner, 2026-11-23).

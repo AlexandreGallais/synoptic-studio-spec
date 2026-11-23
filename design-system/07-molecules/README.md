@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Design system](../README.md) › Molecules
 
-Components made of atoms only, for one job. One sheet per molecule (`<molecule>.md`); the table of its variants and states, exported from Figma, is in [images](images) (`table-<molecule>.svg`). Only the molecules the screens of Metadata and of Symbols use are here.
+Components made of atoms only, for one job. One sheet per molecule (`<molecule>.md`); the table of its variants and states, exported from Figma, is in [images](images) (`table-<molecule>.svg`). Only the molecules the screens of Metadata use are here.
 
 Figma: page [Molecules](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=630-106) (`630:106`). The rules every component follows are in [Components](../03-components.md).
 
@@ -19,7 +19,6 @@ Figma: page [Molecules](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?nod
 | [radio-group](radio-group.md) | Radios and their labels, one checked. | Forms |
 | [list-title](list-title.md) | The title of a list or a table, with its buttons. | Lists and navigation |
 | [nav-rail-item](nav-rail-item.md) | An icon of the rail or of the top bar. | Lists and navigation |
-| [nav-rail-library](nav-rail-library.md) | A Symbol Lib in the rail of the symbol mode. | Lists and navigation |
 | [tree-row](tree-row.md) | A line of the type tree. | Lists and navigation |
 | [list-row](list-row.md) | A line of a list. | Lists and navigation |
 | [part-item](part-item.md) | One part of a type, under the tree. | Lists and navigation |
