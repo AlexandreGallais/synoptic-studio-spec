@@ -88,6 +88,7 @@ flowchart LR
 - **A file whose keys are out of order is still read**, and written again in the order of its schema when saved.
 - **A file of the software's folder broken by hand** is read like any file with errors ([Files](files.md#the-two-configuration-folders)).
 - **The same file name in both configuration folders is not an error**: the user's file is offered (decision 0071).
+- **A user's copy of a built-in enum that lacks an item of the software's** is an error of the user's `enums.json`: the software uses its own built-in enum instead of the copy (decision 0095, [Overriding a built-in enum](draft.md#overriding-a-built-in-enum)).
 
 ## A value that cannot be computed
 

@@ -911,8 +911,8 @@ flowchart LR
 | Pipe direction | `pipe_direction` | 0: Start to end, 1: End to start | Proposed (ID, keys and names) |
 
 - Open: which other built-in enums the software needs.
-- Open: what happens when a copy changed by hand lacks an item the software needs (`pipe_direction` without `1`).
-- Open: can the user go back to the default ID, that is remove their copy, from the interface?
+- **A copy that lacks an item the software needs is a file with errors**: the software uses its own built-in enum instead, and lists the error (answer of 2026-11-23; `pipe_direction` without `1`). See [A file with errors](checks-and-errors.md#a-file-with-errors).
+- **A "Restore" button removes the user's copy** from their `enums.json`: the enum goes back to its default ID and to the software's items, including those the user added by hand (answer of 2026-11-23). Shown only on an overridden built-in enum. Wording "Restore" proposed.
 
 ```mermaid
 flowchart LR
