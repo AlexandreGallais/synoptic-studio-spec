@@ -876,6 +876,8 @@ Decision 0095. Some enums come **with the software**, because a part of the soft
 
 - **The Enum entity does not change**: a built-in enum is an ordinary enum, with its `internal_id`. Only the interface differs.
 - The built-in enums are kept in an **internal `enums.json` of the software**, which the software needs to work (Product Owner, 2026-11-23: "un fichier d'enums internes qui sont obligatoires pour le logiciel"). The Product Owner said "enum.json"; the name of the list's file, `enums.json`, is kept.
+- **This internal `enums.json` is inside the program and cannot be changed** (answer of 2026-11-23): it is not in the software's configuration folder, whose files the user may change by hand ([Files](files.md#the-two-configuration-folders)). The user changes a built-in enum only through their own copy (below).
+- **An enum whose `internal_id` is in the software's `enums.json` is read-only**, whatever file it comes from (Product Owner, 2026-11-23: "dès qu'un UID d'un enum est dans les enums du logiciel [...] l'enum devient en mode read-only").
 - A built-in enum **cannot be deleted**.
 - In the interface, it is **read-only**: its items (keys, display names, descriptions) and its description cannot be changed.
 - It is **always global**, never a template: its screen shows no kind.
@@ -889,9 +891,10 @@ Product Owner, 2026-11-23 ("ça viendra surcharger dans son enum.json à lui, av
 
 - **Changing the ID of a built-in enum writes a copy of the whole enum in the user's `enums.json`**, with the **same `internal_id`** and the ID the user chose.
 - **The user's copy overrides the software's**: the software finds the same `internal_id` in both files and uses the user's.
-- **The user may then change their copy by hand**, for example to add items to the enum. The interface never offers it: no + on its items.
+- **The user may then add items to their copy by hand, in the file, never from the software**: no + on its items (Product Owner, 2026-11-23: "il pourra le faire à la main depuis le fichier de config, mais jamais depuis le logiciel [...] on lui laisse une grosse liberté, mais [...] c'est assez risqué").
 - The match is made by `internal_id`, not by file name: both files are called `enums.json`, and the rule of decision 0071 (the user's file of the same name replaces the software's) does not apply to them, since the user's `enums.json` also holds their own enums.
-- **The overridden enum stays a built-in enum** for the software, because its `internal_id` is in the software's list: it stays in the list of built-in enums, read-only but for its ID (assistant's reading of "par défaut, ça le met en [...]", a word not clear in the dictation; to confirm).
+- **The overridden enum stays a built-in enum**, because its `internal_id` is in the software's `enums.json`: it stays in the list of built-in enums, read-only but for its ID (answer of 2026-11-23).
+- **A new version of the software does not change the user's copy**: the copy wins whole, even when the new version adds an item to the built-in enum; the user adds it to their copy by hand if they want it (answer of 2026-11-23, the same rule as decision 0071).
 
 ```mermaid
 flowchart LR
@@ -908,10 +911,8 @@ flowchart LR
 | Pipe direction | `pipe_direction` | 0: Start to end, 1: End to start | Proposed (ID, keys and names) |
 
 - Open: which other built-in enums the software needs.
-- Open: when a new version of the software changes a built-in enum (a new item), does the user's copy still win whole, or are the new items added to it?
 - Open: what happens when a copy changed by hand lacks an item the software needs (`pipe_direction` without `1`).
 - Open: can the user go back to the default ID, that is remove their copy, from the interface?
-- Open: where the internal `enums.json` is: inside the program, or in the software's configuration folder that the user may change by hand ([Files](files.md#the-two-configuration-folders)).
 
 ```mermaid
 flowchart LR
