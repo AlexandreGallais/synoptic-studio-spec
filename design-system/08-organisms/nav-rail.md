@@ -42,7 +42,7 @@ The table shows `part=metadata` only; `part=symbols` is not exported yet.
 
 - In Metadata, the divider sits after Types: the type, then what the types use (Units, Enums, Designations).
 - In the symbol mode ([SY-00](../../screens/symbols.md#sy-00--navigation-bar-of-the-symbol-mode)): `add-library`, the small + in a square, a [nav-rail-library](../07-molecules/nav-rail-library.md) `content=add`, at the top; the list of the Symbol Libs takes the room down to the divider; the divider and the pages General, Enums, Pipes, Symbols sit at the bottom, shown only once a library is selected.
-- The list of the Symbol Libs never scrolls: at 1600 × 900 it holds 14 items. When the libraries do not fit, the list is cut into parts and both arrows show at every part: `previous-part` (chevron up) first, `next-part` (chevron down) last, "Part 1 of 2" on hover; the one that leads nowhere is in `state=disabled`. With few libraries, no arrow shows. The arrows are a proposal of the assistant.
+- The list of the Symbol Libs never scrolls: at 1600 × 900 it holds 14 items. When the libraries do not fit, the list is cut into parts and both arrows show at every part: `previous-part` (chevron up) first, `next-part` (chevron down) last, "Part 1 of 2" on hover; the one that leads nowhere is in `state=disabled`. With few libraries, no arrow shows (decided, 2026-11-23).
 - The up and down arrows of the keyboard move the focus from item to item.
 
 ## Made of

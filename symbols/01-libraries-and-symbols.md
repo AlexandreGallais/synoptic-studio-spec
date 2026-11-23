@@ -41,7 +41,7 @@ The following holds:
 
 - The separator and the page buttons **sit at the bottom of the bar**. The list of the Symbol Libs takes the room between the + and the separator: it grows with each new library until it reaches the separator.
 - When the libraries no longer fit, the list **never scrolls**. It is cut into **parts**, each as long as the room allows, and an **arrow** opens the next part ("il y a X pages, allez voir la deuxième partie des liens rapides").
-- Proposed for the arrows: they show **only when the list is cut into parts**, so that most users never see them. Then **both** show, at every part: an arrow up at the top of the list, an arrow down at the bottom; the one that leads nowhere (up on the first part, down on the last) is **greyed**. On hover, "Part 1 of 2". They stay in the same place from one part to the next.
+- The arrows show **only when the list is cut into parts**, so that most users never see them (Product Owner, 2026-11-23). Then **both** show, at every part: an arrow up at the top of the list, an arrow down at the bottom; the one that leads nowhere (up on the first part, down on the last) is **greyed**. On hover, "Part 1 of 2". They stay in the same place from one part to the next.
 - The page buttons **show only once a Symbol Lib is selected** (kept from the end of 2026-11-17). With no Symbol Lib yet, the bar shows the + only; what the rest of the screen shows then: open.
 - How a Symbol Lib looks in the list: open. Proposed in the mockups: its initials in a square, its name on hover.
 - Why: every library is one click away, the pipes are not mixed with the symbols, the pages sit under the libraries, and the bar is the same as in the synoptic mode.
@@ -66,7 +66,7 @@ flowchart TD
 
 - The first page of the selected Symbol Lib, as the General page of a type in Metadata.
 - Its **name**, in a text field.
-- **Delete the Symbol Lib**: a button, then a warning, as "Delete the type" in General of Metadata (see [Layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)). The library is deleted with its symbols and its pipe styles (assistant's reading, to confirm).
+- **Delete the Symbol Lib**: a button, then a warning, as "Delete the type" in General of Metadata (see [Layout rules](../screens/README.md#delete-with-a-button-and-a-warning-in-metadata)). The library is deleted with its symbols and its pipe styles (Product Owner, 2026-11-23).
 - What else the page shows: open.
 
 ### Layout of the symbol mode
@@ -187,7 +187,6 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.5, 
 - Before a type is chosen, are the Interaction, Animation and Run modes hidden, greyed, or shown with a message?
 - Is the base pipe style the first item of the pipe styles list, or elsewhere?
 - How does a Symbol Lib look in the navigation bar (icon, initials, name)?
-- The arrows of a list cut into parts: two arrows shown only when the list is cut, the useless one greyed, as proposed, or one arrow that goes round?
-- What the General page shows besides the name and the deletion; what a deletion takes with it.
+- What the General page shows besides the name and the deletion.
 - What the symbol mode shows when there is no Symbol Lib yet.
 - With all the types offered, how does the type choice stay quick when the tree grows (a tree with a search field, as in Metadata)?

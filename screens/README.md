@@ -116,7 +116,7 @@ The signals and the commands of a type are shown in one table each, one line per
 - A narrow bar of icons sits on the far left of the window (a "rail").
 - In Metadata, it holds one icon per page: **Types**, **Units**, **Enums** (decided), then **Designations** (place to confirm; decision 0064). No Versions icon: the application keeps no versions (decision 0053; see [Always editable, no versions](../metadata/draft.md#always-editable-no-versions)).
 - In the symbol mode, it holds a small **+** that creates a Symbol Lib, the list of every Symbol Lib, a separator, then the pages General, Enums, Pipes, Symbols of the selected one (decided, 2026-11-23): see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode).
-- A list in the bar **never scrolls**: when its items no longer fit, it is cut into parts and an arrow opens the next part (2026-11-23). Proposed: an arrow up and an arrow down, shown only when the list is cut, the useless one greyed.
+- A list in the bar **never scrolls**: when its items no longer fit, it is cut into parts and an arrow opens the next part (2026-11-23). An arrow up and an arrow down, shown only when the list is cut, the useless one greyed (decided, 2026-11-23).
 - There is one bar per part. Going from one part to another is done in the top bar (below).
 
 ### Top bar of the window

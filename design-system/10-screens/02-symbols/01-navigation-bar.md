@@ -22,5 +22,4 @@ The frames are laid out in this order, left to right, then top to bottom: the fo
 ## Proposed in these drawings
 
 - A library shown by its initials in a square, its name on hover.
-- The two arrows, shown only when the list is cut into parts, the useless one greyed.
 - The icons `library` (page General) and `pipes`.

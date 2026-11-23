@@ -49,8 +49,7 @@ This file is the index of the open questions. A question sits in the file it con
 | Question | Page | Proposal of the assistant |
 | --- | --- | --- |
 | How a Symbol Lib looks in the navigation bar (the bar itself is decided, 2026-11-23: a small +, every Symbol Lib, a separator, then the pages General, Enums, Pipes, Symbols of the selected one). | [Libraries and symbols](01-libraries-and-symbols.md) | Initials in a square, the name on hover (drawn so in the mockups). |
-| The arrows of a list of libraries cut into parts. | [Libraries and symbols](01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) | Shown only when the list is cut; then an arrow up and an arrow down at every part, the useless one greyed, "Part 1 of 2" on hover. |
-| The General page of a Symbol Lib: what it shows besides the name and the deletion; what a deletion takes with it. | [Libraries and symbols](01-libraries-and-symbols.md#general-page-of-a-symbol-lib) | The name only; the deletion takes the symbols and the pipe styles. |
+| The General page of a Symbol Lib: what it shows besides the name and the deletion (the deletion takes the symbols and the pipe styles: decided, 2026-11-23). | [Libraries and symbols](01-libraries-and-symbols.md#general-page-of-a-symbol-lib) | The name only. |
 | What the symbol mode shows when there is no Symbol Lib yet. | [Libraries and symbols](01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) | The bar with the + only, and an empty page that says to create one. |
 | Type choice among all the types: how it stays quick when the tree grows. | [Libraries and symbols](01-libraries-and-symbols.md) | A tree with a search field, as in Metadata. |
 
