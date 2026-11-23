@@ -46,7 +46,7 @@ The documentation of a type: its description in the [markdown-editor](../../08-o
 
 ### MD-03 · Documentation · headings and table
 
-Every heading level, a paragraph with bold, and a table under the mouse, with its + to insert or add a line or a column ([MD-03.13](../../../screens/metadata.md#md-03--documentation)): the [description-sample](../../08-organisms/description-sample.md) shown by the property `sample` of the markdown-editor.
+Every heading level, a paragraph with bold, italic and a link, inline code, both lists, a quote, a code block, and a table under the mouse, with its + to insert or add a line or a column ([MD-03.13](../../../screens/metadata.md#md-03--documentation)): the [description-sample](../../08-organisms/description-sample.md) shown by the property `sample` of the markdown-editor.
 
 ![MD-03 · Documentation · headings and table](images/md-03-documentation-headings-and-table.svg)
 

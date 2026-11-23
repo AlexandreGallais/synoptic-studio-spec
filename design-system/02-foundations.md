@@ -248,7 +248,7 @@ The line height is given as a ratio of the size, as DTCG asks; the description g
 
 ### Styles of a description
 
-The text a user writes in the visual editor of a description ([markdown-editor](08-organisms/markdown-editor.md)). Its paragraph is `body`, its bold `body-strong`, its code `code`. Every heading is larger than the paragraph, down to Heading 6, so that a bold line never reads as a heading. Sizes proposed.
+The text a user writes in the visual editor of a description ([markdown-editor](08-organisms/markdown-editor.md)). Its paragraph is `body`, its bold `body-strong`, its italic `body` in italic, its link `body` underlined in `accent`, its code `code`. Every heading is larger than the paragraph, down to Heading 6, so that a bold line never reads as a heading. Sizes proposed.
 
 ```tokens
 {

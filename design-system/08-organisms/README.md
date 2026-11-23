@@ -20,7 +20,7 @@ Figma: page [Organisms](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?nod
 | [data-table-row](data-table-row.md) | One line of a table. | Data table |
 | [formatting-toolbar](formatting-toolbar.md) | The tool bar of the documentation editor. | Editors |
 | [markdown-editor](markdown-editor.md) | The documentation editor of a type. | Editors |
-| [description-sample](description-sample.md) | Sample content of a description: every heading, a paragraph, a table. | Editors |
+| [description-sample](description-sample.md) | Sample content of a description: every heading, a paragraph, inline code, lists, a quote, a code block, a table. | Editors |
 | [faceplate-element](faceplate-element.md) | One element of the faceplate builder. | Editors |
 | [palette-picker](palette-picker.md) | The colours a type can take. | Pickers |
 | [icon-picker](icon-picker.md) | The icons a type can take. | Pickers |
