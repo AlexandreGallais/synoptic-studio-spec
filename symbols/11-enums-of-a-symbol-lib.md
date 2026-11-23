@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Enums of a Symbol Lib · Previous: [Open questions](10-open-questions.md) · Next: [Sub-symbols](12-sub-symbols.md)
 
-Status: draft. The page and its added columns are carried by decisions 0036, 0090 and 0091; the assistant's readings below stay to confirm. Not validated. Open points are listed in [Open questions](#open-questions).
+Status: draft. The page and its added columns are carried by decisions 0036, 0090, 0091 and 0092; the assistant's readings below stay to confirm. Not validated. Open points are listed in [Open questions](#open-questions).
 
 Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, read only, and lets the user add **columns** to them: a colour, a short text, a number... The animations of the symbols of this library then use these columns: when an enum signal changes value, a property of the drawing takes the value of the chosen column for that item.
 
@@ -22,7 +22,7 @@ Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, rea
 ## Added columns
 
 - **The + of the title "Columns" adds a column at once**, at the end of the last block, without a form; the same for a global enum as for a template (decision 0091).
-- **A column just added** is empty (proposed):
+- **A column just added has no kind** (Product Owner, 2026-11-23):
   - its name field takes the focus, empty;
   - its kind select shows "Choose a kind";
   - its values stay greyed until a kind is chosen, since the kind sets the field of each value.
@@ -31,7 +31,7 @@ Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, rea
   - the **name**, a text field;
   - the **kind of value**, a select of the [kinds](#kinds-of-value).
 - **The name and the kind are changed at any time, right in the header**, without opening a menu or a form.
-- Changing the kind of a column that has values: what becomes of its values is open (see [Open questions](#open-questions)).
+- Changing the kind of a column that has values: see [Changing the kind](#changing-the-kind).
 - **Deleting a column** (proposed): at once when it is empty; a confirmation first when it has values or an animation uses it.
 - **The order of the columns does not change**: no handle.
 - **A template shows only its columns**: it has no items here, so the table has its headers and no lines; its name, its kind and its description are shown read only.
@@ -43,7 +43,7 @@ The table never lacks room: the columns go to the next line, like words in a par
 - **No column is narrowed** below the width its header needs (the bin, the name field and the kind select), and **the table never scrolls sideways**.
 - **The added column that does not fit** in the width of the page **starts a new block below**. The columns read left to right, then block by block, top to bottom.
 - **Display name and Description are shown in the first block only.**
-- **Each block after the first repeats the Key**, read only, so that each line is known (assistant's reading, to confirm).
+- **Each block after the first repeats the Key alone**, read only, so that each line is known (Product Owner, 2026-11-23).
 - **Every block has the same lines, in the same order**: the line of an item is at the same rank in each block.
 - **The blocks follow the width of the window**: wider, a column goes back up to the block above; narrower, it goes down.
 
@@ -70,6 +70,38 @@ The kind of a column is **a kind of animation, not a type of the model** (Produc
 The four kinds and RGBA: Product Owner, 2026-11-23 (decision 0090).
 
 The list stays open to more kinds (a sub-symbol to show, a named colour of the Symbol Lib): see [Open questions](#open-questions).
+
+## Changing the kind
+
+The kind of a filled column can change at any time without losing work: what converts is kept, and the rest comes back if the user goes back to the earlier kind while the application is open (Product Owner, 2026-11-23, decision 0092).
+
+- **The values that convert are kept** in the new kind; the others are emptied in the file.
+
+| From | To | A value |
+| --- | --- | --- |
+| Number | Text | Kept as its text: 45 gives "45" (decided) |
+| Text | Number | Kept when it reads as a number: "45" gives 45; emptied otherwise (proposed) |
+| Any other change |  | Emptied (proposed) |
+
+- **The application remembers the values of every kind the column had**, while it runs: choosing an earlier kind again gives back the values the column last had under it. The user can switch, test and go back as often as needed.
+- **This memory is never written to the file**: the file holds the current kind and its values only, written at each change, like every change (see [Files and conflicts](../storage/files-and-conflicts.md#saving)).
+- **Closing the application forgets the memory**; reopening shows what the file holds.
+- **No warning blocks the change**: a short notice says how many values were emptied, and that choosing the earlier kind again brings them back while the application is open (assistant's reading, to confirm).
+
+The column `level` of `pump_mode` goes from Number to Yes / no, then back to Number in the same session.
+
+```mermaid
+sequenceDiagram
+    actor U as User
+    participant A as Application (memory)
+    participant F as File of the Symbol Lib
+    U->>A: kind Number to Yes / no
+    A->>A: keeps the Number values in memory
+    A->>F: writes kind Yes / no, values emptied
+    U->>A: kind Yes / no to Number
+    A->>F: writes kind Number and the values from memory
+    Note over A,F: Closing the application forgets the memory, the file stays as last written
+```
 
 ## Used by an animation
 
@@ -104,6 +136,7 @@ In the symbol of a pump, an animation gives the body of the pump the colour of t
 | Key, display name, description of an item | Metadata, Enums page | Shown read only here | No | No |
 | Added column (name, kind of value) | Enums page of a Symbol Lib, in the header of the column | Animations of the symbols of this library | Chosen by an animation | No |
 | Value of an added column, global enum | Enums page of a Symbol Lib | Animations | Shown through the animation | No |
+| Values of a column under its earlier kinds | Kept by the application while it runs, never in the file | Given back when an earlier kind is chosen again | No | No |
 | Name and description of a template | Metadata, Enums page | Shown read only here | No | No |
 | Value of an added column, template | On each placed symbol, with the items of the template | Animations | Shown through the animation | Filled for each placed symbol; a small warning until the template is completed |
 
@@ -112,8 +145,7 @@ In the symbol of a pump, an animation gives the body of the pump the colour of t
 Noted, not to be asked now: they come up at the review of the part.
 
 - More kinds of value: a sub-symbol or a layer to show? Is a number always without unit (an angle in degrees, a position in px)?
-- Changing the kind of a column that has values, now allowed at any time: are its values emptied after a warning, or kept when they convert (a number into a text, a text that reads as a number), the others emptied?
-- In the blocks after the first: the Key alone, or the Display name too, so that a line reads without going back up?
+- Changing the kind: the conversions other than Number to Text (a text that reads as a number, a yes / no, a colour), and a notice rather than a warning (proposed).
 - More about the name of a column may come (said with a doubt).
 - An item added later in Metadata: its added columns are empty; what does the animation show then (a default value per column)?
 - Deleting a column used by an animation breaks it, with the small red mark (see [What breaks a link](01-libraries-and-symbols.md#what-breaks-a-link)): to confirm.

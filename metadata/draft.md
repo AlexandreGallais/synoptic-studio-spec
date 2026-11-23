@@ -1366,7 +1366,7 @@ Metadata is always editable, and the application keeps no versions of it: the ty
 - No Edit button, no Save button, no edit mode to enter and validate, anywhere in Metadata: General, documentation, signals, commands, presets, enums, flags, identifiers (Product Owner, 2026-11-16: "il faut que tout soit éditable tout le temps, rapidement, et puis basta … tout reste ultra simple").
 - The units are not in this list: they are a read-only catalogue that the user never changes (Product Owner, 2026-11-16; see [Units](#a-ready-made-catalogue-read-only)).
 - It replaces every Edit and Save step decided before (the name of a type, the whole signal, the tables).
-- Each change is written to the files as it is made, since there is no Save button (assistant's reading, to confirm; see [Files and conflicts](../storage/files-and-conflicts.md)).
+- Each change is written to the files as it is made, since there is no Save button (Product Owner, 2026-11-23; see [Files and conflicts](../storage/files-and-conflicts.md#saving)).
 
 #### No versions in the application: Git is enough
 
@@ -1391,7 +1391,6 @@ flowchart LR
 ### Open questions
 
 - An undo (Ctrl+Z) in Metadata, now that no Versions page takes a mistake back? One change at a time, and how far back?
-- Each change written to the files at once: to confirm (assistant's reading).
 
 ## Flags
 
@@ -1966,7 +1965,7 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | An element twice; what a symbol or a synoptic changes in the built faceplate | [Presets](#presets-and-their-faceplate) | Raised when the preset was split into Values and the faceplate builder (2026-11-16). The order by handle, the input chosen in the builder, the bounds of a number field and read or write (input) against read or override (output) were settled at the end of 2026-11-17. Not to be asked again in the chat. |
 | Content of the formatting tool bar and no text colour | [Documentation](#type-documentation) | Raised while reviewing the wireframes (2026-11-16); on 2026-11-22 the read-only mode was removed, Visual opens first and only the description of a link changes once added. The order of the links (a handle), the two add icons and the click that opens were decided at the end of the day. |
 | Override an output: who applies it, what is seen while it holds, how it ends | [Commands](#commands), [Presets](#typing-a-value) | The kind is decided (2026-11-16); its mechanism is open. Since 2026-11-17, a signal element of the faceplate set to "override" also overrides an output; the Product Owner leaves it to what is behind the faceplate. |
-| An undo (Ctrl+Z) in Metadata; each change written to the files at once | [Always editable, no versions](#always-editable-no-versions) | Raised when the Versions page was removed (decision 0053, 2026-11-21): versions are left to Git on clean JSON files. |
+| An undo (Ctrl+Z) in Metadata | [Always editable, no versions](#always-editable-no-versions) | Raised when the Versions page was removed (decision 0053, 2026-11-21): versions are left to Git on clean JSON files. |
 | The description kept out of the configuration files | [Flags](#flags) | Settled by the Product Owner on 2026-11-17: the description optional, an internal identifier, no warning on delete, no rule on how an ID is written, the order by handle, the inheritance; on 2026-11-22: an ID unique in the type and its parents. |
 | Left for later: the warning of an uncompleted template (part 3); how the screen shows global against template (design system); the keys of a template in the configuration files | [Enums](#left-for-later) | Noted, not to be asked again (Product Owner, end of 2026-11-17). The description of a global enum, the change of kind and the place of the smallest key were settled the same evening. |
 | The words "ID" and "internal ID" (documentary research); the tables of the presets; JSON files instead of a database, the names of the files and the enums | [Data model](#open-questions-9) | Raised when the Product Owner described the tables on 2026-11-18; the presets left out by him the same day. Settled the same day: one line of links per type, deleted with it; an internal ID on each enum item; a type's ID unique in the whole tree; if JSON, lines nested in their type and one file per type. |
