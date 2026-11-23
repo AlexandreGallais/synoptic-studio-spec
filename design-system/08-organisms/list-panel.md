@@ -41,4 +41,4 @@ A titled list with its +: a [list-title](../07-molecules/list-title.md) and [lis
 
 ## Behaviour
 
-- `placement=card`: padding `spacing-02` (4) at the top, `spacing-03` (8) at the bottom and on the sides, so that a selected last line keeps the margin of the sides. Its list-title has `spacing-01` (2) on its right, so that the + lines up with the text of the title, 16 from the edge (Product Owner, 2026-11-23).
+- `placement=card`: padding `spacing-02` (4) at the top, `spacing-03` (8) at the bottom and on the sides, so that a selected last line keeps the margin of the sides (Product Owner, 2026-11-23). The + of its title stays in the column of the buttons of its lines (duplicate, delete).
