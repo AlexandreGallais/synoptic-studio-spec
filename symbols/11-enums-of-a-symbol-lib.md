@@ -22,10 +22,10 @@ Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, rea
 ## Added columns
 
 - **The + of the title "Columns" adds a column at once**, at the end of the last block, without a form; the same for a global enum as for a template (decision 0091).
-- **A column just added has no kind** (Product Owner, 2026-11-23):
+- **A column just added is a Text column** (Product Owner, 2026-11-23, later the same day, replacing "Choose a kind"):
   - its name field takes the focus, empty;
-  - its kind select shows "Choose a kind";
-  - its values stay greyed until a kind is chosen, since the kind sets the field of each value.
+  - its kind select shows Text, changed like any kind;
+  - its values are empty text fields, ready to fill.
 - **The header of an added column always holds, from top to bottom** (decision 0091):
   - a **delete icon** (a bin), on the right, which removes the column;
   - the **name**, a text field;

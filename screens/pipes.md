@@ -18,6 +18,21 @@ flowchart LR
     STY -.-> SYN["PI-06 Pipes in a synoptic, part 3"]
 ```
 
+## Layout of the page Pipes
+
+The page Pipes of a Symbol Lib follows the layout rules, as [SY-12](symbols.md#sy-12--enums-of-a-symbol-lib): the list on the left, the selected style on the right. Proposed by the assistant on 2026-11-23, to comment on the test screens.
+
+```mermaid
+block-beta
+    columns 4
+    rail["Navigation bar SY-00, Pipes selected"] list["Pipe styles: title, search, +; base pipe style first, separator, then the styles, each with a swatch of its body"] options["Options of the selected style, in sections, two columns"]:1 preview["Preview PI-05, always visible on the right"]
+```
+
+- The base pipe style is the first item of the list, with a tag "Base", then a separator (assistant's reading, see [Libraries and symbols](../symbols/01-libraries-and-symbols.md)).
+- The options are grouped in sections: Body, Border, Corners, Moving dashes, Junctions, Crossings, End shapes (PI-01); Colours, Other overridden options, Linked type (PI-02).
+- Every option is changed in place and written at once (see [Files and conflicts](../storage/files-and-conflicts.md#saving)).
+- Test screens in Figma, page Spec, section "Symbol mode · test screens (2026-11-23)": "PI-01 · Pipes page of a Symbol Lib · base pipe style" and "PI-02 · Pipes page of a Symbol Lib · pipe style Gas". Quick tests, no design-system component.
+
 ## PI-01 · Base pipe style
 
 Path: Symbols › a Symbol Lib › Base pipe style. One per Symbol Lib.
@@ -112,8 +127,8 @@ mindmap
 | PI-02.3 | Border colour | Colour | Shown first. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.4 | Dashes or not | Toggle | Shown first. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.5 | Override another option | Button (icon with a small +) | On the right of the title of the list of overridden options ([layout rules](README.md#a-title-and-a-small--on-its-right), 2026-11-16); the title's wording is not said. Picks any option of [PI-01](#pi-01--base-pipe-style); example: a smaller width for gas pipes. | Decided (title: not said) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-02.6 | Overridden options shown | — | The panel shows which options differ from the base. | Proposed | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-02.7 | Reset to the base | Button | Per overridden option. | Proposed | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-02.6 | Overridden options shown | Tag "Base" on an option that follows the base | The panel shows which options differ from the base: an overridden one has its reset icon, one that follows the base has the tag "Base" (test screen PI-02). | Proposed | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-02.7 | Reset to the base | Icon button (reset), on the right of the option | Per overridden option. | Proposed | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.8 | Linked type | Select | Optional; any type of Metadata (no library of types). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.9 | Animations | List, like [SY-08](symbols.md#sy-08--animation-mode) | Output signals drive the speed and direction of the dashes and the colours, and more ("plenty of things"). | Decided (properties beyond these: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 
