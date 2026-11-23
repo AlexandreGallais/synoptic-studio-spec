@@ -13,9 +13,9 @@ A **Symbol Lib** holds symbols. It is the only kind of library: there are no lib
 - It holds two lists: its **symbols**, a **tree** where a sub-symbol sits under its parent, as in Metadata (decision 0045; see [Sub-symbols](12-sub-symbols.md)), then its **pipe styles**, a flat list. It also has one base pipe style, the global look of its pipes, that the pipe styles override. Junctions, crossings and start and end shapes are parts of the styles (see [Pipe styles](pipes/pipe-styles.md)). A pipe style can be linked to a type, chosen among all the types of Metadata.
 - **One list of symbols only**. There is no "static" or "dynamic" kind: every symbol is the same kind of object, and a symbol simply has a type or not yet, so that the software is simpler to understand at first.
 - It has a small **Enums** page: the enums of Metadata, read only, with the columns the library adds to them for the animations (see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)).
-- It has a name, set on its **General** page. Nothing else: the lists above are its content, not settings.
+- It has a name. Nothing else: the lists above are its content, not settings. The name is set on the **Libraries** page, the page of all the Symbol Libs (proposed: the library has no General page any more, decision 0089).
 - Every symbol is in one Symbol Lib, and only one. No symbol lives outside a library.
-- In symbol mode, the user selects a Symbol Lib in the navigation bar, then one of its pages: General, Enums, Symbols or Pipes.
+- In symbol mode, the user selects a Symbol Lib in the navigation bar, then one of its three pages: Enums, Pipes or Symbols.
 - Why several Symbol Libs: a software or a factory needs its own look for the same objects. To change a look over time, the user creates a new Symbol Lib instead of editing the old one.
 
 ### No library of types
@@ -26,22 +26,50 @@ A **Symbol Lib** holds symbols. It is the only kind of library: there are no lib
 
 ### Navigation bar of the symbol mode
 
-The symbol mode has a navigation bar on the far left, like the one of Metadata (see [Layout rules](../screens/README.md#layout-rules)). The pages of a Symbol Lib are in the bar, and the pipes are separated from the symbols.
+The symbol mode has a navigation bar on the far left, like the one of Metadata (see [Layout rules](../screens/README.md#layout-rules)). It reaches every Symbol Lib in one click, and the pages of the selected one (Product Owner, 2026-11-23, decision 0089, which replaces the bar of the end of 2026-11-17).
 
-- At the top, a **small +** that creates a Symbol Lib. There is no Libraries button nor a page of all the Symbol Libs.
-- Then the list of **every Symbol Lib**: the libraries are listed on the left only.
-- At the bottom of the bar, after a **separator**, the **pages of the selected Symbol Lib**, in this order:
-  1. **General**: the name of the library and the rest of its settings;
-  2. **Enums**: see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md);
-  3. **Symbols**: the symbols and the editor;
-  4. **Pipes**: the pipe styles (see [Pipes](pipes/README.md)).
-- These four buttons **show only once a Symbol Lib is selected**.
-- Why: the pipes are not mixed with the symbols, the libraries are only on the left, and the pages sit under them, which is simple to understand.
+From top to bottom:
+
+1. A **Libraries** button: it opens the **Libraries** page, the page of all the Symbol Libs ("un bouton pour arriver sur la page où il y a toutes les libs").
+2. Under it, the list of **every Symbol Lib**, one item each, as quick links: one click selects the library.
+3. A **separator**.
+4. The buttons of the **pages of the selected Symbol Lib**, at the bottom of the bar: **Enums** (see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)), **Pipes** (the pipe styles, see [Pipes](pipes/README.md)) and **Symbols** (the symbols and the editor). Three pages: the library has no General page any more. Their order here is the order the Product Owner named them in: to confirm.
+
+The following holds:
+
+- The separator and the page buttons **sit at the bottom of the bar**. The list of the Symbol Libs takes the room between the Libraries button and the separator: it grows with each new library until it reaches the separator.
+- When the libraries no longer fit, the list **never scrolls**. It is cut into **parts**, each as long as the room allows, and an **arrow** says that there are more and opens the next part ("il y a X pages, allez voir la deuxième partie des liens rapides"). Proposed: an arrow down at the bottom of the list while there is a next part, with "Part 1 of 2" on hover; an arrow up at the top of the list on a later part, to go back.
+- The page buttons **show only once a Symbol Lib is selected** (kept from the end of 2026-11-17). On the Libraries page, no library is selected: the bar shows the Libraries button and the list only.
+- How a Symbol Lib looks in the list: open. Proposed in the mockups: its initials in a square, its name on hover.
+- Why: every library is one click away, the pipes are not mixed with the symbols, and the pages sit under the libraries, which is simple to understand.
+
+```mermaid
+block-beta
+    columns 1
+    lib["Libraries button: the page of all the Symbol Libs"]
+    list["Every Symbol Lib, one item each; when too many: parts and an arrow, never a scroll"]
+    sep["Separator"]
+    pages["Enums, Pipes, Symbols of the selected Symbol Lib, at the bottom"]
+```
+
+```mermaid
+flowchart TD
+    A["A new Symbol Lib"] --> B{"Does the list still fit above the separator?"}
+    B -- "Yes" --> C["The list grows by one item"]
+    B -- "No" --> D["The list is cut into parts; an arrow opens the next part"]
+```
+
+### Libraries page
+
+- The page of all the Symbol Libs, opened by the Libraries button at the top of the bar.
+- Proposed: a Symbol Lib is created, renamed and deleted there, since the bar keeps no small + and the library no General page. What the page shows of each library: open.
+
+### Layout of the symbol mode
 
 ```mermaid
 block-beta
     columns 4
-    rail["Navigation bar: small +, one item per Symbol Lib, separator, then General, Enums, Symbols, Pipes of the selected one"] panel["Left-hand panel of the page chosen"] canvas["Editor or page"]:2
+    rail["Navigation bar: Libraries, every Symbol Lib, separator, then Enums, Pipes, Symbols of the selected one"] panel["Left-hand panel of the page chosen"] canvas["Editor or page"]:2
 ```
 
 ### The left-hand panel of the symbol mode
@@ -145,7 +173,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.5, 
 
 | Thing | Created and changed in | In a symbol | In a synoptic |
 | --- | --- | --- | --- |
-| Symbol Lib | Symbol mode | Create, select | To settle (part 3) |
+| Symbol Lib | Symbol mode: Libraries page (proposed); selected in the navigation bar | Create, select | To settle (part 3) |
 | Type of a symbol, optional | At creation, or in the right-hand panel of the editor | Choose among all the types, change, remove | No |
 
 ## Open questions
@@ -154,4 +182,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.5, 
 - Before a type is chosen, are the Interaction, Animation and Run modes hidden, greyed, or shown with a message?
 - Is the base pipe style the first item of the pipe styles list, or elsewhere?
 - How does a Symbol Lib look in the navigation bar (icon, initials, name)?
+- The order of the three pages (Enums, Pipes, Symbols as named, or Symbols first)?
+- The Libraries page: is a Symbol Lib created, renamed and deleted there, and what does it show of each library?
+- The arrow of a list cut into parts: one arrow down, then one arrow up on a later part, as proposed?
 - With all the types offered, how does the type choice stay quick when the tree grows (a tree with a search field, as in Metadata)?

@@ -48,7 +48,10 @@ This file is the index of the open questions. A question sits in the file it con
 
 | Question | Page | Proposal of the assistant |
 | --- | --- | --- |
-| How a Symbol Lib looks in the navigation bar (the bar itself is decided: a small +, every Symbol Lib, a separator, then the pages General, Enums, Symbols, Pipes of the selected one). | [Libraries and symbols](01-libraries-and-symbols.md) | Initials in a square, the name on hover. |
+| How a Symbol Lib looks in the navigation bar (the bar itself is decided, 2026-11-23: a Libraries button, every Symbol Lib, a separator, then the pages Enums, Pipes, Symbols of the selected one). | [Libraries and symbols](01-libraries-and-symbols.md) | Initials in a square, the name on hover (drawn so in the mockups). |
+| Order of the three pages of a Symbol Lib. | [Libraries and symbols](01-libraries-and-symbols.md) | Enums, Pipes, Symbols, as named by the Product Owner. |
+| The Libraries page: create, rename and delete a Symbol Lib there? What it shows of each library. | [Libraries and symbols](01-libraries-and-symbols.md#libraries-page) | Yes; a list of the libraries with their name. |
+| The arrow of a list of libraries cut into parts. | [Libraries and symbols](01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) | An arrow down while there is a next part ("Part 1 of 2" on hover), an arrow up on a later part. |
 | Type choice among all the types: how it stays quick when the tree grows. | [Libraries and symbols](01-libraries-and-symbols.md) | A tree with a search field, as in Metadata. |
 
 ## Raised on 2026-11-18

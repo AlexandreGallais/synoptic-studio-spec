@@ -115,7 +115,8 @@ The signals and the commands of a type are shown in one table each, one line per
 
 - A narrow bar of icons sits on the far left of the window (a "rail").
 - In Metadata, it holds one icon per page: **Types**, **Units**, **Enums** (decided), then **Designations** (place to confirm; decision 0064). No Versions icon: the application keeps no versions (decision 0053; see [Always editable, no versions](../metadata/draft.md#always-editable-no-versions)).
-- In the symbol mode, it holds a **Libraries** button (a kind of "home"), a separator, then the list of every Symbol Lib (decided): see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode).
+- In the symbol mode, it holds a **Libraries** button (the page of all the Symbol Libs), the list of every Symbol Lib, a separator, then the pages Enums, Pipes, Symbols of the selected one (decided, 2026-11-23): see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode).
+- A list in the bar **never scrolls**: when its items no longer fit, it is cut into parts and an arrow opens the next part (2026-11-23).
 - There is one bar per part. Going from one part to another is done in the top bar (below).
 
 ### Top bar of the window
@@ -203,8 +204,8 @@ flowchart TD
     MD --> MD09["MD-09 Enums"]
     MD --> MD13["MD-13 Designations"]
 
-    SY --> SY00["SY-00 Navigation bar: Symbol Libs, then the pages of the selected one"]
-    SY00 --> SY01["SY-01 General"]
+    SY --> SY00["SY-00 Navigation bar: Libraries, Symbol Libs, then the pages of the selected one"]
+    SY00 --> SY01["SY-01 Libraries page"]
     SY00 --> SY12["SY-12 Enums of a Symbol Lib"]
     SY00 --> SY02["SY-02 Page Symbols: left-hand panel"]
     SY00 --> SYP["Page Pipes: list of pipe styles"]
