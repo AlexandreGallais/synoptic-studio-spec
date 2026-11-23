@@ -14,7 +14,7 @@ block-beta
     add["Small +: create a Symbol Lib"]
     libs["Every Symbol Lib, one item each; when too many: parts and two arrows"]
     sep["Separator"]
-    pages["Pages of the selected Symbol Lib, at the bottom: General, Enums, Pipes, Symbols"]
+    pages["Pages of the selected Symbol Lib, at the bottom, an icon and its name each: General, Enums, Pipes, Symbols"]
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
@@ -23,7 +23,7 @@ block-beta
 | SY-00.3 | Symbol Libs | List (one item each) | Under the +: every Symbol Lib, as quick links. One click selects a library and opens its page last used, or Symbols the first time (assistant's reading). The list takes the room down to the separator. An item: the initials of the library in a square, its name on hover (assistant's proposal). | Decided (list), Proposed (look, page opened) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
 | SY-00.5 | Previous part, next part | Button each (arrow icon), at the top and at the bottom of the list | When the libraries no longer fit above the separator: the list is cut into parts, never scrolled; an arrow opens the next part (2026-11-23). The arrows show only when the list is cut; then both, at every part, the one that leads nowhere greyed (2026-11-23); "Part 1 of 2" on hover (assistant's proposal). | Decided (parts, arrows), Proposed (text on hover) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
 | SY-00.2 | Separator | — | Between the list of the Symbol Libs and the pages of the selected one. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
-| SY-00.4 | Pages of the selected Symbol Lib | Buttons, at the bottom of the bar | Four: General ([SY-01](#sy-01--general-page-of-a-symbol-lib)), Enums ([SY-12](#sy-12--enums-of-a-symbol-lib)), Pipes ([Pipes](pipes.md)), Symbols ([SY-02](#sy-02--left-hand-panel-of-the-pages-symbols-and-pipes)). In this order (2026-11-23). Shown only once a Symbol Lib is selected (end of 2026-11-17, kept). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
+| SY-00.4 | Pages of the selected Symbol Lib | Buttons, at the bottom of the bar, never moving | Four: General ([SY-01](#sy-01--general-page-of-a-symbol-lib)), Enums ([SY-12](#sy-12--enums-of-a-symbol-lib)), Pipes ([Pipes](pipes.md)), Symbols ([SY-02](#sy-02--left-hand-panel-of-the-pages-symbols-and-pipes)). In this order (2026-11-23). Shown only once a Symbol Lib is selected (end of 2026-11-17, kept). Each: its icon and its name written under it, always (2026-11-23); no frame, unlike the libraries; the page shown filled, its name in bold. Icons: `icon/enums`, `icon/symbols`; General and Pipes to choose. | Decided (place, name written), Proposed (look, icons) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
 
 Gaps:
 
