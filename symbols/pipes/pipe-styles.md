@@ -4,7 +4,7 @@
 
 Status: draft (base style and pipe styles reviewed on the test screens on 2026-11-24, decision 0096). Not validated.
 
-How a pipe looks. A Symbol Lib has **one base pipe style**, the shape shared by all its pipes, and **pipe styles** (water, oil, steam...) that give the fills, the movement of the dashes and, when needed, their own width.
+How a pipe looks. A Symbol Lib has **one base pipe style**, the shape shared by all its pipes, and **pipe styles** (water, oil, steam...) that give the fills, the movement of the dashes and, when needed, their own body and border widths.
 
 ## Rules
 
@@ -16,7 +16,7 @@ The base pipe style and each pipe style are shown with the **same sections, in t
 | --- | --- | --- |
 | Linked type | — | Type of Metadata, optional |
 | Body | Width | Width (the base's, or its own); body fill |
-| Border | Border on or off; width; position | Border width (open); border fill |
+| Border | Border on or off; width; position | Width (the base's, or its own); border fill |
 | Corners | Corner radius | Shown, set by the base |
 | Junctions | Kind; size | Shown, set by the base |
 | Crossings | Kind | Shown, set by the base |
@@ -35,7 +35,7 @@ The base pipe style and each pipe style are shown with the **same sections, in t
 | Border | Width | The width of the border, in pixels. |
 | Border | Position | **Inside**, **in the middle** or **outside** the edge of the body, as for the border of a shape (see [Fill and border](../04-drawing-mode/fill-and-border.md)). Inside, the border eats into the width of the body; outside, it adds to it. |
 | Corners | Corner radius | Rounds the angles of the pipe (see below). The same for every pipe style. |
-| Junctions | Kind and size | How a branch looks: flat, circle or square, with its size; its fill and border are those of the pipe (see [Junctions](junctions.md)). |
+| Junctions | Kind and size | How a branch looks: flat (the pipes join in one clean outline), circle or square; a circle or a square has a size. Its fill and border are those of the pipe (see [Junctions](junctions.md)). |
 | Crossings | Kind | What happens where a pipe passes over another: bridge, gap or none. Its size is computed from the body width (see [Crossings](crossings.md)). |
 
 - Junctions and crossings are parts of the style, not separate lists of the Symbol Lib. They are computed from the style; the user never draws them on each pipe.
@@ -50,12 +50,12 @@ The base pipe style and each pipe style are shown with the **same sections, in t
 | Linked type | Type | A type of Metadata, optional (see [A pipe style linked to a type](#a-pipe-style-linked-to-a-type)). |
 | Body | Width | The width of the base, or a width of its own (see below). |
 | Body | Body fill | A plain colour, or a **dash sequence** that follows the pipe from its start to its end (see [Dash sequences](#dash-sequences)). |
+| Border | Width | The border width of the base, or a width of its own (see below). Shown when the base style has a border. |
 | Border | Border fill | A plain colour or a dash sequence, like the body. Shown when the base style has a border. |
 | Movement | Direction | A signal of the linked type that says whether the dashes move, and which way (see [Moving dashes](#moving-dashes)). |
 | Movement | Speed | A signal of the linked type, or a fixed value. |
 
-- **A pipe style can have its own body width**: in the plant, gas pipes are small pipes, so the "Gas" style is drawn thinner. Without a width of its own, the style takes the base's, and follows it when the base changes.
-- Open: whether a pipe style can also have its own border width, for the same small pipes.
+- **A pipe style can have its own body width and its own border width**: in the plant, gas pipes are small pipes, so the "Gas" style is drawn thinner, its border too. Without a width of its own, the style takes the base's, and follows it when the base changes; each width is chosen on its own.
 - **No other option of the base can be changed in a pipe style**: there is no list of overridden options. Corners, junctions, crossings, border on or off and border position are the base's for every pipe style.
 - The content ("what the pipe contains") only names and groups the styles. The editor does not know what a fluid is.
 - A pipe has one pipe style, chosen in the synoptic; its branches have the same (a pipe is one tree, see [Junctions](junctions.md)). The base style has no colour, so a pipe always has a pipe style (assumption of the assistant, to confirm).
@@ -105,7 +105,7 @@ block-beta
 ### Moving dashes
 
 - The dashes of a pipe style **move** to show the flow. There is **no on or off option**: the movement comes from a **signal of the linked type**.
-- **Direction**: the user picks a signal of the linked type that says whether the dashes move and which way: stopped, from the start of the pipe to its end, or from the end to its start. Its values come from the built-in enum **pipe direction** of Metadata (see [Built-in enums](../../metadata/draft.md#built-in-enums)).
+- **Direction**: the user picks **one signal** of the linked type that says both whether the dashes move and which way: stopped, from the start of the pipe to its end, or from the end to its start. It is an enum signal of the built-in enum **pipe direction** of Metadata, with three items (see [Built-in enums](../../metadata/draft.md#built-in-enums)); there is no second signal "moving or not".
 - **Speed**: either a signal of the linked type, or a fixed value. The fixed value can always be typed: it is never greyed out behind an option.
 - Without a linked type, or without a direction signal, the dashes do not move (assistant's reading, to confirm).
 - **Propagation**: where a branch leaves the pipe (a junction), the movement goes on into the branch, following the flow: the whole tree is one flow. The pipe is no longer a plain drawing: it behaves half like a symbol.
@@ -154,13 +154,13 @@ flowchart LR
 
 Base style of the library "Plant A": width 6 px; border on, 1 px, outside; corner radius 8 px; junction circle 12 px; crossing bridge.
 
-| Pipe style | Linked type | Fills | Movement | Own width |
+| Pipe style | Linked type | Fills | Movement | Own widths |
 | --- | --- | --- | --- | --- |
 | Water | — | Body blue; border dark grey. | None: no type | — |
 | Steam | `steam_line` | Body white; border dashes: grey 4, transparent 4. | Direction: `flow_direction`; speed fixed | — |
 | Oil | `oil_line` | Body dashes: black 10, transparent 20, red 2; border dark grey. | Direction: `flow_direction`; speed: `flow_speed` | — |
-| Gas | `gas_line` | Body yellow; border dashes: black 10, transparent 20, red 2. | Direction: `flow_direction`; speed fixed, 40 | 3 px (small pipes) |
-| Electricity | — | Body yellow; border yellow. | None: no type | 2 px |
+| Gas | `gas_line` | Body yellow; border dashes: black 10, transparent 20, red 2. | Direction: `flow_direction`; speed fixed, 40 | Body 3 px, border 0.5 px (small pipes) |
+| Electricity | — | Body yellow; border yellow. | None: no type | Body 2 px |
 
 ## What the research found
 
@@ -196,8 +196,6 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.2, 
 
 ## Open questions
 
-- Can a pipe style have its own border width, besides its own body width?
-- Does the direction signal hold "stopped" itself (one enum of three values), or does a second signal say whether the dashes move?
 - Which properties of a style a signal can drive, beyond the speed, the direction and the colours?
 - Can the base pipe style be linked to a type, or only the pipe styles?
 - In which unit is the speed of the moving dashes set (pixels per second)?

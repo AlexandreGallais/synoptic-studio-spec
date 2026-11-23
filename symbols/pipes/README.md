@@ -11,17 +11,17 @@ Pipes are the lines that connect symbols in a synoptic. The user draws them with
 - A pipe connects the **connection points** of symbols (see [Connection points](connection-points.md)).
 - A pipe is drawn with straight segments, by clicking. Everything else is computed.
 - What a pipe looks like comes from its **pipe style**, kept in the Symbol Lib, never from options typed on each pipe.
-- A Symbol Lib has **one base pipe style**, the shape of all its pipes, without colour. Each **pipe style** (water, oil, steam...) gives the fills of the body and of the border, plain colours or dash sequences, the movement of its dashes through the signals of a linked type, and can have its own body width, such as a smaller width for gas pipes; nothing else of the base changes (see [Pipe styles](pipe-styles.md)).
+- A Symbol Lib has **one base pipe style**, the shape of all its pipes, without colour. Each **pipe style** (water, oil, steam...) gives the fills of the body and of the border, plain colours or dash sequences, the movement of its dashes through the signals of a linked type, and can have its own body and border widths, such as smaller ones for gas pipes; nothing else of the base changes (see [Pipe styles](pipe-styles.md)).
 - The base pipe style and the pipe styles are shown with the same sections, in the same order.
 - Dashes, on a body or a border, are a **sequence of coloured segments** (a gap is a transparent segment), computed along the pipe.
 - **Junctions and crossings live in the pipe style**, not in separate lists of the Symbol Lib. They are computed, not edited by hand: the user chooses one style for a pipe, and the style says how all of it looks.
 
 | Part of the pipe style | What it sets | Where | Page |
 | --- | --- | --- | --- |
-| Body and border | Width; border on both sides (width, inside, middle or outside); corner radius, the same for every style. | Base; a pipe style can have its own body width | [Pipe styles](pipe-styles.md) |
+| Body and border | Width; border on both sides (width, inside, middle or outside); corner radius, the same for every style. | Base; a pipe style can have its own body and border widths | [Pipe styles](pipe-styles.md) |
 | Fills | Body fill and border fill: colour or dash sequence. | Each pipe style | [Pipe styles](pipe-styles.md) |
-| Linked type and movement | A type of Metadata, optional; a signal for the direction of the dashes (stopped, forward, backward); the speed, a signal or a fixed value. | Each pipe style | [Pipe styles](pipe-styles.md#moving-dashes) |
-| Junctions | Looks of a place where a pipe branches: kind and size; fill and border are the pipe's. | Base | [Junctions](junctions.md) |
+| Linked type and movement | A type of Metadata, optional; one signal for the direction of the dashes (stopped, start to end, end to start); the speed, a signal or a fixed value. | Each pipe style | [Pipe styles](pipe-styles.md#moving-dashes) |
+| Junctions | Looks of a place where a pipe branches: flat (one clean outline), circle or square, a size for a circle or a square; fill and border are the pipe's. | Base | [Junctions](junctions.md) |
 | Crossings | What happens where a pipe passes over another: bridge, gap, nothing; the size is computed from the body width. | Base | [Crossings](crossings.md) |
 | Start and end shapes | The shapes at the start or at the end of a pipe. | A list of their own, not in the styles | [Pipe ends](ends.md) |
 
@@ -33,7 +33,7 @@ Pipes are the lines that connect symbols in a synoptic. The user draws them with
 ```mermaid
 flowchart LR
     SY["Symbol: connection points"] --> P["Pipe drawn in a synoptic"]
-    B["Symbol Lib: base pipe style, shape, junctions, crossings"] --> L["Pipe styles: fills, movement, own width"]
+    B["Symbol Lib: base pipe style, shape, junctions, crossings"] --> L["Pipe styles: fills, movement, own widths"]
     L --> P
     P --> C["Computed: corners, junctions, crossings, ends"]
     T["Preview in the library editor"] -.->|"shows every case"| L
@@ -138,10 +138,11 @@ flowchart TD
 
 - Junctions and crossings live **inside the pipe style**, as in the archived Figma page and as the report advised. They are computed: the user picks a style for a pipe and does not edit these parts by hand.
 - A symbol can be **connected to a pipe**: it fits onto it and can only be moved along it (see [Pipes in the synoptic](in-the-synoptic.md)).
-- A pipe style can be **linked to a type** of Metadata. Its dashes **move** only through the signals of that type: a direction signal (stopped, start to end, end to start) and a speed, a signal or a fixed value; no on or off option. The movement **propagates** into the branches at a junction. The model also drives the colours (decision 0096, see [Pipe styles](pipe-styles.md)).
+- A pipe style can be **linked to a type** of Metadata. Its dashes **move** only through the signals of that type: one direction signal of the built-in enum "pipe direction" (stopped, start to end, end to start) and a speed, a signal or a fixed value; no on or off option. The movement **propagates** into the branches at a junction. The model also drives the colours (decision 0096, see [Pipe styles](pipe-styles.md)).
 - One **base pipe style** per Symbol Lib, without colour; **pipe styles** give the fills; dashes as **sequences of coloured segments**, for pipes and for every border; dashes computed as cleanly as possible, an odd cut in a corner accepted (decision 0095).
-- A pipe style changes **nothing of the base but its body width**: no list of overridden options. Base and pipe styles show the same sections in the same order (decision 0096).
+- A pipe style changes **nothing of the base but its body width and its border width**: no list of overridden options. Base and pipe styles show the same sections in the same order (decision 0096).
 - The **size of a crossing** is computed from the body width, not set (decision 0096).
+- A **flat junction** has no marker and no size: the pipes join in one clean outline; only a circle or a square has a size (decision 0096).
 - The **start and end shapes** are not in the base pipe style: they have a list of their own on the Pipes page, after the pipe styles (decision 0095).
 - A branch leaves **one pipe as a tree**, with one pipe style and one flow, as in the archived Figma page and in Ignition (decision 0094).
 - **No path kind per pipe**: the corner radius of the style gives the look of every angle (decision 0094).

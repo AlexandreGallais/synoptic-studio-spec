@@ -908,7 +908,7 @@ flowchart LR
 
 | Built-in enum | Default ID | Items (key: display name) | Status |
 | --- | --- | --- | --- |
-| Pipe direction | `pipe_direction` | 0: Stopped, 1: Start to end, 2: End to start | Proposed (ID, keys and names; "Stopped" in this enum or in a second signal: open) |
+| Pipe direction | `pipe_direction` | 0: Stopped, 1: Start to end, 2: End to start | Three items, "Stopped" included, one signal for whether the dashes move and which way: decided (2026-11-24). ID, keys and display names: proposed |
 
 - Open: which other built-in enums the software needs.
 - **Adding items is the only change allowed in the copy**, besides the ID of the enum (Product Owner, 2026-11-23: "la seule chose qu'il peut faire, c'est ajouter un item").
