@@ -18,6 +18,7 @@ A titled list with its +: a [list-title](../07-molecules/list-title.md) and [lis
 
 | Input | Type | Default | Figma |
 | --- | --- | --- | --- |
+| `placement` | `column` or `card` | `column` | `placement=column`: square corners, for a list that fills a column; `placement=card`: corners `radius-md`, for a list laid as a card in the main zone, beside a [data-table](data-table.md) |
 | `title` | text | — | its list-title |
 | `items` | list of rows | — | slot `rows`, filled with list-row |
 | `selected` | the selected item | none | the list-row in `state=selected` |

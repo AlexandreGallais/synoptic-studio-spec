@@ -2,7 +2,7 @@
 
 > [Home](../../../README.md) › [Design system](../../README.md) › [Screens](../README.md) › [Screens of Metadata](README.md) › Units
 
-The quantities and their units in a unit system. Controls: [MD-08](../../../screens/metadata.md#md-08--units).
+The quantities and their units in a unit system; the unit systems in a [list-panel](../../08-organisms/list-panel.md) in `placement=card`. Controls: [MD-08](../../../screens/metadata.md#md-08--units).
 
 ## Figma
 

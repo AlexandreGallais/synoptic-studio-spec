@@ -2,7 +2,7 @@
 
 > [Home](../../../README.md) › [Design system](../../README.md) › [Screens](../README.md) › [Screens of Metadata](README.md) › Presets
 
-The presets of a type, in two [list-panels](../../08-organisms/list-panel.md) one above the other: Parent presets, read only, each [list-row](../../07-molecules/list-row.md) with the parent it comes from and its duplicate button on hover (the second line of MD-07 · Presets · Values shows it); then Presets, the type's own. The selected preset, its values or its faceplate, on the right. Controls: [MD-07](../../../screens/metadata.md#md-07--presets).
+The presets of a type, in two [list-panels](../../08-organisms/list-panel.md) in `placement=card` one above the other: Parent presets, read only, each [list-row](../../07-molecules/list-row.md) with the parent it comes from and its duplicate button on hover (the second line of MD-07 · Presets · Values shows it); then Presets, the type's own. The selected preset, its values or its faceplate, on the right. Controls: [MD-07](../../../screens/metadata.md#md-07--presets).
 
 ## Figma
 
