@@ -1,0 +1,1 @@
+import"./main-YMDBDD3Y.js";import{_ as C,v}from"./chunk-BhcSRkyg.js";export{v as createArchitectureServices};

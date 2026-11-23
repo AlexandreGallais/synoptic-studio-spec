@@ -1,0 +1,4 @@
+# What the specification's site leaves out, one pattern a line, as .gitignore says it.
+# .github/ and node_modules/ are always left out; « !pattern » shows something again.
+# research/
+# *.en.md

@@ -1,0 +1,40 @@
+# The specification as a site: Arsenal's Markdown reader, published with GitHub Pages. Nothing is
+# built nor copied: the reader reads the repository's Markdown and images live from GitHub, as
+# they are on its branch (spec-site.json says which), so a push shows at once. This workflow only
+# publishes the reader again when it changes. Written by Arsenal; run again with:
+# gh workflow run spec-site.yml
+name: Specification site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/spec-reader/**"
+      - ".github/workflows/spec-site.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/configure-pages@v5.0.0
+      - uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: .github/spec-reader
+      - id: deployment
+        uses: actions/deploy-pages@v4.0.5
