@@ -52,7 +52,7 @@ Path: Symbols › a Symbol Lib › Symbols, or › Pipes. Since the end of 2026-
 ```mermaid
 block-beta
     columns 2
-    sym["Page Symbols: title, search icon, +, list; separator; layers of the open symbol (SY-03)"]
+    sym["Page Symbols: title, search icon, unfold all, fold all, +, list; separator; layers of the open symbol (SY-03)"]
     pip["Page Pipes: title, search icon, +, list of pipe styles"]
 ```
 
@@ -61,6 +61,7 @@ mindmap
   root((SY-02 Left-hand panel))
     Page Symbols
       Search
+      Unfold all, fold all
       Create a symbol
         Type, optional
         Preset, optional
@@ -94,6 +95,7 @@ mindmap
 | SY-02.12 | Named colours | List | A flat list "Colours" that symbols and styles point to. | Proposed | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md) |
 | SY-02.13 | Create a sub-symbol | Button (small +) | On the right of a symbol, when the mouse is over it, as for the types of Metadata; also a + in the editor of the open symbol (its place: Open). The sub-symbol is in the same Symbol Lib. | Decided (place in the editor: Open) | [Sub-symbols](../symbols/12-sub-symbols.md) |
 | SY-02.14 | Fault of a sub-symbol | — | When the parent changes type or loses it, every sub-symbol goes into fault and the application says so. How it shows: with the list of faults (Open). | Decided (look: Open) | [Sub-symbols](../symbols/12-sub-symbols.md) |
+| SY-02.15 | Unfold all, fold all the symbols | Button each (icon) | On the line of the title "Symbols", between the search icon and the +, as on the title "Layers" (SY-03.14): every parent of the tree of symbols (Product Owner, 2026-11-24). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#the-left-hand-panel-of-the-symbol-mode) |
 
 Gaps:
 

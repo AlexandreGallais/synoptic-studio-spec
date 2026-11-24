@@ -86,7 +86,7 @@ What the left-hand panel shows depends on the page chosen in the bar. Since 2026
 | Page | Left-hand panel, from top to bottom |
 | --- | --- |
 | General | None: the page has no list (proposed). |
-| Symbols | The title "Symbols" with, on its right, a **search** icon and a **+** that creates a symbol; then the list; a click on an item opens the symbol in the editor. A separator, then the **layers** of the open symbol: see [Layers](03-editor/layers.md). |
+| Symbols | The title "Symbols" with, on its right, a **search** icon, **unfold all** and **fold all** (as on the title "Layers", Product Owner, 2026-11-24) and a **+** that creates a symbol; then the list, a tree whose parents fold and unfold; a click on an item opens the symbol in the editor. A separator, then the **layers** of the open symbol: see [Layers](03-editor/layers.md). |
 | Pipes | The same for the pipe styles: the title "Pipe styles" with a search icon and a **+**, then the list; a click on an item opens the style. |
 
 - No search field is shown all the time: a click on the search icon opens the field over the title, which it covers whole (Product Owner, 2026-11-23; see [Search: a small icon on the line of the title](../screens/README.md#search-a-small-icon-on-the-line-of-the-title)).
@@ -98,7 +98,7 @@ What the left-hand panel shows depends on the page chosen in the bar. Since 2026
 ```mermaid
 block-beta
     columns 2
-    sym["Page Symbols: title, search icon, +, list (thumbnail and name); separator; layers of the open symbol"]
+    sym["Page Symbols: title, search icon, unfold all, fold all, +, list (thumbnail and name); separator; layers of the open symbol"]
     pip["Page Pipes: title, search icon, +, list (base style first)"]
 ```
 
