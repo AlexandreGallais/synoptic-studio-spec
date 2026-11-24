@@ -47,7 +47,7 @@ These rules come from the other parts; this part only applies them.
 | --- | --- |
 | The top bar has a **Synoptic** icon, beside Metadata and Symbols. | [Layout rules](../screens/README.md#top-bar-of-the-window), 2026-11-16 |
 | In a synoptic, the **type** of a symbol is never changed; a placed symbol may take one of its sub-types; there are no presets (2026-11-24). | [Metadata draft, Type and symbol](../metadata/draft.md#type-and-symbol) |
-| On one placed symbol, the synoptic changes freely its **signal settings** and its **faceplate** (hide, add, move): Metadata is the strict base, the synoptic the freedom (2026-11-24). | [Metadata draft, In a symbol and in a synoptic](../metadata/draft.md#in-a-symbol-and-in-a-synoptic) |
+| On one placed symbol, the synoptic changes freely its **signal settings** and its **faceplate** (hide, add, move, change any field): Metadata is the strict base, the synoptic the freedom (2026-11-24). | [Metadata draft, In a symbol and in a synoptic](../metadata/draft.md#in-a-symbol-and-in-a-synoptic) |
 | A symbol with a type can be placed and **left unwired**. | [Symbols](../symbols/README.md#one-kind-of-symbol), 2026-11-15 |
 | The **flags** of a type are ticked on each placed symbol. | [Metadata draft, Flags](../metadata/draft.md#flags) |
 | The **designations** used by a faceplate give the synoptic a list of texts to fill, one per placed symbol; a text is meant to be unique. A required designation is filled on every placed symbol. | [Metadata draft, Identifiers](../metadata/draft.md#identifiers), 2026-11-18; [Designation](../metadata/entities/11-designation.md), 2026-11-21 |

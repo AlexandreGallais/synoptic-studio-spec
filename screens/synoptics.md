@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Screens](README.md) › Synoptic
 
-Status: extrapolated by the assistant from the pages of [Synoptics](../synoptics/README.md), themselves an extrapolation. Almost every line is **Proposed**; the few **Decided** ones come from Metadata, Symbols and Pipes. Kinds and statuses are explained in the [guide of this folder](README.md). The wireframes are on the page "Spec" of the Figma file, section "Synoptic · SN-00 to SN-12".
+Status: extrapolated by the assistant from the pages of [Synoptics](../synoptics/README.md), themselves an extrapolation. Almost every line is **Proposed**; the few **Decided** ones come from Metadata, Symbols and Pipes. Kinds and statuses are explained in the [guide of this folder](README.md). The wireframes are on the page "Spec" of the Figma file, section "Synoptic · SN-00 to SN-12". They are kept as they are, to look at, and not updated: they will be redrawn from scratch with the whole synoptic (Product Owner, 2026-11-24). Where they differ from this page (SN-03 still shows presets), this page holds.
 
 ```mermaid
 flowchart TD
@@ -87,7 +87,7 @@ Path: Canvas › Build › a placed symbol. The right-hand panel, top half.
 | SN-03.8 | Preset | — | Removed (2026-11-24): there are no presets. | Decided | [Type and symbol](../metadata/draft.md#type-and-symbol) |
 | SN-03.9 | Signal settings | Table | Signal, start value, display unit, decimals, texts of a boolean; kept as changes from the type, Reset per line; a dot on a changed line. | Decided (what changes, changes kept, Reset, 2026-11-20 and 2026-11-24), Proposed (table, dot, texts of a boolean) | [Panel](../synoptics/04-placed-symbol-panel.md#signal-settings) |
 | SN-03.10 | Rotate, mirror | Buttons in the tool bar | Quarter turns; connection points follow. | Proposed | [Placed symbols](../synoptics/03-placed-symbols.md#rotation-mirror-size) |
-| SN-03.11 | Faceplate | Section: count of changes, Edit the faceplate, Reset the faceplate to the type | Edit opens the builder of [MD-14](metadata.md#md-14--faceplate) for this placed symbol: hide an element of the type (an eye), add own elements, move any element, change the texts of title and description elements. | Decided (hide, add, move, texts, 2026-11-24), Proposed (the section, the eye) | [Panel](../synoptics/04-placed-symbol-panel.md#faceplate) |
+| SN-03.11 | Faceplate | Section: count of changes, Edit the faceplate, Reset the faceplate to the type | Edit opens the builder of [MD-14](metadata.md#md-14--faceplate) for this placed symbol: hide an element of the type (an eye), add own elements, move any element, change any field of any element (a dot and a reset per changed field). | Decided (hide, add, move, any field, 2026-11-24), Proposed (the section, the eye) | [Panel](../synoptics/04-placed-symbol-panel.md#faceplate) |
 
 ## SN-04 · Panel of a placed symbol · flags, template enums, placement
 

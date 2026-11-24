@@ -40,7 +40,6 @@ These change the data model; to settle first.
 | 23 | Format of the connection graph: the project's own, or SSP? | The project's own first; SSP to study. | [Outputs](10-outputs.md#open-questions) |
 | 24 | A pipe whose style is linked to a type: do its branches share its values, or can a branch have its own? | Shared: the tree is one pipe and one flow. | [Pipes](05-pipes.md#a-pipe-whose-style-is-linked-to-a-type) |
 | 25 | Interface description of the models: what makes a signal "needed", per type or per placed symbol, which format? | Per type, a signal needed as soon as one placed symbol of the project uses it; written at Publish. | [Outputs](10-outputs.md#the-interface-description-of-the-models) |
-| 26 | May a synoptic change the fields of an element of the type's faceplate (display name, read or write, input, bounds), or only hide it and add its own? | Hide and add: a change of the type still reaches the element. | [Panel of a placed symbol](04-placed-symbol-panel.md#faceplate) |
 
 ## Left for later
 

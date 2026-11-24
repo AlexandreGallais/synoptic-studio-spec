@@ -78,9 +78,9 @@ erDiagram
         uuid internal_id PK
         faceplate_element_kind kind
     }
-    TEXT_CHANGE {
+    ELEMENT_CHANGE {
         uuid faceplate_element FK
-        text text
+        object fields "only the fields changed"
     }
     TEMPLATE_ITEMS {
         uuid signal FK
@@ -147,7 +147,7 @@ erDiagram
     IDENTITY ||--o{ FLAG_ON : "holds"
     IDENTITY ||--o{ SIGNAL_SETTING : "holds, one per signal it changes"
     IDENTITY ||--o{ FACEPLATE_ELEMENT : "holds, the elements it adds"
-    IDENTITY ||--o{ TEXT_CHANGE : "holds"
+    IDENTITY ||--o{ ELEMENT_CHANGE : "holds, one per element of the type it changes"
     IDENTITY ||--o{ TEMPLATE_ITEMS : "holds, one per signal pointing to a template"
     TEMPLATE_ITEMS ||--o{ TEMPLATE_ITEM : "holds"
     ON_PIPE }o--|| PIPE_BRANCH : "branch"
@@ -173,7 +173,7 @@ erDiagram
   - `type`: the sub-type chosen; `null`, the type of the symbol;
   - `SIGNAL_SETTING`: one per signal it changes, which replaces the type's whole, as in a sub-type;
   - `FACEPLATE_ELEMENT`: the elements it adds; `faceplate_order`: where every element sits, as `TYPE.faceplate_order`; `hidden_elements`: the `internal_id` of the elements of the type it hides;
-  - `TEXT_CHANGE`: a new text for a title or description element of the type.
+  - `ELEMENT_CHANGE`: the fields it changes in one element of the type, any of them (Product Owner, 2026-11-24); the fields not listed follow the type. Unlike a sub-type, which never changes an element of its parents.
 - **A crossing keeps only the swaps**: the default rule (the last drawn passes over) needs nothing stored; the user's click stores which pipe passes over.
 - **A pipe is one tree** (decision 0094): `PIPE` holds its style and its branches, the trunk first. Each other branch names the branch it leaves (`parent`) and where along it (`at`). **Junctions are not stored**: they are computed from `parent` and `at`.
 - **Each branch has its own end**; the pipe has one start. Proposed by the assistant. No end shape is stored (decision 0098).

@@ -17,7 +17,7 @@ The right-hand panel of the synoptic editor, when one placed symbol is selected.
 flowchart TD
     A["Symbol: library, symbol, type or sub-type, Open, Replace"] --> B["Identity: instance ID, designation texts"]
     B --> C["Signal settings: values changed"]
-    C --> D["Faceplate: hidden, added, moved elements"]
+    C --> D["Faceplate: hidden, added, moved, changed elements"]
     D --> E["Flags: one checkbox each"]
     E --> F["Template enums: items of this placed symbol"]
     F --> G["Placement: position, rotation, mirror, size"]
@@ -61,9 +61,10 @@ Decided by the Product Owner on 2026-11-24: in a synoptic, the faceplate of one 
 - **Hide** an element of the type: it is not shown in the faceplate of this placed symbol. Decided.
 - **Add** elements of its own, of the five kinds of the [faceplate builder](../screens/metadata.md#md-14--faceplate), at the top or inside any group. Decided.
 - **Move** any element, into a group or out of it, as a sub-type does. Decided.
-- **Change the texts** of the title and description elements (decided on 2026-11-20).
+- **Change every field** of an element of the type (Product Owner, 2026-11-24, "tout modifier"): the texts of a title or a paragraph, the display name, read or write, the input and its bounds of a signal, the text of a command button. Metadata gives a base; a placed symbol that fits none of it is changed here, whatever the risk.
+- A changed element keeps **only the fields changed**: the others still follow the type when it changes. Each changed field shows a dot and its own reset. Proposed.
 - A group left with nothing shown is not shown, as in Metadata.
-- **Edit the faceplate**, a button of the section, opens the faceplate builder of [MD-14](../screens/metadata.md#md-14--faceplate) for this placed symbol: the elements of the type look like the elements of a parent in a sub-type (read only, no delete), each with an eye to hide it; the own elements have their delete button. Proposed.
+- **Edit the faceplate**, a button of the section, opens the faceplate builder of [MD-14](../screens/metadata.md#md-14--faceplate) for this placed symbol: the elements of the type are editable as its own, each with an eye to hide it instead of a delete button; the own elements have their delete button. Proposed.
 - The section shows how many elements are hidden, added or moved, and **Reset the faceplate to the type**. Proposed.
 
 ### Flags
@@ -102,7 +103,7 @@ Decided by the Product Owner on 2026-11-24: in a synoptic, the faceplate of one 
 | Symbol | Type `centrifugal_pump`, sub-type chosen `centrifugal_pump_with_bypass` (reset) |
 | Identity | Instance ID `pump_p101`; Tag `P-101`; Location `Building A` |
 | Signal settings | `speed_setpoint` start value 1450 rpm changed to 1200 rpm; `flow` shown in l/s instead of m³/h (dots, reset) |
-| Faceplate | `bearing_temperature` hidden; a title "Local only" added at the top (2 changes, reset) |
+| Faceplate | `bearing_temperature` hidden; a title "Local only" added at the top; `speed_setpoint` read only (3 changes, reset) |
 | Flags | `has_bypass` ticked, `remote_start` not ticked |
 | Template enums | `mode` (template `pump_mode`): 0 Off, 1 Local, 2 Remote |
 
@@ -114,7 +115,7 @@ Decided by the Product Owner on 2026-11-24: in a synoptic, the faceplate of one 
 | Sub-type chosen | Panel of a placed symbol | No (the symbol chooses its type only, 2026-11-24) | Choose, reset |
 | Designation texts | Panel of a placed symbol, or the page Placed symbols | No | Fill |
 | Signal settings changed from the type | Panel of a placed symbol | No | Change, reset |
-| Faceplate changed from the type | Panel of a placed symbol, through the faceplate builder | No | Hide, add, move, change texts, reset |
+| Faceplate changed from the type | Panel of a placed symbol, through the faceplate builder | No | Hide, add, move, change any field, reset |
 | Flags ticked | Panel of a placed symbol | No | Tick |
 | Template items | Panel of a placed symbol | No | Create, edit, delete, copy from another |
 
@@ -123,4 +124,3 @@ Decided by the Product Owner on 2026-11-24: in a synoptic, the faceplate of one 
 - The name of the instance ID: not treated by the research T5.
 - For a designation that is not required: show only those used by the faceplate (advised), or all of them? (A required one is always shown, 2026-11-21.)
 - Is a duplicate designation text a warning (advised) or refused?
-- May a synoptic change the fields of an element of the type (display name, read or write, input, bounds), or only hide it and add its own? Advised: hide and add, so that a change of the type still reaches the element.

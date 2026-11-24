@@ -1333,7 +1333,7 @@ Faceplate:
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Display unit, decimals, texts of a boolean, start value | Signal settings of the type, in Metadata; changed by a sub-type | Faceplate; texts of a symbol that show a value | No | Edit, on each placed symbol |
-| Elements of the faceplate: signals, commands, titles, descriptions, groups | Faceplate of the type, in Metadata; moved by a sub-type, which adds its own, in the groups of its parents too | Faceplate of the symbol or synoptic | No | Hide, add, move, on each placed symbol (2026-11-24) |
+| Elements of the faceplate: signals, commands, titles, descriptions, groups | Faceplate of the type, in Metadata; moved by a sub-type, which adds its own, in the groups of its parents too | Faceplate of the symbol or synoptic | No | Hide, add, move, change any field, on each placed symbol (2026-11-24) |
 | Texts of the title and description elements | Faceplate of the type, in Metadata | Faceplate of the symbol or synoptic | No | Edit, on each placed symbol |
 | Variable of a title or description element (a designation) | Faceplate of the type, in Metadata | Faceplate of the symbol or synoptic | No | The text of each designation filled on each placed symbol (see [Identifiers](#identifiers)) |
 
@@ -1914,8 +1914,8 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 | Enum and its items (key, description, display name) | Enums page | No | No |
 | Command, its ID and description | Metadata | Link a command to a click | No |
 | Display unit, decimals, texts of a boolean, start value of each signal | Signal settings of the type, in Metadata | No | Edit |
-| Elements of the faceplate: signals (display name, input and its bounds, read or write, read or override), commands (display name of their button), titles, descriptions, groups | Faceplate of the type, in Metadata | No | Hide, add, move, on each placed symbol (2026-11-24) |
-| Texts of the title and description elements of the faceplate (no title nor description by default, 2026-11-16) | Faceplate of the type, in Metadata | No | Edit, on each placed symbol (assistant's reading) |
+| Elements of the faceplate: signals (display name, input and its bounds, read or write, read or override), commands (display name of their button), titles, descriptions, groups | Faceplate of the type, in Metadata | No | Hide, add, move, change any field, on each placed symbol (2026-11-24) |
+| Texts of the title and description elements of the faceplate (no title nor description by default, 2026-11-16) | Faceplate of the type, in Metadata | No | Edit, on each placed symbol (2026-11-24) |
 | Fixed text or variable (an identifier; a signal until 2026-11-21) of a title or description element (2026-11-18) | Faceplate of the type, in Metadata, through the small icon of the field | No | No |
 | Identifier: ID, required, description, order (2026-11-18, working name; no display name and required since 2026-11-21) | Identifiers page of Metadata | No (assistant's reading) | Its text, filled on each placed symbol (part 3) |
 
