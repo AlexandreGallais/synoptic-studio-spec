@@ -7,6 +7,7 @@
 | 1 | 2026-11-22 | Draft | Creation of the file |
 | 2 | 2026-11-24 | Draft | No more presets: the type holds its signal settings, its faceplate elements and their order |
 | 3 | 2026-11-24 | Draft | Its fields in the order of the parts: signals, signal settings, commands, faceplate, flags |
+| 4 | 2026-11-24 | Draft | `faceplate_order` places the elements inside the groups too: a sub-type moves and adds elements in the groups of its parents |
 
 | Tag | Value |
 | --- | --- |
@@ -30,7 +31,7 @@ erDiagram
         uuid internal_id PK
         text id
         uuid parent FK
-        uuid_list faceplate_order
+        uuid_list_map faceplate_order
     }
     TYPE |o--o{ TYPE : "parent"
     TYPE ||--|| APPEARANCE : "has"
@@ -97,13 +98,25 @@ erDiagram
       "items": { "$ref": "faceplate-element.schema.json" }
     },
     "faceplate_order": {
-      "description": "The internal_id of every element at the top of the faceplate, inherited and own, in the order it shows them; an own element may sit between two elements of a parent (Product Owner, 2026-11-24). Empty: the elements of the parents, from the root down, then the own ones. An element missing from it is shown at the end; an internal_id that no longer exists is ignored.",
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+      "description": "Where each element of the faceplate sits, inherited and own: the key top lists the elements at the top of the faceplate, the internal_id of a group the elements inside it, each list in the order it shows them. Any element may go anywhere: an own element between two elements of a parent or inside a group of a parent, an element of a parent out of its group (Product Owner, 2026-11-24). Each element is in one list at most. Empty: every element where the type that declares it puts it, the elements of the parents from the root down, then the own ones. An element in no list is shown at the end of the place its type gives it; an internal_id that no longer exists is ignored.",
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^(top|[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})$"
       },
-      "uniqueItems": true
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "uniqueItems": true
+      },
+      "examples": [
+        {
+          "top": ["0193a1c2-0000-7000-8000-000000000001", "0193a1c2-0000-7000-8000-000000000002"],
+          "0193a1c2-0000-7000-8000-000000000002": ["0193a1c2-0000-7000-8000-000000000003", "0193a1c2-0000-7000-8000-000000000009"]
+        }
+      ]
     },
     "flags": {
       "description": "The type's own flags, in the order of its table of flags; those it inherits are not repeated.",
@@ -135,7 +148,3 @@ erDiagram
   }
 }
 ```
-
-## Open questions
-
-- Inside a group of a parent, may a sub-type move or add elements?

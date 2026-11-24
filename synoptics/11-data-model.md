@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Synoptics](README.md) › Data model · Previous: [Outputs](10-outputs.md) · Next: [Open questions](12-open-questions.md)
 
-Status: a first sketch by the assistant. Three of its choices are settled (references, instance ID, changes from the type, see the reading notes); the rest is not validated. Written with the conventions of the [data model of Metadata](../metadata/data-model.md), which it points to and never changes.
+Status: a first sketch by the assistant. Four of its choices are settled (references, instance ID, changes from the type, what a placed symbol may change, see the reading notes); the rest is not validated. Written with the conventions of the [data model of Metadata](../metadata/data-model.md), which it points to and never changes.
 
 ## Conventions
 
@@ -15,8 +15,9 @@ The same as in Metadata:
 - A field or a link that only exists in some cases says when: `when ...`.
 - A choice of the software is an English word in the JSON (`"installation"`, `"view"`), never a number.
 - A number typed for a signal is kept in the default unit of its quantity (decision 0051).
+- `uuid_list`: an array of `uuid`, each once.
 
-Boxes of Metadata and of the Symbol Lib (`TYPE`, `SIGNAL`, `SIGNAL_SETTING`, `FLAG`, `DESIGNATION`, `FACEPLATE_ELEMENT`, `SYMBOL`, `CONNECTION_POINT`, `PIPE_STYLE`) are only pointed to by a FK field (`symbol`, `signal`, `flag`...); they are not drawn here.
+Boxes of Metadata and of the Symbol Lib (`TYPE`, `SIGNAL`, `FLAG`, `DESIGNATION`, `SYMBOL`, `CONNECTION_POINT`, `PIPE_STYLE`) are only pointed to by a FK field (`symbol`, `type`, `signal`, `flag`...); they are not drawn here. Two boxes of Metadata are held by a placed symbol, with the JSON Schema of their entity file: [`SIGNAL_SETTING`](../metadata/entities/19-signal-setting.md) and [`FACEPLATE_ELEMENT`](../metadata/entities/27-faceplate-element.md). `uuid_list_map` is the type of `TYPE.faceplate_order` ([Type](../metadata/entities/30-type.md)).
 
 ## The schema
 
@@ -58,6 +59,9 @@ erDiagram
     }
     IDENTITY {
         text instance_id
+        uuid type FK "when a sub-type of the symbol's type is chosen"
+        uuid_list hidden_elements
+        uuid_list_map faceplate_order
     }
     DESIGNATION_TEXT {
         uuid designation FK
@@ -66,11 +70,13 @@ erDiagram
     FLAG_ON {
         uuid flag FK
     }
-    VALUE_CHANGE {
+    SIGNAL_SETTING {
         uuid signal FK
         signal_value start_value "in the default unit"
-        uuid unit FK
-        integer decimals
+    }
+    FACEPLATE_ELEMENT {
+        uuid internal_id PK
+        faceplate_element_kind kind
     }
     TEXT_CHANGE {
         uuid faceplate_element FK
@@ -139,7 +145,8 @@ erDiagram
     PLACED_SYMBOL ||--o| ON_PIPE : "has, when connected to a pipe"
     IDENTITY ||--o{ DESIGNATION_TEXT : "holds"
     IDENTITY ||--o{ FLAG_ON : "holds"
-    IDENTITY ||--o{ VALUE_CHANGE : "holds"
+    IDENTITY ||--o{ SIGNAL_SETTING : "holds, one per signal it changes"
+    IDENTITY ||--o{ FACEPLATE_ELEMENT : "holds, the elements it adds"
     IDENTITY ||--o{ TEXT_CHANGE : "holds"
     IDENTITY ||--o{ TEMPLATE_ITEMS : "holds, one per signal pointing to a template"
     TEMPLATE_ITEMS ||--o{ TEMPLATE_ITEM : "holds"
@@ -161,7 +168,12 @@ erDiagram
 - **Identity is a part of its own**, so that a reference has none: a placed symbol of a view that points to a placed symbol of an installation reads the identity of that one (decided on 2026-11-20, see [Synoptics and views](01-synoptics-and-views.md#two-kinds-installation-and-view)).
 - **`instance_id` is the key** of a placed symbol in the outputs, a field of its own, never one of the designation texts (decided on 2026-11-20). `internal_id` stays the key of every link inside the files.
 - **A pipe linked to a type has an identity too**, the same part, so it is wired like a placed symbol (see [Pipes](05-pipes.md#a-pipe-whose-style-is-linked-to-a-type)).
-- **Only what differs from the type is kept** (`VALUE_CHANGE`: start value, unit, decimals; `TEXT_CHANGE`: texts of the faceplate), decided on 2026-11-20: a placed symbol that changes nothing holds nothing, and follows the [signal settings](../metadata/entities/19-signal-setting.md) and the faceplate of its type when they change. There is no preset to point to since 2026-11-24.
+- **Only what differs from the type is kept** (decided on 2026-11-20): a placed symbol that changes nothing holds nothing, and follows the [signal settings](../metadata/entities/19-signal-setting.md) and the faceplate of its type when they change. There is no preset to point to since 2026-11-24.
+- **A placed symbol changes its type the way a sub-type does** (Product Owner, 2026-11-24: great freedom in the synoptic), with the same boxes, proposed by the assistant:
+  - `type`: the sub-type chosen; `null`, the type of the symbol;
+  - `SIGNAL_SETTING`: one per signal it changes, which replaces the type's whole, as in a sub-type;
+  - `FACEPLATE_ELEMENT`: the elements it adds; `faceplate_order`: where every element sits, as `TYPE.faceplate_order`; `hidden_elements`: the `internal_id` of the elements of the type it hides;
+  - `TEXT_CHANGE`: a new text for a title or description element of the type.
 - **A crossing keeps only the swaps**: the default rule (the last drawn passes over) needs nothing stored; the user's click stores which pipe passes over.
 - **A pipe is one tree** (decision 0094): `PIPE` holds its style and its branches, the trunk first. Each other branch names the branch it leaves (`parent`) and where along it (`at`). **Junctions are not stored**: they are computed from `parent` and `at`.
 - **Each branch has its own end**; the pipe has one start. Proposed by the assistant. No end shape is stored (decision 0098).

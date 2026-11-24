@@ -10,7 +10,8 @@ A **placed symbol** is a symbol of a Symbol Lib put in a synoptic. It shows the 
 
 ### What is decided elsewhere
 
-- The **type** of a placed symbol is the type of its symbol and **can never be changed** in the synoptic (Metadata draft, [Type and symbol](../metadata/draft.md#type-and-symbol)); there is no preset to choose (2026-11-24): another way of showing the same equipment is a sub-type, hence another symbol.
+- The **type** of a placed symbol is the type of its symbol, which **is never changed** in the synoptic, or **one of its sub-types**, chosen on the placed symbol (Product Owner, 2026-11-24; Metadata draft, [Type and symbol](../metadata/draft.md#type-and-symbol)). There is no preset to choose (2026-11-24).
+- On one placed symbol, the synoptic may change its signal settings and its faceplate freely: Metadata is the strict base, the synoptic the freedom (Product Owner, 2026-11-24; see [its panel](04-placed-symbol-panel.md)).
 - A symbol with a type can be placed and **left unwired** (Symbols, 2026-11-15).
 - Each placed symbol has its own **flags**, **designation texts** and **template enum items** (Metadata, [Flags](../metadata/draft.md#flags), [Designation](../metadata/entities/11-designation.md), [Enums](../metadata/draft.md#global-enums-and-templates)). They are filled in its [panel](04-placed-symbol-panel.md).
 - A symbol can be **connected to a pipe** and then only slides along it (Pipes, 2026-11-11; see [Pipes](05-pipes.md#symbols-on-a-pipe)).
@@ -26,8 +27,8 @@ A **placed symbol** is a symbol of a Symbol Lib put in a synoptic. It shows the 
 | Position, rotation, mirror, size | Drawing, layers |
 | Order in the stack, folder, hidden, locked | Animations, interactions |
 | Identity: instance ID, designation texts, flags, template items | Connection points |
-| Start values, units, decimals and faceplate texts changed from the signal settings of its type | Type |
-| Pipe it is connected to, and where | Faceplate (the one of its type) |
+| Sub-type chosen; signal settings and faceplate changed from its type | Type |
+| Pipe it is connected to, and where |  |
 
 ### Placing a symbol
 
@@ -49,7 +50,7 @@ From the research (report T4, section 3.17, 14b and 14c; opinions), proposed:
 ### Replacing a symbol
 
 - **Replace** swaps the symbol of a placed symbol for another symbol **of the same type**, in any Symbol Lib used: a manual pump becomes a motorised pump. Its identity (designations, flags, template items) and its values are kept. Proposed.
-- Only symbols of the same type are offered, since the type of a placed symbol never changes. A sub-symbol with a **sub-type** is therefore not offered. Open: the Product Owner may want to allow a sub-type, which keeps every signal of the parent.
+- Only symbols of the same type are offered. A sub-symbol with a **sub-type** is not offered: a sub-type is chosen on the placed symbol itself, which keeps its symbol. Proposed. Open: the Product Owner may want to allow it, since a sub-type keeps every signal of the parent.
 - The pipes stay connected when the new symbol has connection points at the same places (matched by their order); otherwise their ends become free and a fault says so. Proposed.
 
 ### Changing the Symbol Lib of a synoptic
@@ -68,7 +69,7 @@ The research advises it as the way to change the look of a synoptic over time, s
 | --- | --- |
 | The symbol is deleted | It keeps its place, its identity and its values, drawn as an empty frame with a red mark; a fault says it; Replace repairs it. |
 | A connection point is deleted | The pipe attached to it gets a free end; a fault says it. |
-| The symbol changes type | Every placed symbol is in fault, since the type of a placed symbol never changes; the identity is kept. |
+| The symbol changes type | Every placed symbol is in fault, since its changes were made for the former type; the identity is kept. |
 | The Symbol Lib is removed from the synoptic | Its placed symbols and pipe styles are in fault until a library is added again. |
 
 ## Example
@@ -84,7 +85,7 @@ The research advises it as the way to change the look of a synoptic over time, s
 | Thing | Created and changed in | In a symbol | In a synoptic |
 | --- | --- | --- | --- |
 | Placed symbol | Synoptic editor, Build mode | No | Place, move, turn, replace, delete |
-| Its symbol and type | Symbol mode | Create, edit | Read only; Replace by a symbol of the same type |
+| Its symbol and type | Symbol mode | Create, edit | Choose a sub-type of the type; Replace by a symbol of the same type |
 | Its rotation, mirror, size | Panel of the placed symbol | No | Set |
 
 ## Open questions

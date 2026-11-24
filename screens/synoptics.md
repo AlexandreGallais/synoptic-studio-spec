@@ -78,15 +78,16 @@ Path: Canvas › Build › a placed symbol. The right-hand panel, top half.
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SN-03.1 | Symbol | Thumbnail + text | Symbol Lib › symbol. | Proposed | [Panel](../synoptics/04-placed-symbol-panel.md#symbol) |
-| SN-03.2 | Type | Text, read only | Never changed in a synoptic. | Decided | [Type and symbol](../metadata/draft.md#type-and-symbol) |
+| SN-03.2 | Type | Select, with a reset button | The type of the symbol, never changed, or one of its sub-types chosen for this placed symbol (2026-11-24). | Decided (sub-type, 2026-11-24), Proposed (select) | [Panel](../synoptics/04-placed-symbol-panel.md#symbol) |
 | SN-03.3 | Open the symbol, Replace | Buttons | Replace: same type only. | Proposed | [Panel](../synoptics/04-placed-symbol-panel.md#symbol) |
 | SN-03.4 | Reference | Text + link | In a view: from which installation, a link that opens the placed symbol there; the sections below edit the shared identity. | Decided (shared identity, 2026-11-20), Proposed (link) | idem |
 | SN-03.5 | Instance ID | Text field | The key of the placed symbol, a field of its own, never the tag. Set by the software, changed by the user, unique. Name: open, not treated by the research T5. | Decided (own key, 2026-11-20), Proposed (default value) | [Panel](../synoptics/04-placed-symbol-panel.md#identity) |
 | SN-03.6 | Designations | Text field each | Every required designation (2026-11-21), and those used by the faceplate of its type. | Decided (list to fill, required ones), Proposed (the others) | [Panel](../synoptics/04-placed-symbol-panel.md#identity) |
 | SN-03.7 | Duplicate text mark | Mark in the field | Warning, never a refusal. | Proposed | [Panel](../synoptics/04-placed-symbol-panel.md#identity) |
 | SN-03.8 | Preset | — | Removed (2026-11-24): there are no presets. | Decided | [Type and symbol](../metadata/draft.md#type-and-symbol) |
-| SN-03.9 | Values changed | Table | Signal, start value, unit, decimals; texts of title and description elements; kept as changes from the type, Reset per line; a dot on a changed line. | Decided (what changes, changes kept, Reset, 2026-11-20), Proposed (table, dot) | [Panel](../synoptics/04-placed-symbol-panel.md#signal-settings) |
+| SN-03.9 | Signal settings | Table | Signal, start value, display unit, decimals, texts of a boolean; kept as changes from the type, Reset per line; a dot on a changed line. | Decided (what changes, changes kept, Reset, 2026-11-20 and 2026-11-24), Proposed (table, dot, texts of a boolean) | [Panel](../synoptics/04-placed-symbol-panel.md#signal-settings) |
 | SN-03.10 | Rotate, mirror | Buttons in the tool bar | Quarter turns; connection points follow. | Proposed | [Placed symbols](../synoptics/03-placed-symbols.md#rotation-mirror-size) |
+| SN-03.11 | Faceplate | Section: count of changes, Edit the faceplate, Reset the faceplate to the type | Edit opens the builder of [MD-14](metadata.md#md-14--faceplate) for this placed symbol: hide an element of the type (an eye), add own elements, move any element, change the texts of title and description elements. | Decided (hide, add, move, texts, 2026-11-24), Proposed (the section, the eye) | [Panel](../synoptics/04-placed-symbol-panel.md#faceplate) |
 
 ## SN-04 · Panel of a placed symbol · flags, template enums, placement
 

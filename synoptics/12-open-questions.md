@@ -22,7 +22,7 @@ These change the data model; to settle first.
 | 5 | One installation per folder, or several? | Several (one per building). | [Synoptics and views](01-synoptics-and-views.md#open-questions) |
 | 6 | Names of the modes: Build, Pipes, Annotate, Links, Test. | Working names, to review. | [Synoptic editor](02-synoptic-editor.md#open-questions) |
 | 7 | The Library: a panel on the left or a floating window? | A panel on the left, above the objects. | [Synoptic editor](02-synoptic-editor.md#open-questions) |
-| 8 | May Replace offer a symbol of a sub-type? | No: the type of a placed symbol never changes. | [Placed symbols](03-placed-symbols.md#open-questions) |
+| 8 | May Replace offer a symbol of a sub-type? | No: a sub-type is chosen on the placed symbol itself (2026-11-24), which keeps its symbol. | [Placed symbols](03-placed-symbols.md#open-questions) |
 | 9 | Do borders grow with the size of a placed symbol? | No: they keep their width. | [Placed symbols](03-placed-symbols.md#open-questions) |
 | 10 | Texts of a placed symbol turned by 180°: the right way up? | Yes. | [Placed symbols](03-placed-symbols.md#open-questions) |
 | 11 | Changing the Symbol Lib: matched by name then type, or by an identifier of each symbol? | By name then type, corrected in a table. | [Placed symbols](03-placed-symbols.md#changing-the-symbol-lib-of-a-synoptic) |
@@ -40,6 +40,7 @@ These change the data model; to settle first.
 | 23 | Format of the connection graph: the project's own, or SSP? | The project's own first; SSP to study. | [Outputs](10-outputs.md#open-questions) |
 | 24 | A pipe whose style is linked to a type: do its branches share its values, or can a branch have its own? | Shared: the tree is one pipe and one flow. | [Pipes](05-pipes.md#a-pipe-whose-style-is-linked-to-a-type) |
 | 25 | Interface description of the models: what makes a signal "needed", per type or per placed symbol, which format? | Per type, a signal needed as soon as one placed symbol of the project uses it; written at Publish. | [Outputs](10-outputs.md#the-interface-description-of-the-models) |
+| 26 | May a synoptic change the fields of an element of the type's faceplate (display name, read or write, input, bounds), or only hide it and add its own? | Hide and add: a change of the type still reaches the element. | [Panel of a placed symbol](04-placed-symbol-panel.md#faceplate) |
 
 ## Left for later
 

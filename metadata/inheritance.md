@@ -8,6 +8,7 @@
 | 2 | 2026-11-23 | Draft | The presets of the parents are shown and duplicated (decision 0087) |
 | 3 | 2026-11-24 | Draft | No more presets: everything is inherited, the documentation, the signal settings and the faceplate included |
 | 4 | 2026-11-24 | Draft | The parts in their new order; the faceplate elements of the parents look like the own ones, without a delete button |
+| 5 | 2026-11-24 | Draft | In the groups of its parents, a sub-type moves and adds elements, and may take an element out of its group |
 
 What a sub-type takes from its parents, what it may change, and what happens when a parent changes or is missing. There are no presets (2026-11-24): types and sub-types only, everything inherited, so that the same kind of equipment shows the same faceplate everywhere; to show a type another way, a sub-type is made. The rules come from decisions 0003, 0013, 0033, 0047, 0079, 0080, 0082, the Product Owner's of 2026-11-24, the [whole draft](draft.md#types) and the [entity files](entities/README.md).
 
@@ -52,7 +53,7 @@ flowchart TD
 | Signals | Yes, all | Read from each parent up the branch; never copied into the sub-type's file. |
 | Signal settings | Yes, each one alone (2026-11-24) | An inherited signal shows its parent's signal setting until the sub-type changes it; the changed one is kept in the sub-type's file and replaces the parent's whole; its reset button removes it, and the signal follows its parent again. |
 | Commands | Yes, all | The same as the signals. |
-| Faceplate | Yes, all its elements (2026-11-24) | The elements of every parent are in the sub-type's faceplate, read only: never changed nor removed, only moved. They look like the own elements, without a delete button. The sub-type adds its own; their order is kept in its `faceplate_order`. |
+| Faceplate | Yes, all its elements (2026-11-24) | The elements of every parent are in the sub-type's faceplate, read only: never changed nor removed, only moved, into a group or out of it. They look like the own elements, without a delete button. The sub-type adds its own, at the top or inside any group, a group of a parent included; where each element sits is kept in its `faceplate_order`. |
 | Flags | Yes, all (decision 0033) | The same as the signals; a placed symbol has the flags of its type and of its parents. |
 
 `pneumatic_positive_displacement_pump` has the signals `flow`, `speed`, `stroke` and `air_pressure`, and shows the pump icon in green: the icon of `pump`, the color of `positive_displacement_pump`.
@@ -65,6 +66,8 @@ flowchart TD
 - **It chooses its own icon or its own color**, each one alone; its sub-types then follow it. The reset button sets the value back to `null`: the type follows its parent again.
 - **It changes the signal settings of every signal**, own and inherited: start value, display unit, decimals, texts of a boolean. This is how a sub-type stands for what was a preset.
 - **It moves the elements of its parents' faceplate**, never removes them, and adds its own; they may show an inherited signal or send an inherited command.
+- **Inside a group of a parent, it moves and adds elements** (Product Owner, 2026-11-24): a sub-type of a pump with a second pressure sensor adds it to the group "Pressure sensor" of the pump. It may also take an element out of its group, or put one in; the group itself is never removed.
+- **A group left empty is not shown** in the faceplate; it stays in the builder, so that elements can go back into it. No fault is raised for it: assistant's reading.
 
 ## The order of the lines
 
@@ -90,7 +93,7 @@ A change in a parent reaches every sub-type at once, on purpose (decisions 0003,
 | A signal added | Its signal setting starts with the start value and the display format a new one starts with (decision 0079); the sub-types show it. |
 | A signal removed | Its signal settings are removed, in the type and its sub-types, with the faceplate elements that show it (decision 0079) and the bounds read from it (decision 0082). A command of the sub-type that targets it is flagged in error and kept as written (decision 0082). |
 | A command removed | The faceplate elements that send it are removed, in the type and its sub-types (decision 0080). |
-| A faceplate element added or removed | Each sub-type shows it, at the end of the elements of this parent, or no longer shows it; its `faceplate_order` keeps the rest. |
+| A faceplate element added or removed | Each sub-type shows it, at the end of the place the parent gives it (the elements of this parent at the top, or its group), or no longer shows it; its `faceplate_order` keeps the rest. |
 | The documentation changed | Each sub-type shows the new text and links above its own. |
 | A line changed (its `id`, its value type, its quantity...) | The sub-type sees the change; renaming an `id` breaks the models that use it, never the software (its links go through the `internal_id`). A rename is refused when a sub-type already has the new `id` as its own line, as an addition is (decision 0081). |
 | The icon or the color changed | Each sub-type that leaves the value `null` shows the new one. |

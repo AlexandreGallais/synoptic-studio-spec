@@ -67,7 +67,7 @@ erDiagram
         uuid internal_id PK
         text id
         uuid parent FK
-        uuid_list faceplate_order
+        uuid_list_map faceplate_order
     }
     APPEARANCE {
         svg icon_drawing
@@ -275,7 +275,7 @@ Every type a field of the schema has. A type is named after what the value is fo
 | `integer` | A whole number. | `ENUM_ITEM.key`, `DISPLAY_FORMAT.decimals`. | The word of FMI and of `value_type_kind`, kept apart from `real`. |
 | `real` | A number, with or without decimals. | `BOUND.typed_value`. | The word of FMI and of `value_type_kind` for a number that is not whole. |
 | `expression` | A string: a formula in `x`, written as [Formulas](formulas.md) says. | `CONVERSION.to_default`, `CONVERSION.from_default`. | A formula the software reads and computes, never a text shown as it is. |
-| `uuid_list` | An array of `uuid`, each once. | `TYPE.faceplate_order`. | Several links in an order the user chose. |
+| `uuid_list_map` | An object: each key is `top` or a `uuid`, each value an array of `uuid`, each once. | `TYPE.faceplate_order`: the key `top` for the top of the faceplate, the `internal_id` of a group for the elements inside it. | Several lists of links, each in an order the user chose, one per place. |
 | `signal_value` | A number, `true` or `false`, or the `uuid` of an enum item, as the value type of the signal says. | `COMMAND_TARGET.value`, `SIGNAL_SETTING.start_value`. | A value whose kind is read from the signal it goes with. |
 
 ### The choice lists

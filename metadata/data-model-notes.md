@@ -829,6 +829,15 @@ Decided by the Product Owner on 2026-11-24: "il n'y aurait que des types, au fin
 - A new type of field, `uuid_list`, for `faceplate_order`.
 - Written in [Signal setting](entities/19-signal-setting.md), [Type](entities/30-type.md), [Faceplate element](entities/27-faceplate-element.md), [Inheritance of types](inheritance.md), the [Data model](data-model.md) and [Screens of Metadata](../screens/metadata.md).
 
+## Settled on 2026-11-24 (groups of the parents, placed symbols)
+
+Answers of the Product Owner on 2026-11-24. They replace the `uuid_list` of the entry above.
+
+- **In a group of a parent, a sub-type moves and adds elements** ("Déplacer et ajouter"): a sub-type of a pump with a second pressure sensor adds it to the group of the pump's sensor. It may also take an element out of its group; the group is never removed, and a group left empty is not shown.
+- **`TYPE.faceplate_order` becomes a `uuid_list_map`**: one list for the top of the faceplate (key `top`) and one per group (key: its `internal_id`). Each element is in one list at most; an element in no list stays where the type that declares it puts it. The assistant's choice over a tree of places, which would have needed one more entity; to confirm when the type is validated.
+- **A synoptic keeps a great freedom on one placed symbol** ("Oui, comme aujourd'hui"): Metadata is the strict base, the synoptic edits as it wants. Written in [Panel of a placed symbol](../synoptics/04-placed-symbol-panel.md) and the [data model of the synoptic](../synoptics/11-data-model.md), which point to `SIGNAL_SETTING`, `FACEPLATE_ELEMENT` and `uuid_list_map` and never change them.
+- Written in [Type](entities/30-type.md), [Faceplate element](entities/27-faceplate-element.md), [Inheritance of types](inheritance.md), the [Data model](data-model.md) and [MD-14](../screens/metadata.md#md-14--faceplate).
+
 ## For the development
 
 - **Branded types** (Product Owner, 2026-11-22, a note for the development): in JavaScript, each type of [The types of the fields](data-model.md#the-types-of-the-fields) becomes a branded type, made only by a parser that checks the value, so that a `text` is never passed where a `uuid` is expected and every value read from a file is parsed before use. To carry into the software architecture.

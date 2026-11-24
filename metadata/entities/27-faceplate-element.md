@@ -6,8 +6,9 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 | 2 | 2026-11-24 | Draft | No more presets: kept inside its type; inherited by the sub-types, read only, moved by their `faceplate_order` |
+| 3 | 2026-11-24 | Draft | A sub-type moves it into or out of a group, and adds its own in a group of a parent; a group left empty is not shown |
 
-A faceplate element is one line of the faceplate builder of a type ([MD-14](../../screens/metadata.md#md-14--faceplate)): a signal, a command button, a title, a paragraph or a group. Its kind gives it exactly one part, or, for a group, its own list of elements, of the same five kinds, at any depth. The faceplate shows the elements in the order of the list, and shows nothing that is not in it. The same signal or the same command may be in several elements, for instance read in one group and written in another. An element is kept inside its [type](30-type.md), or inside its group. The sub-types of the type show it too, read only: they never change nor remove it, and only its place among the elements of the faceplate changes, through the `faceplate_order` of the sub-type, which points to its `internal_id`.
+A faceplate element is one line of the faceplate builder of a type ([MD-14](../../screens/metadata.md#md-14--faceplate)): a signal, a command button, a title, a paragraph or a group. Its kind gives it exactly one part, or, for a group, its own list of elements, of the same five kinds, at any depth. The faceplate shows the elements in the order of the list, and shows nothing that is not in it; a group with no element in it is not shown. The same signal or the same command may be in several elements, for instance read in one group and written in another. An element is kept inside its [type](30-type.md), or inside its group. The sub-types of the type show it too, read only: they never change nor remove it, and only its place changes, through the `faceplate_order` of the sub-type, which points to its `internal_id`: anywhere in the faceplate, into a group or out of it. A sub-type may also put its own elements inside a group of a parent.
 
 ## The entity
 

@@ -69,7 +69,7 @@ flowchart LR
 
 #### Step 3: how it is used
 
-A symbol picks a type, among all the types of the tree, and nothing else (no presets since 2026-11-24). A synoptic uses symbols and can only change their faceplate: the start values, the texts of its title and description elements (what else it can change in the built faceplate is open). There are no libraries of types (Product Owner, 2026-11-16).
+A symbol picks a type, among all the types of the tree, and nothing else (no presets since 2026-11-24). A synoptic uses symbols and, on each placed symbol, may choose a sub-type and change its signal settings and its faceplate freely (2026-11-24). There are no libraries of types (Product Owner, 2026-11-16).
 
 ```mermaid
 flowchart LR
@@ -259,13 +259,14 @@ block-beta
 
 - A symbol is attached to one type.
 - The type of a symbol can only be changed in symbol editing.
-- In a synoptic, the type can never be changed; there are no presets (2026-11-24).
+- In a synoptic, the type of the symbol is never changed; there are no presets (2026-11-24).
+- A placed symbol may take **one of the sub-types** of its symbol's type instead (Product Owner, 2026-11-24), for instance to show the faceplate of that sub-type. Any type down the branch: assistant's reading. See [Panel of a placed symbol](../synoptics/04-placed-symbol-panel.md#symbol).
 
 ```mermaid
 flowchart LR
     TY[Type] -->|"chosen in symbol editing"| SY[Symbol]
     SY -->|"placed in"| SN[Synoptic]
-    SN -.->|"type fixed"| SY
+    SN -.->|"the type of the symbol, or one of its sub-types"| SY
 ```
 
 ### Renaming is breaking, on purpose
@@ -1229,9 +1230,10 @@ Decided by the Product Owner on 2026-11-16: "Comme ça, ce ne sont vraiment que 
 
 - **No title and no description by default**, neither for the faceplate nor for a group: a title element or a description element is added if wanted.
 - **A group holds the same elements as the faceplate**, a group included, with no limit of depth.
-- **The add icons of a group are at its top**, in the same order as on the right of the title.
+- **The add icons of a group are at its top**, in the same order as on the right of the title; a group of a parent has them too, since a sub-type adds elements in it (Product Owner, 2026-11-24).
+- **A group with no element in it is not shown** in the faceplate (Product Owner, 2026-11-24); it stays in the builder.
 - **What is in the builder is what the faceplate shows**: a signal or a command that is not added is not in the faceplate.
-- The **order of the faceplate is the order of the builder**, moved with a **handle** at the left of each element, the elements of the parents included.
+- The **order of the faceplate is the order of the builder**, moved with a **handle** at the left of each element, the elements of the parents included, into a group or out of it (see [Inheritance of types](inheritance.md#what-a-sub-type-may-change)).
 - Deleting an own element: a delete button at its right; the element goes at once, with no warning (decision 0093).
 - All the commands of the type stay available to the symbol, which links them to clicks on its parts, whether or not the builder holds them (see [Commands](#commands)).
 - An enum is always shown by the display names of its items, never by their keys (see [Enums](#enums)).
@@ -1273,7 +1275,7 @@ flowchart LR
 #### In a symbol and in a synoptic
 
 - A symbol chooses its type and nothing else (Product Owner, 2026-11-24: "Il y a la sélection du type, et puis voilà"): no preset, no faceplate entries, no values changed in the symbol.
-- In a synoptic, for one placed symbol, the user can edit the start values, display units, decimal places and the texts of the title and description elements of the faceplate, kept as changes from the type with a way back to it (Product Owner, 2026-11-20; see [Panel of a placed symbol](../synoptics/04-placed-symbol-panel.md#signal-settings)). Whether this is still needed with sub-types is open.
+- In a synoptic, for one placed symbol, the user keeps a great freedom (Product Owner, 2026-11-24: Metadata is another trade, kept strict; the synoptic gives a solid base and lets people edit as they want): choose a sub-type, change the signal settings (start values, display units, decimal places...), and edit the faceplate (hide elements of the type, add, move, change the texts of the title and description elements). Kept as changes from the type with a way back to it (Product Owner, 2026-11-20). See [Panel of a placed symbol](../synoptics/04-placed-symbol-panel.md).
 - Decimal places, display units, titles and descriptions never go to the model: they are display only.
 
 ```mermaid
@@ -1285,7 +1287,7 @@ sequenceDiagram
     U->>MD: sets the signal settings of a type, or of a sub-type
     U->>MD: builds its faceplate (signals, commands, titles, descriptions, groups)
     U->>SY: chooses the type, or the sub-type
-    U->>SN: places the symbol, edits a start value or the text of a title element
+    U->>SN: places the symbol, may choose a sub-type, edits a start value or its faceplate
 ```
 
 ### Example
@@ -1331,15 +1333,13 @@ Faceplate:
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Display unit, decimals, texts of a boolean, start value | Signal settings of the type, in Metadata; changed by a sub-type | Faceplate; texts of a symbol that show a value | No | Edit, on each placed symbol |
-| Elements of the faceplate: signals, commands, titles, descriptions, groups | Faceplate of the type, in Metadata; moved by a sub-type | Faceplate of the symbol or synoptic | No | Open |
-| Texts of the title and description elements | Faceplate of the type, in Metadata | Faceplate of the symbol or synoptic | No | Edit, on each placed symbol (assistant's reading) |
+| Elements of the faceplate: signals, commands, titles, descriptions, groups | Faceplate of the type, in Metadata; moved by a sub-type, which adds its own, in the groups of its parents too | Faceplate of the symbol or synoptic | No | Hide, add, move, on each placed symbol (2026-11-24) |
+| Texts of the title and description elements | Faceplate of the type, in Metadata | Faceplate of the symbol or synoptic | No | Edit, on each placed symbol |
 | Variable of a title or description element (a designation) | Faceplate of the type, in Metadata | Faceplate of the symbol or synoptic | No | The text of each designation filled on each placed symbol (see [Identifiers](#identifiers)) |
 
 ### Open questions
 
 - Can a signal or a command be added twice to the builder?
-- What a synoptic can change in the faceplate of a placed symbol, and whether it still changes values now that sub-types stand for the presets.
-- Inside a group of a parent, may a sub-type move or add elements?
 
 ## Always editable, no versions
 
@@ -1914,7 +1914,7 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 | Enum and its items (key, description, display name) | Enums page | No | No |
 | Command, its ID and description | Metadata | Link a command to a click | No |
 | Display unit, decimals, texts of a boolean, start value of each signal | Signal settings of the type, in Metadata | No | Edit |
-| Elements of the faceplate: signals (display name, input and its bounds, read or write, read or override), commands (display name of their button), titles, descriptions, groups | Faceplate of the type, in Metadata | No | Open |
+| Elements of the faceplate: signals (display name, input and its bounds, read or write, read or override), commands (display name of their button), titles, descriptions, groups | Faceplate of the type, in Metadata | No | Hide, add, move, on each placed symbol (2026-11-24) |
 | Texts of the title and description elements of the faceplate (no title nor description by default, 2026-11-16) | Faceplate of the type, in Metadata | No | Edit, on each placed symbol (assistant's reading) |
 | Fixed text or variable (an identifier; a signal until 2026-11-21) of a title or description element (2026-11-18) | Faceplate of the type, in Metadata, through the small icon of the field | No | No |
 | Identifier: ID, required, description, order (2026-11-18, working name; no display name and required since 2026-11-21) | Identifiers page of Metadata | No (assistant's reading) | Its text, filled on each placed symbol (part 3) |
@@ -1923,7 +1923,7 @@ Rule of the Product Owner: no duplicate ways to change the same thing. Each thin
 flowchart LR
     M[Metadata] -->|"types, signals, commands, signal settings, faceplates"| S[Symbol]
     S -->|"choose a type, link a command to a click"| Y[Synoptic]
-    Y -->|"edit values, the text of a title element"| Y
+    Y -->|"choose a sub-type, edit values and the faceplate"| Y
 ```
 
 ### Details
@@ -1949,7 +1949,7 @@ Rule: a question sits in the file it concerns, under "Open questions", and is li
 | Palette, icon list and default icon and colour; place of the reset buttons when a list takes several lines | [Icons](#type-icons) | To define with the design system. |
 | Folder, generated files and conflicts between people | [Files and conflicts](../storage/files-and-conflicts.md) | Open, not about metadata. |
 | Source and licence of the ready-made catalogue of units; where the model unit of each quantity is set (catalogue for good, a configuration file of the project, or an annex page) | [Units](#units) | Licences of UCUM, QUDT, CLDR and NIST not checked, to settle before release. The model unit left the signal at the end of 2026-11-16: one per quantity, the same everywhere, set outside Metadata; the Product Owner leans towards the catalogue but will think it over. Once settled, it will be decision 0029. |
-| An element twice; what a symbol or a synoptic changes in the built faceplate | [Signal settings and faceplate](#signal-settings-and-the-faceplate) | Raised when the preset was split into Values and the faceplate builder (2026-11-16). The order by handle, the input chosen in the builder, the bounds of a number field and read or write (input) against read or override (output) were settled at the end of 2026-11-17. Not to be asked again in the chat. |
+| An element twice | [Signal settings and faceplate](#signal-settings-and-the-faceplate) | Raised when the preset was split into Values and the faceplate builder (2026-11-16). The order by handle, the input chosen in the builder, the bounds of a number field and read or write (input) against read or override (output) were settled at the end of 2026-11-17; what a synoptic changes in the faceplate and the groups of the parents, on 2026-11-24. Not to be asked again in the chat. |
 | Content of the formatting tool bar and no text colour | [Documentation](#type-documentation) | Raised while reviewing the wireframes (2026-11-16); on 2026-11-22 the read-only mode was removed, Visual opens first and only the description of a link changes once added. The order of the links (a handle), the two add icons and the click that opens were decided at the end of the day. |
 | Override an output: who applies it, what is seen while it holds, how it ends | [Commands](#commands), [Signal settings and faceplate](#typing-a-value) | The kind is decided (2026-11-16); its mechanism is open. Since 2026-11-17, a signal element of the faceplate set to "override" also overrides an output; the Product Owner leaves it to what is behind the faceplate. |
 | How far back the undo history goes, and whether it survives closing | [Always editable, no versions](#always-editable-no-versions) | Raised when the Versions page was removed (decision 0053, 2026-11-21); the undo itself settled on 2026-11-23: a history keeps every action (decision 0093). |

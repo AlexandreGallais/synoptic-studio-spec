@@ -364,13 +364,13 @@ The identifier MD-06 is not reused: the faceplate builder is the part [MD-14 · 
 
 Path: Metadata › Types › a type › Faceplate, sixth part of the type, right after Commands (2026-11-24). It takes the identifier after MD-13; MD-06 is not reused.
 
-The faceplate builder of the type, on the whole width: the title "Faceplate" and its add icons ("Elements" until 2026-11-24), then the elements. It was the mode Faceplate of a preset until 2026-11-24; with no presets, it has no name and no "Delete the preset". In a sub-type, the elements of the parents are there, read only, and can only be moved.
+The faceplate builder of the type, on the whole width: the title "Faceplate" and its add icons ("Elements" until 2026-11-24), then the elements. It was the mode Faceplate of a preset until 2026-11-24; with no presets, it has no name and no "Delete the preset". In a sub-type, the elements of the parents are there, read only, and can only be moved, into a group or out of it; the sub-type adds its own anywhere, inside a group of a parent too.
 
 ```mermaid
 block-beta
     columns 1
     add["Faceplate, then five small icons with a +: Signal, Command, Title, Description, Group"]
-    items["Elements, in order, a handle on each; those of the parents read only, with no delete; a group: the same five icons at its top, then its own elements"]
+    items["Elements, in order, a handle on each; those of the parents read only, with no delete; a group, a parent's too: the same five icons at its top, then its elements"]
 ```
 
 ```mermaid
@@ -380,8 +380,9 @@ mindmap
     Title Faceplate, one small icon with a plus per kind
     Elements of the parents
       Read only
-      Moved with their handle
+      Moved with their handle, into or out of a group
       Never deleted
+      A group of a parent takes own elements
     Signal element, on one line
       Signal by its ID, display name, read or write, read or override
       In write or override, the kind of input, for a number a minimum and a maximum of the same width
@@ -399,7 +400,7 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | MD-14.1 | Add an element | Buttons (small icons with a +) | On the right of the title "Faceplate": one icon per kind, a signal, a command, a title, a description, a group, no menu. Each icon carries its small + at its bottom right, as the icons of Links, so that it reads as "add". MD-07.18 until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#the-faceplate-builder) |
-| MD-14.2 | Elements of the parents | Elements, read only | In a sub-type, the elements of every parent are in the builder, read only: their fields are read only, radios included, and they have no delete button; they keep the background of every element (2026-11-24). Their handle stays: a sub-type may change their order, never remove them. | Decided | [Inheritance of types](../metadata/inheritance.md#what-a-sub-type-inherits) |
+| MD-14.2 | Elements of the parents | Elements, read only | In a sub-type, the elements of every parent are in the builder, read only: their fields are read only, radios included, and they have no delete button; they keep the background of every element (2026-11-24). Their handle stays: a sub-type may change their order, take them out of their group or put them in another, never remove them. A group of a parent keeps its five add icons: the sub-type adds its own elements in it (2026-11-24). | Decided | [Inheritance of types](../metadata/inheritance.md#what-a-sub-type-inherits) |
 | MD-14.3 | Signal element | Element of the builder | The signal, picked by its ID; its display name (plain text, never sent to the model; empty: the ID is shown; called "name shown" until 2026-11-21, decision 0055); read or write (input) or read or override (output); its input. MD-07.9b until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#the-faceplate-builder) |
 | MD-14.4 | Input | Select, in a signal element | Enum: radio on one line, radio on several lines, select; its items in the order of their keys (2026-11-22, [MD-09.5](#md-09--enums)). Number: a number field, with its bounds ([MD-14.6](#md-14--faceplate)). Boolean: a switch (2026-11-21). Shown for write or override only; in read, the faceplate shows the text of the value alone (2026-11-21). On the same line as the rest of the element, after read or write (2026-11-24, replaces the second line: the builder now has the whole width). MD-07.10 until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#the-faceplate-builder) |
 | MD-14.5 | Read or write, read or override | Radio, in a signal element | Input: read or write. Output: read or override. Write or override: a person types a value; what the model side does with it is up to it. MD-07.11 until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#typing-a-value) |
@@ -407,14 +408,14 @@ mindmap
 | MD-14.7 | Command element | Element of the builder | The command, picked by its ID; the display name on its button (plain text, never sent to the model; empty: the command's ID is shown; called "button text" until 2026-11-21, decision 0057). MD-07.15 until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#the-faceplate-builder) |
 | MD-14.8 | Title element, description element | Text fields | A heading or a paragraph inside the faceplate or a group; the only way to give either a title or a description (2026-11-16). Description: plain text, line breaks kept. MD-07.19 until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#only-elements-in-elements) |
 | MD-14.9 | Fixed text or variable | Small icon, on the right of the text field of a title or description element | As Figma's "Apply variable" (2026-11-18): a fixed text typed by the user, or a variable, a designation of [MD-13](#md-13--designations). Never a signal (2026-11-21, decision 0055): a signal element in read shows a value. A designation is filled on each placed symbol, in the synoptic. One variable alone in the field, never mixed with text: assistant's reading. MD-07.23 until 2026-11-24. | Decided (icon, designation only), Proposed (one variable, whole) | [Signal settings and faceplate](../metadata/draft.md#fixed-text-or-a-variable) |
-| MD-14.10 | Group element | Element of the builder | No title nor description of its own (confirmed 2026-11-17). At its top, the five small icons with a + (Signal, Command, Title, Description, Group), then its own elements; a group can hold a group (2026-11-16). MD-07.20 until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#only-elements-in-elements) |
+| MD-14.10 | Group element | Element of the builder | No title nor description of its own (confirmed 2026-11-17). At its top, the five small icons with a + (Signal, Command, Title, Description, Group), then its own elements; a group can hold a group (2026-11-16). A group with no element is not shown in the faceplate, and stays in the builder (2026-11-24). MD-07.20 until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#only-elements-in-elements) |
 | MD-14.11 | Delete an element | Button (icon) | At the far right of an own element (2026-11-16), deleted at once, with no warning (decision 0093). An element of a parent has none ([MD-14.2](#md-14--faceplate)). MD-07.21 until 2026-11-24. | Decided | [Layout rules](README.md#delete-a-warning-only-for-a-whole-thing) |
-| MD-14.12 | Order | Rule | The order of the builder, moved with a handle, the parents' elements included: an own element may go anywhere, between two elements of a parent too (Product Owner, 2026-11-24). MD-07.17 until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#the-faceplate-builder) |
+| MD-14.12 | Order | Rule | The order of the builder, moved with a handle, the parents' elements included: an own element may go anywhere, between two elements of a parent or inside a group of a parent too; an element of a parent may leave its group (Product Owner, 2026-11-24). MD-07.17 until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#the-faceplate-builder) |
 | MD-14.13 | Description per signal | — | Removed (2026-11-16): no description per signal or command in the faceplate; the builder has description elements instead. The description a signal and a command got in Metadata on 2026-11-20 ([MD-04.16](#md-04--signals), [MD-05.12](#md-05--commands)) is for the model author and is not shown in the faceplate: assistant's reading. MD-07.16 until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#signal-settings-and-the-faceplate) |
 
 Gaps:
 
-- Can an element be added twice? What can a symbol or a synoptic change in the built faceplate (the texts of its title and description elements, at least)?
+- Can an element be added twice? (What a synoptic changes in the faceplate of one placed symbol is in [Panel of a placed symbol](../synoptics/04-placed-symbol-panel.md#faceplate); a symbol changes nothing.)
 
 ## MD-12 · Flags, a part of the type
 

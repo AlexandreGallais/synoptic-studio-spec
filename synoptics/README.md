@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › Synoptics
 
-The third part of Synoptic Studio: building synoptics. A **synoptic** is a drawing of the installation. The user places symbols taken from Symbol Libs, connects them with pipes, and fills in, for each placed symbol, what Metadata leaves to the synoptic: its designations, its flags, the items of its template enums and the values it changes from its type. The runtime displays what is built here, and the configuration files describe it.
+The third part of Synoptic Studio: building synoptics. A **synoptic** is a drawing of the installation. The user places symbols taken from Symbol Libs, connects them with pipes, and fills in, for each placed symbol, what Metadata leaves to the synoptic: its designations, its flags, the items of its template enums, and what it changes from its type: a sub-type, its signal settings, its faceplate. The runtime displays what is built here, and the configuration files describe it.
 
 Status: **extrapolated by the assistant**. It starts from what [Metadata](../metadata/README.md), [Symbols](../symbols/README.md) and [Pipes](../symbols/pipes/README.md) already say. Nothing here is validated: it is a base of ideas, to review. Each rule says where it comes from:
 
@@ -46,7 +46,8 @@ These rules come from the other parts; this part only applies them.
 | Rule | Source |
 | --- | --- |
 | The top bar has a **Synoptic** icon, beside Metadata and Symbols. | [Layout rules](../screens/README.md#top-bar-of-the-window), 2026-11-16 |
-| In a synoptic, the **type** of a placed symbol can never be changed; there are no presets (2026-11-24). | [Metadata draft, Type and symbol](../metadata/draft.md#type-and-symbol) |
+| In a synoptic, the **type** of a symbol is never changed; a placed symbol may take one of its sub-types; there are no presets (2026-11-24). | [Metadata draft, Type and symbol](../metadata/draft.md#type-and-symbol) |
+| On one placed symbol, the synoptic changes freely its **signal settings** and its **faceplate** (hide, add, move): Metadata is the strict base, the synoptic the freedom (2026-11-24). | [Metadata draft, In a symbol and in a synoptic](../metadata/draft.md#in-a-symbol-and-in-a-synoptic) |
 | A symbol with a type can be placed and **left unwired**. | [Symbols](../symbols/README.md#one-kind-of-symbol), 2026-11-15 |
 | The **flags** of a type are ticked on each placed symbol. | [Metadata draft, Flags](../metadata/draft.md#flags) |
 | The **designations** used by a faceplate give the synoptic a list of texts to fill, one per placed symbol; a text is meant to be unique. A required designation is filled on every placed symbol. | [Metadata draft, Identifiers](../metadata/draft.md#identifiers), 2026-11-18; [Designation](../metadata/entities/11-designation.md), 2026-11-21 |
@@ -61,7 +62,7 @@ These rules come from the other parts; this part only applies them.
 | [Synoptics and views](01-synoptics-and-views.md) | What a synoptic is, installations and summary views, the navigation bar of the synoptic mode, the General page. |
 | [Synoptic editor](02-synoptic-editor.md) | The layout, the modes, the library panel, the objects panel, grid, zoom, undo, copy and paste. |
 | [Placed symbols](03-placed-symbols.md) | Placing a symbol, the linked instance, rotation and mirror, replacing a symbol, changing the Symbol Lib. |
-| [Panel of a placed symbol](04-placed-symbol-panel.md) | Its identity, designations, values changed, flags and template enums, one section each. |
+| [Panel of a placed symbol](04-placed-symbol-panel.md) | Its sub-type, identity, designations, signal settings, faceplate, flags and template enums, one section each. |
 | [Pipes](05-pipes.md) | Drawing and editing pipes in a synoptic, branches, crossings, symbols on a pipe. |
 | [Annotations](06-annotations.md) | Texts, areas, shapes, legends and value labels: what is drawn in a synoptic and is not a symbol. |
 | [Navigation links](07-navigation-links.md) | Going from one synoptic to another. |
