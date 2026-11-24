@@ -4,7 +4,7 @@
 
 Status: draft, written by the assistant from the [Pipes](../symbols/pipes/README.md) pages, themselves a draft; its add buttons follow the layout rule "a title and a small + on its right". It adds no rule. Kinds and statuses are explained in the [guide of this folder](README.md).
 
-The pipes are made in a Symbol Lib, on its page Pipes ([SY-00.4](symbols.md#sy-00--navigation-bar-of-the-symbol-mode), end of 2026-11-17) and drawn in a synoptic (part 3, not written). One base pipe style gives the shape of every pipe of the library, without colour, and its linked type and movement; each pipe style gives the fills and can override the type, the movement and the body and border widths, each with a reset.
+The pipes are made in a Symbol Lib, on its page Pipes ([SY-00.4](symbols.md#sy-00--navigation-bar-of-the-symbol-mode), end of 2026-11-17) and drawn in a synoptic (part 3, not written). One base pipe style gives the shape of every pipe of the library, without colour, and its linked type and movement; each pipe style, the look of the library for one item of the built-in enum `pipe_style`, gives the fills and can override the type, the movement and the body and border widths, each with a reset.
 
 ```mermaid
 flowchart LR
@@ -26,12 +26,12 @@ block-beta
     rail["Navigation bar SY-00, Pipes selected"] list["Base pipe style at the top; Pipe styles: title, search, +, each with a swatch of its body"] options["Options of the selected item, in sections, two columns"]:1 preview["Preview PI-05, always visible on the right"]
 ```
 
-- The left column holds, from top to bottom: the **base pipe style**, with a tag "Base", at the very top, above the title of the pipe styles (accepted on 2026-11-24); the list of the **pipe styles**, with its small + to add one. There is no list of start and end shapes (decision 0098).
+- The left column holds, from top to bottom: the **base pipe style**, with a tag "Base", at the very top, above the title of the pipe styles (accepted on 2026-11-24); the list of the **pipe styles**, one per item of the enum `pipe_style`, in the order of their keys, with its small + that adds an item to that enum (assistant's reading, decision 0099). There is no list of start and end shapes (decision 0098).
 - The options are grouped in **the same sections, in the same order**, for the base and for a pipe style: Linked type, Body, Border, Corners, Junctions, Crossings, Movement (decisions 0096 and 0097).
 - The sections sit **at the same place** for the base and for a pipe style: Linked type, Body and Border in the first column; Corners, Junctions, Crossings and Movement in the second (2026-11-24).
 - The size of a crossing, computed, is not shown: neither a note nor a read-only row (2026-11-24).
 - Every option is changed in place and written at once (see [Files and conflicts](../storage/files-and-conflicts.md#saving)).
-- Test screens in Figma, page Spec, section "Symbol mode · test screens (2026-11-23)": "PI-01 · Pipes page of a Symbol Lib · base pipe style" and "PI-02 · Pipes page of a Symbol Lib · pipe style Gas", redrawn on 2026-11-24 (decisions 0096, 0097 and 0098). Quick tests, no design-system component.
+- Test screens in Figma, page Spec, section "Symbol mode · test screens (2026-11-23)": "PI-01 · Pipes page of a Symbol Lib · base pipe style" and "PI-02 · Pipes page of a Symbol Lib · pipe style Gas", redrawn on 2026-11-24 (decisions 0096, 0097 and 0098); PI-02 shows its item of `pipe_style` instead of a name, and the styles by key (decision 0099). Quick tests, no design-system component.
 
 ## PI-01 · Base pipe style
 
@@ -94,7 +94,8 @@ Path: Symbols › a Symbol Lib › Pipe styles › a style (Water, Oil, Steam...
 ```mermaid
 mindmap
   root((PI-02 Pipe style))
-    Name
+    Item of pipe_style
+      Key, display name, description
     Linked type
       The base's, or its own, with a reset
       Animations of the colours
@@ -120,7 +121,8 @@ The sections are those of [PI-01](#pi-01--base-pipe-style), in the same order. A
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| PI-02.1 | Name | Text field | Free text: Water, Oil, Steam, Electricity. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-02.1 | Name | — | Removed (2026-11-24, decision 0099): a pipe style has no name of its own; it shows its item of `pipe_style` ([PI-02.16](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#pipe-styles) |
+| PI-02.16 | Item of pipe_style | Whole number field, text field, text field (several lines) | At the top, above the sections: the key, the display name and the description of the item this style draws, kept in the enum, not in the style (2026-11-24). Read-only for a base item; editable for an item the user added, the change going to the enum (assistant's reading). | Decided (editable: Proposed) | [The enum pipe_style](../symbols/pipes/pipe-styles.md#the-enum-pipe_style) |
 | PI-02.8 | Linked type | Select + reset | First section. The base's type until another is chosen; any type of Metadata (no library of types). Its signals feed Movement and the animations. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#linked-type) |
 | PI-02.12 | Body width | Number field (px) + reset | Section Body. The base's width until the user types one (gas pipes drawn thinner). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#overriding-a-value-of-the-base) |
 | PI-02.2 | Body fill | Radio + Colour or dash sequence | Section Body. A plain colour, or a dash sequence that runs from the start of the pipe to its end, edited in place ([PI-04](#pi-04--dash-sequence-editor)); example: black 10, transparent 20, red 2. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |

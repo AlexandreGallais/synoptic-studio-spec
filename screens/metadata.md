@@ -520,10 +520,11 @@ mindmap
     List of built-in enums, first
       No plus, no delete button
     A built-in enum
-      ID, the only field that can be changed
+      ID, can be changed
       No kind
       Description, read-only
-      Items, read-only, no plus, no delete button
+      Base items, read-only, no delete button
+      Items added by the user, plus on the title, delete button
     List of enums
       Title Enums, small plus on its right
     An enum
@@ -552,8 +553,8 @@ mindmap
 | MD-09.6 | Key | Whole number field | Typed by the user, any whole number, gaps allowed (0, 2, 4), for a global enum and for the items of a template (end of 2026-11-17). Unique in its enum; what the model receives (2026-11-16). A key already taken is refused when typed (decision 0083). It can still be changed once given: breaking for the model, with no warning (decision 0038); the Versions page that showed it was removed on 2026-11-21 (decision 0053), the change is seen in Git. Changing it moves the line to its new place by key (2026-11-22; replaces decision 0039). | Decided | [Enums](../metadata/draft.md#rules-5) |
 | MD-09.7 | Display name | Text field | After the key. What the faceplate, the symbol texts and the test values show. Not breaking. The same word as a signal field (decision 0056). Unique in its enum, while two enums may hold the same (decision 0084: [Enum item](../metadata/entities/05-enum-item.md)); a name already taken in its enum is refused when typed (decision 0083). | Decided | [Enums](../metadata/draft.md#enums) |
 | MD-09.9 | Description | Text field | Last, after the display name (2026-11-17): what the item means, plain text, never sent to the model (2026-11-16). Optional, shown on this page only (2026-11-16). | Decided | [Enums](../metadata/draft.md#enums) |
-| MD-09.13 | Built-in enums | List | Enums that come with the software (first: pipe direction). A list of their own, **above** the list of the user's enums (2026-11-23). No + on its title, no delete button on its lines. Title wording "Built-in enums" proposed. | Decided (title: Proposed) | [Built-in enums](../metadata/draft.md#built-in-enums) |
-| MD-09.14 | A built-in enum selected | Same screen as an enum | The **ID** is the only field that can be changed. **No kind** (always global). The **description** and the **items** (key, display name, description) are read-only: no + on the title "Items", no delete button. Changing the ID writes a copy of the enum in the user's `enums.json`, with the same `internal_id` (2026-11-23); the enum stays in the list of built-in enums, and items the user adds to the copy by hand are shown here, read-only too. An overridden enum shows a **Restore** button that removes the copy: default ID and software's items back (2026-11-23; wording proposed). | Decided | [Built-in enums](../metadata/draft.md#built-in-enums) |
+| MD-09.13 | Built-in enums | List | Enums that come with the software: pipe direction, pipe style (decision 0099). A list of their own, **above** the list of the user's enums (2026-11-23). No + on its title, no delete button on its lines. Title wording "Built-in enums" proposed. | Decided (title: Proposed) | [Built-in enums](../metadata/draft.md#built-in-enums) |
+| MD-09.14 | A built-in enum selected | Same screen as an enum | The **ID** can be changed. **No kind** (always global). The **description** and the **base items** (key, display name, description) are read-only, with no delete button. The **+ on the title "Items" adds an item**; the items the user added are changed and deleted like any item (2026-11-24, decision 0099; changed and deleted: assistant's reading). Changing the ID or adding an item writes a copy of the enum in the user's `enums.json`, with the same `internal_id` (2026-11-23); the enum stays in the list of built-in enums. An overridden enum shows a **Restore** button that removes the copy: default ID and software's items back, the added items lost (2026-11-23; wording proposed). | Decided (added items changed and deleted: Proposed) | [Built-in enums](../metadata/draft.md#built-in-enums) |
 | MD-09.8 | Add, delete an item | Button (+), delete button (icon) | The small + on the right of the title "Items"; the delete button at the far right of an item, with no header (2026-11-16); the item goes at once, with no warning (decision 0093; [layout rules](README.md#delete-a-warning-only-for-a-whole-thing)). An enum is deleted with the delete button of its line, then a warning, as a whole type (assistant's reading). Deleting one still used is allowed: the signals, start values and commands that use it are flagged in error (decision 0082). | Decided (item), Proposed (warning for an enum) | [Enums](../metadata/draft.md#enums) |
 
 Gaps:

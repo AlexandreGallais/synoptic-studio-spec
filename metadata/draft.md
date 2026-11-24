@@ -872,16 +872,17 @@ Decided by the Product Owner on 2026-11-17 (decision 0035, accepted on 2026-11-1
 
 ### Built-in enums
 
-Decision 0095. Some enums come **with the software**, because a part of the software needs them: the first one is **pipe direction**, the values of the signal that says whether the dashes of a pipe move and which way (see [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes)).
+Decisions 0095 and 0099. Some enums come **with the software**, because a part of the software needs them: **pipe direction**, the values of the signal that says whether the dashes of a pipe move and which way (see [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes)), and **pipe style**, the kinds of content a pipe can hold, which each Symbol Lib draws as it wants (see [The enum pipe_style](../symbols/pipes/pipe-styles.md#the-enum-pipe_style)).
 
 - **The Enum entity does not change**: a built-in enum is an ordinary enum, with its `internal_id`. Only the interface differs.
 - The built-in enums are kept in an **internal `enums.json` of the software**, which the software needs to work (Product Owner, 2026-11-23: "un fichier d'enums internes qui sont obligatoires pour le logiciel"). The Product Owner said "enum.json"; the name of the list's file, `enums.json`, is kept.
 - **This internal `enums.json` is inside the program and cannot be changed** (answer of 2026-11-23): it is not in the software's configuration folder, whose files the user may change by hand ([Files](files.md#the-two-configuration-folders)). The user changes a built-in enum only through their own copy (below).
-- **An enum whose `internal_id` is in the software's `enums.json` is read-only**, whatever file it comes from (Product Owner, 2026-11-23: "dès qu'un UID d'un enum est dans les enums du logiciel [...] l'enum devient en mode read-only").
-- A built-in enum **cannot be deleted**.
-- In the interface, it is **read-only**: its items (keys, display names, descriptions) and its description cannot be changed.
+- **An enum whose `internal_id` is in the software's `enums.json` is a built-in enum**, whatever file it comes from, with the rules below (Product Owner, 2026-11-23: "dès qu'un UID d'un enum est dans les enums du logiciel [...] l'enum devient en mode read-only"; since decision 0099, items can be added to it).
+- A built-in enum **cannot be deleted**, and **its base items never removed** (the items the software ships).
+- In the interface, its **base items** (keys, display names, descriptions) and its description are **read-only**.
+- **The user can add items to it from the interface**, with the + of its items, never remove a base item (Product Owner, 2026-11-24: "dans les built-in enum, il faudrait pouvoir rajouter des items, mais jamais enlever ceux de base directement dans l'UI, et pas mettre tout en readonly bêtement"; decision 0099, replacing "by hand, never from the software" of 0095). The items the user added are changed and deleted like the items of any enum (assistant's reading).
 - It is **always global**, never a template: its screen shows no kind.
-- Its **ID can be changed**: it comes with a default ID, and the user may rename it, as any enum. It is the only thing the interface changes.
+- Its **ID can be changed**: it comes with a default ID, and the user may rename it, as any enum.
 - A signal points to it as to any enum.
 - The Enums page shows **two lists**: the built-in enums first, then the user's enums (Product Owner, 2026-11-23). The list of built-in enums has no + and its lines no delete button.
 
@@ -889,19 +890,19 @@ Decision 0095. Some enums come **with the software**, because a part of the soft
 
 Product Owner, 2026-11-23 ("ça viendra surcharger dans son enum.json à lui, avec le même UUID [...] Comme ça, il a vraiment la main").
 
-- **Changing the ID of a built-in enum writes a copy of the whole enum in the user's `enums.json`**, with the **same `internal_id`** and the ID the user chose.
+- **Changing the ID of a built-in enum, or adding an item to it, writes a copy of the whole enum in the user's `enums.json`**, with the **same `internal_id`**, the user's ID and the user's items (decision 0099 for the items).
 - **The user's copy overrides the software's**: the software finds the same `internal_id` in both files and uses the user's.
-- **The user may then add items to their copy by hand, in the file, never from the software**: no + on its items (Product Owner, 2026-11-23: "il pourra le faire à la main depuis le fichier de config, mais jamais depuis le logiciel [...] on lui laisse une grosse liberté, mais [...] c'est assez risqué").
+- The user may also add items to their copy by hand, in the file.
 - The match is made by `internal_id`, not by file name: both files are called `enums.json`, and the rule of decision 0071 (the user's file of the same name replaces the software's) does not apply to them, since the user's `enums.json` also holds their own enums.
-- **The overridden enum stays a built-in enum**, because its `internal_id` is in the software's `enums.json`: it stays in the list of built-in enums, read-only but for its ID (answer of 2026-11-23).
-- **A new version of the software does not change the user's copy**: the copy wins whole, even when the new version adds an item to the built-in enum; the user adds it to their copy by hand if they want it (answer of 2026-11-23, the same rule as decision 0071).
+- **The overridden enum stays a built-in enum**, because its `internal_id` is in the software's `enums.json`: it stays in the list of built-in enums, its base items read-only (answer of 2026-11-23).
+- **A new version of the software does not change the user's copy**: the copy wins whole, even when the new version adds an item to the built-in enum; the user adds it to their copy if they want it (answer of 2026-11-23, the same rule as decision 0071).
 
 ```mermaid
 flowchart LR
     S["Internal enums.json of the software: pipe_direction"] --> M{"Same internal_id in the user's enums.json?"}
     U["User's enums.json: their enums, and their copies"] --> M
     M -- "No" --> A["The software's enum is used"]
-    M -- "Yes" --> B["The user's copy is used: their ID, their items added by hand"]
+    M -- "Yes" --> B["The user's copy is used: their ID, the base items, the items they added"]
     A --> L["List of built-in enums"]
     B --> L
 ```
@@ -909,13 +910,14 @@ flowchart LR
 | Built-in enum | Default ID | Items (key: display name) | Status |
 | --- | --- | --- | --- |
 | Pipe direction | `pipe_direction` | 0: Stopped, 1: Start to end, 2: End to start | Three items, "Stopped" included, one signal for whether the dashes move and which way: decided (2026-11-24). ID, keys and display names: proposed |
+| Pipe style | `pipe_style` | Proposed: 0: Water, 1: Steam, 2: Oil, 3: Gas, 4: Air, 5: Electricity | A global built-in enum, items added by the user, each Symbol Lib drawing each item as it wants: decided (2026-11-24, decision 0099). ID `pipe_style`: decided. Base items: open |
 
 - Open: which other built-in enums the software needs.
-- Proposed on 2026-11-24, with a doubt, not decided: an enum of the **pipe styles**, whose items would be the pipe styles of each Symbol Lib, so a built-in template rather than a global enum, which would change the rule "always global" above (see [The pipe styles as an enum](../symbols/pipes/pipe-styles.md#the-pipe-styles-as-an-enum)).
-- **Adding items is the only change allowed in the copy**, besides the ID of the enum (Product Owner, 2026-11-23: "la seule chose qu'il peut faire, c'est ajouter un item").
+- Open: can items be added to every built-in enum, `pipe_direction` included, whose items the software must understand to move the dashes?
+- **Adding items is the only change allowed to the base of the copy**, besides the ID of the enum (Product Owner, 2026-11-23: "la seule chose qu'il peut faire, c'est ajouter un item").
 - **The software checks the copy against its own built-in enum**, item by item: every item of the software must be in the copy, with the same key, the same display name and the same description (Product Owner, 2026-11-23: "ce qu'il y a à l'intérieur du logiciel viendra valider l'enum surchargé [...] ça viendra vérifier que la chose est bien construite").
 - **A copy that fails the check is a file with errors**: an item removed, an item whose key changed (`pipe_direction` without `1`), or an item whose display name or description changed. The software uses its own built-in enum instead, and lists the error (answers of 2026-11-23). See [A file with errors](checks-and-errors.md#a-file-with-errors).
-- **A "Restore" button removes the user's copy** from their `enums.json`: the enum goes back to its default ID and to the software's items, including those the user added by hand (answer of 2026-11-23). Shown only on an overridden built-in enum. Wording "Restore" proposed.
+- **A "Restore" button removes the user's copy** from their `enums.json`: the enum goes back to its default ID and to the software's items, and loses the items the user added (answer of 2026-11-23). Shown only on an overridden built-in enum. Wording "Restore" proposed.
 
 ```mermaid
 flowchart LR

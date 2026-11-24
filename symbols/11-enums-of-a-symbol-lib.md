@@ -18,7 +18,7 @@ Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, rea
 - **For a template, the user adds the columns the same way**, without items, since a template has none in advance. The items of a template are completed on each placed symbol, in the synoptic, with a small warning until they are (see [Enums](../metadata/draft.md#global-enums-and-templates)). The values of these columns are filled there too, with the items (assistant's reading: the question asked both together). Here, a template shows its name and its description, read only, instead of items.
 - **The columns belong to the Symbol Lib**, not to Metadata: two Symbol Libs can give the same enum different colours, as they give the same objects a different look (see [Libraries and symbols](01-libraries-and-symbols.md#symbol-lib)). Assistant's reading, to confirm.
 - Added columns never go to the model: they only serve the drawing.
-- **Proposed, not decided** (Product Owner, 2026-11-24, with a doubt): the pipe styles of the Symbol Lib would make an enum of their own, listed here, one line per pipe style, filled by itself as pipe styles are added, with the properties of each style as columns (see [The pipe styles as an enum](pipes/pipe-styles.md#the-pipe-styles-as-an-enum)).
+- **The built-in enums are listed here too**, `pipe_style` included, like any global enum. The look each item of `pipe_style` gets in this library is its pipe style, given on the Pipes page, not in columns here (see [The enum pipe_style](pipes/pipe-styles.md#the-enum-pipe_style), decision 0099).
 
 ## Added columns
 
@@ -144,4 +144,3 @@ Noted, not to be asked now: they come up at the review of the part.
 - An item added later in Metadata: its added columns are empty; what does the animation show then (a default value per column)?
 - Deleting a column used by an animation breaks it, with the small red mark (see [What breaks a link](01-libraries-and-symbols.md#what-breaks-a-link)): to confirm.
 - Does a column hold a value, or a link to a named colour of the Symbol Lib (proposed by the research, see [Fill and border](04-drawing-mode/fill-and-border.md))?
-- The enum of the pipe styles: wanted or not, and how it shows here (see [The pipe styles as an enum](pipes/pipe-styles.md#open-questions)).

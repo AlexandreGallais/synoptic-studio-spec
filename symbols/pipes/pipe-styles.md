@@ -2,9 +2,9 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Pipes](README.md) › Pipe styles
 
-Status: draft (base style and pipe styles reviewed on the test screens on 2026-11-24, decisions 0096 and 0097). Not validated.
+Status: draft (base style and pipe styles reviewed on the test screens on 2026-11-24, decisions 0096, 0097 and 0099). Not validated.
 
-How a pipe looks. A Symbol Lib has **one base pipe style**, the shape shared by all its pipes, and **pipe styles** (water, oil, steam...) that give the fills and can override a few values of the base: the linked type, the movement of the dashes, the body and border widths.
+How a pipe looks. A Symbol Lib has **one base pipe style**, the shape shared by all its pipes, and **pipe styles**, one for each item of the built-in enum `pipe_style` (water, oil, steam...), that give the fills and can override a few values of the base: the linked type, the movement of the dashes, the body and border widths.
 
 ## Rules
 
@@ -24,6 +24,7 @@ The base pipe style and each pipe style are shown with the **same sections, in t
 
 - In a pipe style, an option set by the base is shown **read-only** with the base's value, its section tagged "Base", so that the user sees the whole pipe without going back to the base (accepted on 2026-11-24).
 - The base holds the movement too, with its linked type: its signals belong to that type (Product Owner, 2026-11-24).
+- A pipe style also shows, above these sections, the **item of `pipe_style`** it draws; the base has none (assistant's reading, decision 0099).
 
 ### The base pipe style
 
@@ -45,10 +46,11 @@ The base pipe style and each pipe style are shown with the **same sections, in t
 
 ### Pipe styles
 
-- A pipe style has a **name** (free text: "Water", "Oil", "Steam", "Electricity").
+- A pipe style is **the look this Symbol Lib gives to one item of the enum `pipe_style`** (see [The enum pipe_style](#the-enum-pipe_style)). It has no name of its own: the **key, the display name and the description are those of the item**, in the enum, not in the style (Product Owner, 2026-11-24).
 
 | Section | Option | What it does |
 | --- | --- | --- |
+| Item | Key, display name, description | Those of the item of `pipe_style`, shown at the top of the style (see [The enum pipe_style](#the-enum-pipe_style)). |
 | Linked type | Type | The base's type, or a type of its own (see [Linked type](#linked-type)). |
 | Body | Width | The width of the base, or a width of its own. |
 | Body | Body fill | A plain colour, or a **dash sequence** that follows the pipe from its start to its end (see [Dash sequences](#dash-sequences)). |
@@ -57,9 +59,9 @@ The base pipe style and each pipe style are shown with the **same sections, in t
 | Movement | Direction | The base's direction, or its own: stopped, start to end or end to start, chosen in the list or given by a signal of its type (see [Moving dashes](#moving-dashes)). |
 | Movement | Speed | The base's speed, or its own: a fixed value, or a signal of the linked type. |
 
-- The content ("what the pipe contains") only names and groups the styles. The editor does not know what a fluid is.
+- The item says what the pipe contains; it only names and groups. The editor does not know what a fluid is: **each Symbol Lib draws each item as it wants** (Product Owner, 2026-11-24: "chaque lib interprète comme elle veut l'enum").
 - A pipe has one pipe style, chosen in the synoptic; its branches have the same (a pipe is one tree, see [Junctions](junctions.md)). The base style has no colour, so a pipe always has a pipe style (assumption of the assistant, to confirm).
-- A pipe style is stored in the Symbol Lib and used by identifier, as a symbol is linked to its type (the rules of broken links are to be written like for symbols).
+- A pipe style is stored in the Symbol Lib, tied to its item of `pipe_style`, and used by identifier, as a symbol is linked to its type (the rules of broken links are to be written like for symbols).
 
 ### Overriding a value of the base
 
@@ -152,32 +154,30 @@ flowchart LR
     D -->|"propagation at junctions"| B["Branches"]
 ```
 
-### The pipe styles as an enum
+### The enum pipe_style
 
-Proposed by the Product Owner on 2026-11-24, with a doubt ("je ne sais pas trop comment faire, mais je me dis que [...] ça pourrait"): **not decided**. What is written here is the idea and the assistant's reading of it; the points to settle are in [Open questions](#open-questions).
+Decision 0099 (Product Owner, 2026-11-24: "faut juste dire que les pipe style, ça suit un truc d'enum global").
 
-The idea:
+- **The kinds of pipe follow a built-in enum of Metadata, `pipe_style`**: a **global** enum, one list for the whole application, never a template (see [Built-in enums](../../metadata/draft.md#built-in-enums)).
+- **Each item is a kind of content**: a key, a display name and a description, written in the enum, not in the pipe style.
+- **Each Symbol Lib gives each item its own look**: its pipe style for that item (fills, overridden widths, type, movement). Two Symbol Libs can draw "Oil" differently.
+- **It ships with base items** that cover the usual contents ("électricité, huile, un peu tout ce qui serait possible"). The base list is open; proposal of the assistant: 0: Water, 1: Steam, 2: Oil, 3: Gas, 4: Air, 5: Electricity.
+- **It can never be deleted, and its base items never removed**; the user **adds items** to it from the interface, as to every built-in enum (see [Overriding a built-in enum](../../metadata/draft.md#overriding-a-built-in-enum)).
+- **A signal of a type can point to it**, like any enum: a signal "content" says which kind of fluid a symbol or a pipe holds.
+- What for (Product Owner): a symbol of the library can have pipe inlets and outlets of its own, drawn with the look of the chosen item: "ça sera tel signal, qui sera le type de fluide [...] et j'utilise telle propriété de l'enum, en fonction de ce qui a été choisi."
 
-- **The pipe styles of a Symbol Lib make an enum**, kept by the software, not by the user on the Enums page of Metadata: each pipe style added is an item of it.
-- **Adding a pipe style then gives what an item has**: a key, a display name and a description ("potentiellement").
-- **The enum has a name of its own**, so that a signal of a type can point to it, like any enum, and the model can use it later. The name is still to find: the Product Owner said "float color ou un truc du genre. Peu importe". Proposal of the assistant: `pipe_style`.
-- **It is shown in the list of enums of the Enums page of each Symbol Lib** (see [Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md)), and it fills itself as pipe styles are added: one line per pipe style, with **every property of the style** (body fill, border fill, widths...) as columns.
-- What for (Product Owner): "ça va permettre de faire des choses cool".
+The assistant's readings, to confirm:
 
-The assistant's reading, to confirm:
-
-- **A template, not a global enum**: the pipe styles belong to each Symbol Lib, so the items change from one Symbol Lib to another. In Metadata, the enum would be a built-in template, a name and a description only, whose items are given by the pipe styles of each Symbol Lib, as the items of a template are given on each placed symbol ("un enum en mode preset [...] cette template"). Built-in enums are always global today ([Built-in enums](../../metadata/draft.md#built-in-enums), decision 0095): this would change that rule.
-- **The columns of the properties are read only** on the Enums page of the Symbol Lib: they are changed on the Pipes page, in the pipe style.
-- **The key is a whole number picked by the user** when adding a pipe style, as for the items of an enum (decision 0037); the display name takes the place of the free name of a pipe style.
-- Uses it would open: an animation of a symbol takes the body colour of the pipe style chosen by an enum signal (a valve drawn in the colour of its fluid); a signal of the model chooses the pipe style of a pipe.
+- **The list of pipe styles of the Pipes page shows every item** of `pipe_style`, in the order of their keys. Its **+ adds an item to the enum**: a key, a display name and a description, the same for every Symbol Lib; this library then gives it its look.
+- **The fields of the item are shown at the top of the pipe style**: read-only for a base item, editable for an item the user added, since they change the enum itself.
+- **An animation of a symbol** can pick a signal of the enum `pipe_style`, then a property of the pipe style of this library for the chosen item (body fill, border fill), as it picks a column of an enum (see [Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md#used-by-an-animation)).
 
 ```mermaid
 flowchart LR
-    P["Pipes page of the Symbol Lib: Water, Steam, Gas"] -->|"each pipe style is an item: key, display name, description"| E["Enum pipe_style (name to find)"]
-    E --> L["Enums page of the Symbol Lib: one line per pipe style, its properties as read-only columns"]
-    E --> S["Signal of a type of the enum pipe_style"]
-    L --> A["Animation of a symbol: body colour of the chosen pipe style"]
-    S --> A
+    E["Built-in enum pipe_style, global: base items, plus the items the user adds"] --> P1["Symbol Lib Plant A: its look for each item"]
+    E --> P2["Symbol Lib Plant B: another look for the same items"]
+    S["Signal of a type, of the enum pipe_style: the content"] --> A["Animation of a symbol: a property of the pipe style of the chosen item"]
+    P1 --> A
 ```
 
 ### Corner radius
@@ -193,13 +193,15 @@ flowchart LR
 
 Base style of the library "Plant A": linked type `fluid_line`; width 6 px; border 1 px, outside; corner radius 8 px; junction circle 12 px; crossing bridge; direction `flow_direction`, speed 40 (fixed).
 
-| Pipe style | Linked type | Fills | Movement | Own widths |
+Each line is the look "Plant A" gives to an item of `pipe_style` (keys proposed).
+
+| Item of pipe_style | Linked type | Fills | Movement | Own widths |
 | --- | --- | --- | --- | --- |
-| Water | Base's | Body blue; border dark grey. | Base's (a plain fill: nothing moves) | — |
-| Steam | Base's | Body white; border dashes: grey 4, transparent 4. | Base's | — |
-| Oil | Own: `oil_line` | Body dashes: black 10, transparent 20, red 2; border dark grey. | Own: direction `flow_direction`, speed `flow_speed` | — |
-| Gas | Base's | Body yellow; border dashes: black 10, transparent 20, red 2. | Base's | Body 3 px, border 0.5 px (small pipes), each with its reset |
-| Electricity | Own: `power_line` | Body yellow; border yellow. | Own: direction `current_direction`, speed 20 (fixed) | Body 2 px |
+| 0: Water | Base's | Body blue; border dark grey. | Base's (a plain fill: nothing moves) | — |
+| 1: Steam | Base's | Body white; border dashes: grey 4, transparent 4. | Base's | — |
+| 2: Oil | Own: `oil_line` | Body dashes: black 10, transparent 20, red 2; border dark grey. | Own: direction `flow_direction`, speed `flow_speed` | — |
+| 3: Gas | Base's | Body yellow; border dashes: black 10, transparent 20, red 2. | Base's | Body 3 px, border 0.5 px (small pipes), each with its reset |
+| 5: Electricity | Own: `power_line` | Body yellow; border yellow. | Own: direction `current_direction`, speed 20 (fixed) | Body 2 px |
 
 ## What the research found
 
@@ -239,10 +241,9 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.2, 
 - In which unit is the speed of the moving dashes set (pixels per second)?
 - A pipe linked to a type is one tree, one flow: do its branches share its values (assistant's reading), or can a branch have its own (a closed valve on one branch, stopping the movement downstream)?
 - Can a style hold several layers (the body, then a border, then a second line), or just the options above?
-- [The pipe styles as an enum](#the-pipe-styles-as-an-enum) (proposed on 2026-11-24, with a doubt):
-  - Is it wanted?
-  - Its items: those of each Symbol Lib (a built-in template), or one list for the whole application?
-  - Its name (`pipe_style` proposed)?
-  - A pipe style: a key, a display name and a description instead of its free name?
-  - Which properties of a style become columns on the Enums page of the Symbol Lib, read only?
-  - What a signal pointing to it does: choose the pipe style of a pipe, give a colour to a symbol, or both?
+- [The enum pipe_style](#the-enum-pipe_style):
+  - Its base items (Water, Steam, Oil, Gas, Air, Electricity proposed) and their keys.
+  - Does the + of the Pipes page add an item to the enum (assistant's reading), or are items added on the Enums page of Metadata only?
+  - An item that a Symbol Lib has not styled yet (just added, or added from another library): how is a pipe of that item drawn?
+  - Which properties of a pipe style an animation of a symbol can take (body fill, border fill, widths)?
+  - Can a signal of the model choose the pipe style of a pipe in the synoptic?
