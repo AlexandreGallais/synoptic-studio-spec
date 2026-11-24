@@ -533,7 +533,7 @@ Said by the Product Owner on 2026-11-22 ("c'est un peu comme les couleurs [...] 
 
 Said by the Product Owner on 2026-11-22, answering the questionnaire ("Unique dans le type et ses parents").
 
-- **The `id` of a flag is unique among the flags of its type and of the types it inherits from**: a placed symbol has the flags of its type and of its parents, so two flags with the same `id` would write the same key twice in the configuration files. Written in the `description` of `id` in [Flag](entities/19-flag.md). It answers the question left open in the [whole draft](draft.md#flags) on 2026-11-17; the format of an `id` stays free.
+- **The `id` of a flag is unique among the flags of its type and of the types it inherits from**: a placed symbol has the flags of its type and of its parents, so two flags with the same `id` would write the same key twice in the configuration files. Written in the `description` of `id` in [Flag](entities/28-flag.md). It answers the question left open in the [whole draft](draft.md#flags) on 2026-11-17; the format of an `id` stays free.
 
 ## Settled on 2026-11-22 (descriptions of the documentation)
 
@@ -596,7 +596,7 @@ Asked by the Product Owner on 2026-11-22 ("j'aimerais bien que ce soit plus expl
 
 - **The list `command_kind` is `set_input_signal`, `trigger`, `override_output_signal`**: each name says which signal it acts on. It replaces `set_signal` and `override`; `trigger` stays.
 - `SIGNAL_FIELD.access` keeps `read`, `write`, `override`: only the kinds of a command change, so `override` is no longer the same word in both lists (section of 2026-11-22, names, above).
-- Written in [Command](entities/18-command.md), [Command target](entities/17-command-target.md), the [Data model](data-model.md) and [Files](files.md).
+- Written in [Command](entities/21-command.md), [Command target](entities/20-command-target.md), the [Data model](data-model.md) and [Files](files.md).
 
 ## Changed on 2026-11-22 (who receives a trigger)
 
@@ -604,13 +604,13 @@ Said by the Product Owner on 2026-11-22 ("le trigger, c'est pas du tout pour le 
 
 - **A trigger never goes to the model**: it tells the layer above the model that an action happened, and that layer decides what to send to the model. It replaces "the model decides what to do" (decision 0019).
 - Its description says what that layer is expected to do. The name and the nature of that layer are an open question of the [draft](draft.md#open-questions-4).
-- Written in [Command](entities/18-command.md), the example of the [Data model](data-model.md), the list `command_kind` above, the [draft](draft.md#commands) and [MD-05.12](../screens/metadata.md#md-05--commands).
+- Written in [Command](entities/21-command.md), the example of the [Data model](data-model.md), the list `command_kind` above, the [draft](draft.md#commands) and [MD-05.12](../screens/metadata.md#md-05--commands).
 
 ## Written on 2026-11-22 (preset values)
 
 Asked by the Product Owner on 2026-11-22 ("je veux bien que tu fasses la partie preset value").
 
-- **Three entity files**, as for a command and its target: [Display format](entities/20-display-format.md) and [Boolean texts](entities/21-boolean-texts.md), the two parts of a preset value, then [Preset value](entities/22-preset-value.md), numbered just before the preset that will hold it.
+- **Three entity files**, as for a command and its target: [Display format](entities/17-display-format.md) and [Boolean texts](entities/18-boolean-texts.md), the two parts of a preset value, then Preset value (now [Signal setting](entities/19-signal-setting.md)), numbered just before the preset that will hold it.
 - Nothing new is decided: the files follow the box of the [Data model](data-model.md) and the rules already written (decisions 0030, 0050, 0051, 0058; `start_value` of 2026-11-22).
 - **Assistant's readings, written in the JSON Schemas**: `decimals` is a whole number from 0; `DISPLAY_FORMAT.unit` starts as the default unit of the quantity; a signal has one preset value per preset, so `signal` is unique in its preset; the two boolean texts follow the rule of every text (`null` when empty).
 - The open questions on the default number of decimals and on the boolean texts move to their entity files; one is new, the start value of a signal whose enum is a template.
@@ -619,9 +619,9 @@ Asked by the Product Owner on 2026-11-22 ("je veux bien que tu fasses la partie 
 
 The Product Owner answered the three questions of the preset values in the questionnaire.
 
-- **A signal whose enum is a template has a null start value in the preset**: its items exist only on each placed symbol, where the start value is picked. Written in [Preset value](entities/22-preset-value.md) (`start_value` may be `null`) and in the [draft](draft.md#the-start-value).
-- **The two boolean texts are optional**: "true" and "false" are shown when they are `null`. Written in [Boolean texts](entities/21-boolean-texts.md) and in the table of the mode Values of the [draft](draft.md#the-table-of-signal-settings).
-- **The default number of decimals is fixed by the software**, never set for a project; the preset, then the symbol and the synoptic, may change it. The value was left to the assistant after a short search ("mets la valeur qui te parle le mieux"): **2**. Written in [Display format](entities/20-display-format.md) (`default: 2`) and in the [draft](draft.md#decimal-places).
+- **A signal whose enum is a template has a null start value in the preset**: its items exist only on each placed symbol, where the start value is picked. Written in Preset value (now [Signal setting](entities/19-signal-setting.md)) (`start_value` may be `null`) and in the [draft](draft.md#the-start-value).
+- **The two boolean texts are optional**: "true" and "false" are shown when they are `null`. Written in [Boolean texts](entities/18-boolean-texts.md) and in the table of the mode Values of the [draft](draft.md#the-table-of-signal-settings).
+- **The default number of decimals is fixed by the software**, never set for a project; the preset, then the symbol and the synoptic, may change it. The value was left to the assistant after a short search ("mets la valeur qui te parle le mieux"): **2**. Written in [Display format](entities/17-display-format.md) (`default: 2`) and in the [draft](draft.md#decimal-places).
 - **What the short search found** (2026-11-22, web search in this session, 6 queries, 7 pages tried, 6 read; stop: saturation, no source gave a common default). Confidence: low.
   - No source states a default shared by the supervision tools. OPC UA gives an optional `ValuePrecision` (digits after the decimal point) with no default ([OPC 10000-8, §5](https://reference.opcfoundation.org/specs/OPC-10000-8/5)).
   - Ignition's documentation gives no default for a tag's format string ([Tag properties, 8.1](https://www.docs.inductiveautomation.com/docs/8.1/platform/tags/tag-properties)).
@@ -667,24 +667,24 @@ Answers of the Product Owner to the questionnaire of Travail, same day (decision
 
 Asked by the Product Owner on 2026-11-22 ("faceplate élément et tous les trucs en dessous [...] et ensuite le type [...] il y aura un format de fichier à faire").
 
-- **Eight entity files**, each part numbered just before the entity that has or holds it: [Bound](entities/23-bound.md), [Range](entities/24-range.md), [Signal field](entities/25-signal-field.md), [Command button](entities/26-command-button.md), [Text content](entities/27-text-content.md), [Faceplate element](entities/28-faceplate-element.md), [Preset](entities/29-preset.md), then [Type](entities/30-type.md), with the schema of its file. Every box of the [Data model](data-model.md) now has its entity file.
+- **Eight entity files**, each part numbered just before the entity that has or holds it: [Bound](entities/22-bound.md), [Range](entities/23-range.md), [Signal field](entities/24-signal-field.md), [Command button](entities/25-command-button.md), [Text content](entities/26-text-content.md), [Faceplate element](entities/27-faceplate-element.md), Preset (its entity file, removed on 2026-11-24), then [Type](entities/30-type.md), with the schema of its file. Every box of the [Data model](data-model.md) now has its entity file.
 - Nothing new is decided: the files follow the boxes of the data model, [The faceplate, box by box](#the-faceplate-box-by-box) and the decisions already written (0013, 0034, 0040, 0047, 0048, 0051, 0054 to 0058).
 - **The file of a type is `<id>.type.json`** (assistant's reading of [Files](files.md#the-name-of-a-file): a file's name means something to a person, never an `internal_id`): `centrifugal-pump.type.json`. It replaces the proposal of the draft (`types/<internal ID>.json`). Renaming a type renames its file; the links of the software go through the `internal_id`, so nothing breaks. [Files](files.md) now says the rule for a thing that has an `id`.
 - **Assistant's readings, written in the JSON Schemas**: a range always holds `min` and `max`, `null` when there is no bound; a typed text is `null` while nothing is typed; a type's lists hold its own signals, commands and flags, never those it inherits; a group holds `faceplate_elements` even when empty.
-- **Open questions moved to their entity files**: a signal or a command added twice to the builder ([Faceplate element](entities/28-faceplate-element.md)); the uniqueness of a preset's `name` ([Preset](entities/29-preset.md)). New ones: a minimum greater than the maximum ([Range](entities/24-range.md)); the preset values when a signal is added or removed ([Preset](entities/29-preset.md)); a type whose parent's file is missing ([Type](entities/30-type.md)).
+- **Open questions moved to their entity files**: a signal or a command added twice to the builder ([Faceplate element](entities/27-faceplate-element.md)); the uniqueness of a preset's `name` (Preset (its entity file, removed on 2026-11-24)). New ones: a minimum greater than the maximum ([Range](entities/23-range.md)); the preset values when a signal is added or removed (Preset (its entity file, removed on 2026-11-24)); a type whose parent's file is missing ([Type](entities/30-type.md)).
 
 ## Settled on 2026-11-22 (faceplate, preset and type)
 
 Answers of the Product Owner to the questionnaire of Travail, same day (decision 0078):
 
 - **The file of a type is `<id>.type.json`** ("<id>.type.json"): the assistant's reading above is validated; [Files](files.md#the-name-of-a-file) already says the rule.
-- **The `name` of a preset is unique among the presets of its type** ("Unique dans son type"): it is the only thing that tells two presets apart on screen. Written in [Preset](entities/29-preset.md).
-- **The same signal or the same command may be in several elements of a faceplate** ("Oui, permis"): read in one group and written in another, for instance. Written in [Faceplate element](entities/28-faceplate-element.md).
+- **The `name` of a preset is unique among the presets of its type** ("Unique dans son type"): it is the only thing that tells two presets apart on screen. Written in Preset (its entity file, removed on 2026-11-24).
+- **The same signal or the same command may be in several elements of a faceplate** ("Oui, permis"): read in one group and written in another, for instance. Written in [Faceplate element](entities/27-faceplate-element.md).
 
 Second questionnaire, same day (decision 0079):
 
-- **A minimum typed greater than the maximum is refused in the builder** ("Refusé à la saisie"). Written in [Range](entities/24-range.md). Still open there: the number field while two signals give such a range.
-- **Preset values follow the signals** ("Ajoutée et retirés automatiquement"): a signal added to a type or a parent adds its preset value to every preset of the type and its sub-types; a signal removed removes its preset value and the faceplate elements that show it. Written in [Preset](entities/29-preset.md).
+- **A minimum typed greater than the maximum is refused in the builder** ("Refusé à la saisie"). Written in [Range](entities/23-range.md). Still open there: the number field while two signals give such a range.
+- **Preset values follow the signals** ("Ajoutée et retirés automatiquement"): a signal added to a type or a parent adds its preset value to every preset of the type and its sub-types; a signal removed removes its preset value and the faceplate elements that show it. Written in Preset (its entity file, removed on 2026-11-24).
 - **A type whose parent's file is missing is shown, flagged in error** ("Affiché, marqué en erreur"), the missing parent named; its file is left as it is. Written in [Type](entities/30-type.md).
 
 ## Changed on 2026-11-22 (data model page)
@@ -715,9 +715,9 @@ Second questionnaire, same day:
 
 Third questionnaire, same day (decision 0080), each time the advised option:
 
-- **A new sub-type starts with a copy of each preset of its parent** ("Copiés à la création"), with its preset values and its faceplate elements; the copy then lives alone, with no virtual link. A root type still starts with none. This changes the rule of the draft by which no preset is created automatically, and screen MD-07.1. Written in [Inheritance of types](inheritance.md) and [Preset](entities/29-preset.md).
-- **A line added to a parent is refused when a sub-type already has its `id` as its own line** ("Ajout refusé"): the `id` of a signal, a command or a flag is unique along the branch, sub-types included. Written in [Signal](entities/16-signal.md), [Command](entities/18-command.md) and [Flag](entities/19-flag.md). The same for a line renamed in a parent: assistant's reading, left open in [Inheritance of types](inheritance.md#open-questions).
-- **A command removed removes the faceplate elements that send it** ("Retirés aussi"), in every preset of the type and of its sub-types, as for a signal (decision 0079). Written in [Preset](entities/29-preset.md) and [Command button](entities/26-command-button.md).
+- **A new sub-type starts with a copy of each preset of its parent** ("Copiés à la création"), with its preset values and its faceplate elements; the copy then lives alone, with no virtual link. A root type still starts with none. This changes the rule of the draft by which no preset is created automatically, and screen MD-07.1. Written in [Inheritance of types](inheritance.md) and Preset (its entity file, removed on 2026-11-24).
+- **A line added to a parent is refused when a sub-type already has its `id` as its own line** ("Ajout refusé"): the `id` of a signal, a command or a flag is unique along the branch, sub-types included. Written in [Signal](entities/16-signal.md), [Command](entities/21-command.md) and [Flag](entities/28-flag.md). The same for a line renamed in a parent: assistant's reading, left open in [Inheritance of types](inheritance.md).
+- **A command removed removes the faceplate elements that send it** ("Retirés aussi"), in every preset of the type and of its sub-types, as for a signal (decision 0079). Written in Preset (its entity file, removed on 2026-11-24) and [Command button](entities/25-command-button.md).
 
 Fourth questionnaire, same day (decision 0081), each time the advised option:
 
@@ -728,8 +728,8 @@ Fourth questionnaire, same day (decision 0081), each time the advised option:
 Fifth questionnaire, same day (decision 0082), each time the advised option:
 
 - **A type that has sub-types cannot be deleted** ("Suppression refusée"): its sub-types are deleted first. Written in [Deleting and its consequences](deleting.md), [Inheritance of types](inheritance.md#the-tree), [Type](entities/30-type.md) and screen MD-02.8.
-- **A signal deleted, own or inherited, removes the bounds read from it and flags in error the commands that target it** ("Borne retirée, commande en erreur"): the range then has no minimum or no maximum; the command is kept as written. Written in [Deleting and its consequences](deleting.md), [Inheritance of types](inheritance.md#when-a-parent-changes), [Bound](entities/23-bound.md) and [Command target](entities/17-command-target.md).
-- **An enum, an enum item or a designation deleted while used flags in error what uses it** ("Utilisateurs marqués en erreur"), kept as written, as for a missing parent (decision 0079): the signal of its value type, the preset value of its start value, the command of its value, the faceplate element of its text content. Written in [Deleting and its consequences](deleting.md), [Value type](entities/15-value-type.md), [Preset value](entities/22-preset-value.md), [Command target](entities/17-command-target.md), [Text content](entities/27-text-content.md) and screens MD-09.8 and MD-13.7.
+- **A signal deleted, own or inherited, removes the bounds read from it and flags in error the commands that target it** ("Borne retirée, commande en erreur"): the range then has no minimum or no maximum; the command is kept as written. Written in [Deleting and its consequences](deleting.md), [Inheritance of types](inheritance.md#when-a-parent-changes), [Bound](entities/22-bound.md) and [Command target](entities/20-command-target.md).
+- **An enum, an enum item or a designation deleted while used flags in error what uses it** ("Utilisateurs marqués en erreur"), kept as written, as for a missing parent (decision 0079): the signal of its value type, the preset value of its start value, the command of its value, the faceplate element of its text content. Written in [Deleting and its consequences](deleting.md), [Value type](entities/15-value-type.md), Preset value (now [Signal setting](entities/19-signal-setting.md)), [Command target](entities/20-command-target.md), [Text content](entities/26-text-content.md) and screens MD-09.8 and MD-13.7.
 
 Sixth questionnaire, same day:
 
@@ -759,7 +759,7 @@ Said by the Product Owner in Travail (decision 0087); the rest, proposed by the 
 - **The presets of a type are split in two lists**: "Parent presets", read only, the presets of every parent up the branch; then "Presets", the type's own. Nothing changes in the schema: a type still holds its own presets only, and the parent presets are read from the parents' files.
 - **A line of "Parent presets" shows a duplicate button on hover**, which copies the preset into the type's own list. A plain copy, to save time, with no link to the preset it comes from: a change in the parent's preset never reaches it (confirmed by the Product Owner the same day: "C'est vraiment une duplication [...] y a aucun lien en soi [...] on change pas l'objet pour autant"). It replaces the copy of every preset at creation (decision 0080): a new sub-type starts with no preset of its own (confirmed by the Product Owner in the questionnaire).
 - **Changed later the same day (decision 0088)**: the copy always gets the name followed by "-" and the first number free in the type ("Default-1", "Default-2"...), the hyphen confirmed in the questionnaire; a click on a line of "Parent presets" selects it and shows the preset on the right, all read only, to see it before duplicating. Nothing changes in the schema: `name` stays unique among the presets of the type only, and may be the same as a preset of a parent (confirmed in the questionnaire: allowed, the number at duplication is enough to keep them apart).
-- Written in [Preset](entities/29-preset.md), [Inheritance of types](inheritance.md), the [whole draft](draft.md#inherited-by-the-sub-types), the [glossary](../overview/glossary.md) and screens MD-07.1, MD-07.24, MD-07.25.
+- Written in Preset (its entity file, removed on 2026-11-24), [Inheritance of types](inheritance.md), the [whole draft](draft.md#inherited-by-the-sub-types), the [glossary](../overview/glossary.md) and screens MD-07.1, MD-07.24, MD-07.25.
 
 ## Writing rules of the entity files (to become a skill)
 
@@ -827,7 +827,7 @@ Decided by the Product Owner on 2026-11-24: "il n'y aurait que des types, au fin
 - **`FACEPLATE_ELEMENT` is held by the type** in `faceplate_elements`; the elements of the parents are read only and placed by `TYPE.faceplate_order`, the `internal_id` of every element at the top of the faceplate, inherited and own, an own element anywhere among them.
 - **The documentation is inherited**: shown above the sub-type's own, read only (replaces decision 0081); nothing changes in `DOCUMENTATION`.
 - A new type of field, `uuid_list`, for `faceplate_order`.
-- Written in [Signal setting](entities/22-signal-setting.md), [Type](entities/30-type.md), [Faceplate element](entities/28-faceplate-element.md), [Inheritance of types](inheritance.md), the [Data model](data-model.md) and [Screens of Metadata](../screens/metadata.md).
+- Written in [Signal setting](entities/19-signal-setting.md), [Type](entities/30-type.md), [Faceplate element](entities/27-faceplate-element.md), [Inheritance of types](inheritance.md), the [Data model](data-model.md) and [Screens of Metadata](../screens/metadata.md).
 
 ## For the development
 
@@ -842,6 +842,6 @@ Decided by the Product Owner on 2026-11-24: "il n'y aurait que des types, au fin
 - The default unit and the model unit (decision 0024): open in [Quantity](entities/10-quantity.md#open-questions).
 - The names of the two quantities added for numbers that measure nothing physical: "ratio" and "count" for now.
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
-- Whether the two texts of a boolean are ever written in the configuration files sent with the model: open in [Boolean texts](entities/21-boolean-texts.md#open-questions).
+- Whether the two texts of a boolean are ever written in the configuration files sent with the model: open in [Boolean texts](entities/18-boolean-texts.md#open-questions).
 - `SIGNAL_FIELD` starts with its signal, then `access`: the assistant's reading of the order of the keys, to confirm.
 - The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `UNIT_SYSTEM`, and for now `FLAG` (a placed symbol will likely point to its flags, assistant's reading); `FACEPLATE_ELEMENT` is pointed to by `TYPE.faceplate_order` since 2026-11-24, and `PRESET` is gone. The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated.

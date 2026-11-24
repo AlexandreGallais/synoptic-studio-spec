@@ -6,13 +6,13 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A signal field shows the value of one [signal](16-signal.md) in the faceplate, with a label, and lets a person type it when its access allows. In read, the value is shown as text alone: in the display unit and with the decimals of its [signal setting](22-signal-setting.md), an enum by the display name of its item, a boolean by its [boolean texts](21-boolean-texts.md). A signal field is kept inside its [faceplate element](28-faceplate-element.md), which has one when its kind is signal; it has no `internal_id`, since nothing points to it.
+A signal field shows the value of one [signal](16-signal.md) in the faceplate, with a label, and lets a person type it when its access allows. In read, the value is shown as text alone: in the display unit and with the decimals of its [signal setting](19-signal-setting.md), an enum by the display name of its item, a boolean by its [boolean texts](18-boolean-texts.md). A signal field is kept inside its [faceplate element](27-faceplate-element.md), which has one when its kind is signal; it has no `internal_id`, since nothing points to it.
 
 ## The entity
 
 ```mermaid
 erDiagram
-    %% link RANGE 24-range.md
+    %% link RANGE 23-range.md
     SIGNAL_FIELD {
         uuid signal FK
         access access

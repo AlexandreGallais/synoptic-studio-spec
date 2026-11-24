@@ -123,7 +123,7 @@ flowchart LR
     W["Wrong parent"] --> D["Delete the type"] --> N["Create it again under the right parent"]
 ```
 
-- The parts of a type are shown in this order (Product Owner, 2026-11-11, then 2026-11-16): General, Documentation, Signals, Commands, Flags, Signal settings, Faceplate (2026-11-24; the presets and their two modes before). The faceplate is a part of its own again (see [Signal settings and faceplate](#two-parts-of-the-type)). They are shown as **a list of their names, in the column of the type tree, fixed under the tree** (proposal B, changed by the Product Owner on 2026-11-16; see [The parts of a type](#the-parts-of-a-type-a-list-fixed-under-the-tree)).
+- The parts of a type are shown in this order (Product Owner, 2026-11-11, then 2026-11-16): General, Documentation, Signals, Signal settings, Commands, Faceplate, Flags (2026-11-24; the presets and their two modes before, then Flags before them). The faceplate is a part of its own again (see [Signal settings and faceplate](#two-parts-of-the-type)). They are shown as **a list of their names, in the column of the type tree, fixed under the tree** (proposal B, changed by the Product Owner on 2026-11-16; see [The parts of a type](#the-parts-of-a-type-a-list-fixed-under-the-tree)).
 
 #### The type tree: search, create, delete (Product Owner, 2026-11-16)
 
@@ -203,9 +203,10 @@ flowchart LR
     T[Type] --> G[General: name, parent, icon]
     T --> DO[Documentation]
     T --> P[Signals]
+    T --> R[Signal settings]
     T --> C[Commands]
+    T --> FP[Faceplate]
     T --> F[Flags]
-    T --> R[Signal settings and faceplate]
 ```
 
 | Part | File |
@@ -213,15 +214,16 @@ flowchart LR
 | General: icon and colour | [Icons](#type-icons) |
 | Documentation: description (Markdown), links | [Documentation](#type-documentation) |
 | Signals | [Signals](#signals) |
+| Signal settings | [Signal settings and faceplate](#signal-settings-and-the-faceplate) |
 | Commands | [Commands](#commands) |
+| Faceplate | [Signal settings and faceplate](#signal-settings-and-the-faceplate) |
 | Flags: keys written in the configuration files, for customisation outside the application (2026-11-17) | [Flags](#flags) |
-| Signal settings and faceplate | [Signal settings and faceplate](#signal-settings-and-the-faceplate) |
 
 ### The parts of a type: a list fixed under the tree
 
 Chosen by the Product Owner on 2026-11-16: **proposal B, the parts written in whole words**, placed in the column of the type tree. It replaces proposal C (a strip of icons), chosen earlier the same day.
 
-- The seven parts are listed **with their names in whole words**, one under the other, in the order General, Documentation, Signals, Commands, Flags, Signal settings, Faceplate (Presets until 2026-11-24; Flags added after Commands on 2026-11-17, Product Owner: "général, documentation, signal, commande, flag"; decision 0028).
+- The seven parts are listed **with their names in whole words**, one under the other, in the order General, Documentation, Signals, Signal settings, Commands, Faceplate, Flags (Product Owner, 2026-11-24: "les flags, en gros, ils n'ont rien à faire dans les faceplate, et c'est juste un petit truc en plus. Donc on le mettra en dernier"). Until 2026-11-24: General, Documentation, Signals, Commands, Flags, then Presets, replaced that day by Signal settings and Faceplate; Flags added after Commands on 2026-11-17 (decision 0028).
 - They sit **in the same column as the type tree, under it**, not in a column of their own. The list was moved above the tree for a while the same day, then put back under it: above the title "Type tree", it made no sense (Product Owner, 2026-11-16: "ça n'a aucun sens logique").
 - The list is **fixed** at the bottom of that column: it never moves, whatever the length of the tree (Product Owner: "on fixe, et comme ça, ça ne bouge pas … ça bougera jamais"). The tree scrolls above it.
 - Why: whole words are understood at once, icons are not ("il faut faire des mots entiers, sinon ils vont rien comprendre"); and since the column on the left already holds long lines (the names of the types), the names of the parts fit there without taking a column of their own.
@@ -233,7 +235,7 @@ block-beta
     block:left
         columns 1
         tree["Type tree, scrolls"]
-        parts["Parts, fixed: General, Documentation, Signals, Commands, Flags, Signal settings, Faceplate"]
+        parts["Parts, fixed: General, Documentation, Signals, Signal settings, Commands, Faceplate, Flags"]
     end
     editor["Editor of the selected part"]:2
 ```
@@ -1157,7 +1159,7 @@ A faceplate is the panel that shows the signals and the commands of a placed sym
 
 - **Signal settings**: a table with every signal of the type, own and inherited: the display unit, the decimals, the texts of a boolean and the start value of each.
 - **Faceplate**: the faceplate builder, where the faceplate is put together element by element.
-- Each is a whole page, a part of the type in the list under the tree, after Flags (2026-11-24). Neither has a name, a list on its left or a delete button: there is one per type.
+- Each is a whole page, a part of the type in the list under the tree: Signal settings right after Signals, Faceplate right after Commands (2026-11-24). Neither has a name, a list on its left or a delete button: there is one per type.
 - The display unit and the decimals also serve the texts of a symbol that show a value (see [Animation mode](../symbols/08-animation-mode/README.md)).
 - What a type does not set comes from its parent, then from the units (the default unit of the quantity, the one default number of decimals; see [Decimal places](#decimal-places)).
 - Both are always editable, with no Edit or Save step (Product Owner, 2026-11-16). See [Always editable, no versions](#always-editable-no-versions).
@@ -1165,7 +1167,7 @@ A faceplate is the panel that shows the signals and the commands of a placed sym
 #### Inherited by the sub-types
 
 - **Signal settings**: a sub-type shows the settings of its parents' signals and may change every one of them ("on peut toujours tout changer par rapport à un sous-type"); the changed line is its own, and a reset button on the line removes it, so that the line follows its parent again ("ça supprime juste de la liste"). The enabled button is the only mark of a changed line (Product Owner, 2026-11-24).
-- **Faceplate**: the elements of the parents are in the sub-type's faceplate, read only: they are moved, never changed nor removed ("tous les parents passent en read-only [...] on peut juste venir les déplacer"). An own element may go anywhere among them (Product Owner, 2026-11-24).
+- **Faceplate**: the elements of the parents are in the sub-type's faceplate, read only: they are moved, never changed nor removed ("tous les parents passent en read-only [...] on peut juste venir les déplacer"). An own element may go anywhere among them (Product Owner, 2026-11-24). They look like the own elements, with the same background; only their fields are read only and they have no delete button ("Juste enlever la poubelle, pour moi, c'était suffisant", Product Owner, 2026-11-24).
 - See [Inheritance of types](inheritance.md).
 
 #### The table of signal settings
@@ -1257,7 +1259,7 @@ Said by the Product Owner at the end of 2026-11-17. A signal has no bounds of it
 - A **number field** of the builder can have a **minimum** and a **maximum**, each **typed by hand, or taken from a signal of the type** through a small icon inside the field.
 - **The signal is an input, never an output** (decision 0055), **of the same quantity as the signal shown** (decision 0056).
 - A typed bound is shown and typed in the display unit of the signal settings, and kept in the default unit of the quantity (decision 0051).
-- The minimum and the maximum together are the **range** of the field ([Range](entities/24-range.md)).
+- The minimum and the maximum together are the **range** of the field ([Range](entities/23-range.md)).
 - A typed value outside them is refused (assistant's reading). An integer signal accepts whole numbers only; an enum signal only the items of its enum.
 - A value that passes is converted back to the default unit and rounded to 12 significant digits before it goes to the model (see [Units](#units)).
 
@@ -1448,7 +1450,7 @@ In the synoptic "Line 1", the pump P-101 has `show_in_overview` and `export_to_m
 
 Answered by the Product Owner on 2026-11-17: the description is optional; a flag has an internal identifier; no warning about what a delete breaks; no rule on an ID; the order chosen with a handle; the flags inherited. Left:
 
-- Must an ID be unique in the type and its tree? Answered by the Product Owner on 2026-11-22: unique among the flags of the type and of its parents (see [Flag](entities/19-flag.md)).
+- Must an ID be unique in the type and its tree? Answered by the Product Owner on 2026-11-22: unique among the flags of the type and of its parents (see [Flag](entities/28-flag.md)).
 - The description kept out of the configuration files: assistant's reading, to confirm.
 
 ## Identifiers

@@ -18,9 +18,9 @@ What the software checks in Metadata, when, and what each check gives: a change 
 | [Inheritance of types](inheritance.md) | An `id` already taken along the branch is refused; a type whose parent is missing is flagged in error. |
 | [Deleting and its consequences](deleting.md) | A type that has sub-types is never deleted; what points to a deleted thing is flagged in error. |
 | [Identity and renaming](identity-and-renaming.md) | A key or a name already taken in its list is refused when typed. |
-| [Type](entities/30-type.md), [Signal](entities/16-signal.md), [Command](entities/18-command.md), [Flag](entities/19-flag.md), [Enum](entities/06-enum.md), [Enum item](entities/05-enum-item.md), [Designation](entities/11-designation.md) | Their uniqueness, said in the `description` of their key. |
-| [Range](entities/24-range.md), [Bound](entities/23-bound.md) | A typed value outside the range, a minimum greater than the maximum: refused. |
-| [Command target](entities/17-command-target.md), [Value type](entities/15-value-type.md), [Signal setting](entities/22-signal-setting.md), [Text content](entities/27-text-content.md) | Flagged in error when what they point to is gone. |
+| [Type](entities/30-type.md), [Signal](entities/16-signal.md), [Command](entities/21-command.md), [Flag](entities/28-flag.md), [Enum](entities/06-enum.md), [Enum item](entities/05-enum-item.md), [Designation](entities/11-designation.md) | Their uniqueness, said in the `description` of their key. |
+| [Range](entities/23-range.md), [Bound](entities/22-bound.md) | A typed value outside the range, a minimum greater than the maximum: refused. |
+| [Command target](entities/20-command-target.md), [Value type](entities/15-value-type.md), [Signal setting](entities/19-signal-setting.md), [Text content](entities/26-text-content.md) | Flagged in error when what they point to is gone. |
 | [MD-02.8](../screens/metadata.md#md-02--general), [MD-04.6](../screens/metadata.md#md-04--signals), [MD-05.3](../screens/metadata.md#md-05--commands), [MD-07.14](../screens/metadata.md#md-07--signal-settings), [MD-14.6](../screens/metadata.md#md-14--faceplate), [MD-08.10](../screens/metadata.md#md-08--units), [MD-09.3, MD-09.6, MD-09.7](../screens/metadata.md#md-09--enums), [MD-12.3](../screens/metadata.md#md-12--flags-a-part-of-the-type), [MD-13.4](../screens/metadata.md#md-13--designations) | Where a check shows on screen. |
 | [Faults](../synoptics/08-faults.md) | What a change of Metadata breaks in a synoptic, listed there, never in Metadata. |
 
@@ -62,7 +62,7 @@ flowchart LR
 | An `id` of a signal, a command or a flag already taken along the branch: added or renamed in a parent while a sub-type has it as its own line, or reused by a sub-type | MD-04.6, MD-05, MD-12 | Decisions 0080, 0081 |
 | Deleting a type that has sub-types | MD-02.8 | Decision 0082 |
 | A minimum typed greater than the maximum, in the faceplate builder | MD-07.22 | Decision 0079 |
-| A value typed in a number field of the faceplate outside its range | Faceplate | [Range](entities/24-range.md) (assistant's reading) |
+| A value typed in a number field of the faceplate outside its range | Faceplate | [Range](entities/23-range.md) (assistant's reading) |
 | A value typed (a start value, a value in the faceplate) whose conversion gives no finite number | MD-07.14, faceplate | Decisions 0051, 0076 |
 | A decimal typed for an integer signal | MD-07.14, faceplate | Decisions 0003, 0043 |
 | A number typed for an integer signal in another display unit that gives no whole number in the default unit (24.17 rps is 1450.2 rpm) | MD-07.14, faceplate | Decision 0085 |
@@ -123,7 +123,7 @@ flowchart LR
 - **A duplicate found in a file changed by hand**: two keys that must be unique, read from the file; typing refuses them (decision 0083), reading a file does not say.
 - **A formula or a check of the catalogue that fails when a quantity file is read**: the unit left out of the catalogue, or shown in error (gap of MD-08).
 - **A file whose `format_version` the software does not know**, written by a later Synoptic Studio.
-- **A number field whose two bounds, read from signals, give a minimum greater than the maximum** ([Range](entities/24-range.md)).
+- **A number field whose two bounds, read from signals, give a minimum greater than the maximum** ([Range](entities/23-range.md)).
 - **A format for the `id`s**, a regular expression per kind of `id` in the settings: a message only, or the `id` refused ([Files](files.md#open-questions)).
 - **A quantity whose file is missing**: the signals and display formats that point to it flagged in error and kept as written, as for a parent: assistant's reading of rule 7 of [Deleting and its consequences](deleting.md#the-rules).
 - **The look of the mark** in place of a value that is not a number ([Formulas](formulas.md#open-questions)).

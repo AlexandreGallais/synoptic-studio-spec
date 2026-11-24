@@ -26,18 +26,18 @@ erDiagram
     %% link LINK entities/13-link.md
     %% link SIGNAL entities/16-signal.md
     %% link VALUE_TYPE entities/15-value-type.md
-    %% link COMMAND entities/18-command.md
-    %% link COMMAND_TARGET entities/17-command-target.md
-    %% link FLAG entities/19-flag.md
-    %% link SIGNAL_SETTING entities/22-signal-setting.md
-    %% link DISPLAY_FORMAT entities/20-display-format.md
-    %% link BOOLEAN_TEXTS entities/21-boolean-texts.md
-    %% link FACEPLATE_ELEMENT entities/28-faceplate-element.md
-    %% link SIGNAL_FIELD entities/25-signal-field.md
-    %% link RANGE entities/24-range.md
-    %% link BOUND entities/23-bound.md
-    %% link COMMAND_BUTTON entities/26-command-button.md
-    %% link TEXT_CONTENT entities/27-text-content.md
+    %% link SIGNAL_SETTING entities/19-signal-setting.md
+    %% link DISPLAY_FORMAT entities/17-display-format.md
+    %% link BOOLEAN_TEXTS entities/18-boolean-texts.md
+    %% link COMMAND entities/21-command.md
+    %% link COMMAND_TARGET entities/20-command-target.md
+    %% link FACEPLATE_ELEMENT entities/27-faceplate-element.md
+    %% link SIGNAL_FIELD entities/24-signal-field.md
+    %% link RANGE entities/23-range.md
+    %% link BOUND entities/22-bound.md
+    %% link COMMAND_BUTTON entities/25-command-button.md
+    %% link TEXT_CONTENT entities/26-text-content.md
+    %% link FLAG entities/28-flag.md
     %% link QUANTITY entities/10-quantity.md
     %% link UNIT_SYSTEM entities/09-unit-system.md
     %% link UNIT entities/08-unit.md
@@ -94,21 +94,6 @@ erDiagram
         uuid quantity FK
         boolean relative_quantity
     }
-    COMMAND {
-        uuid internal_id PK
-        command_kind kind
-        text id
-        text description
-    }
-    COMMAND_TARGET {
-        uuid signal FK
-        signal_value value
-    }
-    FLAG {
-        uuid internal_id PK
-        text id
-        text description
-    }
     SIGNAL_SETTING {
         uuid signal FK
         signal_value start_value
@@ -120,6 +105,16 @@ erDiagram
     BOOLEAN_TEXTS {
         text true_text
         text false_text
+    }
+    COMMAND {
+        uuid internal_id PK
+        command_kind kind
+        text id
+        text description
+    }
+    COMMAND_TARGET {
+        uuid signal FK
+        signal_value value
     }
     FACEPLATE_ELEMENT {
         uuid internal_id PK
@@ -144,6 +139,11 @@ erDiagram
         text_content_source source
         uuid designation FK
         text typed_text
+    }
+    FLAG {
+        uuid internal_id PK
+        text id
+        text description
     }
     QUANTITY {
         uuid internal_id PK
@@ -188,25 +188,25 @@ erDiagram
     TYPE ||--|| APPEARANCE : "has"
     TYPE ||--|| DOCUMENTATION : "has"
     TYPE ||--o{ SIGNAL : "holds"
-    TYPE ||--o{ COMMAND : "holds"
-    TYPE ||--o{ FLAG : "holds"
     TYPE ||--o{ SIGNAL_SETTING : "holds, one per own signal, and one per inherited signal it changes"
+    TYPE ||--o{ COMMAND : "holds"
     TYPE ||--o{ FACEPLATE_ELEMENT : "holds; faceplate_order places those of the parents too"
+    TYPE ||--o{ FLAG : "holds"
     DOCUMENTATION ||--o{ LINK : "holds"
     SIGNAL ||--|| VALUE_TYPE : "has"
-    SIGNAL ||--o{ COMMAND_TARGET : "signal"
     SIGNAL ||--o{ SIGNAL_SETTING : "signal"
+    SIGNAL ||--o{ COMMAND_TARGET : "signal"
     SIGNAL ||--o{ SIGNAL_FIELD : "signal"
     SIGNAL |o--o{ BOUND : "signal"
     VALUE_TYPE }o--o| QUANTITY : "quantity"
     VALUE_TYPE }o--o| ENUM : "enum"
-    COMMAND ||--o| COMMAND_TARGET : "has, when kind is set_input_signal or override_output_signal"
-    COMMAND ||--o{ COMMAND_BUTTON : "command"
-    COMMAND_TARGET }o--o| ENUM_ITEM : "value"
     SIGNAL_SETTING ||--o| DISPLAY_FORMAT : "has, when the signal is an integer or a real"
     SIGNAL_SETTING ||--o| BOOLEAN_TEXTS : "has, when the signal is a boolean"
     SIGNAL_SETTING }o--o| ENUM_ITEM : "start_value"
     DISPLAY_FORMAT }o--|| UNIT : "unit"
+    COMMAND ||--o| COMMAND_TARGET : "has, when kind is set_input_signal or override_output_signal"
+    COMMAND ||--o{ COMMAND_BUTTON : "command"
+    COMMAND_TARGET }o--o| ENUM_ITEM : "value"
     FACEPLATE_ELEMENT |o--o{ FACEPLATE_ELEMENT : "holds, when kind is group"
     FACEPLATE_ELEMENT ||--o| SIGNAL_FIELD : "has, when kind is signal"
     FACEPLATE_ELEMENT ||--o| COMMAND_BUTTON : "has, when kind is command"
@@ -224,7 +224,7 @@ erDiagram
 
 ## The entities
 
-Every entity of the schema, in the order of the pages of Metadata where it is edited (General, Documentation, Signals, Commands, Flags, Signal settings, Faceplate, then Units, Enums, Designations), with its number and the file it is kept in.
+Every entity of the schema, in the order of the pages of Metadata where it is edited (General, Documentation, Signals, Signal settings, Commands, Faceplate, Flags, then Units, Enums, Designations), with its number and the file it is kept in.
 
 | Page | # | Entity | Kept in |
 | --- | --- | --- | --- |
@@ -238,18 +238,18 @@ Every entity of the schema, in the order of the pages of Metadata where it is ed
 | Documentation | 13 | [Link entity](entities/13-link.md) | `<id>.type.json` |
 | Signals | 16 | [Signal](entities/16-signal.md) | `<id>.type.json` |
 | Signals | 15 | [Value type](entities/15-value-type.md) | `<id>.type.json` |
-| Commands | 18 | [Command](entities/18-command.md) | `<id>.type.json` |
-| Commands | 17 | [Command target](entities/17-command-target.md) | `<id>.type.json` |
-| Flags | 19 | [Flag](entities/19-flag.md) | `<id>.type.json` |
-| Signal settings | 22 | [Signal setting](entities/22-signal-setting.md) | `<id>.type.json` |
-| Signal settings | 20 | [Display format](entities/20-display-format.md) | `<id>.type.json` |
-| Signal settings | 21 | [Boolean texts](entities/21-boolean-texts.md) | `<id>.type.json` |
-| Faceplate | 28 | [Faceplate element](entities/28-faceplate-element.md) | `<id>.type.json` |
-| Faceplate | 25 | [Signal field](entities/25-signal-field.md) | `<id>.type.json` |
-| Faceplate | 24 | [Range](entities/24-range.md) | `<id>.type.json` |
-| Faceplate | 23 | [Bound](entities/23-bound.md) | `<id>.type.json` |
-| Faceplate | 26 | [Command button](entities/26-command-button.md) | `<id>.type.json` |
-| Faceplate | 27 | [Text content](entities/27-text-content.md) | `<id>.type.json` |
+| Signal settings | 19 | [Signal setting](entities/19-signal-setting.md) | `<id>.type.json` |
+| Signal settings | 17 | [Display format](entities/17-display-format.md) | `<id>.type.json` |
+| Signal settings | 18 | [Boolean texts](entities/18-boolean-texts.md) | `<id>.type.json` |
+| Commands | 21 | [Command](entities/21-command.md) | `<id>.type.json` |
+| Commands | 20 | [Command target](entities/20-command-target.md) | `<id>.type.json` |
+| Faceplate | 27 | [Faceplate element](entities/27-faceplate-element.md) | `<id>.type.json` |
+| Faceplate | 24 | [Signal field](entities/24-signal-field.md) | `<id>.type.json` |
+| Faceplate | 23 | [Range](entities/23-range.md) | `<id>.type.json` |
+| Faceplate | 22 | [Bound](entities/22-bound.md) | `<id>.type.json` |
+| Faceplate | 25 | [Command button](entities/25-command-button.md) | `<id>.type.json` |
+| Faceplate | 26 | [Text content](entities/26-text-content.md) | `<id>.type.json` |
+| Flags | 28 | [Flag](entities/28-flag.md) | `<id>.type.json` |
 | Units | 10 | [Quantity](entities/10-quantity.md) | `<name>.quantity.json` |
 | Units | 09 | [Unit system](entities/09-unit-system.md) | `<name>.quantity.json` |
 | Units | 08 | [Unit](entities/08-unit.md) | `<name>.quantity.json` |

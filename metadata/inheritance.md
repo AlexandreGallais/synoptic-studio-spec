@@ -7,6 +7,7 @@
 | 1 | 2026-11-22 | Draft | Creation of the file |
 | 2 | 2026-11-23 | Draft | The presets of the parents are shown and duplicated (decision 0087) |
 | 3 | 2026-11-24 | Draft | No more presets: everything is inherited, the documentation, the signal settings and the faceplate included |
+| 4 | 2026-11-24 | Draft | The parts in their new order; the faceplate elements of the parents look like the own ones, without a delete button |
 
 What a sub-type takes from its parents, what it may change, and what happens when a parent changes or is missing. There are no presets (2026-11-24): types and sub-types only, everything inherited, so that the same kind of equipment shows the same faceplate everywhere; to show a type another way, a sub-type is made. The rules come from decisions 0003, 0013, 0033, 0047, 0079, 0080, 0082, the Product Owner's of 2026-11-24, the [whole draft](draft.md#types) and the [entity files](entities/README.md).
 
@@ -15,12 +16,12 @@ What a sub-type takes from its parents, what it may change, and what happens whe
 | Where | What it takes from here |
 | --- | --- |
 | [Type](entities/30-type.md) | `parent`, and the lists of the type, which hold its own lines only. |
-| [Signal](entities/16-signal.md), [Command](entities/18-command.md), [Flag](entities/19-flag.md) | An `id` unique along the branch: among the lines of the type, of its parents and of its sub-types. |
 | [Appearance](entities/12-appearance.md) | A value left `null` shows the parent's. |
 | [Documentation](entities/14-documentation.md) | The description and the links of the parents, shown first, read only. |
-| [Signal setting](entities/22-signal-setting.md) | One per own signal; one per inherited signal the sub-type changes. |
-| [Faceplate element](entities/28-faceplate-element.md) | The elements of the parents, read only, placed by the `faceplate_order` of the type. |
-| [Signal field](entities/25-signal-field.md), [Command button](entities/26-command-button.md), [Bound](entities/23-bound.md), [Command target](entities/17-command-target.md) | A signal or a command of the type, own or inherited. |
+| [Signal](entities/16-signal.md), [Command](entities/21-command.md), [Flag](entities/28-flag.md) | An `id` unique along the branch: among the lines of the type, of its parents and of its sub-types. |
+| [Signal setting](entities/19-signal-setting.md) | One per own signal; one per inherited signal the sub-type changes. |
+| [Faceplate element](entities/27-faceplate-element.md) | The elements of the parents, read only, placed by the `faceplate_order` of the type. |
+| [Signal field](entities/24-signal-field.md), [Command button](entities/25-command-button.md), [Bound](entities/22-bound.md), [Command target](entities/20-command-target.md) | A signal or a command of the type, own or inherited. |
 | [MD-04 · Signals](../screens/metadata.md#md-04--signals), [MD-05 · Commands](../screens/metadata.md#md-05--commands) | The inherited lines first, read only. |
 | [MD-03 · Documentation](../screens/metadata.md#md-03--documentation), [MD-07 · Signal settings](../screens/metadata.md#md-07--signal-settings), [MD-14 · Faceplate](../screens/metadata.md#md-14--faceplate) | What the parents wrote, first and read only; the values, changeable. |
 
@@ -45,14 +46,14 @@ flowchart TD
 
 | What | Inherited | How |
 | --- | --- | --- |
-| Signals | Yes, all | Read from each parent up the branch; never copied into the sub-type's file. |
-| Commands | Yes, all | The same as the signals. |
-| Flags | Yes, all (decision 0033) | The same; a placed symbol has the flags of its type and of its parents. |
-| Icon, color | Yes, each one alone | A value left `null` shows the parent's, which may itself be inherited; at the root, the software's default. |
 | `id` | No | Each type has its own, unique in the tree. |
+| Icon, color | Yes, each one alone | A value left `null` shows the parent's, which may itself be inherited; at the root, the software's default. |
 | Documentation | Yes (2026-11-24, replaces decision 0081) | The description of each parent, from the root down, is shown above the sub-type's own, read only; its links come before the sub-type's own, read only. Each level writes its chapter: "Pump", then "Centrifugal pump". Never copied into the sub-type's file. |
+| Signals | Yes, all | Read from each parent up the branch; never copied into the sub-type's file. |
 | Signal settings | Yes, each one alone (2026-11-24) | An inherited signal shows its parent's signal setting until the sub-type changes it; the changed one is kept in the sub-type's file and replaces the parent's whole; its reset button removes it, and the signal follows its parent again. |
-| Faceplate | Yes, all its elements (2026-11-24) | The elements of every parent are in the sub-type's faceplate, read only: never changed nor removed, only moved. The sub-type adds its own; their order is kept in its `faceplate_order`. |
+| Commands | Yes, all | The same as the signals. |
+| Faceplate | Yes, all its elements (2026-11-24) | The elements of every parent are in the sub-type's faceplate, read only: never changed nor removed, only moved. They look like the own elements, without a delete button. The sub-type adds its own; their order is kept in its `faceplate_order`. |
+| Flags | Yes, all (decision 0033) | The same as the signals; a placed symbol has the flags of its type and of its parents. |
 
 `pneumatic_positive_displacement_pump` has the signals `flow`, `speed`, `stroke` and `air_pressure`, and shows the pump icon in green: the icon of `pump`, the color of `positive_displacement_pump`.
 
@@ -69,7 +70,7 @@ flowchart TD
 
 - **The inherited lines come first, read only**: those of the parent at the root, then those of each parent down the branch, then the type's own.
 - Each group keeps the order chosen in the type that declares it; only the type's own lines have a handle to move them.
-- The same order everywhere the lines of a type are listed: the tables of signals, commands and flags, and the table of signal settings. The faceplate alone has an order the sub-type chooses.
+- The same order everywhere the lines of a type are listed: the tables of signals, signal settings, commands and flags. The faceplate alone has an order the sub-type chooses.
 
 ```mermaid
 block-beta

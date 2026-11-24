@@ -42,7 +42,7 @@ flowchart TD
 
 ### Signal settings
 
-- No preset to choose (2026-11-24): there are no presets; the placed symbol starts from the [signal settings](../metadata/entities/22-signal-setting.md) and the faceplate of its type.
+- No preset to choose (2026-11-24): there are no presets; the placed symbol starts from the [signal settings](../metadata/entities/19-signal-setting.md) and the faceplate of its type.
 - Decided on 2026-11-20: a synoptic may change, for one placed symbol, the **start values**, the **display units**, the **decimals** and the **texts** of the title and description elements of its faceplate. Nothing else changes in a synoptic.
 - Decided on 2026-11-20: these changes are **kept as changes from the type**. A placed symbol that changes nothing follows its type when the type changes.
 - A table of the values this placed symbol changes: signal, start value, display unit, decimals, then the texts. Proposed (the table).

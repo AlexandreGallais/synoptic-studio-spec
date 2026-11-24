@@ -7,7 +7,7 @@
 | 1 | 2026-11-22 | Draft | Creation of the file, as Preset value |
 | 2 | 2026-11-24 | Draft | No more presets: renamed Signal setting, held by the type; a sub-type replaces those of its parents, and removes its own to follow them again |
 
-A signal setting says, for one [signal](16-signal.md) of the type, how it starts and how its value is shown: its start value, then its [display format](20-display-format.md) for an integer or a real, or its [boolean texts](21-boolean-texts.md) for a boolean. It is what the page Signal settings shows on each line ([MD-07](../../screens/metadata.md#md-07--signal-settings)). A [type](30-type.md) holds one signal setting per own signal, in its list of signal settings. A sub-type may change the signal setting of an inherited signal: it then holds one for this signal too, which replaces its parent's whole; until then the signal shows its parent's. The reset button of the line removes it from the list, and the signal follows its parent again (Product Owner, 2026-11-24). When the enum item of its start value is deleted, the signal setting is flagged in error and kept as written, until another item is picked. It has no `internal_id`, since nothing points to it.
+A signal setting says, for one [signal](16-signal.md) of the type, how it starts and how its value is shown: its start value, then its [display format](17-display-format.md) for an integer or a real, or its [boolean texts](18-boolean-texts.md) for a boolean. It is what the page Signal settings shows on each line ([MD-07](../../screens/metadata.md#md-07--signal-settings)). A [type](30-type.md) holds one signal setting per own signal, in its list of signal settings. A sub-type may change the signal setting of an inherited signal: it then holds one for this signal too, which replaces its parent's whole; until then the signal shows its parent's. The reset button of the line removes it from the list, and the signal follows its parent again (Product Owner, 2026-11-24). When the enum item of its start value is deleted, the signal setting is flagged in error and kept as written, until another item is picked. It has no `internal_id`, since nothing points to it.
 
 ## The entity
 
@@ -19,8 +19,8 @@ config:
 ---
 erDiagram
     %% link SIGNAL 16-signal.md
-    %% link DISPLAY_FORMAT 20-display-format.md
-    %% link BOOLEAN_TEXTS 21-boolean-texts.md
+    %% link DISPLAY_FORMAT 17-display-format.md
+    %% link BOOLEAN_TEXTS 18-boolean-texts.md
     %% link ENUM_ITEM 05-enum-item.md
     SIGNAL_SETTING {
         uuid signal FK

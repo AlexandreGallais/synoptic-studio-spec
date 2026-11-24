@@ -36,7 +36,7 @@ One element of the faceplate builder of a type: a [drag-handle](../06-atoms/drag
 
 - `dragging` (`layer-selected`, violet): only while its handle is held, as a line of a table; a click on the element itself does nothing.
 - A signal is on one line (2026-11-24, since the builder takes the whole main column): the signal, its display name, read or write (read or override, a horizontal [radio-group](../07-molecules/radio-group.md)), then in write or override the kind of input and, for a number, the minimum and the maximum, of the same width. In the slot `fields`, a frame `lines` lays its two groups side by side.
-- An element that comes from a parent keeps its handle, since a sub-type may move it, but its delete is hidden, its fill is `layer-transparent` instead of its own, and its fields are `state=read-only` (a radio `state=disabled`): the whole line reads as read only.
+- An element that comes from a parent keeps its handle and its fill (`layer-02`), as any other element, since a sub-type may move it; only its delete is hidden and its fields are `state=read-only`, radios included (2026-11-24): read only, never disabled, so that it still reads as a line that moves.
 - In a group, the delete follows the add buttons `spacing-02` apart, as one row of buttons.
 - The kind `paragraph` is shown "Description" on the screens and in its icon `description` (MD-14.8).
 

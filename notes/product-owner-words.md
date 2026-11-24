@@ -137,7 +137,7 @@ The citations of the Product Owner taken out of the specification on 2026-11-23,
 - 2026-11-23, said of the icon-picker
   - In: - The reset is set apart from the colours, after a vertical divider, as a `quiet` icon button: it never reads as one more choice (Product Owner, 2026-11-23, said of the icon-picker; the same here).
 
-## design-system/10-screens/01-metadata/06-signal-settings.md
+## design-system/10-screens/01-metadata/04-signal-settings.md
 
 Called 06-presets.md until 2026-11-24; the first sentence below no longer holds (a signal sits on one line since then).
 

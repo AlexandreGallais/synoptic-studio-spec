@@ -6,7 +6,7 @@ The documentation of a type: its description in the [markdown-editor](../../08-o
 
 The description is a card like the table of the links (2026-11-24): `layer-01`, `radius-md`, `spacing-04` above and below, `spacing-03` on the sides; inside, the tool bar and the text zone in `layer-02`, so that the text zone shows.
 
-Drawn for `centrifugal_pump`, a sub-type of `pump` (2026-11-24). In visual, markdown and full page, the editor shows the description of `pump` first, read only, in `text-secondary`, a line under it (property `inherited` of the markdown-editor); the own text of `centrifugal_pump` follows, the only one that can be edited. The first link comes from `pump`: a [data-table-row](../../07-molecules/data-table-row.md) `kind=inherited`, with no handle nor delete, its description `state=read-only`. The other states (no link, long text, headings and table) show the type's own part only.
+Drawn for `centrifugal_pump`, a sub-type of `pump` (2026-11-24). In visual, markdown and full page, the editor shows the description of `pump` first, read only, in `text-secondary`, a line under it (property `inherited` of the markdown-editor); the own text of `centrifugal_pump` follows, the only one that can be edited. The first link comes from `pump`: a [data-table-row](../../08-organisms/data-table-row.md) `kind=inherited`, with no handle nor delete, its description `state=read-only`. The other states (no link, long text, headings and table) show the type's own part only.
 
 ## Figma
 

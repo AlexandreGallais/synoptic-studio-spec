@@ -14,7 +14,7 @@ How each thing of Metadata is known, by the software and by people, what must be
 | Where | What it takes from here |
 | --- | --- |
 | Every [entity](entities/README.md) with an `internal_id` | Its primary key, set by the software; every FK to it holds it. |
-| [Type](entities/30-type.md), [Signal](entities/16-signal.md), [Command](entities/18-command.md), [Flag](entities/19-flag.md), [Enum](entities/06-enum.md), [Designation](entities/11-designation.md) | An `id`, written by the user, unique in its list, sent outside the software. |
+| [Type](entities/30-type.md), [Signal](entities/16-signal.md), [Command](entities/21-command.md), [Flag](entities/28-flag.md), [Enum](entities/06-enum.md), [Designation](entities/11-designation.md) | An `id`, written by the user, unique in its list, sent outside the software. |
 | [Enum item](entities/05-enum-item.md) | A `key`, the whole number the model receives, and a `display_name` for people. |
 | [Palette](entities/02-palette.md), [Icon set](entities/04-icon-set.md), [Quantity](entities/10-quantity.md), [Unit](entities/08-unit.md), [Unit system](entities/09-unit-system.md), [Color](entities/01-color.md), [Icon](entities/03-icon.md) | A `name`, for people only. |
 | [Files](files.md) | A file named after the `id` or the `name` of its thing; renaming the thing renames its file. |

@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-The display format says how the value of an integer or a real [signal](16-signal.md) is shown: in which [unit](08-unit.md) and with how many decimals. It serves the faceplate and the texts of a symbol that show the value; it never changes what the model receives, which always gets the full value in the default unit of the quantity. It is kept inside its [signal setting](22-signal-setting.md); it has no `internal_id`, since nothing points to it.
+The display format says how the value of an integer or a real [signal](16-signal.md) is shown: in which [unit](08-unit.md) and with how many decimals. It serves the faceplate and the texts of a symbol that show the value; it never changes what the model receives, which always gets the full value in the default unit of the quantity. It is kept inside its [signal setting](19-signal-setting.md); it has no `internal_id`, since nothing points to it.
 
 ## The entity
 

@@ -36,7 +36,7 @@ block-beta
     block:left
         columns 1
         tree["Type tree, scrolls"]
-        parts["Parts, fixed: General, Documentation, Signals, Commands, Flags, Signal settings, Faceplate"]
+        parts["Parts, fixed: General, Documentation, Signals, Signal settings, Commands, Faceplate, Flags"]
     end
     editor["Editor of the selected part"]:2
 ```
@@ -61,10 +61,10 @@ mindmap
       1 MD-02 General
       2 MD-03 Documentation
       3 MD-04 Signals
-      4 MD-05 Commands
-      5 MD-12 Flags
-      6 MD-07 Signal settings
-      7 MD-14 Faceplate
+      4 MD-07 Signal settings
+      5 MD-05 Commands
+      6 MD-14 Faceplate
+      7 MD-12 Flags
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
@@ -74,7 +74,7 @@ mindmap
 | MD-01.3 | Create a child type | Button (+), on hover | On the right of each type, shown when the mouse is over it; creates a type inside it, with a default name. Always shown in a light colour: thought of, then dropped as too loaded (2026-11-16). | Decided | [Types](../metadata/draft.md#types) |
 | MD-01.3b | Create a root type | Button (+), always shown | On the line of the title "Type tree", always on the far right. | Decided | [Types](../metadata/draft.md#types) |
 | MD-01.4 | Delete a type | — | Removed from the tree (2026-11-16): no right click in Metadata; the type is deleted in General ([MD-02.8](#md-02--general)). | Decided | [Types](../metadata/draft.md#types) |
-| MD-01.5 | Parts of the type | List of names | In the column of the type tree, under it, fixed at the bottom: it never moves when the tree grows. The names in whole words, in this order: General, Documentation, Signals, Commands, Flags, Signal settings, Faceplate (Flags added on 2026-11-17; Signal settings and Faceplate replace Presets on 2026-11-24, since there are no presets any more; proposal B, 2026-11-16, replacing the strip of icons of proposal C; moved above the tree for a while the same day, then back under it). | Decided | [Types](../metadata/draft.md#the-parts-of-a-type-a-list-fixed-under-the-tree) |
+| MD-01.5 | Parts of the type | List of names | In the column of the type tree, under it, fixed at the bottom: it never moves when the tree grows. The names in whole words, in this order: General, Documentation, Signals, Signal settings, Commands, Faceplate, Flags (Product Owner, 2026-11-24: Flags last, since they have nothing to do with the faceplate; Flags added on 2026-11-17; Signal settings and Faceplate replace Presets on 2026-11-24, since there are no presets any more; proposal B, 2026-11-16, replacing the strip of icons of proposal C; moved above the tree for a while the same day, then back under it). | Decided | [Types](../metadata/draft.md#the-parts-of-a-type-a-list-fixed-under-the-tree) |
 | MD-01.6 | Search | Button (icon) on the line of the title, left of the + | A click turns the title into a search field; typing filters the tree; the + becomes a cross that closes the search and brings the title back (2026-11-16). It replaces the field under the title. | Decided | [Types](../metadata/draft.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
 | MD-01.6b | Search field | Text field | In place of the title "Type tree", while searching. | Decided | [Types](../metadata/draft.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
 | MD-01.6c | Close the search | Button (×) | In place of the + while searching. | Decided | [Types](../metadata/draft.md#the-type-tree-search-create-delete-product-owner-2026-11-16) |
@@ -265,6 +265,48 @@ Gaps:
 - Width of the window: what happens when the columns do not fit (scroll sideways, narrower columns)?
 - Whether the table shows which parent an inherited line comes from.
 
+## MD-07 · Signal settings
+
+Path: Metadata › Types › a type › Signal settings, fourth part of the type, right after Signals (2026-11-24).
+
+There are no presets any more (2026-11-24): a type and its sub-types replace them. To show the same type another way, a sub-type is made and its values changed. The page is the table of values alone, on the whole width: no list of presets on its left, no name, no "Delete the preset", no switch; the faceplate builder is the next part, [MD-14](#md-14--faceplate).
+
+```mermaid
+block-beta
+    columns 1
+    table["Signal settings: Signal (icon input or output, ID) | Display unit | Decimals | False / True | Start value | reset; the inherited signals first, from the top of the tree, then the own ones"]
+```
+
+```mermaid
+mindmap
+  root((MD-07 Signal settings))
+    Table, every signal of the type
+      Inherited signals first, then own ones
+      Every value can be changed, inherited ones included
+      No handle, no delete, the whole width
+      Reset on an inherited line, follows the parent again
+      Signal, an icon input or output, then its ID
+      Display unit
+      Decimals
+      False / True, booleans only
+      Start value
+    No command
+    No list of presets, no name, no switch
+```
+
+| ID | Element | Kind | Values and behaviour | Status | Source |
+| --- | --- | --- | --- | --- | --- |
+| MD-07.1 | List of presets, create, name, delete a preset, switch of the modes, parent presets | — | Removed (2026-11-24): there are no presets; Signal settings and Faceplate are two parts of the type ([MD-01.5](#md-01--types-the-tree-and-the-type-editor)). The identifiers MD-07.1 to MD-07.6, MD-07.8, MD-07.21 and MD-07.24 to MD-07.26 are not reused. | Decided | — |
+| MD-07.7 | Table of values | Table, whole width | Every signal of the type, own and inherited, in the order of Signals; one line each; no "add an entry"; no command (2026-11-16). No room for a handle nor a delete button: the columns take the whole width (2026-11-22). A line lights on hover, to help reading it; a click on the line itself does nothing (2026-11-22). The page holds the table alone, under its title "Signal settings" with no button (2026-11-24). | Decided | [Signal settings and faceplate](../metadata/draft.md#the-table-of-signal-settings) |
+| MD-07.27 | Settings of an inherited signal | Lines of the table | A sub-type can change every setting of an inherited signal: its display unit, decimals, texts and start value (2026-11-24: "on peut toujours tout changer par rapport à un sous-type"). The signal column stays read only. Until it changes one, the line shows the parent's settings; once changed, the whole line is the sub-type's own (2026-11-24). | Decided | [Signal setting](../metadata/entities/19-signal-setting.md) |
+| MD-07.28 | Follow the parent | Button (icon `reset`), last column, no header | On each line of an inherited signal, where the delete button sits in the other tables (2026-11-24). Enabled once the sub-type has changed the line: a click removes the sub-type's settings of this signal, with no warning, and the line follows its parent again; disabled while the line already follows it. The lines of the type's own signals have none. A changed line has no other mark: the enabled button is enough (Product Owner, 2026-11-24). | Decided (button, no other mark), Proposed (disabled when it follows) | [Signal setting](../metadata/entities/19-signal-setting.md) |
+| MD-07.9 | Signal | Column, read only | An icon of the signal's direction, input or output, then its ID (2026-11-17), so that the start value reads right. | Decided | [Signal settings and faceplate](../metadata/draft.md#the-table-of-signal-settings) |
+| MD-07.12 | Display unit | Column, select | For every integer and real (each has a quantity, 2026-11-19, decision 0051); starts as the default unit of the quantity ([Units on screen](../metadata/units-on-screen.md#three-units)). Changing it never changes the start value: only how it is shown. Its list is grouped by unit system: the unit systems of the quantity, in the order of its file, each under a small title with its name (Metric, Imperial, US customary...), then its units. Nothing else: every unit is in a quantity file, so there is no "Custom" group. 280 high at most, it scrolls inside. A unit that belongs to two systems shows in both: assistant's reading. | Decided (groups), Proposed (a unit in two systems) | [Signal settings and faceplate](../metadata/draft.md#the-table-of-signal-settings) |
+| MD-07.13 | Decimals | Column, number field | Integers and reals; starts as the one default number of decimals, the same everywhere (decision 0050). Display only. | Decided | [Units](../metadata/draft.md#decimal-places) |
+| MD-07.13b | False / True | Column, two short text fields | Booleans only: the text of the false state, then of the true state ("Stopped" / "Running"), false on the left as 0 then 1 (assistant's choice); shown in the faceplate for a signal in read; never sent to the model (decisions 0054 and 0058; never in a title, decision 0055). Header "False / True", its place after Decimals, and "true" / "false" shown when empty: assistant's reading. | Decided (field in Signal settings), Proposed (place, header, empty) | [Data model](../metadata/data-model-notes.md#changed-on-2026-11-21-boolean-texts) |
+| MD-07.14 | Start value | Column, field of the signal's type | For an input, the first value sent to the model; for an input and an output, the value shown before the model sends anything (2026-11-17). Called "Default value" until 2026-11-22: `start_value`, the word of FMI (decision 0064). True or false, a number, a text, or an enum item. A number is shown and typed in the display unit, and kept in the default unit of the quantity (2026-11-19, decision 0051). | Decided | [Signal settings and faceplate](../metadata/draft.md#the-table-of-signal-settings) |
+| MD-07.17 | Order | Rule | The order of Signals, no handle, no sort. | Decided | [Signal settings and faceplate](../metadata/draft.md#the-faceplate-builder) |
+
 ## MD-05 · Commands
 
 Path: Metadata › Types › a type › Commands.
@@ -314,85 +356,13 @@ Gaps:
 
 - Override an output: who applies it and how it ends, open (see [Commands](../metadata/draft.md#open-questions-4)).
 
-## MD-12 · Flags, a part of the type
-
-Path: Metadata › Types › a type › Flags, fifth part of the type, between Commands and Signal settings. Placed here, in the order of the parts, though its number comes after MD-07.
-
-```mermaid
-mindmap
-  root((MD-12 Flags))
-    Title Flags, small plus on its right
-    Table of the flags of the type, whole width
-      Inherited flags first, read only, no handle
-      Handle, own lines
-      ID, no rule on how it is written
-      Description, optional
-      Delete button, far right, no header, deletes at once
-    Ticked in the synoptic, part 3
-```
-
-| ID | Element | Kind | Values and behaviour | Status | Source |
-| --- | --- | --- | --- | --- | --- |
-| MD-12.1 | Table of flags | Table, whole width | The flags of the selected type, one line per flag. Columns in this order: the handle with no header, ID, Description, then the delete button with no header (2026-11-17). Inherited flags first, read only, with no handle, as for signals (inheritance confirmed 2026-11-17). | Decided | [Flags](../metadata/draft.md#flags) |
-| MD-12.2 | Add a flag | Button (+), small icon | On the right of the title "Flags" ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Implied | [Flags](../metadata/draft.md#flags) |
-| MD-12.6 | Handle of a line | Grip, dragged, no header | At the very left of each own line: the users sort the flags as they want (2026-11-17). | Decided | [Layout rules](README.md#handles-to-choose-the-order) |
-| MD-12.3 | ID | Text field | Always editable, as everything in Metadata. No rule on how it is written: the users name it as they want (2026-11-17). Followed through an internal identifier when renamed (2026-11-17). Unique among the flags of its type, of its parents and of its sub-types (2026-11-22; decision 0080); an ID already taken is refused when typed (decision 0083). | Decided | [Flags](../metadata/draft.md#flags) |
-| MD-12.5 | Description | Text field, takes the room left | After the ID: what the flag is for, plain text, optional (2026-11-17). Shown when editing a synoptic; kept out of the configuration files: assistant's reading. | Decided (optional), Proposed (not in the files) | [Flags](../metadata/draft.md#flags) |
-| MD-12.4 | Delete a flag | Button (icon) | At the far right of the line, with no header ([layout rules](README.md#delete-a-warning-only-for-a-whole-thing)). Deleted at once, with no warning (decision 0093); nothing says which synoptics have the flag on (2026-11-17); the synoptic mode lists what is broken. | Decided | [Flags](../metadata/draft.md#flags) |
-
-Gaps:
-
-- The panel of the synoptic where the flags of a placed symbol are ticked: described with part 3.
-
 ## MD-06 · Faceplate: removed
 
 The identifier MD-06 is not reused: the faceplate builder is the part [MD-14 · Faceplate](#md-14--faceplate) since 2026-11-24. The faceplate itself (its controls, its size) is drawn with the synoptic part.
 
-## MD-07 · Signal settings
-
-Path: Metadata › Types › a type › Signal settings, sixth part of the type (2026-11-24).
-
-There are no presets any more (2026-11-24): a type and its sub-types replace them. To show the same type another way, a sub-type is made and its values changed. The page is the table of values alone, on the whole width: no list of presets on its left, no name, no "Delete the preset", no switch; the faceplate builder is the next part, [MD-14](#md-14--faceplate).
-
-```mermaid
-block-beta
-    columns 1
-    table["Signal settings: Signal (icon input or output, ID) | Display unit | Decimals | False / True | Start value | reset; the inherited signals first, from the top of the tree, then the own ones"]
-```
-
-```mermaid
-mindmap
-  root((MD-07 Signal settings))
-    Table, every signal of the type
-      Inherited signals first, then own ones
-      Every value can be changed, inherited ones included
-      No handle, no delete, the whole width
-      Reset on an inherited line, follows the parent again
-      Signal, an icon input or output, then its ID
-      Display unit
-      Decimals
-      False / True, booleans only
-      Start value
-    No command
-    No list of presets, no name, no switch
-```
-
-| ID | Element | Kind | Values and behaviour | Status | Source |
-| --- | --- | --- | --- | --- | --- |
-| MD-07.1 | List of presets, create, name, delete a preset, switch of the modes, parent presets | — | Removed (2026-11-24): there are no presets; Signal settings and Faceplate are two parts of the type ([MD-01.5](#md-01--types-the-tree-and-the-type-editor)). The identifiers MD-07.1 to MD-07.6, MD-07.8, MD-07.21 and MD-07.24 to MD-07.26 are not reused. | Decided | — |
-| MD-07.7 | Table of values | Table, whole width | Every signal of the type, own and inherited, in the order of Signals; one line each; no "add an entry"; no command (2026-11-16). No room for a handle nor a delete button: the columns take the whole width (2026-11-22). A line lights on hover, to help reading it; a click on the line itself does nothing (2026-11-22). The page holds the table alone, under its title "Signal settings" with no button (2026-11-24). | Decided | [Signal settings and faceplate](../metadata/draft.md#the-table-of-signal-settings) |
-| MD-07.27 | Settings of an inherited signal | Lines of the table | A sub-type can change every setting of an inherited signal: its display unit, decimals, texts and start value (2026-11-24: "on peut toujours tout changer par rapport à un sous-type"). The signal column stays read only. Until it changes one, the line shows the parent's settings; once changed, the whole line is the sub-type's own (2026-11-24). | Decided | [Signal setting](../metadata/entities/22-signal-setting.md) |
-| MD-07.28 | Follow the parent | Button (icon `reset`), last column, no header | On each line of an inherited signal, where the delete button sits in the other tables (2026-11-24). Enabled once the sub-type has changed the line: a click removes the sub-type's settings of this signal, with no warning, and the line follows its parent again; disabled while the line already follows it. The lines of the type's own signals have none. A changed line has no other mark: the enabled button is enough (Product Owner, 2026-11-24). | Decided (button, no other mark), Proposed (disabled when it follows) | [Signal setting](../metadata/entities/22-signal-setting.md) |
-| MD-07.9 | Signal | Column, read only | An icon of the signal's direction, input or output, then its ID (2026-11-17), so that the start value reads right. | Decided | [Signal settings and faceplate](../metadata/draft.md#the-table-of-signal-settings) |
-| MD-07.12 | Display unit | Column, select | For every integer and real (each has a quantity, 2026-11-19, decision 0051); starts as the default unit of the quantity ([Units on screen](../metadata/units-on-screen.md#three-units)). Changing it never changes the start value: only how it is shown. Its list is grouped by unit system: the unit systems of the quantity, in the order of its file, each under a small title with its name (Metric, Imperial, US customary...), then its units. Nothing else: every unit is in a quantity file, so there is no "Custom" group. 280 high at most, it scrolls inside. A unit that belongs to two systems shows in both: assistant's reading. | Decided (groups), Proposed (a unit in two systems) | [Signal settings and faceplate](../metadata/draft.md#the-table-of-signal-settings) |
-| MD-07.13 | Decimals | Column, number field | Integers and reals; starts as the one default number of decimals, the same everywhere (decision 0050). Display only. | Decided | [Units](../metadata/draft.md#decimal-places) |
-| MD-07.13b | False / True | Column, two short text fields | Booleans only: the text of the false state, then of the true state ("Stopped" / "Running"), false on the left as 0 then 1 (assistant's choice); shown in the faceplate for a signal in read; never sent to the model (decisions 0054 and 0058; never in a title, decision 0055). Header "False / True", its place after Decimals, and "true" / "false" shown when empty: assistant's reading. | Decided (field in Signal settings), Proposed (place, header, empty) | [Data model](../metadata/data-model-notes.md#changed-on-2026-11-21-boolean-texts) |
-| MD-07.14 | Start value | Column, field of the signal's type | For an input, the first value sent to the model; for an input and an output, the value shown before the model sends anything (2026-11-17). Called "Default value" until 2026-11-22: `start_value`, the word of FMI (decision 0064). True or false, a number, a text, or an enum item. A number is shown and typed in the display unit, and kept in the default unit of the quantity (2026-11-19, decision 0051). | Decided | [Signal settings and faceplate](../metadata/draft.md#the-table-of-signal-settings) |
-| MD-07.17 | Order | Rule | The order of Signals, no handle, no sort. | Decided | [Signal settings and faceplate](../metadata/draft.md#the-faceplate-builder) |
-
 ## MD-14 · Faceplate
 
-Path: Metadata › Types › a type › Faceplate, seventh and last part of the type (2026-11-24). It takes the identifier after MD-13; MD-06 is not reused.
+Path: Metadata › Types › a type › Faceplate, sixth part of the type, right after Commands (2026-11-24). It takes the identifier after MD-13; MD-06 is not reused.
 
 The faceplate builder of the type, on the whole width: the title "Faceplate" and its add icons ("Elements" until 2026-11-24), then the elements. It was the mode Faceplate of a preset until 2026-11-24; with no presets, it has no name and no "Delete the preset". In a sub-type, the elements of the parents are there, read only, and can only be moved.
 
@@ -429,7 +399,7 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | MD-14.1 | Add an element | Buttons (small icons with a +) | On the right of the title "Faceplate": one icon per kind, a signal, a command, a title, a description, a group, no menu. Each icon carries its small + at its bottom right, as the icons of Links, so that it reads as "add". MD-07.18 until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#the-faceplate-builder) |
-| MD-14.2 | Elements of the parents | Elements, read only | In a sub-type, the elements of every parent are in the builder, read only: their fields cannot be changed, they have no delete button and no fill of their own, so that the whole line reads as read only (2026-11-24). Their handle stays: a sub-type may change their order, never remove them. | Decided | [Inheritance of types](../metadata/inheritance.md#what-a-sub-type-inherits) (to update) |
+| MD-14.2 | Elements of the parents | Elements, read only | In a sub-type, the elements of every parent are in the builder, read only: their fields are read only, radios included, and they have no delete button; they keep the background of every element (2026-11-24). Their handle stays: a sub-type may change their order, never remove them. | Decided | [Inheritance of types](../metadata/inheritance.md#what-a-sub-type-inherits) |
 | MD-14.3 | Signal element | Element of the builder | The signal, picked by its ID; its display name (plain text, never sent to the model; empty: the ID is shown; called "name shown" until 2026-11-21, decision 0055); read or write (input) or read or override (output); its input. MD-07.9b until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#the-faceplate-builder) |
 | MD-14.4 | Input | Select, in a signal element | Enum: radio on one line, radio on several lines, select; its items in the order of their keys (2026-11-22, [MD-09.5](#md-09--enums)). Number: a number field, with its bounds ([MD-14.6](#md-14--faceplate)). Boolean: a switch (2026-11-21). Shown for write or override only; in read, the faceplate shows the text of the value alone (2026-11-21). On the same line as the rest of the element, after read or write (2026-11-24, replaces the second line: the builder now has the whole width). MD-07.10 until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#the-faceplate-builder) |
 | MD-14.5 | Read or write, read or override | Radio, in a signal element | Input: read or write. Output: read or override. Write or override: a person types a value; what the model side does with it is up to it. MD-07.11 until 2026-11-24. | Decided | [Signal settings and faceplate](../metadata/draft.md#typing-a-value) |
@@ -445,6 +415,36 @@ mindmap
 Gaps:
 
 - Can an element be added twice? What can a symbol or a synoptic change in the built faceplate (the texts of its title and description elements, at least)?
+
+## MD-12 · Flags, a part of the type
+
+Path: Metadata › Types › a type › Flags, seventh and last part of the type (Product Owner, 2026-11-24: flags have nothing to do with the faceplate, a small extra).
+
+```mermaid
+mindmap
+  root((MD-12 Flags))
+    Title Flags, small plus on its right
+    Table of the flags of the type, whole width
+      Inherited flags first, read only, no handle
+      Handle, own lines
+      ID, no rule on how it is written
+      Description, optional
+      Delete button, far right, no header, deletes at once
+    Ticked in the synoptic, part 3
+```
+
+| ID | Element | Kind | Values and behaviour | Status | Source |
+| --- | --- | --- | --- | --- | --- |
+| MD-12.1 | Table of flags | Table, whole width | The flags of the selected type, one line per flag. Columns in this order: the handle with no header, ID, Description, then the delete button with no header (2026-11-17). Inherited flags first, read only, with no handle, as for signals (inheritance confirmed 2026-11-17). | Decided | [Flags](../metadata/draft.md#flags) |
+| MD-12.2 | Add a flag | Button (+), small icon | On the right of the title "Flags" ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Implied | [Flags](../metadata/draft.md#flags) |
+| MD-12.6 | Handle of a line | Grip, dragged, no header | At the very left of each own line: the users sort the flags as they want (2026-11-17). | Decided | [Layout rules](README.md#handles-to-choose-the-order) |
+| MD-12.3 | ID | Text field | Always editable, as everything in Metadata. No rule on how it is written: the users name it as they want (2026-11-17). Followed through an internal identifier when renamed (2026-11-17). Unique among the flags of its type, of its parents and of its sub-types (2026-11-22; decision 0080); an ID already taken is refused when typed (decision 0083). | Decided | [Flags](../metadata/draft.md#flags) |
+| MD-12.5 | Description | Text field, takes the room left | After the ID: what the flag is for, plain text, optional (2026-11-17). Shown when editing a synoptic; kept out of the configuration files: assistant's reading. | Decided (optional), Proposed (not in the files) | [Flags](../metadata/draft.md#flags) |
+| MD-12.4 | Delete a flag | Button (icon) | At the far right of the line, with no header ([layout rules](README.md#delete-a-warning-only-for-a-whole-thing)). Deleted at once, with no warning (decision 0093); nothing says which synoptics have the flag on (2026-11-17); the synoptic mode lists what is broken. | Decided | [Flags](../metadata/draft.md#flags) |
+
+Gaps:
+
+- The panel of the synoptic where the flags of a placed symbol are ticked: described with part 3.
 
 ## MD-08 · Units
 

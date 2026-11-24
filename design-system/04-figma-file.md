@@ -107,9 +107,9 @@ Since 2026-11-24, every block of the main column is a card, so that the screens 
 
 ## Screens of Metadata
 
-The page Metadata holds one Figma section per screen of [Screens of Metadata](../screens/metadata.md), from top to bottom in the order of the type and of the rail: General (with the type tree), Documentation, Signals, Commands, Flags, Signal settings, Faceplate, Units, Enums, Designations, then the overlays (Delete warning, Add a link, Formatting). The frames and their ids: [Screens of Metadata](10-screens/01-metadata/README.md).
+The page Metadata holds one Figma section per screen of [Screens of Metadata](../screens/metadata.md), from top to bottom in the order of the type and of the rail: General (with the type tree), Documentation, Signals, Signal settings, Commands, Faceplate, Flags, Units, Enums, Designations, then the overlays (Delete warning, Add a link, Formatting). The frames and their ids: [Screens of Metadata](10-screens/01-metadata/README.md).
 
-The prototype has one starting point per screen, each named after its screen (2026-11-24): General, Documentation · visual, Documentation · headings and table, Signals, Commands, Flags, Signal settings, Faceplate, Units, Enums, Enums · built-in, Enums · built-in pipe_style, Designations. A click on a built-in enum or on `pump_mode` in the lists of Enums opens its screen. On every screen, the rail and the list of the parts lead to their screen, with their hover kept. From General: the modes of the documentation lead to their screen; the two add icons of Links open their overlay; the delete button of General and of each own signal opens the warning, whose two buttons close it.
+The prototype has one starting point per screen, each named after its screen (2026-11-24): General, Documentation · visual, Documentation · headings and table, Signals, Signal settings, Commands, Faceplate, Flags, Units, Enums, Enums · built-in, Enums · built-in pipe_style, Designations. A click on a built-in enum or on `pump_mode` in the lists of Enums opens its screen. On every screen, the rail and the list of the parts lead to their screen, with their hover kept. From General: the modes of the documentation lead to their screen; the two add icons of Links open their overlay; the delete button of General and of each own signal opens the warning, whose two buttons close it.
 
 ## Left to draw
 

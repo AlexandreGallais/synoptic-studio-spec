@@ -6,13 +6,13 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A range is the values a person may type in a number field of the faceplate: a minimum and a maximum, each a [bound](23-bound.md). A typed value outside the range is refused. In the faceplate builder, a minimum typed greater than the maximum is refused. A range is kept inside its [signal field](25-signal-field.md), which has one when its input is a number field; it has no `internal_id`, since nothing points to it.
+A range is the values a person may type in a number field of the faceplate: a minimum and a maximum, each a [bound](22-bound.md). A typed value outside the range is refused. In the faceplate builder, a minimum typed greater than the maximum is refused. A range is kept inside its [signal field](24-signal-field.md), which has one when its input is a number field; it has no `internal_id`, since nothing points to it.
 
 ## The entity
 
 ```mermaid
 erDiagram
-    %% link BOUND 23-bound.md
+    %% link BOUND 22-bound.md
     RANGE ||--o| BOUND : "has, as min"
     RANGE ||--o| BOUND : "has, as max"
 ```

@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-A command is what the front sends with one click: a fixed value to an input, a fixed value that overrides an output, or a trigger. A trigger never goes to the model, which only has inputs and outputs: it tells the layer above the model that an action happened, and that layer decides what to send to the model. A command that sends a value has a [command target](17-command-target.md): the signal and the value. A command exists only inside its type, in the type's list of commands (see the [Data model](../data-model.md)); a sub-type inherits the commands of its parent. Its `id` is a contract: renaming it breaks what uses it, such as the layer above the model for a trigger.
+A command is what the front sends with one click: a fixed value to an input, a fixed value that overrides an output, or a trigger. A trigger never goes to the model, which only has inputs and outputs: it tells the layer above the model that an action happened, and that layer decides what to send to the model. A command that sends a value has a [command target](20-command-target.md): the signal and the value. A command exists only inside its type, in the type's list of commands (see the [Data model](../data-model.md)); a sub-type inherits the commands of its parent. Its `id` is a contract: renaming it breaks what uses it, such as the layer above the model for a trigger.
 
 ## The entity
 
@@ -17,7 +17,7 @@ config:
     minEntityWidth: 180
 ---
 erDiagram
-    %% link COMMAND_TARGET 17-command-target.md
+    %% link COMMAND_TARGET 20-command-target.md
     COMMAND {
         uuid internal_id PK
         command_kind kind

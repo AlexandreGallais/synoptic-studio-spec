@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | 1 | 2026-11-22 | Draft | Creation of the file |
 
-The boolean texts are the two words shown for the states of a boolean [signal](16-signal.md), such as "Running" and "Stopped": a sub-type may name them differently from its parent. They are for display only: the model always gets true or false. They are kept inside their [signal setting](22-signal-setting.md); they have no `internal_id`, since nothing points to them.
+The boolean texts are the two words shown for the states of a boolean [signal](16-signal.md), such as "Running" and "Stopped": a sub-type may name them differently from its parent. They are for display only: the model always gets true or false. They are kept inside their [signal setting](19-signal-setting.md); they have no `internal_id`, since nothing points to them.
 
 ## The entity
 

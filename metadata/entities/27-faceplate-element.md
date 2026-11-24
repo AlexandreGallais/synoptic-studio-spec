@@ -18,9 +18,9 @@ config:
     minEntityWidth: 180
 ---
 erDiagram
-    %% link SIGNAL_FIELD 25-signal-field.md
-    %% link COMMAND_BUTTON 26-command-button.md
-    %% link TEXT_CONTENT 27-text-content.md
+    %% link SIGNAL_FIELD 24-signal-field.md
+    %% link COMMAND_BUTTON 25-command-button.md
+    %% link TEXT_CONTENT 26-text-content.md
     FACEPLATE_ELEMENT {
         uuid internal_id PK
         faceplate_element_kind kind

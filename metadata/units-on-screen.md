@@ -17,8 +17,8 @@ In which unit a number of Metadata is kept, shown, typed and sent to the model, 
 | [Unit](entities/08-unit.md), [Conversion](entities/07-conversion.md) | The symbol shown after a value; the two formulas that go to the default unit and back. |
 | [Unit system](entities/09-unit-system.md) | A group of units for reading, and their order on the Units page. |
 | [Value type](entities/15-value-type.md) | The quantity of an integer or a real, and whether its value is a difference. |
-| [Display format](entities/20-display-format.md) | The display unit and the decimals of a signal, in its signal setting. |
-| [Signal setting](entities/22-signal-setting.md), [Command target](entities/17-command-target.md), [Bound](entities/23-bound.md) | A number typed, kept in the default unit. |
+| [Display format](entities/17-display-format.md) | The display unit and the decimals of a signal, in its signal setting. |
+| [Signal setting](entities/19-signal-setting.md), [Command target](entities/20-command-target.md), [Bound](entities/22-bound.md) | A number typed, kept in the default unit. |
 | [Formulas](formulas.md) | How a conversion is computed; a result that is not a finite number. |
 | [Checks and errors](checks-and-errors.md) | A decimal typed for an integer, an integer that gives no whole number in the default unit, a value with no finite conversion: refused. |
 | [MD-04.9](../screens/metadata.md#md-04--signals), [MD-07.12, MD-07.13, MD-07.14](../screens/metadata.md#md-07--signal-settings), [MD-14.6](../screens/metadata.md#md-14--faceplate), [MD-08](../screens/metadata.md#md-08--units) | Where a unit, a difference or decimals show on screen. |
@@ -35,7 +35,7 @@ A number of Metadata meets three units: the one it is kept in, the one it is sho
 | **Model unit** | The unit the model works in, one per quantity, the same for every signal (decision 0024). | Outside Metadata; today, the default unit of the catalogue | — |
 
 - **A signal takes a quantity, never a unit** (decision 0024): it has no model unit and no display unit of its own.
-- **The display unit starts as the default unit** of the quantity ([Display format](entities/20-display-format.md)).
+- **The display unit starts as the default unit** of the quantity ([Display format](entities/17-display-format.md)).
 - **The model always receives the full value in the default unit**: the display unit and the decimals only change what people read.
 
 ```mermaid
@@ -72,7 +72,7 @@ flowchart LR
 ## Decimals
 
 - **The decimals are set in the signal settings only**, for each integer and real signal, next to its display unit (MD-07.13; decision 0050). The quantity has no decimals of its own: the right number depends on the unit shown.
-- **The decimals start at 2, fixed by the software** for every signal, never set for a project ([Display format](entities/20-display-format.md)).
+- **The decimals start at 2, fixed by the software** for every signal, never set for a project ([Display format](entities/17-display-format.md)).
 - **The decimals only round what is shown**: the model and the files keep the full value.
 - **A sub-type, and a synoptic on a placed symbol, may change the display unit and the decimals**; a symbol never does (2026-11-24).
 - **A signal set to read in the faceplate shows the text of its value**, in the display unit and with the decimals of the signal settings ([whole draft](draft.md#typing-a-value)).
