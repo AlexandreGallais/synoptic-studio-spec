@@ -14,7 +14,7 @@ Figma: page [Organisms](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?nod
 | [nav-rail](nav-rail.md) | The column of icons of the pages of a part. | App frame |
 | [tree](tree.md) | The type tree. | Lists |
 | [part-list](part-list.md) | The parts of a type, under the tree. | Lists |
-| [list-panel](list-panel.md) | A titled list: presets, enums, unit systems. | Lists |
+| [list-panel](list-panel.md) | A titled list: enums, unit systems. | Lists |
 | [data-table](data-table.md) | A titled table. | Data table |
 | [data-table-header](data-table-header.md) | The column headers of a table. | Data table |
 | [data-table-row](data-table-row.md) | One line of a table. | Data table |

@@ -64,7 +64,6 @@ mindmap
       Unfold all, fold all
       Create a symbol
         Type, optional
-        Preset, optional
       List, one kind of symbol
         Thumbnail
         Name
@@ -83,7 +82,7 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | SY-02.1 | List of symbols | Tree | One kind of symbol: no static or dynamic. A tree, as in Metadata: a sub-symbol under its parent (2026-11-18, replaces the flat list). A click on an item opens it in the editor. | Decided | [Sub-symbols](../symbols/12-sub-symbols.md) |
 | SY-02.2 | Search the symbols | Button (search icon), then a text field | On the line of the title "Symbols", next to the +; a click opens the field over the whole line; it filters the list (2026-11-23: no field shown all the time). | Decided | [Layout rules](README.md#search-a-small-icon-on-the-line-of-the-title) |
-| SY-02.3 | Create a symbol | Button (small +) | On the right of the title "Symbols". The type and preset can be chosen here, never imposed. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
+| SY-02.3 | Create a symbol | Button (small +) | On the right of the title "Symbols". The type can be chosen here, never imposed (no preset since 2026-11-24). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.4 | Type, at creation | Select, optional | All the types of Metadata (no library of types). How the choice stays quick in a big tree: open. | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.5 | Item of the list | Thumbnail + name | The thumbnail is the symbol, or its outlines only (as Figma's outline view). | Decided (thumbnail: Open) | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
 | SY-02.6 | List of pipe styles | List | On the page Pipes (end of 2026-11-17). Flat; a click opens the style (see [Pipes](pipes.md)). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md) |
@@ -113,7 +112,7 @@ The layout is decided, except the place of the tool bar (bottom or top) and of t
 block-beta
     columns 4
     rail["Navigation bar SY-00"]
-    left["Left-hand panel: SY-02 symbols, separator, then the layers"] canvas["Drawing area: modes menu floating top left, horizontal, icons; advanced tools bar above the tool bar; tool bar floating at the bottom"] panel["Right-hand panel: options of the selection, type and preset of the symbol"]
+    left["Left-hand panel: SY-02 symbols, separator, then the layers"] canvas["Drawing area: modes menu floating top left, horizontal, icons; advanced tools bar above the tool bar; tool bar floating at the bottom"] panel["Right-hand panel: options of the selection, type of the symbol"]
 ```
 
 ```mermaid
@@ -139,9 +138,7 @@ mindmap
       Tree, groups as folders
     Right-hand panel
       Options of the selection
-      Type of the symbol, optional
-      Preset
-      Faceplate entries ticked
+      Type of the symbol, optional, and nothing else
     Moving around
       Hand tool
       Wheel and middle button
@@ -154,8 +151,8 @@ mindmap
 | SY-03.2 | Tool bar | Floating bar | The tools of the mode; at the bottom of the drawing area (leaning) or at the top. | Decided (place: Open) | [Editor](../symbols/03-editor/README.md) |
 | SY-03.3 | Show the advanced tools | Button (in the tool bar) | Shows or hides the [SY-11](#sy-11--advanced-tools) bar just above. | Decided | [Advanced tools](../symbols/03-editor/expert-menu/README.md) |
 | SY-03.4 | Type | Select, optional | In the right-hand panel; among all the types of Metadata; can be removed. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
-| SY-03.5 | Preset | Select | In the right-hand panel; then its start values, display units, decimals, and the texts of the title and description elements of the faceplate are edited here (no title nor description by default since 2026-11-16). | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
-| SY-03.6 | Faceplate entries | Checkbox per entry | The full list is always there. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) |
+| SY-03.5 | Preset | — | Removed (Product Owner, 2026-11-24): there are no presets; the symbol chooses its type and nothing else, and a sub-type of Metadata stands for another way of showing it. | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) (to update) |
+| SY-03.6 | Faceplate entries | — | Removed (Product Owner, 2026-11-24): no choice of the faceplate entries in the symbol; the faceplate is the one of its type ([MD-14](metadata.md#md-14--faceplate)). | Decided | [Type, preset and faceplate](../symbols/02-type-and-faceplate.md) (to update) |
 | SY-03.7 | Hand | Button (tool) | Moves the view; also the middle button held. In every mode. | Decided | [Hand](../symbols/03-editor/hand.md) |
 | SY-03.8 | Zoom | Number field (%) | Shown in one place (which one: not said); the user can type a value; 100 % is the real size. | Decided | [Editor](../symbols/03-editor/README.md) |
 | SY-03.9 | Select | Button (tool) | In every mode except Run; picks what the mode works on. | Decided | [Select](../symbols/03-editor/select.md) |
@@ -170,7 +167,7 @@ mindmap
 
 Gaps:
 
-- Does the right-hand panel show the type and preset only when nothing is selected (assumption)?
+- Does the right-hand panel show the type only when nothing is selected (assumption)?
 - How a layer is named, and whether the tree order is the stacking order.
 - Frame of the symbol (size, fit to content): proposed by the research, not placed in a screen.
 - Place of the zoom field, of undo and redo.

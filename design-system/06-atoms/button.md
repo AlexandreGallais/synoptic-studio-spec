@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Design system](../README.md) › [Atoms](README.md) › button
 
-A text button that starts an action named with words: Cancel, Delete, Delete the preset. An action shown by an icon alone is an [icon-button](icon-button.md).
+A text button that starts an action named with words: Cancel, Delete, Delete the type. An action shown by an icon alone is an [icon-button](icon-button.md).
 
 ## Figma
 

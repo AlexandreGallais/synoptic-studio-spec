@@ -57,7 +57,7 @@ The pages Enums and Symbols take `enums` and `symbols` above. Figma: table "Page
 | ![chevron-down](chevron-down.svg) | `chevron-down` | An unfolded branch; a select. | [`631:79`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=631-79) |
 | ![expand-all](expand-all.svg) | `expand-all` | Open every branch of the type tree: two chevrons pointing apart. | [`699:13751`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=699-13751) |
 | ![collapse-all](collapse-all.svg) | `collapse-all` | Close every branch: two chevrons pointing together. | [`699:13755`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=699-13755) |
-| ![duplicate](duplicate.svg) | `duplicate` | Duplicate a preset of a parent into the type: two squares, one over the other. | [`748:2060`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=748-2060) |
+| ![duplicate](duplicate.svg) | `duplicate` | Duplicate: two squares, one over the other. Used by no screen since the presets were removed (2026-11-24). | [`748:2060`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=748-2060) |
 | ![delete](delete.svg) | `delete` | Delete a line, a type. | [`631:86`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=631-86) |
 | ![drag-handle](drag-handle.svg) | `drag-handle` | The handle of a line. | [`631:94`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=631-94) |
 | ![reset](reset.svg) | `reset` | Follow the parent's icon or colour again. | [`631:98`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=631-98) |

@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Design system](../README.md) › [Organisms](README.md) › faceplate-element
 
-One element of the faceplate builder of a preset: a [drag-handle](../06-atoms/drag-handle.md), the icon of its kind, the fields of its kind, and delete. A group holds its own elements.
+One element of the faceplate builder of a type: a [drag-handle](../06-atoms/drag-handle.md), the icon of its kind, the fields of its kind, and delete. A group holds its own elements.
 
 ## Figma
 
@@ -35,9 +35,10 @@ One element of the faceplate builder of a preset: a [drag-handle](../06-atoms/dr
 ## Behaviour
 
 - `dragging` (`layer-selected`, violet): only while its handle is held, as a line of a table; a click on the element itself does nothing.
-- A signal in write or override is always on two lines, whatever its input: the first ends with read or write (read or override, a horizontal [radio-group](../07-molecules/radio-group.md)); the second holds the kind of input, then for a number the minimum and the maximum, of the same width.
+- A signal is on one line (2026-11-24, since the builder takes the whole main column): the signal, its display name, read or write (read or override, a horizontal [radio-group](../07-molecules/radio-group.md)), then in write or override the kind of input and, for a number, the minimum and the maximum, of the same width. In the slot `fields`, a frame `lines` lays its two groups side by side.
+- An element that comes from a parent keeps its handle, since a sub-type may move it, but its delete is hidden, its fill is `layer-transparent` instead of its own, and its fields are `state=read-only` (a radio `state=disabled`): the whole line reads as read only.
 - In a group, the delete follows the add buttons `spacing-02` apart, as one row of buttons.
-- The kind `paragraph` is shown "Description" on the screens and in its icon `description` (MD-07.19).
+- The kind `paragraph` is shown "Description" on the screens and in its icon `description` (MD-14.8).
 
 ## Made of
 

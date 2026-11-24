@@ -12,6 +12,7 @@ A range is the values a person may type in a number field of the faceplate: a mi
 
 ```mermaid
 erDiagram
+    %% link BOUND 23-bound.md
     RANGE ||--o| BOUND : "has, as min"
     RANGE ||--o| BOUND : "has, as max"
 ```

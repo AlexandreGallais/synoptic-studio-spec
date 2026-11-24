@@ -12,6 +12,7 @@ A unit is one way to count a [quantity](10-quantity.md): the kilogram is a unit 
 
 ```mermaid
 erDiagram
+    %% link CONVERSION 07-conversion.md
     UNIT {
         uuid internal_id PK
         text name

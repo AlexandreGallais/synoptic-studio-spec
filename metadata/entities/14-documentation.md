@@ -12,6 +12,7 @@ The documentation explains a type to people: a description and [links](13-link.m
 
 ```mermaid
 erDiagram
+    %% link LINK 13-link.md
     DOCUMENTATION {
         markdown description
     }

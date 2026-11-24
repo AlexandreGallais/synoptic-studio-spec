@@ -19,7 +19,7 @@ A line of a list: a name, where it comes from when needed, its icons `quantity` 
 | Input | Type | Default | Figma |
 | --- | --- | --- | --- |
 | `name` | text | — | text property `name` |
-| `source` | text | none | text property `source`, shown with the boolean `with-source`: in `text-secondary` after the name, the `id` of the parent a preset comes from |
+| `source` | text | none | text property `source`, shown with the boolean `with-source`: in `text-secondary` after the name, the `id` of the parent a line comes from; used by no screen since the presets were removed (2026-11-24) |
 | `duplicable` | boolean | `false` | boolean `with-duplicate`: an [icon-button](../06-atoms/icon-button.md) `duplicate` before the delete button |
 | `deletable` | boolean | `true` | boolean `with-delete` |
 | `quantity`, `difference` | boolean | `false` | booleans `quantity-icon`, `difference-icon` |
@@ -36,7 +36,7 @@ A line of a list: a name, where it comes from when needed, its icons `quantity` 
 ## Behaviour
 
 - A selected line does not react to the mouse.
-- The duplicate button shows on hover and on focus only; elsewhere its place stays empty, so the line does not move when it shows (Parent presets, [MD-07.25](../../screens/metadata.md#md-07--presets)).
+- The duplicate button shows on hover and on focus only; elsewhere its place stays empty, so the line does not move when it shows. Drawn for the Parent presets, removed on 2026-11-24: no screen uses it now.
 
 ## Made of
 

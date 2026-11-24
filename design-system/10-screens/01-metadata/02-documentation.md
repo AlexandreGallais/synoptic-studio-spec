@@ -4,6 +4,8 @@
 
 The documentation of a type: its description in the [markdown-editor](../../08-organisms/markdown-editor.md) and its links. Controls: [MD-03](../../../screens/metadata.md#md-03--documentation).
 
+Drawn for `centrifugal_pump`, a sub-type of `pump` (2026-11-24). In visual, markdown and full page, the editor shows the description of `pump` first, read only, in `text-secondary`, a line under it (property `inherited` of the markdown-editor); the own text of `centrifugal_pump` follows, the only one that can be edited. The first link comes from `pump`: a [data-table-row](../../07-molecules/data-table-row.md) `kind=inherited`, with no handle nor delete, its description `state=read-only`. The other states (no link, long text, headings and table) show the type's own part only.
+
 ## Figma
 
 | Frame | Id |

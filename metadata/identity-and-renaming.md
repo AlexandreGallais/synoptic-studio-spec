@@ -20,7 +20,7 @@ How each thing of Metadata is known, by the software and by people, what must be
 | [Files](files.md) | A file named after the `id` or the `name` of its thing; renaming the thing renames its file. |
 | [Inheritance of types](inheritance.md) | An `id` unique along the branch; a rename in a parent reaches every sub-type. |
 | [Checks and errors](checks-and-errors.md) | A key or a name already taken, refused when typed. |
-| [MD-02.1](../screens/metadata.md#md-02--general), [MD-04.6](../screens/metadata.md#md-04--signals), [MD-05.3](../screens/metadata.md#md-05--commands), [MD-07.3](../screens/metadata.md#md-07--presets), [MD-09.3, MD-09.6, MD-09.7](../screens/metadata.md#md-09--enums), [MD-12.3](../screens/metadata.md#md-12--flags-a-part-of-the-type), [MD-13.4](../screens/metadata.md#md-13--designations) | The fields where a key or a name is typed, always editable. |
+| [MD-02.1](../screens/metadata.md#md-02--general), [MD-04.6](../screens/metadata.md#md-04--signals), [MD-05.3](../screens/metadata.md#md-05--commands), [MD-09.3, MD-09.6, MD-09.7](../screens/metadata.md#md-09--enums), [MD-12.3](../screens/metadata.md#md-12--flags-a-part-of-the-type), [MD-13.4](../screens/metadata.md#md-13--designations) | The fields where a key or a name is typed, always editable. |
 | Symbols | They point to a type, its signals and its commands by their `internal_id`, so a rename never breaks them. |
 
 ## The two keys

@@ -16,6 +16,7 @@ A palette is a set of [colors](01-color.md): the only colors a type can pick.
 
 ```mermaid
 erDiagram
+    %% link COLOR 01-color.md
     PALETTE {
         uuid internal_id PK
         text name

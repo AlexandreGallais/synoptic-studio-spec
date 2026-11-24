@@ -12,6 +12,7 @@ A signal is a value that goes between the front and the model: an input the mode
 
 ```mermaid
 erDiagram
+    %% link VALUE_TYPE 15-value-type.md
     SIGNAL {
         uuid internal_id PK
         direction direction

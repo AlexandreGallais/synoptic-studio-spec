@@ -16,6 +16,7 @@ An enum is a named list of [items](05-enum-item.md), picked by a signal whose va
 
 ```mermaid
 erDiagram
+    %% link ENUM_ITEM 05-enum-item.md
     ENUM {
         uuid internal_id PK
         enum_kind kind

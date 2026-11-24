@@ -13,7 +13,7 @@ Colour of a box's title: orange, the last version of its entity file is not vali
 ```mermaid
 ---
 config:
-  themeCSS: "[id*='entity-PALETTE-'] .outer-path path, [id*='entity-COLOR-'] .outer-path path, [id*='entity-ICON_SET-'] .outer-path path, [id*='entity-ICON-'] .outer-path path, [id*='entity-TYPE-'] .outer-path path, [id*='entity-APPEARANCE-'] .outer-path path, [id*='entity-DOCUMENTATION-'] .outer-path path, [id*='entity-LINK-'] .outer-path path, [id*='entity-SIGNAL-'] .outer-path path, [id*='entity-VALUE_TYPE-'] .outer-path path, [id*='entity-QUANTITY-'] .outer-path path, [id*='entity-UNIT_SYSTEM-'] .outer-path path, [id*='entity-UNIT-'] .outer-path path, [id*='entity-CONVERSION-'] .outer-path path, [id*='entity-ENUM-'] .outer-path path, [id*='entity-ENUM_ITEM-'] .outer-path path, [id*='entity-COMMAND-'] .outer-path path, [id*='entity-COMMAND_TARGET-'] .outer-path path, [id*='entity-FLAG-'] .outer-path path, [id*='entity-PRESET-'] .outer-path path, [id*='entity-PRESET_VALUE-'] .outer-path path, [id*='entity-DISPLAY_FORMAT-'] .outer-path path, [id*='entity-BOOLEAN_TEXTS-'] .outer-path path, [id*='entity-FACEPLATE_ELEMENT-'] .outer-path path, [id*='entity-SIGNAL_FIELD-'] .outer-path path, [id*='entity-RANGE-'] .outer-path path, [id*='entity-BOUND-'] .outer-path path, [id*='entity-COMMAND_BUTTON-'] .outer-path path, [id*='entity-TEXT_CONTENT-'] .outer-path path, [id*='entity-DESIGNATION-'] .outer-path path { fill: #f8b26a !important; }"
+  themeCSS: "[id*='entity-PALETTE-'] .outer-path path, [id*='entity-COLOR-'] .outer-path path, [id*='entity-ICON_SET-'] .outer-path path, [id*='entity-ICON-'] .outer-path path, [id*='entity-TYPE-'] .outer-path path, [id*='entity-APPEARANCE-'] .outer-path path, [id*='entity-DOCUMENTATION-'] .outer-path path, [id*='entity-LINK-'] .outer-path path, [id*='entity-SIGNAL-'] .outer-path path, [id*='entity-VALUE_TYPE-'] .outer-path path, [id*='entity-QUANTITY-'] .outer-path path, [id*='entity-UNIT_SYSTEM-'] .outer-path path, [id*='entity-UNIT-'] .outer-path path, [id*='entity-CONVERSION-'] .outer-path path, [id*='entity-ENUM-'] .outer-path path, [id*='entity-ENUM_ITEM-'] .outer-path path, [id*='entity-COMMAND-'] .outer-path path, [id*='entity-COMMAND_TARGET-'] .outer-path path, [id*='entity-FLAG-'] .outer-path path, [id*='entity-SIGNAL_SETTING-'] .outer-path path, [id*='entity-DISPLAY_FORMAT-'] .outer-path path, [id*='entity-BOOLEAN_TEXTS-'] .outer-path path, [id*='entity-FACEPLATE_ELEMENT-'] .outer-path path, [id*='entity-SIGNAL_FIELD-'] .outer-path path, [id*='entity-RANGE-'] .outer-path path, [id*='entity-BOUND-'] .outer-path path, [id*='entity-COMMAND_BUTTON-'] .outer-path path, [id*='entity-TEXT_CONTENT-'] .outer-path path, [id*='entity-DESIGNATION-'] .outer-path path { fill: #f8b26a !important; }"
 ---
 erDiagram
     %% link PALETTE entities/02-palette.md
@@ -26,17 +26,10 @@ erDiagram
     %% link LINK entities/13-link.md
     %% link SIGNAL entities/16-signal.md
     %% link VALUE_TYPE entities/15-value-type.md
-    %% link QUANTITY entities/10-quantity.md
-    %% link UNIT_SYSTEM entities/09-unit-system.md
-    %% link UNIT entities/08-unit.md
-    %% link CONVERSION entities/07-conversion.md
-    %% link ENUM entities/06-enum.md
-    %% link ENUM_ITEM entities/05-enum-item.md
     %% link COMMAND entities/18-command.md
     %% link COMMAND_TARGET entities/17-command-target.md
     %% link FLAG entities/19-flag.md
-    %% link PRESET entities/29-preset.md
-    %% link PRESET_VALUE entities/22-preset-value.md
+    %% link SIGNAL_SETTING entities/22-signal-setting.md
     %% link DISPLAY_FORMAT entities/20-display-format.md
     %% link BOOLEAN_TEXTS entities/21-boolean-texts.md
     %% link FACEPLATE_ELEMENT entities/28-faceplate-element.md
@@ -45,6 +38,12 @@ erDiagram
     %% link BOUND entities/23-bound.md
     %% link COMMAND_BUTTON entities/26-command-button.md
     %% link TEXT_CONTENT entities/27-text-content.md
+    %% link QUANTITY entities/10-quantity.md
+    %% link UNIT_SYSTEM entities/09-unit-system.md
+    %% link UNIT entities/08-unit.md
+    %% link CONVERSION entities/07-conversion.md
+    %% link ENUM entities/06-enum.md
+    %% link ENUM_ITEM entities/05-enum-item.md
     %% link DESIGNATION entities/11-designation.md
     PALETTE {
         uuid internal_id PK
@@ -68,6 +67,7 @@ erDiagram
         uuid internal_id PK
         text id
         uuid parent FK
+        uuid_list faceplate_order
     }
     APPEARANCE {
         svg icon_drawing
@@ -94,37 +94,6 @@ erDiagram
         uuid quantity FK
         boolean relative_quantity
     }
-    QUANTITY {
-        uuid internal_id PK
-        text name
-        uuid default_unit FK
-        boolean offers_relative_quantity
-    }
-    UNIT_SYSTEM {
-        uuid internal_id PK
-        text name
-    }
-    UNIT {
-        uuid internal_id PK
-        text name
-        text symbol
-    }
-    CONVERSION {
-        expression to_default
-        expression from_default
-    }
-    ENUM {
-        uuid internal_id PK
-        enum_kind kind
-        text id
-        text description
-    }
-    ENUM_ITEM {
-        uuid internal_id PK
-        integer key
-        text display_name
-        text description
-    }
     COMMAND {
         uuid internal_id PK
         command_kind kind
@@ -140,11 +109,7 @@ erDiagram
         text id
         text description
     }
-    PRESET {
-        uuid internal_id PK
-        text name
-    }
-    PRESET_VALUE {
+    SIGNAL_SETTING {
         uuid signal FK
         signal_value start_value
     }
@@ -180,6 +145,37 @@ erDiagram
         uuid designation FK
         text typed_text
     }
+    QUANTITY {
+        uuid internal_id PK
+        text name
+        uuid default_unit FK
+        boolean offers_relative_quantity
+    }
+    UNIT_SYSTEM {
+        uuid internal_id PK
+        text name
+    }
+    UNIT {
+        uuid internal_id PK
+        text name
+        text symbol
+    }
+    CONVERSION {
+        expression to_default
+        expression from_default
+    }
+    ENUM {
+        uuid internal_id PK
+        enum_kind kind
+        text id
+        text description
+    }
+    ENUM_ITEM {
+        uuid internal_id PK
+        integer key
+        text display_name
+        text description
+    }
     DESIGNATION {
         uuid internal_id PK
         text id
@@ -191,78 +187,76 @@ erDiagram
     TYPE |o--o{ TYPE : "parent"
     TYPE ||--|| APPEARANCE : "has"
     TYPE ||--|| DOCUMENTATION : "has"
-    DOCUMENTATION ||--o{ LINK : "holds"
     TYPE ||--o{ SIGNAL : "holds"
-    SIGNAL ||--|| VALUE_TYPE : "has"
-    VALUE_TYPE }o--o| QUANTITY : "quantity"
-    QUANTITY ||--|{ UNIT_SYSTEM : "holds"
-    UNIT_SYSTEM ||--|{ UNIT : "holds, sorted by size"
-    QUANTITY }o--|| UNIT : "default_unit"
-    UNIT ||--o| CONVERSION : "has, except the default unit"
-    VALUE_TYPE }o--o| ENUM : "enum"
-    ENUM ||--o{ ENUM_ITEM : "holds"
     TYPE ||--o{ COMMAND : "holds"
-    COMMAND ||--o| COMMAND_TARGET : "has, when kind is set_input_signal or override_output_signal"
-    SIGNAL ||--o{ COMMAND_TARGET : "signal"
-    COMMAND_TARGET }o--o| ENUM_ITEM : "value"
     TYPE ||--o{ FLAG : "holds"
-    TYPE ||--o{ PRESET : "holds"
-    PRESET ||--o{ PRESET_VALUE : "holds, one per signal of the type"
-    SIGNAL ||--o{ PRESET_VALUE : "signal"
-    PRESET_VALUE }o--o| ENUM_ITEM : "start_value"
-    PRESET_VALUE ||--o| DISPLAY_FORMAT : "has, when the signal is an integer or a real"
+    TYPE ||--o{ SIGNAL_SETTING : "holds, one per own signal, and one per inherited signal it changes"
+    TYPE ||--o{ FACEPLATE_ELEMENT : "holds; faceplate_order places those of the parents too"
+    DOCUMENTATION ||--o{ LINK : "holds"
+    SIGNAL ||--|| VALUE_TYPE : "has"
+    SIGNAL ||--o{ COMMAND_TARGET : "signal"
+    SIGNAL ||--o{ SIGNAL_SETTING : "signal"
+    SIGNAL ||--o{ SIGNAL_FIELD : "signal"
+    SIGNAL |o--o{ BOUND : "signal"
+    VALUE_TYPE }o--o| QUANTITY : "quantity"
+    VALUE_TYPE }o--o| ENUM : "enum"
+    COMMAND ||--o| COMMAND_TARGET : "has, when kind is set_input_signal or override_output_signal"
+    COMMAND ||--o{ COMMAND_BUTTON : "command"
+    COMMAND_TARGET }o--o| ENUM_ITEM : "value"
+    SIGNAL_SETTING ||--o| DISPLAY_FORMAT : "has, when the signal is an integer or a real"
+    SIGNAL_SETTING ||--o| BOOLEAN_TEXTS : "has, when the signal is a boolean"
+    SIGNAL_SETTING }o--o| ENUM_ITEM : "start_value"
     DISPLAY_FORMAT }o--|| UNIT : "unit"
-    PRESET_VALUE ||--o| BOOLEAN_TEXTS : "has, when the signal is a boolean"
-    PRESET ||--o{ FACEPLATE_ELEMENT : "holds"
     FACEPLATE_ELEMENT |o--o{ FACEPLATE_ELEMENT : "holds, when kind is group"
     FACEPLATE_ELEMENT ||--o| SIGNAL_FIELD : "has, when kind is signal"
-    SIGNAL ||--o{ SIGNAL_FIELD : "signal"
+    FACEPLATE_ELEMENT ||--o| COMMAND_BUTTON : "has, when kind is command"
+    FACEPLATE_ELEMENT ||--o| TEXT_CONTENT : "has, when kind is title or paragraph"
     SIGNAL_FIELD ||--o| RANGE : "has, when input_kind is number_field"
     RANGE ||--o| BOUND : "has, as min"
     RANGE ||--o| BOUND : "has, as max"
-    SIGNAL |o--o{ BOUND : "signal"
-    FACEPLATE_ELEMENT ||--o| COMMAND_BUTTON : "has, when kind is command"
-    COMMAND ||--o{ COMMAND_BUTTON : "command"
-    FACEPLATE_ELEMENT ||--o| TEXT_CONTENT : "has, when kind is title or paragraph"
     TEXT_CONTENT }o--o| DESIGNATION : "designation"
+    QUANTITY ||--|{ UNIT_SYSTEM : "holds"
+    QUANTITY }o--|| UNIT : "default_unit"
+    UNIT_SYSTEM ||--|{ UNIT : "holds, sorted by size"
+    UNIT ||--o| CONVERSION : "has, except the default unit"
+    ENUM ||--o{ ENUM_ITEM : "holds"
 ```
 
 ## The entities
 
-Every entity of the schema, in the order of its number, with the file it is kept in.
+Every entity of the schema, in the order of the pages of Metadata where it is edited (General, Documentation, Signals, Commands, Flags, Signal settings, Faceplate, then Units, Enums, Designations), with its number and the file it is kept in.
 
-| # | Entity | Kept in |
-| --- | --- | --- |
-| 01 | [Color](entities/01-color.md) | `<name>.palette.json` |
-| 02 | [Palette](entities/02-palette.md) | `<name>.palette.json` |
-| 03 | [Icon](entities/03-icon.md) | `<name>.icon-set.json` |
-| 04 | [Icon set](entities/04-icon-set.md) | `<name>.icon-set.json` |
-| 05 | [Enum item](entities/05-enum-item.md) | `enums.json` |
-| 06 | [Enum](entities/06-enum.md) | `enums.json` |
-| 07 | [Conversion](entities/07-conversion.md) | `<name>.quantity.json` |
-| 08 | [Unit](entities/08-unit.md) | `<name>.quantity.json` |
-| 09 | [Unit system](entities/09-unit-system.md) | `<name>.quantity.json` |
-| 10 | [Quantity](entities/10-quantity.md) | `<name>.quantity.json` |
-| 11 | [Designation](entities/11-designation.md) | `designations.json` |
-| 12 | [Appearance](entities/12-appearance.md) | `<id>.type.json` |
-| 13 | [Link entity](entities/13-link.md) | `<id>.type.json` |
-| 14 | [Documentation](entities/14-documentation.md) | `<id>.type.json` |
-| 15 | [Value type](entities/15-value-type.md) | `<id>.type.json` |
-| 16 | [Signal](entities/16-signal.md) | `<id>.type.json` |
-| 17 | [Command target](entities/17-command-target.md) | `<id>.type.json` |
-| 18 | [Command](entities/18-command.md) | `<id>.type.json` |
-| 19 | [Flag](entities/19-flag.md) | `<id>.type.json` |
-| 20 | [Display format](entities/20-display-format.md) | `<id>.type.json` |
-| 21 | [Boolean texts](entities/21-boolean-texts.md) | `<id>.type.json` |
-| 22 | [Preset value](entities/22-preset-value.md) | `<id>.type.json` |
-| 23 | [Bound](entities/23-bound.md) | `<id>.type.json` |
-| 24 | [Range](entities/24-range.md) | `<id>.type.json` |
-| 25 | [Signal field](entities/25-signal-field.md) | `<id>.type.json` |
-| 26 | [Command button](entities/26-command-button.md) | `<id>.type.json` |
-| 27 | [Text content](entities/27-text-content.md) | `<id>.type.json` |
-| 28 | [Faceplate element](entities/28-faceplate-element.md) | `<id>.type.json` |
-| 29 | [Preset](entities/29-preset.md) | `<id>.type.json` |
-| 30 | [Type](entities/30-type.md) | `<id>.type.json` |
+| Page | # | Entity | Kept in |
+| --- | --- | --- | --- |
+| General | 02 | [Palette](entities/02-palette.md) | `<name>.palette.json` |
+| General | 01 | [Color](entities/01-color.md) | `<name>.palette.json` |
+| General | 04 | [Icon set](entities/04-icon-set.md) | `<name>.icon-set.json` |
+| General | 03 | [Icon](entities/03-icon.md) | `<name>.icon-set.json` |
+| Types | 30 | [Type](entities/30-type.md) | `<id>.type.json` |
+| General | 12 | [Appearance](entities/12-appearance.md) | `<id>.type.json` |
+| Documentation | 14 | [Documentation](entities/14-documentation.md) | `<id>.type.json` |
+| Documentation | 13 | [Link entity](entities/13-link.md) | `<id>.type.json` |
+| Signals | 16 | [Signal](entities/16-signal.md) | `<id>.type.json` |
+| Signals | 15 | [Value type](entities/15-value-type.md) | `<id>.type.json` |
+| Commands | 18 | [Command](entities/18-command.md) | `<id>.type.json` |
+| Commands | 17 | [Command target](entities/17-command-target.md) | `<id>.type.json` |
+| Flags | 19 | [Flag](entities/19-flag.md) | `<id>.type.json` |
+| Signal settings | 22 | [Signal setting](entities/22-signal-setting.md) | `<id>.type.json` |
+| Signal settings | 20 | [Display format](entities/20-display-format.md) | `<id>.type.json` |
+| Signal settings | 21 | [Boolean texts](entities/21-boolean-texts.md) | `<id>.type.json` |
+| Faceplate | 28 | [Faceplate element](entities/28-faceplate-element.md) | `<id>.type.json` |
+| Faceplate | 25 | [Signal field](entities/25-signal-field.md) | `<id>.type.json` |
+| Faceplate | 24 | [Range](entities/24-range.md) | `<id>.type.json` |
+| Faceplate | 23 | [Bound](entities/23-bound.md) | `<id>.type.json` |
+| Faceplate | 26 | [Command button](entities/26-command-button.md) | `<id>.type.json` |
+| Faceplate | 27 | [Text content](entities/27-text-content.md) | `<id>.type.json` |
+| Units | 10 | [Quantity](entities/10-quantity.md) | `<name>.quantity.json` |
+| Units | 09 | [Unit system](entities/09-unit-system.md) | `<name>.quantity.json` |
+| Units | 08 | [Unit](entities/08-unit.md) | `<name>.quantity.json` |
+| Units | 07 | [Conversion](entities/07-conversion.md) | `<name>.quantity.json` |
+| Enums | 06 | [Enum](entities/06-enum.md) | `enums.json` |
+| Enums | 05 | [Enum item](entities/05-enum-item.md) | `enums.json` |
+| Designations | 11 | [Designation](entities/11-designation.md) | `designations.json` |
 
 ## The types of the fields
 
@@ -281,7 +275,8 @@ Every type a field of the schema has. A type is named after what the value is fo
 | `integer` | A whole number. | `ENUM_ITEM.key`, `DISPLAY_FORMAT.decimals`. | The word of FMI and of `value_type_kind`, kept apart from `real`. |
 | `real` | A number, with or without decimals. | `BOUND.typed_value`. | The word of FMI and of `value_type_kind` for a number that is not whole. |
 | `expression` | A string: a formula in `x`, written as [Formulas](formulas.md) says. | `CONVERSION.to_default`, `CONVERSION.from_default`. | A formula the software reads and computes, never a text shown as it is. |
-| `signal_value` | A number, `true` or `false`, or the `uuid` of an enum item, as the value type of the signal says. | `COMMAND_TARGET.value`, `PRESET_VALUE.start_value`. | A value whose kind is read from the signal it goes with. |
+| `uuid_list` | An array of `uuid`, each once. | `TYPE.faceplate_order`. | Several links in an order the user chose. |
+| `signal_value` | A number, `true` or `false`, or the `uuid` of an enum item, as the value type of the signal says. | `COMMAND_TARGET.value`, `SIGNAL_SETTING.start_value`. | A value whose kind is read from the signal it goes with. |
 
 ### The choice lists
 

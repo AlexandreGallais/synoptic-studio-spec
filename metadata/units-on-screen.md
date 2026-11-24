@@ -21,7 +21,7 @@ In which unit a number of Metadata is kept, shown, typed and sent to the model, 
 | [Preset value](entities/22-preset-value.md), [Command target](entities/17-command-target.md), [Bound](entities/23-bound.md) | A number typed, kept in the default unit. |
 | [Formulas](formulas.md) | How a conversion is computed; a result that is not a finite number. |
 | [Checks and errors](checks-and-errors.md) | A decimal typed for an integer, an integer that gives no whole number in the default unit, a value with no finite conversion: refused. |
-| [MD-04.9](../screens/metadata.md#md-04--signals), [MD-07.12, MD-07.13, MD-07.14, MD-07.22](../screens/metadata.md#md-07--presets), [MD-08](../screens/metadata.md#md-08--units) | Where a unit, a difference or decimals show on screen. |
+| [MD-04.9](../screens/metadata.md#md-04--signals), [MD-07.12, MD-07.13, MD-07.14](../screens/metadata.md#md-07--signal-settings), [MD-14.6](../screens/metadata.md#md-14--faceplate), [MD-08](../screens/metadata.md#md-08--units) | Where a unit, a difference or decimals show on screen. |
 | Symbols and synoptics | They show a value in the display unit and with the decimals of the preset, and may change both. |
 
 ## Three units

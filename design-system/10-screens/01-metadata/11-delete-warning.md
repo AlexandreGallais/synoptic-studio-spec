@@ -2,7 +2,7 @@
 
 > [Home](../../../README.md) › [Design system](../../README.md) › [Screens](../README.md) › [Screens of Metadata](README.md) › Delete warning
 
-The [dialog](../../08-organisms/dialog.md) `warning` that the red button of a whole type or a whole preset opens as an overlay; a line is deleted at once, without it (decision 0093). Its two buttons close it. The dimmed background behind it is set by hand in Figma.
+The [dialog](../../08-organisms/dialog.md) `warning` that the red button of a whole type opens as an overlay; a line is deleted at once, without it (decision 0093). Its two buttons close it. The dimmed background behind it is set by hand in Figma.
 
 ## Figma
 

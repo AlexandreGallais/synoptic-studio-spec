@@ -15,11 +15,12 @@ Figma: page [Metadata](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node
 | [03-signals](03-signals.md) | MD-04 Signals | [`665:4990`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=665-4990) |
 | [04-commands](04-commands.md) | MD-05 Commands | [`666:3777`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=666-3777) |
 | [05-flags](05-flags.md) | MD-12 Flags | [`666:6541`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=666-6541) |
-| [06-presets](06-presets.md) | MD-07 Presets, and the list of display units | [`668:9609`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=668-9609) |
-| [07-units](07-units.md) | MD-08 Units | [`669:11672`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=669-11672) |
-| [08-enums](08-enums.md) | MD-09 Enums | [`669:14179`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=669-14179) |
-| [09-designations](09-designations.md) | MD-13 Designations | [`666:8401`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=666-8401) |
-| [10-delete-warning](10-delete-warning.md) | The warning every delete opens | [`670:13025`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=670-13025) |
+| [06-signal-settings](06-signal-settings.md) | MD-07 Signal settings, and the list of display units | [`668:9609`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=668-9609) |
+| [07-faceplate](07-faceplate.md) | MD-14 Faceplate | [`858:15982`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=858-15982) |
+| [08-units](08-units.md) | MD-08 Units | [`669:11672`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=669-11672) |
+| [09-enums](09-enums.md) | MD-09 Enums | [`669:14179`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=669-14179) |
+| [10-designations](10-designations.md) | MD-13 Designations | [`666:8401`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=666-8401) |
+| [11-delete-warning](11-delete-warning.md) | The warning every delete opens | [`670:13025`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=670-13025) |
 
 ## Content states
 

@@ -25,14 +25,15 @@ The entities of Metadata, one file each: what the entity is, its schema, its JSO
 | 17 | [Command target](17-command-target.md) | The signal a command sends its value to, and that fixed value. | Draft |
 | 18 | [Command](18-command.md) | What the front sends with one click: a fixed value to an input, an override of an output, or a trigger for the layer above the model. | Draft |
 | 19 | [Flag](19-flag.md) | A key each placed symbol of a type has on or off, written in the configuration files for a program outside. | Draft |
-| 20 | [Display format](20-display-format.md) | The unit and the decimals a preset shows an integer or a real with. | Draft |
-| 21 | [Boolean texts](21-boolean-texts.md) | The words a preset shows for true and for false. | Draft |
-| 22 | [Preset value](22-preset-value.md) | How a preset starts and shows one signal: its start value, and its display format or its boolean texts. | Draft |
+| 20 | [Display format](20-display-format.md) | The unit and the decimals an integer or a real is shown with. | Draft |
+| 21 | [Boolean texts](21-boolean-texts.md) | The words shown for true and for false. | Draft |
+| 22 | [Signal setting](22-signal-setting.md) | How one signal starts and is shown: its start value, and its display format or its boolean texts. | Draft |
 | 23 | [Bound](23-bound.md) | The minimum or the maximum of a range: a typed number, or the value of an input signal. | Draft |
 | 24 | [Range](24-range.md) | The values a person may type in a number field of the faceplate. | Draft |
 | 25 | [Signal field](25-signal-field.md) | A signal shown in the faceplate, with its label, and how a person types it when its access allows. | Draft |
 | 26 | [Command button](26-command-button.md) | A button of the faceplate that sends one command. | Draft |
 | 27 | [Text content](27-text-content.md) | The text of a title or a paragraph of the faceplate: typed, or the text of a designation. | Draft |
-| 28 | [Faceplate element](28-faceplate-element.md) | One line of the faceplate builder: a signal, a command, a title, a paragraph or a group. | Draft |
-| 29 | [Preset](29-preset.md) | The defaults a symbol and a synoptic start from: the preset values and the faceplate. | Draft |
+| 28 | [Faceplate element](28-faceplate-element.md) | One line of the faceplate builder of a type: a signal, a command, a title, a paragraph or a group. | Draft |
 | 30 | [Type](30-type.md) | What a symbol represents, in a tree of types, with everything it holds; one file each. | Draft |
+
+Number 29 was Preset, removed on 2026-11-24 with the presets; it is not reused.

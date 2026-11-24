@@ -137,7 +137,9 @@ The citations of the Product Owner taken out of the specification on 2026-11-23,
 - 2026-11-23, said of the icon-picker
   - In: - The reset is set apart from the colours, after a vertical divider, as a `quiet` icon button: it never reads as one more choice (Product Owner, 2026-11-23, said of the icon-picker; the same here).
 
-## design-system/10-screens/01-metadata/06-presets.md
+## design-system/10-screens/01-metadata/06-signal-settings.md
+
+Called 06-presets.md until 2026-11-24; the first sentence below no longer holds (a signal sits on one line since then).
 
 - 2026-11-22
   - In: Every signal in write is on two lines. The title Elements sits `spacing-03` (8) above its first element, the other blocks of the preset `spacing-05` (16) apart (Product Owner, 2026-11-22).
@@ -297,7 +299,7 @@ The citations of the Product Owner taken out of the specification on 2026-11-23,
   - In: A **Symbol Lib** holds symbols. It is the only kind of library: there are no libraries of types (Product Owner, 2026-11-16). This page is about the Symbol Lib, how a symbol is created, and what happens to a symbol when Metadata changes.
 - 2026-11-15
   - In: - **One list of symbols only** (Product Owner, 2026-11-15). There is no "static" or "dynamic" kind: every symbol is the same kind of object, and a symbol simply has a type or not yet. The Product Owner settled it so that the software is simpler to understand at first.
-- 
+-
   - In: - Why (Product Owner): the pipes are no longer mixed with the symbols, the libraries are only on the left, and the pages sit under them; "c'est plutôt simple à comprendre".
 - 2026-11-15
   - In: | Symbols | A search field (a small magnifier), a **+** button to create a symbol, then the list; a click on an item opens the symbol in the editor. Under it, the **layers** of the open symbol: see Layers (Product Owner, 2026-11-15). |
@@ -336,11 +338,11 @@ The citations of the Product Owner taken out of the specification on 2026-11-23,
 
 - 2026-11-15
   - In: - While the user drags a marker with the mouse (a point, a curve handle, and the like), holding a modifier key makes the move **precise**: the marker moves slowly, and can be placed pixel by pixel of the symbol (Product Owner, 2026-11-15).
-- 
+-
   - In: - The key is not chosen yet: Shift, Alt or Ctrl, "to find" (Product Owner). It follows the rule of the editor: the same key on Windows, macOS and Linux.
-- 
+-
   - In: | Point of a path | Yes (Product Owner) |
-- 
+-
   - In: | Curve handle | Yes (Product Owner) |
 
 ## symbols/04-drawing-mode/rectangle.md

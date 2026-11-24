@@ -16,6 +16,8 @@ A quantity is what a value measures, such as mass or temperature: a signal whose
 
 ```mermaid
 erDiagram
+    %% link UNIT_SYSTEM 09-unit-system.md
+    %% link UNIT 08-unit.md
     QUANTITY {
         uuid internal_id PK
         text name

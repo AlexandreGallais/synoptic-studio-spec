@@ -12,6 +12,7 @@ A unit system groups the [units](08-unit.md) of a [quantity](10-quantity.md) tha
 
 ```mermaid
 erDiagram
+    %% link UNIT 08-unit.md
     UNIT_SYSTEM {
         uuid internal_id PK
         text name

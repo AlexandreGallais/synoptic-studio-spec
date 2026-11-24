@@ -16,6 +16,7 @@ An icon set is a set of [icons](03-icon.md) of one style or one origin, such as 
 
 ```mermaid
 erDiagram
+    %% link ICON 03-icon.md
     ICON_SET {
         uuid internal_id PK
         text name

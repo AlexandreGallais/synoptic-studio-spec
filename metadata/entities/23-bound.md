@@ -38,7 +38,7 @@ erDiagram
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
     },
     "typed_value": {
-      "description": "The number, in the default unit of the quantity of the signal shown, typed in the display unit of the preset: changing the display unit never changes it.",
+      "description": "The number, in the default unit of the quantity of the signal shown, typed in the display unit set in the signal settings of the type: changing the display unit never changes it.",
       "type": "number"
     }
   },

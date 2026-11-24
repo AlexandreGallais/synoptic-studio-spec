@@ -33,7 +33,7 @@ erDiagram
       "enum": ["typed", "designation"]
     },
     "designation": {
-      "description": "Foreign key to the designation whose text is shown: the same preset shows P-101 on one pump and P-102 on the next.",
+      "description": "Foreign key to the designation whose text is shown: the same faceplate shows P-101 on one pump and P-102 on the next.",
       "type": "string",
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
     },

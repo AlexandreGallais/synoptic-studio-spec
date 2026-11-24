@@ -17,6 +17,7 @@ config:
     minEntityWidth: 180
 ---
 erDiagram
+    %% link COMMAND_TARGET 17-command-target.md
     COMMAND {
         uuid internal_id PK
         command_kind kind
