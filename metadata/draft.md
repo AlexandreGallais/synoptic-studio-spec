@@ -922,14 +922,14 @@ flowchart LR
 - **Adding items is the only change allowed to the base of the copy**, besides the ID of the enum (Product Owner, 2026-11-23: "la seule chose qu'il peut faire, c'est ajouter un item").
 - **The software checks the copy against its own built-in enum**, item by item: every item of the software must be in the copy, with the same key, the same display name and the same description (Product Owner, 2026-11-23: "ce qu'il y a à l'intérieur du logiciel viendra valider l'enum surchargé [...] ça viendra vérifier que la chose est bien construite").
 - **A copy that fails the check is a file with errors**: an item removed, an item whose key changed (`pipe_direction` without `1`), or an item whose display name or description changed. The software uses its own built-in enum instead, and lists the error (answers of 2026-11-23). See [A file with errors](checks-and-errors.md#a-file-with-errors).
-- **A "Restore" button removes the user's copy** from their `enums.json`: the enum goes back to its default ID and to the software's items, and loses the items the user added (answer of 2026-11-23). Shown only on an overridden built-in enum. Wording "Restore" proposed.
+- **A "Restore" button removes the user's copy** from their `enums.json`: the enum goes back to its default ID and to the software's items, and loses the items the user added (answer of 2026-11-23); `pipe_style` gets its default copy back at the next start ([below](#the-default-copy-of-pipe_style)). Shown only on an overridden built-in enum. Wording "Restore" proposed.
 
 #### The built-in enums of the software
 
 | Built-in enum | Default ID | Items (key: display name) | Status |
 | --- | --- | --- | --- |
 | Pipe direction | `pipe_direction` | 0: Stopped, 1: Start to end, 2: End to start | Three items, "Stopped" included, one signal for whether the dashes move and which way: decided (2026-11-24). ID, keys and display names: proposed |
-| Pipe style | `pipe_style` | None. The default copy of the user holds Water and perhaps a second item (below) | A global built-in enum, items added by the user, each Symbol Lib drawing each item as it wants: decided (2026-11-24, decision 0099). ID `pipe_style`, no base item: decided. Items of the default copy: open |
+| Pipe style | `pipe_style` | None. The default copy of the user holds 0: Water (below) | A global built-in enum, items added by the user, each Symbol Lib drawing each item as it wants: decided (2026-11-24, decision 0099). ID `pipe_style`, no base item, Water alone in the default copy: decided. Key 0: proposed |
 
 - Open: which other built-in enums the software needs.
 - Open: what the dashes of a pipe do with an item the user added to `pipe_direction`, since the software only knows the base items.
@@ -939,11 +939,11 @@ flowchart LR
 Product Owner, 2026-11-24 ("on va, en gros, créer d'office une surcharge dès qu'on démarre le logiciel, et on va mettre genre water dedans [...] Comme ça, ça permettra de le supprimer si on veut").
 
 - **`pipe_style` ships with no base item**: nothing in it is imposed on the user.
-- **The software writes a copy of `pipe_style` in the user's `enums.json` when it starts**, with a few items in it: **Water**, and perhaps a second one ("on pourra en mettre deux").
-- **These items are the user's, not base items**: the user changes and deletes them like any item they added, down to an empty `pipe_style`.
+- **The software writes a copy of `pipe_style` in the user's `enums.json` when it starts**, holding **one item: Water** (answer of 2026-11-24: "Water seul"). Its key 0 is proposed.
+- **This item is the user's, not a base item**: the user changes and deletes it like any item they added, down to an empty `pipe_style`.
 - The copy is an ordinary override ([above](#overriding-a-built-in-enum)): the check against the software's enum passes, since the software's has no item.
-- Open: the items of the default copy (Water, and which second one), and their keys.
-- Open: when the copy is written: only if the user's `enums.json` holds no copy of `pipe_style` (assistant's reading of "dès qu'on démarre le logiciel"), so an emptied copy stays empty. After a **Restore**, which removes the copy, is it written again at the next start?
+- **The copy is written at each start when the user's `enums.json` holds none**: at the first start, and **again after a Restore**, which removes it (answer of 2026-11-24: "Oui, réécrite"). A Restore of `pipe_style` therefore gives back Water alone.
+- An emptied copy is still a copy: it stays empty, so that a deleted Water stays deleted ("ça permettra de le supprimer si on veut"). Assistant's reading, to confirm.
 
 ### Rules
 
