@@ -101,7 +101,7 @@ erDiagram
       "items": { "$ref": "faceplate-element.schema.json" }
     },
     "faceplate_order": {
-      "description": "The internal_id of every element at the top of the faceplate, inherited and own, in the order it shows them. Empty: the elements of the parents, from the root down, then the own ones. An element missing from it is shown at the end; an internal_id that no longer exists is ignored.",
+      "description": "The internal_id of every element at the top of the faceplate, inherited and own, in the order it shows them; an own element may sit between two elements of a parent (Product Owner, 2026-11-24). Empty: the elements of the parents, from the root down, then the own ones. An element missing from it is shown at the end; an internal_id that no longer exists is ignored.",
       "type": "array",
       "items": {
         "type": "string",
@@ -137,5 +137,4 @@ erDiagram
 
 ## Open questions
 
-- May an own element of the faceplate go between two elements of a parent, as `faceplate_order` allows, or only after them?
 - Inside a group of a parent, may a sub-type move or add elements?

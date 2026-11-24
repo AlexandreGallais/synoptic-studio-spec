@@ -4,6 +4,8 @@
 
 The enums, global or template, and their items. Controls: [MD-09](../../../screens/metadata.md#md-09--enums).
 
+The ID, the kind and the description of the enum sit in a card above the table of its items, as the tables (2026-11-24): `layer-01`, `radius-md`, `spacing-05` (16) inside. The list of built-in enums shows `pipe_direction` and `pipe_style` on every screen; a click on one opens its screen, as a click on `pump_mode`.
+
 ## Figma
 
 | Frame | Id |

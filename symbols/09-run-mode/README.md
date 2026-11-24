@@ -20,7 +20,7 @@ The mode of the [editor](../03-editor/README.md) in which the user tries the sym
 | An enum | A select of the display names of the enum, to choose an item and see the animation that goes with it. |
 | A boolean | A switch. |
 
-- The symbol is redrawn at each change, with the display units and decimal places of its preset.
+- The symbol is redrawn at each change, with the display units and decimal places of the signal settings of its type.
 - Nothing is sent to a model, and nothing is saved in the symbol.
 
 ### Interactions in the Run mode

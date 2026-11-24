@@ -18,9 +18,9 @@ What the software checks in Metadata, when, and what each check gives: a change 
 | [Inheritance of types](inheritance.md) | An `id` already taken along the branch is refused; a type whose parent is missing is flagged in error. |
 | [Deleting and its consequences](deleting.md) | A type that has sub-types is never deleted; what points to a deleted thing is flagged in error. |
 | [Identity and renaming](identity-and-renaming.md) | A key or a name already taken in its list is refused when typed. |
-| [Type](entities/30-type.md), [Signal](entities/16-signal.md), [Command](entities/18-command.md), [Flag](entities/19-flag.md), [Enum](entities/06-enum.md), [Enum item](entities/05-enum-item.md), [Designation](entities/11-designation.md), [Preset](entities/29-preset.md) | Their uniqueness, said in the `description` of their key. |
+| [Type](entities/30-type.md), [Signal](entities/16-signal.md), [Command](entities/18-command.md), [Flag](entities/19-flag.md), [Enum](entities/06-enum.md), [Enum item](entities/05-enum-item.md), [Designation](entities/11-designation.md) | Their uniqueness, said in the `description` of their key. |
 | [Range](entities/24-range.md), [Bound](entities/23-bound.md) | A typed value outside the range, a minimum greater than the maximum: refused. |
-| [Command target](entities/17-command-target.md), [Value type](entities/15-value-type.md), [Preset value](entities/22-preset-value.md), [Text content](entities/27-text-content.md) | Flagged in error when what they point to is gone. |
+| [Command target](entities/17-command-target.md), [Value type](entities/15-value-type.md), [Signal setting](entities/22-signal-setting.md), [Text content](entities/27-text-content.md) | Flagged in error when what they point to is gone. |
 | [MD-02.8](../screens/metadata.md#md-02--general), [MD-04.6](../screens/metadata.md#md-04--signals), [MD-05.3](../screens/metadata.md#md-05--commands), [MD-07.14](../screens/metadata.md#md-07--signal-settings), [MD-14.6](../screens/metadata.md#md-14--faceplate), [MD-08.10](../screens/metadata.md#md-08--units), [MD-09.3, MD-09.6, MD-09.7](../screens/metadata.md#md-09--enums), [MD-12.3](../screens/metadata.md#md-12--flags-a-part-of-the-type), [MD-13.4](../screens/metadata.md#md-13--designations) | Where a check shows on screen. |
 | [Faults](../synoptics/08-faults.md) | What a change of Metadata breaks in a synoptic, listed there, never in Metadata. |
 
@@ -58,7 +58,7 @@ flowchart LR
 | --- | --- | --- |
 | A `name` or an `id` whose file name is already taken, or empty | Every entity with a file of its own | [Files](files.md#the-name-of-a-file) |
 | The `id` of a type already taken in the whole tree | MD-02 | Decision 0047 |
-| A key or a name already taken in its list: the `id` of an enum or a designation, the key or the display name of an enum item in its enum, the name of a preset in its type, the `id` of a signal, a command or a flag in its type | MD-04.6, MD-05.3, MD-07.3, MD-09.3, MD-09.6, MD-09.7, MD-12.3, MD-13.4 | Decision 0083 |
+| A key or a name already taken in its list: the `id` of an enum or a designation, the key or the display name of an enum item in its enum, the `id` of a signal, a command or a flag in its type | MD-04.6, MD-05.3, MD-09.3, MD-09.6, MD-09.7, MD-12.3, MD-13.4 | Decision 0083 |
 | An `id` of a signal, a command or a flag already taken along the branch: added or renamed in a parent while a sub-type has it as its own line, or reused by a sub-type | MD-04.6, MD-05, MD-12 | Decisions 0080, 0081 |
 | Deleting a type that has sub-types | MD-02.8 | Decision 0082 |
 | A minimum typed greater than the maximum, in the faceplate builder | MD-07.22 | Decision 0079 |
@@ -78,7 +78,7 @@ flowchart LR
 | --- | --- | --- |
 | A type | The file of its parent is missing or unreadable; the missing parent is named. | Decision 0079 |
 | A signal | Its enum was deleted. | Decision 0082 |
-| A preset value | The enum item of its start value was deleted. | Decision 0082 |
+| A signal setting | The enum item of its start value was deleted. | Decision 0082 |
 | A command | The signal it targets was deleted, or the enum item of its value. | Decision 0082 |
 | A faceplate element | The designation of its title or paragraph was deleted. | Decision 0082 |
 
@@ -106,7 +106,7 @@ flowchart LR
 | Changing the `id` of a type, a signal, a command or a flag: breaking for the model, never for the software, whose links go through the `internal_id`. | [Inheritance of types](inheritance.md#when-a-parent-changes) |
 | Changing the key of an enum item: breaking for the model. | Decision 0038 |
 | Changing the kind of an enum, global or template, even while signals use it. | Decision 0042 |
-| Deleting: a line goes at once; a whole type or preset asks to confirm; the warning never lists what the delete breaks. | [Deleting and its consequences](deleting.md#how-a-delete-is-done) |
+| Deleting: a line goes at once; a whole type asks to confirm; the warning never lists what the delete breaks. | [Deleting and its consequences](deleting.md#how-a-delete-is-done) |
 | How an `id` is written: no rule. | [Whole draft](draft.md#flags), 2026-11-17 |
 | The drawing of an icon: a stroke, against the rule, is shown as it is. | [Data model: notes](data-model-notes.md#settled-on-2026-11-22-icon-sets) |
 | The value of a command target, by its own field: it is read by the value type of the signal it targets. | [Data model: notes](data-model-notes.md) |

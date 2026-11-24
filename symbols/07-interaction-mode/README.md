@@ -15,9 +15,9 @@ The mode of the [editor](../03-editor/README.md) in which the user says what hap
 - Several gestures are possible on a place: left click, right click, double click, and others (the list is to settle).
 - Each interaction links a place, a gesture and what happens. What happens is one of two things:
   - a command of the type (see [Commands](../../metadata/draft.md#commands)): a command that sets a signal, or a trigger;
-  - **opening the faceplate** of the element: the user says "this opens the faceplate of the element" (see [Type, preset and faceplate](../02-type-and-faceplate.md)).
+  - **opening the faceplate** of the element: the user says "this opens the faceplate of the element" (see [Type and faceplate](../02-type-and-faceplate.md)).
 - What the opened faceplate allows (display only, or display with commands) is **not** decided in the symbol editor. It is set later, once the symbol is placed, in the synoptic part (not written yet).
-- A symbol uses only the commands it links: a preset never chooses commands.
+- A symbol uses only the commands it links.
 
 ```mermaid
 flowchart LR

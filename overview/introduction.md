@@ -23,7 +23,7 @@ The application has three parts.
 
 | Part | What it holds | Specified in |
 | --- | --- | --- |
-| Metadata | The data and documentation a symbol can be attached to: type tree, icons, documentation, signals, units, enums, commands, faceplates, presets. | [Metadata](../metadata/README.md) |
+| Metadata | The data and documentation a symbol can be attached to: type tree, icons, documentation, signals, units, enums, commands, signal settings, faceplates. | [Metadata](../metadata/README.md) |
 | Symbols | Creating symbols: symbol libraries, drawing, animation by signals, interactions with commands. Draft. | [Symbols](../symbols/README.md) |
 | Synoptics | Building synoptics: placing symbols, drawing pipes, giving each placed symbol its identity, faults, test, outputs. Extrapolated by the assistant on 2026-11-20, to review. | [Synoptics](../synoptics/README.md) |
 

@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Synoptics](README.md) › Panel of a placed symbol · Previous: [Placed symbols](03-placed-symbols.md) · Next: [Pipes](05-pipes.md)
 
-Status: extrapolated by the assistant. It gathers in one panel what Metadata leaves "to the synoptic, part 3" (designation texts, flags, template items, preset). The instance ID and what the preset lets a synoptic change are settled; the rest is not validated.
+Status: extrapolated by the assistant. It gathers in one panel what Metadata leaves "to the synoptic, part 3" (designation texts, flags, template items, values changed). The instance ID and what a synoptic may change are settled; the rest is not validated.
 
 The right-hand panel of the synoptic editor, when one placed symbol is selected. It is where a placed symbol gets its identity.
 
@@ -14,7 +14,7 @@ The right-hand panel of the synoptic editor, when one placed symbol is selected.
 ```mermaid
 flowchart TD
     A["Symbol: library, symbol, type, Open, Replace"] --> B["Identity: instance ID, designation texts"]
-    B --> C["Preset: choice, values changed"]
+    B --> C["Signal settings: values changed"]
     C --> D["Flags: one checkbox each"]
     D --> E["Template enums: items of this placed symbol"]
     E --> F["Placement: position, rotation, mirror, size"]
@@ -35,18 +35,18 @@ flowchart TD
 
 - **Instance ID**: the key of the placed symbol in the configuration files and in the signal list (`pump_p101.speed`). Decided on 2026-11-20: every placed symbol has an instance ID of its own, a field apart from the designations of Metadata; the tag is never the key. Proposed: set by the software from the type's `id` and a number (`centrifugal_pump_3`), changed by the user, unique in the folder. Its name is open: the research on names (T5) covered Metadata only.
 - **Designations**: one text field per [designation](../metadata/entities/11-designation.md) of Metadata, in the order of the Designations page, labelled by their ID (a designation has no display name since 2026-11-21).
-  - **Every required designation** is shown on every placed symbol, whether or not the faceplate of its preset uses it, and marked as required.
+  - **Every required designation** is shown on every placed symbol, whether or not the faceplate of its type uses it, and marked as required.
   - **A required text left empty warns, never blocks**: the field is marked, the section shows the small warning mark, the placed symbol is listed in the [faults](08-faults.md) as a warning, and the synoptic is saved anyway.
-  - **A designation that is not required** is shown when the faceplate of the preset uses it (decided in Metadata: the designations used give the synoptic its list to fill). Proposed: the others are not shown.
+  - **A designation that is not required** is shown when the faceplate of its type uses it (decided in Metadata: the designations used give the synoptic its list to fill). Proposed: the others are not shown.
 - **Uniqueness**: a text already used by another placed symbol, for the same designation, is marked at once in the field, and listed in the faults as a warning. It is never refused: the user may be in the middle of renaming. Proposed; Metadata left open whether it is checked.
 
-### Preset
+### Signal settings
 
-- **Preset**: a select of the presets of the type (decided: in a synoptic only the preset can be changed).
-- Decided on 2026-11-20: a synoptic may change, for one placed symbol, the **start values**, the **display units**, the **decimals** and the **texts** of the title and description elements of its faceplate. Nothing else of the preset changes in a synoptic.
-- Decided on 2026-11-20: these changes are **kept as changes from the preset**. A placed symbol that changes nothing follows its preset when the preset changes.
-- Under the select, a table of the values this placed symbol changes: signal, start value, display unit, decimals, then the texts. Proposed (the table).
-- A changed value shows a dot, and a **Reset to the preset** button on its line (decided on 2026-11-20); the dot is proposed.
+- No preset to choose (2026-11-24): there are no presets; the placed symbol starts from the [signal settings](../metadata/entities/22-signal-setting.md) and the faceplate of its type.
+- Decided on 2026-11-20: a synoptic may change, for one placed symbol, the **start values**, the **display units**, the **decimals** and the **texts** of the title and description elements of its faceplate. Nothing else changes in a synoptic.
+- Decided on 2026-11-20: these changes are **kept as changes from the type**. A placed symbol that changes nothing follows its type when the type changes.
+- A table of the values this placed symbol changes: signal, start value, display unit, decimals, then the texts. Proposed (the table).
+- A changed value shows a dot, and a **Reset to the type** button on its line, as the reset of the signal settings of a sub-type ([MD-07.28](../screens/metadata.md#md-07--signal-settings); decided on 2026-11-20); the dot is proposed.
 - A value typed is kept in the default unit of its quantity, as every number typed in Metadata (decision 0051); the screen shows it in the display unit. Proposed: the same rule here.
 
 ### Flags
@@ -83,7 +83,7 @@ flowchart TD
 | Section | Content |
 | --- | --- |
 | Identity | Instance ID `pump_p101`; Tag `P-101`; Location `Building A` |
-| Preset | `default`; `speed_setpoint` start value 1450 rpm changed to 1200 rpm (dot, reset) |
+| Signal settings | `speed_setpoint` start value 1450 rpm changed to 1200 rpm (dot, reset) |
 | Flags | `has_bypass` ticked, `remote_start` not ticked |
 | Template enums | `mode` (template `pump_mode`): 0 Off, 1 Local, 2 Remote |
 
@@ -95,10 +95,11 @@ flowchart TD
 | Designation texts | Panel of a placed symbol, or the page Placed symbols | No | Fill |
 | Flags ticked | Panel of a placed symbol | No | Tick |
 | Template items | Panel of a placed symbol | No | Create, edit, delete, copy from another |
-| Values changed from the preset | Panel of a placed symbol | Same idea in the right-hand panel of the symbol editor | Change, reset |
+| Values changed from the type | Panel of a placed symbol | No (the symbol chooses its type only, 2026-11-24) | Change, reset |
 
 ## Open questions
 
 - The name of the instance ID: not treated by the research T5.
-- For a designation that is not required: show only those used by the preset (advised), or all of them? (A required one is always shown, 2026-11-21.)
+- For a designation that is not required: show only those used by the faceplate of the type (advised), or all of them? (A required one is always shown, 2026-11-21.)
 - Is a duplicate designation text a warning (advised) or refused?
+- With sub-types standing for the former presets (2026-11-24), does a synoptic still need to change values of one placed symbol, or does a sub-type do it?

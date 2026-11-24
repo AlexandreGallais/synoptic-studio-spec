@@ -15,7 +15,7 @@ How the two formulas of a [conversion](entities/07-conversion.md) are written an
 | [Conversion](entities/07-conversion.md) | The two strings `to_default` and `from_default` follow this syntax. |
 | [Quantity](entities/10-quantity.md), its file | The checks of the catalogue below run on every quantity file, shipped or added by the user. |
 | [MD-08 · Units](../screens/metadata.md#md-08--units) | The column Formula shows `from_default` of each unit. |
-| Presets and typed values (decision 0051) | A value is shown with `from_default` and kept with `to_default`; a difference is computed from them (decision 0050). |
+| Signal settings and typed values (decision 0051) | A value is shown with `from_default` and kept with `to_default`; a difference is computed from them (decision 0050). |
 
 ## What a formula holds
 
@@ -110,7 +110,7 @@ digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
 A value out of the domain of a formula (`log10(0)`, `ln` of a negative number) is caught by **checking the result only** (decision 0076): the catalogue writes no domain.
 
 - **A result that is not a finite number** (NaN, +Infinity or −Infinity) is never shown as a number: the synoptic and the screens show a mark in its place.
-- **A value typed by the user** (a preset, a typed value, decision 0051) whose conversion gives no finite number is refused.
+- **A value typed by the user** (a start value, a typed value, decision 0051) whose conversion gives no finite number is refused.
 - **Limit, accepted**: a value at or near the edge of a domain may give a finite number, often huge, and is shown as it is. In a slope in percent, 89.9999° gives about 57,295,780 %, and 90° itself gives about 1.6 × 10¹⁸ %, since π/2 is not exact in floats (computed with Node.js). Nothing brings a value back to a bound.
 
 ## Checks of the catalogue

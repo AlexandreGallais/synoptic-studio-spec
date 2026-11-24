@@ -82,10 +82,10 @@ Path: Canvas › Build › a placed symbol. The right-hand panel, top half.
 | SN-03.3 | Open the symbol, Replace | Buttons | Replace: same type only. | Proposed | [Panel](../synoptics/04-placed-symbol-panel.md#symbol) |
 | SN-03.4 | Reference | Text + link | In a view: from which installation, a link that opens the placed symbol there; the sections below edit the shared identity. | Decided (shared identity, 2026-11-20), Proposed (link) | idem |
 | SN-03.5 | Instance ID | Text field | The key of the placed symbol, a field of its own, never the tag. Set by the software, changed by the user, unique. Name: open, not treated by the research T5. | Decided (own key, 2026-11-20), Proposed (default value) | [Panel](../synoptics/04-placed-symbol-panel.md#identity) |
-| SN-03.6 | Designations | Text field each | Every required designation (2026-11-21), and those used by the preset's faceplate. | Decided (list to fill, required ones), Proposed (the others) | [Panel](../synoptics/04-placed-symbol-panel.md#identity) |
+| SN-03.6 | Designations | Text field each | Every required designation (2026-11-21), and those used by the faceplate of its type. | Decided (list to fill, required ones), Proposed (the others) | [Panel](../synoptics/04-placed-symbol-panel.md#identity) |
 | SN-03.7 | Duplicate text mark | Mark in the field | Warning, never a refusal. | Proposed | [Panel](../synoptics/04-placed-symbol-panel.md#identity) |
-| SN-03.8 | Preset | Select | Among the presets of the type. | Decided | [Type and symbol](../metadata/draft.md#type-and-symbol) |
-| SN-03.9 | Values changed | Table | Signal, start value, unit, decimals; texts of title and description elements; kept as changes from the preset, Reset per line; a dot on a changed line. | Decided (what changes, changes kept, Reset, 2026-11-20), Proposed (table, dot) | [Panel](../synoptics/04-placed-symbol-panel.md#preset) |
+| SN-03.8 | Preset | — | Removed (2026-11-24): there are no presets. | Decided | [Type and symbol](../metadata/draft.md#type-and-symbol) |
+| SN-03.9 | Values changed | Table | Signal, start value, unit, decimals; texts of title and description elements; kept as changes from the type, Reset per line; a dot on a changed line. | Decided (what changes, changes kept, Reset, 2026-11-20), Proposed (table, dot) | [Panel](../synoptics/04-placed-symbol-panel.md#signal-settings) |
 | SN-03.10 | Rotate, mirror | Buttons in the tool bar | Quarter turns; connection points follow. | Proposed | [Placed symbols](../synoptics/03-placed-symbols.md#rotation-mirror-size) |
 
 ## SN-04 · Panel of a placed symbol · flags, template enums, placement
@@ -115,7 +115,7 @@ Path: Canvas › Pipes.
 | SN-05.5 | Crossing on hover, click | Canvas | Highlights, swaps. | Decided | [Pipes](../synoptics/05-pipes.md#crossings) |
 | SN-05.6 | Panel: style | Select | Edit this style. No start or end shape (decision 0098). | Decided | [Pipes](../synoptics/05-pipes.md#the-panel-of-a-pipe) |
 | SN-05.7 | Panel: connected to, crossings, symbols on the pipe, name | Texts, lists, Swap all | — | Proposed | idem |
-| SN-05.8 | Panel: identity, preset, flags | Sections of SN-03 and SN-04 | When the style is linked to a type. | Proposed | [Pipes](../synoptics/05-pipes.md#a-pipe-whose-style-is-linked-to-a-type) |
+| SN-05.8 | Panel: identity, values changed, flags | Sections of SN-03 and SN-04 | When the style is linked to a type. | Proposed | [Pipes](../synoptics/05-pipes.md#a-pipe-whose-style-is-linked-to-a-type) |
 
 ## SN-06 · Annotate mode
 
@@ -170,7 +170,7 @@ Path: Synoptic › a synoptic › Placed symbols.
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SN-10.1 | Table | Table, whole width | Thumbnail, symbol, type, one column per designation, preset, faults. | Proposed | [Synoptics and views](../synoptics/01-synoptics-and-views.md#the-page-placed-symbols) |
+| SN-10.1 | Table | Table, whole width | Thumbnail, symbol, type, one column per designation, faults. | Proposed | [Synoptics and views](../synoptics/01-synoptics-and-views.md#the-page-placed-symbols) |
 | SN-10.2 | Designation cells | Text fields | Typed one under the other. | Proposed | idem |
 | SN-10.3 | Filters and sort | Select + search | By type, symbol, fault. | Proposed | idem |
 | SN-10.4 | Show on the canvas | Click on the thumbnail | — | Proposed | idem |

@@ -10,7 +10,7 @@ A **placed symbol** is a symbol of a Symbol Lib put in a synoptic. It shows the 
 
 ### What is decided elsewhere
 
-- The **type** of a placed symbol is the type of its symbol and **can never be changed** in the synoptic; only the **preset** can (Metadata draft, [Type and symbol](../metadata/draft.md#type-and-symbol)).
+- The **type** of a placed symbol is the type of its symbol and **can never be changed** in the synoptic (Metadata draft, [Type and symbol](../metadata/draft.md#type-and-symbol)); there is no preset to choose (2026-11-24): another way of showing the same equipment is a sub-type, hence another symbol.
 - A symbol with a type can be placed and **left unwired** (Symbols, 2026-11-15).
 - Each placed symbol has its own **flags**, **designation texts** and **template enum items** (Metadata, [Flags](../metadata/draft.md#flags), [Designation](../metadata/entities/11-designation.md), [Enums](../metadata/draft.md#global-enums-and-templates)). They are filled in its [panel](04-placed-symbol-panel.md).
 - A symbol can be **connected to a pipe** and then only slides along it (Pipes, 2026-11-11; see [Pipes](05-pipes.md#symbols-on-a-pipe)).
@@ -26,15 +26,15 @@ A **placed symbol** is a symbol of a Symbol Lib put in a synoptic. It shows the 
 | Position, rotation, mirror, size | Drawing, layers |
 | Order in the stack, folder, hidden, locked | Animations, interactions |
 | Identity: instance ID, designation texts, flags, template items | Connection points |
-| Preset chosen, and its start values, units, decimals and faceplate texts changed from it | Type |
-| Pipe it is connected to, and where | Faceplate (from the preset) |
+| Start values, units, decimals and faceplate texts changed from the signal settings of its type | Type |
+| Pipe it is connected to, and where | Faceplate (the one of its type) |
 
 ### Placing a symbol
 
 - Drag a symbol from the **Library** panel onto the canvas, or click it then click the canvas. Proposed.
 - While it is dragged, its connection points snap to the free ends of pipes and to the grid. Proposed.
 - Dropped onto a pipe, a symbol with two connection points offers **Connect to the pipe** (decided action, see [Pipes](05-pipes.md#symbols-on-a-pipe)). Proposed: offered by a small floating button next to the drop, never done without asking.
-- A newly placed symbol gets the **first preset** of its type, and empty designations. It is listed at once in the [faults](08-faults.md) as incomplete when it needs texts (a warning, never a block). Proposed.
+- A newly placed symbol starts from the signal settings and the faceplate of its type, with empty designations. It is listed at once in the [faults](08-faults.md) as incomplete when it needs texts (a warning, never a block). Proposed.
 
 ### Rotation, mirror, size
 

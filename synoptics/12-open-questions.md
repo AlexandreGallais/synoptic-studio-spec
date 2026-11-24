@@ -26,7 +26,7 @@ These change the data model; to settle first.
 | 9 | Do borders grow with the size of a placed symbol? | No: they keep their width. | [Placed symbols](03-placed-symbols.md#open-questions) |
 | 10 | Texts of a placed symbol turned by 180°: the right way up? | Yes. | [Placed symbols](03-placed-symbols.md#open-questions) |
 | 11 | Changing the Symbol Lib: matched by name then type, or by an identifier of each symbol? | By name then type, corrected in a table. | [Placed symbols](03-placed-symbols.md#changing-the-symbol-lib-of-a-synoptic) |
-| 12 | Designations that are not required, shown in the panel: only those used by the preset, or all? | Only those used. | [Panel of a placed symbol](04-placed-symbol-panel.md#identity) |
+| 12 | Designations that are not required, shown in the panel: only those used by the faceplate of the type, or all? | Only those used. | [Panel of a placed symbol](04-placed-symbol-panel.md#identity) |
 | 13 | The name of the instance ID. | Not treated by the research T5, which covered Metadata only. | [Panel of a placed symbol](04-placed-symbol-panel.md#identity) |
 | 14 | A duplicate designation text: a warning or refused? | A warning. | [Faults](08-faults.md#what-puts-something-in-fault) |
 | 15 | A symbol on a pipe: follows the bends, or stays on one segment? | Stays on one segment. | [Pipes](05-pipes.md#symbols-on-a-pipe) |

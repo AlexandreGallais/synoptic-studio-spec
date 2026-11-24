@@ -57,9 +57,9 @@ block-beta
 
 It makes the rule above precise, for every list and every table.
 
-- Each list and each table has a **title** that names what it holds: "Type tree", "Signals", "Commands", "Links", "Presets", "Enums", "Items"...
+- Each list and each table has a **title** that names what it holds: "Type tree", "Signals", "Commands", "Links", "Signal settings", "Faceplate", "Enums", "Items"...
 - The button that adds an item is a **small + icon on the line of that title, on its right**. No button with a text ("+ Add a signal"), no button on a line of its own.
-- The title is the title of the list, not of the whole page: the page itself has no big title that repeats it. The room saved goes to the content: the switch of a preset, for example, moves up.
+- The title is the title of the list, not of the whole page: the page itself has no big title that repeats it. The room saved goes to the content.
 - When a list takes items of several kinds, there is **one small icon per kind, each with a small +**, side by side on the line of the title, rather than one + that opens a menu: two clicks at most, with no menu to read. For the links: a path icon with a + and a URL icon with a +. For the five elements of the faceplate builder: the same rule.
 - It holds in the symbol mode and for the pipes too: the + that creates a symbol, a pipe style, and a segment of a dash sequence sits on the right of the title of its list. The + that creates a Symbol Lib is the exception: it sits at the top of the navigation bar (decision 0089).
 - It is the rule the type tree and the Enums page already followed: a + on the line of their title.
@@ -108,7 +108,7 @@ Synoptic Studio is a tool for professionals who work fast: it does not ask to co
 
 - **No right click in Metadata.** A delete must not hide behind a right click.
 - **A line is deleted with a delete button** (a bin icon) in the **last column, on the far right**: links of the documentation, signals, commands, flags, elements of the faceplate builder, items of an enum, designations, columns of an enum in a Symbol Lib. **It goes at once**: no warning, no message.
-- **A whole thing is deleted with a red button** and a **warning** that asks to confirm: a **type**, in its General part; a **preset**, on the line of its name; a **Symbol Lib**, in its General page. Nothing is deleted before the user confirms. Assistant's reading, to confirm: a whole enum, a symbol, a pipe style and a synoptic are whole things too.
+- **A whole thing is deleted with a red button** and a **warning** that asks to confirm: a **type**, in its General part; a **Symbol Lib**, in its General page. Nothing is deleted before the user confirms. Assistant's reading, to confirm: a whole enum, a symbol, a pipe style and a synoptic are whole things too.
 - **Nothing else asks to confirm**: changing a kind, a field, a value shows no warning and no message.
 - **Every delete can be undone** with the undo history (see [Files and conflicts](../storage/files-and-conflicts.md#undo-history)).
 - **The warning never says what the delete breaks**. What is broken is listed in the symbol mode and in the synoptic mode (see [Libraries and symbols](../symbols/01-libraries-and-symbols.md#when-metadata-changes)). The wording of the warning for a type: [MD-02.8](metadata.md#md-02--general).
@@ -116,7 +116,7 @@ Synoptic Studio is a tool for professionals who work fast: it does not ask to co
 ```mermaid
 flowchart LR
     L["Bin at the far right of a line"] --> D["Deleted at once"]
-    R["Red button of a whole thing: a type, a preset, a Symbol Lib"] --> W["Warning"]
+    R["Red button of a whole thing: a type, a Symbol Lib"] --> W["Warning"]
     W -->|"confirm"| D
     W -->|"cancel"| K["Nothing changes"]
     D -->|"undo"| U["Back as it was"]
@@ -124,7 +124,7 @@ flowchart LR
 
 ### Tables for the parts of a type
 
-The signals and the commands of a type are shown in one table each, one line per item and one column per field, taking as much room as possible (see [Signals](../metadata/draft.md#the-table-of-signals) and [Commands](../metadata/draft.md#the-table-of-commands)). The selected preset is a table of its signals in its mode Values, and a list of elements in its mode Faceplate, the two modes chosen by a switch at the top of the right side (see [Presets](../metadata/draft.md#two-modes-chosen-by-a-switch)). They replace, for these parts, the panel of the selected item on the right.
+The signals and the commands of a type are shown in one table each, one line per item and one column per field, taking as much room as possible (see [Signals](../metadata/draft.md#the-table-of-signals) and [Commands](../metadata/draft.md#the-table-of-commands)). The signal settings are a table of the signals ([MD-07](metadata.md#md-07--signal-settings)), and the faceplate a list of elements in a card ([MD-14](metadata.md#md-14--faceplate)), each a part of its own since 2026-11-24. They replace, for these parts, the panel of the selected item on the right.
 
 ### Navigation bar on the left
 
@@ -214,7 +214,8 @@ flowchart TD
     MD01 --> MD04["MD-04 Signals"]
     MD01 --> MD05["MD-05 Commands"]
     MD01 --> MD12["MD-12 Flags"]
-    MD01 --> MD07["MD-07 Presets: Values and Faceplate"]
+    MD01 --> MD07["MD-07 Signal settings"]
+    MD01 --> MD14["MD-14 Faceplate"]
     MD --> MD08["MD-08 Units"]
     MD --> MD09["MD-09 Enums"]
     MD --> MD13["MD-13 Designations"]
@@ -238,8 +239,8 @@ flowchart TD
 
 These gaps come back on several screens; each file lists its own.
 
-- **Create, rename, delete, duplicate**: the specs say what things are and how they link, rarely how the user creates, deletes or duplicates them (types, signals, commands, presets, enums, quantities, libraries, symbols, pipe styles).
-- **Order**: the order of the lines of a preset, of signals in a list, of layers in a symbol.
+- **Create, rename, delete, duplicate**: the specs say what things are and how they link, rarely how the user creates, deletes or duplicates them (types, signals, commands, enums, quantities, libraries, symbols, pipe styles).
+- **Order**: the order of signals in a list, of the elements of a faceplate, of layers in a symbol.
 - **Layers panel**: described since 2026-11-15 (see [Layers](../symbols/03-editor/layers.md)); what a line shows besides its name is still open.
 - **Undo and redo**: an undo history keeps every action, and there is no save (decision 0093; see [Files and conflicts](../storage/files-and-conflicts.md#undo-history)); where its buttons sit is not described yet.
 - **Navigation**: decided on 2026-11-16: the top bar goes from one part to another, and a bar on the left goes inside a part (see [Layout rules](#layout-rules)).

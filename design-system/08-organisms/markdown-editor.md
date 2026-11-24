@@ -33,7 +33,7 @@ The documentation editor of a type: a [list-title](../07-molecules/list-title.md
 
 ## Behaviour
 
-- Its corners are `radius-md` (8), as every card of a screen: the tables, the panels (2026-11-24; `radius-sm` until then).
+- A card, as a [data-table](data-table.md) (2026-11-24): `layer-01`, corners `radius-md` (8), no border, `spacing-04` above and below and `spacing-03` on the sides; inside, the tool bar (top corners `radius-sm`) and the text zone in `layer-02` (bottom corners `radius-sm`), so that the text zone shows. Until 2026-11-24, a bordered box with no padding and `radius-sm`.
 - No read-only mode.
 - In a sub-type, the description of each parent, from the root down, comes first, read only; only the type's own text, under it, can be edited, so that each level adds its chapter (MD-03.12).
 - In `visual`, the text is drawn with the styles of a description: Heading 1 to 6 all larger than the paragraph ([Foundations](../02-foundations.md#styles-of-a-description)); a table is a [content-table](../07-molecules/content-table.md), with its + on hover (MD-03.13).

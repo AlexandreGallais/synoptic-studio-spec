@@ -14,7 +14,7 @@ A symbol can have a **parent symbol**, as a type of Metadata has a parent type (
 - **The changes of the parent reach its sub-symbols**: a sub-symbol is linked to its parent, never a copy made once. The valve is corrected once, and the motorised valve and the motorised valve with command follow. It is the inheritance of Metadata, applied to symbols.
 - **A sub-symbol only adds**: what it takes from its parent is read only in it, as the inherited signals of a type are (see [Signals](../metadata/draft.md#the-table-of-signals)). It cannot change it, move it or hide it. To change it, the user opens the parent.
 - **Its type is the type of its parent, or a sub-type of it**. So the animations and interactions taken from the parent keep their signals and commands. In the example, the motorised valve with command can have a sub-type of the valve's type that adds the commands open and close.
-- **It takes everything from its parent**: the drawing, the animations, the interactions, the **preset** and the **connection points** of its pipes. If the parent already has a type, the sub-symbol can only take the same type or a sub-type. It can only add things.
+- **It takes everything from its parent**: the drawing, the animations, the interactions and the **connection points** of its pipes (the preset is gone since 2026-11-24). If the parent already has a type, the sub-symbol can only take the same type or a sub-type. It can only add things.
 - Assistant's reading, to confirm: "everything" is what was made for the symbol, its drawing and what is linked to it.
 
 ### The list of symbols becomes a tree

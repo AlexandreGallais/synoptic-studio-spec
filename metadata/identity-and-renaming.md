@@ -16,7 +16,7 @@ How each thing of Metadata is known, by the software and by people, what must be
 | Every [entity](entities/README.md) with an `internal_id` | Its primary key, set by the software; every FK to it holds it. |
 | [Type](entities/30-type.md), [Signal](entities/16-signal.md), [Command](entities/18-command.md), [Flag](entities/19-flag.md), [Enum](entities/06-enum.md), [Designation](entities/11-designation.md) | An `id`, written by the user, unique in its list, sent outside the software. |
 | [Enum item](entities/05-enum-item.md) | A `key`, the whole number the model receives, and a `display_name` for people. |
-| [Preset](entities/29-preset.md), [Palette](entities/02-palette.md), [Icon set](entities/04-icon-set.md), [Quantity](entities/10-quantity.md), [Unit](entities/08-unit.md), [Unit system](entities/09-unit-system.md), [Color](entities/01-color.md), [Icon](entities/03-icon.md) | A `name`, for people only. |
+| [Palette](entities/02-palette.md), [Icon set](entities/04-icon-set.md), [Quantity](entities/10-quantity.md), [Unit](entities/08-unit.md), [Unit system](entities/09-unit-system.md), [Color](entities/01-color.md), [Icon](entities/03-icon.md) | A `name`, for people only. |
 | [Files](files.md) | A file named after the `id` or the `name` of its thing; renaming the thing renames its file. |
 | [Inheritance of types](inheritance.md) | An `id` unique along the branch; a rename in a parent reaches every sub-type. |
 | [Checks and errors](checks-and-errors.md) | A key or a name already taken, refused when typed. |
@@ -57,7 +57,6 @@ flowchart LR
 | Designation | `id` | Among the designations | The configuration files |
 | Enum item | `key`, a whole number | In its enum | The model |
 | Enum item | `display_name` | In its enum, while another enum may hold the same (decision 0084) | No |
-| Preset | `name` | Among the presets of its type | No |
 | Palette, icon set, quantity | `name` | Among its kind, since it names a file | Its file |
 | Unit, unit system | `name` | Among those of its quantity | No |
 | Color, icon | `name`, optional | No: two may share it (decision 0067; [icon sets](data-model-notes.md#settled-on-2026-11-22-icon-sets)) | No |
@@ -89,7 +88,7 @@ A key is meant to be set at the start and never to change: the more keys change,
 | The `id` of a type, a signal or a command | The model: its interface definition changed, the model must take the new `id`. | [Whole draft](draft.md#renaming-is-breaking-on-purpose) |
 | The `key` of an enum item | The model, which receives the number. | Decision 0038 |
 | The `id` of a flag, an enum or a designation | The configuration files that hold it, and what reads them (assistant's reading). | [Data model: notes](data-model-notes.md#settled-on-2026-11-22-unique-ids-of-enums-and-designations) |
-| A `display_name`, the `name` of a preset, a `description` | Nothing outside: only people read them. | MD-09.7, [Preset](entities/29-preset.md) |
+| A `display_name`, a `description` | Nothing outside: only people read them. | MD-09.7 |
 | The `name` of a palette or an icon set | Nothing in the types: an appearance keeps a copy of the color and the drawing it picked. | [Data model: notes](data-model-notes.md#settled-on-2026-11-22-appearance) |
 
 - **Nothing warns**: a rename is allowed and not checked ([Checks and errors](checks-and-errors.md#not-checked)). Its consequences for models are explained in a user manual, which is not part of the open source version.
@@ -100,4 +99,4 @@ A key is meant to be set at the start and never to change: the more keys change,
 - **A file renamed by hand**, whose name no longer gives the `id` or the `name` it holds.
 - **The format of the `id`s**, a regular expression per kind of `id` in the settings: open in [Files](files.md#open-questions).
 - **The same `internal_id` under two file names**, in the software's folder and in the user's: open in [Files](files.md#open-questions).
-- **The `internal_id` of the boxes nothing points to** (link, faceplate element, unit system, flag, preset): kept or removed, open in [Data model: notes](data-model-notes.md#open).
+- **The `internal_id` of the boxes nothing points to** (link, unit system, flag; a faceplate element is pointed to by `faceplate_order` since 2026-11-24): kept or removed, open in [Data model: notes](data-model-notes.md#open).

@@ -72,12 +72,12 @@ Proposed:
 | Crossings | The list, each with which pipe passes over; Swap all. | Proposed |
 | Symbols on the pipe | The list, each with its distance. | Proposed |
 | Name | Optional, for the Objects panel and the signal list (`W-02`). | Proposed |
-| Identity, preset, flags | When the style is linked to a type: the same sections as a [placed symbol](04-placed-symbol-panel.md). | Proposed |
+| Identity, values changed, flags | When the style is linked to a type: the same sections as a [placed symbol](04-placed-symbol-panel.md). | Proposed |
 
 ### A pipe whose style is linked to a type
 
 - Decided: a pipe style can be linked to a type of Metadata, and the model then drives the speed, the direction and the colours of its dashes.
-- Proposed: such a pipe is wired **like a placed symbol**: it gets an instance ID, designation texts, flags, template items and a preset, in the same sections of its panel. It is listed in the signal list as a placed symbol is.
+- Proposed: such a pipe is wired **like a placed symbol**: it gets an instance ID, designation texts, flags, template items and its values changed from the type, in the same sections of its panel. It is listed in the signal list as a placed symbol is.
 - Assistant's reading, to confirm: the branches share the values of the pipe, the tree being one flow.
 
 ## Example

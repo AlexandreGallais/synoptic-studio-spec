@@ -33,4 +33,4 @@ A field of several lines, for a description.
 ## Behaviour
 
 - Enter goes to a new line; the value is validated when the field loses the focus.
-- No `pressed`: a click puts it in `focus`.
+- No `pressed`: a click puts it in `focus`, from `default`, `hover` and `filled` alike (the click on `filled` added on 2026-11-24, in the prototype too).

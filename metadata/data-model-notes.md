@@ -11,7 +11,7 @@ Status: everything written around the schema of the [Data model](data-model.md) 
   - Written in lower case, 36 characters with the dashes; the 13th digit is always `7`.
   - The made-up UUIDs of the examples follow this shape (`01a1f800-0000-7000-8000-…`).
 - `id`: the public identifier, written by the user, never a UUID, that leaves the application: sent to the model and written in the configuration files.
-- `name`: a label people read, for a thing that has no `id`: nothing points to it and it never goes to the model. What the software ships (quantities, unit systems, units), the name of a preset (see [Read again on 2026-11-21](#read-again-on-2026-11-21-presets-and-faceplate)), the name of a palette, of an icon or of a color (decision 0057). Unlike FMI, Kubernetes or Google, where `name` identifies a thing, it is only a label here.
+- `name`: a label people read, for a thing that has no `id`: nothing points to it and it never goes to the model. What the software ships (quantities, unit systems, units), the name of a palette, of an icon or of a color (decision 0057). Unlike FMI, Kubernetes or Google, where `name` identifies a thing, it is only a label here.
 - `display_name`: a label people read, for a thing that has an `id` or a key: it is shown in place of that `id` or key, and never goes to the model (an enum item, a signal field, a command button). A designation has none: its `id` is shown (2026-11-21). Empty, the `id` or the key is shown.
 - `key` of an enum item: the whole number sent to the model, never the item's name (TypeScript calls the names keys; here the key is the number).
 - `description`: a text that explains, for people; plain text everywhere, Markdown only in `DOCUMENTATION`.
@@ -25,7 +25,7 @@ Status: everything written around the schema of the [Data model](data-model.md) 
 - `has`: one nested object; `holds`: an ordered list inside its owner. When an owner has two parts of the same box, the link says their role (`has, as min`).
 - Every other link is a FK, labelled by the field that holds it, so that the reader knows which field points where. The field is named after the box it points to (`signal`, `quantity`, `unit`), or after its role when the box alone says too little (`parent`, `default_unit`).
 - No field of the schema has a comment: a box shows each field's type, name and key only, as the schema of its entity file (Product Owner, 2026-11-22). A field that only exists in some cases says when in the JSON Schema of its entity. A FK link carries only its field's name; a link with no field of its own (a `has`) says the case on the link, always in the same words: `when kind is enum`, `when the signal is an enum`.
-- A number typed in Metadata (a default value, the value of a command, a typed bound) is kept in the default unit of its signal's quantity, whatever unit the screen shows it in (decision 0051).
+- A number typed in Metadata (a start value, the value of a command, a typed bound) is kept in the default unit of its signal's quantity, whatever unit the screen shows it in (decision 0051).
 - Field order in each box: `internal_id`, then `kind` or `source` (so that the reader knows at once which fields follow, Product Owner, 2026-11-21) or the `direction` of a signal, then `id` or the name (what the thing is called, before what it points to, 2026-11-22), then the links (FK), then the other choices (`access`, `input_kind`), then the values, then the texts.
 - Every name follows these rules (see [Names made even on 2026-11-21](#names-made-even-on-2026-11-21)) and the research T5 (see [Applied on 2026-11-22 (names, research T5)](#applied-on-2026-11-22-names-research-t5)).
 
@@ -66,7 +66,7 @@ A quantity is shipped with the software, never copied into the user's files: the
 
 ## The faceplate, box by box
 
-Written on 2026-11-21, at the Product Owner's request ("pour la partie faceplate, j'aimerais bien que tu refasses un retravail là-dessus [...] c'est un peu flou"). It says, field by field, what the boxes of the mode Faceplate of a preset hold. The rules are those of [Presets and their faceplate](draft.md#presets-and-their-faceplate) and of the dated sections below (decision 0055 for the text, the display name and the range; decision 0056 for the quantity of a bound).
+Written on 2026-11-21, at the Product Owner's request ("pour la partie faceplate, j'aimerais bien que tu refasses un retravail là-dessus [...] c'est un peu flou"). It says, field by field, what the boxes of the mode Faceplate of a preset hold. The rules are those of [Presets and their faceplate](draft.md#signal-settings-and-the-faceplate) and of the dated sections below (decision 0055 for the text, the display name and the range; decision 0056 for the quantity of a bound).
 
 A preset holds an ordered list of elements. Each element has a kind, and its kind gives it exactly one part, or, for a group, its own list of elements.
 
@@ -334,7 +334,7 @@ Asked by the Product Owner on 2026-11-21 ("voir tout, tout, tout [...] comment c
 
 The Product Owner answered the three questions of the names in the questionnaire, with the option the assistant advised each time. Decision 0057 (accepted, 2026-11-21) records them: it changes the field name of a command button found right the same day.
 
-- **The lists of the JSON keep the name of their box, with no exception** (Product Owner: "Nom de la boîte, sans exception"): `enum_items`, `preset_values`, `faceplate_elements` in a preset and in a group, `command_target`. One rule, and `command_target` is never mistaken for `LINK.target`.
+- **The lists of the JSON keep the name of their box, with no exception** (Product Owner: "Nom de la boîte, sans exception"): `enum_items`, `signal_settings` (`preset_values` until 2026-11-24), `faceplate_elements` in a type and in a group, `command_target`. One rule, and `command_target` is never mistaken for `LINK.target`.
 - **`COMMAND_BUTTON.button_text` becomes `display_name`** (Product Owner: "Renommer en display_name"): it is shown in place of the command's `id`, as the label of a signal field is shown in place of the signal's. Empty, the button shows the command's `id`.
 - **The short text that names an icon or a colour becomes `name`** (Product Owner: "Renommer en name"): a label for a thing without `id`, shown on hover; `description` stays for a text that explains.
 
@@ -619,8 +619,8 @@ Asked by the Product Owner on 2026-11-22 ("je veux bien que tu fasses la partie 
 
 The Product Owner answered the three questions of the preset values in the questionnaire.
 
-- **A signal whose enum is a template has a null start value in the preset**: its items exist only on each placed symbol, where the start value is picked. Written in [Preset value](entities/22-preset-value.md) (`start_value` may be `null`) and in the [draft](draft.md#the-default-value).
-- **The two boolean texts are optional**: "true" and "false" are shown when they are `null`. Written in [Boolean texts](entities/21-boolean-texts.md) and in the table of the mode Values of the [draft](draft.md#mode-values-one-table-of-the-signals).
+- **A signal whose enum is a template has a null start value in the preset**: its items exist only on each placed symbol, where the start value is picked. Written in [Preset value](entities/22-preset-value.md) (`start_value` may be `null`) and in the [draft](draft.md#the-start-value).
+- **The two boolean texts are optional**: "true" and "false" are shown when they are `null`. Written in [Boolean texts](entities/21-boolean-texts.md) and in the table of the mode Values of the [draft](draft.md#the-table-of-signal-settings).
 - **The default number of decimals is fixed by the software**, never set for a project; the preset, then the symbol and the synoptic, may change it. The value was left to the assistant after a short search ("mets la valeur qui te parle le mieux"): **2**. Written in [Display format](entities/20-display-format.md) (`default: 2`) and in the [draft](draft.md#decimal-places).
 - **What the short search found** (2026-11-22, web search in this session, 6 queries, 7 pages tried, 6 read; stop: saturation, no source gave a common default). Confidence: low.
   - No source states a default shared by the supervision tools. OPC UA gives an optional `ValuePrecision` (digits after the decimal point) with no default ([OPC 10000-8, §5](https://reference.opcfoundation.org/specs/OPC-10000-8/5)).
@@ -759,7 +759,7 @@ Said by the Product Owner in Travail (decision 0087); the rest, proposed by the 
 - **The presets of a type are split in two lists**: "Parent presets", read only, the presets of every parent up the branch; then "Presets", the type's own. Nothing changes in the schema: a type still holds its own presets only, and the parent presets are read from the parents' files.
 - **A line of "Parent presets" shows a duplicate button on hover**, which copies the preset into the type's own list. A plain copy, to save time, with no link to the preset it comes from: a change in the parent's preset never reaches it (confirmed by the Product Owner the same day: "C'est vraiment une duplication [...] y a aucun lien en soi [...] on change pas l'objet pour autant"). It replaces the copy of every preset at creation (decision 0080): a new sub-type starts with no preset of its own (confirmed by the Product Owner in the questionnaire).
 - **Changed later the same day (decision 0088)**: the copy always gets the name followed by "-" and the first number free in the type ("Default-1", "Default-2"...), the hyphen confirmed in the questionnaire; a click on a line of "Parent presets" selects it and shows the preset on the right, all read only, to see it before duplicating. Nothing changes in the schema: `name` stays unique among the presets of the type only, and may be the same as a preset of a parent (confirmed in the questionnaire: allowed, the number at duplication is enough to keep them apart).
-- Written in [Preset](entities/29-preset.md), [Inheritance of types](inheritance.md), the [whole draft](draft.md#a-type-needs-a-preset), the [glossary](../overview/glossary.md) and screens MD-07.1, MD-07.24, MD-07.25.
+- Written in [Preset](entities/29-preset.md), [Inheritance of types](inheritance.md), the [whole draft](draft.md#inherited-by-the-sub-types), the [glossary](../overview/glossary.md) and screens MD-07.1, MD-07.24, MD-07.25.
 
 ## Writing rules of the entity files (to become a skill)
 
@@ -818,6 +818,17 @@ Never a status sentence, a "Where it is used", a "Product Owner context", a tabl
 
 **Figma** follows later: the screens are gone over once the text is validated.
 
+## Changed on 2026-11-24 (no presets)
+
+Decided by the Product Owner on 2026-11-24: "il n'y aurait que des types, au final, et que les types, sous-types, et puis point barre". The entries above that speak of presets are kept as they were written, dated; this one replaces them.
+
+- **`PRESET` is removed**, with its entity file (number 29, not reused).
+- **`PRESET_VALUE` becomes `SIGNAL_SETTING`**, held by the type in `signal_settings`: one per own signal, and one per inherited signal the sub-type changes, which replaces the parent's whole; removing it makes the signal follow its parent again (Product Owner: "ça supprime juste de la liste"). "Value setting" was refused: "on parle plutôt de signal".
+- **`FACEPLATE_ELEMENT` is held by the type** in `faceplate_elements`; the elements of the parents are read only and placed by `TYPE.faceplate_order`, the `internal_id` of every element at the top of the faceplate, inherited and own, an own element anywhere among them.
+- **The documentation is inherited**: shown above the sub-type's own, read only (replaces decision 0081); nothing changes in `DOCUMENTATION`.
+- A new type of field, `uuid_list`, for `faceplate_order`.
+- Written in [Signal setting](entities/22-signal-setting.md), [Type](entities/30-type.md), [Faceplate element](entities/28-faceplate-element.md), [Inheritance of types](inheritance.md), the [Data model](data-model.md) and [Screens of Metadata](../screens/metadata.md).
+
 ## For the development
 
 - **Branded types** (Product Owner, 2026-11-22, a note for the development): in JavaScript, each type of [The types of the fields](data-model.md#the-types-of-the-fields) becomes a branded type, made only by a parser that checks the value, so that a `text` is never passed where a `uuid` is expected and every value read from a file is parsed before use. To carry into the software architecture.
@@ -833,4 +844,4 @@ Never a status sentence, a "Where it is used", a "Product Owner context", a tabl
 - The names of the nested parts (`APPEARANCE`, `VALUE_TYPE`, `BOOLEAN_TEXTS`, `COMMAND_TARGET`, `DISPLAY_FORMAT`, `SIGNAL_FIELD`, `RANGE`, `BOUND`, `COMMAND_BUTTON`, `TEXT_CONTENT`, `CONVERSION`) and of `FACEPLATE_ELEMENT`: working names.
 - Whether the two texts of a boolean are ever written in the configuration files sent with the model: open in [Boolean texts](entities/21-boolean-texts.md#open-questions).
 - `SIGNAL_FIELD` starts with its signal, then `access`: the assistant's reading of the order of the keys, to confirm.
-- The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `FACEPLATE_ELEMENT`, `UNIT_SYSTEM`, and for now `FLAG` and `PRESET` (a placed symbol will likely point to its preset and to its flags, assistant's reading). The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated; asked on [Faceplate element](entities/28-faceplate-element.md#open-questions).
+- The `internal_id` of the boxes nothing points to in this schema (found on 2026-11-21): `LINK`, `UNIT_SYSTEM`, and for now `FLAG` (a placed symbol will likely point to its flags, assistant's reading); `FACEPLATE_ELEMENT` is pointed to by `TYPE.faceplate_order` since 2026-11-24, and `PRESET` is gone. The rule says that a box without `internal_id` is never pointed to, not that a box with one must be. Keep them all, for stable files and for links to come, or remove those nothing will ever point to? To settle when each object is validated.

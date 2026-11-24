@@ -11,7 +11,7 @@ Each word of Synoptic Studio, its one meaning, the name it has in the files, and
 | Word | Meaning | In the files | Not to use |
 | --- | --- | --- | --- |
 | **Type** | What a symbol represents, at one level of detail: a pump, a centrifugal pump. Types form a tree. | `TYPE`, `<id>.type.json` | Template: the word of AutomationML for a type (T2, 3.12). Type Lib: removed on 2026-11-16. |
-| **Parent**, **sub-type** | The type a type inherits from, set when it is created and never changed; a sub-type inherits the signals, the commands, the flags and the appearance of its parents, and shows their presets apart, to duplicate them (see [Inheritance of types](../metadata/inheritance.md)). | `TYPE.parent` | — |
+| **Parent**, **sub-type** | The type a type inherits from, set when it is created and never changed; a sub-type inherits everything of its parents: signals, commands, flags, appearance, documentation, signal settings and faceplate; it may change the signal settings and the order of the faceplate. There are no presets: a sub-type stands for another way of showing a type (see [Inheritance of types](../metadata/inheritance.md)). | `TYPE.parent` | — |
 | **Signal** | A value that goes between the front and the model, as an input or an output. | `SIGNAL` | Property: a metadata in OPC UA, a visual attribute on the front. Variable: too general (FMI). Tag: a controller address, a data point in supervision (T2, 3.12; T5). |
 | **Input**, **output** | The direction of a signal: the model receives an input, and sends an output. | `SIGNAL.direction`: `input`, `output` | — |
 | **Command** | What the front sends with one click: a fixed value to an input, an override of an output, or a trigger. | `COMMAND` | Control: an element of an interface; in French, « contrôle » means a check (T2, 3.12). |
@@ -21,14 +21,14 @@ Each word of Synoptic Studio, its one meaning, the name it has in the files, and
 | **Documentation** | What explains a type to people: a description in Markdown and links. | `DOCUMENTATION`, `LINK` | — |
 | **Appearance** | The icon and the color a type shows, copied when picked; empty, those of its parent. | `APPEARANCE` | — |
 
-### The preset and the faceplate
+### Signal settings and the faceplate
 
 | Word | Meaning | In the files | Not to use |
 | --- | --- | --- | --- |
-| **Preset** | The defaults a symbol and a synoptic start from: how each signal of the type starts and is shown, and the faceplate. | `PRESET` | Profile: conformance in OPC UA. Template: the type in AutomationML, and a kind of enum here. Configuration: too general (T2, 3.12). |
-| **Start value** | The value the model gets when it starts, also shown before the model sends anything. | `PRESET_VALUE.start_value` | Default value: its name until 2026-11-22; `start` is the word of FMI (T5). |
-| **Display format** | The unit and the decimals a preset shows a number with. | `DISPLAY_FORMAT` | — |
-| **Faceplate** | The panel a preset builds for a type, made of signal fields, command buttons, titles, paragraphs and groups. | `FACEPLATE_ELEMENT` and its parts | Pop-up: a form, not an object. Inspector: kept for the panel of the editor. Panel: too general (T2, 3.12). |
+| **Signal setting** | How one signal of a type starts and is shown: its start value, its display unit and decimals, or the texts of a boolean. A sub-type may replace the one of an inherited signal. | `SIGNAL_SETTING` | Preset: removed on 2026-11-24, types and sub-types stand for it. Value setting: rejected by the Product Owner, it is about the signal. Profile: conformance in OPC UA. Configuration: too general (T2, 3.12). |
+| **Start value** | The value the model gets when it starts, also shown before the model sends anything. | `SIGNAL_SETTING.start_value` | Default value: its name until 2026-11-22; `start` is the word of FMI (T5). |
+| **Display format** | The unit and the decimals a number is shown with. | `DISPLAY_FORMAT` | — |
+| **Faceplate** | The panel of a type, built in its part Faceplate, made of signal fields, command buttons, titles, paragraphs and groups. | `FACEPLATE_ELEMENT` and its parts | Pop-up: a form, not an object. Inspector: kept for the panel of the editor. Panel: too general (T2, 3.12). |
 | **Signal field** | A signal shown in the faceplate, with its label, typed in when its access allows. | `SIGNAL_FIELD` | — |
 | **Command button** | A button of the faceplate that sends one command. | `COMMAND_BUTTON` | — |
 | **Range** | The values a person may type in a number field, between a minimum and a maximum. | `RANGE`, `BOUND` | — |
@@ -42,7 +42,7 @@ Each word of Synoptic Studio, its one meaning, the name it has in the files, and
 | **Unit symbol** | What is written after a value: `kg`, `°C`. Never the drawing of a symbol. | `UNIT.symbol` | Symbol alone, outside the files: it is the drawing placed (T5, 3.8). |
 | **Unit system** | The units of a quantity that belong to one system, such as metric or imperial; it only groups them. | `UNIT_SYSTEM` | Family: also names families of equipment (T5). |
 | **Default unit** | The unit of a quantity every conversion is written against; every number typed in Metadata is kept in it. | `QUANTITY.default_unit` | — |
-| **Display unit** | The unit a preset shows a number in. | `DISPLAY_FORMAT.unit` | — |
+| **Display unit** | The unit a number is shown in, set in the signal settings. | `DISPLAY_FORMAT.unit` | — |
 | **Conversion** | The two formulas that turn a value of a unit into the default unit, and back. | `CONVERSION`: `to_default`, `from_default` | — |
 | **Difference** | A gap between two points of a scale ("it rose by 5 °C"), against a value, a point on the scale ("it is 20 °C"). Only the temperatures convert them differently. | `relative_quantity`, `offers_relative_quantity` | Two words for one idea: the screens say "difference", the files `relative_quantity` (FMI). |
 | **Gauge pressure** | A pressure read against the atmosphere: a quantity of its own, with no conversion to pressure. | `gauge_pressure` | — |

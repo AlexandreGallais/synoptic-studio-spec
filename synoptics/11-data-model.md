@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Synoptics](README.md) › Data model · Previous: [Outputs](10-outputs.md) · Next: [Open questions](12-open-questions.md)
 
-Status: a first sketch by the assistant. Three of its choices are settled (references, instance ID, changes from the preset, see the reading notes); the rest is not validated. Written with the conventions of the [data model of Metadata](../metadata/data-model.md), which it points to and never changes.
+Status: a first sketch by the assistant. Three of its choices are settled (references, instance ID, changes from the type, see the reading notes); the rest is not validated. Written with the conventions of the [data model of Metadata](../metadata/data-model.md), which it points to and never changes.
 
 ## Conventions
 
@@ -16,7 +16,7 @@ The same as in Metadata:
 - A choice of the software is an English word in the JSON (`"installation"`, `"view"`), never a number.
 - A number typed for a signal is kept in the default unit of its quantity (decision 0051).
 
-Boxes of Metadata and of the Symbol Lib (`TYPE`, `PRESET`, `SIGNAL`, `FLAG`, `DESIGNATION`, `FACEPLATE_ELEMENT`, `SYMBOL`, `CONNECTION_POINT`, `PIPE_STYLE`) are only pointed to by a FK field (`symbol`, `preset`, `flag`...); they are not drawn here.
+Boxes of Metadata and of the Symbol Lib (`TYPE`, `SIGNAL`, `SIGNAL_SETTING`, `FLAG`, `DESIGNATION`, `FACEPLATE_ELEMENT`, `SYMBOL`, `CONNECTION_POINT`, `PIPE_STYLE`) are only pointed to by a FK field (`symbol`, `signal`, `flag`...); they are not drawn here.
 
 ## The schema
 
@@ -57,7 +57,6 @@ erDiagram
         boolean hidden
     }
     IDENTITY {
-        uuid preset FK
         text instance_id
     }
     DESIGNATION_TEXT {
@@ -162,7 +161,7 @@ erDiagram
 - **Identity is a part of its own**, so that a reference has none: a placed symbol of a view that points to a placed symbol of an installation reads the identity of that one (decided on 2026-11-20, see [Synoptics and views](01-synoptics-and-views.md#two-kinds-installation-and-view)).
 - **`instance_id` is the key** of a placed symbol in the outputs, a field of its own, never one of the designation texts (decided on 2026-11-20). `internal_id` stays the key of every link inside the files.
 - **A pipe linked to a type has an identity too**, the same part, so it is wired like a placed symbol (see [Pipes](05-pipes.md#a-pipe-whose-style-is-linked-to-a-type)).
-- **Only what differs from the preset is kept** (`VALUE_CHANGE`: start value, unit, decimals; `TEXT_CHANGE`: texts of the faceplate), decided on 2026-11-20: a placed symbol that changes nothing holds nothing, and follows its preset when the preset changes.
+- **Only what differs from the type is kept** (`VALUE_CHANGE`: start value, unit, decimals; `TEXT_CHANGE`: texts of the faceplate), decided on 2026-11-20: a placed symbol that changes nothing holds nothing, and follows the [signal settings](../metadata/entities/22-signal-setting.md) and the faceplate of its type when they change. There is no preset to point to since 2026-11-24.
 - **A crossing keeps only the swaps**: the default rule (the last drawn passes over) needs nothing stored; the user's click stores which pipe passes over.
 - **A pipe is one tree** (decision 0094): `PIPE` holds its style and its branches, the trunk first. Each other branch names the branch it leaves (`parent`) and where along it (`at`). **Junctions are not stored**: they are computed from `parent` and `at`.
 - **Each branch has its own end**; the pipe has one start. Proposed by the assistant. No end shape is stored (decision 0098).

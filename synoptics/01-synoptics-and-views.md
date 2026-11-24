@@ -20,7 +20,7 @@ The introduction names two modes: the full installation, and a more digestible s
 
 | Kind | What it holds | Who reads it |
 | --- | --- | --- |
-| **Installation** | Every object of the installation, placed once: each placed symbol has its own identity (instance ID, designations, flags, template items, preset values). | Those who model, specify or simulate the installation. |
+| **Installation** | Every object of the installation, placed once: each placed symbol has its own identity (instance ID, designations, flags, template items, values changed from its type). | Those who model, specify or simulate the installation. |
 | **View** | A summary: some placed symbols, laid out for a screen. A placed symbol of a view taken from an installation is a **reference** to it: it shares its identity, and only its position and look are its own. | Operators, through the runtime. |
 
 - **Decided on 2026-11-20: a reference shares the identity, never copies it.** Pump `P-101` is wired once, in the installation. The overview view and the pumping view show the same `P-101`: its instance ID, its tag, its flags and its values are the same everywhere. Changing its tag in one place changes it everywhere.
@@ -30,7 +30,7 @@ The introduction names two modes: the full installation, and a more digestible s
 
 ```mermaid
 flowchart LR
-    I["Installation: P-101 with its tag, flags, preset values"] -->|"reference"| V1["View Overview: P-101, small drawing"]
+    I["Installation: P-101 with its tag, flags, values changed"] -->|"reference"| V1["View Overview: P-101, small drawing"]
     I -->|"reference"| V2["View Pumping station: P-101, full drawing"]
     S["View made from scratch"] --> O["Its own placed symbols"]
 ```
@@ -73,7 +73,7 @@ block-beta
 
 ### The page Placed symbols
 
-- A **table**, one line per placed symbol, taking the whole width (layout rule). Columns: thumbnail, symbol, type, the designations in the order of Metadata, preset, number of faults. Proposed.
+- A **table**, one line per placed symbol, taking the whole width (layout rule). Columns: thumbnail, symbol, type, the designations in the order of Metadata, number of faults (no preset column since 2026-11-24). Proposed.
 - It is the quickest way to fill the tags of a big installation: the designation cells are text fields, typed one under the other, like a spreadsheet. Proposed.
 - A click on the thumbnail opens the canvas with the placed symbol selected and zoomed. Proposed.
 - Sorted and filtered by type, by symbol, by fault. Proposed.

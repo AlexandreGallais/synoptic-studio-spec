@@ -1,6 +1,6 @@
 # Libraries and symbols
 
-> [Home](../README.md) › [Symbols](README.md) › Libraries and symbols · Next: [Type, preset and faceplate](02-type-and-faceplate.md)
+> [Home](../README.md) › [Symbols](README.md) › Libraries and symbols · Next: [Type and faceplate](02-type-and-faceplate.md)
 
 Status: draft. Not validated.
 
@@ -104,18 +104,18 @@ block-beta
 
 ### Creating a symbol
 
-- The **+** of the symbol list creates a symbol. The type, and the preset, **can** be chosen at creation, among all the types of Metadata, but nothing is imposed.
-- They can be chosen or changed later, in the right-hand panel of the editor (see [Type, preset and faceplate](02-type-and-faceplate.md)).
+- The **+** of the symbol list creates a symbol. The type **can** be chosen at creation, among all the types of Metadata, but nothing is imposed.
+- They can be chosen or changed later, in the right-hand panel of the editor (see [Type and faceplate](02-type-and-faceplate.md)).
 - A symbol without a type is a drawing only: it has no signal and no command, so nothing to animate, to link to a gesture or to test. The Interaction, Animation and Run modes need a type (how they look before one is chosen: open).
 - Once a type is chosen, the user links the drawing to it (see [Editor](03-editor/README.md)).
 
-Several symbols can share a type, with different drawings and presets: a centrifugal pump can have a manual symbol and a motorised one, with no change in Metadata.
+Several symbols can share a type, with different drawings: a centrifugal pump can have a manual symbol and a motorised one, with no change in Metadata.
 
-A symbol can also be created as a **sub-symbol** of another one, of the same Symbol Lib, by the small + of its parent, in the tree or in the editor: it takes what was made for its parent, read only, preset and connection points included, follows its changes, and adds more; its type is the parent's or a sub-type of it (see [Sub-symbols](12-sub-symbols.md)).
+A symbol can also be created as a **sub-symbol** of another one, of the same Symbol Lib, by the small + of its parent, in the tree or in the editor: it takes what was made for its parent, read only, connection points included, follows its changes, and adds more; its type is the parent's or a sub-type of it (see [Sub-symbols](12-sub-symbols.md)).
 
 ### Removing the type of a symbol
 
-- Removing the type of a symbol hides everything linked to it (preset, faceplate entries, animations, interactions). Nothing is deleted (rule kept from the former "dynamic to static" switch; to confirm).
+- Removing the type of a symbol hides everything linked to it (animations, interactions). Nothing is deleted (rule kept from the former "dynamic to static" switch; to confirm).
 - Choosing the same type again brings it all back. A mistake costs nothing.
 
 ### When Metadata changes
@@ -146,14 +146,14 @@ What never breaks a link:
 - a rename of a type, a signal, a command, an enum or a quantity;
 - a new signal, a new command, a new enum value;
 - a change of description, documentation, icon or colour;
-- a change in a preset (defaults, display units, decimals, names, entries shown);
+- a change in the signal settings or the faceplate of the type (start values, display units, decimals, names, elements);
 - a change of the quantity of a signal, when it still has one: the link still works, the mapping is the user's.
 
 ```mermaid
 flowchart TD
     A["Select a Symbol Lib"] --> B["+ in the symbol list"]
     B --> C{"Choose a type now?"}
-    C -- "Yes" --> D["Any type of Metadata, and one of its presets"]
+    C -- "Yes" --> D["Any type of Metadata"]
     C -- "Later" --> E["No type yet: drawing only"]
     D --> F["Symbol editor"]
     E --> F

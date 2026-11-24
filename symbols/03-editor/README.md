@@ -1,6 +1,6 @@
 # The symbol editor
 
-> [Home](../../README.md) › [Symbols](../README.md) › Editor · Previous: [Type, preset and faceplate](../02-type-and-faceplate.md) · Next: [Drawing mode](../04-drawing-mode/README.md)
+> [Home](../../README.md) › [Symbols](../README.md) › Editor · Previous: [Type and faceplate](../02-type-and-faceplate.md) · Next: [Drawing mode](../04-drawing-mode/README.md)
 
 Status: draft, reviewed on 2026-11-15 (layout, floating bars, layers, precise move). Not validated.
 
@@ -13,7 +13,7 @@ Decided, unless said otherwise.
 ```mermaid
 block-beta
     columns 3
-    left["Left-hand panel: symbols, pipe styles, layers"] area["Drawing area, with the floating menus"] right["Right-hand panel: options of the selection, type and preset of the symbol"]
+    left["Left-hand panel: symbols, pipe styles, layers"] area["Drawing area, with the floating menus"] right["Right-hand panel: options of the selection, type of the symbol"]
 ```
 
 | Zone | What it holds |
@@ -22,7 +22,7 @@ block-beta
 | Modes menu | A floating bar at the **top left of the drawing area**, **horizontal**, made of **icons only** (the name of each mode in its tooltip): every mode, in the order of the work, and the switch from one to another (Product Owner, 2026-11-23). |
 | Tool bar | A floating bar over the drawing area, with the tools of the current mode. Its place is open: at the **bottom** or at the top. |
 | Advanced tools bar | A button of the tool bar shows or hides a second floating bar, **just above the tool bar**, with all the [advanced tools](expert-menu/README.md). |
-| Right-hand panel | The options of the selection; the type and the preset of the symbol (see [Type, preset and faceplate](../02-type-and-faceplate.md)). |
+| Right-hand panel | The options of the selection; the type of the symbol (see [Type and faceplate](../02-type-and-faceplate.md)). |
 
 ```mermaid
 block-beta

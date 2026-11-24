@@ -70,7 +70,7 @@ Proposed, from the minimum set the research advised for the symbol editor (repor
 
 - **Undo and redo** with the usual keys: the undo history keeps every action, as everywhere in the application (Product Owner, 2026-11-23, decision 0093; see [Undo history](../storage/files-and-conflicts.md#undo-history)). One history per open synoptic, kept until it is closed: proposed, open with the history.
 - **No Save button**: each change is written to the synoptic file as it is made, by the server, with the conflict check of [Storage](../storage/files-and-conflicts.md#saving) (Product Owner, 2026-11-23).
-- **Copy and paste**, also between two synoptics. A pasted placed symbol is a **new** placed symbol: it keeps the symbol, the preset and its values, but its designations are **emptied**, since a tag is meant to be unique. Paste as reference is offered when the copy comes from an installation and is pasted into a view.
+- **Copy and paste**, also between two synoptics. A pasted placed symbol is a **new** placed symbol: it keeps the symbol and the values it changed from its type, but its designations are **emptied**, since a tag is meant to be unique. Paste as reference is offered when the copy comes from an installation and is pasted into a view.
 - **Duplicate** (Ctrl + D): the same as copy and paste, beside the original.
 
 ### Multi-selection

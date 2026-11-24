@@ -36,7 +36,7 @@ flowchart TD
     APP --> ST["Storage: how every part reads and writes its files"]
     MD --> MD1["Types, icons, documentation"]
     MD --> MD2["Signals, units, enums"]
-    MD --> MD3["Commands, faceplates, presets"]
+    MD --> MD3["Commands, signal settings, faceplates"]
 ```
 
 ## Where to read
@@ -57,7 +57,7 @@ Metadata is being written again, one file per theme (2026-11-19): the first is t
 
 1. What a type is: [Types](metadata/draft.md#types), [Icons](metadata/draft.md#type-icons), [Documentation](metadata/draft.md#type-documentation).
 2. The model side: [Signals](metadata/draft.md#signals), [Units](metadata/draft.md#units), [Enums](metadata/draft.md#enums).
-3. The front side: [Commands](metadata/draft.md#commands), [Presets and their faceplate](metadata/draft.md#presets-and-their-faceplate).
+3. The front side: [Commands](metadata/draft.md#commands), [Signal settings](screens/metadata.md#md-07--signal-settings), [Faceplate](screens/metadata.md#md-14--faceplate).
 4. How it is used: [Who changes what](metadata/draft.md#who-changes-what-and-where).
 5. What is left to decide: [Open questions](metadata/draft.md#metadata-open-questions).
 

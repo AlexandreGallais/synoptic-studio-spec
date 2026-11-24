@@ -11,7 +11,7 @@ The mode of the [editor](../03-editor/README.md) in which the signals are linked
 - Tool bar: [Select](../03-editor/select.md) and [Hand](../03-editor/hand.md). Right-hand panel: the animations of the selected part.
 - The user selects a signal, then says what it animates: a shape, a layer, a text.
 - Only the output signals of the type are offered for an animation. An output is what the model sends, and the model computes what the symbol shows. An input is what the model receives and is never animated; it can only serve as the minimum or the maximum of a bounded linear animation (see [below](#the-input-range-of-a-bounded-linear-animation)).
-- A value ordered and a value obtained are two signals for the model. Example: `opening_order` (input, what the user asks) and `opening` (output, what the model computes). The symbol animates `opening`. The faceplate can show both (see [Presets](../../metadata/draft.md#presets-and-their-faceplate)).
+- A value ordered and a value obtained are two signals for the model. Example: `opening_order` (input, what the user asks) and `opening` (output, what the model computes). The symbol animates `opening`. The faceplate can show both (see [MD-14](../../screens/metadata.md#md-14--faceplate)).
 - Only a symbol with a type has animations. A symbol without a type has no signal to animate (see [Libraries and symbols](../01-libraries-and-symbols.md)).
 
 ```mermaid
@@ -35,7 +35,7 @@ The properties of a part of the drawing that an animation can drive (rotation, p
 
 A text of the symbol can be linked to a signal that has a quantity (a volume, a flow...).
 
-- The text shows the signal's value, converted to the display unit and rounded to the decimal places set in the preset (see [Units](../../metadata/draft.md#units)).
+- The text shows the signal's value, converted to the display unit and rounded to the decimal places set in the signal settings of the type (see [MD-07](../../screens/metadata.md#md-07--signal-settings)).
 - The user chooses whether the text shows the unit or not.
 - Another text can hold only the unit of the signal, in the display unit. This lets the user put the value in one place and the unit in another, and the unit follows the display unit.
 
@@ -49,7 +49,7 @@ flowchart LR
 
 A text can be set at the size the user needs, and it can turn into an input when the user clicks it, if an input signal is linked to it. It makes quick entries: no separate panel is opened.
 
-- Since commands always send a fixed value (2026-11-16, see [Commands](../../metadata/draft.md#the-value-is-always-fixed)), this text **writes an input signal of the type directly**, with the same checks as a write entry of the faceplate: conversion from the display unit, enum item, and the bounds of the number field, typed by hand or taken from a signal (see [Presets](../../metadata/draft.md#bounds-of-a-number-field), decision 0041). No command is used.
+- Since commands always send a fixed value (2026-11-16, see [Commands](../../metadata/draft.md#the-value-is-always-fixed)), this text **writes an input signal of the type directly**, with the same checks as a write entry of the faceplate: conversion from the display unit, enum item, and the bounds of the number field, typed by hand or taken from a signal (see [MD-14.6](../../screens/metadata.md#md-14--faceplate), decision 0041). No command is used.
 - Only an input signal can be linked: an output is computed by the model.
 
 | What the text shows | What a click does |
@@ -155,7 +155,7 @@ Ignition classes quality as Good, Uncertain, Bad, Error, and shows an overlay on
 ### Texts that show a value
 
 - The browser formats a number by language (decimal comma), with or without thousand separators, leading zeros, decimals or significant digits, standard, scientific or engineering notation, sign always or never.
-- Opinion of the report: no free format string. In the preset: the decimals (already). Per text: thousand separator (off by default), sign, leading zeros, notation. The language of the application sets the decimal comma.
+- Opinion of the report: no free format string. In the signal settings: the decimals (already). Per text: thousand separator (off by default), sign, leading zeros, notation. The language of the application sets the decimal comma.
 - Missing value: a long dash and the quality mark. Out of range: the value as it is (a signal has no bounds of its own since 2026-11-17). Too long for a fixed box: "####", never truncated digits. Confidence: very low.
 
 ### A text that becomes an input: a gap with a validated page

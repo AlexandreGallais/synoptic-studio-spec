@@ -146,7 +146,7 @@ Written after a full pass over the part (2026-11-11). They are not for the Produ
 
 ### 18. Texts that show a value
 
-- Context: [Text tool](04-drawing-mode/text.md), [Animation mode](08-animation-mode/README.md). Decimals and display units come from the preset.
+- Context: [Text tool](04-drawing-mode/text.md), [Animation mode](08-animation-mode/README.md). Decimals and display units come from the signal settings of the type.
 - Question 18a: how do HMI displays format a number: thousand separators, locale (decimal comma), sign, leading zeros, scientific notation, format strings ("#,##0.00")?
 - Question 18b: what does a text show when the value is missing, out of bounds, not a number, or too long for its box ("####", "---", ellipsis, shrink to fit)?
 - Question 18c: text along a path, vertical text: offered, needed?

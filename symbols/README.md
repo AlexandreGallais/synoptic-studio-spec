@@ -15,7 +15,7 @@ flowchart LR
     L["Symbol Lib: a tree of symbols, a flat list of styles"] --> S["Symbol"]
     L --> L2
     S --> D["Drawing: shapes, text, pen, layers"]
-    S --> T["Type and preset, from Metadata"]
+    S --> T["Type, from Metadata"]
     D --> A["Animation: an output signal moves a part of the drawing"]
     D --> I["Interactions: a zone or a layer reacts to a gesture and sends a command"]
     T --> A
@@ -30,12 +30,12 @@ flowchart LR
 
 There is one list of symbols and one kind of symbol: no "static" or "dynamic" symbol any more.
 
-| A symbol... | Type | Preset and faceplate | Animation | Interactions |
+| A symbol... | Type | Faceplate | Animation | Interactions |
 | --- | --- | --- | --- | --- |
 | with a type | From Metadata, chosen at creation or later | Yes | Yes | Yes |
 | without a type yet | None | No | No | No |
 
-The type is never imposed: it can be chosen when the symbol is created, or later in the right-hand panel of the editor. Removing it only hides the preset, animations and interactions; choosing it again restores them. In a synoptic, a symbol with a type can be placed and left unwired (this belongs to part 3).
+The type is never imposed: it can be chosen when the symbol is created, or later in the right-hand panel of the editor. Removing it only hides the faceplate, animations and interactions; choosing it again restores them. In a synoptic, a symbol with a type can be placed and left unwired (this belongs to part 3).
 
 The only kind of library is the **Symbol Lib**, which sorts symbols. There are no libraries of types: a symbol picks its type among all the types of Metadata.
 
@@ -44,7 +44,7 @@ The only kind of library is the **Symbol Lib**, which sorts symbols. There are n
 | Page | What it holds |
 | --- | --- |
 | [Libraries and symbols](01-libraries-and-symbols.md) | Symbol Libs, the left-hand panel (symbols, pipe styles, layers), creating a symbol, its optional type. |
-| [Type, preset and faceplate](02-type-and-faceplate.md) | The type of a symbol, its preset, which faceplate entries the symbol shows. |
+| [Type and faceplate](02-type-and-faceplate.md) | The type of a symbol, the only thing it chooses; its faceplate is the one of the type. |
 | [Editor](03-editor/README.md) | What is common to every mode: layout, floating bars, rules, modes, moving around, Select, Hand, layers, precise move, the advanced tools. |
 | [Drawing mode](04-drawing-mode/README.md) | Rectangle, ellipse, polygon, text, pen. |
 | [Point editing mode](05-point-editing-mode/README.md) | Editing the points of a path. |
@@ -62,7 +62,7 @@ One folder per mode, with its tools inside. What several modes share is in the e
 
 ## Reading order
 
-1. [Libraries and symbols](01-libraries-and-symbols.md), then [Type, preset and faceplate](02-type-and-faceplate.md).
+1. [Libraries and symbols](01-libraries-and-symbols.md), then [Type and faceplate](02-type-and-faceplate.md).
 2. [Editor](03-editor/README.md), then the modes in order: drawing, point editing, alignment, interaction, animation, run.
 3. [Pipes](pipes/README.md).
 4. [Open questions](10-open-questions.md), then the [research brief](research-brief.md).
@@ -73,6 +73,6 @@ Same skeleton as the Metadata pages: title and navigation line, `Status:` line, 
 
 ## See also
 
-- [Metadata](../metadata/README.md): types, signals, commands, faceplates, presets. This part only uses them and never changes them.
+- [Metadata](../metadata/README.md): types, signals, commands, signal settings, faceplates. This part only uses them and never changes them.
 - [Storage](../storage/README.md): how the files of symbols and Symbol Libs are saved.
 - [Screens of the symbol editor](../screens/symbols.md) and [Screens of the pipes](../screens/pipes.md): every screen of this part, with its buttons, fields and lists, and what is missing.

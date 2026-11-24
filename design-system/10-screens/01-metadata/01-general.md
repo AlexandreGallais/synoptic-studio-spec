@@ -4,6 +4,8 @@
 
 The type tree on the left, the General part of the selected type in the main area. Controls: [MD-01](../../../screens/metadata.md#md-01--types-the-tree-and-the-type-editor), [MD-02](../../../screens/metadata.md#md-02--general).
 
+The fields of General sit in a card, as the tables of the other parts (2026-11-24): `layer-01`, `radius-md`, `spacing-05` (16) inside, the whole width of the main column.
+
 ## Figma
 
 | Frame | Id |

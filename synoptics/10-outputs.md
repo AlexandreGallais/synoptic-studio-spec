@@ -23,7 +23,7 @@ The first five are proposed; the interface description of the models is decided.
 | --- | --- | --- | --- |
 | **Synoptic file** | The editor | The source: everything of the [data model](11-data-model.md). Written at each change. | JSON |
 | **Published view** | The runtime | One file per view, self-contained: the drawings of the symbols used, their animations and interactions, the pipes already computed, the faceplates, and the address of every signal. The runtime needs nothing else. | JSON with SVG inside |
-| **Configuration file** | The software outside (controllers, gateway, model) | One entry per placed symbol, references counted once: instance ID, type `id`, preset values with the changes of the synoptic (in the default unit), flags ticked, designation texts, template items. | JSON |
+| **Configuration file** | The software outside (controllers, gateway, model) | One entry per placed symbol, references counted once: instance ID, type `id`, signal settings with the changes of the synoptic (in the default unit), flags ticked, designation texts, template items. | JSON |
 | **Signal list** | Whoever wires the controllers or the model | One line per placed symbol and signal: address `P-101.speed`, direction, value kind, quantity and default unit, enum. | CSV and JSON |
 | **Connection graph** | Those who simulate a circuit | Which placed symbol is connected to which, through which pipes and connection points. | JSON |
 | **Interface description of the models** | Those who build the models | For each type used, all its signals, and among them the ones the project really needs, given its synoptics. See below. | Open |
@@ -32,7 +32,7 @@ The first five are proposed; the interface description of the models is decided.
 
 Once the synoptics are done, the editor writes, for the models, a kind of interface description document (IDD): for each type used in the project, it shows every signal of the type, and says which ones the project really needs, given how its symbols are used in the synoptics.
 
-Example: in a project, the pumps use a preset whose faceplate is turned off; on the synoptics, a pump only animates its speed and offers two actions, start and stop. The description lists all the signals of the type Pump, and says that this project's pump only needs its speed and the two signals of start and stop. The model built for the project can stop there.
+Example: in a project, the pumps use a sub-type whose faceplate is empty; on the synoptics, a pump only animates its speed and offers two actions, start and stop. The description lists all the signals of the type Pump, and says that this project's pump only needs its speed and the two signals of start and stop. The model built for the project can stop there.
 
 How "really needed" is computed, by type or by placed symbol, and the format of the document, are not said yet: see the open questions.
 
@@ -88,4 +88,4 @@ Signal list of `P-101`, extract:
 
 - Does the runtime read the synoptic file and the Symbol Libs, or a published view (advised)?
 - Which format for the connection graph: one of the project, or SSP?
-- Interface description of the models: a signal is "needed" when an animation, an interaction, a faceplate element or a configuration of the synoptics uses it; is a signal of a preset value or of a flag needed too? Is the description written per type, per preset, or per placed symbol? Which format?
+- Interface description of the models: a signal is "needed" when an animation, an interaction, a faceplate element or a configuration of the synoptics uses it; is a signal of a signal setting or of a flag needed too? Is the description written per type or per placed symbol? Which format?
