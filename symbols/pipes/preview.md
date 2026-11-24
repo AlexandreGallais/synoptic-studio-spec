@@ -9,17 +9,18 @@ When the user edits the base pipe style or a pipe style in a Symbol Lib (body, b
 ## Rules
 
 - The Preview is part of the editor of the Symbol Lib: it is always visible next to the style being edited, and it redraws at each change.
+- It is **exactly the same** for the base pipe style and for every pipe style: the same cases, at the same places (Product Owner, 2026-11-24).
 - It holds a fixed set of cases, made of pipes drawn with the style being edited:
 
 | Case | What it shows |
 | --- | --- |
 | Straight pipe | The body fill, the width, the border, the dash sequences. |
-| Base and styles | The base pipe style next to the style being edited, to see its fills and its own widths (proposed by the assistant). |
 | Right angle | The corner radius. |
 | Other angles | An angle other than 90 degrees, a very short segment. |
 | Junction | One junction of the style, centred on the point where the branch leaves the pipe. |
 | Several junctions | A 3-way and a 4-way junction. |
-| Crossing | One crossing of the style, both ways. |
+| Crossing | The style being edited passes over a pipe of the **base style**, with its crossing kind: the user sees the style next to the base (Product Owner, 2026-11-24). |
+| Free ends | A pipe whose two ends are connected to nothing (proposed). |
 | Connected to a symbol | A pipe that arrives on a connection point. |
 
 - The cases are not editable by the user.
