@@ -913,7 +913,8 @@ flowchart LR
 | Pipe style | `pipe_style` | Proposed: 0: Water, 1: Steam, 2: Oil, 3: Gas, 4: Air, 5: Electricity | A global built-in enum, items added by the user, each Symbol Lib drawing each item as it wants: decided (2026-11-24, decision 0099). ID `pipe_style`: decided. Base items: open |
 
 - Open: which other built-in enums the software needs.
-- Open: can items be added to every built-in enum, `pipe_direction` included, whose items the software must understand to move the dashes?
+- **Items can be added to every built-in enum, `pipe_direction` included** (Product Owner, 2026-11-24: on `pipe_direction`, "le petit +", a line added that can be changed, the base ones not).
+- Open: what the dashes of a pipe do with an item the user added to `pipe_direction`, since the software only knows the base items.
 - **Adding items is the only change allowed to the base of the copy**, besides the ID of the enum (Product Owner, 2026-11-23: "la seule chose qu'il peut faire, c'est ajouter un item").
 - **The software checks the copy against its own built-in enum**, item by item: every item of the software must be in the copy, with the same key, the same display name and the same description (Product Owner, 2026-11-23: "ce qu'il y a à l'intérieur du logiciel viendra valider l'enum surchargé [...] ça viendra vérifier que la chose est bien construite").
 - **A copy that fails the check is a file with errors**: an item removed, an item whose key changed (`pipe_direction` without `1`), or an item whose display name or description changed. The software uses its own built-in enum instead, and lists the error (answers of 2026-11-23). See [A file with errors](checks-and-errors.md#a-file-with-errors).

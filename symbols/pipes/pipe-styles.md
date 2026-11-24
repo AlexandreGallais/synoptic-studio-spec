@@ -166,10 +166,14 @@ Decision 0099 (Product Owner, 2026-11-24: "faut juste dire que les pipe style, �
 - **A signal of a type can point to it**, like any enum: a signal "content" says which kind of fluid a symbol or a pipe holds.
 - What for (Product Owner): a symbol of the library can have pipe inlets and outlets of its own, drawn with the look of the chosen item: "ça sera tel signal, qui sera le type de fluide [...] et j'utilise telle propriété de l'enum, en fonction de ce qui a été choisi."
 
-The assistant's readings, to confirm:
+On the Pipes page (Product Owner, 2026-11-24):
 
-- **The list of pipe styles of the Pipes page shows every item** of `pipe_style`, in the order of their keys. Its **+ adds an item to the enum**: a key, a display name and a description, the same for every Symbol Lib; this library then gives it its look.
-- **The fields of the item are shown at the top of the pipe style**: read-only for a base item, editable for an item the user added, since they change the enum itself.
+- **The list of pipe styles shows every item** of `pipe_style`, in the order of their keys (assistant's reading).
+- **No + on the list**: items are never added from the Pipes page. In its place, a **small link opens the enum `pipe_style` on the Enums page of Metadata**, where items are added, so that it is clear where they come from.
+- **The key, the display name and the description of the item are read-only in the pipe style**, base item or not: they are changed in Metadata only. There is no name field.
+
+The assistant's reading, to confirm:
+
 - **An animation of a symbol** can pick a signal of the enum `pipe_style`, then a property of the pipe style of this library for the chosen item (body fill, border fill), as it picks a column of an enum (see [Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md#used-by-an-animation)).
 
 ```mermaid
@@ -243,7 +247,6 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.2, 
 - Can a style hold several layers (the body, then a border, then a second line), or just the options above?
 - [The enum pipe_style](#the-enum-pipe_style):
   - Its base items (Water, Steam, Oil, Gas, Air, Electricity proposed) and their keys.
-  - Does the + of the Pipes page add an item to the enum (assistant's reading), or are items added on the Enums page of Metadata only?
   - An item that a Symbol Lib has not styled yet (just added, or added from another library): how is a pipe of that item drawn?
   - Which properties of a pipe style an animation of a symbol can take (body fill, border fill, widths)?
   - Can a signal of the model choose the pipe style of a pipe in the synoptic?

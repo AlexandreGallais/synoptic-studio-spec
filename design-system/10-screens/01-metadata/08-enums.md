@@ -40,7 +40,7 @@ The same enum `pump_mode` as a template: its items table empty, with its message
 
 ### MD-09 · Enums · built-in
 
-The built-in enum `pipe_direction` selected: its three base items read-only, the + of Items to add one (decision 0099).
+The built-in enum `pipe_direction` selected: its three base items read-only, and an item added with the + of Items, editable, with its delete button (decision 0099).
 
 ![MD-09 · Enums · built-in](images/md-09-enums-built-in.svg)
 
