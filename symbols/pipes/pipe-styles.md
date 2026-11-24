@@ -243,6 +243,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.2, 
 
 - Which properties of a style a signal can drive, beyond the speed, the direction and the colours?
 - In which unit is the speed of the moving dashes set (pixels per second)?
+- **To discuss again, nothing changed (Product Owner, 2026-11-24, said with a doubt):** should the direction stop being a built-in enum with base items (stopped, start to end, end to start) and become a **number**, such as −1, 0 or 1, that multiplies the speed: forward, stopped, backward? It would also allow 0.5 or −0.5 (half speed, either way). Until then, the direction stays the enum written in [Moving dashes](#moving-dashes).
 - A pipe linked to a type is one tree, one flow: do its branches share its values (assistant's reading), or can a branch have its own (a closed valve on one branch, stopping the movement downstream)?
 - Can a style hold several layers (the body, then a border, then a second line), or just the options above?
 - [The enum pipe_style](#the-enum-pipe_style):
