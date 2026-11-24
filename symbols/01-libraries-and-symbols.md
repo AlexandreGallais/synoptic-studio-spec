@@ -93,7 +93,7 @@ What the left-hand panel shows depends on the page chosen in the bar. Since 2026
 
 - An item of the symbol list shows a **thumbnail** and the **name** of the symbol.
 - The thumbnail is the symbol itself, or, as Figma does for its outline view, the symbol drawn with the outline of every shape only, without fills. Which one is kept is open.
-- The base pipe style sits in the list of the pipe styles, as its first item (assumption of the assistant, to confirm).
+- The base pipe style is the first item of the left column of the Pipes page, above the title of the pipe styles, with a tag "Base"; the list of the start and end shapes comes after the pipe styles (accepted on 2026-11-24, see [Screens of the pipes](../screens/pipes.md#layout-of-the-page-pipes)).
 
 ```mermaid
 block-beta
@@ -190,7 +190,6 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.5, 
 
 - Thumbnail of a symbol in the list: the symbol itself, or its outlines only (as Figma's outline view)? What else does an item show besides its name?
 - Before a type is chosen, are the Interaction, Animation and Run modes hidden, greyed, or shown with a message?
-- Is the base pipe style the first item of the pipe styles list, or elsewhere?
 - How does a Symbol Lib look in the navigation bar (icon, initials, name)?
 - What the General page shows besides the name and the deletion.
 - What the symbol mode shows when there is no Symbol Lib yet.

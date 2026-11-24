@@ -230,7 +230,7 @@ flowchart TD
     MD09 -.->|"enums read only"| SY12
     SYP --> PI01["PI-01 Base pipe style"]
     SYP --> PI02["PI-02 Pipe style"]
-    PI01 --> PI03["PI-03 End shape editor"]
+    SYP --> PI03["PI-03 End shape editor"]
     PI01 --> PI05["PI-05 Preview"]
     P3 -.-> PI06["PI-06 Pipes in a synoptic"]
 ```

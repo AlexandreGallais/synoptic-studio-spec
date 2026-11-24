@@ -29,7 +29,7 @@ flowchart LR
 | Square | A square at the junction, bigger than the pipe. |
 
 - A junction has only two settings: its **kind** and, for a circle or a square, its **size**. Only the circle and the square have a size: when the kind is Flat, the size field is greyed out (Product Owner, 2026-11-24).
-- Its **border** is the border of the pipe: on or off, width and position (inside, in the middle, outside) come from the base pipe style, and its fill from the pipe style. It is never set on the junction.
+- Its **border** is the border of the pipe: its width (0: no border) and position (inside, in the middle, outside) come from the base pipe style, or the width from the pipe style when it overrides it, and its fill from the pipe style. It is never set on the junction.
 - Its **fill** is not a setting either: the junction takes the **body fill of the pipe style** (Product Owner, 2026-11-23).
 
 ## Example
