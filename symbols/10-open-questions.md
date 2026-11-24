@@ -60,6 +60,13 @@ This file is the index of the open questions. A question sits in the file it con
 | Sub-symbols: what becomes of them when their parent is deleted; where the + sits in the editor. (Decided 2026-11-18: a tree, the parent in the same Symbol Lib, a small + in the tree and in the editor, any type under a parent without a type, every sub-symbol in fault when the parent changes or loses its type, connection points taken, a parent can be deleted.) | [Sub-symbols](12-sub-symbols.md) | Into fault, as for a change of type. |
 | The list of faults of the application: what puts a symbol in fault, how it shows, how it is repaired. | [Sub-symbols](12-sub-symbols.md) | Start from the small red mark of a broken link. |
 
+## Raised on 2026-11-24 (fields like Figma)
+
+| Question | Page | Proposal of the assistant |
+| --- | --- | --- |
+| No line in a border means no border, and a − and a + replace the kind "None" of a fill; a gradient in one segment; pattern and image as kinds of fill; the order of the lines. | [Colour field](../controls/colour-field.md), [Segment list](../controls/segment-list.md) | Yes to no line, no border, and to − and +; plain colours only in a segment; no pattern, no image; a handle. |
+| A group size given by a signal ("la sélection par variable"); X and Y on a line above W and H; the radios of the other panels turned into selects. | [Size fields](../controls/size-fields.md), [Layout rules](../screens/README.md#a-select-rather-than-radios) | Not for a group; yes to X and Y; yes to the selects. |
+
 ## Still open, not researched
 
 | Question | Page | Written as |

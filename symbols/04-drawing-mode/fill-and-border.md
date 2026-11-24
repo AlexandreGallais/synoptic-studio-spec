@@ -24,18 +24,24 @@ Proposed by the assistant. To confirm:
 | Plain colour | With opacity. |
 | Linear gradient | Several colour stops, an angle. |
 | Radial gradient | Several colour stops, a centre. |
-| None | No fill. |
+
+A shape with no fill has its fill removed (the − of its line), rather than a kind "None" (assistant's proposal, as Figma).
+
+### How the fill is set
+
+- One line, the [colour field](../../controls/colour-field.md): a swatch, then the colour │ the opacity, two inputs split by a separator (Product Owner, 2026-11-24: "la même façon de faire que Figma").
+- The kind (plain colour, linear or radial gradient) is chosen in the popup the swatch opens, not in a select of the panel.
 
 ### Border options
 
-- **Size**: the width of the border, in pixels. Example: a border of 2 px.
-- **Position**: outside, in the middle, or inside the shape.
-- **Fill**: a colour or a gradient, as above.
-- **Dashes**: the border can be dashed, as the user wants, with a **dash sequence** (the same rule as for pipes, see [Pipe styles](../pipes/pipe-styles.md)):
-  - a sequence of segments, each with a **length** and a **colour**, repeated along the border;
-  - a gap is a segment with a **transparent** colour: "black 2, transparent 2" gives classic dashes;
-  - several colours can follow each other: "red 4, black 4" gives red and black dashes;
-  - the sequence can be as long as the user wants.
+The border is a [segment list](../../controls/segment-list.md) (Product Owner, 2026-11-24):
+
+- **Lines**: a small + on the right of the title "Border" adds a line; each line is a segment, with its [colour field](../../controls/colour-field.md) (colour and opacity) and its **length**; a − removes it.
+  - **One line**: a plain border.
+  - **Several lines**: a **dash sequence** (the same rule as for pipes, see [Pipe styles](../pipes/pipe-styles.md#dash-sequences)): the segments follow each other along the border and repeat; a gap is a segment at **0 %** opacity: "black 100 % 2, black 0 % 2" gives classic dashes; "red 4, black 4" gives red and black dashes; as many lines as the user wants.
+  - **No line**: no border (assistant's proposal; it replaces the toggle "Border").
+- **Size**, under the lines: the width of the border, in pixels, written without unit. Example: 2.
+- **Position**, under the lines: a **select**, Outside, Middle or Inside the shape; a select rather than radios, which take too much room (Product Owner, 2026-11-24).
 - The dashes are computed along the border, as cleanly as possible; an odd cut in a corner is accepted.
 
 ### Dashes: what the research says

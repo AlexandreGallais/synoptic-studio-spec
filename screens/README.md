@@ -86,6 +86,15 @@ block-beta
     l3["Item n: the list grows downwards, the title and its + do not move"]:2
 ```
 
+### A select rather than radios
+
+- In a panel, a choice among a few options is a **select**, not a line of radios, which takes too much room. The Product Owner asked it for the position of a border (2026-11-24); the assistant applies it to the other choices of the panels it redraws (polygon, text, pipes), to confirm.
+- The other radios of the tables change when their screen is drawn.
+
+### Like Figma: one line per value
+
+The fields that Figma has are drawn the way Figma draws them (Product Owner, 2026-11-24): the [size fields](../controls/size-fields.md) (W and H, Fixed or Hug), the [colour field](../controls/colour-field.md) (a swatch and colour │ opacity) and the [segment list](../controls/segment-list.md) of a border. A length never writes "px".
+
 ### Columns of buttons have no header
 
 - In a table, the column of the **delete buttons** has **no header**, like the column of the **handles** that move a line. Everyone knows what the icon does.
@@ -172,14 +181,16 @@ Each screen has:
 | --- | --- |
 | Button | An action, done at once. |
 | Text field | Free text on one line (multi-line when said). |
-| Number field | A number, with its unit when it has one. One shared component: arrows ±1, ±10 with a key (see [Number and text fields](../controls/number-and-text-fields.md)). |
+| Number field | A number, with its unit when it has one, never "px". One shared component: arrows ±1, ±10 with a key (see [Number and text fields](../controls/number-and-text-fields.md)). |
+| Size fields | W and H on one line, Fixed or Hug (see [Size fields](../controls/size-fields.md)). |
 | Select | A choice in a list that drops down. |
-| Radio | A choice among a few options, all visible. |
+| Radio | A choice among a few options, all visible; in a panel, a select instead (see [A select rather than radios](#a-select-rather-than-radios)). |
 | Toggle | On or off. |
 | Checkbox | Ticked or not, often in a list. |
 | List | Items one under the other, with their own actions. |
 | Tree | Items with parents and children, folded or unfolded. |
-| Colour | A colour picker. |
+| Colour | The [colour field](../controls/colour-field.md): a swatch, then colour │ opacity; the swatch opens the popup of the kinds of fill. |
+| Segment list | A border or a dashed fill: one line per segment, + and − (see [Segment list](../controls/segment-list.md)). |
 | Slider | A value chosen by dragging. |
 | Editor | A dedicated editing area (Markdown, drawing...). |
 | Table | Items one per line, their fields in columns. |

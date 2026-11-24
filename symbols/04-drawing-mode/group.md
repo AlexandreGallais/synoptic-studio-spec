@@ -15,19 +15,20 @@ A group is an SVG `g` element. Its first use is to give a structure to several s
 - With the Group tool, from the tool bar.
 - With Ctrl+G on a selection, or with right click and "Group". The tool is the visible equivalent of both.
 
-### Two sizes: fit or own size
+### Two sizes: hug or fixed
 
 - In SVG, a group has no size of its own: it takes the size of what is inside. The editor overrides this, so that a group can be given a size and a position.
-- The size is set like in Figma: a **width** and a **height**, each one either **fit** or **fixed**.
-  - Fit, on both: the group is a plain SVG group. It wraps its children and nothing more. This is the default.
-  - Fixed: the group has the size the user gave it, and it no longer fits its content.
+- The size is set like in Figma: a **width** and a **height**, each one either **Hug** or **Fixed**, with the [size fields](../../controls/size-fields.md): W and H on one line, the mode in each field with a small arrow that opens a menu Fixed, Hug (Product Owner, 2026-11-24; "Hug" was called "fit" before).
+  - Hug, on both: the group is a plain SVG group. It wraps its children and nothing more. This is the default.
+  - Fixed: the group has the size the user gave it, and it no longer wraps its content.
+  - The width and the height are **always shown**, in Hug too: the user sees the size of the group, and changes it in the same field (Product Owner, 2026-11-24).
 - A group has no fill and no border (see [Fill and border](fill-and-border.md)).
 - A group with its own size can be empty. The size and the position are only simulated by the editor: no rectangle is added inside the group, and the SVG bounding box is not relied on.
 
 ### Layout of the children
 
 - It is available when the group has its own size. The panel offers the placement of the children in the group: centred, or aligned left, right, top or bottom, with anchors.
-- All the children centred is the simple case. When the group fits its content, the biggest child gives the size, and the others are centred on it.
+- **All the children centred is the default placement** (Product Owner, 2026-11-24). When the group hugs its content, the biggest child gives the size, and the others are centred on it.
 - No flex display (rows, columns, gaps): no case where it would be useful.
 
 ### Absolute children

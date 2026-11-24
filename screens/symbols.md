@@ -189,12 +189,12 @@ mindmap
       Pen
       Text
     Right-hand panel of a shape
-      Fill
-      Border
+      Size, W and H
+      Fill, a colour field
+      Border, a segment list
+        Lines, colour and length
         Size
         Position
-        Fill of the border
-        Dash sequence
       Effects
       Mask
       Options of the shape
@@ -212,13 +212,13 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-04.4 | Fill | not said (select + colour) | None, plain colour with opacity, linear gradient (stops, angle), radial gradient (stops, centre). | Proposed | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md) |
-| SY-04.5 | Border | not said (toggle) | A shape can have a border; a group cannot. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md) |
-| SY-04.6 | Border size | Number field (px) | Example 2 px. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md) |
-| SY-04.7 | Border position | Radio | Outside, middle, inside. An open path: middle only (proposed). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md) |
-| SY-04.8 | Fill of the border | Same as the fill | Colour or gradient. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md) |
-| SY-04.9 | Dashes of the border | Dash sequence editor | Segments, each a length and a colour, transparent for a gap (see [PI-04](pipes.md#pi-04--dash-sequence-editor)). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md) |
-| SY-04.10 | Caps and joins | not said (radio) | Butt, round, square; miter, round, bevel. For open paths. | Proposed | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md) |
+| SY-04.4 | Fill | [Colour field](../controls/colour-field.md) | One line: swatch, colour │ opacity (2026-11-24). The swatch opens the popup of the kinds: plain colour, linear gradient (stops, angle), radial gradient (stops, centre); no "Kind" select. A − removes the fill, a + on the title adds one back (proposed, replaces the kind "None"). | Decided (field), Proposed (kinds, − and +) | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#how-the-fill-is-set) |
+| SY-04.5 | Border | [Segment list](../controls/segment-list.md), small + on the title | A shape can have a border; a group cannot. The + adds a line (2026-11-24). No line: no border (proposed, replaces the toggle). | Decided (list), Proposed (no line, no border) | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
+| SY-04.6 | Border size | Number field, no unit | Under the lines. Example 2. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
+| SY-04.7 | Border position | Select | Under the lines, next to the size: Outside, Middle, Inside; a select, not radios (2026-11-24). An open path: Middle only, the select greyed (proposed). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
+| SY-04.8 | Colour of a line of the border | [Colour field](../controls/colour-field.md) | Colour │ opacity on each line; 0 % for a gap. A gradient in a line: Open. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
+| SY-04.9 | Dashes of the border | Lines of the segment list | One line: a plain border; two lines or more: a dash sequence, each line a colour and a length, repeated (2026-11-24; replaces the editor [PI-04](pipes.md#pi-04--segment-list) opened from the panel). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
+| SY-04.10 | Caps and joins | not said (select each) | Butt, round, square; miter, round, bevel. For open paths. | Proposed | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md) |
 | SY-04.11 | Effects menu | List + Button | Add, edit, remove; native SVG only; each effect kept only if it holds the performance. | Decided | [Effects and masks](../symbols/04-drawing-mode/effects-and-masks.md) |
 | SY-04.12 | Effects offered | Select | Cut, gradients, dashes, colour change, drop shadow, blur, mask, inner shadow: each subject to the POC. | Proposed | [Effects and masks](../symbols/04-drawing-mode/effects-and-masks.md) |
 | SY-04.13 | Mask | not said (select a shape) | The shape that cuts is chosen by the user. | Decided | [Effects and masks](../symbols/04-drawing-mode/effects-and-masks.md) |
@@ -227,13 +227,14 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-04.14 | Rectangle: corner radius | Number field | For the whole rectangle. | Decided | [Rectangle](../symbols/04-drawing-mode/rectangle.md) |
-| SY-04.15 | Rectangle, ellipse, polygon: link width and height | Toggle | Visible equivalent of the square or circle key. | Decided | [Rectangle](../symbols/04-drawing-mode/rectangle.md) |
+| SY-04.36 | Rectangle, ellipse, polygon: width, height | [Size fields](../controls/size-fields.md), always fixed | W and H on one line, no unit, no mode (a shape does not hug a content). | Proposed | [Size fields](../controls/size-fields.md) |
+| SY-04.14 | Rectangle: corner radius | Number field, no unit | For the whole rectangle. | Decided | [Rectangle](../symbols/04-drawing-mode/rectangle.md) |
+| SY-04.15 | Rectangle, ellipse, polygon: link width and height | Icon button (link), at the end of the line W, H | Visible equivalent of the square or circle key. An icon on the size line rather than a toggle of its own (assistant, 2026-11-24). | Decided (link), Proposed (icon on the line) | [Size fields](../controls/size-fields.md#width-and-height-linked) |
 | SY-04.16 | Polygon: number of sides | Number field | 3 to 20. | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
-| SY-04.17 | Polygon: how it fills its box | Radio | Filled, Equilateral (a third mode "like Figma": Open, advised against). | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
+| SY-04.17 | Polygon: how it fills its box | Select | Filled, Equilateral (a third mode "like Figma": Open, advised against). A select rather than radios ([layout rule](README.md#a-select-rather-than-radios), 2026-11-24). | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
 | SY-04.18 | Polygon: anchor | not said (9-point grid) | An anchor of the box, and whether a corner or a side touches it. | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
-| SY-04.19 | Group: width, height | Radio each | Fit or fixed; fixed gives a size. | Decided | [Group](../symbols/04-drawing-mode/group.md) |
-| SY-04.20 | Group: placement of the children | not said (9-point grid) | Centred, or aligned left, right, top, bottom, with anchors; no flex. | Decided | [Group](../symbols/04-drawing-mode/group.md) |
+| SY-04.19 | Group: width, height | [Size fields](../controls/size-fields.md), Fixed or Hug | W and H on one line; each value always shown, in pixels, no unit; the mode in the field, with a small arrow that opens a menu Fixed, Hug (2026-11-24). Hug by default. | Decided | [Group](../symbols/04-drawing-mode/group.md#two-sizes-hug-or-fixed) |
+| SY-04.20 | Group: placement of the children | not said (9-point grid) | Centred by default (2026-11-24), or aligned left, right, top, bottom, with anchors; no flex. | Decided | [Group](../symbols/04-drawing-mode/group.md#layout-of-the-children) |
 | SY-04.21 | Child: absolute | Toggle + two anchors | Anchor of the group, anchor of the child. | Decided | [Group](../symbols/04-drawing-mode/group.md) |
 | SY-04.22 | Group: create | Button (tool), Ctrl+G, right click "Group" | Three ways. | Decided | [Group](../symbols/04-drawing-mode/group.md) |
 
@@ -246,19 +247,19 @@ mindmap
 | SY-04.25 | Bold | Button | There by default, next to the weight list. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-04.26 | Weight | Select | Every weight the font has. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-04.27 | Italic | Button | Only when the font has a real italic. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.28 | Text colour, background colour | Colour | — | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.29 | Text border | Toggle + size + colour | Native SVG stroke; the research says it is simple. | Decided (to keep: Open) | [Text](../symbols/04-drawing-mode/text.md) |
+| SY-04.28 | Text colour, background colour | [Colour field](../controls/colour-field.md) each | Swatch, colour │ opacity (2026-11-24). | Decided | [Text](../symbols/04-drawing-mode/text.md) |
+| SY-04.29 | Text border | Small + on the title, a [colour field](../controls/colour-field.md) and a size | Native SVG stroke; the research says it is simple. The + adds it, a − removes it, as the border of a shape; one colour only, no dashes (assistant, 2026-11-24). | Decided (to keep: Open), Proposed (form) | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-04.30 | Lines | Toggle each + colour | Underline, strikethrough, line above. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-04.31 | Alignment | Radio | Left, centre, right; top, middle, bottom. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-04.32 | Spacing | Number field each | Letter spacing, word spacing, line height. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-04.33 | Wrapping | Toggle | Lines wrap in the box. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.34 | Fit mode | Radio | Fit to the glyphs, or fit to the line. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
+| SY-04.34 | Fit mode | Select | Fit to the glyphs, or fit to the line. A select rather than radios ([layout rule](README.md#a-select-rather-than-radios), 2026-11-24). | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-04.35 | Embed the fonts | Toggle | In the exported SVG. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 
 Gaps:
 
 - Rotation and mirror of a shape: no control anywhere (the research proposes rotation as a property).
-- Position and size (X, Y, width, height) of the selected shape: never listed as fields of the panel.
+- Position (X, Y) of the selected shape: never listed as fields of the panel (width and height: proposed, SY-04.36).
 - Opacity of a whole shape or layer.
 - Formatting part of a text ("format a part of it"): which options apply to a part, which to the whole text?
 - Where is the "embed the fonts" option: on each text, or in the export?
@@ -572,7 +573,7 @@ mindmap
 | SY-12.4 | Add a column | Button (+) on the right of the title "Columns" | As many columns as needed. The + adds the column at once, at the end of the last block, without a form (decision 0091, which replaces the form of 0090). The new column: name field focused and empty, kind Text by default, values empty text fields (Product Owner, 2026-11-23, replacing "Choose a kind"). The place of the + follows the [layout rules](README.md#a-title-and-a-small--on-its-right). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.5 | Name of a column | Text field, always visible in the header of the column, above the kind | Edited at any time (end of 2026-11-17): `color`, `display name short`... | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.6 | Kind of value of a column | Select always visible in the header of the column, under the name | Chosen in the header once the column is added, for a global enum as for a template (decision 0090, which replaces "the first value chooses the kind"); changed at any time, without opening anything (decision 0091). A kind of animation, not a type of the model: Colour (RGBA), Text, Number, Yes / no (see [Kinds of value](../symbols/11-enums-of-a-symbol-lib.md#kinds-of-value)). On a change, nothing is converted: the new kind starts with empty values; the application remembers the values of the earlier kinds while it runs and gives them back if an earlier kind is chosen again (decision 0092). The change shows nothing, no warning, no notice (decision 0093). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#changing-the-kind) |
-| SY-12.7 | Value of a column for an item | Field of the kind (colour picker, text field, number field, checkbox) | Global enum only: one per item. For a template, filled with its items on each placed symbol, in the synoptic (end of 2026-11-17; the columns with the items: assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.7 | Value of a column for an item | Field of the kind ([colour field](../controls/colour-field.md), text field, number field, checkbox) | Global enum only: one per item. For a template, filled with its items on each placed symbol, in the synoptic (end of 2026-11-17; the columns with the items: assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.8 | Delete a column | Icon button (bin), at the top of the header of the column, on the right, above the name | A column can be deleted (end of 2026-11-17); the bin is above the name (decision 0091). Deleted at once, with no confirmation, even with values: the undo history takes it back (decision 0093). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.9 | Order of the columns | — | Not changed: no handle. | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.10 | Blocks of columns | Several tables, one under the other | No column narrowed, no sideways scroll: the added column that does not fit starts a new block below. Display name and Description in the first block only; each next block repeats the Key alone (Product Owner, 2026-11-23). Same lines in every block; the blocks follow the width of the window (decision 0091). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#when-the-columns-do-not-fit) |

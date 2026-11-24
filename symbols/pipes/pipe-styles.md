@@ -89,7 +89,8 @@ The rule, for pipes and for **every border** of the software (the borders of sha
 
 - Dashes are not "a dash length and a gap". They are a **sequence of segments**, each with a **length** and a **colour**, repeated along the line.
 - A gap is simply a segment with a **transparent** colour. Classic dashes: black 4 px, transparent 4 px. Two-colour dashes: red 4 px, black 4 px, repeated.
-- The sequence can be as long as the user wants (red, black, red, transparent...). Each segment can be deleted (see [PI-04](../../screens/pipes.md#pi-04--dash-sequence-editor)).
+- The sequence can be as long as the user wants (red, black, red, transparent...). Each segment can be deleted (see [PI-04](../../screens/pipes.md#pi-04--segment-list)).
+- It is set with the [segment list](../../controls/segment-list.md): one line per segment, its colour and opacity, its length; one line is a plain colour, so the fill needs no choice "colour or dash sequence"; a transparent segment is a line at 0 % opacity (Product Owner, 2026-11-24).
 - A body filled with a dash sequence shows dashes that run along the pipe from its start to its end.
 
 Example:

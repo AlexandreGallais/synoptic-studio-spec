@@ -17,6 +17,7 @@ Status: draft. Not validated.
 - With a modifier key held, they add or remove **10**.
 - The key: Shift, "or the same key" as the [precise move](../symbols/03-editor/precise-move.md), which does the opposite with the mouse (slower instead of faster). Proposal of the assistant: **Shift**, the usual key for a step of 10 in drawing software; the precise move then takes another key.
 - The value stays within the bounds of the field, when it has some (assumption of the assistant).
+- **No "px"**: a length is always in pixels, so the field never writes the unit (Product Owner, 2026-11-24). Another unit is written when it says something: % for an opacity, ° for an angle.
 
 ```mermaid
 flowchart LR
@@ -33,8 +34,8 @@ flowchart LR
 
 | Field | Value | Key | Result |
 | --- | --- | --- | --- |
-| Border size | 2 px | Arrow up | 3 px |
-| Border size | 2 px | Shift + arrow up | 12 px |
+| Border size | 2 | Arrow up | 3 |
+| Border size | 2 | Shift + arrow up | 12 |
 | Corner radius | 15 | Arrow down | 14 |
 
 ## Open questions

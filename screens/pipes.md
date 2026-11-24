@@ -10,7 +10,7 @@ The pipes are made in a Symbol Lib, on its page Pipes ([SY-00.4](symbols.md#sy-0
 flowchart LR
     LIB["Symbol Lib, page Pipes"] --> BASE["PI-01 Base pipe style"]
     LIB --> STY["PI-02 Pipe styles: Water, Oil, Steam..."]
-    STY --> DASH["PI-04 Dash sequence editor"]
+    STY --> DASH["PI-04 Segment list"]
     BASE --> PRE["PI-05 Preview"]
     STY --> PRE
     STY -.-> SYN["PI-06 Pipes in a synoptic, part 3"]
@@ -64,21 +64,21 @@ No colour and no dash in the base: the fills are in [PI-02](#pi-02--pipe-style).
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | PI-01.19 | Linked type | Select | First section. Optional; any type of Metadata. Taken by every pipe style that does not override it (2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#linked-type) |
-| PI-01.1 | Width | Number field (px) | Width of the body. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-01.1 | Width | Number field, no unit | Width of the body, in pixels. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.2 | Body fill | — | Removed: moved to the pipe styles ([PI-02.2](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.3 | Border on or off | — | Removed (2026-11-24): a border width of 0 is no border. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#the-base-pipe-style) |
-| PI-01.4 | Border width | Number field (px) | On both sides, the same. 0: no border. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-01.5 | Border position | Radio | Inside, middle, outside the edge of the body. Greyed out when the width is 0 (proposed). | Decided (greyed: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-01.4 | Border width | Number field, no unit | On both sides, the same. 0: no border. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-01.5 | Border position | Select | Inside, middle, outside the edge of the body; a select, not radios, as the border of a shape (2026-11-24). Greyed out when the width is 0 (proposed). | Decided (greyed: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.6 | Border fill | — | Removed: moved to the pipe styles ([PI-02.3](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-01.7 | Corner radius | Number field (px) | Section Corners. 0 keeps sharp angles; also shapes the bridges. The same for every pipe style. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-01.7 | Corner radius | Number field, no unit | Section Corners. 0 keeps sharp angles; also shapes the bridges. The same for every pipe style. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.8 | Moving dashes | — | Removed: no on or off; the movement comes from the direction ([PI-01.9](#pi-01--base-pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-01.9 | Direction | Select with a small icon inside to pick a signal | Section Movement, always shown, even without a type. The three items of the built-in enum "pipe direction" (stopped, start to end, end to start), or, with the icon, a signal of the linked type of that enum; without a type, the icon is greyed (2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-01.10 | Speed | Number field with a small icon inside to pick a signal (unit: Open) | Section Movement, under Direction. A fixed value is typed; the icon picks a signal of the linked type instead (decision 0041). | Decided (unit: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
-| PI-01.11 | Junction kind | Radio | Flat (the pipes join in one clean outline, no marker), circle, square. | Decided | [Junctions](../symbols/pipes/junctions.md) |
-| PI-01.12 | Junction size | Number field (px) | For a circle or a square only: greyed out when the kind is Flat (2026-11-24). Fixed or a multiple of the width: Open. Example: 12 px. | Decided (fixed or multiple: Open) | [Junctions](../symbols/pipes/junctions.md) |
+| PI-01.11 | Junction kind | Select | Flat (the pipes join in one clean outline, no marker), circle, square. A select rather than radios ([layout rule](README.md#a-select-rather-than-radios), 2026-11-24). | Decided | [Junctions](../symbols/pipes/junctions.md) |
+| PI-01.12 | Junction size | Number field, no unit | For a circle or a square only: greyed out when the kind is Flat (2026-11-24). Fixed or a multiple of the width: Open. Example: 12. | Decided (fixed or multiple: Open) | [Junctions](../symbols/pipes/junctions.md) |
 | PI-01.17 | Junction fill | — | Removed: the junction takes the body fill of the pipe style (2026-11-23). | Decided | [Junctions](../symbols/pipes/junctions.md) |
 | PI-01.18 | Junction border | — | Removed: the junction has the border of the pipe, with the same width and position. | Decided | [Junctions](../symbols/pipes/junctions.md) |
-| PI-01.13 | Crossing kind | Radio | Bridge (an arch), gap (the pipe underneath is cut in two), none (one passes over the other). | Decided | [Crossings](../symbols/pipes/crossings.md) |
+| PI-01.13 | Crossing kind | Select | A select rather than radios ([layout rule](README.md#a-select-rather-than-radios), 2026-11-24). Bridge (an arch), gap (the pipe underneath is cut in two), none (one passes over the other). | Decided | [Crossings](../symbols/pipes/crossings.md) |
 | PI-01.14 | Crossing size | — | Removed (2026-11-24): computed from the body width, so that every crossing looks the same; the bridge follows the corner radius. | Decided (formula: Open) | [Crossings](../symbols/pipes/crossings.md) |
 | PI-01.15 | End shapes | — | Removed: no end shapes; an arrow or a flange at the end of a pipe is a symbol (decision 0098). | Decided | [Pipes](../symbols/pipes/README.md) |
 | PI-01.16 | Preview | — | Always visible next to the style, redrawn at each change ([PI-05](#pi-05--preview)). | Decided | [Preview](../symbols/pipes/preview.md) |
@@ -101,14 +101,12 @@ mindmap
       Animations of the colours
     Body
       Width, the base's or its own, with a reset
-      Body fill
-        Colour
-        Dash sequence
+      Body fill, a segment list
+        One line, a plain colour
+        Several lines, dashes
     Border
       Width, the base's or its own, with a reset
-      Border fill
-        Colour
-        Dash sequence
+      Border fill, a segment list
     Corners, Junctions, Crossings
       Shown, set by the base
     Movement
@@ -124,10 +122,10 @@ The sections are those of [PI-01](#pi-01--base-pipe-style), in the same order. A
 | PI-02.1 | Name | — | Removed (2026-11-24, decision 0099): a pipe style has no name of its own; it shows its item of `pipe_style` ([PI-02.16](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#pipe-styles) |
 | PI-02.16 | Item of pipe_style | Read-only values | At the top, above the sections: the key, the display name and the description of the item this style draws, kept in the enum, not in the style (2026-11-24). Always read-only here, base item or not: changed in Metadata only (2026-11-24). | Decided | [The enum pipe_style](../symbols/pipes/pipe-styles.md#the-enum-pipe_style) |
 | PI-02.8 | Linked type | Select + reset | First section. The base's type until another is chosen; any type of Metadata (no library of types). Its signals feed Movement and the animations. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#linked-type) |
-| PI-02.12 | Body width | Number field (px) + reset | Section Body. The base's width until the user types one (gas pipes drawn thinner). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#overriding-a-value-of-the-base) |
-| PI-02.2 | Body fill | Radio + Colour or dash sequence | Section Body. A plain colour, or a dash sequence that runs from the start of the pipe to its end, edited in place ([PI-04](#pi-04--dash-sequence-editor)); example: black 10, transparent 20, red 2. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-02.13 | Border width | Number field (px) + reset | Section Border. The base's border width until the user types one, chosen apart from the body width (2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#overriding-a-value-of-the-base) |
-| PI-02.3 | Border fill | Radio + Colour or dash sequence | Section Border. Like the body. Greyed out when the border width is 0 (proposed). | Decided (greyed: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
+| PI-02.12 | Body width | Number field, no unit, + reset | Section Body. The base's width until the user types one (gas pipes drawn thinner). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#overriding-a-value-of-the-base) |
+| PI-02.2 | Body fill | [Segment list](../controls/segment-list.md) ([PI-04](#pi-04--segment-list)) | Section Body. One line: a plain colour; several lines: a dash sequence that runs from the start of the pipe to its end; example: black 100 % 10, black 0 % 20, red 100 % 2. No radio "colour or dash sequence" (2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#dash-sequences) |
+| PI-02.13 | Border width | Number field, no unit, + reset | Section Border. The base's border width until the user types one, chosen apart from the body width (2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#overriding-a-value-of-the-base) |
+| PI-02.3 | Border fill | [Segment list](../controls/segment-list.md) ([PI-04](#pi-04--segment-list)) | Section Border. Like the body. Greyed out when the border width is 0 (proposed). | Decided (greyed: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md#dash-sequences) |
 | PI-02.14 | Corners, Junctions, Crossings; border position | Read-only values, section tagged "Base" | The base's values, shown in their sections so that the user sees the whole pipe (accepted on 2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#the-same-sections-everywhere) |
 | PI-02.15 | Direction | Select with a small icon inside to pick a signal, + reset | Section Movement. The base's direction until another is chosen: stopped, start to end or end to start, chosen in the list, or a signal of the type of the built-in enum "pipe direction" picked with the icon (2026-11-24); no second signal. Overriding the type overrides the direction and the speed too; resetting the type gives back the base's. No type: only fixed values, the icon greyed. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-02.11 | Speed | Number field with a small icon inside to pick a signal, + reset (unit: Open) | Section Movement, under Direction. A fixed value is typed in the field; the icon inside picks a signal of the linked type instead, as for the bounds of a signal in Metadata (decision 0041). No radio "fixed or signal" (2026-11-24). | Decided (unit: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
@@ -148,29 +146,32 @@ Gaps:
 
 Removed on 2026-11-24 (decision 0098): a pipe has no start or end shape; an arrow, a flange or a cap at its end is a symbol with a connection point. The ID PI-03 is not reused.
 
-## PI-04 · Dash sequence editor
+## PI-04 · Segment list
 
-Path: wherever a fill or a border can take dashes: [PI-02](#pi-02--pipe-style), and the border of a shape ([SY-04](symbols.md#sy-04--drawing-mode)).
+Path: in place, wherever a fill or a border can take dashes: the body fill and the border fill of [PI-02](#pi-02--pipe-style), and the border of a shape ([SY-04](symbols.md#sy-04--drawing-mode)). The control is described in [Segment list](../controls/segment-list.md) (2026-11-24; it was a separate dash sequence editor).
 
 ```mermaid
 mindmap
-  root((PI-04 Dash sequence))
-    Segments in order
+  root((PI-04 Segment list))
+    Title, small plus on its right
+    Lines in order
+      Colour field
+        Colour and opacity
+        0 percent for a gap
       Length
-      Colour
-        Transparent for a gap
-    Add a segment
-    Remove a segment
+      Minus to remove
+    One line, a plain colour
+    Several lines, dashes
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| PI-04.1 | Segments | List | Repeated along the line, in order, as long as wanted: "black 4, transparent 4"; "black 10, transparent 20, red 2", then black, transparent, red again. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-04.2 | Length | Number field (px) | Per segment. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-04.3 | Colour | Colour, with transparent | A gap is a transparent segment. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-04.4 | Add a segment | Button (icon with a small +) | On the right of the title "Segments" ([layout rules](README.md#a-title-and-a-small--on-its-right), 2026-11-16). | Decided | [Layout rules](README.md#a-title-and-a-small--on-its-right) |
-| PI-04.5 | Remove a segment | Icon button (trash), on the line of each segment | Removes the segment from the sequence. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#dash-sequences) |
-| PI-04.6 | Reorder a segment | not said | — | Implied | — |
+| PI-04.1 | Lines | List | One line per segment, repeated along the line, in order, as long as wanted: "black 100 % 4, black 0 % 4"; "black 10, transparent 20, red 2", then black, transparent, red again. One line: a plain colour. | Decided | [Segment list](../controls/segment-list.md) |
+| PI-04.2 | Length | Number field, no unit | On each line, after the colour. | Decided | [Segment list](../controls/segment-list.md) |
+| PI-04.3 | Colour | [Colour field](../controls/colour-field.md) | Colour │ opacity on each line; a gap is a line at 0 %. | Decided | [Segment list](../controls/segment-list.md) |
+| PI-04.4 | Add a line | Button (small +) | On the right of the title of the section: Body fill, Border fill, Border ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Decided | [Segment list](../controls/segment-list.md) |
+| PI-04.5 | Remove a line | Icon button (−), at the end of each line | Removes the segment (2026-11-24: a −, no longer a bin). | Decided | [Segment list](../controls/segment-list.md) |
+| PI-04.6 | Reorder a line | not said | — | Implied | — |
 
 Gaps:
 
