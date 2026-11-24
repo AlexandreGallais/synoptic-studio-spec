@@ -63,6 +63,7 @@ A state that comes from the mouse or the keyboard is never an input. A sheet say
 
 - **Lines of a list**: rounded (`radius-sm`), `spacing-03` from the sides of their list and `spacing-01` apart, with no line under them except the header of a table.
 - **Selected**: what is selected and cannot be clicked again does not react to the mouse, except a `toggle-button` on and the + of a selected `tree-row`.
+- **Read only**: a value the user sees but cannot change here, such as an element inherited from a parent type. Never greyed as `disabled`, and the same look on every control that has it (`text-input`, `number-input`, `text-area`, `select-trigger`, `checkbox`, `radio`, `toggle`; 2026-11-24): no surface of its own (`layer-transparent`), a 1 px `border-subtle` outline, the value at full strength and without accent (text `text-primary`, a dot, a check mark or a knob `icon-primary`), and nothing that invites a click (no chevron, no hover, no press); a click does nothing.
 - **Dragging**: a line turns `dragging` only while its handle is held.
 - **Veils**: hover, press and drag are a dark veil over the component's background, transparent at rest (`layer-transparent`, `layer-hover`, `layer-pressed`, `layer-active`).
 - **Lists that open**: 280 high at most, then they scroll inside, `spacing-04` from the window's edge, the last item with the same margin as the first.

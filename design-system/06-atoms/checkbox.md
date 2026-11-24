@@ -21,6 +21,7 @@ A box that turns an option on or off, alone or for a line among many. Two to fiv
 | `checked` | `false`, `true`, `mixed` | `false` | variant `checked` |
 | `label` | text | — | none: its accessible name, or the text next to it |
 | `disabled` | boolean | `false` | `state=disabled` |
+| `readOnly` | boolean | `false` | `state=read-only` |
 
 ## Outputs
 
@@ -31,3 +32,4 @@ A box that turns an option on or off, alone or for a line among many. Two to fiv
 ## Behaviour
 
 - A click in focus goes to the next value in `default`, the state that has the hover.
+- `read-only`: the look of every read-only control ([Components](../03-components.md#rules-for-every-component)): a box `border-subtle` with no fill, its mark `icon-primary`.

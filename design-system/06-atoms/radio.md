@@ -31,4 +31,4 @@ A round button to pick one option of a small exclusive set. Never alone: always 
 ## Behaviour
 
 - A checked radio is not unchecked by a click: another radio of its group is chosen instead.
-- `read-only` (2026-11-24): the value of something the user cannot change here, such as an element inherited from a parent type. It stays legible, never greyed as `disabled` is: no fill of its own (`layer-transparent`), a ring `icon-secondary`, a dot `icon-primary`; a click does nothing.
+- `read-only`: the look of every read-only control ([Components](../03-components.md#rules-for-every-component)): a ring `border-subtle`, a dot `icon-primary`.
