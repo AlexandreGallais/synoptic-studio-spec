@@ -24,7 +24,7 @@ The width and the height of an object, set in the right-hand panel, as Figma doe
 
 ### Width and height linked
 
-- A **link** icon button, on the right of the line, keeps the ratio of the width and the height: changing one changes the other. It is the visible equivalent of the key that draws a square or a circle (assistant's proposal: it replaces the toggle "Link width and height" of [SY-04.15](../screens/symbols.md#panel-of-a-shape-options-by-tool)).
+- A **link** icon button, on the right of the line, keeps the ratio of the width and the height: changing one changes the other. It is the visible equivalent of the key that draws a square or a circle (assistant's proposal: it replaces the toggle "Link width and height" of [SY-04.15](../screens/symbols.md#panel-of-a-shape-geometry-and-options-by-tool)).
 
 ```mermaid
 block-beta
