@@ -34,7 +34,7 @@ Proposed:
 | The type of a placed symbol, a signal, a command or an enum it uses was deleted or changed (the table of [What breaks a link](../symbols/01-libraries-and-symbols.md#what-breaks-a-link)) | Error | Decided for symbols; applied to placed symbols |
 | The symbol of a placed symbol was deleted, or its Symbol Lib removed from the synoptic | Error | Proposed |
 | A sub-symbol in fault (its parent changed type) | Error | Decided (sub-symbols) |
-| A pipe style, or an end shape, of a pipe was deleted | Error | Proposed |
+| A pipe style of a pipe was deleted | Error | Proposed |
 | A link points to a synoptic or a placed symbol that no longer exists | Error | Proposed |
 | A reference of a view points to a placed symbol deleted from its installation | Error | Proposed |
 | A template enum of a placed symbol has no item | Warning | Decided (Metadata) |

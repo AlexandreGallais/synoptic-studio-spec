@@ -20,7 +20,6 @@ When the user edits the base pipe style or a pipe style in a Symbol Lib (body, b
 | Junction | One junction of the style, centred on the point where the branch leaves the pipe. |
 | Several junctions | A 3-way and a 4-way junction. |
 | Crossing | One crossing of the style, both ways. |
-| Start and end | End shapes of the list of the Pipes page on a pipe of the style (see [Pipe ends](ends.md)). An end shape being edited has its own preview: the shape on pipes of several styles (proposed, [PI-03](../../screens/pipes.md#pi-03--end-shape-editor)). |
 | Connected to a symbol | A pipe that arrives on a connection point. |
 
 - The cases are not editable by the user.

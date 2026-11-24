@@ -28,7 +28,7 @@ The screens of the symbol editor, the pipes and the synoptic are drawn as wirefr
 | --- | --- |
 | [Metadata](metadata.md) | The navigation bar, Types (tree and type editor with its five parts), Units, Enums, Designations; Flags is a part of the type editor. |
 | [Symbol editor](symbols.md) | The navigation bar, Symbol Libs, the left-hand panel of a Symbol Lib, the symbol editor (layout, floating bars, layers) and its seven modes, the advanced tools, the Enums page of a Symbol Lib. |
-| [Pipes](pipes.md) | The base pipe style, the pipe styles, the end shapes, the dash sequences, the preview, and pipes in a synoptic (part 3, preview). |
+| [Pipes](pipes.md) | The base pipe style, the pipe styles, the dash sequences, the preview, and pipes in a synoptic (part 3, preview). |
 | [Synoptic](synoptics.md) | The navigation bar, General, the editor and its modes (Build, Pipes, Annotate, Links, Test), the panel of a placed symbol, Faults, Placed symbols, Create a view, Publish. Extrapolated by the assistant on 2026-11-20. |
 
 ## Layout rules
@@ -230,7 +230,6 @@ flowchart TD
     MD09 -.->|"enums read only"| SY12
     SYP --> PI01["PI-01 Base pipe style"]
     SYP --> PI02["PI-02 Pipe style"]
-    SYP --> PI03["PI-03 End shape editor"]
     PI01 --> PI05["PI-05 Preview"]
     P3 -.-> PI06["PI-06 Pipes in a synoptic"]
 ```

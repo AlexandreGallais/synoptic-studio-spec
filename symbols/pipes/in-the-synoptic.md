@@ -12,8 +12,9 @@ Status: draft. Not validated. This page belongs to part 3 (the synoptic), which 
 - The angles take the **corner radius of the style**; there is no path kind to choose on a pipe.
 - **Crossing**: where a pipe passes over another, the editor computes a bridge, a gap or nothing, according to the pipe style (see [Crossings](crossings.md)).
 - **Which pipe is on top**: when the mouse is over a crossing, the editor highlights it. A click changes which of the two pipes passes over the other.
-- The user chooses the style of each pipe among those of the Symbol Lib, then its start and end shapes among the list of the Symbol Lib, or none (see [Pipe ends](ends.md)).
-- **What connects to what**: a pipe connects to a symbol (by its connection points) or to another pipe (a junction).
+- The user chooses the style of each pipe among those of the Symbol Lib.
+- **What connects to what**: a pipe connects to a symbol (by its connection points) or to another pipe (a junction). An end can also stay free.
+- A pipe has **no start or end shape**: an arrow, a flange or a cap at its end is a symbol with a connection point, placed there (decision 0098).
 
 ### A symbol connected to a pipe
 
@@ -38,7 +39,7 @@ flowchart LR
 Source: the second research report (`research/t4-…/rapport.md`, sections 3.1, 3.3, 3.5). To use when part 3 is written.
 
 - Drawing: Ignition draws orthogonal segments by default (Alt: steps of 15 degrees, Shift: free). Opinion: an **orthogonal lock** while drawing, like the angle lock of the pen.
-- The archived Figma page gives a pipe a panel: style (with "edit this style"), path kind (Straight, Right angles, Rounded, not kept: the corner radius of the style is enough), start and end, inline symbols with their position in percent, crossings (with "swap all").
+- The archived Figma page gives a pipe a panel: style (with "edit this style"), path kind (Straight, Right angles, Rounded, not kept: the corner radius of the style is enough), start and end (not kept: a symbol at the end, decision 0098), inline symbols with their position in percent, crossings (with "swap all").
 - **Inline symbol** (archived page, Plant 3D): right click on the pipe, pick a symbol with two connection points; it slides along the pipe, bends included, without leaving it; removed, the pipe keeps its place and points. Advised by the report, and decided (see above).
 - A branch leaves one pipe as a tree in the archived page and in Ignition: the rule kept (see [Junctions](junctions.md)).
 - Automatic routing (libavoid): not in the first version, the user draws by clicks.

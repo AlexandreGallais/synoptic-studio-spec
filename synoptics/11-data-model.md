@@ -16,7 +16,7 @@ The same as in Metadata:
 - A choice of the software is an English word in the JSON (`"installation"`, `"view"`), never a number.
 - A number typed for a signal is kept in the default unit of its quantity (decision 0051).
 
-Boxes of Metadata and of the Symbol Lib (`TYPE`, `PRESET`, `SIGNAL`, `FLAG`, `DESIGNATION`, `FACEPLATE_ELEMENT`, `SYMBOL`, `CONNECTION_POINT`, `PIPE_STYLE`, `END_SHAPE`) are only pointed to by a FK field (`symbol`, `preset`, `flag`...); they are not drawn here.
+Boxes of Metadata and of the Symbol Lib (`TYPE`, `PRESET`, `SIGNAL`, `FLAG`, `DESIGNATION`, `FACEPLATE_ELEMENT`, `SYMBOL`, `CONNECTION_POINT`, `PIPE_STYLE`) are only pointed to by a FK field (`symbol`, `preset`, `flag`...); they are not drawn here.
 
 ## The schema
 
@@ -93,14 +93,12 @@ erDiagram
     PIPE {
         uuid internal_id PK
         uuid pipe_style FK
-        uuid start_shape FK
         text name
     }
     PIPE_BRANCH {
         uuid internal_id PK
         uuid parent FK "the branch it leaves; empty for the trunk"
         real at "distance along the parent where it leaves"
-        uuid end_shape FK
     }
     PIPE_POINT {
         real x
@@ -167,7 +165,7 @@ erDiagram
 - **Only what differs from the preset is kept** (`VALUE_CHANGE`: start value, unit, decimals; `TEXT_CHANGE`: texts of the faceplate), decided on 2026-11-20: a placed symbol that changes nothing holds nothing, and follows its preset when the preset changes.
 - **A crossing keeps only the swaps**: the default rule (the last drawn passes over) needs nothing stored; the user's click stores which pipe passes over.
 - **A pipe is one tree** (decision 0094): `PIPE` holds its style and its branches, the trunk first. Each other branch names the branch it leaves (`parent`) and where along it (`at`). **Junctions are not stored**: they are computed from `parent` and `at`.
-- **Each branch has its own end**, and so its own end shape; the pipe has one start. Proposed by the assistant.
+- **Each branch has its own end**; the pipe has one start. Proposed by the assistant. No end shape is stored (decision 0098).
 - A pipe that ends on another pipe has no kind of end yet: it waits for the open question of [Junctions](../symbols/pipes/junctions.md#open-questions).
 - The content of an annotation (its shapes, its text, the signal of a value label) and of a scenario (its values) is not drawn yet.
 

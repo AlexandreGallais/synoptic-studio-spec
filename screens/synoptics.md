@@ -113,7 +113,7 @@ Path: Canvas › Pipes.
 | SN-05.3 | Orthogonal lock | Toggle | On by default; Shift frees. | Proposed | idem |
 | SN-05.4 | Edit points | Button (tool) | Drag a point or a segment; double click adds a point. | Proposed | [Pipes](../synoptics/05-pipes.md#editing-a-pipe) |
 | SN-05.5 | Crossing on hover, click | Canvas | Highlights, swaps. | Decided | [Pipes](../synoptics/05-pipes.md#crossings) |
-| SN-05.6 | Panel: style, start and end shapes | Selects | Edit this style. | Decided | [Pipes](../synoptics/05-pipes.md#the-panel-of-a-pipe) |
+| SN-05.6 | Panel: style | Select | Edit this style. No start or end shape (decision 0098). | Decided | [Pipes](../synoptics/05-pipes.md#the-panel-of-a-pipe) |
 | SN-05.7 | Panel: connected to, crossings, symbols on the pipe, name | Texts, lists, Swap all | — | Proposed | idem |
 | SN-05.8 | Panel: identity, preset, flags | Sections of SN-03 and SN-04 | When the style is linked to a type. | Proposed | [Pipes](../synoptics/05-pipes.md#a-pipe-whose-style-is-linked-to-a-type) |
 

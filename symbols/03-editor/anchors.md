@@ -17,7 +17,6 @@ The word "anchor" is used by several pages. They all mean the same thing, and th
 | [Group](../04-drawing-mode/group.md) | Place an absolute child on the group, and the children in a group with its own size. |
 | [Polygon](../04-drawing-mode/polygon.md) | Place the polygon in its box: a corner or a side touches the anchor. |
 | [Alignment mode](../06-alignment-mode/README.md) | Place the shapes to place on the reference, inside or outside. |
-| [Pipe ends](../pipes/ends.md) | Say where the pipe is attached to the end shape. |
 
 ## What the research found
 

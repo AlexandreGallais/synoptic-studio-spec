@@ -42,7 +42,6 @@ The base pipe style and each pipe style are shown with the **same sections, in t
 | Movement | Direction, speed | Each a value, or a signal of the linked type picked with the icon inside its field (see [Moving dashes](#moving-dashes)). Shown when a type is linked (assistant's reading). |
 
 - Junctions and crossings are parts of the style, not separate lists of the Symbol Lib. They are computed from the style; the user never draws them on each pipe.
-- The base pipe style has no start and end shapes: they have a list of their own on the Pipes page (see [Pipe ends](ends.md)).
 
 ### Pipe styles
 

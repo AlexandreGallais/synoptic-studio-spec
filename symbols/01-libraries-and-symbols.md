@@ -10,7 +10,7 @@ A **Symbol Lib** holds symbols. It is the only kind of library: there are no lib
 
 ### Symbol Lib
 
-- It holds two lists: its **symbols**, a **tree** where a sub-symbol sits under its parent, as in Metadata (decision 0045; see [Sub-symbols](12-sub-symbols.md)), then its **pipe styles**, a flat list. It also has one base pipe style, the shape of its pipes without colour, and the pipe styles give the fills. Junctions and crossings are parts of the styles (see [Pipe styles](pipes/pipe-styles.md)). The start and end shapes of the pipes have a list of their own, on the Pipes page (see [Pipe ends](pipes/ends.md)). A pipe style can be linked to a type, chosen among all the types of Metadata.
+- It holds two lists: its **symbols**, a **tree** where a sub-symbol sits under its parent, as in Metadata (decision 0045; see [Sub-symbols](12-sub-symbols.md)), then its **pipe styles**, a flat list. It also has one base pipe style, the shape of its pipes without colour, and the pipe styles give the fills. Junctions and crossings are parts of the styles (see [Pipe styles](pipes/pipe-styles.md)). Pipes have no start or end shapes: an arrow or a flange at the end of a pipe is a symbol (decision 0098). A pipe style can be linked to a type, chosen among all the types of Metadata.
 - **One list of symbols only**. There is no "static" or "dynamic" kind: every symbol is the same kind of object, and a symbol simply has a type or not yet, so that the software is simpler to understand at first.
 - It has a small **Enums** page: the enums of Metadata, read only, with the columns the library adds to them for the animations (see [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md)).
 - It has a name. Nothing else: the lists above are its content, not settings. The name is changed, and the library deleted, on its **General** page (decision 0089).
@@ -93,7 +93,7 @@ What the left-hand panel shows depends on the page chosen in the bar. Since 2026
 
 - An item of the symbol list shows a **thumbnail** and the **name** of the symbol.
 - The thumbnail is the symbol itself, or, as Figma does for its outline view, the symbol drawn with the outline of every shape only, without fills. Which one is kept is open.
-- The base pipe style is the first item of the left column of the Pipes page, above the title of the pipe styles, with a tag "Base"; the list of the start and end shapes comes after the pipe styles (accepted on 2026-11-24, see [Screens of the pipes](../screens/pipes.md#layout-of-the-page-pipes)).
+- The base pipe style is the first item of the left column of the Pipes page, above the title of the pipe styles, with a tag "Base" (accepted on 2026-11-24, see [Screens of the pipes](../screens/pipes.md#layout-of-the-page-pipes)).
 
 ```mermaid
 block-beta

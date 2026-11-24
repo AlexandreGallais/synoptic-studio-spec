@@ -82,7 +82,7 @@ In the order of the modes menu, which is the order of the work: draw, edit the p
 | [Hand](hand.md) | The Hand tool, in every mode. |
 | [Layers](layers.md) | The tree of the layers of the symbol, in the left-hand panel. |
 | [Precise move](precise-move.md) | A key that makes a dragged point or handle move pixel by pixel. |
-| [Anchors](anchors.md) | The nine named points of a box, used by groups, polygons, alignment and pipe ends. |
+| [Anchors](anchors.md) | The nine named points of a box, used by groups, polygons and alignment. |
 | [Advanced tools](expert-menu/README.md) | The second bar of the tools that are not for everyday drawing. |
 
 ## Where it is used

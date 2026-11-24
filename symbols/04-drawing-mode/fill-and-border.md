@@ -53,7 +53,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.18,
 - SVG 2 has no inner or outer stroke. Opinion: an open path has no inside, so only the **middle** position makes sense; inside and outside are greyed out. Confidence: medium.
 - Line caps: butt, round, square. Line joins: miter (with a limit, 4 by default, beyond which it becomes a bevel), round, bevel. Opinion: offer these three caps and three joins.
 - A border "in the middle" looks exactly like a native stroke. Opinion: allowing a native stroke under the hood **in this case only** would settle at once the dashes, the caps and the joins, and leave to the computation only the inside and outside borders. Two ways of rendering to maintain. Since then, dashes are sequences of several colours (2026-11-11), which a native stroke cannot draw in one piece: the native stroke would only help plain borders.
-- Arrows on a line: SVG markers exist (start, middle, end). Opinion: one single concept, the end shape of the Symbol Lib, for lines and pipes (see [Pipe ends](../pipes/ends.md)).
+- Arrows on a line: SVG markers exist (start, middle, end). Opinion: one single concept, the end shape of the Symbol Lib, for lines and pipes. The end shapes of pipes were removed (decision 0098): the arrows of a line are open.
 
 ### Gradients
 

@@ -24,7 +24,7 @@ Where the reports are, in the `synoptic-studio-spec` project (folders ignored by
 | 12. The assistant's questions | [Editor](03-editor/README.md), [Anchors](03-editor/anchors.md), [Select](03-editor/select.md), [Point editing mode](05-point-editing-mode/README.md), [Group](04-drawing-mode/group.md), [Animation mode](08-animation-mode/README.md), [Run mode](09-run-mode/README.md), [Connection points](pipes/connection-points.md) |
 | 13. Libraries | [Libraries and symbols](01-libraries-and-symbols.md) |
 | 14. Geometry of a symbol | [Editor](03-editor/README.md) |
-| 15. Open paths | [Fill and border](04-drawing-mode/fill-and-border.md), [Pipe ends](pipes/ends.md) |
+| 15. Open paths | [Fill and border](04-drawing-mode/fill-and-border.md), Pipe ends (page removed, decision 0098) |
 | 16. Boolean operations, duplication, distribution | [Boolean operations](03-editor/expert-menu/boolean-operations.md), [Placement and duplication](03-editor/expert-menu/placement-and-duplication.md), [Alignment mode](06-alignment-mode/README.md) |
 | 17. Colours | [Fill and border](04-drawing-mode/fill-and-border.md) |
 | 18. Texts that show a value | [Animation mode](08-animation-mode/README.md), [Text tool](04-drawing-mode/text.md) |
