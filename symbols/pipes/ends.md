@@ -14,7 +14,8 @@ A start shape and an end shape can be set on a pipe. They are made in a list of 
 - An end shape is drawn in a small editor of its own: a **box** of the size the user wants, with an **anchor** at each side and each corner of the box (see [Anchors](../03-editor/anchors.md)).
 - The user draws the shape freely inside the box, with the tools of the [drawing mode](../04-drawing-mode/README.md).
 - The anchor says where the pipe is attached to the shape, and so how the shape is placed on the end of the pipe.
-- The fill of the shape follows the colour of the pipe: when the pipe changes style, the end changes colour with it.
+- Each shape drawn in the box takes the **body fill** or the **border fill** of the pipe, or a **colour of its own**, chosen shape by shape; its border has the same choice (Product Owner, 2026-11-24). A shape that takes a fill of the pipe changes colour when the pipe changes style.
+- The shape keeps the **size of its box** on every pipe, whatever the width of the pipe style: the same arrow on a Gas pipe of 3 px and on a Water pipe of 6 px (Product Owner, 2026-11-24).
 - A pipe can have a start shape, an end shape, both, or none. The start and the end can be different shapes.
 
 ### The page of an end shape
@@ -79,7 +80,6 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.5, 
 - Four anchors on the sides (archived Figma page) or nine (current specs)?
 - Can every pipe style use every end shape of the list, or does a style restrict them?
 - The arrows of a line drawn in a symbol: their own shapes, or the end shapes of the Pipes page?
-- Fill of each shape: pipe body, pipe border or its own colour (proposed above), or the whole shape filled with the pipe colour? And when the pipe's fill is a dash sequence (Oil), which colour does the shape take?
+- When the pipe's fill is a dash sequence (Oil), which colour does a shape that takes that fill get?
 - How the shape sits on a pipe (proposed above): drawn for a pipe that arrives from the left, end point on the attach point, turned with the last segment, turned the other way at the start. Can it also be mirrored across the pipe?
-- Does the shape scale with the width of the pipe (a Gas pipe of 3 px and a Water pipe of 6 px), or keep the size of its box?
 - Is the end shape a symbol of the lib (a symbol without a type, with a connection point) or a separate kind of object?

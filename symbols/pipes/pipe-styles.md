@@ -23,7 +23,7 @@ The base pipe style and each pipe style are shown with the **same sections, in t
 | Movement | Direction signal; speed | The base's, or its own |
 
 - In a pipe style, an option set by the base is shown **read-only** with the base's value, its section tagged "Base", so that the user sees the whole pipe without going back to the base (accepted on 2026-11-24).
-- Movement in the base: assistant's reading, to confirm. Its signals belong to the linked type, so a base with a type chooses them too.
+- The base holds the movement too, with its linked type: its signals belong to that type (Product Owner, 2026-11-24).
 
 ### The base pipe style
 
@@ -68,7 +68,7 @@ The base pipe style and each pipe style are shown with the **same sections, in t
 - A value that is not overridden shows the base's value in its field, and follows the base when it changes.
 - Typing or choosing another value in the style overrides it, for this style only. Each value is overridden on its own.
 - An overridden value has a **reset** button next to its field: a click gives back the base's value. So it is always clear which values come from the base (Product Owner, 2026-11-24).
-- Overriding the linked type overrides the movement too, since its signals belong to the type; resetting the type brings back the base's movement (assistant's reading, to confirm).
+- Overriding the linked type overrides the movement too, since its signals belong to the type: the style then picks its own signals. Resetting the type brings back the base's movement (Product Owner, 2026-11-24).
 - **Nothing else can be overridden**: corners, junctions, crossings and the border position are the base's for every pipe style.
 
 ```mermaid
@@ -208,7 +208,6 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.2, 
 ## Open questions
 
 - Which properties of a style a signal can drive, beyond the speed, the direction and the colours?
-- Does the base pipe style hold the movement too, as its linked type, with a pipe style that overrides the type overriding the movement (assistant's reading)?
 - In which unit is the speed of the moving dashes set (pixels per second)?
 - A pipe linked to a type is one tree, one flow: do its branches share its values (assistant's reading), or can a branch have its own (a closed valve on one branch, stopping the movement downstream)?
 - Can a style hold several layers (the body, then a border, then a second line), or just the options above?

@@ -72,8 +72,8 @@ No colour and no dash in the base: the fills are in [PI-02](#pi-02--pipe-style).
 | PI-01.6 | Border fill | — | Removed: moved to the pipe styles ([PI-02.3](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.7 | Corner radius | Number field (px) | Section Corners. 0 keeps sharp angles; also shapes the bridges. The same for every pipe style. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.8 | Moving dashes | — | Removed: no on or off; the movement comes from the direction signal ([PI-01.9](#pi-01--base-pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
-| PI-01.9 | Direction | Select (signals of the linked type) | Section Movement, shown when a type is linked. One enum signal of the built-in enum "pipe direction": stopped, start to end, end to start. | Proposed (movement in the base) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
-| PI-01.10 | Speed | Number field with a small icon inside to pick a signal (unit: Open) | Section Movement, under Direction. A fixed value is typed; the icon picks a signal of the linked type instead (decision 0041). | Proposed (movement in the base) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
+| PI-01.9 | Direction | Select (signals of the linked type) | Section Movement, shown when a type is linked. One enum signal of the built-in enum "pipe direction": stopped, start to end, end to start. | Decided (shown only with a type: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
+| PI-01.10 | Speed | Number field with a small icon inside to pick a signal (unit: Open) | Section Movement, under Direction. A fixed value is typed; the icon picks a signal of the linked type instead (decision 0041). | Decided (unit: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-01.11 | Junction kind | Radio | Flat (the pipes join in one clean outline, no marker), circle, square. | Decided | [Junctions](../symbols/pipes/junctions.md) |
 | PI-01.12 | Junction size | Number field (px) | For a circle or a square only: greyed out when the kind is Flat (2026-11-24). Fixed or a multiple of the width: Open. Example: 12 px. | Decided (fixed or multiple: Open) | [Junctions](../symbols/pipes/junctions.md) |
 | PI-01.17 | Junction fill | — | Removed: the junction takes the body fill of the pipe style (2026-11-23). | Decided | [Junctions](../symbols/pipes/junctions.md) |
@@ -85,7 +85,6 @@ No colour and no dash in the base: the fills are in [PI-02](#pi-02--pipe-style).
 
 Gaps:
 
-- Movement in the base, with the linked type (assistant's reading, to confirm).
 - Usage counter "used by 38 pipes" (proposed).
 
 ## PI-02 · Pipe style
@@ -128,7 +127,7 @@ The sections are those of [PI-01](#pi-01--base-pipe-style), in the same order. A
 | PI-02.13 | Border width | Number field (px) + reset | Section Border. The base's border width until the user types one, chosen apart from the body width (2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#overriding-a-value-of-the-base) |
 | PI-02.3 | Border fill | Radio + Colour or dash sequence | Section Border. Like the body. Greyed out when the border width is 0 (proposed). | Decided (greyed: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.14 | Corners, Junctions, Crossings; border position | Read-only values, section tagged "Base" | The base's values, shown in their sections so that the user sees the whole pipe (accepted on 2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#the-same-sections-everywhere) |
-| PI-02.15 | Direction | Select (signals of the linked type) + reset | Section Movement. The base's signal until another is chosen. The signal says whether the dashes move and which way: stopped, start to end, end to start: one enum signal of the built-in enum "pipe direction", no second signal. No signal, or no type: the dashes do not move. | Decided (the base's: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
+| PI-02.15 | Direction | Select (signals of the linked type) + reset | Section Movement. The base's signal until another is chosen. The signal says whether the dashes move and which way: stopped, start to end, end to start: one enum signal of the built-in enum "pipe direction", no second signal. Overriding the type overrides the direction and the speed too; resetting the type gives back the base's. No signal, or no type: the dashes do not move. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-02.11 | Speed | Number field with a small icon inside to pick a signal, + reset (unit: Open) | Section Movement, under Direction. A fixed value is typed in the field; the icon inside picks a signal of the linked type instead, as for the bounds of a signal in Metadata (decision 0041). No radio "fixed or signal" (2026-11-24). | Decided (unit: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-02.9 | Animations | List, like [SY-08](symbols.md#sy-08--animation-mode) | Section Linked type. Output signals drive the colours, and more ("plenty of things"). | Decided (properties beyond these: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.4 | Dashes or not | — | Removed: the body fill and the border fill choose between a colour and a dash sequence. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
@@ -187,18 +186,18 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | PI-03.5 | Name of the end shape | Text field | Free text: Arrow, Flange, Cap. | Proposed | [Pipe ends](../symbols/pipes/ends.md#the-page-of-an-end-shape) |
 | PI-03.6 | Delete the end shape | Red button + warning | A whole thing ([layout rules](README.md#delete-a-warning-only-for-a-whole-thing)). | Proposed | [Pipe ends](../symbols/pipes/ends.md#the-page-of-an-end-shape) |
-| PI-03.1 | Box size | Number field (px) each | Width and height, the size the user wants. | Decided | [Pipe ends](../symbols/pipes/ends.md) |
+| PI-03.1 | Box size | Number field (px) each | Width and height, the size the user wants. The shape keeps this size on every pipe, whatever its width (2026-11-24). | Decided | [Pipe ends](../symbols/pipes/ends.md) |
 | PI-03.3 | Attach point | Grid of the nine anchors | Where the end point of the pipe is put. Nine anchors (specs) or four at the middle of the sides (archived Figma page): Open. | Decided (number: Open) | [Pipe ends](../symbols/pipes/ends.md) |
 | PI-03.2 | Drawing area | Editor | The box, its anchors, the chosen one marked, and a piece of pipe of the base style arriving from the left on it. | Decided (piece of pipe: Proposed) | [Pipe ends](../symbols/pipes/ends.md) |
 | PI-03.7 | Tool bar | Floating bar, at the bottom of the drawing area | Select, Hand, Group, Rectangle, Ellipse, Polygon, Pen: the tools of [SY-04](symbols.md#sy-04--drawing-mode), without Text. | Decided (tools of the drawing mode), Proposed (without Text) | [Pipe ends](../symbols/pipes/ends.md) |
 | PI-03.8 | Shapes | List | The shapes drawn in the box, one line each; a click selects. | Proposed | [Pipe ends](../symbols/pipes/ends.md#the-page-of-an-end-shape) |
-| PI-03.4 | Fill of the selected shape | Radio: Pipe body, Pipe border, Colour | The shape takes the body fill or the border fill of the pipe's style, or a colour of its own; its border has the same choice. The rule "the fill follows the pipe" is decided; the choice per shape is proposed. | Decided (follows the pipe), Proposed (choice per shape) | [Pipe ends](../symbols/pipes/ends.md) |
+| PI-03.4 | Fill of the selected shape | Radio: Pipe body, Pipe border, Colour | The shape takes the body fill or the border fill of the pipe's style, or a colour of its own; its border has the same choice, shape by shape (2026-11-24). | Decided | [Pipe ends](../symbols/pipes/ends.md) |
 | PI-03.9 | Preview | Fixed cases | The shape at the end and at the start of a pipe of several styles, on a straight pipe and after a bend, turned with the last segment. | Proposed | [Pipe ends](../symbols/pipes/ends.md#the-page-of-an-end-shape) |
 
 Gaps:
 
 - How the shape sits on a pipe: end point on the attach point, turned with the last segment, turned the other way at the start (proposed); mirrored across the pipe?
-- Does the shape scale with the width of the pipe, or keep the size of its box?
+- Colour of a shape that takes the pipe's fill when that fill is a dash sequence (Oil).
 - Can every pipe style use every end shape?
 
 ## PI-04 · Dash sequence editor
