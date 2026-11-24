@@ -17,7 +17,7 @@ The id of each icon, component and screen is in its sheet: [Icons](05-icons/READ
 | Organisms | [`630:107`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=630-107) | The organisms. |
 | Templates | [`630:108`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=630-108) | The layout of the screens. |
 | Metadata | [`630:109`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=630-109) | The screens of Metadata. |
-| Spec | [`466:5`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=466-5) | Wireframes of the specs of the symbol editor, the pipes and the synoptic, drawn before the design system; those of Metadata were removed on 2026-11-23. Not part of the library. |
+| Spec | [`466:5`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=466-5) | Wireframes of the specs of the symbol editor, the pipes and the synoptic, drawn before the design system; those of Metadata were removed on 2026-11-23. Not part of the library. Its section "Symbol mode · test screens (2026-11-23)" ([`776:81`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=776-81)) holds quick test screens, with no design-system component: SY-01, SY-12, PI-01, PI-02, then SY-04 in Drawing mode with nothing, a shape or a text selected (2026-11-24: [`841:246`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=841-246), [`843:280`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=843-280), [`844:315`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=844-315)). |
 | POC · … | [`5:119`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=5-119) and after | The old design system, for inspiration only; never changed. |
 
 ## Variables
