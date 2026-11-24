@@ -870,6 +870,16 @@ Decided by the Product Owner on 2026-11-17 (decision 0035, accepted on 2026-11-1
 - **The screen must make the difference explicit**: a global enum is the same everywhere, a template changes with each symbol. How it is shown is for the design system: the Product Owner asked the assistant to note it, not to explain it on the page itself ("il ne faut pas l'expliquer, mais toi, il faut que tu te le notes : il faudra trouver un moyen d'expliquer ça explicitement").
 - A Symbol Lib can add its own columns to a template as to a global enum (see [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md)).
 
+```mermaid
+flowchart LR
+    P["Enums page"] --> G["Global enum: items written here, the same everywhere"]
+    P --> T["Template: a name and a description, no items here"]
+    S1["Signal of type enum"] -->|"link"| G
+    S2["Signal of type enum"] -->|"link"| T
+    T -->|"placed in a synoptic"| W["Placed symbol: small warning, enum to complete"]
+    W -->|"items completed"| X["Switch ID 123: its own items"]
+```
+
 ### Built-in enums
 
 Decisions 0095 and 0099. Some enums come **with the software**, because a part of the software needs them: **pipe direction**, the values of the signal that says whether the dashes of a pipe move and which way (see [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes)), and **pipe style**, the kinds of content a pipe can hold, which each Symbol Lib draws as it wants (see [The enum pipe_style](../symbols/pipes/pipe-styles.md#the-enum-pipe_style)).
@@ -880,7 +890,9 @@ Decisions 0095 and 0099. Some enums come **with the software**, because a part o
 - **An enum whose `internal_id` is in the software's `enums.json` is a built-in enum**, whatever file it comes from, with the rules below (Product Owner, 2026-11-23: "dès qu'un UID d'un enum est dans les enums du logiciel [...] l'enum devient en mode read-only"; since decision 0099, items can be added to it).
 - A built-in enum **cannot be deleted**, and **its base items never removed** (the items the software ships).
 - In the interface, its **base items** (keys, display names, descriptions) and its description are **read-only**.
-- **The user can add items to it from the interface**, with the + of its items, never remove a base item (Product Owner, 2026-11-24: "dans les built-in enum, il faudrait pouvoir rajouter des items, mais jamais enlever ceux de base directement dans l'UI, et pas mettre tout en readonly bêtement"; decision 0099, replacing "by hand, never from the software" of 0095). The items the user added are changed and deleted like the items of any enum (assistant's reading).
+- **The user can add items to it from the interface**, with the + of its items, never remove a base item (Product Owner, 2026-11-24: "dans les built-in enum, il faudrait pouvoir rajouter des items, mais jamais enlever ceux de base directement dans l'UI, et pas mettre tout en readonly bêtement"; decision 0099, replacing "by hand, never from the software" of 0095). The items the user added are changed and deleted like the items of any enum (Product Owner, 2026-11-24: only the added item "qu'on puisse modifier"; the default items of `pipe_style` "ça permettra de le supprimer si on veut").
+- **The same rule for every built-in enum**, `pipe_direction` included, even where an added item does nothing (Product Owner, 2026-11-24: "je veux pas faire d'exceptions, parce que sinon, on va avoir des règles de partout").
+- **A built-in enum may ship with no base item**: `pipe_style` has none (see [The default copy of pipe_style](#the-default-copy-of-pipe_style)).
 - It is **always global**, never a template: its screen shows no kind.
 - Its **ID can be changed**: it comes with a default ID, and the user may rename it, as any enum.
 - A signal points to it as to any enum.
@@ -902,33 +914,36 @@ flowchart LR
     S["Internal enums.json of the software: pipe_direction"] --> M{"Same internal_id in the user's enums.json?"}
     U["User's enums.json: their enums, and their copies"] --> M
     M -- "No" --> A["The software's enum is used"]
-    M -- "Yes" --> B["The user's copy is used: their ID, the base items, the items they added"]
+    M -- "Yes" --> B["The user's copy is used: their ID, the base items if any, the items they added"]
     A --> L["List of built-in enums"]
     B --> L
 ```
 
-| Built-in enum | Default ID | Items (key: display name) | Status |
-| --- | --- | --- | --- |
-| Pipe direction | `pipe_direction` | 0: Stopped, 1: Start to end, 2: End to start | Three items, "Stopped" included, one signal for whether the dashes move and which way: decided (2026-11-24). ID, keys and display names: proposed |
-| Pipe style | `pipe_style` | Proposed: 0: Water, 1: Steam, 2: Oil, 3: Gas, 4: Air, 5: Electricity | A global built-in enum, items added by the user, each Symbol Lib drawing each item as it wants: decided (2026-11-24, decision 0099). ID `pipe_style`: decided. Base items: open |
-
-- Open: which other built-in enums the software needs.
-- **Items can be added to every built-in enum, `pipe_direction` included** (Product Owner, 2026-11-24: on `pipe_direction`, "le petit +", a line added that can be changed, the base ones not).
-- Open: what the dashes of a pipe do with an item the user added to `pipe_direction`, since the software only knows the base items.
 - **Adding items is the only change allowed to the base of the copy**, besides the ID of the enum (Product Owner, 2026-11-23: "la seule chose qu'il peut faire, c'est ajouter un item").
 - **The software checks the copy against its own built-in enum**, item by item: every item of the software must be in the copy, with the same key, the same display name and the same description (Product Owner, 2026-11-23: "ce qu'il y a à l'intérieur du logiciel viendra valider l'enum surchargé [...] ça viendra vérifier que la chose est bien construite").
 - **A copy that fails the check is a file with errors**: an item removed, an item whose key changed (`pipe_direction` without `1`), or an item whose display name or description changed. The software uses its own built-in enum instead, and lists the error (answers of 2026-11-23). See [A file with errors](checks-and-errors.md#a-file-with-errors).
 - **A "Restore" button removes the user's copy** from their `enums.json`: the enum goes back to its default ID and to the software's items, and loses the items the user added (answer of 2026-11-23). Shown only on an overridden built-in enum. Wording "Restore" proposed.
 
-```mermaid
-flowchart LR
-    P["Enums page"] --> G["Global enum: items written here, the same everywhere"]
-    P --> T["Template: a name and a description, no items here"]
-    S1["Signal of type enum"] -->|"link"| G
-    S2["Signal of type enum"] -->|"link"| T
-    T -->|"placed in a synoptic"| W["Placed symbol: small warning, enum to complete"]
-    W -->|"items completed"| X["Switch ID 123: its own items"]
-```
+#### The built-in enums of the software
+
+| Built-in enum | Default ID | Items (key: display name) | Status |
+| --- | --- | --- | --- |
+| Pipe direction | `pipe_direction` | 0: Stopped, 1: Start to end, 2: End to start | Three items, "Stopped" included, one signal for whether the dashes move and which way: decided (2026-11-24). ID, keys and display names: proposed |
+| Pipe style | `pipe_style` | None. The default copy of the user holds Water and perhaps a second item (below) | A global built-in enum, items added by the user, each Symbol Lib drawing each item as it wants: decided (2026-11-24, decision 0099). ID `pipe_style`, no base item: decided. Items of the default copy: open |
+
+- Open: which other built-in enums the software needs.
+- Open: what the dashes of a pipe do with an item the user added to `pipe_direction`, since the software only knows the base items.
+
+#### The default copy of pipe_style
+
+Product Owner, 2026-11-24 ("on va, en gros, créer d'office une surcharge dès qu'on démarre le logiciel, et on va mettre genre water dedans [...] Comme ça, ça permettra de le supprimer si on veut").
+
+- **`pipe_style` ships with no base item**: nothing in it is imposed on the user.
+- **The software writes a copy of `pipe_style` in the user's `enums.json` when it starts**, with a few items in it: **Water**, and perhaps a second one ("on pourra en mettre deux").
+- **These items are the user's, not base items**: the user changes and deletes them like any item they added, down to an empty `pipe_style`.
+- The copy is an ordinary override ([above](#overriding-a-built-in-enum)): the check against the software's enum passes, since the software's has no item.
+- Open: the items of the default copy (Water, and which second one), and their keys.
+- Open: when the copy is written: only if the user's `enums.json` holds no copy of `pipe_style` (assistant's reading of "dès qu'on démarre le logiciel"), so an emptied copy stays empty. After a **Restore**, which removes the copy, is it written again at the next start?
 
 ### Rules
 

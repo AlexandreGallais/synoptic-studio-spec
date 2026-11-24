@@ -46,6 +46,6 @@ The built-in enum `pipe_direction` selected: its three base items read-only, and
 
 ### MD-09 · Enums · built-in pipe_style
 
-The built-in enum `pipe_style` selected: its base items read-only, without delete button, and an item added by the user, editable, with its delete button (decision 0099).
+The built-in enum `pipe_style` selected: no base item; the items of its default copy (Water) and those the user added, all editable, each with its delete button (decision 0099).
 
 ![MD-09 · Enums · built-in pipe_style](images/md-09-enums-built-in-pipe-style.svg)
