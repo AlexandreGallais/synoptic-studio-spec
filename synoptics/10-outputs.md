@@ -39,6 +39,7 @@ How "really needed" is computed, by type or by placed symbol, and the format of 
 - **Publish** is a command of the synoptic (in its General page and in the top of the editor): it writes the published view, the configuration file and the signal list in an output folder of the project. Proposed.
 - The publish dialog lists the faults first; publishing with errors is allowed after a warning (see [Faults](08-faults.md#open-questions)). Proposed.
 - **Export an image** (SVG, PNG, PDF) of a synoptic, for documentation, without animation. Proposed.
+- **Embed the fonts**: an option of the publish and of the SVG export; it puts the fonts of the texts into the view, so that no font is needed next to it. It is chosen here, at the export of the views, never in the symbol editor (Product Owner, 2026-11-25; see [Text](../symbols/04-drawing-mode/text.md#fonts-of-the-software)).
 
 ```mermaid
 flowchart LR

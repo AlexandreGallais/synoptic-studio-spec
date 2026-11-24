@@ -20,6 +20,7 @@ block-beta
 | --- | --- |
 | Left-hand panel | The symbols and the pipe styles of the Symbol Lib, then the [layers](layers.md) of the open symbol (see [Libraries and symbols](../01-libraries-and-symbols.md)). |
 | Modes menu | A floating bar at the **top left of the drawing area**, **horizontal**, made of **icons only** (the name of each mode in its tooltip): every mode, in the order of the work, and the switch from one to another (Product Owner, 2026-11-23). |
+| Guides | A small floating bar **under the modes menu**, with the [layout guides](layout-guides.md) of the view (Product Owner, 2026-11-25). |
 | Tool bar | A floating bar over the drawing area, with the tools of the current mode. Its place is open: at the **bottom** or at the top. |
 | Advanced tools bar | A button of the tool bar shows or hides a second floating bar, **just above the tool bar**, with all the [advanced tools](expert-menu/README.md). |
 | Right-hand panel | The options of the selection; the type of the symbol (see [Type and faceplate](../02-type-and-faceplate.md)). |
@@ -83,6 +84,7 @@ In the order of the modes menu, which is the order of the work: draw, edit the p
 | [Layers](layers.md) | The tree of the layers of the symbol, in the left-hand panel. |
 | [Precise move](precise-move.md) | A key that makes a dragged point or handle move pixel by pixel. |
 | [Anchors](anchors.md) | The nine named points of a box, used by groups, polygons and alignment. |
+| [Layout guides](layout-guides.md) | Columns, rows and grids over the view, under the modes menu. |
 | [Advanced tools](expert-menu/README.md) | The second bar of the tools that are not for everyday drawing. |
 
 ## Where it is used

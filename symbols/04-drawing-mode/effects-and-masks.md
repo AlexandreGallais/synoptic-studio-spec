@@ -2,17 +2,81 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › Effects and masks
 
-Status: draft and the research report of 2026-11-11. Not validated.
+Status: draft, the research report of 2026-11-11, and the clip asked by the Product Owner on 2026-11-25. Not validated.
 
-Effects and masks are set from the right-hand panel, like the [fill and border](fill-and-border.md). The editor offers them in a menu, and the user writes nothing.
+Effects, clips and masks are set from the right-hand panel, in the section "Effects", after the [fill and border](fill-and-border.md). The editor offers them in a menu, and the user writes nothing.
 
 ## Rules
 
-- **Only what SVG does natively.** Every effect and every mask comes from the SVG itself: its filters, its `clipPath` and its `mask`. Nothing is simulated with copies or tricks. An effect that SVG does not do natively is not offered. This is why there is no "blur of what is behind the shape".
-- **Effects menu**: each shape has an "Effects" menu in the right-hand panel, to add, edit and remove effects.
-- **Mask**: a shape can be shown only through another shape. Example: a big circle, of which only the part inside a triangle is shown. The shape that cuts is chosen by the user.
-- **Performance comes first**: an effect is offered only if it keeps the performance objective (see the project criteria on gestures and 120 Hz). The goal: never offer something that lags.
+- **Only what SVG does natively.** Every effect comes from the SVG itself: its filters, its `clipPath` and its `mask`. Nothing is simulated with copies or tricks. An effect that SVG does not do natively is not offered. This is why there is no "blur of what is behind the shape".
+- **Performance comes first**: an effect is offered only if it keeps the performance objective (see the project criteria on gestures and 120 Hz). The goal: never offer something that lags; a heavy effect is useless (Product Owner, 2026-11-25).
 - If an effect or a setting makes the performance fall too much, it is not offered. The answer is "not possible".
+
+### The section "Effects"
+
+- A **+** on the right of the title "Effects" opens the menu of the effects offered (see the [catalogue](#catalogue-of-the-native-svg-effects)); the one chosen becomes a **line** of the section.
+- Each line: an **eye** that turns the effect off without removing it, the **name** of the effect, a **settings** button that opens its settings in a popup beside the panel (as the paint popup), and a **−** that removes it.
+- The lines are applied from the top down.
+- There is no "Mask" select any more in the panel: clip and mask are effects with their own shapes (Product Owner, 2026-11-25).
+
+### Clip
+
+- **What it does**: only the part of the shape inside the **clip shape** is shown; whatever goes beyond it is hidden. Example: a liquid level that rises inside a tank, cut by the outline of the tank; it allows many animations (Product Owner, 2026-11-25).
+- **In SVG**: a `clipPath`. Elsewhere it needs a group, a shape put in it and another shape set as the clip; here, the clip belongs to the shape itself, with no group to make (Product Owner, 2026-11-25).
+- **Adding it**: + of the section, then "Clip": a line "Clip" appears, with an **Edit** button (a pencil) instead of the settings button.
+- **Clip editing**: the Edit button, or the line selected and Enter, enters the clip editing of that shape:
+  - the shape stays selected and shown; the rest of the drawing is **dimmed**;
+  - a bar at the top of the drawing area says "Clip of Casing" and has a **Done** button (Escape does the same);
+  - the user draws the clip shape **in it**, with the Rectangle, Ellipse, Polygon and Pen tools; what is outside it is shown faded, so the user sees what will be hidden;
+  - the clip shapes are edited like any shape: points, size, position; they have no fill, no border and no effect of their own.
+- **In the layers**: the clip shapes are under their shape, in a line "Clip" folded by default, never at the level of the drawing.
+- **Several clip shapes** add up: what is inside any of them is shown.
+- **No clip shape yet**: the shape is shown whole, and the line says "Clip · empty".
+- The clip shape follows the shape: moved, resized or turned with it.
+
+### Mask
+
+- The same as the clip, with a soft edge: the clip shapes become **mask shapes** whose opacity gives the transparency of the shape (white shown, transparent hidden).
+- **In SVG**: a `mask`. It costs more than a clip (an image computed per pixel); it is offered only within the limit the POC sets (P7). A hard edge is always a clip.
+- Same line, same Edit button and same editing as the clip; the mask shapes have a fill (its opacity is what counts) and no border.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Drawing
+    Drawing --> ClipEditing: Edit on the line Clip, or Enter
+    ClipEditing --> Drawing: Done, or Escape
+    ClipEditing: Clip editing, the rest dimmed
+```
+
+### Catalogue of the native SVG effects
+
+Every effect SVG does natively, with what the specs do with it. An example of each is drawn in Figma, page Spec, row "Effects · catalogue" of the section "Symbol mode · test screens". "Proposed" follows the opinion of the research report (below), never a measure; the POC settles it.
+
+| Effect | SVG feature | What it does | In Synoptic Studio |
+| --- | --- | --- | --- |
+| Clip | `clipPath` | Shows the shape only inside other shapes, hard edge. | Effect "Clip", decided (2026-11-25); its limits measured by P7. |
+| Mask | `mask` | The same with a soft edge, by the opacity of the mask. | Effect "Mask", proposed: offered with a limit (P7). |
+| Linear gradient | `linearGradient` | Colours along a line. | Kind of fill, decided. |
+| Radial gradient | `radialGradient` | Colours around a centre. | Kind of fill, decided. |
+| Pattern | `pattern` | A small drawing repeated to fill the shape. | Kind of fill, open. |
+| Dashes | `stroke-dasharray` | Dashes of one colour on a stroke. | Replaced by the computed dash sequence of the border (several colours). |
+| Opacity | `opacity` | The whole element more or less transparent. | Proposed: offered as an effect "Opacity" (cheap). |
+| Drop shadow | `feDropShadow` | A blurred, offset copy behind the shape. | Proposed: offered with a limit (P2). A glow is a drop shadow without offset. |
+| Inner shadow | `feOffset`, `feGaussianBlur`, `feComposite` | A shadow inside the edge. | Proposed: offered only if P5 holds. |
+| Blur | `feGaussianBlur` | Blurs the shape itself. | Proposed: offered with a strict limit (P2). |
+| Colour change | `feColorMatrix`, `feComponentTransfer` | Greyscale, saturation, hue turn, brightness, contrast. | Proposed: offered with a limit, or as recomputed colours (P6). |
+| Blend mode | `mix-blend-mode` (CSS on SVG) | Mixes the colours with what is under the shape (multiply, screen...). | Not read by the research: refused until measured. |
+| Thicken, thin | `feMorphology` | Grows or shrinks the shape by pixels. | Refused (cost); the inside and outside border does it on the path. |
+| Noise, texture | `feTurbulence` | A noise image, for paper or metal. | Refused (cost). |
+| Distortion | `feDisplacementMap` | Moves the pixels by another image: waves, heat. | Refused (cost). |
+| Lighting, relief | `feDiffuseLighting`, `feSpecularLighting` | A light on a relief. | Refused (cost). |
+| Sharpen, emboss | `feConvolveMatrix` | A matrix applied to the pixels. | Refused (cost). |
+| Building blocks | `feBlend`, `feComposite`, `feFlood`, `feMerge`, `feOffset`, `feTile`, `feImage` | The pieces the effects above are made of. | Not offered alone. |
+| Arrow heads | `marker` | A shape at the start, the middle or the end of a line. | Open (end shape of a line, see [Fill and border](fill-and-border.md#open-paths)). |
+| Text border | `stroke` with `paint-order` | A true stroke under the letters. | Decided for the text (see [Text](text.md)). |
+| Text along a path | `textPath` | Letters following a curve. | Refused first (research). |
+
+- **Offset of a path** (Inkscape's "Dynamic offset", "Linked offset", Path menu): not an SVG effect, a computation that makes another path. Not an effect here; the inside and outside border of a shape covers its common use.
 
 ## What the research found
 

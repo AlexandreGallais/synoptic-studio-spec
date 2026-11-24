@@ -198,6 +198,7 @@ Path: General › Publish, or the top of the editor. A dialog.
 | SN-12.3 | Output folder | Text, read only | A folder of the project. | Proposed | idem |
 | SN-12.4 | Export an image | Select (SVG, PNG, PDF) + button | Without animation. | Proposed | idem |
 | SN-12.5 | Publish, Cancel | Buttons | — | Proposed | idem |
+| SN-12.6 | Embed the fonts | Toggle | Puts the fonts of the texts into the published view and the SVG export; moved here from the text panel of the symbol editor (2026-11-25). | Decided | [Outputs](../synoptics/10-outputs.md) |
 
 Gaps:
 

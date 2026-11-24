@@ -163,7 +163,8 @@ mindmap
 | SY-03.14 | Unfold all, fold all | Button each | Every group of the tree. | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.15 | Line of a layer | — | Name; icon of its kind, hide, lock proposed. | Decided (name), Proposed (the rest) | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.16 | Undo, redo | not said | The undo history keeps every action (decision 0093). No save: each change is written as it is made. | Decided (history, no save), Open (place) | [Files and conflicts](../storage/files-and-conflicts.md#undo-history) |
-| SY-03.17 | Grid, snapping, guides | not said | Minimum set proposed by the research. | Proposed | [Editor](../symbols/03-editor/README.md) |
+| SY-03.17 | Layout guides | Button in a floating bar under the modes menu, then a popup | + Column, + Row, + Grid; one line per guide with its value and a −; an eye hides them all; dragged on the drawing (2026-11-25; form proposed). | Decided (place), Proposed (form) | [Layout guides](../symbols/03-editor/layout-guides.md) |
+| SY-03.18 | Snapping | not said | Minimum set proposed by the research; snaps to the guides too. | Proposed | [Editor](../symbols/03-editor/README.md) |
 
 Gaps:
 
@@ -189,15 +190,19 @@ mindmap
       Pen
       Text
     Right-hand panel of a shape
-      Size, W and H
-      Fill, a colour field
+      Options that make the shape, polygon
+      Geometry
+        W and H
+        X, Y, rotation
+        Placement in the group
+        Corner radius
+      Fills, stacked
       Border, a segment list
         Lines, colour and length
-        Size
-        Position
+        Size and position
       Effects
-      Mask
-      Options of the shape
+        Clip, its editing
+        Mask, its editing
 ```
 
 ### Tool bar
@@ -212,57 +217,60 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-04.4 | Fill | [Colour field](../controls/colour-field.md) | One line: swatch, colour │ opacity (2026-11-24). The swatch opens the popup of the kinds: plain colour, linear gradient (stops, angle), radial gradient (stops, centre); no "Kind" select. A − removes the fill, a + on the title adds one back; no kind "None" (2026-11-24). | Decided (field, − and +), Proposed (kinds) | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#how-the-fill-is-set) |
+| SY-04.4 | Fills | [Colour field](../controls/colour-field.md) per line, + on the title | Several fills stacked, the top line on top; the + adds one, the − of a line removes it (2026-11-25). Each line: swatch, colour │ opacity; the swatch opens the paint popup: Plain colour, Linear, Radial (pattern: Open), eyedropper, hue and opacity sliders, Hex, HSL, HSB (2026-11-25). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#several-fills) |
 | SY-04.5 | Border | [Segment list](../controls/segment-list.md), small + on the title | A shape can have a border; a group cannot. The + adds a line (2026-11-24). No line: no border; no toggle (2026-11-24). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
-| SY-04.6 | Border size | Number field, no unit | Under the lines. Example 2. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
-| SY-04.7 | Border position | Select | Under the lines, next to the size: Outside, Middle, Inside; a select, not radios (2026-11-24). An open path: Middle only, the select greyed (proposed). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
+| SY-04.6 | Border size | Number field, no unit | Under the lines, on the line of the position. Example 2. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
+| SY-04.7 | Border position | Select | Next to the size: Outside, Middle, Inside; a select, not radios (2026-11-24). An open path has the three too, Inside and Outside on one side of the line (2026-11-25). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-of-an-open-path) |
 | SY-04.8 | Colour of a line of the border | [Colour field](../controls/colour-field.md) | Colour │ opacity on each line; 0 % for a gap. A gradient in a line: Open. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
 | SY-04.9 | Dashes of the border | Lines of the segment list | One line: a plain border; two lines or more: a dash sequence, each line a colour and a length, repeated (2026-11-24; replaces the editor [PI-04](pipes.md#pi-04--segment-list) opened from the panel). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
-| SY-04.10 | Caps and joins | not said (select each) | Butt, round, square; miter, round, bevel. For open paths. | Proposed | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md) |
-| SY-04.11 | Effects menu | List + Button | Add, edit, remove; native SVG only; each effect kept only if it holds the performance. | Decided | [Effects and masks](../symbols/04-drawing-mode/effects-and-masks.md) |
-| SY-04.12 | Effects offered | Select | Cut, gradients, dashes, colour change, drop shadow, blur, mask, inner shadow: each subject to the POC. | Proposed | [Effects and masks](../symbols/04-drawing-mode/effects-and-masks.md) |
-| SY-04.13 | Mask | not said (select a shape) | The shape that cuts is chosen by the user. | Decided | [Effects and masks](../symbols/04-drawing-mode/effects-and-masks.md) |
+| SY-04.10 | Caps and joins | — | Removed (2026-11-25): not offered. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-of-an-open-path) |
+| SY-04.11 | Effects | List, + on the title | The + opens the menu of the effects offered; each line: eye, name, settings button (a popup), −; applied from the top down. | Decided | [Effects and masks](../symbols/04-drawing-mode/effects-and-masks.md#the-section-effects) |
+| SY-04.12 | Effects offered | Menu of the + | Clip, mask, opacity, drop shadow, inner shadow, blur, colour change: each subject to the POC; the catalogue of every native SVG effect says which are refused. | Proposed | [Effects and masks](../symbols/04-drawing-mode/effects-and-masks.md#catalogue-of-the-native-svg-effects) |
+| SY-04.13 | Clip, mask | Line of the effects, Edit button | The clip or mask shapes belong to the shape; Edit enters the clip editing (SY-04.39). No "Mask" select any more (2026-11-25). | Decided (clip), Proposed (mask) | [Effects and masks](../symbols/04-drawing-mode/effects-and-masks.md#clip) |
+| SY-04.39 | Clip editing | State of the drawing area | The shape stays shown, the rest dimmed; a bar "Clip of …" with Done at the top; the user draws the clip shapes with Rectangle, Ellipse, Polygon, Pen; Escape leaves. | Decided (2026-11-25), Proposed (bar) | [Effects and masks](../symbols/04-drawing-mode/effects-and-masks.md#clip) |
 
-### Panel of a shape: options by tool
+### Panel of a shape: geometry and options by tool
+
+The order of the panel: the options that make the shape (polygon), the geometry, the fills, the border, the effects ([Geometry](../symbols/04-drawing-mode/geometry.md#order-of-the-right-hand-panel), 2026-11-25).
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-04.36 | Rectangle, ellipse, polygon: width, height | [Size fields](../controls/size-fields.md), always fixed | W and H on one line, no unit, no mode (a shape does not hug a content). | Proposed | [Size fields](../controls/size-fields.md) |
-| SY-04.14 | Rectangle: corner radius | Number field, no unit | For the whole rectangle. | Decided | [Rectangle](../symbols/04-drawing-mode/rectangle.md) |
-| SY-04.15 | Rectangle, ellipse, polygon: link width and height | Icon button (link), at the end of the line W, H | Visible equivalent of the square or circle key. An icon on the size line rather than a toggle of its own (assistant, 2026-11-24). | Decided (link), Proposed (icon on the line) | [Size fields](../controls/size-fields.md#width-and-height-linked) |
-| SY-04.16 | Polygon: number of sides | Number field | 3 to 20. | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
+| SY-04.36 | Width, height | [Size fields](../controls/size-fields.md) | W and H on one line, no unit; always fixed for a rectangle, an ellipse, a polygon, a path; Fixed or Hug for a group and a text. | Decided | [Geometry](../symbols/04-drawing-mode/geometry.md) |
+| SY-04.37 | X, Y | Number field each | Under W and H, in pixels, no unit; on every element (2026-11-25). | Decided | [Geometry](../symbols/04-drawing-mode/geometry.md) |
+| SY-04.38 | Rotation | Number field, degrees | On the line of X and Y; on every element (2026-11-25). | Decided | [Geometry](../symbols/04-drawing-mode/geometry.md) |
+| SY-04.14 | Corner radius | Number field, no unit | Under the height (2026-11-25): for the whole rectangle, and for every corner of a path drawn with the pen. | Decided | [Rectangle](../symbols/04-drawing-mode/rectangle.md), [Pen](../symbols/04-drawing-mode/pen.md#panel-of-a-path) |
+| SY-04.15 | Link width and height | Icon button (link), at the end of the line W, H | Visible equivalent of the square or circle key. An icon on the size line rather than a toggle of its own (assistant, 2026-11-24). | Decided (link), Proposed (icon on the line) | [Size fields](../controls/size-fields.md#width-and-height-linked) |
+| SY-04.16 | Polygon: number of sides | Number field | 3 to 20; first in the panel (2026-11-25). | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
 | SY-04.17 | Polygon: how it fills its box | Select | Filled, Equilateral (a third mode "like Figma": Open, advised against). A select rather than radios ([layout rule](README.md#a-select-rather-than-radios), 2026-11-24). | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
-| SY-04.18 | Polygon: anchor | not said (9-point grid) | An anchor of the box, and whether a corner or a side touches it. | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
+| SY-04.18 | Polygon: anchor | 9-point grid + select | An anchor of the box, and whether a corner or a side touches it. | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
 | SY-04.19 | Group: width, height | [Size fields](../controls/size-fields.md), Fixed or Hug | W and H on one line; each value always shown, in pixels, no unit; the mode in the field, with a small arrow that opens a menu Fixed, Hug (2026-11-24). Hug by default. | Decided | [Group](../symbols/04-drawing-mode/group.md#two-sizes-hug-or-fixed) |
-| SY-04.20 | Group: placement of the children | not said (9-point grid) | Centred by default (2026-11-24), or aligned left, right, top, bottom, with anchors; no flex. | Decided | [Group](../symbols/04-drawing-mode/group.md#layout-of-the-children) |
-| SY-04.21 | Child: absolute | Toggle + two anchors | Anchor of the group, anchor of the child. | Decided | [Group](../symbols/04-drawing-mode/group.md) |
+| SY-04.20 | Group: placement of the children | 9-point grid | Centred by default (2026-11-24), or aligned left, right, top, bottom, with anchors; no flex. | Decided | [Group](../symbols/04-drawing-mode/group.md#layout-of-the-children) |
+| SY-04.21 | Child: placement in the group | Select + 9-point grid | Group (default), Anchored (an anchor of the group; a second grid for the anchor of the child makes it absolute), Free (X and Y typed) (2026-11-25). | Decided (choice), Proposed (form) | [Geometry](../symbols/04-drawing-mode/geometry.md#position-in-the-group) |
 | SY-04.22 | Group: create | Button (tool), Ctrl+G, right click "Group" | Three ways. | Decided | [Group](../symbols/04-drawing-mode/group.md) |
 
 ### Panel of a text
 
+In order: geometry, font, colour, paragraph, effects (2026-11-25: "plus compactes et moins fouillis").
+
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-04.23 | Font family | Select | Fonts bundled with the software only (OFL proposed). | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.24 | Size | Number field | — | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.25 | Bold | Button | There by default, next to the weight list. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.26 | Weight | Select | Every weight the font has. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.27 | Italic | Button | Only when the font has a real italic. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.28 | Text colour, background colour | [Colour field](../controls/colour-field.md) each | Swatch, colour │ opacity (2026-11-24). | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.29 | Text border | Small + on the title, a [colour field](../controls/colour-field.md) and a size | Native SVG stroke; the research says it is simple. The + adds it, a − removes it, as the border of a shape; one colour only, no dashes (assistant, 2026-11-24). | Decided (to keep: Open), Proposed (form) | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.30 | Lines | Toggle each + colour | Underline, strikethrough, line above. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.31 | Alignment | Two selects | Horizontal: left, centre, right; vertical: top, middle, bottom. Selects rather than radios ([layout rule](README.md#a-select-rather-than-radios), 2026-11-24). | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.32 | Spacing | Number field each | Letter spacing, word spacing, line height. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.33 | Wrapping | Toggle | Lines wrap in the box. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.34 | Fit mode | Select | Fit to the glyphs, or fit to the line. A select rather than radios ([layout rule](README.md#a-select-rather-than-radios), 2026-11-24). | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.35 | Embed the fonts | Toggle | In the exported SVG. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
+| SY-04.34 | Box of the text | [Size fields](../controls/size-fields.md), Fixed or Hug, then a select | W and H of the box, Fixed or Hug (2026-11-25); in Hug, the fit mode: Fit to the glyphs, or fit to the line. | Decided | [Text](../symbols/04-drawing-mode/text.md#size-of-the-box) |
+| SY-04.23 | Font family | Select | Fonts bundled with the software only (OFL proposed). | Decided | [Text](../symbols/04-drawing-mode/text.md#font) |
+| SY-04.24 | Size | Number field | On the line of the style. | Decided | [Text](../symbols/04-drawing-mode/text.md#font) |
+| SY-04.26 | Style | Select | Every weight of the font, each with its italic when the font has a real one: Regular, Italic, SemiBold, SemiBold Italic... (2026-11-25). | Decided | [Text](../symbols/04-drawing-mode/text.md#font) |
+| SY-04.25 | Bold, italic | — | Removed (2026-11-25): the style select holds them. | Decided | [Text](../symbols/04-drawing-mode/text.md#font) |
+| SY-04.28 | Text colour | [Colour field](../controls/colour-field.md) | Swatch, colour │ opacity. No background colour (removed 2026-11-25). | Decided | [Text](../symbols/04-drawing-mode/text.md#colour-and-border) |
+| SY-04.29 | Text border | Small + on the title, a [colour field](../controls/colour-field.md) and a size | A true SVG stroke under the letters (2026-11-25). The + adds it, a − removes it; one colour, no dashes, no position. | Decided | [Text](../symbols/04-drawing-mode/text.md#colour-and-border) |
+| SY-04.31 | Alignment | 9-point grid | The place of the text in its box (2026-11-25; replaces the two selects). | Decided | [Text](../symbols/04-drawing-mode/text.md#paragraph) |
+| SY-04.32 | Spacing | Number field each, on one line | Letter spacing 0, word spacing 0, line height Auto. | Decided | [Text](../symbols/04-drawing-mode/text.md#paragraph) |
+| SY-04.33 | Wrapping | Toggle | Lines wrap in the box. | Decided | [Text](../symbols/04-drawing-mode/text.md#paragraph) |
+| SY-04.30 | Lines | Three toggle icon buttons on one line, then one colour field | Underline, strikethrough, line above, each on with the others; the colour shown once one is on. | Decided (lines), Proposed (form) | [Text](../symbols/04-drawing-mode/text.md#paragraph) |
+| SY-04.35 | Embed the fonts | — | Removed from the text panel (2026-11-25): an option of the export of the views ([SN-12.6](synoptics.md#sn-12--publish)). | Decided | [Outputs](../synoptics/10-outputs.md) |
 
 Gaps:
 
-- Rotation and mirror of a shape: no control anywhere (the research proposes rotation as a property).
-- Position (X, Y) of the selected shape: never listed as fields of the panel (width and height: proposed, SY-04.36).
-- Opacity of a whole shape or layer.
+- Mirror of a shape: no control (the research proposes to recompute it in the points).
 - Formatting part of a text ("format a part of it"): which options apply to a part, which to the whole text?
-- Where is the "embed the fonts" option: on each text, or in the export?
 
 ## SY-05 · Point editing mode
 

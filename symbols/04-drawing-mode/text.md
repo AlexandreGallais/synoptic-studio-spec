@@ -21,10 +21,20 @@ The last two are set in the [Animation mode](../08-animation-mode/README.md).
 - A text is edited like in a word processor: the user can format a part of it.
 - Resizing the box of a text enlarges the text zone only, never the size of the text (see [Select](../03-editor/select.md)).
 
+### Panel of a text
+
+In this order, each section compact (Product Owner, 2026-11-25: "plus lisibles, plus compactes et moins fouillis"):
+
+1. **Geometry**: the box and its place (see below and [Geometry](geometry.md)).
+2. **Font**: family, then size and style on one line.
+3. **Colour**: the text colour, then its border.
+4. **Paragraph**: alignment, spacing, wrapping, lines.
+5. **Effects**, as every shape.
+
 ### Size of the box
 
-- The editor computes the size of the box from the font.
-- **Fit mode**: when the box fits its text, the user chooses what it fits.
+- **W** and **H** of the box, with the [size fields](../../controls/size-fields.md): each **Fixed** (the size typed) or **Hug** (the box fits its text) (Product Owner, 2026-11-25: "définir le width et le height de la box, ou alors mettre fit").
+- **Fit mode**, shown when a field is in Hug: what the box fits, in a select.
   - **Fit to the glyphs**: the box wraps the text as drawn.
   - **Fit to the line**: the box follows the line of the text, its baseline. A "g" has a tail that goes below the line, an "a" starts on the line. In this mode the box does not change because of such letters. The goal is to align texts of different font sizes on the same line, for a better look.
 
@@ -33,27 +43,26 @@ The last two are set in the [Animation mode](../08-animation-mode/README.md).
 | Option | What it does |
 | --- | --- |
 | Family | The font, chosen among the fonts of the software (see below). |
-| Size | The font size. |
-| Weight | All the weights the font has, not only bold. The editor reads what the font offers. |
-| Bold button | A button, there by default, to make it simple to understand. The list of all the weights is next to it. |
-| Italic | Offered when the font has an italic. To check whether every font does. |
+| Size | The font size, on the line of the style. |
+| Style | One select with every weight the font has and, for each, its italic when the font has a real one, as Figma does: Regular, Italic, Medium, Medium Italic, SemiBold, SemiBold Italic, Bold... The editor reads what the font offers. No bold button and no italic button (Product Owner, 2026-11-25: a font is chosen once, "on n'est pas sur Word"). |
 
-### Colours and lines
+### Colour and border
 
-- **Text colour** and **background colour** (highlight).
-- **Text border**: wanted if SVG does it natively, with the SVG stroke of the text, never a path made from the letters. Example: a white text with a white border stays readable on any background colour. Not a priority; dropped if it is not simple.
-- **Lines**: underline, strikethrough and line above, at the bottom, in the middle and at the top of the text. The colour of the line can be edited.
+- **Text colour**: one [colour field](../../controls/colour-field.md).
+- **No background colour**: the background of a text is not coloured, for now (Product Owner, 2026-11-25: "jamais vu une utilisation").
+- **Text border**: a true SVG stroke of the letters, never a path made from them nor a simulated border (Product Owner, 2026-11-25: useful on desks, a white text with a dark border stays readable on any background). A + on the title "Border" adds it: a colour field and a size; a − removes it. One colour, no dashes, no position: the stroke is drawn under the letters (`paint-order: stroke`).
 
-### Placement and spacing
+### Paragraph
 
-- **Alignment**: left, centre, right, and top, middle, bottom, in the box.
-- **Spacing**: letter spacing, word spacing, line height.
-- **Wrapping** of the lines in the box.
+- **Alignment**: a 9-point [anchor](../03-editor/anchors.md) grid, the place of the text in its box: left, centre or right, and top, middle or bottom, in one click (Product Owner, 2026-11-25: "un truc d'ancre... plus simple visuellement").
+- **Spacing**: letter spacing, word spacing and line height, on one line; Auto for the line height and 0 for the others by default (Product Owner, 2026-11-25: "parfait").
+- **Wrapping** of the lines in the box: a toggle.
+- **Lines**: underline, strikethrough and line above, at the bottom, in the middle and at the top of the text, three toggle icon buttons on one line, each can be on with the others; once one is on, the colour of the lines shows under them, one colour field for all.
 
 ### Fonts of the software
 
 - Only the fonts of the software are offered. They are chosen among the fonts free to be put in SVG files (licence).
-- **Embedding**: an option puts the fonts directly into the exported SVG document, so that no font is needed next to it. The user chooses whether to embed or not.
+- **Embedding** the fonts in the exported document is not set in the symbol editor: it is an option of the export of the views (Product Owner, 2026-11-25; see [Outputs](../../synoptics/10-outputs.md)).
 
 ## What the research found
 
@@ -73,4 +82,3 @@ For a text that shows a value (number format, missing value, text that becomes a
 ## To decide by the Product Owner
 
 1. OFL fonts only, embedded whole?
-2. The text border is native: keep it in the specs (it was "not a priority, dropped if not simple")?

@@ -24,6 +24,17 @@ flowchart LR
     A --> C["Press and drag on point B: curve"]
 ```
 
+## Panel of a path
+
+What the right-hand panel shows for a path drawn with the Pen, open (a line) or closed, in the order of [Geometry](geometry.md#order-of-the-right-hand-panel):
+
+- **Geometry**: size, position, rotation.
+- **Corner radius**, under the height: it rounds every corner of the path at once, as long as the corners are in the same path (Product Owner, 2026-11-25: "tant que ça reste dans le même objet"). A point given its own radius or its handles in the [point editing mode](../05-point-editing-mode/README.md) keeps it.
+- **Fill**, the same list as the other shapes; an open path has none by default (assumption).
+- **Border**: its lines, its size and its position **Middle, Inside or Outside**, also for an open path (see [Fill and border](fill-and-border.md#border-of-an-open-path)).
+- **No caps and no joins**: not offered (Product Owner, 2026-11-25).
+- **Effects**, as every shape.
+
 ## The two buttons of the Pen
 
 While the Pen is used, the editor shows two buttons, so that the user never has to hunt for how to do things. Like every shortcut, each one can also be done with a key, but the button is always there (see the rule on visible equivalents in the [editor](../03-editor/README.md)).

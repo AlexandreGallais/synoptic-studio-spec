@@ -20,6 +20,7 @@ The polygon is drawn by dragging a box, like the rectangle and the ellipse. It b
   - a **corner** of the polygon touches the anchor;
   - a **side** of the polygon touches the anchor.
 - Example: "a side always touches the left anchor, whatever the number of sides".
+- **In the panel**: the options of the polygon (sides, how it fills its box, anchor, what touches it) come **first**, before the size and the position, since they make its shape (Product Owner, 2026-11-25); then the [geometry](geometry.md), the fill, the border and the effects.
 - **Points**: like the rectangle and the ellipse, its points can be edited in the [point editing mode](../05-point-editing-mode/README.md). Each point can have its own corner radius, or its handles (see [Points and handles](../05-point-editing-mode/points-and-handles.md)).
 - **Fill and border**: the ones every shape has (see [Fill and border](fill-and-border.md)).
 - **Effects and mask**: the ones every shape has (see [Effects and masks](effects-and-masks.md)).

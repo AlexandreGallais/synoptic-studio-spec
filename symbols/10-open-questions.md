@@ -11,10 +11,12 @@ This file is the index of the open questions. A question sits in the file it con
 | Question | Page | Opinion of the research |
 | --- | --- | --- |
 | Names: Advanced tools, Path, Interaction zone, Preview, Test mode; Layer kept. (Static and dynamic: dropped, one kind of symbol, 2026-11-15.) | [Editor](03-editor/README.md) | Those names. |
-| Rotation as the only transform of a shape; frame of a symbol; minimum snapping and guides; editor data in one `<metadata>` block; missing features to add now. | [Editor](03-editor/README.md) | See the page. |
+| Frame of a symbol; minimum snapping; editor data in one `<metadata>` block; missing features to add now. (Rotation in the panel and layout guides: decided 2026-11-25.) | [Editor](03-editor/README.md) | See the page. |
+| Mirror of a shape; rotation of a group and its children. | [Geometry](04-drawing-mode/geometry.md) | Mirror recomputed in the points. |
+| Grid with columns and gutters, or squares only; guides in percent. | [Layout guides](03-editor/layout-guides.md) | — |
 | Desktop window; does "all in JavaScript" allow a shell in Rust? Browsers to hold at 8.3 ms; which effects go in the specs (two lots?); effect suspended during a gesture; colour filter or recomputed colours. | [Effects and masks](04-drawing-mode/effects-and-masks.md) | Electron, and the installed web app first; two lots of effects. |
-| Open paths (middle only, caps, joins); native stroke for a plain "middle" border or every border computed; dashes of shape borders computed like pipes; named colours and a "high-performance" palette. (Dash sequences of coloured segments: decided 2026-11-11.) | [Fill and border](04-drawing-mode/fill-and-border.md) | Yes to open paths and colours. |
-| OFL fonts embedded whole; text border kept. | [Text tool](04-drawing-mode/text.md) | Yes. |
+| Native stroke for a plain "middle" border or every border computed; dashes of shape borders computed like pipes; named colours and a "high-performance" palette; pattern as a kind of fill. (Dash sequences of coloured segments: decided 2026-11-11. Open paths with the three positions, no caps, no joins; several fills: decided 2026-11-25.) | [Fill and border](04-drawing-mode/fill-and-border.md) | Yes to colours. |
+| OFL fonts embedded whole. (Text border kept, as a true stroke: decided 2026-11-25.) | [Text tool](04-drawing-mode/text.md) | Yes. |
 | Third polygon mode "like Figma"; anchors on corners reserved to 3 and 4 sides or another meaning. | [Polygon](04-drawing-mode/polygon.md) | Drop the third mode. |
 | Modifier keys (square, from the centre, angle lock). "Entirely enclosed" is settled: Alt. | [Select](03-editor/select.md), [Rectangle](04-drawing-mode/rectangle.md), [Pen](04-drawing-mode/pen.md) | Conventions written; key conflicts not researched. |
 | Free form: options of the former shape; points list. | [Point editing mode](05-point-editing-mode/README.md) | Drop the options of the former shape; list the selected shapes. |
@@ -64,8 +66,9 @@ This file is the index of the open questions. A question sits in the file it con
 
 | Question | Page | Proposal of the assistant |
 | --- | --- | --- |
-| A gradient in one segment; pattern and image as kinds of fill; the order of the lines. (No line, no border; a − and a + instead of a kind "None"; selects instead of radios in every panel; no signal in a size field: settled on 2026-11-24.) | [Colour field](../controls/colour-field.md), [Segment list](../controls/segment-list.md) | Plain colours only in a segment; no pattern, no image; a handle. |
-| X and Y on a line above W and H. | [Size fields](../controls/size-fields.md) | Yes. |
+| A gradient in one segment; pattern and image as kinds of fill; RGB as a fourth format of the picker; the order of the lines. (No line, no border; a − and a + instead of a kind "None"; selects instead of radios in every panel; no signal in a size field: settled on 2026-11-24. Eyedropper, hue and opacity sliders, Hex, HSL, HSB: settled on 2026-11-25.) | [Colour field](../controls/colour-field.md), [Segment list](../controls/segment-list.md) | Plain colours only in a segment; no pattern, no image, no RGB; a handle. |
+
+(X and Y: under W and H, settled on 2026-11-25, see [Geometry](04-drawing-mode/geometry.md).)
 
 ## Still open, not researched
 

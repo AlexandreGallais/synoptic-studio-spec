@@ -27,10 +27,11 @@ The default mode of the [editor](../03-editor/README.md): draw and arrange shape
 
 ## What shapes have in common
 
-The rectangle, the ellipse and the polygon share the same pages.
+The rectangle, the ellipse, the polygon and the path share the same pages; the geometry is also the group's and the text's.
 
 | Page | What it holds |
 | --- | --- |
-| [Fill and border](fill-and-border.md) | Colour or gradient, border (not an SVG stroke) outside, in the middle or inside, size, dashes. A group has neither. |
-| [Effects and masks](effects-and-masks.md) | Only native SVG effects and masks, kept only if they keep the performance. |
+| [Geometry](geometry.md) | Size, position, rotation, placement in a group, and the order of the right-hand panel. Every element has them. |
+| [Fill and border](fill-and-border.md) | Fills stacked (colour or gradient), border (not an SVG stroke) outside, in the middle or inside, size, dashes. A group has neither. |
+| [Effects and masks](effects-and-masks.md) | Only native SVG effects, clip and mask with their editing, kept only if they keep the performance; the catalogue of the native SVG effects. |
 | [Points and handles](../05-point-editing-mode/points-and-handles.md) | In the point editing mode: corner radius or handles per point, mirroring, angle and length. |
