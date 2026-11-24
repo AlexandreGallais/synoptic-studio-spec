@@ -161,7 +161,7 @@ Decision 0099 (Product Owner, 2026-11-24: "faut juste dire que les pipe style, �
 - **The kinds of pipe follow a built-in enum of Metadata, `pipe_style`**: a **global** enum, one list for the whole application, never a template (see [Built-in enums](../../metadata/draft.md#built-in-enums)).
 - **Each item is a kind of content**: a key, a display name and a description, written in the enum, not in the pipe style.
 - **Each Symbol Lib gives each item its own look**: its pipe style for that item (fills, overridden widths, type, movement). Two Symbol Libs can draw "Oil" differently.
-- **It ships with no base item** (Product Owner, 2026-11-24). When the software starts, it writes in the user's configuration a copy of `pipe_style` holding **Water** alone: Water is the user's item, which they change or delete as they want (see [The default copy of pipe_style](../../metadata/draft.md#the-default-copy-of-pipe_style)).
+- **It ships with no base item** (Product Owner, 2026-11-24). At its very first start, the software writes in the user's configuration a copy of `pipe_style` holding **Water** alone, never written again: Water is the user's item, which they change or delete as they want (see [The default copy of pipe_style](../../metadata/draft.md#the-default-copy-of-pipe_style)).
 - **It can never be deleted**; the user **adds items** to it from the interface, as to every built-in enum (see [Overriding a built-in enum](../../metadata/draft.md#overriding-a-built-in-enum)).
 - **A signal of a type can point to it**, like any enum: a signal "content" says which kind of fluid a symbol or a pipe holds.
 - What for (Product Owner): a symbol of the library can have pipe inlets and outlets of its own, drawn with the look of the chosen item: "ça sera tel signal, qui sera le type de fluide [...] et j'utilise telle propriété de l'enum, en fonction de ce qui a été choisi."
@@ -246,7 +246,6 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.2, 
 - A pipe linked to a type is one tree, one flow: do its branches share its values (assistant's reading), or can a branch have its own (a closed valve on one branch, stopping the movement downstream)?
 - Can a style hold several layers (the body, then a border, then a second line), or just the options above?
 - [The enum pipe_style](#the-enum-pipe_style):
-  - Is the default copy written again once it has been removed (see [The default copy of pipe_style](../../metadata/draft.md#the-default-copy-of-pipe_style))?
   - An item that a Symbol Lib has not styled yet (just added, or added from another library): how is a pipe of that item drawn?
   - Which properties of a pipe style an animation of a symbol can take (body fill, border fill, widths)?
   - Can a signal of the model choose the pipe style of a pipe in the synoptic?
