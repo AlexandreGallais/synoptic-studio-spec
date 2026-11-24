@@ -29,6 +29,8 @@ block-beta
 
 - The left column holds, from top to bottom: the **base pipe style**, with a tag "Base", at the very top, above the title of the pipe styles (accepted on 2026-11-24); the list of the **pipe styles**, with its small + to add one; the list of the **start and end shapes**, with its small + to add one, each set up in [PI-03](#pi-03--end-shape-editor).
 - The options are grouped in **the same sections, in the same order**, for the base and for a pipe style: Linked type, Body, Border, Corners, Junctions, Crossings, Movement (decisions 0096 and 0097).
+- The sections sit **at the same place** for the base and for a pipe style: Linked type, Body and Border in the first column; Corners, Junctions, Crossings and Movement in the second (2026-11-24).
+- The size of a crossing, computed, is not shown: neither a note nor a read-only row (2026-11-24).
 - An end shape has a page of its own, with a drawing area instead of the two columns of options ([PI-03](#pi-03--end-shape-editor)).
 - Every option is changed in place and written at once (see [Files and conflicts](../storage/files-and-conflicts.md#saving)).
 - Test screens in Figma, page Spec, section "Symbol mode · test screens (2026-11-23)": "PI-01 · Pipes page of a Symbol Lib · base pipe style" and "PI-02 · Pipes page of a Symbol Lib · pipe style Gas", redrawn on 2026-11-24 (decisions 0096 and 0097); "PI-03 · Pipes page of a Symbol Lib · end shape Arrow", drawn on 2026-11-24. Quick tests, no design-system component.
@@ -54,7 +56,7 @@ mindmap
     Crossings
       Kind
     Movement
-      Direction, a signal of the type
+      Direction, a value or a signal picked in the field
       Speed, a value or a signal picked in the field
     Preview
 ```
@@ -71,8 +73,8 @@ No colour and no dash in the base: the fills are in [PI-02](#pi-02--pipe-style).
 | PI-01.5 | Border position | Radio | Inside, middle, outside the edge of the body. Greyed out when the width is 0 (proposed). | Decided (greyed: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.6 | Border fill | — | Removed: moved to the pipe styles ([PI-02.3](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.7 | Corner radius | Number field (px) | Section Corners. 0 keeps sharp angles; also shapes the bridges. The same for every pipe style. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
-| PI-01.8 | Moving dashes | — | Removed: no on or off; the movement comes from the direction signal ([PI-01.9](#pi-01--base-pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
-| PI-01.9 | Direction | Select (signals of the linked type) | Section Movement, shown when a type is linked. One enum signal of the built-in enum "pipe direction": stopped, start to end, end to start. | Decided (shown only with a type: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
+| PI-01.8 | Moving dashes | — | Removed: no on or off; the movement comes from the direction ([PI-01.9](#pi-01--base-pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
+| PI-01.9 | Direction | Select with a small icon inside to pick a signal | Section Movement, shown when a type is linked. The three items of the built-in enum "pipe direction" (stopped, start to end, end to start), or, with the icon, a signal of the linked type of that enum (2026-11-24). | Decided (shown only with a type: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-01.10 | Speed | Number field with a small icon inside to pick a signal (unit: Open) | Section Movement, under Direction. A fixed value is typed; the icon picks a signal of the linked type instead (decision 0041). | Decided (unit: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-01.11 | Junction kind | Radio | Flat (the pipes join in one clean outline, no marker), circle, square. | Decided | [Junctions](../symbols/pipes/junctions.md) |
 | PI-01.12 | Junction size | Number field (px) | For a circle or a square only: greyed out when the kind is Flat (2026-11-24). Fixed or a multiple of the width: Open. Example: 12 px. | Decided (fixed or multiple: Open) | [Junctions](../symbols/pipes/junctions.md) |
@@ -112,7 +114,7 @@ mindmap
       Shown, set by the base
     Movement
       The base's, or its own, with a reset
-      Direction, a signal of the type
+      Direction, a value or a signal picked in the field
       Speed, a value or a signal picked in the field
 ```
 
@@ -127,14 +129,14 @@ The sections are those of [PI-01](#pi-01--base-pipe-style), in the same order. A
 | PI-02.13 | Border width | Number field (px) + reset | Section Border. The base's border width until the user types one, chosen apart from the body width (2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#overriding-a-value-of-the-base) |
 | PI-02.3 | Border fill | Radio + Colour or dash sequence | Section Border. Like the body. Greyed out when the border width is 0 (proposed). | Decided (greyed: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.14 | Corners, Junctions, Crossings; border position | Read-only values, section tagged "Base" | The base's values, shown in their sections so that the user sees the whole pipe (accepted on 2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#the-same-sections-everywhere) |
-| PI-02.15 | Direction | Select (signals of the linked type) + reset | Section Movement. The base's signal until another is chosen. The signal says whether the dashes move and which way: stopped, start to end, end to start: one enum signal of the built-in enum "pipe direction", no second signal. Overriding the type overrides the direction and the speed too; resetting the type gives back the base's. No signal, or no type: the dashes do not move. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
+| PI-02.15 | Direction | Select with a small icon inside to pick a signal, + reset | Section Movement. The base's direction until another is chosen: stopped, start to end or end to start, chosen in the list, or a signal of the type of the built-in enum "pipe direction" picked with the icon (2026-11-24); no second signal. Overriding the type overrides the direction and the speed too; resetting the type gives back the base's. No type: the dashes do not move (proposed). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-02.11 | Speed | Number field with a small icon inside to pick a signal, + reset (unit: Open) | Section Movement, under Direction. A fixed value is typed in the field; the icon inside picks a signal of the linked type instead, as for the bounds of a signal in Metadata (decision 0041). No radio "fixed or signal" (2026-11-24). | Decided (unit: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-02.9 | Animations | List, like [SY-08](symbols.md#sy-08--animation-mode) | Section Linked type. Output signals drive the colours, and more ("plenty of things"). | Decided (properties beyond these: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.4 | Dashes or not | — | Removed: the body fill and the border fill choose between a colour and a dash sequence. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.5 | Override another option | — | Removed (2026-11-24): no list of overridden options; only the linked type, the movement, the body width and the border width can be overridden. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#overriding-a-value-of-the-base) |
 | PI-02.6 | Tag "Base" on an option | — | Removed with the list of overridden options; the read-only sections are tagged "Base" ([PI-02.14](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#the-same-sections-everywhere) |
 | PI-02.7 | Reset to the base | Icon button, next to the field of an overridden value | Shown only when the value is overridden; gives back the base's value, so that it is always clear which values come from the base (2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#overriding-a-value-of-the-base) |
-| PI-02.10 | Moving dashes | — | Removed (2026-11-24): no on or off; the movement comes from the direction signal ([PI-02.15](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
+| PI-02.10 | Moving dashes | — | Removed (2026-11-24): no on or off; the movement comes from the direction ([PI-02.15](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 
 Gaps:
 

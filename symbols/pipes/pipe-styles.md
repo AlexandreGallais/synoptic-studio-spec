@@ -20,7 +20,7 @@ The base pipe style and each pipe style are shown with the **same sections, in t
 | Corners | Corner radius | Shown, set by the base |
 | Junctions | Kind; size | Shown, set by the base |
 | Crossings | Kind | Shown, set by the base |
-| Movement | Direction signal; speed | The base's, or its own |
+| Movement | Direction; speed | The base's, or its own |
 
 - In a pipe style, an option set by the base is shown **read-only** with the base's value, its section tagged "Base", so that the user sees the whole pipe without going back to the base (accepted on 2026-11-24).
 - The base holds the movement too, with its linked type: its signals belong to that type (Product Owner, 2026-11-24).
@@ -39,7 +39,7 @@ The base pipe style and each pipe style are shown with the **same sections, in t
 | Corners | Corner radius | Rounds the angles of the pipe (see below). The same for every pipe style. |
 | Junctions | Kind and size | How a branch looks: flat (the pipes join in one clean outline), circle or square; a circle or a square has a size. Its fill and border are those of the pipe (see [Junctions](junctions.md)). |
 | Crossings | Kind | What happens where a pipe passes over another: bridge, gap or none. Its size is computed from the body width (see [Crossings](crossings.md)). |
-| Movement | Direction, speed | The signals that move the dashes, as in a pipe style (see [Moving dashes](#moving-dashes)). Shown when a type is linked (assistant's reading). |
+| Movement | Direction, speed | Each a value, or a signal of the linked type picked with the icon inside its field (see [Moving dashes](#moving-dashes)). Shown when a type is linked (assistant's reading). |
 
 - Junctions and crossings are parts of the style, not separate lists of the Symbol Lib. They are computed from the style; the user never draws them on each pipe.
 - The base pipe style has no start and end shapes: they have a list of their own on the Pipes page (see [Pipe ends](ends.md)).
@@ -55,7 +55,7 @@ The base pipe style and each pipe style are shown with the **same sections, in t
 | Body | Body fill | A plain colour, or a **dash sequence** that follows the pipe from its start to its end (see [Dash sequences](#dash-sequences)). |
 | Border | Width | The border width of the base, or a width of its own. |
 | Border | Border fill | A plain colour or a dash sequence, like the body. Greyed out when the border width is 0 (assistant's reading). |
-| Movement | Direction | The base's direction signal, or a signal of its own type that says whether the dashes move, and which way (see [Moving dashes](#moving-dashes)). |
+| Movement | Direction | The base's direction, or its own: stopped, start to end or end to start, chosen in the list or given by a signal of its type (see [Moving dashes](#moving-dashes)). |
 | Movement | Speed | The base's speed, or its own: a fixed value, or a signal of the linked type. |
 
 - The content ("what the pipe contains") only names and groups the styles. The editor does not know what a fluid is.
@@ -114,17 +114,18 @@ block-beta
 
 ### Moving dashes
 
-- The dashes of a pipe style **move** to show the flow. There is **no on or off option**: the movement comes from a **signal of the linked type**, chosen in the section Movement of the base or of the pipe style (see [Overriding a value of the base](#overriding-a-value-of-the-base)).
-- **Direction**: the user picks **one signal** of the linked type that says both whether the dashes move and which way: stopped, from the start of the pipe to its end, or from the end to its start. It is an enum signal of the built-in enum **pipe direction** of Metadata, with three items (see [Built-in enums](../../metadata/draft.md#built-in-enums)); there is no second signal "moving or not".
+- The dashes of a pipe style **move** to show the flow. There is **no on or off option**: the direction says whether they move, set in the section Movement of the base or of the pipe style (see [Overriding a value of the base](#overriding-a-value-of-the-base)).
+- **Direction**: a list of the three items of the built-in enum **pipe direction** of Metadata (see [Built-in enums](../../metadata/draft.md#built-in-enums)): stopped, from the start of the pipe to its end, or from the end to its start. A **small icon inside the field** picks instead **one signal** of the linked type, of that enum, as for the speed (Product Owner, 2026-11-24). There is no second signal "moving or not".
 - **Speed**: a number field where a fixed value is typed, with a **small icon inside the field** that picks a signal of the linked type instead, as for the bounds of a signal in Metadata (decision 0041). There is no choice "fixed or signal" beside the field. The fixed value can always be typed (Product Owner, 2026-11-24).
-- Without a linked type, or without a direction signal, the dashes do not move (assistant's reading, to confirm).
+- Without a linked type, the dashes do not move (assistant's reading, to confirm: a fixed direction could move them without a type).
 - **Propagation**: where a branch leaves the pipe (a junction), the movement goes on into the branch, following the flow: the whole tree is one flow. The pipe is no longer a plain drawing: it behaves half like a symbol.
 - The unit of the speed is open.
 - Assumption of the assistant, to confirm: the movement can be stopped by a global setting and by the system setting "reduce motion" (advised by the research).
 
 ```mermaid
 flowchart LR
-    T["Linked type"] -->|"signal, enum pipe direction"| D{"Direction"}
+    L["Value chosen in the list"] --> D{"Direction"}
+    T["Linked type"] -->|"or a signal, enum pipe direction"| D
     D -- "Stopped" --> X["Dashes still"]
     D -- "Start to end" --> F["Dashes move forward"]
     D -- "End to start" --> R["Dashes move backward"]
@@ -209,5 +210,6 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.2, 
 
 - Which properties of a style a signal can drive, beyond the speed, the direction and the colours?
 - In which unit is the speed of the moving dashes set (pixels per second)?
+- Now that the direction can be a fixed value, is the section Movement shown without a linked type, so that a plain drawing can have moving dashes?
 - A pipe linked to a type is one tree, one flow: do its branches share its values (assistant's reading), or can a branch have its own (a closed valve on one branch, stopping the movement downstream)?
 - Can a style hold several layers (the body, then a border, then a second line), or just the options above?
