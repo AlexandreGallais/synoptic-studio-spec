@@ -152,6 +152,34 @@ flowchart LR
     D -->|"propagation at junctions"| B["Branches"]
 ```
 
+### The pipe styles as an enum
+
+Proposed by the Product Owner on 2026-11-24, with a doubt ("je ne sais pas trop comment faire, mais je me dis que [...] ça pourrait"): **not decided**. What is written here is the idea and the assistant's reading of it; the points to settle are in [Open questions](#open-questions).
+
+The idea:
+
+- **The pipe styles of a Symbol Lib make an enum**, kept by the software, not by the user on the Enums page of Metadata: each pipe style added is an item of it.
+- **Adding a pipe style then gives what an item has**: a key, a display name and a description ("potentiellement").
+- **The enum has a name of its own**, so that a signal of a type can point to it, like any enum, and the model can use it later. The name is still to find: the Product Owner said "float color ou un truc du genre. Peu importe". Proposal of the assistant: `pipe_style`.
+- **It is shown in the list of enums of the Enums page of each Symbol Lib** (see [Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md)), and it fills itself as pipe styles are added: one line per pipe style, with **every property of the style** (body fill, border fill, widths...) as columns.
+- What for (Product Owner): "ça va permettre de faire des choses cool".
+
+The assistant's reading, to confirm:
+
+- **A template, not a global enum**: the pipe styles belong to each Symbol Lib, so the items change from one Symbol Lib to another. In Metadata, the enum would be a built-in template, a name and a description only, whose items are given by the pipe styles of each Symbol Lib, as the items of a template are given on each placed symbol ("un enum en mode preset [...] cette template"). Built-in enums are always global today ([Built-in enums](../../metadata/draft.md#built-in-enums), decision 0095): this would change that rule.
+- **The columns of the properties are read only** on the Enums page of the Symbol Lib: they are changed on the Pipes page, in the pipe style.
+- **The key is a whole number picked by the user** when adding a pipe style, as for the items of an enum (decision 0037); the display name takes the place of the free name of a pipe style.
+- Uses it would open: an animation of a symbol takes the body colour of the pipe style chosen by an enum signal (a valve drawn in the colour of its fluid); a signal of the model chooses the pipe style of a pipe.
+
+```mermaid
+flowchart LR
+    P["Pipes page of the Symbol Lib: Water, Steam, Gas"] -->|"each pipe style is an item: key, display name, description"| E["Enum pipe_style (name to find)"]
+    E --> L["Enums page of the Symbol Lib: one line per pipe style, its properties as read-only columns"]
+    E --> S["Signal of a type of the enum pipe_style"]
+    L --> A["Animation of a symbol: body colour of the chosen pipe style"]
+    S --> A
+```
+
 ### Corner radius
 
 - The user draws a pipe with straight segments only: click, click, click.
@@ -211,3 +239,10 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.2, 
 - In which unit is the speed of the moving dashes set (pixels per second)?
 - A pipe linked to a type is one tree, one flow: do its branches share its values (assistant's reading), or can a branch have its own (a closed valve on one branch, stopping the movement downstream)?
 - Can a style hold several layers (the body, then a border, then a second line), or just the options above?
+- [The pipe styles as an enum](#the-pipe-styles-as-an-enum) (proposed on 2026-11-24, with a doubt):
+  - Is it wanted?
+  - Its items: those of each Symbol Lib (a built-in template), or one list for the whole application?
+  - Its name (`pipe_style` proposed)?
+  - A pipe style: a key, a display name and a description instead of its free name?
+  - Which properties of a style become columns on the Enums page of the Symbol Lib, read only?
+  - What a signal pointing to it does: choose the pipe style of a pipe, give a colour to a symbol, or both?

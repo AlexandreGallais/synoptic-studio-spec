@@ -911,6 +911,7 @@ flowchart LR
 | Pipe direction | `pipe_direction` | 0: Stopped, 1: Start to end, 2: End to start | Three items, "Stopped" included, one signal for whether the dashes move and which way: decided (2026-11-24). ID, keys and display names: proposed |
 
 - Open: which other built-in enums the software needs.
+- Proposed on 2026-11-24, with a doubt, not decided: an enum of the **pipe styles**, whose items would be the pipe styles of each Symbol Lib, so a built-in template rather than a global enum, which would change the rule "always global" above (see [The pipe styles as an enum](../symbols/pipes/pipe-styles.md#the-pipe-styles-as-an-enum)).
 - **Adding items is the only change allowed in the copy**, besides the ID of the enum (Product Owner, 2026-11-23: "la seule chose qu'il peut faire, c'est ajouter un item").
 - **The software checks the copy against its own built-in enum**, item by item: every item of the software must be in the copy, with the same key, the same display name and the same description (Product Owner, 2026-11-23: "ce qu'il y a à l'intérieur du logiciel viendra valider l'enum surchargé [...] ça viendra vérifier que la chose est bien construite").
 - **A copy that fails the check is a file with errors**: an item removed, an item whose key changed (`pipe_direction` without `1`), or an item whose display name or description changed. The software uses its own built-in enum instead, and lists the error (answers of 2026-11-23). See [A file with errors](checks-and-errors.md#a-file-with-errors).
