@@ -11,6 +11,7 @@ The width and the height of an object, set in the right-hand panel, as Figma doe
 - **W** and **H** are two [number fields](number-and-text-fields.md) **on one line**, side by side, each with its letter inside, on the left.
 - Each shows its value **in pixels, without unit**: a size is always in pixels (Product Owner, 2026-11-24).
 - **The value is always shown**, whatever the mode: the user always sees the size of the object, and types in the same field to change it. The field is read and written at once (Product Owner, 2026-11-24).
+- **No signal in a size field**: a width or a height is never picked from a signal of the type. What changes with a signal in a symbol is set in the [Animation mode](../symbols/08-animation-mode/README.md) (Product Owner, 2026-11-24).
 
 ### Fixed or Hug
 
@@ -49,5 +50,4 @@ block-beta
 
 ## Open questions
 
-- A group whose size is given by a signal of the type, picked with an icon inside the field, as the speed of a pipe ([PI-01.10](../screens/pipes.md#pi-01--base-pipe-style)): wanted? The Product Owner mentioned "la sélection par variable" without settling it.
 - X and Y of the selected object: on the same kind of line, above W and H?

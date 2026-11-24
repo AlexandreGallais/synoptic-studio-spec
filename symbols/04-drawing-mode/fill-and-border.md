@@ -25,7 +25,7 @@ Proposed by the assistant. To confirm:
 | Linear gradient | Several colour stops, an angle. |
 | Radial gradient | Several colour stops, a centre. |
 
-A shape with no fill has its fill removed (the − of its line), rather than a kind "None" (assistant's proposal, as Figma).
+A shape with no fill has its fill removed (the − of its line); a + on the title adds one back. There is no kind "None" (Product Owner, 2026-11-24).
 
 ### How the fill is set
 
@@ -39,7 +39,7 @@ The border is a [segment list](../../controls/segment-list.md) (Product Owner, 2
 - **Lines**: a small + on the right of the title "Border" adds a line; each line is a segment, with its [colour field](../../controls/colour-field.md) (colour and opacity) and its **length**; a − removes it.
   - **One line**: a plain border.
   - **Several lines**: a **dash sequence** (the same rule as for pipes, see [Pipe styles](../pipes/pipe-styles.md#dash-sequences)): the segments follow each other along the border and repeat; a gap is a segment at **0 %** opacity: "black 100 % 2, black 0 % 2" gives classic dashes; "red 4, black 4" gives red and black dashes; as many lines as the user wants.
-  - **No line**: no border (assistant's proposal; it replaces the toggle "Border").
+  - **No line**: no border; there is no toggle "Border" (Product Owner, 2026-11-24).
 - **Size**, under the lines: the width of the border, in pixels, written without unit. Example: 2.
 - **Position**, under the lines: a **select**, Outside, Middle or Inside the shape; a select rather than radios, which take too much room (Product Owner, 2026-11-24).
 - The dashes are computed along the border, as cleanly as possible; an odd cut in a corner is accepted.

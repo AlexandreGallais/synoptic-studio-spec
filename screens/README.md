@@ -88,8 +88,8 @@ block-beta
 
 ### A select rather than radios
 
-- In a panel, a choice among a few options is a **select**, not a line of radios, which takes too much room. The Product Owner asked it for the position of a border (2026-11-24); the assistant applies it to the other choices of the panels it redraws (polygon, text, pipes), to confirm.
-- The other radios of the tables change when their screen is drawn.
+- In a panel, a choice among a few options is a **select**, not a line of radios, which takes too much room: in every panel of the symbol mode, of the pipes and of the synoptic mode (Product Owner, 2026-11-24).
+- Radios stay where the choice sits in a form of the main area, not in a panel: the faceplate builder of Metadata ([MD-14.5](metadata.md#md-14--faceplate)), the General page of a synoptic ([SN-01.2](synoptics.md#sn-01--general-page-of-a-synoptic)), and the inputs a faceplate offers (`radio_horizontal`, `radio_vertical`).
 
 ### Like Figma: one line per value
 

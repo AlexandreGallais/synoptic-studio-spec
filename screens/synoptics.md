@@ -137,7 +137,7 @@ Path: Canvas › Links.
 | --- | --- | --- | --- | --- | --- |
 | SN-07.1 | Link zone | Button (tool) | Draws a rectangle. | Proposed | [Navigation links](../synoptics/07-navigation-links.md) |
 | SN-07.2 | Target | Select + optional select | A synoptic, then a placed symbol of it. | Proposed | [Navigation links](../synoptics/07-navigation-links.md#the-panel-of-a-link) |
-| SN-07.3 | Look | Radio | Invisible, outline on hover, always outlined. | Proposed | idem |
+| SN-07.3 | Look | Select | Invisible, outline on hover, always outlined; a select rather than radios ([layout rule](README.md#a-select-rather-than-radios), 2026-11-24). | Proposed | idem |
 | SN-07.4 | Tooltip | Text field | — | Proposed | idem |
 
 ## SN-08 · Faults

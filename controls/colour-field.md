@@ -14,7 +14,7 @@ Every colour of the application is set with the same field, as Figma does: one l
   - at the top, the **kind**, as tabs: Plain colour, Linear gradient, Radial gradient (the kinds of [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#what-a-fill-can-be));
   - under it, the picker of that kind: a colour area and a hue bar, then the same hex and opacity inputs; for a gradient, its stops, and its angle or its centre.
 - A gradient shows in the swatch; the colour input then reads "Linear" or "Radial", and the colours are changed in the popup (assistant's proposal, as Figma).
-- **Removing and adding**: a **−** at the end of the line removes the fill; a **+** on the right of the title of the section adds one back, shown only when there is none (assistant's proposal, as Figma; it replaces the kind "None").
+- **Removing and adding**: a **−** at the end of the line removes the fill; a **+** on the right of the title of the section adds one back, shown only when there is none. There is no kind "None" (Product Owner, 2026-11-24: "comme Figma").
 
 ```mermaid
 block-beta

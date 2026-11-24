@@ -212,8 +212,8 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-04.4 | Fill | [Colour field](../controls/colour-field.md) | One line: swatch, colour │ opacity (2026-11-24). The swatch opens the popup of the kinds: plain colour, linear gradient (stops, angle), radial gradient (stops, centre); no "Kind" select. A − removes the fill, a + on the title adds one back (proposed, replaces the kind "None"). | Decided (field), Proposed (kinds, − and +) | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#how-the-fill-is-set) |
-| SY-04.5 | Border | [Segment list](../controls/segment-list.md), small + on the title | A shape can have a border; a group cannot. The + adds a line (2026-11-24). No line: no border (proposed, replaces the toggle). | Decided (list), Proposed (no line, no border) | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
+| SY-04.4 | Fill | [Colour field](../controls/colour-field.md) | One line: swatch, colour │ opacity (2026-11-24). The swatch opens the popup of the kinds: plain colour, linear gradient (stops, angle), radial gradient (stops, centre); no "Kind" select. A − removes the fill, a + on the title adds one back; no kind "None" (2026-11-24). | Decided (field, − and +), Proposed (kinds) | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#how-the-fill-is-set) |
+| SY-04.5 | Border | [Segment list](../controls/segment-list.md), small + on the title | A shape can have a border; a group cannot. The + adds a line (2026-11-24). No line: no border; no toggle (2026-11-24). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
 | SY-04.6 | Border size | Number field, no unit | Under the lines. Example 2. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
 | SY-04.7 | Border position | Select | Under the lines, next to the size: Outside, Middle, Inside; a select, not radios (2026-11-24). An open path: Middle only, the select greyed (proposed). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
 | SY-04.8 | Colour of a line of the border | [Colour field](../controls/colour-field.md) | Colour │ opacity on each line; 0 % for a gap. A gradient in a line: Open. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
@@ -250,7 +250,7 @@ mindmap
 | SY-04.28 | Text colour, background colour | [Colour field](../controls/colour-field.md) each | Swatch, colour │ opacity (2026-11-24). | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-04.29 | Text border | Small + on the title, a [colour field](../controls/colour-field.md) and a size | Native SVG stroke; the research says it is simple. The + adds it, a − removes it, as the border of a shape; one colour only, no dashes (assistant, 2026-11-24). | Decided (to keep: Open), Proposed (form) | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-04.30 | Lines | Toggle each + colour | Underline, strikethrough, line above. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
-| SY-04.31 | Alignment | Radio | Left, centre, right; top, middle, bottom. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
+| SY-04.31 | Alignment | Two selects | Horizontal: left, centre, right; vertical: top, middle, bottom. Selects rather than radios ([layout rule](README.md#a-select-rather-than-radios), 2026-11-24). | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-04.32 | Spacing | Number field each | Letter spacing, word spacing, line height. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-04.33 | Wrapping | Toggle | Lines wrap in the box. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-04.34 | Fit mode | Select | Fit to the glyphs, or fit to the line. A select rather than radios ([layout rule](README.md#a-select-rather-than-radios), 2026-11-24). | Decided | [Text](../symbols/04-drawing-mode/text.md) |
@@ -295,9 +295,9 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | SY-05.1 | Tools | Button | Select, Hand, Pen. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
 | SY-05.2 | List of the points | List | Shape by shape; selecting in the list selects on the canvas and back. All shapes, or the selected ones: Open. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
-| SY-05.3 | Point mode | Radio | Corner radius or Handles; each keeps its settings. An ellipse point: handles only. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
+| SY-05.3 | Point mode | Select | Corner radius or Handles; a select rather than radios (2026-11-24); each keeps its settings. An ellipse point: handles only. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
 | SY-05.4 | Corner radius | Number field | — | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
-| SY-05.5 | Mirroring | Radio | None, Mirror angle, Mirror angle and length. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
+| SY-05.5 | Mirroring | Select | None, Mirror angle, Mirror angle and length; a select rather than radios (2026-11-24). | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
 | SY-05.6 | Handle X, Y | Number field | Linked to angle and length. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
 | SY-05.7 | Handle angle, length | Number field | Linked to X and Y. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
 | SY-05.8 | Remove | Button | Removes the selected points. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
@@ -333,7 +333,7 @@ mindmap
 | SY-06.1 | Tools | Button | Select, Hand. | Decided | [Alignment mode](../symbols/06-alignment-mode/README.md) |
 | SY-06.2 | Reference | — | The first shape selected; the panel shows which one. | Decided | [Alignment mode](../symbols/06-alignment-mode/README.md) |
 | SY-06.3 | Anchor | not said (9-point grid) | On a real shape: the centre and eight points on the outline (proposed). | Decided (anchors on a real shape: Proposed) | [Anchors](../symbols/03-editor/anchors.md) |
-| SY-06.4 | Inside or outside | Radio | Placement on the limit of the reference. | Decided | [Alignment mode](../symbols/06-alignment-mode/README.md) |
+| SY-06.4 | Inside or outside | Select | Placement on the limit of the reference; a select rather than radios (2026-11-24). | Decided | [Alignment mode](../symbols/06-alignment-mode/README.md) |
 | SY-06.5 | Distribution with equal spacing | Button + number field | A typed gap between the edges. | Proposed | [Alignment mode](../symbols/06-alignment-mode/README.md) |
 | SY-06.6 | Apply | not said | Does the shape move as soon as an anchor is chosen, or on a button? | Implied | — |
 
@@ -373,7 +373,7 @@ mindmap
 | SY-07.2 | Place | — | A drawn zone, the whole symbol, or a layer (its real shape). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.3 | Interactions of the place | List | Several gestures per place. | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.4 | Gesture | Select | Click, double click, right click, while pressed, key (proposed list). | Decided (list: Proposed) | [Interaction mode](../symbols/07-interaction-mode/README.md) |
-| SY-07.5 | Effect | Radio + Select | A command of the type (set a signal, trigger), or open the faceplate. | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
+| SY-07.5 | Effect | Select + Select | The first select: send a command, or open the faceplate; the second, for a command: a command of the type (set a signal, trigger). Selects rather than radios (2026-11-24). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.6 | Disabled when | Select (boolean output signal) | The place looks inactive and sends nothing. | Proposed | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.7 | Confirm before sending | Toggle | Off by default. | Proposed | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.8 | Tooltip | Text field | Plain text. | Proposed | [Interaction mode](../symbols/07-interaction-mode/README.md) |
@@ -419,11 +419,11 @@ mindmap
 | SY-08.4 | Mapping | Select + fields | Bounded linear (input range, output range), by ranges (table), two values (boolean). | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.4c | Column of the enum | Select | For an enum signal: a column added to its enum on the Enums page of the Symbol Lib ([SY-12](#sy-12--enums-of-a-symbol-lib)); the property takes that column's value for the current item (2026-11-17). Only columns whose kind fits the property (assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#used-by-an-animation) |
 | SY-08.4b | Input range of a bounded linear | Two fields: minimum, maximum | Each a signal of the type, input or output, or a number typed (the number: to confirm); the value animated stays an output. | Decided (signal in or out), Proposed (number) | [Animation mode](../symbols/08-animation-mode/README.md#the-input-range-of-a-bounded-linear-animation) |
-| SY-08.5 | Transition | Radio + number field | None, or a short linear duration. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
+| SY-08.5 | Transition | Select + number field | None, or linear with a short duration, the field shown for linear only; a select rather than radios (2026-11-24). | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.6 | Pivot | 9-point grid or a point | Centre by default. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
-| SY-08.7 | Text: what it shows | Radio | Written text, the value of a signal, or the unit of a signal only. | Decided | [Text](../symbols/04-drawing-mode/text.md) |
+| SY-08.7 | Text: what it shows | Select | Written text, the value of a signal, or the unit of a signal only; a select rather than radios (2026-11-24). | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-08.8 | Text: show the unit | Toggle | With the value. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
-| SY-08.9 | Text: becomes an input | Radio + Select | Number input or enum menu (display names shown, key sent); no text input, a signal is never a text (2026-11-18). What it writes is open since commands with a typed value were removed (2026-11-16); proposal: an input signal, directly. | Decided (input), Open (what it writes) | [Animation mode](../symbols/08-animation-mode/README.md) |
+| SY-08.9 | Text: becomes an input | Select + Select | Selects rather than radios (2026-11-24). Number input or enum menu (display names shown, key sent); no text input, a signal is never a text (2026-11-18). What it writes is open since commands with a typed value were removed (2026-11-16); proposal: an input signal, directly. | Decided (input), Open (what it writes) | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.10 | Number format | Toggles | Thousand separator, sign, leading zeros, notation. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 
 Gaps:
@@ -526,7 +526,7 @@ mindmap
 | SY-11.1 | Show the advanced tools | Button (in the tool bar) | Shows or hides the second bar (SY-03.3). Replaces the former three dots menu. | Decided | [Advanced tools](../symbols/03-editor/expert-menu/README.md) |
 | SY-11.2 | Second bar | Floating bar | Just above the tool bar; holds every advanced tool. | Decided | [Advanced tools](../symbols/03-editor/expert-menu/README.md) |
 | SY-11.3 | Boolean operation | Button each | Union, subtract, intersect, exclude; the result is a new shape. | Decided (list: Proposed) | [Boolean operations](../symbols/03-editor/expert-menu/boolean-operations.md) |
-| SY-11.4 | Duplication rule | Radio | Polar, along a path, grid. | Decided (polar, along a path), Proposed (grid) | [Placement and duplication](../symbols/03-editor/expert-menu/placement-and-duplication.md) |
+| SY-11.4 | Duplication rule | Select | Polar, along a path, grid; a select rather than radios (2026-11-24). | Decided (polar, along a path), Proposed (grid) | [Placement and duplication](../symbols/03-editor/expert-menu/placement-and-duplication.md) |
 | SY-11.5 | Duplication options | Number fields + Toggle | Count or spacing, start and end angle, copies rotated or not. | Proposed | [Placement and duplication](../symbols/03-editor/expert-menu/placement-and-duplication.md) |
 
 Gaps:
