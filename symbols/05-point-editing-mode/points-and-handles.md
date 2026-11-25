@@ -8,15 +8,22 @@ What the right-hand panel offers when a point or a handle is selected in the [po
 
 ## Rules
 
-### A selected point
+### The options of the selection: always the same lines
 
-| Line | Controls |
-| --- | --- |
-| Title | "Point 2 · Casing" |
-| Position | X and Y, two number fields |
-| Mode | A segmented control of two icons: Corner radius, Handles |
-| Corner radius mode | Radius, a number field |
-| Handles mode | Mirroring, a segmented control of three icons (below) |
+The same lines in the same order, whatever is selected; a line that does not apply is disabled (greyed), never hidden (Product Owner, 2026-11-25: "l'angle length, faudrait l'afficher tout le temps, même si c'est en mode radius [...] il devient désactivé").
+
+| Line | Controls | Point, corner radius mode | Point, handles mode | Handle | Nothing selected |
+| --- | --- | --- | --- | --- | --- |
+| Title | Text | "Point 2" | "Point 2" | "Handle · Point 2" | "No point selected" |
+| Position | X and Y, two number fields | The point | The point | The end of the handle | Disabled |
+| Mode | A segmented control of two icons: Corner radius, Handles | Enabled | Enabled | Enabled: it switches the point of the handle | Disabled |
+| Radius | A number field | Enabled | Disabled | Disabled | Disabled |
+| Mirroring | A segmented control of three icons (below) | Disabled | Enabled | Enabled | Disabled |
+| Angle and length | Two number fields | Disabled | Disabled | Enabled | Disabled |
+
+- The mode stays offered when a handle is selected, so the user can go back to the corner radius mode from a handle (Product Owner, 2026-11-25: "quand on clique sur une poignée, on peut quand même en revenir en mode border radius"). The handles then go away, and the selection becomes their point (assistant's reading).
+- With several points, see [Several points selected](README.md#several-points-selected).
+- The title of the list already names the shape, so the title of the selection does not repeat it (assistant's proposal).
 
 ### Two modes for a point
 
@@ -29,7 +36,7 @@ A selected point is in one of two modes, and the user switches between them in o
 
 - Each mode keeps its own settings. Switching to the corner radius mode and back to the handles mode gives the handles as they were, and the other way round. Nothing is forgotten.
 - The points of a [rectangle](../04-drawing-mode/rectangle.md), of a [polygon](../04-drawing-mode/polygon.md) and of a path can each have their own corner radius or their handles.
-- A point of an [ellipse](../04-drawing-mode/ellipse.md) has no corner radius mode: it has handles only. Once a point is added to the ellipse or removed from it, it is a free form (see the [point editing mode](README.md)) and its points gain the corner radius mode.
+- A point of an [ellipse](../04-drawing-mode/ellipse.md) has no corner radius mode: it has handles only. The Corner radius choice of the mode is then disabled, not hidden. Once a point is added to the ellipse or removed from it, it is a free form (see the [point editing mode](README.md)) and its points gain the corner radius mode.
 
 ### Mirroring of the handles
 
@@ -43,15 +50,11 @@ Offered when the point is in the handles mode, on the point and on each of its h
 
 ### A selected handle
 
-A click on a handle selects it (Product Owner, 2026-11-25: "si tu cliques sur une poignée, ça fait un point et on voit le X, le Y").
+A click on a handle selects it, on the canvas or on the mirroring cell of its point in the list (Product Owner, 2026-11-25: "si tu cliques sur une poignée, ça fait un point et on voit le X, le Y").
 
-| Line | Controls |
-| --- | --- |
-| Title | "Upper handle · Point 2" |
-| Position | X and Y of the end of the handle, as in Figma |
-| Angle and length | Two number fields: the angle of the line of the handle, and its length |
-| Mirroring | The mirroring of its point, the same segmented control |
-
+- Position: X and Y of the end of the handle, as in Figma.
+- Angle and length: the angle of the line of the handle, and its length; enabled for a handle only.
+- Mirroring: the mirroring of its point, the same segmented control.
 - X and Y, the angle and the length stay linked: changing X and Y changes the angle and the length, and the other way round.
 - The angle and the length are for a handle that must go at a precise angle and length: a length of 20 at a given angle (Product Owner, 2026-11-25).
 - **Angle 0**: the handle lies flat, horizontal, towards the right; 90° points up (assistant's proposal, counted as on a protractor). The Product Owner said "si le trait est à plat, ça fait un angle de 0, enfin en vertical": horizontal or vertical for 0 is to confirm.
@@ -71,14 +74,14 @@ flowchart LR
     M -- "Handles" --> MI["Mirroring, one click"]
     H["Handle selected"] --> XY["X, Y"]
     H --> AL["Angle, length"]
-    H --> MI
+    H --> M
 ```
 
 ## Where it is used
 
 | Screen | Element |
 | --- | --- |
-| [SY-05](../../screens/symbols.md#sy-05--point-editing-mode) | SY-05.3 to SY-05.7, SY-05.11 |
+| [SY-05](../../screens/symbols.md#sy-05--point-editing-mode) | SY-05.3 to SY-05.7, SY-05.11, SY-05.14 |
 
 ## What the research found
 
@@ -92,3 +95,4 @@ Source: the research report (`research/t1-…/rapport.md`). Confidence: high.
 
 - Angle 0 of a handle: horizontal (proposal) or vertical?
 - The three icons of the mirroring: to draw in the design system.
+- Switching a selected handle to the corner radius mode: the selection becomes its point (assistant's reading), to confirm.

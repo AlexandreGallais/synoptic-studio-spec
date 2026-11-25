@@ -331,30 +331,33 @@ mindmap
       Select
       Hand
       Pen
-    Right-hand panel, one click per change
+    Right-hand panel, one click per change, a layout that never changes
       The selection, at the top
-        Point: X, Y, mode, radius or mirroring
-        Handle: X, Y, angle, length, mirroring
-        Several points: Mixed, add a point between two
-      List of the points, under it
+        Always: X, Y, mode, radius, mirroring, angle, length
+        What does not apply is disabled
+        Several points: Mixed
+      List of the points of the shape clicked, under it
+        Title: the shape, a + and a −
         A line per point: X, Y, radius or mirroring
-        Bin on hover
+        No bin: the Delete key
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SY-05.1 | Tools | Button | Select, Hand, Pen. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
-| SY-05.2 | List of the points | List, editable lines | Under the options of the selection (2026-11-25, to confirm). Shape by shape; a line per point: name, X, Y, then the radius (corner radius mode) or the mirroring icon (handles mode), edited in the line. Selecting in the list selects on the canvas and back. All shapes, or the selected ones: Open. | Decided (lines), Proposed (place, which shapes) | [Point editing mode](../symbols/05-point-editing-mode/README.md#list-of-the-points) |
-| SY-05.3 | Point mode | [Segmented control](../design-system/07-molecules/segmented-control.md), two icons | Corner radius or Handles, one click (2026-11-25, replaces the select); each keeps its settings. An ellipse point: handles only. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
-| SY-05.4 | Corner radius | Number field | In the corner radius mode. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
-| SY-05.5 | Mirroring | Segmented control, three icons | None, Mirror angle, Mirror angle and length, one click (2026-11-25, replaces the select); in the handles mode, on the point and on its handles. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#mirroring-of-the-handles) |
-| SY-05.6 | Handle X, Y | Number field | A click on a handle selects it; X and Y of its end, as in Figma; linked to angle and length. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#a-selected-handle) |
-| SY-05.7 | Handle angle, length | Number field | Linked to X and Y. Angle 0: flat, horizontal (proposal; horizontal or vertical: Open). | Decided (fields), Open (angle 0) | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#a-selected-handle) |
-| SY-05.8 | Remove a point | Bin on the line of the point, on hover | Replaces the Remove button (2026-11-25); the Delete key does the same. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md#list-of-the-points) |
-| SY-05.9 | Add a point between two | Button | Shown only when two points are selected; the new point goes in the middle. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
+| SY-05.2 | List of the points | List, editable lines | Under the options of the selection (2026-11-25, to confirm). Only the points of the shape clicked; none for a group (2026-11-25). Title: the name of the shape. A line per point: name, X, Y, then the radius (corner radius mode) or the mirroring icon (handles mode), edited in the line. Selecting in the list selects on the canvas and back. | Decided (lines, shape clicked), Proposed (place) | [Point editing mode](../symbols/05-point-editing-mode/README.md#list-of-the-points) |
+| SY-05.3 | Point mode | [Segmented control](../design-system/07-molecules/segmented-control.md), two icons | Corner radius or Handles, one click (2026-11-25, replaces the select); each keeps its settings. Also offered when a handle is selected (2026-11-25). An ellipse point: handles only. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
+| SY-05.4 | Corner radius | Number field | Always shown; disabled in the handles mode and for a handle (2026-11-25). | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
+| SY-05.5 | Mirroring | Segmented control, three icons | None, Mirror angle, Mirror angle and length, one click (2026-11-25, replaces the select). Always shown; disabled in the corner radius mode. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#mirroring-of-the-handles) |
+| SY-05.6 | Handle X, Y | Number field | A click on a handle selects it; X and Y of its end, as in Figma, in the same fields as a point; linked to angle and length. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#a-selected-handle) |
+| SY-05.7 | Handle angle, length | Number field | Always shown, enabled for a handle only (2026-11-25). Linked to X and Y. Angle 0: flat, horizontal (proposal; horizontal or vertical: Open). | Decided (fields), Open (angle 0) | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#a-selected-handle) |
+| SY-05.8 | Remove a point | Delete key; a − on the title of the list | No bin on the lines: too close to the fields (2026-11-25). The −, enabled when points are selected: visible equivalent (proposed). | Decided (key, no bin), Proposed (−) | [Point editing mode](../symbols/05-point-editing-mode/README.md#list-of-the-points) |
+| SY-05.9 | Add a point between two | Small + on the title of the list | Disabled until two points next to each other are selected; adds a point in the middle, named with the next number (2026-11-25, replaces the button that appeared). Enabled with no selection: Open. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md#adding-a-point) |
 | SY-05.10 | Precise move | Ctrl held while dragging, no button (SY-03.11) | A point or a handle moves pixel by pixel of the symbol, even zoomed out. | Decided | [Precise move](../symbols/03-editor/precise-move.md) |
-| SY-05.11 | Point X, Y | Number field | X and Y of the selected point, at the top of its options and in its line. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#a-selected-point) |
+| SY-05.11 | Point X, Y | Number field | X and Y of the selected point, at the top of its options and in its line. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#the-options-of-the-selection-always-the-same-lines) |
 | SY-05.12 | Several points selected | Title + fields | "3 points"; a field whose values differ shows Mixed; a value typed goes to every point; mode and mirroring show no choice when they differ. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md#several-points-selected) |
+| SY-05.13 | Mirroring cell of a point line | Icon button | A click selects a handle of the point (2026-11-25); which one: the one before the point (proposed). | Decided (handle), Proposed (which one) | [Point editing mode](../symbols/05-point-editing-mode/README.md#list-of-the-points) |
+| SY-05.14 | Layout of the panel | — | The same lines whatever is selected; what does not apply is disabled, never hidden; nothing appears or disappears (2026-11-25). | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md#right-hand-panel) |
 
 Gaps:
 
@@ -411,7 +414,7 @@ mindmap
       Hand
       Interaction zone, as many as wanted
     Right-hand panel
-      List of the zones, bin on hover
+      List of the zones, a − on its title
       Interactions of the selected place
         Place
         Gesture
@@ -429,7 +432,7 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | SY-07.1 | Interaction zone | Button (tool) | Draws a zone by hand; each drag adds one, as many as wanted (2026-11-25). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md#interaction-zone-tool) |
 | SY-07.2 | Place | — | A drawn zone, the whole symbol, or a layer (its real shape). Chosen by a click, in the list of the zones or on the drawing; no select (2026-11-25). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
-| SY-07.10 | List of the zones | List, a bin on hover | In the right-hand panel, above the interactions of the selected zone (2026-11-25, place to confirm). | Proposed | [Interaction mode](../symbols/07-interaction-mode/README.md#right-hand-panel) |
+| SY-07.10 | List of the zones | List, a − on its title | In the right-hand panel, above the interactions of the selected zone (2026-11-25, place to confirm). No bin on the lines (removed in SY-05 on 2026-11-25): the Delete key, or the −. | Proposed | [Interaction mode](../symbols/07-interaction-mode/README.md#right-hand-panel) |
 | SY-07.3 | Interactions of the place | List | Several gestures per place. | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.4 | Gesture | Select | Click, double click, right click, while pressed, key (proposed list). | Decided (list: Proposed) | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.5 | Effect | Select + Select | The first select: send a command, or open the faceplate; the second, for a command: a command of the type (set a signal, trigger). Selects rather than radios (2026-11-24). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
@@ -541,7 +544,7 @@ mindmap
       Hand
       Connection point, a click puts a point
     Right-hand panel
-      List of the points, bin on hover
+      List of the points, a − on its title
       Selected point
         Name
         X and Y
@@ -553,7 +556,7 @@ mindmap
 | SY-10.2 | Position | Number fields | X and Y. | Decided | [Connection points](../symbols/pipes/connection-points.md) |
 | SY-10.3 | Direction | — | Removed (2026-11-25): no direction, no inlet or outlet; the direction of a flow comes from a signal. | Decided | [Connection points](../symbols/pipes/connection-points.md#rules) |
 | SY-10.4 | Name | Text field | Port A, port B... | Open | [Connection points](../symbols/pipes/connection-points.md) |
-| SY-10.5 | List of the points | List | A line per point, a bin on hover. | Proposed | [Connection points](../symbols/pipes/connection-points.md#where-it-is-made-in-the-editor) |
+| SY-10.5 | List of the points | List, a − on its title | A line per point, no bin (removed in SY-05 on 2026-11-25): the Delete key, or the −. | Proposed | [Connection points](../symbols/pipes/connection-points.md#where-it-is-made-in-the-editor) |
 
 Gaps:
 

@@ -37,7 +37,7 @@ flowchart LR
 
 Proposed from the Product Owner's words (2026-11-25, "la liste des zones peut potentiellement être dans le menu à droite"); the place of the list is to confirm.
 
-1. **The list of the zones**: a line per zone, a bin on hover to remove it (as in the [point editing mode](../05-point-editing-mode/README.md#list-of-the-points)).
+1. **The list of the zones**: a line per zone, no bin; a selected zone is removed with the Delete key, or the − of the title of the list (assistant's proposal, as in the [point editing mode](../05-point-editing-mode/README.md#list-of-the-points), where the bin was removed on 2026-11-25).
 2. **A click on a zone**, in the list or on the drawing, selects it, and the panel shows **its interactions** under the list (Product Owner, 2026-11-25: "tu cliques sur la zone et le menu à droite se fait en fonction").
 3. The whole symbol and a layer stay places too: a click on a layer, or on the drawing outside every zone, shows their interactions in the same way (assistant's reading).
 
