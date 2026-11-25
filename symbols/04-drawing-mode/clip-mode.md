@@ -13,7 +13,8 @@ The mode of the [editor](../03-editor/README.md) in which the user draws the **c
 - **Tools**: [Select](../03-editor/select.md), [Hand](../03-editor/hand.md), [Rectangle](rectangle.md), [Ellipse](ellipse.md), [Polygon](polygon.md), [Pen](pen.md). No Group and no Text: a clip is made of shapes only, the free forms of the pen included (Product Owner, 2026-11-25).
 - **Which shape is clipped**: the shape selected when the mode is chosen. A click on another shape in the layers changes it. With nothing selected, the mode is greyed in the menu, its tooltip says to select a shape first (assistant's proposal).
 - **On the drawing**: the clipped shape stays shown, the part of it outside the clip shapes faded; the rest of the symbol is dimmed. The clip shapes are drawn as outlines, with no fill, no border and no effect.
-- **Right-hand panel**: the title "Clip of Casing", the list "Clip shapes" (one line per clip shape, a − on each), then the options of the selected clip shape. Assistant's proposal, kept by the Product Owner on 2026-11-25 ("le clip, il est OK").
+- **The clip shapes are chosen in the [layers](../03-editor/layers.md)**, on the left, under their shape; the right-hand panel does not list them again (Product Owner, 2026-11-26: "faut que la sélection se fasse à gauche"; this removes the list "Clip shapes" of 2026-11-25). A clip shape is removed with the Delete key.
+- **Right-hand panel**: the title "Clip of Casing", then the options of the selected clip shape.
 - **The options of a clip shape are those of the same shape in the [drawing mode](README.md), without what makes its look**: no opacity, no fill, no border (Product Owner, 2026-11-26: "exactement les mêmes choses que quand on fait une forme, sauf que c'est sans les couleurs, sans l'opacité"). Same fields, same order as the drawing mode ([Geometry](geometry.md#order-of-the-right-hand-panel)); this replaces the order of 2026-11-25, X and Y first.
 
 | Clip shape | Options, in the order of the panel |
@@ -25,7 +26,7 @@ The mode of the [editor](../03-editor/README.md) in which the user draws the **c
 
 - **The Pen in this mode makes closed shapes only**: a path becomes a clip shape once it is closed, nothing else (Product Owner, 2026-11-26: "que ça fonctionne que si on fait une forme qui est refermée, et point barre"). A path left open when the drawing ends (Escape, another tool) is not kept (assistant's proposal).
 
-- **Layers**: the clip shapes are under their shape, in a line "Clip" folded by default, never at the level of the drawing.
+- **Layers**: the clip shapes are under their shape, in a line "Clip" folded by default, never at the level of the drawing; unfolded in the Clip mode, where they are chosen (assistant's proposal).
 - Several clip shapes add up: what is inside any of them is shown. The clip shapes follow the shape: moved, resized or turned with it.
 - A shape with no clip shape is shown whole. Removing the last clip shape removes the clip.
 - Leaving the mode: another mode chosen in the menu. There is no bar "Clip of …" with a Done button any more: it was the editing mode of the clip effect (assistant's proposal).

@@ -20,7 +20,8 @@ A connection point is a place of a symbol where a pipe can be attached.
 
 - The **Connection** mode of the modes menu (Product Owner, 2026-11-23), with the Select, Hand and Connection point tools.
 - The **Connection point** tool works like the [pen](../04-drawing-mode/pen.md), but draws no line: **each click puts a point**, and nothing else (Product Owner, 2026-11-25: "tu peux pas faire de traits, tu peux que faire des points").
-- Right-hand panel: the list of the points (no bin: the Delete key, or the − of the title of the list, as in the [point editing mode](../05-point-editing-mode/README.md#list-of-the-points)), then the name and the X and Y of the selected point (assistant's proposal).
+- Left-hand panel: the list of the points, above the layers, as the [interaction zones](../07-interaction-mode/README.md) (2026-11-26, [layout rule](../../screens/README.md#a-list-to-choose-from-goes-on-the-left)); no bin: the Delete key, or the − of the title of the list, as in the [point editing mode](../05-point-editing-mode/README.md#list-of-the-points).
+- Right-hand panel: the name and the X and Y of the selected point (assistant's proposal).
 
 ## What the research found
 

@@ -545,8 +545,9 @@ mindmap
       Select
       Hand
       Connection point, a click puts a point
+    Left-hand panel
+      List of the points, a − on its title, above the layers
     Right-hand panel
-      List of the points, a − on its title
       Selected point
         Name
         X and Y
@@ -558,7 +559,7 @@ mindmap
 | SY-10.2 | Position | Number fields | X and Y. | Decided | [Connection points](../symbols/pipes/connection-points.md) |
 | SY-10.3 | Direction | — | Removed (2026-11-25): no direction, no inlet or outlet; the direction of a flow comes from a signal. | Decided | [Connection points](../symbols/pipes/connection-points.md#rules) |
 | SY-10.4 | Name | Text field | Port A, port B... | Open | [Connection points](../symbols/pipes/connection-points.md) |
-| SY-10.5 | List of the points | List, a − on its title | A line per point, no bin (removed in SY-05 on 2026-11-25): the Delete key, or the −. | Proposed | [Connection points](../symbols/pipes/connection-points.md#where-it-is-made-in-the-editor) |
+| SY-10.5 | List of the points | List, a − on its title | In the left-hand panel, above the layers, as the interaction zones (2026-11-26, [layout rule](README.md#a-list-to-choose-from-goes-on-the-left)). A line per point, no bin (removed in SY-05 on 2026-11-25): the Delete key, or the −. | Decided (left), Proposed (the rest) | [Connection points](../symbols/pipes/connection-points.md#where-it-is-made-in-the-editor) |
 
 Gaps:
 
@@ -620,9 +621,10 @@ mindmap
       Clipped shape, outside faded
       Rest of the symbol dimmed
       Clip shapes as outlines
+    Left-hand panel
+      Clip shapes chosen in the layers, under their shape
     Right-hand panel
       Clip of the shape
-      Clip shapes, a line each
       Geometry of the selected clip shape
 ```
 
@@ -631,7 +633,7 @@ mindmap
 | SY-13.1 | Clip | Button of the modes menu | In its own group with Intersection after it, between Alignment and Connection, a separator on each side (2026-11-25); greyed with nothing selected, its tooltip says to select a shape first. | Decided (a mode, its place), Proposed (greyed) | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 | SY-13.2 | Tools | Button | Select, Hand, Rectangle, Ellipse, Polygon, Pen; no Group, no Text. | Decided | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 | SY-13.3 | Drawing | State of the drawing area | The clipped shape shown, its part outside the clip shapes faded; the rest of the symbol dimmed; the clip shapes as outlines. | Proposed | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
-| SY-13.4 | Clip shapes | List, a − on each line | Title "Clip of Casing", then one line per clip shape. | Proposed | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
+| SY-13.4 | Clip shapes | Selection in the layers | Chosen in the layers, on the left, under their shape; no list of them in the right-hand panel, which holds the title "Clip of Casing" and the options of the selected clip shape (2026-11-26, [layout rule](README.md#a-list-to-choose-from-goes-on-the-left)). | Decided | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 | SY-13.5 | Options of a clip shape | [Size fields](../controls/size-fields.md), number fields | Those of the same shape in the drawing mode, in the same order, without opacity, fill or border (2026-11-26, replaces X and Y first). Rectangle: W, H; X, Y, rotation; corner radius. Ellipse: the same without corner radius. Polygon: sides, filling of the box, anchor, then the same as the rectangle. Free form: the same as the rectangle. One screen per kind. | Decided | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 | SY-13.6 | Pen in the Clip mode | Tool | Closed shapes only (2026-11-26); a path left open is not kept (proposed). | Decided (closed only), Proposed (open path) | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 
@@ -657,7 +659,6 @@ mindmap
       Rest of the symbol translucent
       Regions: selected filled, the others as outlines
     Right-hand panel
-      Chosen shapes
       Create a shape from the selection, its +
 ```
 
@@ -665,7 +666,7 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | SY-14.1 | Intersection | Button of the modes menu | Right after Clip, in its group (the group: assistant's choice). | Decided (place after Clip), Proposed (group) | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md) |
 | SY-14.2 | Tools | Button | Hand, Shape builder (active when the mode opens); no Select. | Proposed | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md) |
-| SY-14.3 | Chosen shapes | Selection in the layers | As many as wanted; put forward on the drawing, the rest translucent. | Decided | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
+| SY-14.3 | Chosen shapes | Selection in the layers | As many as wanted; put forward on the drawing, the rest translucent. Not listed again in the right-hand panel (2026-11-26). | Decided | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
 | SY-14.4 | Regions | A click on the drawing with the Shape builder | A click selects a region, a click again unselects it, endlessly (2026-11-26); selected: filled; the others: outline. No list of the regions in the panel (2026-11-26). | Decided | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
 | SY-14.5 | Create a shape from the selection | Title and a small + on its right | Enabled as soon as a region is selected; creates **one** path from every selected region, even apart; no option for one shape per region (2026-11-26). Then the selection empties, the mode stays (proposed); the chosen shapes stay (proposed). | Decided (+, one shape), Proposed (after) | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
 | SY-14.6 | Validate, Cancel | — | Removed (2026-11-26): the + creates the shape; leaving the mode creates nothing. | Decided | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |

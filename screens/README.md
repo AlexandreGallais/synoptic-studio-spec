@@ -93,6 +93,12 @@ block-beta
 - Where Figma has a select for the same field, the select stays (the format of the [colour field](../controls/colour-field.md), Fixed or Hug in the [size fields](../controls/size-fields.md)): see [Like Figma](#like-figma-one-line-per-value).
 - Radios stay where the choice sits in a form of the main area, not in a panel: the faceplate builder of Metadata ([MD-14.5](metadata.md#md-14--faceplate)), the General page of a synoptic ([SN-01.2](synoptics.md#sn-01--general-page-of-a-synoptic)), and the inputs a faceplate offers (`radio_horizontal`, `radio_vertical`).
 
+### A list to choose from goes on the left
+
+- What the layers already list (the shapes, the clip shapes under their shape) is **chosen in the layers**, on the left, and **never listed again** in the right-hand panel (Product Owner, 2026-11-26: "les formes, elles sont déjà à gauche, donc ça sert strictement à rien d'avoir ça en plus").
+- Another list whose lines are only chosen from (the [interaction zones](symbols.md#sy-07--interaction-mode), the [connection points](symbols.md#sy-10--connection-mode)) goes in the left-hand panel too, above the layers. The right-hand panel holds the options of what is selected.
+- Except a list whose lines hold fields to change: it stays on the right. The list of the points of the [point editing mode](symbols.md#sy-05--point-editing-mode) has X, Y and the radius in each line (Product Owner, 2026-11-26: "vu que la liste, il y a directement des inputs dessus").
+
 ### Like Figma: one line per value
 
 The fields that Figma has are drawn the way Figma draws them (Product Owner, 2026-11-24): the [size fields](../controls/size-fields.md) (W and H, Fixed or Hug), the [colour field](../controls/colour-field.md) (a swatch and colour │ opacity) and the [segment list](../controls/segment-list.md) of a border. A length never writes "px".
