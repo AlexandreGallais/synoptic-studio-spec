@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › [Effects](effects-and-masks.md) › Filter chain
 
-Status: draft. Proposal of the assistant for the POC (2026-11-25). Not validated.
+Status: set aside, not in this version (Product Owner, 2026-11-25: "une bonne idée, mais là, c'est non"): kept as a record of the proposal.
 
 An effect for experts: a filter built step by step from the building blocks of SVG, for what the other effects do not do. It follows the [section "Effects"](effects-and-masks.md#the-section-effects) and its [editing modes](effects-and-masks.md#editing-modes).
 
@@ -15,7 +15,7 @@ An effect for experts: a filter built step by step from the building blocks of S
 | Line | "Filter chain · 4 steps", with an **Edit** button (a pencil). |
 | Popup | None: the chain is edited in its editing mode. |
 | On the drawing | **Filter editing**: the drawing area becomes a graph of the steps, from left to right: "Shape" first, then one box per step, linked to the steps it takes, and "Result" last. A + adds a step from the list of the primitives; a box selected shows its settings in the right-hand panel; a small preview of the shape stays in a corner. The bar says "Filter of Casing". |
-| Status | POC. |
+| Status | Set aside (2026-11-25). |
 
 ```mermaid
 flowchart LR

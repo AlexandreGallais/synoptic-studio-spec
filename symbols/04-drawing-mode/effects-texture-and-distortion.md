@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › [Effects](effects-and-masks.md) › Texture and distortion
 
-Status: draft. Proposals of the assistant for the POC (2026-11-25). The research report thought them too costly; the POC measures them (2026-11-25). Not validated.
+Status: set aside, not in this version (Product Owner, 2026-11-25): kept as a record of the proposals.
 
 Effects that change the pixels of a shape. Each effect follows the [section "Effects"](effects-and-masks.md#the-section-effects).
 
@@ -15,7 +15,7 @@ Effects that change the pixels of a shape. Each effect follows the [section "Eff
 | Line | "Thicken" or "Thin", the operation chosen, with a settings button. |
 | Popup | **Operation**: Thicken or Thin. **Radius**, in pixels. |
 | On the drawing | Nothing. |
-| Status | POC. |
+| Status | Set aside (2026-11-25). |
 
 ## Noise, texture
 
@@ -26,7 +26,7 @@ Effects that change the pixels of a shape. Each effect follows the [section "Eff
 | Line | "Noise", with a settings button. |
 | Popup | **Kind**: Fractal noise or Turbulence. **Scale** (the size of the grain), **Detail** (the number of octaves), **Seed** (another draw of the same noise), **Opacity**, **Colour**: Mono or Colour. |
 | On the drawing | Nothing. |
-| Status | POC. |
+| Status | Set aside (2026-11-25). |
 
 ## Distortion
 
@@ -37,7 +37,7 @@ Effects that change the pixels of a shape. Each effect follows the [section "Eff
 | Line | "Distortion", with a settings button. |
 | Popup | **Strength** (how far the pixels move), **Scale**, **Detail**, **Seed** of the noise that moves them. |
 | On the drawing | Nothing. |
-| Status | POC. |
+| Status | Set aside (2026-11-25). |
 
 ## Where it is used
 

@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › [Effects](effects-and-masks.md) › Clip, mask, fade
 
-Status: draft. The clip: asked by the Product Owner on 2026-11-25. The mask and the fade: proposals of the assistant for the POC (2026-11-25). Not validated.
+Status: draft. The clip: asked and kept by the Product Owner on 2026-11-25. The mask and the fade: set aside, not in this version (Product Owner, 2026-11-25), kept as a record. Not validated.
 
 What hides part of a shape. Each effect follows the [section "Effects"](effects-and-masks.md#the-section-effects) and its [editing modes](effects-and-masks.md#editing-modes).
 
@@ -28,7 +28,7 @@ What hides part of a shape. Each effect follows the [section "Effects"](effects-
 | Line | "Mask · 1 shape", with a settings button. |
 | Popup | **Mode**: Alpha or Luminance, two tabs. **Shapes**: their number and an **Edit on the drawing** button. A hard edge is always a clip: the popup says so. |
 | On the drawing | **Mask editing**, the same as the clip editing; the bar says "Mask of Casing". The mask shapes have fills (a gradient from opaque to transparent makes a soft edge) and no border. |
-| Status | POC (P7). |
+| Status | Set aside (2026-11-25). |
 
 ## Fade
 
@@ -39,7 +39,7 @@ What hides part of a shape. Each effect follows the [section "Effects"](effects-
 | Line | "Fade", with a settings button. |
 | Popup | **Kind**: Linear or Radial, two tabs. **Angle** (linear). **From** and **To**: where the shape starts to fade and where it is gone, in percent of its size. **Edit on the drawing**. |
 | On the drawing | **Fade editing**: a line across the shape with two handles, From (opaque) and To (transparent); dragging them changes the angle and the two percents. The bar says "Fade of Casing". |
-| Status | POC. |
+| Status | Set aside (2026-11-25). |
 
 ## Where it is used
 

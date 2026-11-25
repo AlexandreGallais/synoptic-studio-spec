@@ -2,9 +2,9 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › [Effects](effects-and-masks.md) › Colour
 
-Status: draft. Proposals of the assistant for the POC (2026-11-25). Not validated.
+Status: set aside, not in this version (Product Owner, 2026-11-25): kept as a record of the proposals.
 
-Effects that change the colours of a shape, fills, border and effects above them together. Each effect follows the [section "Effects"](effects-and-masks.md#the-section-effects). Whether a colour effect stays a filter or becomes recomputed colours in the exported SVG: P6 and a question of [Effects](effects-and-masks.md#to-decide-by-the-product-owner).
+Effects that change the colours of a shape, fills, border and effects above them together. Each effect follows the [section "Effects"](effects-and-masks.md#the-section-effects).
 
 ## Colour adjustments
 
@@ -15,7 +15,7 @@ Effects that change the colours of a shape, fills, border and effects above them
 | Line | "Colour adjustments", with a settings button. |
 | Popup | One slider per setting, each with its value: **Brightness**, **Contrast**, **Saturation** (100 % by default), **Hue** (0° by default), **Greyscale**, **Sepia**, **Invert** (0 % by default). A **Reset** at the bottom. |
 | On the drawing | Nothing. |
-| Status | POC (P6). |
+| Status | Set aside (2026-11-25). |
 
 ## Colour overlay
 
@@ -26,7 +26,7 @@ Effects that change the colours of a shape, fills, border and effects above them
 | Line | "Colour overlay", with a settings button. |
 | Popup | **Colour**, **Blend** (the modes of the [blend mode](effects-opacity-and-blend.md#blend-mode)). |
 | On the drawing | Nothing. |
-| Status | POC. |
+| Status | Set aside (2026-11-25). |
 
 ## Colour map
 
@@ -37,7 +37,7 @@ Effects that change the colours of a shape, fills, border and effects above them
 | Line | "Colour map", with a settings button. |
 | Popup | **Kind**: Duotone, Posterize or Threshold. Duotone: **Dark** and **Light** colours. Posterize: **Levels**. Threshold: **Level**. |
 | On the drawing | Nothing. |
-| Status | POC. |
+| Status | Set aside (2026-11-25). |
 
 ## Where it is used
 

@@ -27,11 +27,11 @@ What every shape has in common: the [rectangle](rectangle.md), the [ellipse](ell
 | Plain colour | With opacity. | Decided (2026-11-25) |
 | Linear gradient | Several colour stops, an angle. | Decided (2026-11-25) |
 | Radial gradient | Several colour stops, a centre. | Decided (2026-11-25) |
-| Conic gradient | Colours turning around a centre (CSS only). | POC, support to check |
-| Pattern | A small drawing repeated (SVG `pattern`). The Product Owner is not sure it is useful (2026-11-25). | POC |
-| Image | A picture fills the shape. | POC |
+| Conic gradient | Colours turning around a centre (CSS only). | Set aside (2026-11-25) |
+| Pattern | A small drawing repeated (SVG `pattern`). | Set aside (2026-11-25) |
+| Image | A picture fills the shape. | Set aside (2026-11-25) |
 
-The border can be given the same kinds of fill as the background. The stops, the editing of a gradient on the drawing, the conic gradient, the pattern and the image: [Paints](paints.md).
+The border can be given the same kinds of fill as the background. The stops and the editing of a gradient on the drawing: [Paints](paints.md).
 
 ### How a fill is set
 
@@ -53,11 +53,11 @@ The border is a [segment list](../../controls/segment-list.md) (Product Owner, 2
 
 - A line drawn with the [pen](pen.md) has the same three positions: **Middle**, **Inside** and **Outside** (Product Owner, 2026-11-25: "ça peut être super utile").
 - On an open path, Inside and Outside put the whole border on one side of the line or on the other, computed, instead of centred on it. Which side is "inside": the left of the line, in the direction it was drawn (assistant's proposal).
-- No line caps and no line joins to choose (butt, round, square; miter, round, bevel): not offered (Product Owner, 2026-11-25). The ends and the corners of a border are those the computation gives.
+- No line caps and no line joins to choose (butt, round, square; miter, round, bevel): not offered (Product Owner, 2026-11-25). The ends and the corners of a border are those the computation gives; a rounded corner comes from the corner radius of the path, which the border follows (Product Owner, 2026-11-25).
 
 ### Dashes: what the research says
 
-- Native SVG dashes (`stroke-dasharray`) exist only for a stroke, and have **one colour**. The border of the project is a fill, and a dash sequence can have several colours: the dashes are therefore computed, each dash as a small shape, as for pipes. It is a geometric calculation redone at each resize, for the geometry research. For shape borders, this follows from the dash sequence; to confirm.
+- Native SVG dashes (`stroke-dasharray`) exist only for a stroke, and have **one colour**. The border of the project is a fill, and a dash sequence can have several colours: the dashes are therefore computed, each dash as a small shape, as for pipes. It is a geometric calculation redone at each resize, for the geometry research. Confirmed for shape borders (Product Owner, 2026-11-25: "ça va être calculé").
 - The cost follows the number of dashes (the perimeter divided by dash plus space). The editor needs a maximum number of dashes per shape, set by the POC (P8).
 - No source gives the cost of a gradient or of its number of colour stops: a short POC (P8) is planned.
 
@@ -69,7 +69,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.18,
 
 - SVG 2 has no inner or outer stroke: the inside and outside borders of an open path are computed (decided above).
 - A border "in the middle" looks exactly like a native stroke. Opinion: allowing a native stroke under the hood **in this case only** would settle at once its dashes. Since then, dashes are sequences of several colours (2026-11-11), which a native stroke cannot draw in one piece: the native stroke would only help plain borders.
-- Arrows on a line: SVG markers exist (start, middle, end). Opinion: one single concept, the end shape of the Symbol Lib, for lines and pipes. The end shapes of pipes were removed (decision 0098): the arrows of a line are open.
+- Arrows on a line: SVG markers exist (start, middle, end). Opinion: one single concept, the end shape of the Symbol Lib, for lines and pipes. The end shapes of pipes were removed (decision 0098), and the arrow heads are set aside in this version (2026-11-25).
 
 ### Gradients
 
@@ -87,6 +87,4 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.18,
 ## To decide by the Product Owner
 
 1. A native stroke allowed under the hood for a plain "middle" border, or every border computed?
-2. Dashes of shape borders computed, like those of pipes?
-3. Named colours in the Symbol Lib, and a "high-performance" palette by default?
-4. After the POC: pattern, image and conic gradient kept as kinds of fill?
+2. Named colours in the Symbol Lib, and a "high-performance" palette by default?

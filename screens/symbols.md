@@ -217,64 +217,64 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-04.4 | Fills | [Colour field](../controls/colour-field.md) per line, + on the title | Several fills stacked, the top line on top; the + adds one, the − of a line removes it (2026-11-25). Each line: swatch, colour │ opacity; the swatch opens the paint popup: Plain colour, Linear, Radial (pattern: Open), eyedropper, hue and opacity sliders, Hex, HSL, HSB (2026-11-25). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#several-fills) |
+| SY-04.4 | Fills | [Colour field](../controls/colour-field.md) per line, + on the title | Several fills stacked, the top line on top; the + adds one, the − of a line removes it (2026-11-25). Each line: swatch, colour │ opacity; the swatch opens the paint popup: Plain colour, Linear, Radial (no conic, pattern or image: set aside, 2026-11-25), eyedropper, hue and opacity sliders, Hex, HSL, HSB (2026-11-25). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#several-fills) |
 | SY-04.5 | Border | [Segment list](../controls/segment-list.md), small + on the title | A shape can have a border; a group cannot. The + adds a line (2026-11-24). No line: no border; no toggle (2026-11-24). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
 | SY-04.6 | Border size | Number field, no unit | Under the lines, on the line of the position. Example 2. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
 | SY-04.7 | Border position | Select | Next to the size: Outside, Middle, Inside; a select, not radios (2026-11-24). An open path has the three too, Inside and Outside on one side of the line (2026-11-25). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-of-an-open-path) |
 | SY-04.8 | Colour of a line of the border | [Colour field](../controls/colour-field.md) | Colour │ opacity on each line; 0 % for a gap. A gradient in a line: Open. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
 | SY-04.9 | Dashes of the border | Lines of the segment list | One line: a plain border; two lines or more: a dash sequence, each line a colour and a length, repeated (2026-11-24; replaces the editor [PI-04](pipes.md#pi-04--segment-list) opened from the panel). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
 | SY-04.10 | Caps and joins | — | Removed (2026-11-25): not offered. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-of-an-open-path) |
-| SY-04.11 | Effects | List, + on the title | The + opens the menu of the effects; each line: eye, name, a button (settings, Edit, or a value on the line), −; applied from the top down. | Decided | [Effects](../symbols/04-drawing-mode/effects-and-masks.md#the-section-effects) |
-| SY-04.12 | Effects offered | Menu of the +, grouped by family | Clip and mask: Clip, Mask, Fade · Opacity and blend: Opacity, Blend mode, Background blur · Shadows and light: Drop shadow, Outer glow, Inner shadow, Inner glow, Lighting · Blur and sharpness: Blur, Sharpen · Colour: Colour adjustments, Colour overlay, Colour map · Texture: Thicken or thin, Noise, Distortion · Lines: Crisp edges · Expert: Filter chain. Everything not decided is tried in the POC (2026-11-25). | Proposed | [Effects](../symbols/04-drawing-mode/effects-and-masks.md#catalogue-of-the-effects) |
+| SY-04.11 | Effects | List, + on the title | The + opens the menu of the effects; each line: eye, name, a button (Edit, or a value on the line), −; applied from the top down. | Decided | [Effects](../symbols/04-drawing-mode/effects-and-masks.md#the-section-effects) |
+| SY-04.12 | Effects offered | Menu of the + | Clip, Opacity. Every other effect of the catalogue is set aside (2026-11-25). | Decided (2026-11-25) | [Effects](../symbols/04-drawing-mode/effects-and-masks.md#catalogue-of-the-effects) |
 | SY-04.13 | Clip | Line of the effects, Edit button | The clip shapes belong to the shape; Edit enters the clip editing (SY-04.39). No "Mask" select any more (2026-11-25). | Decided | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#clip) |
 | SY-04.39 | Clip editing | State of the drawing area | The shape stays shown, the rest dimmed; a bar "Clip of …" with Done at the top; the user draws the clip shapes with Rectangle, Ellipse, Polygon, Pen; Escape leaves. | Decided (2026-11-25), Proposed (bar) | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#clip) |
 
 ### Effects one by one
 
-The proposals for the POC of the effects (2026-11-25): each effect has its line and what it opens (popup, list), and its editing mode when it has one (the model of the clip editing, see [Editing modes](../symbols/04-drawing-mode/effects-and-masks.md#editing-modes)). Figma: page Spec, section "Symbol mode · Effects", one row per effect.
+Each effect of the catalogue has its line and what it opens (popup, list), and its editing mode when it has one (the model of the clip editing, see [Editing modes](../symbols/04-drawing-mode/effects-and-masks.md#editing-modes)). The Product Owner's first selection (2026-11-25) keeps the opacity, the editing of the linear and radial gradients and the border that keeps its width; the rest is set aside, its screens kept as a record. Figma: page Spec, section "Symbol mode · Effects", one row per effect; the kept ones again in "Symbol mode · Effects kept (2026-11-25)".
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-04.40 | Mask | Line, settings popup | Mode Alpha or Luminance; shapes and Edit on the drawing. | POC | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#mask) |
-| SY-04.41 | Mask editing | State of the drawing area | As the clip editing; the mask shapes have fills. | POC | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#mask) |
-| SY-04.42 | Fade | Line, settings popup | Linear or Radial; angle; From and To in percent. | POC | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#fade) |
-| SY-04.43 | Fade editing | State of the drawing area | A line with the handles From and To over the shape. | POC | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#fade) |
-| SY-04.44 | Opacity | Line with a percent field | No popup. | POC | [Opacity and blend](../symbols/04-drawing-mode/effects-opacity-and-blend.md#opacity) |
-| SY-04.45 | Blend mode | Line with a select | The list of the modes, grouped. | POC | [Opacity and blend](../symbols/04-drawing-mode/effects-opacity-and-blend.md#blend-mode) |
-| SY-04.46 | Background blur | Line, settings popup | Radius. | POC, support to check | [Opacity and blend](../symbols/04-drawing-mode/effects-opacity-and-blend.md#background-blur) |
-| SY-04.47 | Drop shadow | Line, settings popup | X, Y, Blur, Spread, Colour; Edit on the drawing. | POC | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#drop-shadow) |
-| SY-04.48 | Shadow editing | State of the drawing area | A handle drags the offset, a ring the blur. | POC | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#drop-shadow) |
-| SY-04.49 | Outer glow | Line, settings popup | Size, Colour. | POC | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#outer-glow) |
-| SY-04.50 | Inner shadow | Line, settings popup | X, Y, Blur, Colour; Edit on the drawing. | POC | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#inner-shadow) |
-| SY-04.51 | Inner shadow editing | State of the drawing area | The handles of the shadow, inside the shape. | POC | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#inner-shadow) |
-| SY-04.52 | Inner glow | Line, settings popup | Size, Colour. | POC | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#inner-glow) |
-| SY-04.53 | Lighting | Line, settings popup | Relief or Shine; Far, Point or Spot; azimuth, elevation; depth; shine; colour; Edit on the drawing. | POC | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#lighting) |
-| SY-04.54 | Light editing | State of the drawing area | The light is a handle: bulb, cone or arrow. | POC | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#lighting) |
-| SY-04.55 | Blur | Line, settings popup | Radius X and Y, linked by a chain. | POC | [Blur and sharpness](../symbols/04-drawing-mode/effects-blur-and-sharpness.md#blur) |
-| SY-04.56 | Sharpen, edges, emboss | Line, settings popup | Kind, Strength. | POC | [Blur and sharpness](../symbols/04-drawing-mode/effects-blur-and-sharpness.md#sharpen-edges-emboss) |
-| SY-04.57 | Colour adjustments | Line, settings popup | Seven sliders and Reset. | POC | [Colour](../symbols/04-drawing-mode/effects-colour.md#colour-adjustments) |
-| SY-04.58 | Colour overlay | Line, settings popup | Colour, Blend. | POC | [Colour](../symbols/04-drawing-mode/effects-colour.md#colour-overlay) |
-| SY-04.59 | Colour map | Line, settings popup | Duotone, Posterize or Threshold, and their settings. | POC | [Colour](../symbols/04-drawing-mode/effects-colour.md#colour-map) |
-| SY-04.60 | Thicken, thin | Line, settings popup | Operation, Radius. | POC | [Texture and distortion](../symbols/04-drawing-mode/effects-texture-and-distortion.md#thicken-thin) |
-| SY-04.61 | Noise | Line, settings popup | Kind, Scale, Detail, Seed, Opacity, Mono or Colour. | POC | [Texture and distortion](../symbols/04-drawing-mode/effects-texture-and-distortion.md#noise-texture) |
-| SY-04.62 | Distortion | Line, settings popup | Strength, Scale, Detail, Seed. | POC | [Texture and distortion](../symbols/04-drawing-mode/effects-texture-and-distortion.md#distortion) |
-| SY-04.63 | Filter chain | Line, Edit button | "Filter chain · 4 steps". | POC | [Filter chain](../symbols/04-drawing-mode/effects-filter-chain.md) |
-| SY-04.64 | Filter editing | State of the drawing area | A graph of the steps; the step selected in the right-hand panel. | POC | [Filter chain](../symbols/04-drawing-mode/effects-filter-chain.md) |
+| SY-04.40 | Mask | Line, settings popup | Mode Alpha or Luminance; shapes and Edit on the drawing. | Set aside | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#mask) |
+| SY-04.41 | Mask editing | State of the drawing area | As the clip editing; the mask shapes have fills. | Set aside | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#mask) |
+| SY-04.42 | Fade | Line, settings popup | Linear or Radial; angle; From and To in percent. | Set aside | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#fade) |
+| SY-04.43 | Fade editing | State of the drawing area | A line with the handles From and To over the shape. | Set aside | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#fade) |
+| SY-04.44 | Opacity | Line with a percent field | The opacity of the whole object; no popup. | Kept (2026-11-25), POC | [Opacity and blend](../symbols/04-drawing-mode/effects-opacity-and-blend.md#opacity) |
+| SY-04.45 | Blend mode | Line with a select | The list of the modes, grouped. | Set aside | [Opacity and blend](../symbols/04-drawing-mode/effects-opacity-and-blend.md#blend-mode) |
+| SY-04.46 | Background blur | Line, settings popup | Radius. | Set aside | [Opacity and blend](../symbols/04-drawing-mode/effects-opacity-and-blend.md#background-blur) |
+| SY-04.47 | Drop shadow | Line, settings popup | X, Y, Blur, Spread, Colour; Edit on the drawing. | Set aside | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#drop-shadow) |
+| SY-04.48 | Shadow editing | State of the drawing area | A handle drags the offset, a ring the blur. | Set aside | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#drop-shadow) |
+| SY-04.49 | Outer glow | Line, settings popup | Size, Colour. | Set aside | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#outer-glow) |
+| SY-04.50 | Inner shadow | Line, settings popup | X, Y, Blur, Colour; Edit on the drawing. | Set aside | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#inner-shadow) |
+| SY-04.51 | Inner shadow editing | State of the drawing area | The handles of the shadow, inside the shape. | Set aside | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#inner-shadow) |
+| SY-04.52 | Inner glow | Line, settings popup | Size, Colour. | Set aside | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#inner-glow) |
+| SY-04.53 | Lighting | Line, settings popup | Relief or Shine; Far, Point or Spot; azimuth, elevation; depth; shine; colour; Edit on the drawing. | Set aside | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#lighting) |
+| SY-04.54 | Light editing | State of the drawing area | The light is a handle: bulb, cone or arrow. | Set aside | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#lighting) |
+| SY-04.55 | Blur | Line, settings popup | Radius X and Y, linked by a chain. | Set aside | [Blur and sharpness](../symbols/04-drawing-mode/effects-blur-and-sharpness.md#blur) |
+| SY-04.56 | Sharpen, edges, emboss | Line, settings popup | Kind, Strength. | Set aside | [Blur and sharpness](../symbols/04-drawing-mode/effects-blur-and-sharpness.md#sharpen-edges-emboss) |
+| SY-04.57 | Colour adjustments | Line, settings popup | Seven sliders and Reset. | Set aside | [Colour](../symbols/04-drawing-mode/effects-colour.md#colour-adjustments) |
+| SY-04.58 | Colour overlay | Line, settings popup | Colour, Blend. | Set aside | [Colour](../symbols/04-drawing-mode/effects-colour.md#colour-overlay) |
+| SY-04.59 | Colour map | Line, settings popup | Duotone, Posterize or Threshold, and their settings. | Set aside | [Colour](../symbols/04-drawing-mode/effects-colour.md#colour-map) |
+| SY-04.60 | Thicken, thin | Line, settings popup | Operation, Radius. | Set aside | [Texture and distortion](../symbols/04-drawing-mode/effects-texture-and-distortion.md#thicken-thin) |
+| SY-04.61 | Noise | Line, settings popup | Kind, Scale, Detail, Seed, Opacity, Mono or Colour. | Set aside | [Texture and distortion](../symbols/04-drawing-mode/effects-texture-and-distortion.md#noise-texture) |
+| SY-04.62 | Distortion | Line, settings popup | Strength, Scale, Detail, Seed. | Set aside | [Texture and distortion](../symbols/04-drawing-mode/effects-texture-and-distortion.md#distortion) |
+| SY-04.63 | Filter chain | Line, Edit button | "Filter chain · 4 steps". | Set aside | [Filter chain](../symbols/04-drawing-mode/effects-filter-chain.md) |
+| SY-04.64 | Filter editing | State of the drawing area | A graph of the steps; the step selected in the right-hand panel. | Set aside | [Filter chain](../symbols/04-drawing-mode/effects-filter-chain.md) |
 | SY-04.65 | Linear gradient | Tab of the paint popup | Stops bar, Repeat, Edit on the drawing. | Decided (kind), POC (the rest) | [Paints](../symbols/04-drawing-mode/paints.md#linear-gradient) |
-| SY-04.66 | Linear gradient editing | State of the drawing area | The gradient line, its ends and its stops. | POC | [Paints](../symbols/04-drawing-mode/paints.md#linear-gradient) |
+| SY-04.66 | Linear gradient editing | State of the drawing area | The gradient line, its ends and its stops. | Kept (2026-11-25), POC | [Paints](../symbols/04-drawing-mode/paints.md#linear-gradient) |
 | SY-04.67 | Radial gradient | Tab of the paint popup | Stops bar, Repeat, Edit on the drawing. | Decided (kind), POC (the rest) | [Paints](../symbols/04-drawing-mode/paints.md#radial-gradient) |
-| SY-04.68 | Radial gradient editing | State of the drawing area | Centre, radius, focal point. | POC | [Paints](../symbols/04-drawing-mode/paints.md#radial-gradient) |
-| SY-04.69 | Conic gradient | Tab of the paint popup | Stops bar, Start angle. | POC, support to check | [Paints](../symbols/04-drawing-mode/paints.md#conic-gradient) |
-| SY-04.70 | Conic gradient editing | State of the drawing area | Centre, start angle. | POC, support to check | [Paints](../symbols/04-drawing-mode/paints.md#conic-gradient) |
-| SY-04.71 | Pattern | Tab of the paint popup | Tile, Size, Angle, Colour, Edit the tile. | POC | [Paints](../symbols/04-drawing-mode/paints.md#pattern) |
-| SY-04.72 | Tile editing | State of the drawing area | The tile big in the middle, drawn with the shape tools; the shape repeats it around. | POC | [Paints](../symbols/04-drawing-mode/paints.md#pattern) |
-| SY-04.73 | Image | Tab of the paint popup | Choose an image, Fit, Opacity. | POC | [Paints](../symbols/04-drawing-mode/paints.md#image) |
-| SY-04.74 | Arrow heads | Line "Ends" of the border, two selects | None, Arrow, Open arrow, Circle, Square, Diamond, Bar, Custom; Size. | POC | [Lines and text](../symbols/04-drawing-mode/effects-lines-and-text.md#arrow-heads) |
-| SY-04.75 | Head editing | State of the drawing area | A custom head drawn big, the end of the line as a guide. | POC | [Lines and text](../symbols/04-drawing-mode/effects-lines-and-text.md#arrow-heads) |
-| SY-04.76 | Border that keeps its width | Switch in the border | Keep the width when scaled. | POC | [Lines and text](../symbols/04-drawing-mode/effects-lines-and-text.md#border-that-keeps-its-width) |
-| SY-04.77 | Crisp edges | Line of the effects | On or off by its eye. | POC | [Lines and text](../symbols/04-drawing-mode/effects-lines-and-text.md#crisp-edges) |
-| SY-04.78 | Text along a path | Line of the text panel, popup | Path, Start, Side. | Later | [Lines and text](../symbols/04-drawing-mode/effects-lines-and-text.md#text-along-a-path) |
-| SY-04.79 | Path editing | State of the drawing area | The path followed, the start of the text as a handle. | Later | [Lines and text](../symbols/04-drawing-mode/effects-lines-and-text.md#text-along-a-path) |
+| SY-04.68 | Radial gradient editing | State of the drawing area | Centre, radius, focal point. | Kept (2026-11-25), POC | [Paints](../symbols/04-drawing-mode/paints.md#radial-gradient) |
+| SY-04.69 | Conic gradient | Tab of the paint popup | Stops bar, Start angle. | Set aside | [Paints](../symbols/04-drawing-mode/paints.md#conic-gradient) |
+| SY-04.70 | Conic gradient editing | State of the drawing area | Centre, start angle. | Set aside | [Paints](../symbols/04-drawing-mode/paints.md#conic-gradient) |
+| SY-04.71 | Pattern | Tab of the paint popup | Tile, Size, Angle, Colour, Edit the tile. | Set aside | [Paints](../symbols/04-drawing-mode/paints.md#pattern) |
+| SY-04.72 | Tile editing | State of the drawing area | The tile big in the middle, drawn with the shape tools; the shape repeats it around. | Set aside | [Paints](../symbols/04-drawing-mode/paints.md#pattern) |
+| SY-04.73 | Image | Tab of the paint popup | Choose an image, Fit, Opacity. | Set aside | [Paints](../symbols/04-drawing-mode/paints.md#image) |
+| SY-04.74 | Arrow heads | Line "Ends" of the border, two selects | None, Arrow, Open arrow, Circle, Square, Diamond, Bar, Custom; Size. | Set aside | [Lines and text](../symbols/04-drawing-mode/effects-lines-and-text.md#arrow-heads) |
+| SY-04.75 | Head editing | State of the drawing area | A custom head drawn big, the end of the line as a guide. | Set aside | [Lines and text](../symbols/04-drawing-mode/effects-lines-and-text.md#arrow-heads) |
+| SY-04.76 | Border that keeps its width | Switch in the border | Keep the width when scaled; the border is computed again at the scale of the symbol. | Kept (2026-11-25), POC | [Lines and text](../symbols/04-drawing-mode/effects-lines-and-text.md#border-that-keeps-its-width) |
+| SY-04.77 | Crisp edges | Line of the effects | On or off by its eye. | Set aside | [Lines and text](../symbols/04-drawing-mode/effects-lines-and-text.md#crisp-edges) |
+| SY-04.78 | Text along a path | Line of the text panel, popup | Path, Start, Side. | Set aside | [Lines and text](../symbols/04-drawing-mode/effects-lines-and-text.md#text-along-a-path) |
+| SY-04.79 | Path editing | State of the drawing area | The path followed, the start of the text as a handle. | Set aside | [Lines and text](../symbols/04-drawing-mode/effects-lines-and-text.md#text-along-a-path) |
 
 ### Panel of a shape: geometry and options by tool
 

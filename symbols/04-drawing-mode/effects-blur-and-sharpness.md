@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › [Effects](effects-and-masks.md) › Blur and sharpness
 
-Status: draft. Proposals of the assistant for the POC (2026-11-25). Not validated.
+Status: set aside, not in this version (Product Owner, 2026-11-25): kept as a record of the proposals.
 
 How sharp a shape looks. Each effect follows the [section "Effects"](effects-and-masks.md#the-section-effects).
 
@@ -15,7 +15,7 @@ How sharp a shape looks. Each effect follows the [section "Effects"](effects-and
 | Line | "Blur", with a settings button. |
 | Popup | **Radius X** and **Radius Y**, linked by a chain as W and H: linked, one radius; unlinked, a blur in one direction. |
 | On the drawing | Nothing. |
-| Status | POC (P2, stricter than the drop shadow). |
+| Status | Set aside (2026-11-25). |
 
 ## Sharpen, edges, emboss
 
@@ -26,7 +26,7 @@ How sharp a shape looks. Each effect follows the [section "Effects"](effects-and
 | Line | "Sharpen", with a settings button; the line takes the name of the kind chosen. |
 | Popup | **Kind**: Sharpen, Edges or Emboss. **Strength**, a slider. |
 | On the drawing | Nothing. |
-| Status | POC. |
+| Status | Set aside (2026-11-25). |
 
 ## Where it is used
 

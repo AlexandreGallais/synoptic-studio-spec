@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › [Effects](effects-and-masks.md) › Opacity and blend
 
-Status: draft. Proposals of the assistant for the POC (2026-11-25). Not validated.
+Status: draft. The opacity: kept by the Product Owner (2026-11-25). The blend mode and the background blur: set aside, not in this version (Product Owner, 2026-11-25), kept as a record. Not validated.
 
 How a shape lets through what is under it. Each effect follows the [section "Effects"](effects-and-masks.md#the-section-effects).
 
@@ -10,11 +10,11 @@ How a shape lets through what is under it. Each effect follows the [section "Eff
 
 |  |  |
 | --- | --- |
-| What it does | The whole shape, fills, border and effects together, more or less transparent. The opacity of a fill only is in its [colour field](../../controls/colour-field.md). |
+| What it does | The whole object, fills, border and effects together, more or less transparent (Product Owner, 2026-11-25: "l'opacité entière de l'objet"). The opacity of a fill or of a line of the border only is in its [colour field](../../controls/colour-field.md). |
 | Feature | SVG `opacity`. |
 | Line | "Opacity", then its value on the line itself, a percent field (60 %). No popup. |
 | On the drawing | Nothing. |
-| Status | POC (expected cheap). |
+| Status | Kept (2026-11-25); its cost measured in the POC (P13), expected cheap. |
 
 ## Blend mode
 
@@ -25,7 +25,7 @@ How a shape lets through what is under it. Each effect follows the [section "Eff
 | Line | "Blend", then a select on the line itself, which opens the list of the modes. No popup. |
 | The list | Grouped as in drawing software: Normal · Darken, Multiply, Colour burn · Lighten, Screen, Colour dodge, Plus lighter · Overlay, Soft light, Hard light · Difference, Exclusion · Hue, Saturation, Colour, Luminosity. |
 | On the drawing | Nothing; the drawing shows the mix while the pointer moves over the list. |
-| Status | POC. |
+| Status | Set aside (2026-11-25). |
 
 ## Background blur
 
@@ -36,7 +36,7 @@ How a shape lets through what is under it. Each effect follows the [section "Eff
 | Line | "Background blur", with a settings button. |
 | Popup | **Radius**. |
 | On the drawing | Nothing. |
-| Status | POC, support to check. |
+| Status | Set aside (2026-11-25). |
 
 ## Where it is used
 

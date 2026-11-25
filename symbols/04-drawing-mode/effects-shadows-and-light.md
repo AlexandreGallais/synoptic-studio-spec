@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › [Effects](effects-and-masks.md) › Shadows and light
 
-Status: draft. Proposals of the assistant for the POC (2026-11-25). Not validated.
+Status: set aside, not in this version (Product Owner, 2026-11-25): kept as a record of the proposals.
 
 Shadows, halos and light on a shape. Each effect follows the [section "Effects"](effects-and-masks.md#the-section-effects) and its [editing modes](effects-and-masks.md#editing-modes). Every colour is a [colour field](../../controls/colour-field.md), colour and opacity.
 
@@ -15,7 +15,7 @@ Shadows, halos and light on a shape. Each effect follows the [section "Effects"]
 | Line | "Drop shadow", with a settings button. |
 | Popup | **X** and **Y** (offset), **Blur**, **Spread**, **Colour**. **Edit on the drawing**. |
 | On the drawing | **Shadow editing**: a handle in the middle of the shadow, linked to the middle of the shape by a dashed line, drags the offset; a ring around the shadow drags the blur. The bar says "Shadow of Casing". |
-| Status | POC (P2). |
+| Status | Set aside (2026-11-25). |
 
 ## Outer glow
 
@@ -26,7 +26,7 @@ Shadows, halos and light on a shape. Each effect follows the [section "Effects"]
 | Line | "Outer glow", with a settings button. |
 | Popup | **Size**, **Colour**. |
 | On the drawing | Nothing. |
-| Status | POC. |
+| Status | Set aside (2026-11-25). |
 
 ## Inner shadow
 
@@ -37,7 +37,7 @@ Shadows, halos and light on a shape. Each effect follows the [section "Effects"]
 | Line | "Inner shadow", with a settings button. |
 | Popup | **X** and **Y**, **Blur**, **Colour**. **Edit on the drawing**. |
 | On the drawing | **Inner shadow editing**: the same handles as the drop shadow, inside the shape. The bar says "Inner shadow of Casing". |
-| Status | POC (P5). |
+| Status | Set aside (2026-11-25). |
 
 ## Inner glow
 
@@ -48,7 +48,7 @@ Shadows, halos and light on a shape. Each effect follows the [section "Effects"]
 | Line | "Inner glow", with a settings button. |
 | Popup | **Size**, **Colour**. |
 | On the drawing | Nothing. |
-| Status | POC. |
+| Status | Set aside (2026-11-25). |
 
 ## Lighting
 
@@ -59,7 +59,7 @@ Shadows, halos and light on a shape. Each effect follows the [section "Effects"]
 | Line | "Lighting", with a settings button. |
 | Popup | **Kind**: Relief or Shine. **Light**: Far, Point or Spot. **Azimuth** and **Elevation** (far light), or the position of the light (point, spot). **Depth** of the relief. **Shine** (shine only). **Colour** of the light. **Edit on the drawing**. |
 | On the drawing | **Light editing**: the light is a handle on the drawing, a bulb for a point, a bulb with its cone for a spot, an arrow for a far light; dragging it lights the shape again. The bar says "Light of Casing". |
-| Status | POC. |
+| Status | Set aside (2026-11-25). |
 
 ## Where it is used
 

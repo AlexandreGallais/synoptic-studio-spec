@@ -33,14 +33,14 @@ The rectangle, the ellipse, the polygon and the path share the same pages; the g
 | --- | --- |
 | [Geometry](geometry.md) | Size, position, rotation, placement in a group, and the order of the right-hand panel. Every element has them. |
 | [Fill and border](fill-and-border.md) | Fills stacked (colour or gradient), border (not an SVG stroke) outside, in the middle or inside, size, dashes. A group has neither. |
-| [Effects](effects-and-masks.md) | The section "Effects", its lines, popups and editing modes; the catalogue of every effect SVG and CSS allow, tried in the POC, kept only if they keep the performance. |
-| [Clip, mask, fade](effects-clip-and-mask.md) | The effects that hide part of a shape, with their editing. |
-| [Opacity and blend](effects-opacity-and-blend.md) | Opacity, blend mode, background blur. |
-| [Shadows and light](effects-shadows-and-light.md) | Drop shadow, outer glow, inner shadow, inner glow, lighting. |
-| [Blur and sharpness](effects-blur-and-sharpness.md) | Blur; sharpen, edges, emboss. |
-| [Colour](effects-colour.md) | Colour adjustments, colour overlay, colour map. |
-| [Texture and distortion](effects-texture-and-distortion.md) | Thicken or thin, noise, distortion. |
-| [Filter chain](effects-filter-chain.md) | A filter built step by step, in its own editing mode. |
-| [Paints](paints.md) | Gradients edited on the drawing; conic gradient, pattern, image. |
-| [Lines and text](effects-lines-and-text.md) | Arrow heads, border that keeps its width, crisp edges, text along a path. |
+| [Effects](effects-and-masks.md) | The section "Effects", its lines and editing modes; the catalogue of every effect SVG and CSS allow, and the seven entries kept for this version (2026-11-25). |
+| [Clip, mask, fade](effects-clip-and-mask.md) | The clip, with its editing; mask and fade set aside. |
+| [Opacity and blend](effects-opacity-and-blend.md) | The opacity of the whole object; blend mode and background blur set aside. |
+| [Shadows and light](effects-shadows-and-light.md) | Set aside: drop shadow, outer glow, inner shadow, inner glow, lighting. |
+| [Blur and sharpness](effects-blur-and-sharpness.md) | Set aside: blur; sharpen, edges, emboss. |
+| [Colour](effects-colour.md) | Set aside: colour adjustments, colour overlay, colour map. |
+| [Texture and distortion](effects-texture-and-distortion.md) | Set aside: thicken or thin, noise, distortion. |
+| [Filter chain](effects-filter-chain.md) | Set aside: a filter built step by step. |
+| [Paints](paints.md) | Linear and radial gradients edited on the drawing; conic gradient, pattern, image set aside. |
+| [Lines and text](effects-lines-and-text.md) | The border that keeps its width; arrow heads, crisp edges, text along a path set aside. |
 | [Points and handles](../05-point-editing-mode/points-and-handles.md) | In the point editing mode: corner radius or handles per point, mirroring, angle and length. |

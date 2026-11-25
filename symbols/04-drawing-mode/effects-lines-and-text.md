@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › [Effects](effects-and-masks.md) › Lines and text
 
-Status: draft. Proposals of the assistant for the POC (2026-11-25); text along a path: later (Product Owner, 2026-11-25). Not validated.
+Status: draft. The border that keeps its width: kept by the Product Owner (2026-11-25). The arrow heads, the crisp edges and the text along a path: set aside, not in this version (Product Owner, 2026-11-25), kept as a record. Not validated.
 
 What SVG offers for lines, borders and texts, beyond the [border](fill-and-border.md) and the [text](text.md).
 
@@ -15,17 +15,17 @@ What SVG offers for lines, borders and texts, beyond the [border](fill-and-borde
 | Line | In the section "Border" of a path, a line **Ends**: a select **Start** and a select **End**, each opening the list of the heads. |
 | The list | None, Arrow, Open arrow, Circle, Square, Diamond, Bar, then **Custom** and the custom heads of the Symbol Lib. A **Size**, in times the width of the border, under the list. |
 | On the drawing | **Head editing**, for a custom head: the head is shown big in the middle of the drawing area, with the end of the line as a guide, and drawn with the shape tools. The bar says "End of Flow arrow". |
-| Status | POC. Linked to the open question on the arrows of a line ([Fill and border](fill-and-border.md#open-paths)). |
+| Status | Set aside (2026-11-25). |
 
 ## Border that keeps its width
 
 |  |  |
 | --- | --- |
-| What it does | The border keeps its width on screen when the symbol is scaled in a synoptic: a pump drawn twice as big keeps borders of 2 px. |
-| Feature | SVG `vector-effect: non-scaling-stroke`. It applies to a native stroke: the computed border (outside, inside, dashes) needs another way, for the POC. |
+| What it does | The border keeps its width on screen when the symbol is scaled in a synoptic: a pump drawn twice as big keeps borders of 2 px, so that symbols can be rescaled without growing thick (Product Owner, 2026-11-25). |
+| Feature | Computed, as the border itself (outside, middle, inside, dashes): the outline of the border is computed again at the scale of the symbol in the synoptic (Product Owner, 2026-11-25: "ça sera calculé"). SVG `vector-effect: non-scaling-stroke` applies to a native stroke only, so it is not used. |
 | Line | In the section "Border", a switch **Keep the width when scaled**, under the size and position. |
 | On the drawing | Nothing in the editor; the effect shows in a synoptic. |
-| Status | POC. |
+| Status | Kept (2026-11-25); its cost measured in the POC (P13). |
 
 ## Crisp edges
 
@@ -35,7 +35,7 @@ What SVG offers for lines, borders and texts, beyond the [border](fill-and-borde
 | Feature | SVG `shape-rendering`: crispEdges; geometricPrecision is the smooth default. |
 | Line | "Crisp edges" in the section "Effects", with no button: on or off by its eye. |
 | On the drawing | Nothing more than the effect. |
-| Status | POC. |
+| Status | Set aside (2026-11-25). |
 
 ## Text along a path
 
@@ -46,7 +46,7 @@ What SVG offers for lines, borders and texts, beyond the [border](fill-and-borde
 | Line | In the panel of a [text](text.md), a line **Along a path**: a select of the shapes of the symbol, and an **Edit** button. |
 | Popup | **Path**: the shape followed. **Start**, in percent of its length. **Side**: Outside or Inside. |
 | On the drawing | **Path editing**: the path followed is shown with its points, a handle marks where the text starts; dragging it moves the text along the path. The bar says "Path of Tag". |
-| Status | Later: of no use in this version, good to know (Product Owner, 2026-11-25). |
+| Status | Set aside (2026-11-25). |
 
 ## Where it is used
 
