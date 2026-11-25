@@ -27,7 +27,7 @@ The mode of the [editor](../03-editor/README.md) in which the points of a path a
 
 - Select picks the points and handles of the chosen shapes, one or several, and moves them (several points as in the [editor](../03-editor/select.md): Shift or Ctrl, or a selection rectangle). A click on an empty place of the canvas deselects the points; the shapes stay chosen (assistant's proposal).
 - A click on a handle selects it like a point: the panel then shows the X and Y of the handle, as in Figma (Product Owner, 2026-11-25).
-- Points can be added (the + of the list, the Pen) and removed (the Delete key, the − of the list).
+- Points are added with the [Pen](#pen) and removed with the Delete key or the − of the list. Select still moves the points, as anywhere (Product Owner, 2026-11-26: "si on est en mode sélection, on peut toujours venir bouger les points").
 
 ### Right-hand panel
 
@@ -39,7 +39,7 @@ The mode of the [editor](../03-editor/README.md) in which the points of a path a
 
 #### List of the points
 
-- The title is "Points", with a small **−** and a small **+** on its right (below).
+- The title is "Points", with a small **−** on its right (below). No + any more: the Pen adds the points (Product Owner, 2026-11-26: "le +, je sais pas à quoi il sert [...] faudrait juste le moins").
 - Under it, **a group line per chosen shape**, in the order of the layers: the icon of its kind and its name (Casing, then Outlet, then Impeller), then the lines of its points. The same with one shape, so the layout does not change with the number of shapes (Product Owner, 2026-11-26: "qu'on montre casing, ellipse, outlet ensuite, impeller après").
 - The points are numbered in each shape: Casing and Outlet each have a Point 1.
 - The values in the list repeat those of the options of the selection on purpose: they show every point at once and are changed in place (Product Owner, 2026-11-26: "ça permet de tout voir à côté [...] super pratique quand même").
@@ -47,22 +47,20 @@ The mode of the [editor](../03-editor/README.md) in which the points of a path a
 
 | Cell | Point in the corner radius mode | Point in the handles mode |
 | --- | --- | --- |
-| Name | Point 1 | Point 1 |
+| Name | Its name, or Point 1 when it has none | Its name, or Point 1 when it has none |
 | X, Y | Two number fields | Two number fields |
 | Radius | A number field | Disabled (greyed, a dash) |
 
 - **The list does not show the mode**: the last cell is always the radius, disabled for a point in the handles mode. Each column has one meaning, as the lines of the selection, and the mode and the mirroring are one click away just above (assistant's choice, asked by the Product Owner on 2026-11-26: "peut-être qu'afficher que le radius, ça serait plus simple [...] à toi de vérifier").
 - There is therefore no mirroring cell any more: a handle is selected on the canvas. On a point whose two handles mirror angle and length, the handles are changed from the point itself (see [Points and handles](points-and-handles.md#angle-and-length-on-a-point)).
 - A click on a line selects the point; Shift or Ctrl and a click add a line to the selection, as on the canvas, in one shape or across several.
-- **No bin on the lines**: it sat too close to the fields (Product Owner, 2026-11-25: "trop dangereux comme ça"). A selected point is removed with the **Delete key**, or the small **−** next to the + of the title, enabled when points are selected (Product Owner, 2026-11-26: "le - qui n'est pas grisé, c'est cool").
+- **No bin on the lines**: it sat too close to the fields (Product Owner, 2026-11-25: "trop dangereux comme ça"). A selected point is removed with the **Delete key**, or the small **−** of the title, enabled when points are selected (Product Owner, 2026-11-26: "le - qui n'est pas grisé, c'est cool").
 
 #### Adding a point
 
-- The **+** of the title adds a point (Product Owner, 2026-11-25: "un petit + à la liste des points, et ça suffirait").
-- It is **disabled** until two points next to each other on the same shape are selected (Product Owner, 2026-11-26: "que le + soit grisé, c'est super clair").
-- **Adding a point is never destructive**: the new point is put on the outline, half-way between the two, and the outline does not change. On a straight side, it is the middle of the side; on a curve, the middle of the curve, the handles of the two neighbours and of the new point set so that the curve stays exactly the same. A circle with a point added is still the same circle (Product Owner, 2026-11-26: "ça détruit pas le cercle [...] faut jamais que ce soit destructif").
-- The new point takes the next number of its shape: with 4 points, it is Point 5, placed between the two selected (between Point 4 and Point 1, for example).
-- The list keeps its length until the point is added: nothing is inserted above it when two points are selected (Product Owner, 2026-11-25: "ça va faire bouger la liste du bas").
+- Points are added with the **Pen** (Product Owner, 2026-11-26: "quand on est en mode point, ça ajoute un point, et puis on peut éditer"). The + of the list, added on 2026-11-25, is removed.
+- **Adding a point is never destructive**: a point the Pen puts on the outline does not change it. On a straight side, the side stays straight; on a curve, the handles of the two neighbours and of the new point are set so that the curve stays exactly the same. A circle with a point added is still the same circle (Product Owner, 2026-11-26: "ça détruit pas le cercle [...] faut jamais que ce soit destructif").
+- The new point takes the next number of its shape: with 4 points, it is Point 5.
 
 #### Several points selected
 
@@ -74,7 +72,7 @@ The mode of the [editor](../03-editor/README.md) in which the points of a path a
 block-beta
     columns 1
     sel["The selection: always the same lines, disabled when they do not apply"]
-    list["List of the points of the shapes chosen in the layers: title Points with − and +, a group line per shape, a line per point (name, X, Y, radius)"]
+    list["List of the points of the shapes chosen in the layers: title Points with its −, a group line per shape, a line per point (name, X, Y, radius)"]
 ```
 
 ### Pen
@@ -84,8 +82,8 @@ block-beta
 
 ### A shape that receives points becomes a free form
 
-- When points are added to a rectangle, an ellipse or a polygon (with the + of the list or the Pen), the shape becomes a free form: a path.
-- It **loses nothing** of what it had (fill, border, effects, position); it is only now a free form, whose points are all editable. A point added with the + leaves its outline as it was (see [Adding a point](#adding-a-point)).
+- When points are added to a rectangle, an ellipse or a polygon (with the Pen), the shape becomes a free form: a path.
+- It **loses nothing** of what it had (fill, border, effects, position); it is only now a free form, whose points are all editable. A point added on the outline leaves it as it was (see [Adding a point](#adding-a-point)).
 - The path now follows its points, not the options of the former shape.
 - The same holds when a point is **removed**: a rectangle that loses a point becomes a triangle, as a free form. Moving the points of a rectangle also makes it a free form.
 

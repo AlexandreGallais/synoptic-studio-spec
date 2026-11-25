@@ -21,7 +21,7 @@ Select is in the tool bar of every mode except the Run mode. What it does depend
 - Several shapes can be selected, with the usual meaning of the keys, "un vrai Shift et un vrai Contrôle" (Product Owner, 2026-11-26): Ctrl and a click adds a shape to the selection or removes it; Shift and a click in the [layers](layers.md) adds every layer between the last one clicked and this one; on the drawing, where shapes have no order between them, Shift and a click adds the shape clicked, like Ctrl (Product Owner, 2026-11-26). A plain click resets the selection. In the point editing mode, several points are selected the same way. In the [alignment mode](../06-alignment-mode/README.md#the-reference-and-the-shapes-to-place-a-normal-selection), the first shape selected is the reference and the next ones are the shapes to place (Product Owner, 2026-11-26).
 - A press in the empty space, held while dragging, draws a selection rectangle.
 - By default, every shape the rectangle touches is selected, in place of the selection before. With **Ctrl** held, the shapes the rectangle touches are **added** to the selection (Product Owner, 2026-11-26: "si tu fais Contrôle et que tu fais une sélection, normalement, ça va ajouter toutes les formes").
-- A modifier key makes the rectangle select only the shapes it contains entirely: Alt (see [Decided](#decided)). Like every modifier, it has a visible option too.
+- With **Ctrl + Shift** held, the rectangle takes only the shapes it contains entirely (see [Decided](#decided)). Like every modifier, it has a visible option too.
 
 ## Equal spacing
 
@@ -50,8 +50,8 @@ Second research report (`research/t4-…/rapport.md`, section 3.15):
 ## Decided
 
 - **Keys must exist on every platform** (Windows, macOS, Linux), the same everywhere: see the rule in the [editor](README.md). "Option" does not exist on Windows, so the specs name the key **Alt** (it is the Option key on a Mac).
-- A selection rectangle selects only the shapes it contains entirely while **Alt** is held. The option in the panel stays as the visible equivalent.
+- A selection rectangle takes only the shapes it contains entirely while **Ctrl + Shift** are held (Product Owner, 2026-11-26; replaces Alt, chosen on 2026-11-25). The option in the panel stays as the visible equivalent.
 
 ## Open questions
 
-- "Entirely enclosed": Alt, as decided, or **Ctrl + Shift** while dragging, as the Product Owner said on 2026-11-26 with a doubt ("ça sert à ça, je crois, normalement")?
+- None.

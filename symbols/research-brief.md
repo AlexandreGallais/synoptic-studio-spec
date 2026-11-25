@@ -186,7 +186,7 @@ The research answers every question. If its budget runs short, it follows this o
 
 ## What the first report leaves open
 
-Written as questions to the Product Owner in the pages: the desktop window and the browsers to hold (effects page), the dashes of a fill-based border (fill and border page), the third polygon mode and the anchors on corners (polygon page). The key of "entirely enclosed" is settled (Alt), and every key follows the cross-platform rule of the editor page. The measures come from the POC plan P0 to P8 (effects page).
+Written as questions to the Product Owner in the pages: the desktop window and the browsers to hold (effects page), the dashes of a fill-based border (fill and border page), the third polygon mode and the anchors on corners (polygon page). The key of "entirely enclosed" is settled (Ctrl + Shift since 2026-11-26, Alt before), and every key follows the cross-platform rule of the editor page. The measures come from the POC plan P0 to P8 (effects page).
 
 ## What stays out of the research
 

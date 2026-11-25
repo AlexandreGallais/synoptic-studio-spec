@@ -22,20 +22,27 @@ A group is an SVG `g` element. Its first use is to give a structure to several s
   - Hug, on both: the group is a plain SVG group. It wraps its children and nothing more. This is the default.
   - Fixed: the group has the size the user gave it, and it no longer wraps its content.
   - The width and the height are **always shown**, in Hug too: the user sees the size of the group, and changes it in the same field (Product Owner, 2026-11-24).
-- Under the size, its X, Y and rotation, as every element (see [Geometry](geometry.md)).
+- Under the size, its X and Y. **No rotation**: a group is always a rectangle upright, its sides horizontal and vertical (Product Owner, 2026-11-26: "il n'y a pas de rotation possible pour les groupes et point barre").
 - A group has no fill and no border (see [Fill and border](fill-and-border.md)).
 - A group with its own size can be empty. The size and the position are only simulated by the editor: no rectangle is added inside the group, and the SVG bounding box is not relied on.
 
 ### Layout of the children
 
-- It is available when the group has its own size. The panel offers the placement of the children in the group: centred, or aligned left, right, top or bottom, with anchors.
-- **All the children centred is the default placement** (Product Owner, 2026-11-24). When the group hugs its content, the biggest child gives the size, and the others are centred on it.
-- **A child can override it**, in its own panel: placed by the group, **anchored** to one of the nine anchors of the group, or **free** at the X and Y typed (Product Owner, 2026-11-25: "un qui va à gauche, un qui va à droite"). See [Geometry](geometry.md#position-in-the-group).
+The group says how its children are placed (Product Owner, 2026-11-26: "pour un groupe, il faut pouvoir dire si les enfants, le placement sera libre ou sera avec des ancres"):
+
+| Placement of the children | What it does |
+| --- | --- |
+| **Free** (the default) | Each child is where the user puts it. |
+| **Anchored** | An [anchor](../03-editor/anchors.md) of the group is chosen in a 9-point grid; every child that has not chosen its own placement goes on that anchor ("tous les enfants qui n'ont pas décidé seront par rapport à l'ancre du parent"). |
+
+- This replaces "all the children centred by default" (2026-11-24): the centre is now one anchor among nine.
+- The choice is offered whether the width and the height are Hug or Fixed (Product Owner, 2026-11-26: "peu importe si le width et le height sont en hug ou en fixed"). Whether a group whose children are free can only hug is open: the Product Owner also said "si on est en mode placement libre, dans la logique, ils sont forcément hug".
+- **A child can override it**, in its own section "In the group" (see [Geometry](geometry.md#in-the-group)).
 - No flex display (rows, columns, gaps): no case where it would be useful.
 
 ### Absolute children
 
-- A child can be set **absolute**: it leaves the layout. It is the "Anchored" placement with two different anchors (see [Geometry](geometry.md#position-in-the-group)).
+- A child can be set **absolute**: it leaves the layout. It is the "Anchored" placement with two different anchors (see [Geometry](geometry.md#in-the-group)).
 - Its position is given by two [anchors](../03-editor/anchors.md): an anchor of the group and an anchor of the child. Example: the child's bottom left corner on the group's top right corner.
 - This puts the child outside the shape of the group while it stays in the group.
 - An absolute child does not change the size of the group.
@@ -51,4 +58,5 @@ Source: the second research report (`research/t4-…/rapport.md`, section 3.15).
 ## Open questions
 
 - The list of anchors and the exact options of the panel. See [Open questions](../10-open-questions.md).
+- A group whose children are free: Hug only, or Hug and Fixed (two sayings of 2026-11-26)?
 - How the Group tool is used with the mouse: click the shapes one by one, or draw a frame.

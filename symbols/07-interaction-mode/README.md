@@ -9,7 +9,7 @@ The mode of the [editor](../03-editor/README.md) in which the user says what hap
 ## Rules
 
 - Tool bar: [Select](../03-editor/select.md), [Hand](../03-editor/hand.md) and Interaction zone (below).
-- Right-hand panel: the interactions of the selected place.
+- Left-hand panel: the **interaction zones**, above the layers. Drawing area: the zones are seen, selected and created. Right-hand panel: the interactions of the selected place (see [Panels](#panels)).
 - Only for a symbol with a type. A symbol without a type has no command to send (see [Libraries and symbols](../01-libraries-and-symbols.md)).
 - The places offered for an interaction are: the zones the user drew, the bounding box of the whole symbol, and a layer. A layer is clickable as its real shape, not as the square around it, and stays clickable when its fill is transparent (see [Select](../03-editor/select.md)). Example: a button drawn on its own layer can be the place.
 - Several gestures are possible on a place: left click, right click, double click, and others (the list is to settle).
@@ -32,19 +32,24 @@ flowchart LR
 - Only in this mode. Draws a zone on the symbol, by hand, that reacts to a gesture.
 - **As many zones as wanted**, added on the fly: each drag of the tool makes a new zone (Product Owner, 2026-11-25: "faut pouvoir mettre des zones à la volée, le nombre qu'on veut").
 - All the zones of the symbol are shown on the drawing in this mode, so the user sees those available.
+- A zone belongs to the **whole symbol**, not to a layer (Product Owner, 2026-11-26: "ça, c'est par rapport à tout le symbole, dans tous les cas").
 
-## Right-hand panel
+## Panels
 
-Proposed from the Product Owner's words (2026-11-25, "la liste des zones peut potentiellement être dans le menu à droite"); the place of the list is to confirm.
+Each column has one job, from left to right (Product Owner, 2026-11-26: "la sélection des zones, elle se fait à gauche [...] au milieu [...] je peux les sélectionner ou en créer, et à droite, je peux ajouter l'interaction"). The zones on the left were said with a doubt ("je suis pas si sûr de moi, mais je pense que c'est mieux"): drawn to be judged on the screen.
 
-1. **The list of the zones**: a line per zone, no bin; a selected zone is removed with the Delete key, or the − of the title of the list (assistant's proposal, as in the [point editing mode](../05-point-editing-mode/README.md#list-of-the-points), where the bin was removed on 2026-11-25).
-2. **A click on a zone**, in the list or on the drawing, selects it, and the panel shows **its interactions** under the list (Product Owner, 2026-11-25: "tu cliques sur la zone et le menu à droite se fait en fonction").
-3. The whole symbol and a layer stay places too: a click on a layer, or on the drawing outside every zone, shows their interactions in the same way (assistant's reading).
+| Column | What it holds |
+| --- | --- |
+| Left-hand panel | The list **Interaction zones**, **above the layers**: a line per zone; a click selects it. No bin: a selected zone is removed with the Delete key, or the − of the title of the list (as in the [point editing mode](../05-point-editing-mode/README.md#list-of-the-points)). Then the layers, as in every mode. |
+| Drawing area | The zones, seen on the symbol: a click selects one, the Interaction zone tool creates one. |
+| Right-hand panel | The interactions of the selected place, and their + (Product Owner, 2026-11-25: "tu cliques sur la zone et le menu à droite se fait en fonction"). |
+
+- The whole symbol and a layer stay places too: a click on a layer, or on the drawing outside every zone, shows their interactions in the same way (assistant's reading).
 
 ```mermaid
 flowchart LR
-    T["Interaction zone tool: one drag, one more zone"] --> L["List of the zones, right-hand panel"]
-    L -->|"click on a zone"| I["Its interactions, under the list"]
+    T["Interaction zone tool: one drag, one more zone"] --> L["Interaction zones, left-hand panel, above the layers"]
+    L -->|"click on a zone"| I["Its interactions, right-hand panel"]
     D["Click on a zone of the drawing"] --> I
 ```
 
@@ -111,5 +116,5 @@ Tools offer from six to twelve gestures (Ignition Perspective, Figma prototype, 
 ## Open questions
 
 - Click and double click on the same place: does the click wait? Release of "while pressed" outside the place?
-- The list of the zones: in the right-hand panel (proposed), or in the left-hand panel with the layers?
+- The interaction zones on the left, above the layers (2026-11-26, said with a doubt): kept once seen on the screen?
 - See [Open questions](../10-open-questions.md).
