@@ -86,9 +86,11 @@ block-beta
     l3["Item n: the list grows downwards, the title and its + do not move"]:2
 ```
 
-### A select rather than radios
+### A segmented control for two or three short options
 
-- In a panel, a choice among a few options is a **select**, not a line of radios, which takes too much room: in every panel of the symbol mode, of the pipes and of the synoptic mode (Product Owner, 2026-11-24).
+- In a panel, a choice among **two or three short options** is a [segmented control](../design-system/07-molecules/segmented-control.md): the options side by side on one line, the chosen one in colour, changed in **one click** (Product Owner, 2026-11-26: "quand il n'y a pas beaucoup d'options, les listes, des fois, ça casse tout le truc"). Examples: Free or Anchored, Inside, Middle or Outside.
+- A **select** for the rest: four options or more, long labels that do not fit on the line, or a list that grows (signals, commands, fonts, gestures). Never a line of radios in a panel, which takes too much room (Product Owner, 2026-11-24).
+- Where Figma has a select for the same field, the select stays (the format of the [colour field](../controls/colour-field.md), Fixed or Hug in the [size fields](../controls/size-fields.md)): see [Like Figma](#like-figma-one-line-per-value).
 - Radios stay where the choice sits in a form of the main area, not in a panel: the faceplate builder of Metadata ([MD-14.5](metadata.md#md-14--faceplate)), the General page of a synoptic ([SN-01.2](synoptics.md#sn-01--general-page-of-a-synoptic)), and the inputs a faceplate offers (`radio_horizontal`, `radio_vertical`).
 
 ### Like Figma: one line per value
@@ -183,8 +185,9 @@ Each screen has:
 | Text field | Free text on one line (multi-line when said). |
 | Number field | A number, with its unit when it has one, never "px". One shared component: arrows ±1, ±10 with a key (see [Number and text fields](../controls/number-and-text-fields.md)). |
 | Size fields | W and H on one line, Fixed or Hug (see [Size fields](../controls/size-fields.md)). |
-| Select | A choice in a list that drops down. |
-| Radio | A choice among a few options, all visible; in a panel, a select instead (see [A select rather than radios](#a-select-rather-than-radios)). |
+| Select | A choice in a list that drops down: four options or more, or long labels. |
+| Segmented control | Two or three short options side by side on one line, the chosen one in colour, one click (see [A segmented control for two or three short options](#a-segmented-control-for-two-or-three-short-options)). |
+| Radio | A choice among a few options, all visible, in a form of the main area only; in a panel, a segmented control or a select. |
 | Toggle | On or off. |
 | Checkbox | Ticked or not, often in a list. |
 | List | Items one under the other, with their own actions. |

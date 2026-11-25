@@ -137,7 +137,7 @@ Path: Canvas › Links.
 | --- | --- | --- | --- | --- | --- |
 | SN-07.1 | Link zone | Button (tool) | Draws a rectangle. | Proposed | [Navigation links](../synoptics/07-navigation-links.md) |
 | SN-07.2 | Target | Select + optional select | A synoptic, then a placed symbol of it. | Proposed | [Navigation links](../synoptics/07-navigation-links.md#the-panel-of-a-link) |
-| SN-07.3 | Look | Select | Invisible, outline on hover, always outlined; a select rather than radios ([layout rule](README.md#a-select-rather-than-radios), 2026-11-24). | Proposed | idem |
+| SN-07.3 | Look | Segmented control | Invisible, outline on hover, always outlined, one click ([layout rule](README.md#a-segmented-control-for-two-or-three-short-options), 2026-11-26); short labels Invisible, Hover, Always (assistant's). | Proposed | idem |
 | SN-07.4 | Tooltip | Text field | — | Proposed | idem |
 
 ## SN-08 · Faults
@@ -160,7 +160,7 @@ Path: Canvas › Test.
 | SN-09.1 | Placed symbols and their signals | Tree, a control per signal | Number field or slider, select, switch. | Decided (controls, for a symbol) | [Test mode](../synoptics/09-test-mode.md) |
 | SN-09.2 | Ramp | Button (play) + number field (s) | — | Proposed | idem |
 | SN-09.3 | Scenarios | Select, save, play | — | Proposed | idem |
-| SN-09.4 | Quality | Select per signal | Good, uncertain, bad. | Proposed | idem |
+| SN-09.4 | Quality | Segmented control per signal | Good, Uncertain, Bad, one click (2026-11-26). | Proposed | idem |
 | SN-09.5 | Simulated screen | Select + scale factor | — | Decided (for a symbol), Proposed (scale) | idem |
 | SN-09.6 | Log | Drawer | Time, placed symbol, gesture, command, value. | Decided (principle), Proposed (columns) | idem |
 | SN-09.7 | Performance meter | Toggle | Time per image, images per second. | Proposed | idem |

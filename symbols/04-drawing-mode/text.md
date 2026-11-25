@@ -34,7 +34,7 @@ In this order, each section compact (Product Owner, 2026-11-25: "plus lisibles, 
 ### Size of the box
 
 - **W** and **H** of the box, with the [size fields](../../controls/size-fields.md): each **Fixed** (the size typed) or **Hug** (the box fits its text) (Product Owner, 2026-11-25: "définir le width et le height de la box, ou alors mettre fit").
-- **Fit mode**, shown when a field is in Hug: what the box fits, in a select.
+- **Fit mode**, shown when a field is in Hug: what the box fits, The glyphs or The line, in a segmented control, one click (2026-11-26).
   - **Fit to the glyphs**: the box wraps the text as drawn.
   - **Fit to the line**: the box follows the line of the text, its baseline. A "g" has a tail that goes below the line, an "a" starts on the line. In this mode the box does not change because of such letters. The goal is to align texts of different font sizes on the same line, for a better look.
 

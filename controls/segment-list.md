@@ -13,7 +13,7 @@ How a border, or a fill made of dashes, is set: a list of lines, each a segment 
 - **One line**: a plain border, of that colour.
 - **Two lines or more**: dashes. The segments follow each other along the border, in the order of the list, and repeat. A **gap** is a segment whose opacity is **0 %**. Example: `40454D 100 % 6`, `40454D 0 % 6` gives dashes of 6 and gaps of 6.
 - **No line**: no border. There is no toggle "Border" (Product Owner, 2026-11-24: "comme Figma").
-- **Under the list**: the **size** of the border (a number field, in pixels, no unit) and its **position**, a **select**: Inside, Middle, Outside. A select rather than radios, which take too much room (Product Owner, 2026-11-24).
+- **Under the list**: the **size** of the border (a number field, in pixels, no unit) and its **position**, a **segmented control**: Inside, Middle, Outside, in one click (Product Owner, 2026-11-26; see [the layout rule](../screens/README.md#a-segmented-control-for-two-or-three-short-options)). The size field is narrow, the three positions take the rest of the line.
 - Every change is applied at once, as everywhere.
 
 ```mermaid
