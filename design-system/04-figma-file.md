@@ -30,8 +30,11 @@ Page Spec, section "Symbol mode · test screens (2026-11-23)" ([`776:81`](https:
 | Point editing | SY-05 · the upper handle of Point 2 selected | [`942:2867`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=942-2867) |
 | Point editing | SY-05 · Casing and Outlet chosen, two points of Outlet selected, values Mixed | [`942:3188`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=942-3188) |
 | Alignment | SY-06 · Outlet placed outside Casing, on its right | [`929:2977`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=929-2977) |
-| Clip | SY-13 · the clip shapes of Casing | [`927:2897`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=927-2897) |
-| Intersection | SY-14 · Casing and Outlet chosen, their regions | [`946:3132`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=946-3132) |
+| Clip | SY-13 · a rectangle clip shape of Casing | [`927:2897`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=927-2897) |
+| Clip | SY-13 · an ellipse clip shape of Casing | [`959:3536`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=959-3536) |
+| Clip | SY-13 · a polygon clip shape of Casing | [`960:3077`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=960-3077) |
+| Clip | SY-13 · a free form clip shape of Casing, drawn with the Pen | [`960:3354`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=960-3354) |
+| Intersection | SY-14 · two regions selected with the Shape builder | [`946:3132`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=946-3132) |
 | Connection | SY-10 · two connection points, Port B selected | [`929:2686`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=929-2686) |
 | Animation | SY-08 · the animations of Impeller | [`930:2752`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=930-2752) |
 | Animation | SY-08 · the + of Impeller: choose an output signal | [`944:2944`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=944-2944) |

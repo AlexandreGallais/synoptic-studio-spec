@@ -78,8 +78,8 @@ flowchart LR
 | [Drawing](../04-drawing-mode/README.md) | The default mode: draw and arrange shapes. | Select, Hand, Group, Rectangle, Ellipse, Polygon, Pen, Text | Options of the selected shape (colours, corner radius...) |
 | [Point editing](../05-point-editing-mode/README.md) | Edit the points of a path. | Select, Hand, Pen | Options of the selected point |
 | [Alignment](../06-alignment-mode/README.md) | Place shapes in relation to each other. | Select, Hand | Alignment of the selected shapes |
-| [Clip](../04-drawing-mode/clip-mode.md) | Draw the clip shapes of the selected shape: it is shown only inside them. | Select, Hand, Rectangle, Ellipse, Polygon, Pen | The clip shapes of the shape, the geometry of the selected one |
-| [Intersection](../04-drawing-mode/intersection-mode.md) | Build a new shape from several shapes and their intersections. | Select, Hand | The chosen shapes, their regions, Validate |
+| [Clip](../04-drawing-mode/clip-mode.md) | Draw the clip shapes of the selected shape: it is shown only inside them. | Select, Hand, Rectangle, Ellipse, Polygon, Pen (closed shapes only) | The clip shapes of the shape, the options of the selected one without its look |
+| [Intersection](../04-drawing-mode/intersection-mode.md) | Build a new shape from several shapes and their intersections. | Hand, Shape builder | The chosen shapes, "Create a shape from the selection" and its + |
 | [Connection](../pipes/connection-points.md) | Place the connection points where pipes attach. | Select, Hand, Connection point | The options of the selected point |
 | [Animation](../08-animation-mode/README.md) | Link the signals to the parts of the drawing. | Select, Hand | The animations of the selected part |
 | [Interaction](../07-interaction-mode/README.md) | Draw the zones that react to a gesture, and link them to commands. | Select, Hand, Interaction zone | The interactions of the selected place |

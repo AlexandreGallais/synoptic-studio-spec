@@ -13,16 +13,17 @@ The mode of the [editor](../03-editor/README.md) in which the user draws the **c
 - **Tools**: [Select](../03-editor/select.md), [Hand](../03-editor/hand.md), [Rectangle](rectangle.md), [Ellipse](ellipse.md), [Polygon](polygon.md), [Pen](pen.md). No Group and no Text: a clip is made of shapes only, the free forms of the pen included (Product Owner, 2026-11-25).
 - **Which shape is clipped**: the shape selected when the mode is chosen. A click on another shape in the layers changes it. With nothing selected, the mode is greyed in the menu, its tooltip says to select a shape first (assistant's proposal).
 - **On the drawing**: the clipped shape stays shown, the part of it outside the clip shapes faded; the rest of the symbol is dimmed. The clip shapes are drawn as outlines, with no fill, no border and no effect.
-- **Right-hand panel**: the title "Clip of Casing", the list "Clip shapes" (one line per clip shape, a − on each), then the geometry of the selected clip shape. Assistant's proposal, kept by the Product Owner on 2026-11-25 ("le clip, il est OK").
-- **Geometry of a clip shape**, on several lines (Product Owner, 2026-11-25, with a "peut-être" on the order):
+- **Right-hand panel**: the title "Clip of Casing", the list "Clip shapes" (one line per clip shape, a − on each), then the options of the selected clip shape. Assistant's proposal, kept by the Product Owner on 2026-11-25 ("le clip, il est OK").
+- **The options of a clip shape are those of the same shape in the [drawing mode](README.md), without what makes its look**: no opacity, no fill, no border (Product Owner, 2026-11-26: "exactement les mêmes choses que quand on fait une forme, sauf que c'est sans les couleurs, sans l'opacité"). Same fields, same order as the drawing mode ([Geometry](geometry.md#order-of-the-right-hand-panel)); this replaces the order of 2026-11-25, X and Y first.
 
-| Line | Fields |
+| Clip shape | Options, in the order of the panel |
 | --- | --- |
-| 1 | X, Y |
-| 2 | W, H |
-| 3 | Rotation, and the corner radius of a rectangle on the same line |
+| [Rectangle](rectangle.md) | W, H; X, Y, rotation; corner radius. |
+| [Ellipse](ellipse.md) | W, H; X, Y, rotation. No corner radius: it makes no sense for an ellipse. |
+| [Polygon](polygon.md) | Number of sides, how it fills its box (Filled, Equilateral), anchor and whether a corner or a side touches it; then W, H; X, Y, rotation; corner radius. |
+| Free form, drawn with the [Pen](pen.md) | W, H; X, Y, rotation; corner radius, for every corner of the path at once. |
 
-The sides of a polygon come before, as in [Geometry](geometry.md#order-of-the-right-hand-panel). Whether this order (X and Y first) also goes to the panels of the drawing mode, where W and H come first, is open.
+- **The Pen in this mode makes closed shapes only**: a path becomes a clip shape once it is closed, nothing else (Product Owner, 2026-11-26: "que ça fonctionne que si on fait une forme qui est refermée, et point barre"). A path left open when the drawing ends (Escape, another tool) is not kept (assistant's proposal).
 
 - **Layers**: the clip shapes are under their shape, in a line "Clip" folded by default, never at the level of the drawing.
 - Several clip shapes add up: what is inside any of them is shown. The clip shapes follow the shape: moved, resized or turned with it.
@@ -51,4 +52,4 @@ stateDiagram-v2
 - The name: Clip, or another word?
 - Can a group or a text be clipped, or only a shape?
 - How the points of a clip shape are edited: in this mode, or in the point editing mode?
-- X and Y first, then W and H: here only, or in every panel (the drawing mode has W and H first)?
+- A path left open with the Pen: not kept (proposal), or closed by itself?

@@ -286,7 +286,7 @@ The order of the panel: the options that make the shape (polygon), the geometry,
 | SY-04.36 | Width, height | [Size fields](../controls/size-fields.md) | W and H on one line, no unit; always fixed for a rectangle, an ellipse, a polygon, a path; Fixed or Hug for a group and a text. | Decided | [Geometry](../symbols/04-drawing-mode/geometry.md) |
 | SY-04.37 | X, Y | Number field each | Under W and H, in pixels, no unit; on every element (2026-11-25). | Decided | [Geometry](../symbols/04-drawing-mode/geometry.md) |
 | SY-04.38 | Rotation | Number field, degrees | On the line of X and Y; on every element (2026-11-25). | Decided | [Geometry](../symbols/04-drawing-mode/geometry.md) |
-| SY-04.14 | Corner radius | Number field, no unit | Under the height (2026-11-25): for the whole rectangle, and for every corner of a path drawn with the pen. | Decided | [Rectangle](../symbols/04-drawing-mode/rectangle.md), [Pen](../symbols/04-drawing-mode/pen.md#panel-of-a-path) |
+| SY-04.14 | Corner radius | Number field, no unit | Under the height (2026-11-25): for the whole rectangle, for every corner of a path drawn with the pen, and for every corner of a polygon (2026-11-26). Never for an ellipse. | Decided | [Rectangle](../symbols/04-drawing-mode/rectangle.md), [Pen](../symbols/04-drawing-mode/pen.md#panel-of-a-path) |
 | SY-04.15 | Link width and height | Icon button (link), at the end of the line W, H | Visible equivalent of the square or circle key. An icon on the size line rather than a toggle of its own (assistant, 2026-11-24). | Decided (link), Proposed (icon on the line) | [Size fields](../controls/size-fields.md#width-and-height-linked) |
 | SY-04.16 | Polygon: number of sides | Number field | 3 to 20; first in the panel (2026-11-25). | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
 | SY-04.17 | Polygon: how it fills its box | Select | Filled, Equilateral (a third mode "like Figma": Open, advised against). A select rather than radios ([layout rule](README.md#a-select-rather-than-radios), 2026-11-24). | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
@@ -629,13 +629,13 @@ mindmap
 | SY-13.2 | Tools | Button | Select, Hand, Rectangle, Ellipse, Polygon, Pen; no Group, no Text. | Decided | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 | SY-13.3 | Drawing | State of the drawing area | The clipped shape shown, its part outside the clip shapes faded; the rest of the symbol dimmed; the clip shapes as outlines. | Proposed | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 | SY-13.4 | Clip shapes | List, a − on each line | Title "Clip of Casing", then one line per clip shape. | Proposed | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
-| SY-13.5 | Geometry of a clip shape | [Size fields](../controls/size-fields.md), number fields | On three lines (2026-11-25): X and Y; W and H; rotation and the corner radius of a rectangle. Sides of a polygon before. No fill, no border. | Decided (lines), Proposed (X and Y first) | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
+| SY-13.5 | Options of a clip shape | [Size fields](../controls/size-fields.md), number fields | Those of the same shape in the drawing mode, in the same order, without opacity, fill or border (2026-11-26, replaces X and Y first). Rectangle: W, H; X, Y, rotation; corner radius. Ellipse: the same without corner radius. Polygon: sides, filling of the box, anchor, then the same as the rectangle. Free form: the same as the rectangle. One screen per kind. | Decided | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
+| SY-13.6 | Pen in the Clip mode | Tool | Closed shapes only (2026-11-26); a path left open is not kept (proposed). | Decided (closed only), Proposed (open path) | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 
 Gaps:
 
 - The name "Clip" (the Product Owner doubts it).
 - A group or a text clipped; points of a clip shape edited where.
-- X and Y first: in the clip only, or in every panel.
 
 ## SY-14 · Intersection mode
 
@@ -645,32 +645,32 @@ Path: symbol editor › Intersection, in the modes menu, right after Clip (2026-
 mindmap
   root((SY-14 Intersection))
     Tool bar
-      Select
       Hand
+      Shape builder
     Left-hand panel
       Shapes chosen in the layers, as many as wanted
     Drawing
       Chosen shapes put forward
       Rest of the symbol translucent
-      Regions: taken in filled, left out as outlines
+      Regions: selected filled, the others as outlines
     Right-hand panel
       Chosen shapes
-      Regions, a check box each
-      Validate, Cancel
+      Create a shape from the selection, its +
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SY-14.1 | Intersection | Button of the modes menu | Right after Clip, in its group (the group: assistant's choice). | Decided (place after Clip), Proposed (group) | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md) |
-| SY-14.2 | Tools | Button | Select, Hand. | Proposed | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md) |
+| SY-14.2 | Tools | Button | Hand, Shape builder (active when the mode opens); no Select. | Proposed | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md) |
 | SY-14.3 | Chosen shapes | Selection in the layers | As many as wanted; put forward on the drawing, the rest translucent. | Decided | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
-| SY-14.4 | Regions | List, a check box each; a click on the drawing | Each shape alone and each intersection; taken in (filled) or left out (outline). | Decided (choice of the regions), Proposed (form) | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
-| SY-14.5 | Validate | Button | Creates a new shape, a path, from the regions taken in; the chosen shapes stay (proposed). | Decided (button), Proposed (shapes kept) | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
-| SY-14.6 | Cancel | Button | Leaves without creating anything. | Proposed | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
+| SY-14.4 | Regions | A click on the drawing with the Shape builder | A click selects a region, a click again unselects it, endlessly (2026-11-26); selected: filled; the others: outline. No list of the regions in the panel (2026-11-26). | Decided | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
+| SY-14.5 | Create a shape from the selection | Title and a small + on its right | Enabled as soon as a region is selected; creates **one** path from every selected region, even apart (2026-11-26). Then the selection empties, the mode stays (proposed); the chosen shapes stay (proposed). | Decided (+, one shape), Proposed (after) | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
+| SY-14.6 | Validate, Cancel | — | Removed (2026-11-26): the + creates the shape; leaving the mode creates nothing. | Decided | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
 
 Gaps:
 
 - The name "Intersection" (the mode also makes unions and differences); a group, a text or an open path chosen.
+- An option to create several shapes (one per group of regions that touch, or one per region): said unclearly, open.
 
 ## SY-12 · Enums of a Symbol Lib
 
