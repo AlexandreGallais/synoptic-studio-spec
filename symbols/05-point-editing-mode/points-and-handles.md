@@ -55,7 +55,7 @@ A point in the handles mode whose handles mirror each other is edited without se
 | Mirroring of the point | Angle | Length |
 | --- | --- | --- |
 | Mirror angle and length | Enabled: the angle of both handles | Enabled: the length of both handles |
-| Mirror angle | Enabled: the angle of both handles | Disabled: the two lengths differ (assistant's proposal) |
+| Mirror angle | Enabled: the angle of both handles | Disabled: the two lengths differ (Product Owner, 2026-11-26) |
 | None | Disabled | Disabled |
 
 - The angle shown is that of the handle after the point along the path; the other handle stays opposite (assistant's proposal).
@@ -109,4 +109,4 @@ Source: the research report (`research/t1-…/rapport.md`). Confidence: high.
 - Angle 0 of a handle: horizontal (proposal) or vertical?
 - The three icons of the mirroring: to draw in the design system.
 - Switching a selected handle to the corner radius mode: the selection becomes its point (assistant's reading), to confirm.
-- Angle and length on a mirrored point: the angle of the handle after the point (proposal); with Mirror angle, the length disabled (proposal)?
+- Angle on a mirrored point: the angle of the handle after the point (proposal)?

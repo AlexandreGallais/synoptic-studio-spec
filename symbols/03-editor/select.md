@@ -18,9 +18,15 @@ Select is in the tool bar of every mode except the Run mode. What it does depend
 ## Selecting
 
 - A click on a shape selects it. What is clickable is the **real shape** (a circle is clickable as a circle, not as the square around it), including its inside when the fill is transparent: a shape with a transparent fill stays clickable.
-- Several shapes can be selected, with the usual meaning of the keys, "un vrai Shift et un vrai Contrôle" (Product Owner, 2026-11-26): Ctrl and a click adds a shape to the selection or removes it; Shift and a click in the [layers](layers.md) adds every layer between the last one clicked and this one; on the drawing, Shift and a click adds the shape like Ctrl (assistant's reading). A plain click resets the selection. In the point editing mode, several points are selected the same way. In the [alignment mode](../06-alignment-mode/README.md#the-reference-and-the-shapes-to-place-a-normal-selection), the first shape selected is the reference and the next ones are the shapes to place (Product Owner, 2026-11-26).
+- Several shapes can be selected, with the usual meaning of the keys, "un vrai Shift et un vrai Contrôle" (Product Owner, 2026-11-26): Ctrl and a click adds a shape to the selection or removes it; Shift and a click in the [layers](layers.md) adds every layer between the last one clicked and this one; on the drawing, where shapes have no order between them, Shift and a click adds the shape clicked, like Ctrl (Product Owner, 2026-11-26). A plain click resets the selection. In the point editing mode, several points are selected the same way. In the [alignment mode](../06-alignment-mode/README.md#the-reference-and-the-shapes-to-place-a-normal-selection), the first shape selected is the reference and the next ones are the shapes to place (Product Owner, 2026-11-26).
 - A press in the empty space, held while dragging, draws a selection rectangle.
-- By default, every shape the rectangle touches is selected. A modifier key makes the rectangle select only the shapes it contains entirely. Like every modifier, it has a visible option too.
+- By default, every shape the rectangle touches is selected, in place of the selection before. With **Ctrl** held, the shapes the rectangle touches are **added** to the selection (Product Owner, 2026-11-26: "si tu fais Contrôle et que tu fais une sélection, normalement, ça va ajouter toutes les formes").
+- A modifier key makes the rectangle select only the shapes it contains entirely: Alt (see [Decided](#decided)). Like every modifier, it has a visible option too.
+
+## Equal spacing
+
+- While a shape is moved, a **temporary guide of equal spacing** shows when it is at the same distance from a neighbour as two other shapes are from each other, and it snaps there (Product Owner, 2026-11-26: "quand tu es à cet endroit-là, tu es à équidistance").
+- There is no command to distribute shapes, in the symbol editor or in the synoptic, and nothing more than this guide (Product Owner, 2026-11-26: "l'option distribuer, ça dégage [...] il n'y aura rien d'autre").
 
 ## Moving and resizing
 
@@ -48,4 +54,4 @@ Second research report (`research/t4-…/rapport.md`, section 3.15):
 
 ## Open questions
 
-- None.
+- "Entirely enclosed": Alt, as decided, or **Ctrl + Shift** while dragging, as the Product Owner said on 2026-11-26 with a doubt ("ça sert à ça, je crois, normalement")?

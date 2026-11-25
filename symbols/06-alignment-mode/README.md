@@ -24,11 +24,11 @@ The selection works as everywhere else: Ctrl and Shift keep their usual meaning,
 | A plain click on a shape | It resets everything: the shape clicked is the **reference**, alone. A click on the reference itself resets too. |
 | A plain click on an empty place | Nothing is selected any more. |
 | Ctrl and a click on a shape | It is added to the shapes **to place**, or taken out of them, one shape at a time. |
-| Shift and a click on a shape | A selection of several at once: in the layers, every shape between the last one clicked and this one is added to the shapes to place. |
+| Shift and a click on a shape | A selection of several at once: in the layers, every shape between the last one clicked and this one is added to the shapes to place. On the drawing, where shapes have no order, the shape clicked is added, like Ctrl. |
 
 - Example (Product Owner, 2026-11-26): in the layers, a click on Casing (the reference), Ctrl and a click on Outlet, then Shift and a click on Impeller: Outlet, Impeller and every layer between them are the shapes to place.
 - There is one reference, the first shape; there can be several shapes to place. The reference does not move; the shapes to place move, each in relation to it.
-- The same gestures work on the drawing and in the [layers](../03-editor/layers.md). Shift and a click on the drawing, where shapes have no order between them, adds the shape clicked like Ctrl (assistant's reading).
+- The same gestures work on the drawing and in the [layers](../03-editor/layers.md), selection rectangle included (see [Select](../03-editor/select.md#selecting)). Shift and a click on the drawing adds the shape clicked, like Ctrl (Product Owner, 2026-11-26).
 - On the drawing, the reference and the shapes to place keep their coloured boxes, marked differently, with a word, "Reference", "To place" (Product Owner, 2026-11-26: "les petites b-box de couleur [...] ça, c'est super").
 - **No button "Reference" or "To place"**: the panel has no equivalent of the gestures; a user manual explains them (Product Owner, 2026-11-26: "ça sert à rien de mettre des inputs [...] il y aura un manuel utilisateur"). An exception to the rule of a visible equivalent for every key (see the [editor](../03-editor/README.md#rules)).
 
@@ -73,11 +73,10 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.15,
 
 - Illustrator aligns on a "key object" that does not move, and measures the spacing between the edges: the same idea as the reference here. No tool read aligns on the real outline.
 - Opinion of the report on anchors: on a real shape, the centre plus the eight points where a ray from the centre (top, bottom, left, right, diagonals) meets the outline (see [Anchors](../03-editor/anchors.md)).
-- Illustrator offers, next to alignment, a **distribution with equal spacing**, with a typed value, measured between the edges. Opinion of the report: it is missing here. **Not offered**: the Product Owner set it aside (2026-11-26: "les distribute, ça, tu peux le dégager aussi. On le fera pas").
+- Illustrator offers, next to alignment, a **distribution with equal spacing**, with a typed value, measured between the edges. Opinion of the report: it is missing here. **Not offered**, here nor in the synoptic: the Product Owner set it aside (2026-11-26: "les distribute, ça, tu peux le dégager aussi. On le fera pas"). Only a temporary guide of equal spacing helps while a shape is moved (see [Select](../03-editor/select.md#equal-spacing)).
 
 ## Open questions
 
 - Anchors on a real shape: the proposal above, to confirm; and where the 16 outside anchors sit on a round shape.
 - Placement at once on a click of a cell (proposal), or on a button?
 - Several shapes to place: do they all go to the same anchor (so they pile up), or can each have its own?
-- Shift and a click on the drawing: like Ctrl (assistant's reading)?

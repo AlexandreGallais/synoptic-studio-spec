@@ -29,7 +29,7 @@ A floating **modes menu** at the top left of the canvas, as in the symbol editor
 
 | Mode | What it is for | Tools |
 | --- | --- | --- |
-| **Build** (default) | Place symbols, move, rotate, mirror, align, distribute, group in folders, lock. | Select, Hand, Place, Align (the alignment of the symbol editor) |
+| **Build** (default) | Place symbols, move, rotate, mirror, align, group in folders, lock. No distribution (Product Owner, 2026-11-26). | Select, Hand, Place, Align (the alignment of the symbol editor, decided 2026-11-26) |
 | **Pipes** | Draw and edit pipes, branches, crossings. | Select, Hand, Pipe, Edit points, Orthogonal lock |
 | **Annotate** | Draw what is not a symbol: texts, areas, shapes, legends, value labels. | Select, Hand, the drawing tools of the symbol editor, Legend, Value label |
 | **Links** | Make zones and placed symbols open another synoptic. | Select, Hand, Link zone |
@@ -63,7 +63,8 @@ The same as the symbol editor: the **Hand** tool, the middle button held, the wh
 Proposed, from the minimum set the research advised for the symbol editor (report T4, section 3.17, 14e):
 
 - A grid, shown or hidden, with a step in pixels set on the synoptic (default 8 px).
-- Snapping to the grid, to the **connection points** of the symbols (pipes), to the edges and centres of the other objects, with temporary guides of alignment and of equal spacing.
+- Snapping to the grid, to the **connection points** of the symbols (pipes), to the edges and centres of the other objects, with temporary guides of alignment.
+- A temporary **guide of equal spacing**, as in the symbol editor, is the only help to space objects: no command to distribute them (decided, Product Owner, 2026-11-26; see [Select](../symbols/03-editor/select.md#equal-spacing)).
 - Arrow keys move the selection by 1 px, with Shift by 10 px.
 
 ### Undo, redo, copy, paste

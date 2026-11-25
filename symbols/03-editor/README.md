@@ -172,7 +172,7 @@ Undo and redo; grid, snapping and guides; import of an SVG; variants of a symbol
 
 1. The names above (Advanced tools, Path, Interaction zone, Preview, Test mode).
 2. Rotation as the only transform allowed on a shape; mirror recomputed in the points.
-3. The minimum set of snapping and guides.
+3. The minimum set of snapping and guides. (A temporary guide of equal spacing and no distribution: decided on 2026-11-26, see [Select](select.md#equal-spacing).)
 4. The data of the editor in one `<metadata>` block of the SVG.
 5. Which missing features go in the specs now, and which later. This version keeps few things, made to work well (Product Owner, 2026-11-25: "autant faire un truc avec peu de choses, mais qui fonctionne très bien").
 
