@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Editor](README.md) › Layout guides
 
-Status: draft. Asked by the Product Owner on 2026-11-25 ("comme sur Figma... je te laisse gérer"); the form is the assistant's proposal, reviewed by the Product Owner the same day (the eye kept, the placement from the list). Not validated.
+Status: draft. Asked by the Product Owner on 2026-11-25 ("comme sur Figma... je te laisse gérer"); the form is the assistant's proposal, reviewed by the Product Owner the same day (the eye kept, the placement from the list, the grid in width × height linked by a chain). Not validated.
 
 Lines and grids drawn over the view of a symbol, to place and align shapes. They belong to the view, never to a layer: nothing of them goes into the SVG of the symbol.
 
@@ -15,7 +15,7 @@ Lines and grids drawn over the view of a symbol, to place and align shapes. They
 | --- | --- | --- |
 | Column | A vertical line. | X, in pixels from the left of the symbol. |
 | Row | A horizontal line. | Y, in pixels from the top of the symbol. |
-| Grid | Cells over the whole symbol. | The width and the height of a cell, in pixels, linked by a chain: linked, square cells (8 × 8); unlinked, cells of any size (8 × 2). Proposed, to confirm (doubt of the Product Owner, 2026-11-25). |
+| Grid | Cells over the whole symbol. | The width and the height of a cell, in pixels, linked by a chain: linked by default, square cells (8 × 8); unlinked, cells of any size (8 × 2) (Product Owner, 2026-11-25). |
 
 - **The list**: one line per guide, in the popup: its kind, its value, a **place** button, a **−** that removes it. Removing or adding a guide is one click (Product Owner, 2026-11-25: "simple à enlever, à ajouter").
 - **Placing by hand**: the place button of a column or a row starts the **placement**: the guide follows the mouse over the drawing and its value follows; a click puts it there and ends the placement; Escape ends it and puts the guide back. A guide is never dragged on the drawing itself: it is moved from its line (Product Owner, 2026-11-25: "pas en cliquant dessus sur la vue, mais un truc dans la liste").
@@ -48,7 +48,7 @@ stateDiagram-v2
 | Column · 100 | A vertical line at 100 px, the middle of a symbol 200 wide. |
 | Row · 36 | A horizontal line at 36 px, the top of the casing. |
 | Grid · 8 × 8 | Squares of 8 px over the whole symbol. |
-| Grid · 8 × 2 | Cells 8 px wide and 2 px high (proposed). |
+| Grid · 8 × 2 | Cells 8 px wide and 2 px high, the chain unlinked. |
 
 ## Where it is used
 
@@ -58,6 +58,5 @@ stateDiagram-v2
 
 ## Open questions
 
-- A grid of cells of any size (width and height unlinked), or squares only? The Product Owner wonders (2026-11-25: "j'en ai aucune idée").
 - A grid with columns and gutters (as Figma's layout grids)?
 - Guides placed in percent of the symbol, so that they follow a resize of its frame?

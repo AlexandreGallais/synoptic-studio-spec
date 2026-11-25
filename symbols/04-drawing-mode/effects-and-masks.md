@@ -171,7 +171,7 @@ Source: the research report (`research/t1-…/rapport.md`, in the project, not c
 | P6 | Colour filter or recomputed colours? |
 | P7 | Cut or mask? Simple cut, multi-shape cut, hard mask, progressive mask. |
 | P8 | How many dashes, how many gradient stops? 10 to 10 000 dashes, native stroke or computed dashes, 2, 8, 32 stops. |
-| P13 | Every effect of the catalogue that is not decided: its cost in each engine, its look, and the simplest way to set it (line, popup, editing mode); then the Product Owner chooses (2026-11-25). |
+| P13 | One POC, all at once: every effect of the catalogue that is not decided and that the Product Owner keeps in a first selection (the effects not wanted are set aside first): its cost in each engine, its look, and the simplest way to set it (line, popup, editing mode); then the Product Owner chooses (2026-11-25). |
 
 - Engines to cover: Chromium, Firefox 132 or later, WebKit (Safari, then the desktop window if it is WebKit).
 - What is measured: the work time of each frame during the gesture, in milliseconds, read in the browser profiler (the time between two frames is not enough: a 60 Hz engine lengthens it without being slow). P0 and P2 first.
@@ -214,4 +214,5 @@ The report's questions that the specs cannot answer alone:
 2. Which browsers must the front hold at 8.3 ms when plugged into a browser: Chromium only, or Firefox and Safari too?
 3. Is an effect suspended during the gesture and restored at release an acceptable concession (if the drop shadow does not hold in WebKit)?
 4. Can a colour filter be replaced by recomputed colours, or must it stay a filter in the exported SVG?
-5. After the POC: which effects are kept, and which way to set each one (line, popup, editing mode).
+5. Before the POC: the first selection, the effects of the catalogue set aside from the start (Product Owner, 2026-11-25: to come).
+6. After the POC: which effects are kept, and which way to set each one (line, popup, editing mode).
