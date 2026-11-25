@@ -26,7 +26,7 @@ The mode of the [editor](../03-editor/README.md) in which the user draws the **c
 
 - **The Pen in this mode makes closed shapes only**: a path becomes a clip shape once it is closed, nothing else (Product Owner, 2026-11-26: "que ça fonctionne que si on fait une forme qui est refermée, et point barre"). A path left open when the drawing ends (Escape, another tool) is not kept (assistant's proposal).
 
-- **Layers**: the clip shapes are under their shape, in a line "Clip" folded by default, never at the level of the drawing; unfolded in the Clip mode, where they are chosen (assistant's proposal).
+- **Layers**: the clip shapes are under their shape, in a line "Clip", never at the level of the drawing, **in every mode** (Product Owner, 2026-11-26: "tout ce qui est truc de clip [...] il faut un peu toujours le montrer dans le truc à gauche"). A click on a clip shape from another mode opens the Clip mode on it (see [the layout rule](../../screens/README.md#nothing-hidden-every-list-in-every-mode)). The line "Clip" is folded by default, unfolded in the Clip mode (assistant's proposal).
 - Several clip shapes add up: what is inside any of them is shown. The clip shapes follow the shape: moved, resized or turned with it.
 - A shape with no clip shape is shown whole. Removing the last clip shape removes the clip.
 - Leaving the mode: another mode chosen in the menu. There is no bar "Clip of …" with a Done button any more: it was the editing mode of the clip effect (assistant's proposal).

@@ -9,7 +9,7 @@ The mode of the [editor](../03-editor/README.md) in which the user says what hap
 ## Rules
 
 - Tool bar: [Select](../03-editor/select.md), [Hand](../03-editor/hand.md) and Interaction zone (below).
-- Left-hand panel: the **interaction zones**, above the layers. Drawing area: the zones are seen, selected and created. Right-hand panel: the interactions of the selected place (see [Panels](#panels)).
+- Left-hand panel: the **interaction zones**, under the layers, listed in every mode (see [Panels](#panels)). Drawing area: the zones are seen, selected and created. Right-hand panel: the interactions of the selected place (see [Panels](#panels)).
 - Only for a symbol with a type. A symbol without a type has no command to send (see [Libraries and symbols](../01-libraries-and-symbols.md)).
 - The places offered for an interaction are: the zones the user drew, the bounding box of the whole symbol, and a layer. A layer is clickable as its real shape, not as the square around it, and stays clickable when its fill is transparent (see [Select](../03-editor/select.md)). Example: a button drawn on its own layer can be the place.
 - Several gestures are possible on a place: left click, right click, double click, and others (the list is to settle).
@@ -31,16 +31,16 @@ flowchart LR
 
 - Only in this mode. Draws a zone on the symbol, by hand, that reacts to a gesture.
 - **As many zones as wanted**, added on the fly: each drag of the tool makes a new zone (Product Owner, 2026-11-25: "faut pouvoir mettre des zones à la volée, le nombre qu'on veut").
-- All the zones of the symbol are shown on the drawing in this mode, so the user sees those available.
+- All the zones of the symbol are shown on the drawing in this mode, so the user sees those available; on the drawing, in this mode only.
 - A zone belongs to the **whole symbol**, not to a layer (Product Owner, 2026-11-26: "ça, c'est par rapport à tout le symbole, dans tous les cas").
 
 ## Panels
 
-Each column has one job, from left to right (Product Owner, 2026-11-26: "la sélection des zones, elle se fait à gauche [...] au milieu [...] je peux les sélectionner ou en créer, et à droite, je peux ajouter l'interaction"). The zones on the left were said with a doubt ("je suis pas si sûr de moi, mais je pense que c'est mieux"): drawn to be judged on the screen.
+Each column has one job, from left to right (Product Owner, 2026-11-26: "la sélection des zones, elle se fait à gauche [...] au milieu [...] je peux les sélectionner ou en créer, et à droite, je peux ajouter l'interaction"). The zones on the left were said with a doubt ("je suis pas si sûr de moi, mais je pense que c'est mieux"), and their list in every mode too (2026-11-26: "je sais pas si c'est vraiment très bien comme UX"): drawn to be judged on the screens.
 
 | Column | What it holds |
 | --- | --- |
-| Left-hand panel | The list **Interaction zones**, **above the layers**: a line per zone; a click selects it. No bin: a selected zone is removed with the Delete key, or the − of the title of the list (as in the [point editing mode](../05-point-editing-mode/README.md#list-of-the-points)). Then the layers, as in every mode. |
+| Left-hand panel | The layers, then the list **Interaction zones**, **under the layers**: a line per zone; a click selects it. **No + and no −** (Product Owner, 2026-11-26: "le + et le - ne sert strictement à rien"): the Interaction zone tool adds a zone, the Delete key removes the selected one. The list is there **in every mode**; a click on a zone from another mode opens this mode (see [the layout rule](../../screens/README.md#nothing-hidden-every-list-in-every-mode)). |
 | Drawing area | The zones, seen on the symbol: a click selects one, the Interaction zone tool creates one. |
 | Right-hand panel | The interactions of the selected place, and their + (Product Owner, 2026-11-25: "tu cliques sur la zone et le menu à droite se fait en fonction"). |
 
