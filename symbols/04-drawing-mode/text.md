@@ -26,10 +26,10 @@ The last two are set in the [Animation mode](../08-animation-mode/README.md).
 In this order, each section compact (Product Owner, 2026-11-25: "plus lisibles, plus compactes et moins fouillis"):
 
 1. **Geometry**: the box and its place (see below and [Geometry](geometry.md)).
-2. **Font**: family, then size and style on one line.
-3. **Colour**: the text colour, then its border.
-4. **Paragraph**: alignment, spacing, wrapping, lines.
-5. **Opacity**, as every shape (no section "Effects" in this version, 2026-11-25).
+2. **Opacity**, under the geometry, as every shape (Product Owner, 2026-11-25; no section "Effects" in this version).
+3. **Font**: family, then size and style on one line.
+4. **Colour**: the text colour, then its border.
+5. **Paragraph**: alignment, spacing, wrapping, lines.
 
 ### Size of the box
 

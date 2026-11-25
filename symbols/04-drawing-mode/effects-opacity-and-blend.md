@@ -12,7 +12,7 @@ How a shape lets through what is under it. The opacity is a line of the right-ha
 | --- | --- |
 | What it does | The whole object, fills, border and effects together, more or less transparent (Product Owner, 2026-11-25: "l'opacité entière de l'objet"). The opacity of a fill or of a line of the border only is in its [colour field](../../controls/colour-field.md). |
 | Feature | SVG `opacity`. |
-| Line | A line of the right-hand panel, after the border: "Opacity", then its value on the line itself, a percent field (100 % by default). No popup, no section "Effects" (2026-11-25; its place: assistant's proposal). |
+| Line | A line of the right-hand panel, **under the geometry**, before the fill: "Opacity", then its value on the line itself, a percent field (100 % by default). No popup, no section "Effects" (Product Owner, 2026-11-25; see [Order of the right-hand panel](geometry.md#order-of-the-right-hand-panel)). |
 | On the drawing | Nothing. |
 | Status | Kept (2026-11-25); its cost measured in the POC (P13), expected cheap. |
 

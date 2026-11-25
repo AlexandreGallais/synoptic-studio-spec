@@ -118,15 +118,19 @@ block-beta
 ```mermaid
 mindmap
   root((SY-03 Symbol editor))
-    Modes menu, floating top left, icons
-      SY-04 Drawing
-      SY-13 Clip
-      SY-05 Point editing
-      SY-10 Connection
-      SY-06 Alignment
-      SY-08 Animation
-      SY-07 Interaction
-      SY-09 Run
+    Modes menu, floating top left, icons, four groups
+      Draw
+        SY-04 Drawing
+        SY-05 Point editing
+        SY-06 Alignment
+      Clip
+        SY-13 Clip
+      Outside
+        SY-10 Connection
+        SY-08 Animation
+        SY-07 Interaction
+      Try
+        SY-09 Run
     Tool bar, floating
       Tools of the mode only
     Layers, in the left-hand panel
@@ -145,7 +149,7 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-03.1 | Modes menu | Floating bar, horizontal, icons only (name in the tooltip) | At the top left of the drawing area, in this order: Drawing, Clip, Point editing, Connection, Alignment, Animation, Interaction, Run (2026-11-23; Clip added on 2026-11-25, its place proposed). Interaction, Animation and Run need a type; Clip, a selected shape. | Decided (Clip in the menu), Proposed (place of Clip), icons to draw | [Editor](../symbols/03-editor/README.md) |
+| SY-03.1 | Modes menu | Floating bar, horizontal, icons only (name in the tooltip) | At the top left of the drawing area, four groups split by a separator: Drawing, Point editing, Alignment │ Clip │ Connection, Animation, Interaction │ Run (2026-11-25, being tried). Interaction, Animation and Run need a type; Clip, a selected shape. | Decided (groups: being tried), icons to draw | [Editor](../symbols/03-editor/README.md) |
 | SY-03.2 | Tool bar | Floating bar | The tools of the mode, nothing else (2026-11-25); at the bottom of the drawing area (leaning) or at the top. | Decided (place: Open) | [Editor](../symbols/03-editor/README.md) |
 | SY-03.3 | Show the advanced tools | — | Removed (2026-11-25): the advanced tools are not in this version ([SY-11](#sy-11--advanced-tools)). | Decided | [Advanced tools](../symbols/03-editor/expert-menu/README.md) |
 | SY-03.4 | Type | Select, optional | In the right-hand panel; among all the types of Metadata; can be removed. | Decided | [Type and faceplate](../symbols/02-type-and-faceplate.md) |
@@ -155,7 +159,7 @@ mindmap
 | SY-03.8 | Zoom | Number field (%) | Shown in one place (which one: not said); the user can type a value; 100 % is the real size. | Decided | [Editor](../symbols/03-editor/README.md) |
 | SY-03.9 | Select | Button (tool) | In every mode except Run; picks what the mode works on. | Decided | [Select](../symbols/03-editor/select.md) |
 | SY-03.10 | Entirely enclosed | Toggle | Visible equivalent of Alt during a selection rectangle. | Decided | [Select](../symbols/03-editor/select.md) |
-| SY-03.11 | Precise move | Key held while moving with Select, no button | A shape, a point or a handle moves pixel by pixel of the symbol; no toggle in the tool bar (2026-11-25). Shift or Ctrl. | Decided (key: Open) | [Precise move](../symbols/03-editor/precise-move.md) |
+| SY-03.11 | Precise move | Key held while moving with Select, no button | A shape, a point or a handle moves pixel by pixel of the symbol; no toggle in the tool bar; the key is Ctrl (2026-11-25). | Decided | [Precise move](../symbols/03-editor/precise-move.md) |
 | SY-03.12 | Layers | Tree | In the left-hand panel; groups as folders; one line per shape, its border included. | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.13 | Search the layers | Button (search icon), then a text field | On the line of the title "Layers", under a separator; opens a field over the title that filters by name. No + on this title (2026-11-23). | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.14 | Unfold all, fold all | Button each | Every group of the tree. | Decided | [Layers](../symbols/03-editor/layers.md) |
@@ -194,11 +198,11 @@ mindmap
         X, Y, rotation
         Placement in the group
         Corner radius
+      Opacity
       Fills, stacked
       Border, a segment list
         Lines, colour and length
         Size and position
-      Opacity
 ```
 
 ### Tool bar
@@ -235,7 +239,7 @@ Each effect of the catalogue has its line and what it opens (popup, list), and i
 | SY-04.41 | Mask editing | State of the drawing area | As the clip editing; the mask shapes have fills. | Set aside | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#mask) |
 | SY-04.42 | Fade | Line, settings popup | Linear or Radial; angle; From and To in percent. | Set aside | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#fade) |
 | SY-04.43 | Fade editing | State of the drawing area | A line with the handles From and To over the shape. | Set aside | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#fade) |
-| SY-04.44 | Opacity | Line of the panel, after the border, with a percent field | The opacity of the whole object; no popup; 100 % by default. | Kept (2026-11-25), POC; place: Proposed | [Opacity and blend](../symbols/04-drawing-mode/effects-opacity-and-blend.md#opacity) |
+| SY-04.44 | Opacity | Line of the panel, under the geometry, with a percent field | The opacity of the whole object; no popup; 100 % by default. | Kept (2026-11-25), POC; place: Decided (2026-11-25) | [Opacity and blend](../symbols/04-drawing-mode/effects-opacity-and-blend.md#opacity) |
 | SY-04.45 | Blend mode | Line with a select | The list of the modes, grouped. | Set aside | [Opacity and blend](../symbols/04-drawing-mode/effects-opacity-and-blend.md#blend-mode) |
 | SY-04.46 | Background blur | Line, settings popup | Radius. | Set aside | [Opacity and blend](../symbols/04-drawing-mode/effects-opacity-and-blend.md#background-blur) |
 | SY-04.47 | Drop shadow | Line, settings popup | X, Y, Blur, Spread, Colour; Edit on the drawing. | Set aside | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#drop-shadow) |
@@ -353,7 +357,7 @@ mindmap
 | SY-05.7 | Handle angle, length | Number field | Linked to X and Y. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
 | SY-05.8 | Remove | Button | Removes the selected points. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
 | SY-05.9 | Add a point between two | Button | When two points are selected. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
-| SY-05.10 | Precise move | Key held while dragging, no button (SY-03.11) | A point or a handle moves pixel by pixel of the symbol, even zoomed out. | Decided (key: Open) | [Precise move](../symbols/03-editor/precise-move.md) |
+| SY-05.10 | Precise move | Ctrl held while dragging, no button (SY-03.11) | A point or a handle moves pixel by pixel of the symbol, even zoomed out. | Decided | [Precise move](../symbols/03-editor/precise-move.md) |
 
 Gaps:
 
@@ -613,7 +617,7 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-13.1 | Clip | Button of the modes menu | After Drawing; greyed with nothing selected, its tooltip says to select a shape first. | Decided (a mode), Proposed (place, greyed) | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
+| SY-13.1 | Clip | Button of the modes menu | Alone in its group, between Alignment and Connection, a separator on each side (2026-11-25); greyed with nothing selected, its tooltip says to select a shape first. | Decided (a mode, its place), Proposed (greyed) | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 | SY-13.2 | Tools | Button | Select, Hand, Rectangle, Ellipse, Polygon, Pen; no Group, no Text. | Decided | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 | SY-13.3 | Drawing | State of the drawing area | The clipped shape shown, its part outside the clip shapes faded; the rest of the symbol dimmed; the clip shapes as outlines. | Proposed | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 | SY-13.4 | Clip shapes | List, a − on each line | Title "Clip of Casing", then one line per clip shape. | Proposed | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |

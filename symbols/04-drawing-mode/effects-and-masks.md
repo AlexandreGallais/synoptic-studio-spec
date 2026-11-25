@@ -18,7 +18,7 @@ What a shape can carry besides its fills and its border. In this version, the ri
 | Entry | Where |
 | --- | --- |
 | Clip | The [Clip mode](clip-mode.md), in the modes menu (Product Owner, 2026-11-25: "le clip, c'est pas vraiment un effet en soi"). |
-| Opacity | A line "Opacity" of the right-hand panel, after the border, its percent on the line (assistant's proposal, 2026-11-25). |
+| Opacity | A line "Opacity" of the right-hand panel, under the geometry, its percent on the line (Product Owner, 2026-11-25). |
 | Linear and radial gradients | Kinds of fill ([Paints](paints.md)), with their editing on the drawing. |
 | Border that keeps its width | A switch of the border ([Lines and text](effects-lines-and-text.md#border-that-keeps-its-width)). |
 | Text border | The panel of a [text](text.md). |

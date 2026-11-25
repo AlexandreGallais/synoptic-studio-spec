@@ -19,7 +19,7 @@ block-beta
 | Zone | What it holds |
 | --- | --- |
 | Left-hand panel | The symbols and the pipe styles of the Symbol Lib, then the [layers](layers.md) of the open symbol (see [Libraries and symbols](../01-libraries-and-symbols.md)). |
-| Modes menu | A floating bar at the **top left of the drawing area**, **horizontal**, made of **icons only** (the name of each mode in its tooltip): every mode, in the order of the work, and the switch from one to another (Product Owner, 2026-11-23). |
+| Modes menu | A floating bar at the **top left of the drawing area**, **horizontal**, made of **icons only** (the name of each mode in its tooltip): every mode, in four groups split by **separators** (see [Modes](#modes)), and the switch from one to another (Product Owner, 2026-11-23; groups 2026-11-25). |
 | Guides | A small floating bar **under the modes menu**, with the [layout guides](layout-guides.md) of the view (Product Owner, 2026-11-25). |
 | Tool bar | A floating bar over the drawing area, with the tools of the current mode, and nothing else: no button for the advanced tools, no button for the precise move (Product Owner, 2026-11-25). Its place is open: at the **bottom** or at the top. |
 | Right-hand panel | The options of the selection; the type of the symbol (see [Type and faceplate](../02-type-and-faceplate.md)). |
@@ -40,22 +40,46 @@ Not placed yet: the zoom field, undo and redo. There is no save: each change is 
 - A **mode** changes what the editor is for. Switching mode changes the tools of the tool bar and what the right-hand panel shows.
 - Nothing is hidden behind a double click: to edit points, the user switches to the point editing mode.
 - **Same keys on every platform**. Windows, macOS and Linux behave the same. Only keys that exist on all three are used: Shift, Ctrl and Alt (the Option key on a Mac), with letters, digits, arrows and function keys. No Command, Option or Windows key in the specs. Whenever a page asks which key to use, this rule applies first.
-- Key shortcuts and modifier keys are allowed, as in every drawing software, but never alone: each one has a visible equivalent (an option in the panel or the tool bar). The software is used by everyone, including an expert of 80 who makes synoptics. One exception: the [precise move](precise-move.md) is a key only, with no button (Product Owner, 2026-11-25).
+- Key shortcuts and modifier keys are allowed, as in every drawing software, but never alone: each one has a visible equivalent (an option in the panel or the tool bar). The software is used by everyone, including an expert of 80 who makes synoptics. One exception: the [precise move](precise-move.md) is a key only, Ctrl, with no button (Product Owner, 2026-11-25).
 - Everything drawn stays a path, in the layers of an SVG, so the symbol stays a real SVG. A text stays a text, because it can show a value or a unit (see [Animation mode](../08-animation-mode/README.md)).
 - The name "layer" is provisional. A layer can be the target of an animation or of an interaction.
 - Colours (fill, border) and the options of a shape (corner radius, for example) are neither tools nor modes. They are in the right-hand panel, which shows the options that fit the selected shape.
 
 ## Modes
 
-In the order of the modes menu, which is the order of the work: draw, clip, edit the points, connect, align, animate, then the interactions, and run last (Product Owner, 2026-11-23; Clip added on 2026-11-25, its place after Drawing proposed by the assistant).
+In the order of the modes menu: the modes used together are side by side, in four groups split by a separator (Product Owner, 2026-11-25: "le sens logique, c'est quand même de mettre un peu les trucs ensemble qu'on va utiliser ensemble"). The order is being tried on the test screens (Product Owner, 2026-11-25: "un test comme ça pour voir ce que ça donne").
+
+| Group | Modes | Why together |
+| --- | --- | --- |
+| 1 · Draw | Drawing, Point editing, Alignment | What is used most, to draw a shape. |
+| 2 · Clip | Clip, alone | Not drawing: it hides part of a shape; used less than Connection. |
+| 3 · Outside | Connection, Animation, Interaction | How the symbol works with the outside. |
+| 4 · Try | Run | The test, last. |
+
+```mermaid
+flowchart LR
+    subgraph g1["Draw"]
+        D["Drawing"] --- P["Point editing"] --- A["Alignment"]
+    end
+    subgraph g2["Clip"]
+        C["Clip"]
+    end
+    subgraph g3["Outside"]
+        CO["Connection"] --- AN["Animation"] --- I["Interaction"]
+    end
+    subgraph g4["Try"]
+        R["Run"]
+    end
+    g1 ~~~ g2 ~~~ g3 ~~~ g4
+```
 
 | Mode | What it is for | Tools in the tool bar | Right-hand panel |
 | --- | --- | --- | --- |
 | [Drawing](../04-drawing-mode/README.md) | The default mode: draw and arrange shapes. | Select, Hand, Group, Rectangle, Ellipse, Polygon, Pen, Text | Options of the selected shape (colours, corner radius...) |
-| [Clip](../04-drawing-mode/clip-mode.md) | Draw the clip shapes of the selected shape: it is shown only inside them. | Select, Hand, Rectangle, Ellipse, Polygon, Pen | The clip shapes of the shape, the geometry of the selected one |
 | [Point editing](../05-point-editing-mode/README.md) | Edit the points of a path. | Select, Hand, Pen | Options of the selected point |
-| [Connection](../pipes/connection-points.md) | Place the connection points where pipes attach. | Select, Hand, Connection point | The options of the selected point |
 | [Alignment](../06-alignment-mode/README.md) | Place shapes in relation to each other. | Select, Hand | Alignment of the selected shapes |
+| [Clip](../04-drawing-mode/clip-mode.md) | Draw the clip shapes of the selected shape: it is shown only inside them. | Select, Hand, Rectangle, Ellipse, Polygon, Pen | The clip shapes of the shape, the geometry of the selected one |
+| [Connection](../pipes/connection-points.md) | Place the connection points where pipes attach. | Select, Hand, Connection point | The options of the selected point |
 | [Animation](../08-animation-mode/README.md) | Link the signals to the parts of the drawing. | Select, Hand | The animations of the selected part |
 | [Interaction](../07-interaction-mode/README.md) | Draw the zones that react to a gesture, and link them to commands. | Select, Hand, Interaction zone | The interactions of the selected place |
 | [Run](../09-run-mode/README.md) | Try the symbol with test values and see it at the size of another screen. | Hand | The test values, and the simulated screen |
@@ -82,7 +106,7 @@ In the order of the modes menu, which is the order of the work: draw, clip, edit
 | [Select](select.md) | The Select tool, in every mode except Run. |
 | [Hand](hand.md) | The Hand tool, in every mode. |
 | [Layers](layers.md) | The tree of the layers of the symbol, in the left-hand panel. |
-| [Precise move](precise-move.md) | A key held while moving with Select: what is dragged moves pixel by pixel. |
+| [Precise move](precise-move.md) | Ctrl held while moving with Select: what is dragged moves pixel by pixel. |
 | [Anchors](anchors.md) | The nine named points of a box, used by groups, polygons and alignment. |
 | [Layout guides](layout-guides.md) | Columns, rows and grids over the view, under the modes menu. |
 | [Advanced tools](expert-menu/README.md) | Set aside, not in this version (2026-11-25): the tools that are not for everyday drawing. |

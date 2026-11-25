@@ -42,8 +42,9 @@ This file is the index of the open questions. A question sits in the file it con
 | Thumbnail of a symbol in the list: the symbol itself, or its outlines only; what else an item shows. | [Libraries and symbols](01-libraries-and-symbols.md) | Outlines only, as Figma's outline view, with the name. |
 | Look of the Interaction, Animation and Run modes before a type is chosen. | [Libraries and symbols](01-libraries-and-symbols.md) | Greyed in the mode menu, with a tooltip "choose a type first". |
 | Place of the floating tool bar: bottom or top of the drawing area. | [Editor](03-editor/README.md) | Bottom, centred. |
-| Key (Shift or Ctrl) and ratio of the precise move. (A key only, no button, also for whole shapes moved with Select: settled on 2026-11-25.) | [Precise move](03-editor/precise-move.md) | See the page. |
-| Clip mode: its name, its place after Drawing, a group or a text clipped, where the points of a clip shape are edited; the place of the opacity line. (A mode of the modes menu, tools Select, Hand, Rectangle, Ellipse, Polygon, Pen; no section "Effects"; no advanced tools in this version: settled on 2026-11-25.) | [Clip mode](04-drawing-mode/clip-mode.md), [Effects](04-drawing-mode/effects-and-masks.md#where-each-kept-entry-is-set) | Not researched. |
+| Ratio of the precise move; Ctrl and the context menu of a Mac. (A key only, Ctrl, no button, also for whole shapes moved with Select: settled on 2026-11-25.) | [Precise move](03-editor/precise-move.md) | See the page. |
+| Clip mode: its name, a group or a text clipped, where the points of a clip shape are edited. (A mode of the modes menu, alone in its group; tools Select, Hand, Rectangle, Ellipse, Polygon, Pen; no section "Effects", the opacity under the geometry; no advanced tools in this version: settled on 2026-11-25.) | [Clip mode](04-drawing-mode/clip-mode.md), [Effects](04-drawing-mode/effects-and-masks.md#where-each-kept-entry-is-set) | Not researched. |
+| The four groups of the modes menu, being tried on the test screens (2026-11-25): kept as they are? | [Editor](03-editor/README.md#modes) | Keep them. |
 | What a line of the layer tree shows besides its name (lock, hide, icon of its kind). | [Layers](03-editor/layers.md) | Icon of the kind, name, hide, lock. |
 
 ## Raised by the review of 2026-11-16

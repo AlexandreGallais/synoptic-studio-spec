@@ -15,7 +15,7 @@ Status: draft. Not validated.
 
 - The up and down arrows of the keyboard add or remove **1**.
 - With a modifier key held, they add or remove **10**.
-- The key: Shift, "or the same key" as the [precise move](../symbols/03-editor/precise-move.md), which does the opposite with the mouse (slower instead of faster). Proposal of the assistant: **Shift**, the usual key for a step of 10 in drawing software; the precise move then takes another key.
+- The key: Shift, "or the same key" as the [precise move](../symbols/03-editor/precise-move.md), which does the opposite with the mouse (slower instead of faster). The precise move takes Ctrl (Product Owner, 2026-11-25). Proposal of the assistant: **Shift**, the usual key for a step of 10 in drawing software.
 - The value stays within the bounds of the field, when it has some (assumption of the assistant).
 - **No "px"**: a length is always in pixels, so the field never writes the unit (Product Owner, 2026-11-24). Another unit is written when it says something: % for an opacity, ° for an angle.
 
@@ -40,7 +40,7 @@ flowchart LR
 
 ## Open questions
 
-- Which key for the step of 10 (proposal: Shift), and is it the same as the precise move?
+- Which key for the step of 10: Shift (proposal), or Ctrl like the precise move?
 - The step of a field with decimals (a real number, an angle): 1, or the smallest decimal shown?
 - Does dragging on the label of a number field change the value, as in Figma?
 - What the text field does beyond being one shared component.

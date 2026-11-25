@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Editor](README.md) › Precise move
 
-Status: draft. Reviewed by the Product Owner on 2026-11-25: a key only, no button. Not validated.
+Status: draft. Reviewed by the Product Owner on 2026-11-25: a key only, Ctrl, no button. Not validated.
 
 A way to place something precisely with the mouse, without zooming in.
 
@@ -12,12 +12,13 @@ A way to place something precisely with the mouse, without zooming in.
 - What it is for: when the view is zoomed out, the user can still put a point exactly where it must go, without zooming in again.
 - It works whatever the zoom: in precise mode, what is dragged moves by whole pixels of the symbol, at a pace that does not depend on the zoom (assumption of the assistant, to confirm).
 - **No button**: there is no "Precise move" toggle in the tool bar (Product Owner, 2026-11-25: "une icône, absolument pas"). It is the one exception to the rule of a visible equivalent for every key (see [Editor](README.md)).
-- The key: Shift or Ctrl, not chosen yet (Product Owner, 2026-11-25: "Shift ou Commande"; Command does not exist on every platform, so Ctrl, by the rule of the [editor](README.md)).
+- **The key: Ctrl**, on Windows, macOS and Linux alike, by the rule of the [editor](README.md) (Product Owner, 2026-11-25). Not Shift: Shift already makes a square, locks an angle and adds to the selection, so the precise move would be confused with them (Product Owner, 2026-11-25: "Maj, ça fait déjà un truc de sélection, donc ça peut porter à confusion").
+- Ctrl changes what a **click** does (it adds to the selection, see [Select](select.md)) and what a **drag** does (precise move): a click with Ctrl adds to the selection, a drag with Ctrl moves precisely.
 - The same idea, the other way round, exists in the number fields: a modifier key makes the arrows go faster (see [Number and text fields](../../controls/number-and-text-fields.md)).
 
 ```mermaid
 flowchart LR
-    A["Move with Select: a shape, a point, a handle"] --> B{"Precise key held?"}
+    A["Move with Select: a shape, a point, a handle"] --> B{"Ctrl held?"}
     B -- "No" --> C["It follows the mouse"]
     B -- "Yes" --> D["It moves slowly, pixel by pixel of the symbol"]
 ```
@@ -33,5 +34,5 @@ flowchart LR
 
 ## Open questions
 
-- Which key, Shift or Ctrl? Shift already adds to the selection and is the usual key for a square or a locked angle; Ctrl also adds to the selection. To settle with the key conflicts still open in the [editor](README.md).
+- On a Mac, Ctrl with a click opens the context menu in the browser: Ctrl pressed before the button may open it instead of moving. To check in a POC: does the precise move start when Ctrl is pressed during the drag only, or does the editor stop the context menu?
 - How slow: how many pixels of mouse movement for one pixel of the symbol (to try in a POC)?
