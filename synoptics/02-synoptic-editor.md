@@ -52,7 +52,7 @@ stateDiagram-v2
 
 ### Moving around
 
-The same as the symbol editor: the **Hand** tool, the middle button held, the wheel, a **zoom** field where a value can be typed (decided there). Added for big installations, proposed:
+The same as the symbol editor: the **Hand** tool, the middle button held, the wheel, a **zoom** field where a value can be typed, and **scroll bars always visible** as soon as what is drawn goes out of the view, gone once it all fits (decided there; Product Owner, 2026-11-26, for both editors). Added for big installations, proposed:
 
 - **Fit the frame** and **fit the selection**, one button each.
 - A **minimap** in a corner of the canvas, shown on demand: the whole frame, the visible part as a rectangle that can be dragged.

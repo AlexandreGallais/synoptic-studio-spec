@@ -99,6 +99,7 @@ flowchart LR
 - Trackpad: the usual gestures, to scroll and to zoom.
 - The [Hand tool](hand.md) does the same from the tool bar.
 - The zoom is shown as a percentage, in one place of the editor, and the user can type a value in it. At 100%, the symbol is shown at its real size.
+- **Scroll bars**: as soon as part of the drawing is out of the view (a big symbol, a zoom, a shape moved out), a horizontal or vertical scroll bar shows, **always visible**, not only when the mouse hovers it; it goes away once the whole drawing fits in the view (Product Owner, 2026-11-26: "il faut automatiquement montrer les scroll bars et les laisser en permanence"). Each direction has its own bar.
 - Simulating the size of the symbol on another screen is done in the [Run mode](../09-run-mode/README.md), not here.
 
 ## What is common to the modes
