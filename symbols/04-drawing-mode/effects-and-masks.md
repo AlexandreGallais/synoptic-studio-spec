@@ -2,9 +2,9 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › Effects
 
-Status: draft. The research report of 2026-11-11, the clip asked by the Product Owner on 2026-11-25, the complete catalogue asked the same day, and the Product Owner's first selection of the same day. Not validated.
+Status: draft. The research report of 2026-11-11, the clip asked by the Product Owner on 2026-11-25, the complete catalogue asked the same day, the Product Owner's first selection of the same day, and the section "Effects" removed the same day: the clip is a mode. Not validated.
 
-Effects and clips are set from the right-hand panel, in the section "Effects", after the [fill and border](fill-and-border.md). The editor offers them in a menu, and the user writes nothing.
+What a shape can carry besides its fills and its border. In this version, the right-hand panel has **no section "Effects"**: the clip is a [mode of its own](clip-mode.md), the opacity a line of the panel, the other kept entries are set in the fill, the border or the text.
 
 ## Rules
 
@@ -13,36 +13,41 @@ Effects and clips are set from the right-hand panel, in the section "Effects", a
 - **The POC measures what is kept.** The POC of the effects (P13) tries the kept entries not decided yet: their cost in each engine and the simplest way to set them.
 - **Performance comes first**: an effect is kept after the POC only if it keeps the performance objective (see the project criteria on gestures and 120 Hz). A heavy effect is useless (Product Owner, 2026-11-25).
 
+### Where each kept entry is set
+
+| Entry | Where |
+| --- | --- |
+| Clip | The [Clip mode](clip-mode.md), in the modes menu (Product Owner, 2026-11-25: "le clip, c'est pas vraiment un effet en soi"). |
+| Opacity | A line "Opacity" of the right-hand panel, after the border, its percent on the line (assistant's proposal, 2026-11-25). |
+| Linear and radial gradients | Kinds of fill ([Paints](paints.md)), with their editing on the drawing. |
+| Border that keeps its width | A switch of the border ([Lines and text](effects-lines-and-text.md#border-that-keeps-its-width)). |
+| Text border | The panel of a [text](text.md). |
+| Dashes | Lines of the [border](fill-and-border.md#border-options). |
+
 ### The section "Effects"
 
-- A **+** on the right of the title "Effects" opens the **menu of the effects**: Clip, Opacity (2026-11-25); the one chosen becomes a **line** of the section.
-- Each line: an **eye** that turns the effect off without removing it, the **name** of the effect, a button, and a **−** that removes it. The button is one of two:
+Removed from this version (Product Owner, 2026-11-25): with the clip a mode and the opacity a line of the panel, the section has nothing left. What follows is kept as a record, for the entries set aside, which would be its lines.
 
-| Button | When | What it does |
-| --- | --- | --- |
-| Edit (a pencil) | The effect owns shapes: the clip. | Enters its **editing mode**. |
-| None, a value on the line | The effect has one setting: the opacity. | The value is set on the line itself. |
-
+- A **+** on the right of the title "Effects" opens the **menu of the effects**; the one chosen becomes a **line** of the section.
+- Each line: an **eye** that turns the effect off without removing it, the **name** of the effect, a button, and a **−** that removes it. The button is one of three: settings (a popup), Edit (a pencil, for an effect that owns shapes) or a value on the line.
 - The lines are applied from the top down.
-- There is no "Mask" select in the panel: the clip is an effect with its own shapes (Product Owner, 2026-11-25).
-- The other kept entries are not lines of this section: the gradients are kinds of fill ([Paints](paints.md)), the border that keeps its width is a switch of the border ([Lines and text](effects-lines-and-text.md#border-that-keeps-its-width)), the text border is in the panel of a [text](text.md), the dashes are lines of the [border](fill-and-border.md#border-options).
 
 ### Editing modes
 
-What is better set by hand on the drawing has an **editing mode**, on the model of the clip editing (Product Owner, 2026-11-25: "comme pour le clip, un mode d'édition par rapport à cet effet"): the clip, and the linear and radial gradients ([Paints](paints.md)).
+What is better set by hand on the drawing has an **editing mode** (Product Owner, 2026-11-25: "comme pour le clip, un mode d'édition par rapport à cet effet"): in this version, the linear and radial gradients ([Paints](paints.md)), entered from their paint popup. The clip has become a mode of the modes menu ([Clip mode](clip-mode.md)).
 
 - the shape stays selected and shown; the rest of the drawing is **dimmed**;
-- a bar at the top of the drawing area names what is edited ("Clip of Casing", "Gradient of Casing") and has a **Done** button; Escape does the same;
-- the handles are on the drawing (the clip shapes, a gradient line); the right-hand panel shows the same settings as the popup, which follow the handles;
-- the other tools are off, except those the mode needs (the shape tools to draw a clip);
+- a bar at the top of the drawing area names what is edited ("Gradient of Casing") and has a **Done** button; Escape does the same;
+- the handles are on the drawing (a gradient line); the right-hand panel shows the same settings as the popup, which follow the handles;
+- the other tools are off;
 - a popup whose setting can also be made on the drawing (the paint popup of a gradient) has an **Edit on the drawing** button at its bottom, which enters the editing mode.
 
 ```mermaid
 stateDiagram-v2
     [*] --> Drawing
-    Drawing --> EffectEditing: Edit on the line, or Edit on the drawing in the popup, or Enter
-    EffectEditing --> Drawing: Done, or Escape
-    EffectEditing: Editing of one effect, the rest dimmed
+    Drawing --> GradientEditing: Edit on the drawing, in the paint popup
+    GradientEditing --> Drawing: Done, or Escape
+    GradientEditing: Editing of one gradient, the rest dimmed
 ```
 
 ## Catalogue of the effects
@@ -51,10 +56,10 @@ Every effect a symbol could carry, by family: what SVG does, what CSS adds on an
 
 | Family | Effect | SVG or CSS feature | What it does | Status | Page |
 | --- | --- | --- | --- | --- | --- |
-| Clip and mask | Clip | `clipPath`; CSS `clip-path` (inset, circle, ellipse, polygon, path) | Shows the shape only inside its clip shapes, hard edge. | Kept, decided (2026-11-25) | [Clip, mask, fade](effects-clip-and-mask.md#clip) |
+| Clip and mask | Clip | `clipPath`; CSS `clip-path` (inset, circle, ellipse, polygon, path) | Shows the shape only inside its clip shapes, hard edge. | Kept, decided (2026-11-25): a mode, not an effect | [Clip mode](clip-mode.md) |
 | Clip and mask | Mask | `mask`, `mask-type` alpha or luminance | The same with a soft edge, by the opacity or the brightness of the mask shapes. | Set aside | [Clip, mask, fade](effects-clip-and-mask.md#mask) |
 | Clip and mask | Fade | CSS `mask-image` with a gradient, or a `mask` filled with a gradient | The shape fades out along a line or from a centre, with no shape to draw. | Set aside | [Clip, mask, fade](effects-clip-and-mask.md#fade) |
-| Opacity and blend | Opacity | `opacity` | The whole object more or less transparent, not only its fill or its border. | Kept; measured in the POC | [Opacity and blend](effects-opacity-and-blend.md#opacity) |
+| Opacity and blend | Opacity | `opacity` | The whole object more or less transparent, not only its fill or its border. | Kept, a line of the panel; measured in the POC | [Opacity and blend](effects-opacity-and-blend.md#opacity) |
 | Opacity and blend | Blend mode | CSS `mix-blend-mode` (16 modes and `plus-lighter`), `isolation` on a group | Mixes the colours of the shape with what is under it. | Set aside | [Opacity and blend](effects-opacity-and-blend.md#blend-mode) |
 | Opacity and blend | Background blur | CSS `backdrop-filter` | Blurs what is behind the shape (frosted glass). | Set aside | [Opacity and blend](effects-opacity-and-blend.md#background-blur) |
 | Shadows and light | Drop shadow | `feDropShadow`; CSS `drop-shadow()` | A blurred, offset copy behind the shape. | Set aside | [Shadows and light](effects-shadows-and-light.md#drop-shadow) |
@@ -100,8 +105,8 @@ Each effect, its line, its popup and its editing mode, by family. The screens: F
 
 | Page | Kept | Set aside |
 | --- | --- | --- |
-| [Clip, mask, fade](effects-clip-and-mask.md) | Clip | Mask, fade |
-| [Opacity and blend](effects-opacity-and-blend.md) | Opacity | Blend mode, background blur |
+| [Clip, mask, fade](effects-clip-and-mask.md) | Clip, now the [Clip mode](clip-mode.md) | Mask, fade |
+| [Opacity and blend](effects-opacity-and-blend.md) | Opacity, a line of the panel | Blend mode, background blur |
 | [Shadows and light](effects-shadows-and-light.md) | — | Drop shadow, outer glow, inner shadow, inner glow, lighting |
 | [Blur and sharpness](effects-blur-and-sharpness.md) | — | Blur; sharpen, edges, emboss |
 | [Colour](effects-colour.md) | — | Colour adjustments, colour overlay, colour map |

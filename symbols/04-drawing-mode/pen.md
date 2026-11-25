@@ -33,7 +33,7 @@ What the right-hand panel shows for a path drawn with the Pen, open (a line) or 
 - **Fill**, the same list as the other shapes; an open path has none by default (assumption).
 - **Border**: its lines, its size and its position **Middle, Inside or Outside**, also for an open path (see [Fill and border](fill-and-border.md#border-of-an-open-path)).
 - **No caps and no joins**: not offered (Product Owner, 2026-11-25).
-- **Effects**, as every shape.
+- **Opacity** and **clip**, as every shape (see [Effects](effects-and-masks.md#where-each-kept-entry-is-set)).
 
 ## The two buttons of the Pen
 

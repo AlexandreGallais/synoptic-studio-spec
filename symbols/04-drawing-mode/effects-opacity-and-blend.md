@@ -4,7 +4,7 @@
 
 Status: draft. The opacity: kept by the Product Owner (2026-11-25). The blend mode and the background blur: set aside, not in this version (Product Owner, 2026-11-25), kept as a record. Not validated.
 
-How a shape lets through what is under it. Each effect follows the [section "Effects"](effects-and-masks.md#the-section-effects).
+How a shape lets through what is under it. The opacity is a line of the right-hand panel; the effects set aside would follow the [section "Effects"](effects-and-masks.md#the-section-effects).
 
 ## Opacity
 
@@ -12,7 +12,7 @@ How a shape lets through what is under it. Each effect follows the [section "Eff
 | --- | --- |
 | What it does | The whole object, fills, border and effects together, more or less transparent (Product Owner, 2026-11-25: "l'opacité entière de l'objet"). The opacity of a fill or of a line of the border only is in its [colour field](../../controls/colour-field.md). |
 | Feature | SVG `opacity`. |
-| Line | "Opacity", then its value on the line itself, a percent field (60 %). No popup. |
+| Line | A line of the right-hand panel, after the border: "Opacity", then its value on the line itself, a percent field (100 % by default). No popup, no section "Effects" (2026-11-25; its place: assistant's proposal). |
 | On the drawing | Nothing. |
 | Status | Kept (2026-11-25); its cost measured in the POC (P13), expected cheap. |
 

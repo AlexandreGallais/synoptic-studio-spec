@@ -112,7 +112,7 @@ The layout is decided, except the place of the tool bar (bottom or top) and of t
 block-beta
     columns 4
     rail["Navigation bar SY-00"]
-    left["Left-hand panel: SY-02 symbols, separator, then the layers"] canvas["Drawing area: modes menu floating top left, horizontal, icons; advanced tools bar above the tool bar; tool bar floating at the bottom"] panel["Right-hand panel: options of the selection, type of the symbol"]
+    left["Left-hand panel: SY-02 symbols, separator, then the layers"] canvas["Drawing area: modes menu floating top left, horizontal, icons; tool bar floating at the bottom, the tools of the mode only"] panel["Right-hand panel: options of the selection, type of the symbol"]
 ```
 
 ```mermaid
@@ -120,6 +120,7 @@ mindmap
   root((SY-03 Symbol editor))
     Modes menu, floating top left, icons
       SY-04 Drawing
+      SY-13 Clip
       SY-05 Point editing
       SY-10 Connection
       SY-06 Alignment
@@ -127,10 +128,7 @@ mindmap
       SY-07 Interaction
       SY-09 Run
     Tool bar, floating
-      Tools of the mode
-      Show the advanced tools
-      Precise move
-    SY-11 Advanced tools bar
+      Tools of the mode only
     Layers, in the left-hand panel
       Search icon, no plus
       Unfold all
@@ -147,9 +145,9 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-03.1 | Modes menu | Floating bar, horizontal, icons only (name in the tooltip) | At the top left of the drawing area, in this order: Drawing, Point editing, Connection, Alignment, Animation, Interaction, Run (2026-11-23). Interaction, Animation and Run need a type. | Decided (icons: to draw) | [Editor](../symbols/03-editor/README.md) |
-| SY-03.2 | Tool bar | Floating bar | The tools of the mode; at the bottom of the drawing area (leaning) or at the top. | Decided (place: Open) | [Editor](../symbols/03-editor/README.md) |
-| SY-03.3 | Show the advanced tools | Button (in the tool bar) | Shows or hides the [SY-11](#sy-11--advanced-tools) bar just above. | Decided | [Advanced tools](../symbols/03-editor/expert-menu/README.md) |
+| SY-03.1 | Modes menu | Floating bar, horizontal, icons only (name in the tooltip) | At the top left of the drawing area, in this order: Drawing, Clip, Point editing, Connection, Alignment, Animation, Interaction, Run (2026-11-23; Clip added on 2026-11-25, its place proposed). Interaction, Animation and Run need a type; Clip, a selected shape. | Decided (Clip in the menu), Proposed (place of Clip), icons to draw | [Editor](../symbols/03-editor/README.md) |
+| SY-03.2 | Tool bar | Floating bar | The tools of the mode, nothing else (2026-11-25); at the bottom of the drawing area (leaning) or at the top. | Decided (place: Open) | [Editor](../symbols/03-editor/README.md) |
+| SY-03.3 | Show the advanced tools | — | Removed (2026-11-25): the advanced tools are not in this version ([SY-11](#sy-11--advanced-tools)). | Decided | [Advanced tools](../symbols/03-editor/expert-menu/README.md) |
 | SY-03.4 | Type | Select, optional | In the right-hand panel; among all the types of Metadata; can be removed. | Decided | [Type and faceplate](../symbols/02-type-and-faceplate.md) |
 | SY-03.5 | Preset | — | Removed (Product Owner, 2026-11-24): there are no presets; the symbol chooses its type and nothing else, and a sub-type of Metadata stands for another way of showing it. | Decided | [Type and faceplate](../symbols/02-type-and-faceplate.md) |
 | SY-03.6 | Faceplate entries | — | Removed (Product Owner, 2026-11-24): no choice of the faceplate entries in the symbol; the faceplate is the one of its type ([MD-14](metadata.md#md-14--faceplate)). | Decided | [Type and faceplate](../symbols/02-type-and-faceplate.md) |
@@ -157,7 +155,7 @@ mindmap
 | SY-03.8 | Zoom | Number field (%) | Shown in one place (which one: not said); the user can type a value; 100 % is the real size. | Decided | [Editor](../symbols/03-editor/README.md) |
 | SY-03.9 | Select | Button (tool) | In every mode except Run; picks what the mode works on. | Decided | [Select](../symbols/03-editor/select.md) |
 | SY-03.10 | Entirely enclosed | Toggle | Visible equivalent of Alt during a selection rectangle. | Decided | [Select](../symbols/03-editor/select.md) |
-| SY-03.11 | Precise move | Toggle | Visible equivalent of the key that moves a dragged point or handle pixel by pixel. | Decided (key: Open) | [Precise move](../symbols/03-editor/precise-move.md) |
+| SY-03.11 | Precise move | Key held while moving with Select, no button | A shape, a point or a handle moves pixel by pixel of the symbol; no toggle in the tool bar (2026-11-25). Shift or Ctrl. | Decided (key: Open) | [Precise move](../symbols/03-editor/precise-move.md) |
 | SY-03.12 | Layers | Tree | In the left-hand panel; groups as folders; one line per shape, its border included. | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.13 | Search the layers | Button (search icon), then a text field | On the line of the title "Layers", under a separator; opens a field over the title that filters by name. No + on this title (2026-11-23). | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.14 | Unfold all, fold all | Button each | Every group of the tree. | Decided | [Layers](../symbols/03-editor/layers.md) |
@@ -200,9 +198,7 @@ mindmap
       Border, a segment list
         Lines, colour and length
         Size and position
-      Effects
-        Lines, popups
-        Editing modes
+      Opacity
 ```
 
 ### Tool bar
@@ -224,10 +220,10 @@ mindmap
 | SY-04.8 | Colour of a line of the border | [Colour field](../controls/colour-field.md) | Colour │ opacity on each line; 0 % for a gap. A gradient in a line: Open. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
 | SY-04.9 | Dashes of the border | Lines of the segment list | One line: a plain border; two lines or more: a dash sequence, each line a colour and a length, repeated (2026-11-24; replaces the editor [PI-04](pipes.md#pi-04--segment-list) opened from the panel). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
 | SY-04.10 | Caps and joins | — | Removed (2026-11-25): not offered. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-of-an-open-path) |
-| SY-04.11 | Effects | List, + on the title | The + opens the menu of the effects; each line: eye, name, a button (Edit, or a value on the line), −; applied from the top down. | Decided | [Effects](../symbols/04-drawing-mode/effects-and-masks.md#the-section-effects) |
-| SY-04.12 | Effects offered | Menu of the + | Clip, Opacity. Every other effect of the catalogue is set aside (2026-11-25). | Decided (2026-11-25) | [Effects](../symbols/04-drawing-mode/effects-and-masks.md#catalogue-of-the-effects) |
-| SY-04.13 | Clip | Line of the effects, Edit button | The clip shapes belong to the shape; Edit enters the clip editing (SY-04.39). No "Mask" select any more (2026-11-25). | Decided | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#clip) |
-| SY-04.39 | Clip editing | State of the drawing area | The shape stays shown, the rest dimmed; a bar "Clip of …" with Done at the top; the user draws the clip shapes with Rectangle, Ellipse, Polygon, Pen; Escape leaves. | Decided (2026-11-25), Proposed (bar) | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#clip) |
+| SY-04.11 | Effects | — | Removed (2026-11-25): no section "Effects" in this version; the clip is a mode ([SY-13](#sy-13--clip-mode)), the opacity a line (SY-04.44). Its screens stay as a record. | Decided | [Effects](../symbols/04-drawing-mode/effects-and-masks.md#the-section-effects) |
+| SY-04.12 | Effects offered | — | Removed with the section (2026-11-25). | Decided | [Effects](../symbols/04-drawing-mode/effects-and-masks.md#catalogue-of-the-effects) |
+| SY-04.13 | Clip | — | Moved to the Clip mode ([SY-13](#sy-13--clip-mode), 2026-11-25). | Decided | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
+| SY-04.39 | Clip editing | — | Replaced by the Clip mode ([SY-13](#sy-13--clip-mode), 2026-11-25). | Decided | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 
 ### Effects one by one
 
@@ -239,7 +235,7 @@ Each effect of the catalogue has its line and what it opens (popup, list), and i
 | SY-04.41 | Mask editing | State of the drawing area | As the clip editing; the mask shapes have fills. | Set aside | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#mask) |
 | SY-04.42 | Fade | Line, settings popup | Linear or Radial; angle; From and To in percent. | Set aside | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#fade) |
 | SY-04.43 | Fade editing | State of the drawing area | A line with the handles From and To over the shape. | Set aside | [Clip, mask, fade](../symbols/04-drawing-mode/effects-clip-and-mask.md#fade) |
-| SY-04.44 | Opacity | Line with a percent field | The opacity of the whole object; no popup. | Kept (2026-11-25), POC | [Opacity and blend](../symbols/04-drawing-mode/effects-opacity-and-blend.md#opacity) |
+| SY-04.44 | Opacity | Line of the panel, after the border, with a percent field | The opacity of the whole object; no popup; 100 % by default. | Kept (2026-11-25), POC; place: Proposed | [Opacity and blend](../symbols/04-drawing-mode/effects-opacity-and-blend.md#opacity) |
 | SY-04.45 | Blend mode | Line with a select | The list of the modes, grouped. | Set aside | [Opacity and blend](../symbols/04-drawing-mode/effects-opacity-and-blend.md#blend-mode) |
 | SY-04.46 | Background blur | Line, settings popup | Radius. | Set aside | [Opacity and blend](../symbols/04-drawing-mode/effects-opacity-and-blend.md#background-blur) |
 | SY-04.47 | Drop shadow | Line, settings popup | X, Y, Blur, Spread, Colour; Edit on the drawing. | Set aside | [Shadows and light](../symbols/04-drawing-mode/effects-shadows-and-light.md#drop-shadow) |
@@ -357,7 +353,7 @@ mindmap
 | SY-05.7 | Handle angle, length | Number field | Linked to X and Y. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
 | SY-05.8 | Remove | Button | Removes the selected points. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
 | SY-05.9 | Add a point between two | Button | When two points are selected. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
-| SY-05.10 | Precise move | Key held while dragging, or the toggle SY-03.11 | A point or a handle moves pixel by pixel of the symbol, even zoomed out. | Decided (key: Open) | [Precise move](../symbols/03-editor/precise-move.md) |
+| SY-05.10 | Precise move | Key held while dragging, no button (SY-03.11) | A point or a handle moves pixel by pixel of the symbol, even zoomed out. | Decided (key: Open) | [Precise move](../symbols/03-editor/precise-move.md) |
 
 Gaps:
 
@@ -556,7 +552,9 @@ Gaps:
 
 ## SY-11 · Advanced tools
 
-Path: symbol editor › tool bar › "Show the advanced tools" button. The bar appears just above the tool bar.
+Set aside: not in this version (Product Owner, 2026-11-25); kept as a record. The tool bar has no button to show them (SY-03.3 removed).
+
+Path, in a later version: symbol editor › tool bar › "Show the advanced tools" button. The bar appears just above the tool bar.
 
 ```mermaid
 mindmap
@@ -588,6 +586,43 @@ Gaps:
 
 - How the reference of a duplication is picked (a point and a radius, a line): with the mouse, in fields, or both?
 - Preview of the copies before they are made?
+
+## SY-13 · Clip mode
+
+Path: symbol editor › a shape selected › Clip, in the modes menu (2026-11-25).
+
+```mermaid
+mindmap
+  root((SY-13 Clip))
+    Tool bar
+      Select
+      Hand
+      Rectangle
+      Ellipse
+      Polygon
+      Pen
+    Drawing
+      Clipped shape, outside faded
+      Rest of the symbol dimmed
+      Clip shapes as outlines
+    Right-hand panel
+      Clip of the shape
+      Clip shapes, a line each
+      Geometry of the selected clip shape
+```
+
+| ID | Element | Kind | Values and behaviour | Status | Source |
+| --- | --- | --- | --- | --- | --- |
+| SY-13.1 | Clip | Button of the modes menu | After Drawing; greyed with nothing selected, its tooltip says to select a shape first. | Decided (a mode), Proposed (place, greyed) | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
+| SY-13.2 | Tools | Button | Select, Hand, Rectangle, Ellipse, Polygon, Pen; no Group, no Text. | Decided | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
+| SY-13.3 | Drawing | State of the drawing area | The clipped shape shown, its part outside the clip shapes faded; the rest of the symbol dimmed; the clip shapes as outlines. | Proposed | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
+| SY-13.4 | Clip shapes | List, a − on each line | Title "Clip of Casing", then one line per clip shape. | Proposed | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
+| SY-13.5 | Geometry of a clip shape | [Size fields](../controls/size-fields.md), number fields | W, H, X, Y, rotation; corner radius of a rectangle, sides of a polygon; no fill, no border. | Proposed | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
+
+Gaps:
+
+- The name "Clip" (the Product Owner doubts it).
+- A group or a text clipped; points of a clip shape edited where.
 
 ## SY-12 · Enums of a Symbol Lib
 

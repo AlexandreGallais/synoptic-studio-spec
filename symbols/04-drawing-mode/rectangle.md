@@ -14,4 +14,4 @@ Status: draft. Not validated.
 - **Corner radius**: set in the right-hand panel, for the whole rectangle, **under the height**, in the section of the geometry (Product Owner, 2026-11-25: under Effects, it was out of place).
 - **Points**: in the [point editing mode](../05-point-editing-mode/README.md), the 4 points can be edited, each with its corner radius or its handles (see [Points and handles](../05-point-editing-mode/points-and-handles.md)). When a point is added, removed or moved, the rectangle becomes a free form that loses nothing of its fill, border and effects (see [Point editing mode](../05-point-editing-mode/README.md)).
 - **Fill and border**: the ones every shape has (see [Fill and border](fill-and-border.md)).
-- **Effects and mask**: the ones every shape has (see [Effects and masks](effects-and-masks.md)).
+- **Opacity and clip**: the ones every shape has (see [Effects](effects-and-masks.md#where-each-kept-entry-is-set)).

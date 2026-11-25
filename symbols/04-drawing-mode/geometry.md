@@ -43,7 +43,7 @@ The panel reads from what the element is to how it looks (Product Owner, 2026-11
 1. **The element**: its title (kind and name), then the options that make its shape, when it has some, **first**: sides and box of a [polygon](polygon.md#rules).
 2. **Geometry**: size, position, rotation, then the options of the outline: the corner radius of a rectangle or of a path, **under the height** (Product Owner, 2026-11-25).
 3. **Fill**, then **border**: see [Fill and border](fill-and-border.md).
-4. **Effects**: see [Effects and masks](effects-and-masks.md).
+4. **Opacity**: one line, the opacity of the whole element (see [Opacity](effects-opacity-and-blend.md#opacity)). No section "Effects" in this version (2026-11-25).
 
 A text keeps its own sections after the geometry (see [Text](text.md)).
 

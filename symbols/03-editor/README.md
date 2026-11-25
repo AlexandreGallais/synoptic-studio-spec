@@ -21,8 +21,7 @@ block-beta
 | Left-hand panel | The symbols and the pipe styles of the Symbol Lib, then the [layers](layers.md) of the open symbol (see [Libraries and symbols](../01-libraries-and-symbols.md)). |
 | Modes menu | A floating bar at the **top left of the drawing area**, **horizontal**, made of **icons only** (the name of each mode in its tooltip): every mode, in the order of the work, and the switch from one to another (Product Owner, 2026-11-23). |
 | Guides | A small floating bar **under the modes menu**, with the [layout guides](layout-guides.md) of the view (Product Owner, 2026-11-25). |
-| Tool bar | A floating bar over the drawing area, with the tools of the current mode. Its place is open: at the **bottom** or at the top. |
-| Advanced tools bar | A button of the tool bar shows or hides a second floating bar, **just above the tool bar**, with all the [advanced tools](expert-menu/README.md). |
+| Tool bar | A floating bar over the drawing area, with the tools of the current mode, and nothing else: no button for the advanced tools, no button for the precise move (Product Owner, 2026-11-25). Its place is open: at the **bottom** or at the top. |
 | Right-hand panel | The options of the selection; the type of the symbol (see [Type and faceplate](../02-type-and-faceplate.md)). |
 
 ```mermaid
@@ -30,7 +29,6 @@ block-beta
     columns 3
     modes["Modes menu (top left, horizontal, icons)"] space:2
     space:3
-    space adv["Advanced tools bar, shown or hidden"] space
     space tools["Tool bar of the mode (bottom, place open)"] space
 ```
 
@@ -42,18 +40,19 @@ Not placed yet: the zoom field, undo and redo. There is no save: each change is 
 - A **mode** changes what the editor is for. Switching mode changes the tools of the tool bar and what the right-hand panel shows.
 - Nothing is hidden behind a double click: to edit points, the user switches to the point editing mode.
 - **Same keys on every platform**. Windows, macOS and Linux behave the same. Only keys that exist on all three are used: Shift, Ctrl and Alt (the Option key on a Mac), with letters, digits, arrows and function keys. No Command, Option or Windows key in the specs. Whenever a page asks which key to use, this rule applies first.
-- Key shortcuts and modifier keys are allowed, as in every drawing software, but never alone: each one has a visible equivalent (an option in the panel or the tool bar). The software is used by everyone, including an expert of 80 who makes synoptics.
+- Key shortcuts and modifier keys are allowed, as in every drawing software, but never alone: each one has a visible equivalent (an option in the panel or the tool bar). The software is used by everyone, including an expert of 80 who makes synoptics. One exception: the [precise move](precise-move.md) is a key only, with no button (Product Owner, 2026-11-25).
 - Everything drawn stays a path, in the layers of an SVG, so the symbol stays a real SVG. A text stays a text, because it can show a value or a unit (see [Animation mode](../08-animation-mode/README.md)).
 - The name "layer" is provisional. A layer can be the target of an animation or of an interaction.
 - Colours (fill, border) and the options of a shape (corner radius, for example) are neither tools nor modes. They are in the right-hand panel, which shows the options that fit the selected shape.
 
 ## Modes
 
-In the order of the modes menu, which is the order of the work: draw, edit the points, connect, align, animate, then the interactions, and run last (Product Owner, 2026-11-23).
+In the order of the modes menu, which is the order of the work: draw, clip, edit the points, connect, align, animate, then the interactions, and run last (Product Owner, 2026-11-23; Clip added on 2026-11-25, its place after Drawing proposed by the assistant).
 
 | Mode | What it is for | Tools in the tool bar | Right-hand panel |
 | --- | --- | --- | --- |
 | [Drawing](../04-drawing-mode/README.md) | The default mode: draw and arrange shapes. | Select, Hand, Group, Rectangle, Ellipse, Polygon, Pen, Text | Options of the selected shape (colours, corner radius...) |
+| [Clip](../04-drawing-mode/clip-mode.md) | Draw the clip shapes of the selected shape: it is shown only inside them. | Select, Hand, Rectangle, Ellipse, Polygon, Pen | The clip shapes of the shape, the geometry of the selected one |
 | [Point editing](../05-point-editing-mode/README.md) | Edit the points of a path. | Select, Hand, Pen | Options of the selected point |
 | [Connection](../pipes/connection-points.md) | Place the connection points where pipes attach. | Select, Hand, Connection point | The options of the selected point |
 | [Alignment](../06-alignment-mode/README.md) | Place shapes in relation to each other. | Select, Hand | Alignment of the selected shapes |
@@ -64,7 +63,8 @@ In the order of the modes menu, which is the order of the work: draw, edit the p
 - The Connection mode is in the menu (Product Owner, 2026-11-23); its tools and its panel are still the assistant's assumption (see [Connection points](../pipes/connection-points.md)).
 - The icon of each mode: to draw in the design system.
 - The Interaction, Animation and Run modes need a type: a symbol without a type has no interaction, no animation and nothing to test with signals (see [Libraries and symbols](../01-libraries-and-symbols.md)).
-- The [advanced tools](expert-menu/README.md) add a second bar just above the tool bar of the current mode.
+- The Clip mode is in the menu (Product Owner, 2026-11-25); its panel is the assistant's proposal (see [Clip mode](../04-drawing-mode/clip-mode.md)).
+- The [advanced tools](expert-menu/README.md) are set aside: not in this version (Product Owner, 2026-11-25).
 - Other modes may be added later.
 
 ## Moving around the drawing
@@ -82,10 +82,10 @@ In the order of the modes menu, which is the order of the work: draw, edit the p
 | [Select](select.md) | The Select tool, in every mode except Run. |
 | [Hand](hand.md) | The Hand tool, in every mode. |
 | [Layers](layers.md) | The tree of the layers of the symbol, in the left-hand panel. |
-| [Precise move](precise-move.md) | A key that makes a dragged point or handle move pixel by pixel. |
+| [Precise move](precise-move.md) | A key held while moving with Select: what is dragged moves pixel by pixel. |
 | [Anchors](anchors.md) | The nine named points of a box, used by groups, polygons and alignment. |
 | [Layout guides](layout-guides.md) | Columns, rows and grids over the view, under the modes menu. |
-| [Advanced tools](expert-menu/README.md) | The second bar of the tools that are not for everyday drawing. |
+| [Advanced tools](expert-menu/README.md) | Set aside, not in this version (2026-11-25): the tools that are not for everyday drawing. |
 
 ## Where it is used
 
@@ -148,7 +148,7 @@ Undo and redo; grid, snapping and guides; import of an SVG; variants of a symbol
 2. Rotation as the only transform allowed on a shape; mirror recomputed in the points.
 3. The minimum set of snapping and guides.
 4. The data of the editor in one `<metadata>` block of the SVG.
-5. Which missing features go in the specs now, and which later.
+5. Which missing features go in the specs now, and which later. This version keeps few things, made to work well (Product Owner, 2026-11-25: "autant faire un truc avec peu de choses, mais qui fonctionne très bien").
 
 ## Open questions
 

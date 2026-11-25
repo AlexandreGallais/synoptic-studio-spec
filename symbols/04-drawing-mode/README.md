@@ -10,7 +10,8 @@ The default mode of the [editor](../03-editor/README.md): draw and arrange shape
 
 - Tool bar: [Select](../03-editor/select.md), [Hand](../03-editor/hand.md), then in this order: [Group](group.md), [Rectangle](rectangle.md), [Ellipse](ellipse.md), [Polygon](polygon.md), [Pen](pen.md), [Text](text.md). The order: groups, then the basic shapes, then the pen, then the text.
 - The Group, Rectangle, Ellipse, Polygon, Pen and Text tools exist only in this mode (the Pen is also in the point editing mode).
-- Right-hand panel: the options of the selected shape (colours, corner radius, effects...).
+- Right-hand panel: the options of the selected shape (colours, corner radius, opacity...). No section "Effects" in this version (2026-11-25).
+- The clip of a shape is drawn in the [Clip mode](clip-mode.md), the mode after this one.
 - Everything drawn becomes a path, except a text, which stays a text.
 - Every shortcut has a visible equivalent (see the [editor](../03-editor/README.md)).
 
@@ -33,8 +34,9 @@ The rectangle, the ellipse, the polygon and the path share the same pages; the g
 | --- | --- |
 | [Geometry](geometry.md) | Size, position, rotation, placement in a group, and the order of the right-hand panel. Every element has them. |
 | [Fill and border](fill-and-border.md) | Fills stacked (colour or gradient), border (not an SVG stroke) outside, in the middle or inside, size, dashes. A group has neither. |
-| [Effects](effects-and-masks.md) | The section "Effects", its lines and editing modes; the catalogue of every effect SVG and CSS allow, and the seven entries kept for this version (2026-11-25). |
-| [Clip, mask, fade](effects-clip-and-mask.md) | The clip, with its editing; mask and fade set aside. |
+| [Effects](effects-and-masks.md) | The catalogue of every effect SVG and CSS allow, the seven entries kept for this version and where each is set (2026-11-25); the section "Effects", removed, kept as a record. |
+| [Clip mode](clip-mode.md) | The clip of a shape, drawn in a mode of its own. |
+| [Clip, mask, fade](effects-clip-and-mask.md) | The clip, now a mode; mask and fade set aside. |
 | [Opacity and blend](effects-opacity-and-blend.md) | The opacity of the whole object; blend mode and background blur set aside. |
 | [Shadows and light](effects-shadows-and-light.md) | Set aside: drop shadow, outer glow, inner shadow, inner glow, lighting. |
 | [Blur and sharpness](effects-blur-and-sharpness.md) | Set aside: blur; sharpen, edges, emboss. |

@@ -2,22 +2,17 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › [Effects](effects-and-masks.md) › Clip, mask, fade
 
-Status: draft. The clip: asked and kept by the Product Owner on 2026-11-25. The mask and the fade: set aside, not in this version (Product Owner, 2026-11-25), kept as a record. Not validated.
+Status: draft. The clip: asked and kept by the Product Owner on 2026-11-25, then made a mode of the modes menu the same day. The mask and the fade: set aside, not in this version (Product Owner, 2026-11-25), kept as a record. Not validated.
 
-What hides part of a shape. Each effect follows the [section "Effects"](effects-and-masks.md#the-section-effects) and its [editing modes](effects-and-masks.md#editing-modes).
+What hides part of a shape. The mask and the fade would follow the [section "Effects"](effects-and-masks.md#the-section-effects) and its [editing modes](effects-and-masks.md#editing-modes).
 
 ## Clip
 
 |  |  |
 | --- | --- |
 | What it does | Only the part of the shape inside the **clip shapes** is shown; whatever goes beyond is hidden. Example: a liquid level that rises inside a tank, cut by the outline of the tank; it allows many animations (Product Owner, 2026-11-25). |
-| Feature | SVG `clipPath`. Elsewhere it needs a group, a shape put in it and another shape set as the clip; here, the clip belongs to the shape itself, with no group to make (Product Owner, 2026-11-25). CSS `clip-path` with a simple shape (inset, circle, ellipse, polygon, path) is another way to write the same, for the POC. |
-| Line | "Clip · 1 shape", with an **Edit** button (a pencil). No clip shape yet: "Clip · empty", and the shape is shown whole. |
-| Popup | None. |
-| On the drawing | **Clip editing**: the Edit button, or the line selected and Enter. The bar says "Clip of Casing". The user draws the clip shapes with the Rectangle, Ellipse, Polygon and Pen tools; the part of the shape outside them is shown faded. The clip shapes are edited like any shape (points, size, position) and have no fill, no border and no effect. |
-| Layers | The clip shapes are under their shape, in a line "Clip" folded by default, never at the level of the drawing. |
-| Rules | Several clip shapes add up: what is inside any of them is shown. The clip shapes follow the shape: moved, resized or turned with it. |
-| Status | Decided (2026-11-25); its limits measured by P7. The bar of the editing: proposed. |
+| Where | Since 2026-11-25, the [Clip mode](clip-mode.md), in the modes menu: no longer a line of a section "Effects". The screens SY-04.13 and SY-04.39 of the effect stay as a record. |
+| Status | Decided (2026-11-25); its limits measured by P7. |
 
 ## Mask
 

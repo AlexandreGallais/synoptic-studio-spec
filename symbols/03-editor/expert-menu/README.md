@@ -2,9 +2,11 @@
 
 > [Home](../../../README.md) › [Symbols](../../README.md) › [Editor](../README.md) › Advanced tools
 
-Status: draft, reviewed on 2026-11-15 (a second bar instead of the three dots menu). Not validated.
+Status: set aside, not in this version (Product Owner, 2026-11-25), kept as a record. Draft, reviewed on 2026-11-15 (a second bar instead of the three dots menu). Not validated.
 
 The advanced tools are the tools that are not for everyday drawing; the name of this folder, "expert menu", is their former name.
+
+**Not in this version.** The tool bar has no button "Show the advanced tools", and there is no second bar (Product Owner, 2026-11-25: "ça a pas lieu d'être, dans la version là"). Duplication around a circle and the like are mostly for realistic views; the version keeps few things, made to work well. The rules below are kept for a later version.
 
 ## Rules
 

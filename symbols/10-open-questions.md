@@ -42,7 +42,8 @@ This file is the index of the open questions. A question sits in the file it con
 | Thumbnail of a symbol in the list: the symbol itself, or its outlines only; what else an item shows. | [Libraries and symbols](01-libraries-and-symbols.md) | Outlines only, as Figma's outline view, with the name. |
 | Look of the Interaction, Animation and Run modes before a type is chosen. | [Libraries and symbols](01-libraries-and-symbols.md) | Greyed in the mode menu, with a tooltip "choose a type first". |
 | Place of the floating tool bar: bottom or top of the drawing area. | [Editor](03-editor/README.md) | Bottom, centred. |
-| Key and ratio of the precise move; does it also apply to whole shapes. | [Precise move](03-editor/precise-move.md) | See the page. |
+| Key (Shift or Ctrl) and ratio of the precise move. (A key only, no button, also for whole shapes moved with Select: settled on 2026-11-25.) | [Precise move](03-editor/precise-move.md) | See the page. |
+| Clip mode: its name, its place after Drawing, a group or a text clipped, where the points of a clip shape are edited; the place of the opacity line. (A mode of the modes menu, tools Select, Hand, Rectangle, Ellipse, Polygon, Pen; no section "Effects"; no advanced tools in this version: settled on 2026-11-25.) | [Clip mode](04-drawing-mode/clip-mode.md), [Effects](04-drawing-mode/effects-and-masks.md#where-each-kept-entry-is-set) | Not researched. |
 | What a line of the layer tree shows besides its name (lock, hide, icon of its kind). | [Layers](03-editor/layers.md) | Icon of the kind, name, hide, lock. |
 
 ## Raised by the review of 2026-11-16
@@ -75,7 +76,7 @@ This file is the index of the open questions. A question sits in the file it con
 | --- | --- | --- |
 | Key conflicts (Alt and the Linux window managers, Ctrl+G in browsers). | [Editor](03-editor/README.md) | Not found by the research. |
 | What can be taken from the symbol standards (ISA-5.1, ISO 14617, EN 60617, ISO 10628) without a copyright problem. | [Pipes](pipes/README.md) | Paid standards, not opened. |
-| Options of each entry of the advanced tools, of the alignment panel and of the group (anchors, placement of the children). | [Advanced tools](03-editor/expert-menu/README.md), [Alignment mode](06-alignment-mode/README.md), [Group](04-drawing-mode/group.md) | To describe, page by page. |
+| Options of the alignment panel and of the group (anchors, placement of the children). (Advanced tools: set aside, 2026-11-25.) | [Alignment mode](06-alignment-mode/README.md), [Group](04-drawing-mode/group.md) | To describe, page by page. |
 | Connection points: which mode places them, their names, the snapping zone. | [Connection points](pipes/connection-points.md) | To describe. |
 | What the faceplate opened by an interaction allows once the symbol is placed (display only, or display with commands). | Part 3 | Belongs to the synoptic part, not written yet. |
 | How are an unwired symbol with a type, a placed symbol (linked instance) and its scale handled in a synoptic? | Part 3 | Belongs to the synoptic part, not written yet. |

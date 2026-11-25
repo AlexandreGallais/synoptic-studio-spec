@@ -29,7 +29,7 @@ In this order, each section compact (Product Owner, 2026-11-25: "plus lisibles, 
 2. **Font**: family, then size and style on one line.
 3. **Colour**: the text colour, then its border.
 4. **Paragraph**: alignment, spacing, wrapping, lines.
-5. **Effects**, as every shape.
+5. **Opacity**, as every shape (no section "Effects" in this version, 2026-11-25).
 
 ### Size of the box
 
