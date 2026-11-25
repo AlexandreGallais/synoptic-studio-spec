@@ -1,86 +1,119 @@
-# Effects and masks of a shape
+# Effects of a shape
 
-> [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › Effects and masks
+> [Home](../../README.md) › [Symbols](../README.md) › [Drawing mode](README.md) › Effects
 
-Status: draft, the research report of 2026-11-11, and the clip asked by the Product Owner on 2026-11-25. Not validated.
+Status: draft. The research report of 2026-11-11, the clip asked by the Product Owner on 2026-11-25, and the complete catalogue asked the same day for the POC. Not validated.
 
 Effects, clips and masks are set from the right-hand panel, in the section "Effects", after the [fill and border](fill-and-border.md). The editor offers them in a menu, and the user writes nothing.
 
 ## Rules
 
-- **Only what SVG does natively.** Every effect comes from the SVG itself: its filters, its `clipPath` and its `mask`. Nothing is simulated with copies or tricks. An effect that SVG does not do natively is not offered. This is why there is no "blur of what is behind the shape".
-- **Performance comes first**: an effect is offered only if it keeps the performance objective (see the project criteria on gestures and 120 Hz). The goal: never offer something that lags; a heavy effect is useless (Product Owner, 2026-11-25).
-- If an effect or a setting makes the performance fall too much, it is not offered. The answer is "not possible".
+- **What the symbol file can hold.** An effect is written in the SVG of the symbol: an SVG feature (a filter, a `clipPath`, a `mask`, a paint) or a CSS property applied to the SVG and written in the file. Nothing is simulated with copies of the shape. What needs something outside the file (a shader, an HTML element) is not possible (Product Owner, 2026-11-25: "les effets possibles dans un SVG, et plus avec du CSS").
+- **The POC chooses.** Every effect of the [catalogue](#catalogue-of-the-effects) that is not decided is tried in the POC of the effects: the Product Owner then chooses what is kept, and the simplest way to set it (Product Owner, 2026-11-25: "dans le POC, je pourrai choisir vraiment ce que je veux"). Nothing is refused beforehand.
+- **Performance comes first**: an effect is kept after the POC only if it keeps the performance objective (see the project criteria on gestures and 120 Hz). A heavy effect is useless (Product Owner, 2026-11-25).
 
 ### The section "Effects"
 
-- A **+** on the right of the title "Effects" opens the menu of the effects offered (see the [catalogue](#catalogue-of-the-native-svg-effects)); the one chosen becomes a **line** of the section.
-- Each line: an **eye** that turns the effect off without removing it, the **name** of the effect, a **settings** button that opens its settings in a popup beside the panel (as the paint popup), and a **−** that removes it.
+- A **+** on the right of the title "Effects" opens the **menu of the effects**, grouped by family, in the order of the catalogue; the one chosen becomes a **line** of the section.
+- Each line: an **eye** that turns the effect off without removing it, the **name** of the effect, a button, and a **−** that removes it. The button is one of three:
+
+| Button | When | What it does |
+| --- | --- | --- |
+| Settings | The effect has settings. | Opens its **popup** beside the panel, as the paint popup. |
+| Edit (a pencil) | The effect owns shapes (clip, mask, filter chain). | Enters its **editing mode**. |
+| None, a value on the line | The effect has one setting (opacity, blend mode, crisp edges). | The value is set on the line itself. |
+
+- A popup whose effect can also be set on the drawing has an **Edit on the drawing** button at its bottom, which enters its editing mode.
 - The lines are applied from the top down.
-- There is no "Mask" select any more in the panel: clip and mask are effects with their own shapes (Product Owner, 2026-11-25).
+- There is no "Mask" select in the panel: clip and mask are effects with their own shapes (Product Owner, 2026-11-25).
 
-### Clip
+### Editing modes
 
-- **What it does**: only the part of the shape inside the **clip shape** is shown; whatever goes beyond it is hidden. Example: a liquid level that rises inside a tank, cut by the outline of the tank; it allows many animations (Product Owner, 2026-11-25).
-- **In SVG**: a `clipPath`. Elsewhere it needs a group, a shape put in it and another shape set as the clip; here, the clip belongs to the shape itself, with no group to make (Product Owner, 2026-11-25).
-- **Adding it**: + of the section, then "Clip": a line "Clip" appears, with an **Edit** button (a pencil) instead of the settings button.
-- **Clip editing**: the Edit button, or the line selected and Enter, enters the clip editing of that shape:
-  - the shape stays selected and shown; the rest of the drawing is **dimmed**;
-  - a bar at the top of the drawing area says "Clip of Casing" and has a **Done** button (Escape does the same);
-  - the user draws the clip shape **in it**, with the Rectangle, Ellipse, Polygon and Pen tools; what is outside it is shown faded, so the user sees what will be hidden;
-  - the clip shapes are edited like any shape: points, size, position; they have no fill, no border and no effect of their own.
-- **In the layers**: the clip shapes are under their shape, in a line "Clip" folded by default, never at the level of the drawing.
-- **Several clip shapes** add up: what is inside any of them is shown.
-- **No clip shape yet**: the shape is shown whole, and the line says "Clip · empty".
-- The clip shape follows the shape: moved, resized or turned with it.
+An effect that is better set by hand on the drawing has an **editing mode**, on the model of the clip editing (Product Owner, 2026-11-25: "comme pour le clip, un mode d'édition par rapport à cet effet"):
 
-### Mask
-
-- The same as the clip, with a soft edge: the clip shapes become **mask shapes** whose opacity gives the transparency of the shape (white shown, transparent hidden).
-- **In SVG**: a `mask`. It costs more than a clip (an image computed per pixel); it is offered only within the limit the POC sets (P7). A hard edge is always a clip.
-- Same line, same Edit button and same editing as the clip; the mask shapes have a fill (its opacity is what counts) and no border.
+- the shape stays selected and shown; the rest of the drawing is **dimmed**;
+- a bar at the top of the drawing area names what is edited ("Clip of Casing", "Shadow of Casing") and has a **Done** button; Escape does the same;
+- the handles of the effect are on the drawing (an offset, a light, a gradient line, a path); the right-hand panel shows the same settings as the popup, which follow the handles;
+- the other tools are off, except those the mode needs (the shape tools to draw a clip, a mask or a pattern tile).
 
 ```mermaid
 stateDiagram-v2
     [*] --> Drawing
-    Drawing --> ClipEditing: Edit on the line Clip, or Enter
-    ClipEditing --> Drawing: Done, or Escape
-    ClipEditing: Clip editing, the rest dimmed
+    Drawing --> EffectEditing: Edit on the line, or Edit on the drawing in the popup, or Enter
+    EffectEditing --> Drawing: Done, or Escape
+    EffectEditing: Editing of one effect, the rest dimmed
 ```
 
-### Catalogue of the native SVG effects
+## Catalogue of the effects
 
-Every effect SVG does natively, with what the specs do with it. An example of each is drawn in Figma, page Spec, row "Effects · catalogue" of the section "Symbol mode · test screens". "Proposed" follows the opinion of the research report (below), never a measure; the POC settles it.
+Every effect a symbol can carry, by family: what SVG does, what CSS adds on an SVG, and the other leads. An example of each is drawn in Figma, page Spec, section "Symbol mode · Effects". Status: **Decided**; **POC** (tried in the POC, chosen after); **POC, support to check** (the engines may not draw it on an SVG shape); **Later** (not in this version, good to know); **Not an effect** (said elsewhere); **Not possible** (no engine, or outside the SVG file).
 
-| Effect | SVG feature | What it does | In Synoptic Studio |
-| --- | --- | --- | --- |
-| Clip | `clipPath` | Shows the shape only inside other shapes, hard edge. | Effect "Clip", decided (2026-11-25); its limits measured by P7. |
-| Mask | `mask` | The same with a soft edge, by the opacity of the mask. | Effect "Mask", proposed: offered with a limit (P7). |
-| Linear gradient | `linearGradient` | Colours along a line. | Kind of fill, decided. |
-| Radial gradient | `radialGradient` | Colours around a centre. | Kind of fill, decided. |
-| Pattern | `pattern` | A small drawing repeated to fill the shape. | Kind of fill, open. |
-| Dashes | `stroke-dasharray` | Dashes of one colour on a stroke. | Replaced by the computed dash sequence of the border (several colours). |
-| Opacity | `opacity` | The whole element more or less transparent. | Proposed: offered as an effect "Opacity" (cheap). |
-| Drop shadow | `feDropShadow` | A blurred, offset copy behind the shape. | Proposed: offered with a limit (P2). A glow is a drop shadow without offset. |
-| Inner shadow | `feOffset`, `feGaussianBlur`, `feComposite` | A shadow inside the edge. | Proposed: offered only if P5 holds. |
-| Blur | `feGaussianBlur` | Blurs the shape itself. | Proposed: offered with a strict limit (P2). |
-| Colour change | `feColorMatrix`, `feComponentTransfer` | Greyscale, saturation, hue turn, brightness, contrast. | Proposed: offered with a limit, or as recomputed colours (P6). |
-| Blend mode | `mix-blend-mode` (CSS on SVG) | Mixes the colours with what is under the shape (multiply, screen...). | Not read by the research: refused until measured. |
-| Thicken, thin | `feMorphology` | Grows or shrinks the shape by pixels. | Refused (cost); the inside and outside border does it on the path. |
-| Noise, texture | `feTurbulence` | A noise image, for paper or metal. | Refused (cost). |
-| Distortion | `feDisplacementMap` | Moves the pixels by another image: waves, heat. | Refused (cost). |
-| Lighting, relief | `feDiffuseLighting`, `feSpecularLighting` | A light on a relief. | Refused (cost). |
-| Sharpen, emboss | `feConvolveMatrix` | A matrix applied to the pixels. | Refused (cost). |
-| Building blocks | `feBlend`, `feComposite`, `feFlood`, `feMerge`, `feOffset`, `feTile`, `feImage` | The pieces the effects above are made of. | Not offered alone. |
-| Arrow heads | `marker` | A shape at the start, the middle or the end of a line. | Open (end shape of a line, see [Fill and border](fill-and-border.md#open-paths)). |
-| Text border | `stroke` with `paint-order` | A true stroke under the letters. | Decided for the text (see [Text](text.md)). |
-| Text along a path | `textPath` | Letters following a curve. | Refused first (research). |
+| Family | Effect | SVG or CSS feature | What it does | Status | Page |
+| --- | --- | --- | --- | --- | --- |
+| Clip and mask | Clip | `clipPath`; CSS `clip-path` (inset, circle, ellipse, polygon, path) | Shows the shape only inside its clip shapes, hard edge. | Decided (2026-11-25) | [Clip, mask, fade](effects-clip-and-mask.md#clip) |
+| Clip and mask | Mask | `mask`, `mask-type` alpha or luminance | The same with a soft edge, by the opacity or the brightness of the mask shapes. | POC | [Clip, mask, fade](effects-clip-and-mask.md#mask) |
+| Clip and mask | Fade | CSS `mask-image` with a gradient, or a `mask` filled with a gradient | The shape fades out along a line or from a centre, with no shape to draw. | POC | [Clip, mask, fade](effects-clip-and-mask.md#fade) |
+| Opacity and blend | Opacity | `opacity` | The whole shape more or less transparent. | POC | [Opacity and blend](effects-opacity-and-blend.md#opacity) |
+| Opacity and blend | Blend mode | CSS `mix-blend-mode` (16 modes and `plus-lighter`), `isolation` on a group | Mixes the colours of the shape with what is under it. | POC | [Opacity and blend](effects-opacity-and-blend.md#blend-mode) |
+| Opacity and blend | Background blur | CSS `backdrop-filter` | Blurs what is behind the shape (frosted glass). | POC, support to check | [Opacity and blend](effects-opacity-and-blend.md#background-blur) |
+| Shadows and light | Drop shadow | `feDropShadow`; CSS `drop-shadow()` | A blurred, offset copy behind the shape. | POC | [Shadows and light](effects-shadows-and-light.md#drop-shadow) |
+| Shadows and light | Outer glow | `feGaussianBlur`, `feFlood`, `feComposite`, `feMerge` | A coloured halo around the shape, without offset. | POC | [Shadows and light](effects-shadows-and-light.md#outer-glow) |
+| Shadows and light | Inner shadow | `feOffset`, `feGaussianBlur`, `feComposite` | A shadow inside the edge. | POC | [Shadows and light](effects-shadows-and-light.md#inner-shadow) |
+| Shadows and light | Inner glow | `feGaussianBlur`, `feFlood`, `feComposite` | A coloured halo inside the edge. | POC | [Shadows and light](effects-shadows-and-light.md#inner-glow) |
+| Shadows and light | Lighting | `feDiffuseLighting`, `feSpecularLighting`, with `feDistantLight`, `fePointLight` or `feSpotLight` | A light on a relief: bevel, relief, shine. | POC | [Shadows and light](effects-shadows-and-light.md#lighting) |
+| Blur and sharpness | Blur | `feGaussianBlur` (one radius per axis); CSS `blur()` | Blurs the shape itself, the same in both directions or in one. | POC | [Blur and sharpness](effects-blur-and-sharpness.md#blur) |
+| Blur and sharpness | Sharpen, edges, emboss | `feConvolveMatrix` | A small matrix applied to the pixels. | POC | [Blur and sharpness](effects-blur-and-sharpness.md#sharpen-edges-emboss) |
+| Colour | Colour adjustments | `feColorMatrix`, `feComponentTransfer`; CSS `brightness()`, `contrast()`, `saturate()`, `grayscale()`, `sepia()`, `hue-rotate()`, `invert()` | Brightness, contrast, saturation, hue, greyscale, sepia, invert. | POC | [Colour](effects-colour.md#colour-adjustments) |
+| Colour | Colour overlay | `feFlood`, `feComposite`, `feBlend` | Paints one colour over the shape, keeping its outline. | POC | [Colour](effects-colour.md#colour-overlay) |
+| Colour | Colour map | `feComponentTransfer` (table, discrete) | Duotone, posterize, threshold. | POC | [Colour](effects-colour.md#colour-map) |
+| Texture and distortion | Thicken, thin | `feMorphology` (dilate, erode) | Grows or shrinks the shape by pixels, text included. | POC | [Texture and distortion](effects-texture-and-distortion.md#thicken-thin) |
+| Texture and distortion | Noise, texture | `feTurbulence` (fractal noise, turbulence) | A noise over the shape: paper, metal, concrete. | POC | [Texture and distortion](effects-texture-and-distortion.md#noise-texture) |
+| Texture and distortion | Distortion | `feDisplacementMap`, from a noise or an image | Moves the pixels: waves, heat, glass. | POC | [Texture and distortion](effects-texture-and-distortion.md#distortion) |
+| Expert | Filter chain | Every filter primitive, chained by hand; `color-interpolation-filters` | A filter built step by step from the building blocks (`feBlend`, `feComposite` with its arithmetic, `feFlood`, `feMerge`, `feOffset`, `feTile`, `feImage`, and the primitives above). | POC | [Filter chain](effects-filter-chain.md) |
+| Paints | Linear gradient | `linearGradient`, `spreadMethod` pad, reflect, repeat | Colours along a line. | Decided (kind of fill); its editing on the drawing: POC | [Paints](paints.md#linear-gradient) |
+| Paints | Radial gradient | `radialGradient`, focal point (`fx`, `fy`, `fr`) | Colours around a centre. | Decided (kind of fill); its editing on the drawing: POC | [Paints](paints.md#radial-gradient) |
+| Paints | Conic gradient | CSS `conic-gradient()`; no SVG paint | Colours turning around a centre. | POC, support to check | [Paints](paints.md#conic-gradient) |
+| Paints | Pattern | `pattern` | A small drawing repeated to fill the shape: dots, hatching, grid. | POC | [Paints](paints.md#pattern) |
+| Paints | Image | `image` in a `pattern`, or `feImage` | A picture fills the shape. | POC | [Paints](paints.md#image) |
+| Lines and text | Arrow heads | `marker` (`marker-start`, `marker-mid`, `marker-end`) | A shape at the start, the corners or the end of a line. | POC | [Lines and text](effects-lines-and-text.md#arrow-heads) |
+| Lines and text | Border that keeps its width | `vector-effect: non-scaling-stroke` | The border keeps its width when the symbol is scaled in a synoptic. | POC | [Lines and text](effects-lines-and-text.md#border-that-keeps-its-width) |
+| Lines and text | Crisp edges | `shape-rendering` (`crispEdges`, `geometricPrecision`) | Edges on whole pixels, without smoothing. | POC | [Lines and text](effects-lines-and-text.md#crisp-edges) |
+| Lines and text | Text along a path | `textPath` | Letters following a curve. | Later: of no use in this version, good to know (Product Owner, 2026-11-25) | [Lines and text](effects-lines-and-text.md#text-along-a-path) |
+| Lines and text | Text border | `stroke` with `paint-order` | A true stroke under the letters. | Decided | [Text](text.md) |
+| Lines and text | Dashes | `stroke-dasharray`, `stroke-dashoffset` | Dashes of one colour on a stroke. | Decided: replaced by the computed dash sequence (several colours) | [Fill and border](fill-and-border.md#border-options) |
+| Lines and text | Caps and joins | `stroke-linecap`, `stroke-linejoin`, `stroke-miterlimit` | The look of the ends and corners of a stroke. | Decided: not offered (2026-11-25) | [Fill and border](fill-and-border.md#border-of-an-open-path) |
+| Other leads | Text shadow | CSS `text-shadow` | A shadow under the letters. | POC, support to check; the drop shadow does the same on a text | [Shadows and light](effects-shadows-and-light.md#drop-shadow) |
+| Other leads | Tilt in 3D | CSS `perspective`, `rotateX()`, `rotateY()` | Tilts the shape in depth. | POC, support to check | [Geometry](geometry.md) |
+| Other leads | Skew | `transform` `skewX()`, `skewY()` | Slants the shape. | Not an effect: a lead for the geometry | [Geometry](geometry.md) |
+| Other leads | Offset of a path | None: a computation (Inkscape's "Dynamic offset") | Another path at a distance from the first. | Not an effect: the inside and outside border covers its common use | [Fill and border](fill-and-border.md) |
+| Other leads | Inside or outside stroke | SVG 2 draft `stroke-alignment`, never shipped | A native stroke inside or outside the edge. | Not possible natively: the border is computed (decided) | [Fill and border](fill-and-border.md) |
+| Other leads | Gradient along a border | None | Colours that follow the border along its length. | Not possible natively | [Fill and border](fill-and-border.md) |
+| Other leads | Mesh gradient | SVG 2 draft `meshgradient`, removed | Colours set on a grid of points. | Not possible: no engine | [Paints](paints.md) |
+| Other leads | Hatch | SVG 2 draft `hatch`, removed | Hatching along lines. | Not possible: the pattern does it | [Paints](paints.md#pattern) |
+| Other leads | Shaders | WebGL | Any effect computed by the graphics card. | Not possible: outside the SVG file | — |
+| Other leads | Animation of a setting | CSS animations, SMIL | A setting that changes over time. | Not an effect: the animation mode | [Animation mode](../08-animation-mode/README.md) |
 
-- **Offset of a path** (Inkscape's "Dynamic offset", "Linked offset", Path menu): not an SVG effect, a computation that makes another path. Not an effect here; the inside and outside border of a shape covers its common use.
+"Support to check": a CSS feature defined for every element, whose drawing on an SVG shape differs between engines; the POC checks it in each engine aimed at. Said from the knowledge of the assistant, not from a research: the POC settles it.
+
+## Effects one by one
+
+Each effect, its line, its popup and its editing mode, by family. The screens: Figma, page Spec, section "Symbol mode · Effects", one row per effect.
+
+| Page | Effects |
+| --- | --- |
+| [Clip, mask, fade](effects-clip-and-mask.md) | Clip, mask, fade |
+| [Opacity and blend](effects-opacity-and-blend.md) | Opacity, blend mode, background blur |
+| [Shadows and light](effects-shadows-and-light.md) | Drop shadow, outer glow, inner shadow, inner glow, lighting |
+| [Blur and sharpness](effects-blur-and-sharpness.md) | Blur; sharpen, edges, emboss |
+| [Colour](effects-colour.md) | Colour adjustments, colour overlay, colour map |
+| [Texture and distortion](effects-texture-and-distortion.md) | Thicken or thin, noise, distortion |
+| [Filter chain](effects-filter-chain.md) | A filter built from the building blocks |
+| [Paints](paints.md) | The editing on the drawing of the linear and radial gradients; conic gradient, pattern, image |
+| [Lines and text](effects-lines-and-text.md) | Arrow heads, border that keeps its width, crisp edges, text along a path |
 
 ## What the research found
 
-Source: the research report (`research/t1-…/rapport.md`, in the project, not committed). It measured nothing: everything below is read from sources, and the performance POC will settle it. The "Opinion" column is the report's provisional opinion, not a decision.
+Source: the research report (`research/t1-…/rapport.md`, in the project, not committed). It measured nothing: everything below is read from sources, and the performance POC will settle it. The "Opinion" column is the report's provisional opinion, not a decision. Its opinion "refuse" no longer applies: every effect goes to the POC (2026-11-25).
 
 ### Why the engine matters
 
@@ -113,7 +146,7 @@ Source: the research report (`research/t1-…/rapport.md`, in the project, not c
 | Blur of the shape | Filter | Offer with a limit stricter than the drop shadow. Confidence: medium. | Radius, filter area. |
 | Mask by a shape | `mask` | Offer with a limit. Replace by a cut when the edge is hard. Confidence: low. | Filtered area. |
 | Inner shadow | Chain of filter primitives | Offer with a limit if the POC holds, else refuse. Confidence: low. | Radius, area. |
-| Noise, lighting, convolution, displacement, morphology | Other filter primitives | Refuse (not in the project's list anyway). | — |
+| Noise, lighting, convolution, displacement, morphology | Other filter primitives | Refuse (not in the project's list then). | — |
 
 ### Cheaper alternatives for the same look
 
@@ -138,6 +171,7 @@ Source: the research report (`research/t1-…/rapport.md`, in the project, not c
 | P6 | Colour filter or recomputed colours? |
 | P7 | Cut or mask? Simple cut, multi-shape cut, hard mask, progressive mask. |
 | P8 | How many dashes, how many gradient stops? 10 to 10 000 dashes, native stroke or computed dashes, 2, 8, 32 stops. |
+| P13 | Every effect of the catalogue that is not decided: its cost in each engine, its look, and the simplest way to set it (line, popup, editing mode); then the Product Owner chooses (2026-11-25). |
 
 - Engines to cover: Chromium, Firefox 132 or later, WebKit (Safari, then the desktop window if it is WebKit).
 - What is measured: the work time of each frame during the gesture, in milliseconds, read in the browser profiler (the time between two frames is not enough: a 60 Hz engine lengthens it without being slow). P0 and P2 first.
@@ -180,4 +214,4 @@ The report's questions that the specs cannot answer alone:
 2. Which browsers must the front hold at 8.3 ms when plugged into a browser: Chromium only, or Firefox and Safari too?
 3. Is an effect suspended during the gesture and restored at release an acceptable concession (if the drop shadow does not hold in WebKit)?
 4. Can a colour filter be replaced by recomputed colours, or must it stay a filter in the exported SVG?
-5. Which effects go in the specs now: all of them and measure afterwards, two lots (a safe lot, a lot "subject to the POC"), or only the safe lot? The report advises two lots.
+5. After the POC: which effects are kept, and which way to set each one (line, popup, editing mode).

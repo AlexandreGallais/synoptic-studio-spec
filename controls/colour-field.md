@@ -19,8 +19,8 @@ A click on the swatch opens the popup, beside the panel. From top to bottom:
 
 | Part | What it holds | Status |
 | --- | --- | --- |
-| Kind | Tabs: Plain colour, Linear, Radial (the kinds of [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#what-a-fill-can-be)). | Decided (2026-11-25) |
-| Stops | For a gradient only: a bar with its colour stops; a click on the bar adds a stop, a stop dragged away removes it; the selected stop is the colour edited below; then its angle (linear) or its centre (radial). | Proposed |
+| Kind | Tabs: Plain colour, Linear, Radial (the kinds of [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#what-a-fill-can-be)). Conic, Pattern and Image are tried in the POC ([Paints](../symbols/04-drawing-mode/paints.md)). | Decided (2026-11-25); the other tabs: POC |
+| Stops | For a gradient only: a bar with its colour stops; a click on the bar adds a stop, a stop dragged away removes it; the selected stop is the colour edited below; then Repeat and **Edit on the drawing** ([Paints](../symbols/04-drawing-mode/paints.md#linear-gradient)). | Proposed |
 | Colour area | Saturation and brightness of the hue. | Decided |
 | Eyedropper | An icon button on the left of the sliders: it picks a colour on the drawing of the editor (not on the whole screen: the `EyeDropper` interface of browsers is experimental). | Decided (2026-11-25) |
 | Hue slider | The hue, as now. | Decided (2026-11-25) |
@@ -57,6 +57,5 @@ block-beta
 
 ## Open questions
 
-- Pattern and image: Figma offers them in the same popup; pattern is open for the fills of a shape (see [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#what-a-fill-can-be)), image is not asked.
 - RGB as a fourth format: said useless, then compared with HSB, on 2026-11-25; not offered until said.
 - A gradient for one segment of a border: allowed, or plain colours only in a segment?

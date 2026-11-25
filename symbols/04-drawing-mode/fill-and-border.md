@@ -27,9 +27,11 @@ What every shape has in common: the [rectangle](rectangle.md), the [ellipse](ell
 | Plain colour | With opacity. | Decided (2026-11-25) |
 | Linear gradient | Several colour stops, an angle. | Decided (2026-11-25) |
 | Radial gradient | Several colour stops, a centre. | Decided (2026-11-25) |
-| Pattern | A small drawing repeated (SVG `pattern`). The Product Owner is not sure it is useful (2026-11-25). | Open |
+| Conic gradient | Colours turning around a centre (CSS only). | POC, support to check |
+| Pattern | A small drawing repeated (SVG `pattern`). The Product Owner is not sure it is useful (2026-11-25). | POC |
+| Image | A picture fills the shape. | POC |
 
-The border can be given the same kinds of fill as the background.
+The border can be given the same kinds of fill as the background. The stops, the editing of a gradient on the drawing, the conic gradient, the pattern and the image: [Paints](paints.md).
 
 ### How a fill is set
 
@@ -87,4 +89,4 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.18,
 1. A native stroke allowed under the hood for a plain "middle" border, or every border computed?
 2. Dashes of shape borders computed, like those of pipes?
 3. Named colours in the Symbol Lib, and a "high-performance" palette by default?
-4. Pattern as a kind of fill?
+4. After the POC: pattern, image and conic gradient kept as kinds of fill?

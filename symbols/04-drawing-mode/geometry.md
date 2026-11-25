@@ -58,3 +58,4 @@ A text keeps its own sections after the geometry (see [Text](text.md)).
 
 - Mirror (horizontal, vertical): recomputed in the points, as the research proposes, or not offered?
 - Rotation of a group: do its children turn with it in the panel (their X and Y read in the turned group)?
+- Skew (SVG `skewX`, `skewY`) and tilt in 3D (CSS, support to check): two leads of the [catalogue of the effects](effects-and-masks.md#catalogue-of-the-effects), against the rule "rotation is the only transform"; offered or not?
