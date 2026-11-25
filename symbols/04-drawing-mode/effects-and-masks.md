@@ -9,7 +9,7 @@ Effects and clips are set from the right-hand panel, in the section "Effects", a
 ## Rules
 
 - **What the symbol file can hold.** An effect is written in the SVG of the symbol: an SVG feature (a filter, a `clipPath`, a paint) or a CSS property applied to the SVG and written in the file. Nothing is simulated with copies of the shape. What needs something outside the file (a shader, an HTML element) is not possible (Product Owner, 2026-11-25: "les effets possibles dans un SVG, et plus avec du CSS").
-- **This version keeps few effects.** The Product Owner's first selection (2026-11-25) keeps seven entries of the [catalogue](#catalogue-of-the-effects): the clip, the opacity, the linear and radial gradients, the border that keeps its width, the text border and the dashes. Every other entry is set aside, not in this version (Product Owner, 2026-11-25: "mon but, c'est de pas tout mettre").
+- **This version keeps few effects.** The Product Owner's first selection (2026-11-25) keeps seven entries of the [catalogue](#catalogue-of-the-effects): the clip, the opacity, the linear and radial gradients, the border that keeps its width, the text border and the dashes. Every other entry is set aside, not in this version (Product Owner, 2026-11-25: "mon but, c'est de pas tout mettre"). The pages and the screens of the entries set aside stay in the specification and in Figma as a record, marked "Set aside" (Product Owner, 2026-11-25).
 - **The POC measures what is kept.** The POC of the effects (P13) tries the kept entries not decided yet: their cost in each engine and the simplest way to set them.
 - **Performance comes first**: an effect is kept after the POC only if it keeps the performance objective (see the project criteria on gestures and 120 Hz). A heavy effect is useless (Product Owner, 2026-11-25).
 
@@ -202,4 +202,3 @@ The second report (`research/t4-…/rapport.md`) proposes four more POC, in the 
 1. Which desktop window: embedded Chromium or the system view? It fixes the engine to measure first. **Postponed, not decided.** The aim is the lightest and simplest to maintain for an open source application, so possibly Tauri, possibly Electron. Whether Chromium can be used without Electron: the second research answers above. Linked question: does the criterion "all the code in JavaScript" allow a shell in Rust?
 2. Which browsers must the front hold at 8.3 ms when plugged into a browser: Chromium only, or Firefox and Safari too?
 3. After the POC: do the kept entries hold the performance, and which way to set each one?
-4. The pages and screens of the entries set aside: kept in the specification as a record, or removed?
