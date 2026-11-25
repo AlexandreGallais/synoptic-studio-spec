@@ -15,7 +15,7 @@ The mode of the [editor](../03-editor/README.md) in which the user builds a **ne
 - **Selecting regions with the Shape builder**: a click on a region selects it; a click on it again unselects it, as many times as wanted (Product Owner, 2026-11-26: "quand tu cliques sur une intersection, ça l'ajoute, et quand tu recliques dessus, ça l'enlève, et comme ça à l'infini"). A selected region is filled; the others show only their outline. The region under the mouse is highlighted (assistant's proposal).
 - **No list of the regions** in the panel (Product Owner, 2026-11-26: "région casing alone, outlet alone [...] ça, non, ça, je veux pas"): the regions are chosen on the drawing only.
 - **Right-hand panel**: the title "Intersection", the chosen shapes, then the line **"Create a shape from the selection"** with a small **+** on its right, enabled as soon as one region is selected, at any moment (Product Owner, 2026-11-26: "tu fais un petit +, la forme, elle se crée, puis point barre"). No Validate nor Cancel: leaving the mode creates nothing.
-- **One shape, never several**: the + creates **one** shape from all the selected regions, even when they do not touch each other (Product Owner, 2026-11-26: "ça en crée pas plusieurs, ça en crée une qui est un peu bizarre, et puis basta").
+- **One shape, never several**: the + creates **one** shape from all the selected regions, even when they do not touch each other (Product Owner, 2026-11-26: "ça en crée pas plusieurs, ça en crée une qui est un peu bizarre, et puis basta"). No option to create one shape per region: the user selects and clicks + again for each shape wanted (Product Owner, 2026-11-26: "au pire, le gars, il fait ça plusieurs fois [...] pas d'option, une seule forme, et puis basta").
 - **After the +**: the new shape is in the layers, the selection of regions is emptied, the mode stays open (assistant's proposal).
 - **The new shape** is a path (a free form, see [Point editing mode](../05-point-editing-mode/README.md)), put in the layers above the highest chosen shape, with the look of the first chosen shape (assistant's proposal, as the research advised for boolean operations).
 - **The chosen shapes stay** as they were: the mode adds a shape, it destroys none (assistant's reading, to confirm).
@@ -57,5 +57,4 @@ Cutting shapes into regions is a computation of intersections: it belongs to the
 - The look of the new shape: that of the first chosen shape (proposal)?
 - Its place in the menu: in the group of Clip (proposal), or a group of its own?
 - Can a group, a text or an open path be chosen?
-- An option to create several shapes instead of one: one per group of regions that touch, or one per region? Said unclearly on 2026-11-26 ("faut laisser l'option de créer dès que ça se touche, ou dès que c'est des intersections différentes"): not drawn until settled.
 - The name "Shape builder", and no Select in this mode (proposal)?

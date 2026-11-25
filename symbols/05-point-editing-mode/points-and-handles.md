@@ -25,7 +25,7 @@ The same lines in the same order, whatever is selected; a line that does not app
 - The mode stays offered when a handle is selected, so the user can go back to the corner radius mode from a handle (Product Owner, 2026-11-25: "quand on clique sur une poignée, on peut quand même en revenir en mode border radius"). The handles then go away, and the selection becomes their point (assistant's reading).
 - With several points, see [Several points selected](README.md#several-points-selected).
 - The title names the shape before the point: several shapes can be chosen, and each has its Point 2 (assistant's proposal, kept by the Product Owner on 2026-11-26).
-- **A point can be named**, to say what it stands for (Product Owner, 2026-11-26: "comme ça, on peut dire explicitement ce que ça représenterait"). The name replaces "Point 2" in the title and in the list; empty, the point keeps its number. The field shows "Name" while empty (Product Owner: "un input où c'est déjà écrit name dedans, et/ou alors avec un titre"); a title above the field instead is open.
+- **A point can be named**, to say what it stands for (Product Owner, 2026-11-26: "comme ça, on peut dire explicitement ce que ça représenterait"). The name replaces "Point 2" in the title and in the list; empty, the point keeps its number. The field shows "Name" written in it while empty, with no title beside or above it, like the other lines (Product Owner, 2026-11-26).
 
 ### Two modes for a point
 
@@ -112,4 +112,3 @@ Source: the research report (`research/t1-…/rapport.md`). Confidence: high.
 - The three icons of the mirroring: to draw in the design system.
 - Switching a selected handle to the corner radius mode: the selection becomes its point (assistant's reading), to confirm.
 - Angle on a mirrored point: the angle of the handle after the point (proposal)?
-- The name of a point: "Name" written in the field (drawn), or a title above it?
