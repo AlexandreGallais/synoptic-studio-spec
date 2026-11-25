@@ -96,22 +96,23 @@ block-beta
 ### A list to choose from goes on the left
 
 - What the layers already list (the shapes, the clip shapes under their shape) is **chosen in the layers**, on the left, and **never listed again** in the right-hand panel (Product Owner, 2026-11-26: "les formes, elles sont déjà à gauche, donc ça sert strictement à rien d'avoir ça en plus").
-- Another list whose lines are only chosen from (the [interaction zones](symbols.md#sy-07--interaction-mode), the [connection points](symbols.md#sy-10--connection-mode)) goes in the left-hand panel too, **under the layers**. The right-hand panel holds the options of what is selected.
+- Another list whose lines are only chosen from (the [connection points](symbols.md#sy-10--connection-mode), the [interaction zones](symbols.md#sy-07--interaction-mode)) goes in the left-hand panel too, **under the layers**. The right-hand panel holds the options of what is selected.
 - Such a list has **no + and no −**: its tool adds an element, the Delete key removes the selected one (Product Owner, 2026-11-26: "le + et le - ne sert strictement à rien").
 - Except a list whose lines hold fields to change: it stays on the right. The list of the points of the [point editing mode](symbols.md#sy-05--point-editing-mode) has X, Y and the radius in each line (Product Owner, 2026-11-26: "vu que la liste, il y a directement des inputs dessus").
 
 ### Nothing hidden: every list in every mode
 
-- The left-hand panel shows **every element of the symbol in every mode**: the layers with the clip shapes under their shape, the interaction zones, the connection points. Nothing is hidden because the mode does not use it, so that the user sees that it exists (Product Owner, 2026-11-26: "on cache pas que ça existe [...] c'est un peu un principe qu'il faut appliquer partout").
+- The left-hand panel shows **every element of the symbol in every mode**, in this order: the symbols, the layers with the clip shapes under their shape, the **connection points**, then the **interaction zones**, the order of the modes menu (Product Owner, 2026-11-26: "symbole, layer, points de connexion, zone d'interaction"). Nothing is hidden because the mode does not use it, so that the user sees that it exists (Product Owner, 2026-11-26: "on cache pas que ça existe [...] c'est un peu un principe qu'il faut appliquer partout").
 - A click on an element that belongs to another mode **opens that mode** on it: a clip shape opens the Clip mode, a zone the Interaction mode, a connection point the Connection mode.
+- The title of each of these lists has, on its right, the **icon of its mode**, the same as in the modes menu; a click on it opens the mode, even when the list is still empty, so that a new user learns which mode makes these elements (Product Owner, 2026-11-26: "je vais pouvoir passer dans le mode sans savoir que c'est ce mode-là"). The icon is blue while its mode is open.
 - On the drawing, the marks of such an element (a zone, a connection point, the outline of a clip shape) show in its mode only.
 - The Product Owner doubts it ("je sais pas si c'est vraiment très bien comme UX"): drawn on every test screen, to be judged there.
 
 ```mermaid
 flowchart LR
-    L["Left-hand panel, every mode: layers with their clip shapes, interaction zones, connection points"] -->|"a click on a clip shape"| C["Clip mode"]
-    L -->|"a click on a zone"| I["Interaction mode"]
-    L -->|"a click on a connection point"| K["Connection mode"]
+    L["Left-hand panel, every mode: layers with their clip shapes, connection points, interaction zones"] -->|"a click on a clip shape"| C["Clip mode"]
+    L -->|"a click on a connection point, or the icon of its title"| K["Connection mode"]
+    L -->|"a click on a zone, or the icon of its title"| I["Interaction mode"]
 ```
 
 ### Like Figma: one line per value

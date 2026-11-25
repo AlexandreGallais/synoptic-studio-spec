@@ -9,7 +9,7 @@ The mode of the [editor](../03-editor/README.md) in which the user says what hap
 ## Rules
 
 - Tool bar: [Select](../03-editor/select.md), [Hand](../03-editor/hand.md) and Interaction zone (below).
-- Left-hand panel: the **interaction zones**, under the layers, listed in every mode (see [Panels](#panels)). Drawing area: the zones are seen, selected and created. Right-hand panel: the interactions of the selected place (see [Panels](#panels)).
+- Left-hand panel: the **interaction zones**, under the layers and the connection points, listed in every mode (see [Panels](#panels)). Drawing area: the zones are seen, selected and created. Right-hand panel: the interactions of the selected place (see [Panels](#panels)).
 - Only for a symbol with a type. A symbol without a type has no command to send (see [Libraries and symbols](../01-libraries-and-symbols.md)).
 - The places offered for an interaction are: the zones the user drew, the bounding box of the whole symbol, and a layer. A layer is clickable as its real shape, not as the square around it, and stays clickable when its fill is transparent (see [Select](../03-editor/select.md)). Example: a button drawn on its own layer can be the place.
 - Several gestures are possible on a place: left click, right click, double click, and others (the list is to settle).
@@ -40,7 +40,7 @@ Each column has one job, from left to right (Product Owner, 2026-11-26: "la sél
 
 | Column | What it holds |
 | --- | --- |
-| Left-hand panel | The layers, then the list **Interaction zones**, **under the layers**: a line per zone; a click selects it. **No + and no −** (Product Owner, 2026-11-26: "le + et le - ne sert strictement à rien"): the Interaction zone tool adds a zone, the Delete key removes the selected one. The list is there **in every mode**; a click on a zone from another mode opens this mode (see [the layout rule](../../screens/README.md#nothing-hidden-every-list-in-every-mode)). |
+| Left-hand panel | The layers, the connection points, then the list **Interaction zones**: a line per zone; a click selects it. On its title, the icon of this mode, which opens it. **No + and no −** (Product Owner, 2026-11-26: "le + et le - ne sert strictement à rien"): the Interaction zone tool adds a zone, the Delete key removes the selected one. The list is there **in every mode**; a click on a zone from another mode opens this mode (see [the layout rule](../../screens/README.md#nothing-hidden-every-list-in-every-mode)). |
 | Drawing area | The zones, seen on the symbol: a click selects one, the Interaction zone tool creates one. |
 | Right-hand panel | The interactions of the selected place, and their + (Product Owner, 2026-11-25: "tu cliques sur la zone et le menu à droite se fait en fonction"). |
 

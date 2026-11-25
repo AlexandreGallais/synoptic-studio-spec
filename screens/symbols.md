@@ -162,7 +162,7 @@ mindmap
 | SY-03.9 | Select | Button (tool) | In every mode except Run; picks what the mode works on. | Decided | [Select](../symbols/03-editor/select.md) |
 | SY-03.10 | Entirely enclosed | Toggle | Visible equivalent of Ctrl + Shift during a selection rectangle (2026-11-26, replaces Alt). | Decided | [Select](../symbols/03-editor/select.md) |
 | SY-03.11 | Precise move | Key held while moving with Select, no button | A shape, a point or a handle moves pixel by pixel of the symbol; no toggle in the tool bar; the key is Ctrl (2026-11-25). | Decided | [Precise move](../symbols/03-editor/precise-move.md) |
-| SY-03.12 | Layers | Tree | In the left-hand panel; groups as folders; one line per shape, its border included; the clip shapes under their shape. Under the layers, in every mode: the interaction zones (SY-07.10), then the connection points (SY-10.5); a click on an element of another mode opens that mode (2026-11-26, [layout rule](README.md#nothing-hidden-every-list-in-every-mode)). | Decided | [Layers](../symbols/03-editor/layers.md) |
+| SY-03.12 | Layers | Tree | In the left-hand panel; groups as folders; one line per shape, its border included; the clip shapes under their shape. Under the layers, in every mode: the connection points (SY-10.5), then the interaction zones (SY-07.10), each title with the icon of its mode; a click on an element of another mode, or on that icon, opens that mode (2026-11-26, [layout rule](README.md#nothing-hidden-every-list-in-every-mode)). | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.13 | Search the layers | Button (search icon), then a text field | On the line of the title "Layers", under a separator; opens a field over the title that filters by name. No + on this title (2026-11-23). | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.14 | Unfold all, fold all | Button each | Every group of the tree. | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.15 | Line of a layer | — | Name; icon of its kind, hide, lock proposed. | Decided (name), Proposed (the rest) | [Layers](../symbols/03-editor/layers.md) |
@@ -416,7 +416,7 @@ mindmap
       Hand
       Interaction zone, as many as wanted
     Left-hand panel
-      List of the zones under the layers, every mode
+      List of the zones under the layers and the connection points, every mode
     Right-hand panel
       Interactions of the selected place
         Place
@@ -435,7 +435,7 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | SY-07.1 | Interaction zone | Button (tool) | Draws a zone by hand; each drag adds one, as many as wanted (2026-11-25). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md#interaction-zone-tool) |
 | SY-07.2 | Place | — | A drawn zone, the whole symbol, or a layer (its real shape). Chosen by a click, in the list of the zones or on the drawing; no select (2026-11-25). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
-| SY-07.10 | Interaction zones | List, no + nor − | In the left-hand panel, under the layers, in every mode (2026-11-26, said with a doubt: to judge on the screens; replaces the right-hand panel). A click selects a zone, its interactions on the right; from another mode, it opens this one. The tool adds a zone, the Delete key removes it. | Decided (to judge on the screens) | [Interaction mode](../symbols/07-interaction-mode/README.md#panels) |
+| SY-07.10 | Interaction zones | List, no + nor −, the icon of the mode on its title | In the left-hand panel, under the layers and the connection points, in every mode; the icon opens this mode (2026-11-26, said with a doubt: to judge on the screens; replaces the right-hand panel). A click selects a zone, its interactions on the right; from another mode, it opens this one. The tool adds a zone, the Delete key removes it. | Decided (to judge on the screens) | [Interaction mode](../symbols/07-interaction-mode/README.md#panels) |
 | SY-07.3 | Interactions of the place | List | Several gestures per place. | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.4 | Gesture | Select | Click, double click, right click, while pressed, key (proposed list). | Decided (list: Proposed) | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.5 | Effect | Select + Select | The first select: send a command, or open the faceplate; the second, for a command: a command of the type (set a signal, trigger). Selects rather than radios (2026-11-24). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
@@ -547,7 +547,7 @@ mindmap
       Hand
       Connection point, a click puts a point
     Left-hand panel
-      List of the points under the layers and the zones, every mode
+      List of the points under the layers, before the zones, every mode
     Right-hand panel
       Selected point
         Name
@@ -560,7 +560,7 @@ mindmap
 | SY-10.2 | Position | Number fields | X and Y. | Decided | [Connection points](../symbols/pipes/connection-points.md) |
 | SY-10.3 | Direction | — | Removed (2026-11-25): no direction, no inlet or outlet; the direction of a flow comes from a signal. | Decided | [Connection points](../symbols/pipes/connection-points.md#rules) |
 | SY-10.4 | Name | Text field | Port A, port B... | Open | [Connection points](../symbols/pipes/connection-points.md) |
-| SY-10.5 | List of the points | List, no + nor − | In the left-hand panel, under the layers and the zones, in every mode; from another mode, a click on a point opens this one (2026-11-26, [layout rule](README.md#nothing-hidden-every-list-in-every-mode)). The tool adds a point, the Delete key removes it. | Decided (to judge on the screens) | [Connection points](../symbols/pipes/connection-points.md#where-it-is-made-in-the-editor) |
+| SY-10.5 | List of the points | List, no + nor −, the icon of the mode on its title | In the left-hand panel, under the layers, before the zones, in every mode; the icon opens this mode; from another mode, a click on a point opens this one (2026-11-26, [layout rule](README.md#nothing-hidden-every-list-in-every-mode)). The tool adds a point, the Delete key removes it. | Decided (to judge on the screens) | [Connection points](../symbols/pipes/connection-points.md#where-it-is-made-in-the-editor) |
 
 Gaps:
 
