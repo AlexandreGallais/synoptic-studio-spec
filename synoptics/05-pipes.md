@@ -21,7 +21,7 @@ How pipes are drawn and edited in a synoptic. What a pipe looks like (its style,
 Proposed, from the research (report T4, sections 3.1 and 3.3) and the tools of the symbol editor:
 
 - The **Pipe** tool of the Pipes mode. The first click starts the pipe: on a connection point, on a pipe (a branch of that pipe, which takes its style), or anywhere (a free end).
-- From a connection point, the **first segment leaves in its direction** (a connection point has a direction, see [Connection points](../symbols/pipes/connection-points.md)).
+- From a connection point, the **first segment leaves towards the next click**: a connection point has no direction since 2026-11-25 (see [Connection points](../symbols/pipes/connection-points.md)); with the orthogonal lock, it is horizontal or vertical, whichever is closer to the mouse (assistant's proposal).
 - Each click adds a point. **Orthogonal lock** on by default: segments are horizontal or vertical; Shift held frees the angle. A toggle in the tool bar is its visible equivalent, as for the other keys of the editor.
 - A click on a connection point, or on a pipe, ends the pipe there. A double click or Enter ends it with a free end. Escape cancels the pipe being drawn; Backspace removes its last point.
 - The pipe gets the **style chosen in the tool bar** (the last used, at first the first style of the first Symbol Lib used).

@@ -52,7 +52,7 @@ In the order of the modes menu: the modes used together are side by side, in fou
 | Group | Modes | Why together |
 | --- | --- | --- |
 | 1 · Draw | Drawing, Point editing, Alignment | What is used most, to draw a shape. |
-| 2 · Clip | Clip, alone | Not drawing: it hides part of a shape; used less than Connection. |
+| 2 · Clip | Clip, then Intersection | Not drawing: Clip hides part of a shape; used less than Connection. Intersection, right after Clip (Product Owner, 2026-11-25), builds a shape from others; in this group by the assistant's choice. |
 | 3 · Outside | Connection, Animation, Interaction | How the symbol works with the outside. |
 | 4 · Try | Run | The test, last. |
 
@@ -62,7 +62,7 @@ flowchart LR
         D["Drawing"] --- P["Point editing"] --- A["Alignment"]
     end
     subgraph g2["Clip"]
-        C["Clip"]
+        C["Clip"] --- IN["Intersection"]
     end
     subgraph g3["Outside"]
         CO["Connection"] --- AN["Animation"] --- I["Interaction"]
@@ -79,15 +79,17 @@ flowchart LR
 | [Point editing](../05-point-editing-mode/README.md) | Edit the points of a path. | Select, Hand, Pen | Options of the selected point |
 | [Alignment](../06-alignment-mode/README.md) | Place shapes in relation to each other. | Select, Hand | Alignment of the selected shapes |
 | [Clip](../04-drawing-mode/clip-mode.md) | Draw the clip shapes of the selected shape: it is shown only inside them. | Select, Hand, Rectangle, Ellipse, Polygon, Pen | The clip shapes of the shape, the geometry of the selected one |
+| [Intersection](../04-drawing-mode/intersection-mode.md) | Build a new shape from several shapes and their intersections. | Select, Hand | The chosen shapes, their regions, Validate |
 | [Connection](../pipes/connection-points.md) | Place the connection points where pipes attach. | Select, Hand, Connection point | The options of the selected point |
 | [Animation](../08-animation-mode/README.md) | Link the signals to the parts of the drawing. | Select, Hand | The animations of the selected part |
 | [Interaction](../07-interaction-mode/README.md) | Draw the zones that react to a gesture, and link them to commands. | Select, Hand, Interaction zone | The interactions of the selected place |
 | [Run](../09-run-mode/README.md) | Try the symbol with test values and see it at the size of another screen. | Hand | The test values, and the simulated screen |
 
-- The Connection mode is in the menu (Product Owner, 2026-11-23); its tools and its panel are still the assistant's assumption (see [Connection points](../pipes/connection-points.md)).
+- The Connection mode is in the menu (Product Owner, 2026-11-23); its tool places points only, like a pen that draws no line (Product Owner, 2026-11-25); its panel is still the assistant's proposal (see [Connection points](../pipes/connection-points.md)).
 - The icon of each mode: to draw in the design system.
 - The Interaction, Animation and Run modes need a type: a symbol without a type has no interaction, no animation and nothing to test with signals (see [Libraries and symbols](../01-libraries-and-symbols.md)).
 - The Clip mode is in the menu (Product Owner, 2026-11-25); its panel is the assistant's proposal (see [Clip mode](../04-drawing-mode/clip-mode.md)).
+- The Intersection mode is in the menu, right after Clip (Product Owner, 2026-11-25); its panel is the assistant's proposal (see [Intersection mode](../04-drawing-mode/intersection-mode.md)).
 - The [advanced tools](expert-menu/README.md) are set aside: not in this version (Product Owner, 2026-11-25).
 - Other modes may be added later.
 
@@ -127,7 +129,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.15,
 | --- | --- | --- | --- |
 | Frame | Ignition gives a drawing a `viewBox` and `preserveAspectRatio`. | A fixed frame in pixels, equal to the `viewBox`, origin at the top left; a command "fit the frame to the content". | low |
 | A placed symbol resized | Figma: constraints to the parent frame, "Scale" keeps size and position in percent. `vector-effect: non-scaling-stroke` keeps the width of a stroke, not of a fill. | In the synoptic, a uniform scale of the whole symbol; write that "never a scale" holds in the symbol editor. Later: a new layout by the anchors of the groups. | low |
-| Rotation, mirror | In libavoid the connection points follow quarter turns and mirrors; in Figma the rotation stays a property. | Rotation: a property of the shape, the only transform allowed; the box and the anchors turn with it. Mirror: recomputed in the points. In the synoptic: quarter turns and mirror, connection points and directions followed. | low |
+| Rotation, mirror | In libavoid the connection points follow quarter turns and mirrors; in Figma the rotation stays a property. | Rotation: a property of the shape, the only transform allowed; the box and the anchors turn with it. Mirror: recomputed in the points. In the synoptic: quarter turns and mirror, connection points followed (they have no direction since 2026-11-25). | low |
 | Crisp lines | `shape-rendering: crispEdges` may align edges on screen pixels, with no guarantee. | Positions and sizes in whole pixels by default. A fill-based border of whole width on whole coordinates is crisp with no half-pixel shift. | low |
 | Grid and snapping | No source read. | Minimum: snap to the pixel, to the points, edges, centres and anchors of other shapes, to the frame; temporary guides of alignment and equal spacing; arrows: 1 px, Shift: 10 px. Rulers and placed guides: later. | very low |
 

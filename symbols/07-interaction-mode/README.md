@@ -30,6 +30,23 @@ flowchart LR
 ## Interaction zone tool
 
 - Only in this mode. Draws a zone on the symbol, by hand, that reacts to a gesture.
+- **As many zones as wanted**, added on the fly: each drag of the tool makes a new zone (Product Owner, 2026-11-25: "faut pouvoir mettre des zones à la volée, le nombre qu'on veut").
+- All the zones of the symbol are shown on the drawing in this mode, so the user sees those available.
+
+## Right-hand panel
+
+Proposed from the Product Owner's words (2026-11-25, "la liste des zones peut potentiellement être dans le menu à droite"); the place of the list is to confirm.
+
+1. **The list of the zones**: a line per zone, a bin on hover to remove it (as in the [point editing mode](../05-point-editing-mode/README.md#list-of-the-points)).
+2. **A click on a zone**, in the list or on the drawing, selects it, and the panel shows **its interactions** under the list (Product Owner, 2026-11-25: "tu cliques sur la zone et le menu à droite se fait en fonction").
+3. The whole symbol and a layer stay places too: a click on a layer, or on the drawing outside every zone, shows their interactions in the same way (assistant's reading).
+
+```mermaid
+flowchart LR
+    T["Interaction zone tool: one drag, one more zone"] --> L["List of the zones, right-hand panel"]
+    L -->|"click on a zone"| I["Its interactions, under the list"]
+    D["Click on a zone of the drawing"] --> I
+```
 
 ## Example
 
@@ -94,4 +111,5 @@ Tools offer from six to twelve gestures (Ignition Perspective, Figma prototype, 
 ## Open questions
 
 - Click and double click on the same place: does the click wait? Release of "while pressed" outside the place?
+- The list of the zones: in the right-hand panel (proposed), or in the left-hand panel with the layers?
 - See [Open questions](../10-open-questions.md).

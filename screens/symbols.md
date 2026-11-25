@@ -125,6 +125,7 @@ mindmap
         SY-06 Alignment
       Clip
         SY-13 Clip
+        SY-14 Intersection
       Outside
         SY-10 Connection
         SY-08 Animation
@@ -149,7 +150,7 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-03.1 | Modes menu | Floating bar, horizontal, icons only (name in the tooltip) | At the top left of the drawing area, four groups split by a separator: Drawing, Point editing, Alignment │ Clip │ Connection, Animation, Interaction │ Run (2026-11-25, being tried). Interaction, Animation and Run need a type; Clip, a selected shape. | Decided (groups: being tried), icons to draw | [Editor](../symbols/03-editor/README.md) |
+| SY-03.1 | Modes menu | Floating bar, horizontal, icons only (name in the tooltip) | At the top left of the drawing area, four groups split by a separator: Drawing, Point editing, Alignment │ Clip, Intersection │ Connection, Animation, Interaction │ Run (2026-11-25, being tried; Intersection added the same day). Interaction, Animation and Run need a type; Clip, a selected shape. | Decided (groups: being tried), icons to draw | [Editor](../symbols/03-editor/README.md) |
 | SY-03.2 | Tool bar | Floating bar | The tools of the mode, nothing else (2026-11-25); at the bottom of the drawing area (leaning) or at the top. | Decided (place: Open) | [Editor](../symbols/03-editor/README.md) |
 | SY-03.3 | Show the advanced tools | — | Removed (2026-11-25): the advanced tools are not in this version ([SY-11](#sy-11--advanced-tools)). | Decided | [Advanced tools](../symbols/03-editor/expert-menu/README.md) |
 | SY-03.4 | Type | Select, optional | In the right-hand panel; among all the types of Metadata; can be removed. | Decided | [Type and faceplate](../symbols/02-type-and-faceplate.md) |
@@ -330,39 +331,34 @@ mindmap
       Select
       Hand
       Pen
-    Right-hand panel
-      List of the points
-      Selected point
-        Mode
-          Corner radius
-          Handles
-        Radius
-        Mirroring
-      Selected handle
-        X and Y
-        Angle and length
-      Actions
-        Remove
-        Add a point between two
+    Right-hand panel, one click per change
+      The selection, at the top
+        Point: X, Y, mode, radius or mirroring
+        Handle: X, Y, angle, length, mirroring
+        Several points: Mixed, add a point between two
+      List of the points, under it
+        A line per point: X, Y, radius or mirroring
+        Bin on hover
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SY-05.1 | Tools | Button | Select, Hand, Pen. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
-| SY-05.2 | List of the points | List | Shape by shape; selecting in the list selects on the canvas and back. All shapes, or the selected ones: Open. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
-| SY-05.3 | Point mode | Select | Corner radius or Handles; a select rather than radios (2026-11-24); each keeps its settings. An ellipse point: handles only. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
-| SY-05.4 | Corner radius | Number field | — | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
-| SY-05.5 | Mirroring | Select | None, Mirror angle, Mirror angle and length; a select rather than radios (2026-11-24). | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
-| SY-05.6 | Handle X, Y | Number field | Linked to angle and length. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
-| SY-05.7 | Handle angle, length | Number field | Linked to X and Y. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
-| SY-05.8 | Remove | Button | Removes the selected points. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
-| SY-05.9 | Add a point between two | Button | When two points are selected. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
+| SY-05.2 | List of the points | List, editable lines | Under the options of the selection (2026-11-25, to confirm). Shape by shape; a line per point: name, X, Y, then the radius (corner radius mode) or the mirroring icon (handles mode), edited in the line. Selecting in the list selects on the canvas and back. All shapes, or the selected ones: Open. | Decided (lines), Proposed (place, which shapes) | [Point editing mode](../symbols/05-point-editing-mode/README.md#list-of-the-points) |
+| SY-05.3 | Point mode | [Segmented control](../design-system/07-molecules/segmented-control.md), two icons | Corner radius or Handles, one click (2026-11-25, replaces the select); each keeps its settings. An ellipse point: handles only. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
+| SY-05.4 | Corner radius | Number field | In the corner radius mode. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
+| SY-05.5 | Mirroring | Segmented control, three icons | None, Mirror angle, Mirror angle and length, one click (2026-11-25, replaces the select); in the handles mode, on the point and on its handles. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#mirroring-of-the-handles) |
+| SY-05.6 | Handle X, Y | Number field | A click on a handle selects it; X and Y of its end, as in Figma; linked to angle and length. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#a-selected-handle) |
+| SY-05.7 | Handle angle, length | Number field | Linked to X and Y. Angle 0: flat, horizontal (proposal; horizontal or vertical: Open). | Decided (fields), Open (angle 0) | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#a-selected-handle) |
+| SY-05.8 | Remove a point | Bin on the line of the point, on hover | Replaces the Remove button (2026-11-25); the Delete key does the same. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md#list-of-the-points) |
+| SY-05.9 | Add a point between two | Button | Shown only when two points are selected; the new point goes in the middle. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
 | SY-05.10 | Precise move | Ctrl held while dragging, no button (SY-03.11) | A point or a handle moves pixel by pixel of the symbol, even zoomed out. | Decided | [Precise move](../symbols/03-editor/precise-move.md) |
+| SY-05.11 | Point X, Y | Number field | X and Y of the selected point, at the top of its options and in its line. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#a-selected-point) |
+| SY-05.12 | Several points selected | Title + fields | "3 points"; a field whose values differ shows Mixed; a value typed goes to every point; mode and mirroring show no choice when they differ. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md#several-points-selected) |
 
 Gaps:
 
-- Position X, Y of a selected point: only the handles have fields.
-- How the corner radius of a point is edited precisely: "to be detailed later".
+- How the corner radius of a point is edited precisely on the canvas: "to be detailed later".
 
 ## SY-06 · Alignment mode
 
@@ -374,10 +370,16 @@ mindmap
     Tool bar
       Select
       Hand
+    Keys of the mode
+      Ctrl and a click: the reference
+      Shift and a click: a shape to place
     Alignment panel
-      Reference shown
-      Anchor
-      Inside or outside
+      Reference
+      To place
+      Anchor panel 5 x 5
+        3 x 3 inside
+        16 outside
+        A line between them
       Proposed
         Distribution with equal spacing
         Gap
@@ -386,16 +388,16 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SY-06.1 | Tools | Button | Select, Hand. | Decided | [Alignment mode](../symbols/06-alignment-mode/README.md) |
-| SY-06.2 | Reference | — | The first shape selected; the panel shows which one. | Decided | [Alignment mode](../symbols/06-alignment-mode/README.md) |
-| SY-06.3 | Anchor | not said (9-point grid) | On a real shape: the centre and eight points on the outline (proposed). | Decided (anchors on a real shape: Proposed) | [Anchors](../symbols/03-editor/anchors.md) |
-| SY-06.4 | Inside or outside | Select | Placement on the limit of the reference; a select rather than radios (2026-11-24). | Decided | [Alignment mode](../symbols/06-alignment-mode/README.md) |
+| SY-06.2 | Reference | Line of the panel, with a button "Reference" | Ctrl and a click on a shape makes it the reference, again on it takes it back (2026-11-25); one at most; the first shape selected is no longer the reference. The button: visible equivalent (proposed). | Decided (keys), Proposed (button) | [Alignment mode](../symbols/06-alignment-mode/README.md#the-reference-and-the-shapes-to-place-ctrl-and-shift) |
+| SY-06.7 | To place | List of the panel, with a button "To place" | Shift and a click adds a shape, again on it takes it out (2026-11-25). The button: visible equivalent (proposed). | Decided (keys), Proposed (button) | [Alignment mode](../symbols/06-alignment-mode/README.md#the-reference-and-the-shapes-to-place-ctrl-and-shift) |
+| SY-06.3 | Anchor panel | Large grid of 5 × 5 cells | The 3 × 3 of the middle: inside; the 16 around: outside; a line between them for the limit of the reference (2026-11-25). One click on a cell places the shapes at once (proposed). On a real shape: the centre and eight points on the outline (proposed). | Decided (panel), Proposed (placement at once, real shape) | [Alignment mode](../symbols/06-alignment-mode/README.md#the-anchor-panel) |
+| SY-06.4 | Inside or outside | — | Removed (2026-11-25): the anchor panel holds both. | Decided | [Alignment mode](../symbols/06-alignment-mode/README.md#the-anchor-panel) |
 | SY-06.5 | Distribution with equal spacing | Button + number field | A typed gap between the edges. | Proposed | [Alignment mode](../symbols/06-alignment-mode/README.md) |
-| SY-06.6 | Apply | not said | Does the shape move as soon as an anchor is chosen, or on a button? | Implied | — |
 
 Gaps:
 
 - One anchor for all the shapes to place, or one each (Open).
-- When does the placement happen: at once, or on an "Apply" button?
+- What a plain click does in this mode.
 
 ## SY-07 · Interaction mode
 
@@ -407,9 +409,10 @@ mindmap
     Tool bar
       Select
       Hand
-      Interaction zone
-    Panel of the selected place
-      Interactions
+      Interaction zone, as many as wanted
+    Right-hand panel
+      List of the zones, bin on hover
+      Interactions of the selected place
         Place
         Gesture
         Effect
@@ -424,8 +427,9 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-07.1 | Interaction zone | Button (tool) | Draws a zone by hand. | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
-| SY-07.2 | Place | — | A drawn zone, the whole symbol, or a layer (its real shape). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
+| SY-07.1 | Interaction zone | Button (tool) | Draws a zone by hand; each drag adds one, as many as wanted (2026-11-25). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md#interaction-zone-tool) |
+| SY-07.2 | Place | — | A drawn zone, the whole symbol, or a layer (its real shape). Chosen by a click, in the list of the zones or on the drawing; no select (2026-11-25). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
+| SY-07.10 | List of the zones | List, a bin on hover | In the right-hand panel, above the interactions of the selected zone (2026-11-25, place to confirm). | Proposed | [Interaction mode](../symbols/07-interaction-mode/README.md#right-hand-panel) |
 | SY-07.3 | Interactions of the place | List | Several gestures per place. | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.4 | Gesture | Select | Click, double click, right click, while pressed, key (proposed list). | Decided (list: Proposed) | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.5 | Effect | Select + Select | The first select: send a command, or open the faceplate; the second, for a command: a command of the type (set a signal, trigger). Selects rather than radios (2026-11-24). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
@@ -437,7 +441,7 @@ mindmap
 Gaps:
 
 - Commands with a typed value no longer exist (2026-11-16): a command always sends a fixed value; a typed value goes through a faceplate entry set to write.
-- Remove an interaction; edit or delete a zone.
+- Remove an interaction.
 
 ## SY-08 · Animation mode
 
@@ -468,9 +472,9 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-08.1 | Animations of the part | List | The part is a shape, a layer or a text. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
+| SY-08.1 | Animations of the part | List, + on its title | The part is a shape, a layer or a text. The + adds an output signal, then the kind of animation is chosen (2026-11-25). | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.2 | Signal | Select | Output signals of the type only. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
-| SY-08.3 | Property | Select | Rotation, position, opacity, visibility, fill or border colour, fill level, blink (proposed list). | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
+| SY-08.3 | Kind of animation | Select | Only the kinds that fit the type of the signal; the possible kinds are listed in the [catalogue](../symbols/08-animation-mode/animation-catalogue.md) (2026-11-25), the Product Owner picks those of this version. | Proposed (list) | [Catalogue of the animations](../symbols/08-animation-mode/animation-catalogue.md) |
 | SY-08.4 | Mapping | Select + fields | Bounded linear (input range, output range), by ranges (table), two values (boolean). | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.4c | Column of the enum | Select | For an enum signal: a column added to its enum on the Enums page of the Symbol Lib ([SY-12](#sy-12--enums-of-a-symbol-lib)); the property takes that column's value for the current item (2026-11-17). Only columns whose kind fits the property (assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#used-by-an-animation) |
 | SY-08.4b | Input range of a bounded linear | Two fields: minimum, maximum | Each a signal of the type, input or output, or a number typed (the number: to confirm); the value animated stays an output. | Decided (signal in or out), Proposed (number) | [Animation mode](../symbols/08-animation-mode/README.md#the-input-range-of-a-bounded-linear-animation) |
@@ -525,9 +529,9 @@ Gaps:
 - A list of common screens, or only free fields?
 - Clear the log; reset all the test values.
 
-## SY-10 · Connection mode (proposed)
+## SY-10 · Connection mode
 
-Path: symbol editor › Connection (assumption of the assistant).
+Path: symbol editor › Connection (Product Owner, 2026-11-23).
 
 ```mermaid
 mindmap
@@ -535,19 +539,21 @@ mindmap
     Tool bar
       Select
       Hand
-      Connection point
-    Panel of a point
-      Position
-      Direction
-      Name
+      Connection point, a click puts a point
+    Right-hand panel
+      List of the points, bin on hover
+      Selected point
+        Name
+        X and Y
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-10.1 | Connection point | Button (tool) | Places a point where a pipe attaches. | Proposed | [Connection points](../symbols/pipes/connection-points.md) |
-| SY-10.2 | Position | Number fields | — | Decided | [Connection points](../symbols/pipes/connection-points.md) |
-| SY-10.3 | Direction | not said | The direction in which the pipe leaves the point. | Proposed | [Connection points](../symbols/pipes/connection-points.md) |
-| SY-10.4 | Name | Text field | Inlet, outlet... | Open | [Connection points](../symbols/pipes/connection-points.md) |
+| SY-10.1 | Connection point | Button (tool) | Like the pen, without a line: each click puts a point where a pipe attaches (2026-11-25). | Decided | [Connection points](../symbols/pipes/connection-points.md#where-it-is-made-in-the-editor) |
+| SY-10.2 | Position | Number fields | X and Y. | Decided | [Connection points](../symbols/pipes/connection-points.md) |
+| SY-10.3 | Direction | — | Removed (2026-11-25): no direction, no inlet or outlet; the direction of a flow comes from a signal. | Decided | [Connection points](../symbols/pipes/connection-points.md#rules) |
+| SY-10.4 | Name | Text field | Port A, port B... | Open | [Connection points](../symbols/pipes/connection-points.md) |
+| SY-10.5 | List of the points | List | A line per point, a bin on hover. | Proposed | [Connection points](../symbols/pipes/connection-points.md#where-it-is-made-in-the-editor) |
 
 Gaps:
 
@@ -617,16 +623,52 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-13.1 | Clip | Button of the modes menu | Alone in its group, between Alignment and Connection, a separator on each side (2026-11-25); greyed with nothing selected, its tooltip says to select a shape first. | Decided (a mode, its place), Proposed (greyed) | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
+| SY-13.1 | Clip | Button of the modes menu | In its own group with Intersection after it, between Alignment and Connection, a separator on each side (2026-11-25); greyed with nothing selected, its tooltip says to select a shape first. | Decided (a mode, its place), Proposed (greyed) | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 | SY-13.2 | Tools | Button | Select, Hand, Rectangle, Ellipse, Polygon, Pen; no Group, no Text. | Decided | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 | SY-13.3 | Drawing | State of the drawing area | The clipped shape shown, its part outside the clip shapes faded; the rest of the symbol dimmed; the clip shapes as outlines. | Proposed | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 | SY-13.4 | Clip shapes | List, a − on each line | Title "Clip of Casing", then one line per clip shape. | Proposed | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
-| SY-13.5 | Geometry of a clip shape | [Size fields](../controls/size-fields.md), number fields | W, H, X, Y, rotation; corner radius of a rectangle, sides of a polygon; no fill, no border. | Proposed | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
+| SY-13.5 | Geometry of a clip shape | [Size fields](../controls/size-fields.md), number fields | On three lines (2026-11-25): X and Y; W and H; rotation and the corner radius of a rectangle. Sides of a polygon before. No fill, no border. | Decided (lines), Proposed (X and Y first) | [Clip mode](../symbols/04-drawing-mode/clip-mode.md) |
 
 Gaps:
 
 - The name "Clip" (the Product Owner doubts it).
 - A group or a text clipped; points of a clip shape edited where.
+- X and Y first: in the clip only, or in every panel.
+
+## SY-14 · Intersection mode
+
+Path: symbol editor › Intersection, in the modes menu, right after Clip (2026-11-25).
+
+```mermaid
+mindmap
+  root((SY-14 Intersection))
+    Tool bar
+      Select
+      Hand
+    Left-hand panel
+      Shapes chosen in the layers, as many as wanted
+    Drawing
+      Chosen shapes put forward
+      Rest of the symbol translucent
+      Regions: taken in filled, left out as outlines
+    Right-hand panel
+      Chosen shapes
+      Regions, a check box each
+      Validate, Cancel
+```
+
+| ID | Element | Kind | Values and behaviour | Status | Source |
+| --- | --- | --- | --- | --- | --- |
+| SY-14.1 | Intersection | Button of the modes menu | Right after Clip, in its group (the group: assistant's choice). | Decided (place after Clip), Proposed (group) | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md) |
+| SY-14.2 | Tools | Button | Select, Hand. | Proposed | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md) |
+| SY-14.3 | Chosen shapes | Selection in the layers | As many as wanted; put forward on the drawing, the rest translucent. | Decided | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
+| SY-14.4 | Regions | List, a check box each; a click on the drawing | Each shape alone and each intersection; taken in (filled) or left out (outline). | Decided (choice of the regions), Proposed (form) | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
+| SY-14.5 | Validate | Button | Creates a new shape, a path, from the regions taken in; the chosen shapes stay (proposed). | Decided (button), Proposed (shapes kept) | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
+| SY-14.6 | Cancel | Button | Leaves without creating anything. | Proposed | [Intersection mode](../symbols/04-drawing-mode/intersection-mode.md#rules) |
+
+Gaps:
+
+- The name "Intersection" (the mode also makes unions and differences); a group, a text or an open path chosen.
 
 ## SY-12 · Enums of a Symbol Lib
 

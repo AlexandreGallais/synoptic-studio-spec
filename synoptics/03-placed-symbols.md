@@ -43,7 +43,7 @@ From the research (report T4, section 3.17, 14b and 14c; opinions), proposed:
 
 - **Rotation by quarter turns** (0°, 90°, 180°, 270°), with a key and a button; no free angle, so that pipes stay at right angles.
 - **Mirror**, horizontal or vertical.
-- The **connection points and their directions follow** the rotation and the mirror, so the pipes still leave in the right direction.
+- The **connection points follow** the rotation and the mirror, so the pipes stay attached (a connection point has no direction since 2026-11-25, see [Connection points](../symbols/pipes/connection-points.md)).
 - **Texts stay readable**: a text of the symbol turned by 180° or mirrored is shown the right way up. Open: the symbol editor says nothing about it yet.
 - **Size**: a uniform scale of the whole symbol, set in percent (100 % is the size drawn in the symbol editor). The rule "never a scale" of the symbol editor stays there. Whether the borders grow with the scale is open.
 

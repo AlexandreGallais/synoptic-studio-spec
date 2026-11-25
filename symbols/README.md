@@ -46,11 +46,11 @@ The only kind of library is the **Symbol Lib**, which sorts symbols. There are n
 | [Libraries and symbols](01-libraries-and-symbols.md) | Symbol Libs, the left-hand panel (symbols, pipe styles, layers), creating a symbol, its optional type. |
 | [Type and faceplate](02-type-and-faceplate.md) | The type of a symbol, the only thing it chooses; its faceplate is the one of the type. |
 | [Editor](03-editor/README.md) | What is common to every mode: layout, floating bars, rules, modes, moving around, Select, Hand, layers, precise move, the advanced tools (set aside). |
-| [Drawing mode](04-drawing-mode/README.md) | Rectangle, ellipse, polygon, text, pen; and the [Clip mode](04-drawing-mode/clip-mode.md), which draws the clip of a shape. |
+| [Drawing mode](04-drawing-mode/README.md) | Rectangle, ellipse, polygon, text, pen; the [Clip mode](04-drawing-mode/clip-mode.md), which draws the clip of a shape; the [Intersection mode](04-drawing-mode/intersection-mode.md), which builds a shape from others and their intersections. |
 | [Point editing mode](05-point-editing-mode/README.md) | Editing the points of a path. |
 | [Alignment mode](06-alignment-mode/README.md) | Placing shapes in relation to each other. |
 | [Interaction mode](07-interaction-mode/README.md) | Interaction zones, gestures, what a gesture does. |
-| [Animation mode](08-animation-mode/README.md) | Linking an output signal to a change of the drawing, values and units in texts. |
+| [Animation mode](08-animation-mode/README.md) | Linking an output signal to a change of the drawing, values and units in texts; the [catalogue of the animations](08-animation-mode/animation-catalogue.md), every animation possible with an example. |
 | [Run mode](09-run-mode/README.md) | Trying the symbol with test values, and simulating another screen. |
 | [Pipes](pipes/README.md) | Connection points of a symbol, and the pipe styles kept in the Symbol Lib, each with its junctions, crossings and ends. |
 | [Open questions](10-open-questions.md) | Every open question in one place. |

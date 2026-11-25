@@ -6,6 +6,7 @@ Status: draft. Not validated.
 
 ## Rules
 
+- Since 2026-11-25, the [Intersection mode](../../04-drawing-mode/intersection-mode.md) of the modes menu builds a new shape from chosen regions: each of the four operations below is one choice of regions in it. This page stays as a record of the advanced tools, set aside.
 - The user selects shapes, then picks a boolean operation in the bar of the [advanced tools](README.md).
 - The editor goes into a mode where the user picks the kind of operation (intersection and the like).
 - The result is a new shape made from the selected shapes.

@@ -23,14 +23,44 @@ The mode of the [editor](../03-editor/README.md) in which the points of a path a
 ### Select
 
 - Select picks points and handles, one or several, and moves them (several points can be selected as in the [editor](../03-editor/select.md): Shift or Ctrl, or a selection rectangle).
+- A click on a handle selects it like a point: the panel then shows the X and Y of the handle, as in Figma (Product Owner, 2026-11-25).
 - Points can be added and removed.
 - **Two points selected**: an option adds a new point in the middle of the two. It is offered in the right-hand panel, as a button (like every action, see the rule on visible equivalents in the [editor](../03-editor/README.md)).
 
 ### Right-hand panel
 
-- The list of the points (above).
-- The options of the selected point or handle (see [Points and handles](points-and-handles.md)).
-- The actions on the selection: remove, add a point between two.
+Every change is **one click**: no select to open, then an item to pick (Product Owner, 2026-11-25: "c'est obligé de faire deux clics au lieu d'un").
+
+1. **The selection**, at the top: the options of the selected point, handle or points (see [Points and handles](points-and-handles.md)).
+2. **The list of the points**, under it: a long list does not push the options of the selection down (Product Owner, 2026-11-25, with a doubt: "je la mettrais peut-être plus en dessous"; to confirm on the screens).
+
+#### List of the points
+
+- Shape by shape: a line for the shape, then a line per point.
+- **A line of a point holds what it is**, editable in the line itself (Product Owner, 2026-11-25: "un point, c'est comme un X, un Y, un corner radius"):
+
+| Cell | Point in the corner radius mode | Point in the handles mode |
+| --- | --- | --- |
+| Name | Point 1 | Point 1 |
+| X, Y | Two number fields | Two number fields |
+| Last cell | The radius, a number field | The mirroring, an icon |
+
+- **Removing a point**: a small bin on the line, shown on hover (Product Owner, 2026-11-25). There is no Remove button any more. The Delete key does the same.
+- A click on a line selects the point; Shift or Ctrl and a click add a line to the selection, as on the canvas.
+
+#### Several points selected
+
+- The title says how many: "3 points".
+- A field whose value differs between the points shows **Mixed** (see [Number and text fields](../../controls/number-and-text-fields.md#several-elements-selected)). Typing a value gives it to every selected point.
+- The mode and the mirroring show no choice when they differ; a click on a choice sets it for every point.
+- **Two points selected**: the button "Add a point between" is shown, and only then.
+
+```mermaid
+block-beta
+    columns 1
+    sel["The selection: a point, a handle, or several points"]
+    list["List of the points: shape by shape, a line per point (name, X, Y, radius or mirroring, bin on hover)"]
+```
 
 ### Pen
 
@@ -56,6 +86,10 @@ flowchart LR
     F --> K["Fill, border and effects kept"]
 ```
 
+### Not offered
+
+- Hiding the fill of a closed part of a path while keeping its points, as Figma does: set aside (Product Owner, 2026-11-25, after weighing it: "il ne faut pas venir ajouter ça comme dans Figma").
+
 ## What the research found
 
 Source: the second research report (`research/t4-…/rapport.md`, section 3.15).
@@ -69,3 +103,4 @@ Source: the second research report (`research/t4-…/rapport.md`, section 3.15).
 - Options that belong to the former shape (the corner radius of a rectangle, the number of sides of a polygon, the box of an ellipse): once the shape is a free form, are they gone from the panel, or kept as shortcuts? Nothing is lost, but these options describe a shape that no longer has a fixed geometry.
 - Precise editing of the roundings (corner radius mode of a point): to be detailed later.
 - The list of the right-hand panel: all the points of all the shapes of the symbol, or only those of the selected shapes (all shapes when nothing is selected)? The spec above assumes all shapes, grouped by shape, to confirm.
+- The list under the options of the selection, or above them: under, to confirm on the screens.

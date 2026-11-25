@@ -26,6 +26,12 @@ flowchart LR
     B -- "Yes" --> D["+10 or -10"]
 ```
 
+### Several elements selected
+
+- When several elements are selected (shapes, points) and their values differ, the field shows **Mixed** instead of a number (Product Owner, 2026-11-25: "si tu fais de la multi-sélection, la taille passe au mix").
+- A value typed in it is given to every selected element. The arrows add or remove 1 (or 10) to the value of each, as Figma does (assistant's proposal).
+- When the values are the same, the field shows that value.
+
 ### Text field
 
 - One component for every text field. Its behaviour beyond that is not described yet.
@@ -44,3 +50,4 @@ flowchart LR
 - The step of a field with decimals (a real number, an angle): 1, or the smallest decimal shown?
 - Does dragging on the label of a number field change the value, as in Figma?
 - What the text field does beyond being one shared component.
+- Mixed values: do the arrows shift each value (proposal), or set them all to one value?

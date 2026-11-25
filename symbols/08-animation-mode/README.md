@@ -9,7 +9,8 @@ The mode of the [editor](../03-editor/README.md) in which the signals are linked
 ## Rules
 
 - Tool bar: [Select](../03-editor/select.md) and [Hand](../03-editor/hand.md). Right-hand panel: the animations of the selected part.
-- The user selects a signal, then says what it animates: a shape, a layer, a text.
+- The user selects a part (a shape, a layer, a text), **adds an output signal** to it with the + of its animations, then **chooses the kind of animation** (Product Owner, 2026-11-25: "faut pouvoir ajouter un signal qui est en sortie pour l'animation. Après, tu choisis quel type d'animation"). Only the kinds that fit the type of the signal are offered.
+- The kinds of animation possible: see the [catalogue of the animations](animation-catalogue.md), from which the Product Owner picks those of this version.
 - Only the output signals of the type are offered for an animation. An output is what the model sends, and the model computes what the symbol shows. An input is what the model receives and is never animated; it can only serve as the minimum or the maximum of a bounded linear animation (see [below](#the-input-range-of-a-bounded-linear-animation)).
 - A value ordered and a value obtained are two signals for the model. Example: `opening_order` (input, what the user asks) and `opening` (output, what the model computes). The symbol animates `opening`. The faceplate can show both (see [MD-14](../../screens/metadata.md#md-14--faceplate)).
 - Only a symbol with a type has animations. A symbol without a type has no signal to animate (see [Libraries and symbols](../01-libraries-and-symbols.md)).
@@ -29,7 +30,7 @@ flowchart LR
 | Boolean | `running` | A value gives a state: when `true`, an element blinks. |
 | Enum | `mode` | A property of the drawing takes the value of a column added to the enum in the Symbol Lib, for the current item: `mode` = 1 gives the colour of the column `color` for item 1 (see [Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md#used-by-an-animation)). |
 
-The properties of a part of the drawing that an animation can drive (rotation, position, size, colour, opacity, visibility, blinking...) are to list.
+Every animation possible, with an example, is listed in the [catalogue of the animations](animation-catalogue.md) (2026-11-25), to choose from.
 
 ## Texts: value and unit
 
