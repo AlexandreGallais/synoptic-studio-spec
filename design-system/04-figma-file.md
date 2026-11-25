@@ -28,7 +28,7 @@ Page Spec, section "Symbol mode · test screens (2026-11-23)" ([`776:81`](https:
 | --- | --- | --- |
 | Point editing | SY-05 · Point 2 of Casing selected | [`928:2653`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=928-2653) |
 | Point editing | SY-05 · the upper handle of Point 2 selected | [`942:2867`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=942-2867) |
-| Point editing | SY-05 · two points of Outlet selected, values Mixed | [`942:3188`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=942-3188) |
+| Point editing | SY-05 · Casing and Outlet chosen, two points of Outlet selected, values Mixed | [`942:3188`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=942-3188) |
 | Alignment | SY-06 · Outlet placed outside Casing, on its right | [`929:2977`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=929-2977) |
 | Clip | SY-13 · the clip shapes of Casing | [`927:2897`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=927-2897) |
 | Intersection | SY-14 · Casing and Outlet chosen, their regions | [`946:3132`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=946-3132) |

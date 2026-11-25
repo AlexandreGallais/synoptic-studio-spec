@@ -14,16 +14,16 @@ The same lines in the same order, whatever is selected; a line that does not app
 
 | Line | Controls | Point, corner radius mode | Point, handles mode | Handle | Nothing selected |
 | --- | --- | --- | --- | --- | --- |
-| Title | Text | "Point 2" | "Point 2" | "Handle · Point 2" | "No point selected" |
+| Title | Text | "Casing · Point 2" | "Casing · Point 2" | "Casing · Point 2 · Handle" | "No point selected" |
 | Position | X and Y, two number fields | The point | The point | The end of the handle | Disabled |
 | Mode | A segmented control of two icons: Corner radius, Handles | Enabled | Enabled | Enabled: it switches the point of the handle | Disabled |
 | Radius | A number field | Enabled | Disabled | Disabled | Disabled |
 | Mirroring | A segmented control of three icons (below) | Disabled | Enabled | Enabled | Disabled |
-| Angle and length | Two number fields | Disabled | Disabled | Enabled | Disabled |
+| Angle and length | Two number fields | Disabled | After the mirroring (below) | Enabled | Disabled |
 
 - The mode stays offered when a handle is selected, so the user can go back to the corner radius mode from a handle (Product Owner, 2026-11-25: "quand on clique sur une poignée, on peut quand même en revenir en mode border radius"). The handles then go away, and the selection becomes their point (assistant's reading).
 - With several points, see [Several points selected](README.md#several-points-selected).
-- The title of the list already names the shape, so the title of the selection does not repeat it (assistant's proposal).
+- The title names the shape before the point: several shapes can be chosen, and each has its Point 2 (assistant's proposal, 2026-11-26).
 
 ### Two modes for a point
 
@@ -48,12 +48,24 @@ Offered when the point is in the handles mode, on the point and on each of its h
 | Mirror angle | The two handles keep opposite angles. Their lengths are free. |
 | Mirror angle and length | The two handles keep opposite angles and the same length. |
 
+### Angle and length on a point
+
+A point in the handles mode whose handles mirror each other is edited without selecting a handle: its two handles move as one (Product Owner, 2026-11-26: "vu que je suis en mirroring longueur et angle, c'est censé fonctionner, sans avoir à cliquer sur la poignée").
+
+| Mirroring of the point | Angle | Length |
+| --- | --- | --- |
+| Mirror angle and length | Enabled: the angle of both handles | Enabled: the length of both handles |
+| Mirror angle | Enabled: the angle of both handles | Disabled: the two lengths differ (assistant's proposal) |
+| None | Disabled | Disabled |
+
+- The angle shown is that of the handle after the point along the path; the other handle stays opposite (assistant's proposal).
+
 ### A selected handle
 
-A click on a handle selects it, on the canvas or on the mirroring cell of its point in the list (Product Owner, 2026-11-25: "si tu cliques sur une poignée, ça fait un point et on voit le X, le Y").
+A click on a handle of a chosen shape selects it, on the canvas (Product Owner, 2026-11-25: "si tu cliques sur une poignée, ça fait un point et on voit le X, le Y").
 
 - Position: X and Y of the end of the handle, as in Figma.
-- Angle and length: the angle of the line of the handle, and its length; enabled for a handle only.
+- Angle and length: the angle of the line of the handle, and its length; always enabled for a handle (on a point, see [above](#angle-and-length-on-a-point)).
 - Mirroring: the mirroring of its point, the same segmented control.
 - X and Y, the angle and the length stay linked: changing X and Y changes the angle and the length, and the other way round.
 - The angle and the length are for a handle that must go at a precise angle and length: a length of 20 at a given angle (Product Owner, 2026-11-25).
@@ -72,6 +84,7 @@ flowchart LR
     P["Point selected"] --> M{"Mode, one click"}
     M -- "Corner radius" --> R["Radius"]
     M -- "Handles" --> MI["Mirroring, one click"]
+    MI -- "Mirror angle and length" --> PAL["Angle, length of both handles"]
     H["Handle selected"] --> XY["X, Y"]
     H --> AL["Angle, length"]
     H --> M
@@ -81,7 +94,7 @@ flowchart LR
 
 | Screen | Element |
 | --- | --- |
-| [SY-05](../../screens/symbols.md#sy-05--point-editing-mode) | SY-05.3 to SY-05.7, SY-05.11, SY-05.14 |
+| [SY-05](../../screens/symbols.md#sy-05--point-editing-mode) | SY-05.3 to SY-05.7, SY-05.11, SY-05.14, SY-05.17 |
 
 ## What the research found
 
@@ -96,3 +109,4 @@ Source: the research report (`research/t1-…/rapport.md`). Confidence: high.
 - Angle 0 of a handle: horizontal (proposal) or vertical?
 - The three icons of the mirroring: to draw in the design system.
 - Switching a selected handle to the corner radius mode: the selection becomes its point (assistant's reading), to confirm.
+- Angle and length on a mirrored point: the angle of the handle after the point (proposal); with Mirror angle, the length disabled (proposal)?

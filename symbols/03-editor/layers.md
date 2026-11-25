@@ -15,6 +15,7 @@ The layers panel shows every layer of the open symbol, as a tree. It is in the l
 - Two icons, as in code editors: **unfold all** the groups, and **fold all** the groups.
 - A shape with a border is one line: its border is computed, it is not a layer of its own (see [Fill and border](../04-drawing-mode/fill-and-border.md)).
 - Assumption of the assistant, to confirm: selecting a line selects the layer on the drawing, and the other way round, in every mode that has the Select tool.
+- Exception: in the [point editing mode](../05-point-editing-mode/README.md#which-shapes-are-edited), the shapes are chosen here only, never by a click on the drawing (Product Owner, 2026-11-26).
 
 ```mermaid
 mindmap

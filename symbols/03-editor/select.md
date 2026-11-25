@@ -18,7 +18,7 @@ Select is in the tool bar of every mode except the Run mode. What it does depend
 ## Selecting
 
 - A click on a shape selects it. What is clickable is the **real shape** (a circle is clickable as a circle, not as the square around it), including its inside when the fill is transparent: a shape with a transparent fill stays clickable.
-- Several shapes can be selected: with Shift or Ctrl held, a click adds a shape to the selection (or removes it). In the point editing mode, several points can be selected the same way. In the [alignment mode](../06-alignment-mode/README.md#the-reference-and-the-shapes-to-place-ctrl-and-shift), the two keys have their own meaning: Ctrl for the reference, Shift for the shapes to place (Product Owner, 2026-11-25).
+- Several shapes can be selected, with the usual meaning of the keys, "un vrai Shift et un vrai Contrôle" (Product Owner, 2026-11-26): Ctrl and a click adds a shape to the selection or removes it; Shift and a click in the [layers](layers.md) adds every layer between the last one clicked and this one; on the drawing, Shift and a click adds the shape like Ctrl (assistant's reading). A plain click resets the selection. In the point editing mode, several points are selected the same way. In the [alignment mode](../06-alignment-mode/README.md#the-reference-and-the-shapes-to-place-a-normal-selection), the first shape selected is the reference and the next ones are the shapes to place (Product Owner, 2026-11-26).
 - A press in the empty space, held while dragging, draws a selection rectangle.
 - By default, every shape the rectangle touches is selected. A modifier key makes the rectangle select only the shapes it contains entirely. Like every modifier, it has a visible option too.
 

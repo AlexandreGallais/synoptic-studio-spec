@@ -336,28 +336,32 @@ mindmap
         Always: X, Y, mode, radius, mirroring, angle, length
         What does not apply is disabled
         Several points: Mixed
-      List of the points of the shape clicked, under it
-        Title: the shape, a + and a −
-        A line per point: X, Y, radius or mirroring
-        No bin: the Delete key
+      List of the points of the shapes chosen in the layers, under it
+        Title: Points, a − and a +
+        A group line per shape
+        A line per point: X, Y, radius
+        No bin: the Delete key or the −
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SY-05.1 | Tools | Button | Select, Hand, Pen. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md) |
-| SY-05.2 | List of the points | List, editable lines | Under the options of the selection (2026-11-25, to confirm). Only the points of the shape clicked; none for a group (2026-11-25). Title: the name of the shape. A line per point: name, X, Y, then the radius (corner radius mode) or the mirroring icon (handles mode), edited in the line. Selecting in the list selects on the canvas and back. | Decided (lines, shape clicked), Proposed (place) | [Point editing mode](../symbols/05-point-editing-mode/README.md#list-of-the-points) |
+| SY-05.2 | List of the points | List, editable lines | Under the options of the selection (2026-11-25, to confirm). The points of the shapes chosen in the layers; none for a group. Title: Points, with a − and a +; a group line per shape, then its points (2026-11-26). A line per point: name, X, Y, radius, edited in the line; the radius disabled in the handles mode, the mode not shown (2026-11-26, assistant's choice asked by the PO). Selecting in the list selects on the canvas and back. | Decided (lines, groups), Proposed (place, radius only) | [Point editing mode](../symbols/05-point-editing-mode/README.md#list-of-the-points) |
 | SY-05.3 | Point mode | [Segmented control](../design-system/07-molecules/segmented-control.md), two icons | Corner radius or Handles, one click (2026-11-25, replaces the select); each keeps its settings. Also offered when a handle is selected (2026-11-25). An ellipse point: handles only. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
 | SY-05.4 | Corner radius | Number field | Always shown; disabled in the handles mode and for a handle (2026-11-25). | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md) |
 | SY-05.5 | Mirroring | Segmented control, three icons | None, Mirror angle, Mirror angle and length, one click (2026-11-25, replaces the select). Always shown; disabled in the corner radius mode. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#mirroring-of-the-handles) |
 | SY-05.6 | Handle X, Y | Number field | A click on a handle selects it; X and Y of its end, as in Figma, in the same fields as a point; linked to angle and length. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#a-selected-handle) |
-| SY-05.7 | Handle angle, length | Number field | Always shown, enabled for a handle only (2026-11-25). Linked to X and Y. Angle 0: flat, horizontal (proposal; horizontal or vertical: Open). | Decided (fields), Open (angle 0) | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#a-selected-handle) |
-| SY-05.8 | Remove a point | Delete key; a − on the title of the list | No bin on the lines: too close to the fields (2026-11-25). The −, enabled when points are selected: visible equivalent (proposed). | Decided (key, no bin), Proposed (−) | [Point editing mode](../symbols/05-point-editing-mode/README.md#list-of-the-points) |
-| SY-05.9 | Add a point between two | Small + on the title of the list | Disabled until two points next to each other are selected; adds a point in the middle, named with the next number (2026-11-25, replaces the button that appeared). Enabled with no selection: Open. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md#adding-a-point) |
+| SY-05.7 | Handle angle, length | Number field | Always shown (2026-11-25), enabled for a handle and for a mirrored point (SY-05.17). Linked to X and Y. Angle 0: flat, horizontal (proposal; horizontal or vertical: Open). | Decided (fields), Open (angle 0) | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#a-selected-handle) |
+| SY-05.8 | Remove a point | Delete key; a − on the title of the list | No bin on the lines: too close to the fields (2026-11-25). The −, enabled when points are selected: visible equivalent (2026-11-26). | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md#list-of-the-points) |
+| SY-05.9 | Add a point between two | Small + on the title of the list | Disabled until two points next to each other on the same shape are selected (2026-11-25, kept 2026-11-26); adds a point on the outline half-way between them, named with the next number; never destructive, the outline stays the same, a circle stays a circle (2026-11-26). | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md#adding-a-point) |
 | SY-05.10 | Precise move | Ctrl held while dragging, no button (SY-03.11) | A point or a handle moves pixel by pixel of the symbol, even zoomed out. | Decided | [Precise move](../symbols/03-editor/precise-move.md) |
 | SY-05.11 | Point X, Y | Number field | X and Y of the selected point, at the top of its options and in its line. | Decided | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#the-options-of-the-selection-always-the-same-lines) |
-| SY-05.12 | Several points selected | Title + fields | "3 points"; a field whose values differ shows Mixed; a value typed goes to every point; mode and mirroring show no choice when they differ. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md#several-points-selected) |
-| SY-05.13 | Mirroring cell of a point line | Icon button | A click selects a handle of the point (2026-11-25); which one: the one before the point (proposed). | Decided (handle), Proposed (which one) | [Point editing mode](../symbols/05-point-editing-mode/README.md#list-of-the-points) |
+| SY-05.12 | Several points selected | Title + fields | "3 points", in one shape or across several; a field whose values differ shows Mixed; a value typed goes to every point; mode and mirroring show no choice when they differ. | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md#several-points-selected) |
+| SY-05.13 | Mirroring cell of a point line | — | Removed (2026-11-26): the list shows the radius only; a handle is selected on the canvas, or changed from its mirrored point (SY-05.17). | Proposed | [Point editing mode](../symbols/05-point-editing-mode/README.md#list-of-the-points) |
 | SY-05.14 | Layout of the panel | — | The same lines whatever is selected; what does not apply is disabled, never hidden; nothing appears or disappears (2026-11-25). | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md#right-hand-panel) |
+| SY-05.15 | Shapes chosen in the layers | [Layers](../symbols/03-editor/layers.md) of the left-hand panel | The shapes are chosen there only, Shift or Ctrl for several; a click on the canvas never changes them, no double click (2026-11-26). Shapes selected before the mode: kept (proposed). | Decided (layers only), Proposed (kept) | [Point editing mode](../symbols/05-point-editing-mode/README.md#which-shapes-are-edited) |
+| SY-05.16 | Several shapes chosen | Canvas, list | The points of every chosen shape at once, on the canvas and in the list, grouped by shape (2026-11-26). | Decided | [Point editing mode](../symbols/05-point-editing-mode/README.md#which-shapes-are-edited) |
+| SY-05.17 | Angle and length on a point | Number field (SY-05.7) | Mirror angle and length: both enabled on the point, moving both handles (2026-11-26). Mirror angle: the angle only; None: disabled (proposed). | Decided (angle and length), Proposed (mirror angle) | [Points and handles](../symbols/05-point-editing-mode/points-and-handles.md#angle-and-length-on-a-point) |
 
 Gaps:
 
@@ -373,34 +377,29 @@ mindmap
     Tool bar
       Select
       Hand
-    Keys of the mode
-      Ctrl and a click: the reference
-      Shift and a click: a shape to place
+    A normal selection
+      A plain click: the reference, everything reset
+      Ctrl or Shift and a click: the shapes to place
+      Coloured boxes on the drawing
     Alignment panel
-      Reference
-      To place
       Anchor panel 5 x 5
         3 x 3 inside
         16 outside
         A line between them
-      Proposed
-        Distribution with equal spacing
-        Gap
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SY-06.1 | Tools | Button | Select, Hand. | Decided | [Alignment mode](../symbols/06-alignment-mode/README.md) |
-| SY-06.2 | Reference | Line of the panel, with a button "Reference" | Ctrl and a click on a shape makes it the reference, again on it takes it back (2026-11-25); one at most; the first shape selected is no longer the reference. The button: visible equivalent (proposed). | Decided (keys), Proposed (button) | [Alignment mode](../symbols/06-alignment-mode/README.md#the-reference-and-the-shapes-to-place-ctrl-and-shift) |
-| SY-06.7 | To place | List of the panel, with a button "To place" | Shift and a click adds a shape, again on it takes it out (2026-11-25). The button: visible equivalent (proposed). | Decided (keys), Proposed (button) | [Alignment mode](../symbols/06-alignment-mode/README.md#the-reference-and-the-shapes-to-place-ctrl-and-shift) |
+| SY-06.2 | Reference | A plain click, a coloured box on the drawing | A normal selection: a plain click resets everything and makes the shape clicked the reference; a click on an empty place selects nothing (2026-11-26, replaces Ctrl for the reference). No line nor button in the panel: a user manual explains it (2026-11-26). | Decided | [Alignment mode](../symbols/06-alignment-mode/README.md#the-reference-and-the-shapes-to-place-a-normal-selection) |
+| SY-06.7 | To place | Ctrl or Shift and a click, a coloured box on the drawing | The shapes selected after the reference: Ctrl adds or takes out one, Shift adds every layer in between, as everywhere (2026-11-26). No list nor button in the panel (2026-11-26). | Decided | [Alignment mode](../symbols/06-alignment-mode/README.md#the-reference-and-the-shapes-to-place-a-normal-selection) |
 | SY-06.3 | Anchor panel | Large grid of 5 × 5 cells | The 3 × 3 of the middle: inside; the 16 around: outside; a line between them for the limit of the reference (2026-11-25). One click on a cell places the shapes at once (proposed). On a real shape: the centre and eight points on the outline (proposed). | Decided (panel), Proposed (placement at once, real shape) | [Alignment mode](../symbols/06-alignment-mode/README.md#the-anchor-panel) |
 | SY-06.4 | Inside or outside | — | Removed (2026-11-25): the anchor panel holds both. | Decided | [Alignment mode](../symbols/06-alignment-mode/README.md#the-anchor-panel) |
-| SY-06.5 | Distribution with equal spacing | Button + number field | A typed gap between the edges. | Proposed | [Alignment mode](../symbols/06-alignment-mode/README.md) |
+| SY-06.5 | Distribution with equal spacing | — | Removed (2026-11-26): "on le fera pas". | Decided | [Alignment mode](../symbols/06-alignment-mode/README.md#what-the-research-found) |
 
 Gaps:
 
 - One anchor for all the shapes to place, or one each (Open).
-- What a plain click does in this mode.
 
 ## SY-07 · Interaction mode
 
