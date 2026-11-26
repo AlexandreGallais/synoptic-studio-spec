@@ -51,7 +51,7 @@ A text of the symbol is either written by the user, or linked to a signal. The s
 
 - **A number**: the text shows its value, converted to the display unit and rounded to the decimal places set in the signal settings of the type (see [MD-07](../../screens/metadata.md#md-07--signal-settings)).
   - When the signal has a quantity, a checkbox **Show the unit** says whether the unit follows the value ("il faut pouvoir cocher [...] montrer une unité ou pas"). Nothing else to choose.
-- **An enum**: the user chooses which **column** of the enum the text shows, for the current item: the display name, or a column added on the [Enums page](../11-enums-of-a-symbol-lib.md) of the Symbol Lib ("il faut pouvoir choisir, dans les différentes colonnes de l'enum, ce qu'on va afficher"). A text column shows its text; a number column shows its value.
+- **An enum**: the user chooses which **column** of the enum the text shows, for the current item: the display name, or a column added on the [Enums page](../11-enums-of-a-symbol-lib.md) of the Symbol Lib ("il faut pouvoir choisir, dans les différentes colonnes de l'enum, ce qu'on va afficher"). A text column shows its text; a number column shows its value, without unit (Product Owner, 2026-11-26).
 - **A boolean**: the text shows the true text or the false text of the signal, as written in Metadata (see [Boolean texts](../../metadata/entities/18-boolean-texts.md)); nothing else to choose (Product Owner, 2026-11-26).
 - **A text with the unit only**: not in the V1, kept for later ("les unités, ça ne sert à rien [...] pour l'instant, on ne fera pas ça").
 

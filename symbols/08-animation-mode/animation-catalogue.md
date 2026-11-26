@@ -81,7 +81,7 @@ Arc: the Product Owner likes it, but it is a shape more than an animation ("c'es
 | # | Animation | What the part does | Signal | How the value acts | Example | Cost |
 | --- | --- | --- | --- | --- | --- | --- |
 | 11 | **Show or hide** | Is shown or hidden. | Boolean, number, enum | Per state (shown when true, or when false); Steps (shown inside a range) | A fault icon shown when `fault` is true; a flame shown when the burner is on | Low |
-| 9c | **Colour per state** | Its fill, its border or, for a text, its letters take the colour of the current state. **Colours**: Fill or Border. | Enum, boolean | Per state: an enum takes the colour column of the enum chosen, one line per item, read only, with a link to the [Enums page](../11-enums-of-a-symbol-lib.md); a boolean, a colour for true and a colour for false, chosen in the panel (assistant's reading) | The casing of a pump grey in Off, orange in Manual, green in Auto, from the column `color` of `mode`; a lamp red when `fault` is true | Medium, rare (a change of state) |
+| 9c | **Colour per state** | Its fill, its border or, for a text, its letters take the colour of the current state. **Colours**: Fill or Border. | Enum, boolean | Per state: an enum takes the colour column of the enum chosen, one line per item, read only, with a link to the [Enums page](../11-enums-of-a-symbol-lib.md); a boolean, two colour fields in the panel, one for true and one for false (Product Owner, 2026-11-26) | The casing of a pump grey in Off, orange in Manual, green in Auto, from the column `color` of `mode`; a lamp red when `fault` is true | Medium, rare (a change of state) |
 
 ## Text
 
@@ -89,7 +89,7 @@ A text shows a signal through its own fields in the panel ([SY-08.7](../../scree
 
 | # | Animation | What the text does | Signal | Example | Cost |
 | --- | --- | --- | --- | --- | --- |
-| 16 | **Value** | The signal is chosen first; what the text shows follows from its type. A number: its value, in the display unit, and **Show the unit**, a checkbox, when the signal has a quantity. An enum: the **column** of the enum chosen, for the current item. A boolean: its true text or its false text, as written in Metadata (Product Owner, 2026-11-26). | Number, enum, boolean | `12.5 m³/h` beside a flowmeter; "Running" under a motor; "Fault" or "OK" for `fault` | Medium (text repainted) |
+| 16 | **Value** | The signal is chosen first; what the text shows follows from its type. A number: its value, in the display unit, and **Show the unit**, a checkbox, when the signal has a quantity. An enum: the **column** of the enum chosen, for the current item; a number column shows a number without unit. A boolean: its true text or its false text, as written in Metadata (Product Owner, 2026-11-26). | Number, enum, boolean | `12.5 m³/h` beside a flowmeter; "Running" under a motor; "Fault" or "OK" for `fault` | Medium (text repainted) |
 
 ## Not in V1, kept for later
 
@@ -152,8 +152,6 @@ Set apart by the Product Owner on 2026-11-26, not refused ("garde ça en mémoir
 
 ## Open questions
 
-- Colour per state, a boolean signal: are the two colours chosen in the panel (drawn), or taken from elsewhere?
-- Value, a number column of an enum: does it have a unit to show?
 - Arc, when it comes back as a shape: does a signal move the end angle of the [Arc shape](../04-drawing-mode/arc.md) through an animation, and is the animation Arc then kept or replaced?
 - Move along a path, when it comes back: is the part turned along the path or not?
 - Endless scroll and Flow (not in V1, to settle when they come back): the unit of the speed (lengths of the pattern per second) and its maximum. Proposal drawn: as for Spin, the user gives the value of the signal that makes one length of the pattern per second (settled for Spin, Product Owner, 2026-11-26: "when speed is [...] RPM, turn 1 par seconde [...] c'est parfait"); that value can be a signal, a maximum speed for example.

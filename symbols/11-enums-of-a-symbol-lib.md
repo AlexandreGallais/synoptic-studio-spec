@@ -173,7 +173,6 @@ In the symbol of a pump, an animation gives the body of the pump the colour of t
 
 Noted, not to be asked now: they come up at the review of the part.
 
-- Is a number always without unit (an angle in degrees, a position in px)?
 - Is the memory of the earlier kinds a part of the undo history (decision 0093)?
 - More about the name of a column may come (said with a doubt).
 - An item added later in Metadata: its added columns are empty; what does the animation show then (a default value per column)?
