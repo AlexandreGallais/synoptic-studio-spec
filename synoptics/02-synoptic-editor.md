@@ -15,7 +15,7 @@ The same columns as the symbol editor (decided layout rules: list on the left, p
 ```mermaid
 block-beta
     columns 5
-    rail["Navigation bar"] left["Left-hand panel: Library, then Objects"] canvas["Canvas: modes menu floating top left, tool bar floating at the bottom, faults drawer"]:2 panel["Right-hand panel: the selection, or the synoptic when nothing is selected"]
+    rail["Navigation bar"] left["Left-hand panel: Library, then Objects"] canvas["Canvas: modes menu floating at the top, centred (as in the symbol editor, 2026-11-26), tool bar floating at the bottom, faults drawer"]:2 panel["Right-hand panel: the selection, or the synoptic when nothing is selected"]
 ```
 
 - **Left-hand panel, top: Library.** The symbols of the Symbol Libs used, one tree per library, with a search field (magnifier) and thumbnails. A symbol is dragged onto the canvas, or clicked then placed by a click. Proposed.
@@ -25,7 +25,7 @@ block-beta
 
 ### Modes
 
-A floating **modes menu** at the top left of the canvas, as in the symbol editor (decided there). Proposed modes:
+A floating **modes menu** centred at the top of the canvas, as in the symbol editor (decided there, 2026-11-26; the wireframes SN-02 to SN-08 still show it at the top left and are to redraw). Proposed modes:
 
 | Mode | What it is for | Tools |
 | --- | --- | --- |

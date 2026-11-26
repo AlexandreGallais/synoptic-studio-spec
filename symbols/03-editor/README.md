@@ -19,16 +19,16 @@ block-beta
 | Zone | What it holds |
 | --- | --- |
 | Left-hand panel | The symbols and the pipe styles of the Symbol Lib, then the [layers](layers.md) of the open symbol (see [Libraries and symbols](../01-libraries-and-symbols.md)). |
-| Modes menu | A floating bar at the **top left of the drawing area**, **horizontal**, made of **icons only** (the name of each mode in its tooltip): every mode, in four groups split by **separators** (see [Modes](#modes)), and the switch from one to another (Product Owner, 2026-11-23; groups 2026-11-25). |
-| Guides | A small floating bar **under the modes menu**, with the [layout guides](layout-guides.md) of the view (Product Owner, 2026-11-25). |
+| Modes menu | A floating bar **centred at the top of the drawing area**, as the tool bar at its bottom, so that it does not move away when a side panel is resized (Product Owner, 2026-11-26: "le menu des modes, faut forcément qu'il soit au milieu, comme le menu des tools"), **horizontal**, made of **icons only** (the name of each mode in its tooltip): every mode, in four groups split by **separators** (see [Modes](#modes)), and the switch from one to another (Product Owner, 2026-11-23; groups 2026-11-25). |
+| Guides | A small floating bar **under the modes menu**, centred with it, with the [layout guides](layout-guides.md) of the view (Product Owner, 2026-11-25). |
 | Tool bar | A floating bar over the drawing area, with the tools of the current mode, and nothing else: no button for the advanced tools, no button for the precise move (Product Owner, 2026-11-25). Its place is open: at the **bottom** or at the top. |
 | Right-hand panel | The options of the selection; the type of the symbol (see [Type and faceplate](../02-type-and-faceplate.md)). |
 
 ```mermaid
 block-beta
     columns 3
-    modes["Modes menu (top left, horizontal, icons)"] space:2
-    space:3
+    space modes["Modes menu (top, centred, horizontal, icons)"] space
+    space guides["Guides bar, under it"] space
     space tools["Tool bar of the mode (bottom, place open)"] space
 ```
 

@@ -112,13 +112,13 @@ The layout is decided, except the place of the tool bar (bottom or top) and of t
 block-beta
     columns 4
     rail["Navigation bar SY-00"]
-    left["Left-hand panel: SY-02 symbols, separator, then the layers"] canvas["Drawing area: modes menu floating top left, horizontal, icons; tool bar floating at the bottom, the tools of the mode only"] panel["Right-hand panel: options of the selection, type of the symbol"]
+    left["Left-hand panel: SY-02 symbols, separator, then the layers"] canvas["Drawing area: modes menu floating at the top, centred, horizontal, icons; tool bar floating at the bottom, the tools of the mode only"] panel["Right-hand panel: options of the selection, type of the symbol"]
 ```
 
 ```mermaid
 mindmap
   root((SY-03 Symbol editor))
-    Modes menu, floating top left, icons, four groups
+    Modes menu, floating at the top, centred, icons, four groups
       Draw
         SY-04 Drawing
         SY-05 Point editing
@@ -151,7 +151,7 @@ mindmap
 
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
-| SY-03.1 | Modes menu | Floating bar, horizontal, icons only (name in the tooltip) | At the top left of the drawing area, four groups split by a separator: Drawing, Point editing, Alignment │ Clip, Intersection │ Connection, Animation, Interaction │ Run (2026-11-25, being tried; Intersection added the same day). Interaction, Animation and Run need a type; Clip, a selected shape. | Decided (groups: being tried), icons to draw | [Editor](../symbols/03-editor/README.md) |
+| SY-03.1 | Modes menu | Floating bar, horizontal, icons only (name in the tooltip) | Centred at the top of the drawing area, as the tool bar is centred at its bottom, so that it stays in the middle when a side panel is resized (Product Owner, 2026-11-26); four groups split by a separator: Drawing, Point editing, Alignment │ Clip, Intersection │ Connection, Animation, Interaction │ Run (2026-11-25, being tried; Intersection added the same day). Interaction, Animation and Run need a type; Clip, a selected shape. | Decided (groups: being tried), icons to draw | [Editor](../symbols/03-editor/README.md) |
 | SY-03.2 | Tool bar | Floating bar | The tools of the mode, nothing else (2026-11-25); at the bottom of the drawing area (leaning) or at the top. | Decided (place: Open) | [Editor](../symbols/03-editor/README.md) |
 | SY-03.3 | Show the advanced tools | — | Removed (2026-11-25): the advanced tools are not in this version ([SY-11](#sy-11--advanced-tools)). | Decided | [Advanced tools](../symbols/03-editor/expert-menu/README.md) |
 | SY-03.4 | Type | Select, optional | In the right-hand panel; among all the types of Metadata; can be removed. | Decided | [Type and faceplate](../symbols/02-type-and-faceplate.md) |
@@ -162,12 +162,12 @@ mindmap
 | SY-03.9 | Select | Button (tool) | In every mode except Run; picks what the mode works on. | Decided | [Select](../symbols/03-editor/select.md) |
 | SY-03.10 | Entirely enclosed | Toggle | Visible equivalent of Ctrl + Shift during a selection rectangle (2026-11-26, replaces Alt). | Decided | [Select](../symbols/03-editor/select.md) |
 | SY-03.11 | Precise move | Key held while moving with Select, no button | A shape, a point or a handle moves pixel by pixel of the symbol; no toggle in the tool bar; the key is Ctrl (2026-11-25). | Decided | [Precise move](../symbols/03-editor/precise-move.md) |
-| SY-03.12 | Layers | Tree | In the left-hand panel; groups as folders; one line per shape, its border included; the clip shapes under their shape. Under the layers, in every mode: the connection points (SY-10.5), then the interaction zones (SY-07.10), each title with the icon of its mode; a click on an element of another mode, or on that icon, opens that mode (2026-11-26, [layout rule](README.md#nothing-hidden-every-list-in-every-mode)). | Decided | [Layers](../symbols/03-editor/layers.md) |
+| SY-03.12 | Layers | Tree | In the left-hand panel; groups as folders; one line per shape, its border included; the clip shapes under their shape. Under the layers, in every mode: the connection points (SY-10.5), then the interaction zones (SY-07.10), each title with the icon of its mode; a click on an element of another mode (Zone 1, Port A), or on that icon, opens that mode; the icon clicked again in its mode goes back to the mode before (2026-11-26, [layout rule](README.md#nothing-hidden-every-list-in-every-mode)). | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.13 | Search the layers | Button (search icon), then a text field | On the line of the title "Layers", under a separator; opens a field over the title that filters by name. No + on this title (2026-11-23). | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.14 | Unfold all, fold all | Button each | Every group of the tree. | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.15 | Line of a layer | — | Name and icon of its kind; on its right, the icon of the Animation mode when the layer has an animation, that of the Interaction mode when it is the place of an interaction, grey, blue while their mode is open; a click opens that mode on the layer, in every mode (2026-11-26). Hide, lock proposed. | Decided (name, kind, icons), Proposed (hide, lock) | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.16 | Undo, redo | not said | The undo history keeps every action (decision 0093). No save: each change is written as it is made. | Decided (history, no save), Open (place) | [Files and conflicts](../storage/files-and-conflicts.md#undo-history) |
-| SY-03.17 | Layout guides | Button in a floating bar under the modes menu, then a popup | + Column, + Row, + Grid; one line per guide with its value, a place button and a −; the place button makes the guide follow the mouse, a click puts it; an eye hides them all; grid cells W × H linked by a chain (2026-11-25). | Decided (place, eye, placement from the line, grid W × H linked by a chain), Proposed (the rest of the form) | [Layout guides](../symbols/03-editor/layout-guides.md) |
+| SY-03.17 | Layout guides | Button in a floating bar under the modes menu, centred with it, then a popup | + Column, + Row, + Grid; one line per guide with its value, a place button and a −; the place button makes the guide follow the mouse, a click puts it; an eye hides them all; grid cells W × H linked by a chain (2026-11-25). | Decided (place, eye, placement from the line, grid W × H linked by a chain), Proposed (the rest of the form) | [Layout guides](../symbols/03-editor/layout-guides.md) |
 | SY-03.19 | Scroll bars | Scroll bar, horizontal and vertical | Shown as soon as part of the drawing is out of the view, always visible (no hover needed); gone once the whole drawing fits (2026-11-26). Same in the synoptic editor. | Decided | [Editor](../symbols/03-editor/README.md#moving-around-the-drawing) |
 | SY-03.18 | Snapping | not said | Minimum set proposed by the research; snaps to the guides too. A temporary guide of equal spacing while a shape is moved, and no distribution (2026-11-26). | Proposed (minimum set), Decided (equal spacing) | [Editor](../symbols/03-editor/README.md), [Select](../symbols/03-editor/select.md#equal-spacing) |
 
@@ -435,7 +435,7 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | SY-07.1 | Interaction zone | Button (tool) | Draws a zone by hand; each drag adds one, as many as wanted (2026-11-25). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md#interaction-zone-tool) |
 | SY-07.2 | Place | — | A drawn zone, the whole symbol, or a layer (its real shape). Chosen by a click, in the list of the zones or on the drawing; no select (2026-11-25). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
-| SY-07.10 | Interaction zones | List, no + nor −, the icon of the mode on its title | In the left-hand panel, under the layers and the connection points, in every mode; the icon opens this mode (2026-11-26, said with a doubt: to judge on the screens; replaces the right-hand panel). A click selects a zone, its interactions on the right; from another mode, it opens this one. The tool adds a zone, the Delete key removes it. | Decided (to judge on the screens) | [Interaction mode](../symbols/07-interaction-mode/README.md#panels) |
+| SY-07.10 | Interaction zones | List, no + nor −, the icon of the mode on its title | In the left-hand panel, under the layers and the connection points, in every mode; the icon opens this mode, and clicked again in it goes back to the mode before (2026-11-26, said with a doubt: to judge on the screens; replaces the right-hand panel). A click selects a zone, its interactions on the right; from another mode, it opens this one. The tool adds a zone, the Delete key removes it. | Decided (to judge on the screens) | [Interaction mode](../symbols/07-interaction-mode/README.md#panels) |
 | SY-07.3 | Interactions of the place | List | Several gestures per place. | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.4 | Gesture | Select | Click, double click, right click, while pressed, key (proposed list). | Decided (list: Proposed) | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.5 | Effect | Segmented control + Select | Command or Faceplate, one click (2026-11-26, replaces the first select of 2026-11-24); for Command, a select of the commands of the type (set a signal, trigger). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
@@ -464,10 +464,11 @@ mindmap
         Signal
         Animation
         Its options, one click each
-        Value from, to
+        What the value does, as a sentence
         Proposed
           Transition
           Pivot
+          Try
       Text
         Shows the value
         Shows the unit only
@@ -481,16 +482,18 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | SY-08.1 | Animations of the part | List, + on its title | The part is a shape, a layer or a text. The + adds an output signal, then the kind of animation is chosen (2026-11-25). | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.2 | Signal | Select | Output signals of the type only. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
-| SY-08.3 | Animation | Select | Only the animations that fit the type of the signal and the selected part: Rotate, Spin, Move, Endless scroll, Flow, Shake, Fill, Arc, Colour, Opacity, Show or hide, Swap, Blink, Pulse, Border style, Flip by sign (names of 2026-11-26, [catalogue](../symbols/08-animation-mode/animation-catalogue.md)); the Product Owner picks those of this version. | Proposed (list) | [Catalogue of the animations](../symbols/08-animation-mode/animation-catalogue.md) |
-| SY-08.4 | How the value acts | Fields, no select | Follows from the animation (2026-11-26, the select "Mapping" removed): Follow the value (Value from, to; the part at each end), Speed (a value for one turn or one length per second), Steps (a table of ranges), Per state (true, false, or a column of the enum). Colour alone offers Steps or Blend for a number, one click. The options of an animation are segmented controls: Along (X, Y, Path), Direction, From (Bottom, Top, Left, Right, drawn as arrows), Colours (Fill, Border), Mirror, At zero. | Proposed | [Catalogue of the animations](../symbols/08-animation-mode/animation-catalogue.md) |
+| SY-08.3 | Animation | Select, grouped | Grouped by family (Movement, Filling, Appearance, Direction), each animation with a few words under its name (2026-11-26, proposed). Only the animations that fit the type of the signal and the selected part: Rotate, Spin, Move, Endless scroll, Flow, Shake, Fill, Arc, Colour, Opacity, Show or hide, Swap, Blink, Pulse, Border style, Flip by sign (names of 2026-11-26, [catalogue](../symbols/08-animation-mode/animation-catalogue.md)); the Product Owner picks those of this version. | Proposed (list) | [Catalogue of the animations](../symbols/08-animation-mode/animation-catalogue.md) |
+| SY-08.4 | What the value does | Pairs of fields, as a sentence, no select | Follows from the animation (2026-11-26, the select "Mapping" removed). A header "When opening is → The blade is at", then one line per pair `[value] → [result]`: two pairs for Follow the value and Blend, one for Speed (a value → turns or lengths a second), one line per step for Steps ("Lowest", then "From [80]", + on the title "Steps"), one line per state for Per state (the state read only; for an enum, the values of the chosen column, read only, with a link to the Enums page). A grey hint says what happens in between and outside. Colour alone offers Steps or Blend for a number, one click. The options of an animation are segmented controls: Along (X, Y, Path), Direction, From (Bottom, Top, Left, Right, drawn as arrows), Colours (Fill, Border), Mirror, At zero. | Proposed | [Catalogue of the animations](../symbols/08-animation-mode/animation-catalogue.md) |
 | SY-08.4c | Column of the enum | Select | For an enum signal: a column added to its enum on the Enums page of the Symbol Lib ([SY-12](#sy-12--enums-of-a-symbol-lib)); the property takes that column's value for the current item (2026-11-17). Only columns whose kind fits the property (assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#used-by-an-animation) |
-| SY-08.4b | Value from, to (Follow the value) | Two fields: minimum, maximum | Each a signal of the type, input or output, or a number typed (the number: to confirm); the value animated stays an output. | Decided (signal in or out), Proposed (number) | [Animation mode](../symbols/08-animation-mode/README.md#the-input-range-of-a-bounded-linear-animation) |
+| SY-08.4b | Value of a pair | Number field with a signal icon | A number typed, or a signal of the type, input or output, picked with the icon inside the field, which turns blue once a signal is chosen (2026-11-26, as the speed of a pipe style); the value animated stays an output. | Decided (signal in or out), Proposed (number) | [Animation mode](../symbols/08-animation-mode/README.md#the-input-range-of-a-bounded-linear-animation) |
 | SY-08.5 | Transition | Segmented control + number field | None or Linear, one click (2026-11-26), with a short duration, the field shown for Linear only. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.6 | Pivot | 9-point grid or a point | Centre by default; for Rotate, Spin and Flip by sign. The same grid as the anchors of the drawing mode. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.7 | Text: what it shows | Segmented control | Written text, the value of a signal, or the unit of a signal only, one click (2026-11-26); short labels Text, Value, Unit (assistant's). | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-08.8 | Text: show the unit | Toggle | With the value. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.9 | Text: becomes an input | Select | One select, the input signal written, or None (2026-11-26, the second select removed): a number signal gives a number input, an enum gives the menu of its display names (key sent); no text input, a signal is never a text (2026-11-18). What it writes is open since commands with a typed value were removed (2026-11-16); proposal: an input signal, directly. | Decided (input), Open (what it writes) | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.10 | Number format | Toggles | Thousand separator, sign, leading zeros, notation. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
+| SY-08.11 | Try | Slider + number field, segmented control or select | At the bottom of the animation: moves the drawing in the editor, nothing saved; a slider for a number, true or false for a boolean, the items for an enum (2026-11-26). | Proposed | [Animation mode](../symbols/08-animation-mode/README.md#rules) |
+| SY-08.12 | Pivot on the drawing | Mark | A small blue cross on the drawing, at the pivot of the selected animation, in this mode only (2026-11-26). | Proposed | [Animation mode](../symbols/08-animation-mode/README.md#rules) |
 
 Gaps:
 
@@ -561,7 +564,7 @@ mindmap
 | SY-10.2 | Position | Number fields | X and Y. | Decided | [Connection points](../symbols/pipes/connection-points.md) |
 | SY-10.3 | Direction | — | Removed (2026-11-25): no direction, no inlet or outlet; the direction of a flow comes from a signal. | Decided | [Connection points](../symbols/pipes/connection-points.md#rules) |
 | SY-10.4 | Name | Text field | Port A, port B... | Open | [Connection points](../symbols/pipes/connection-points.md) |
-| SY-10.5 | List of the points | List, no + nor −, the icon of the mode on its title | In the left-hand panel, under the layers, before the zones, in every mode; the icon opens this mode; from another mode, a click on a point opens this one (2026-11-26, [layout rule](README.md#nothing-hidden-every-list-in-every-mode)). The tool adds a point, the Delete key removes it. | Decided (to judge on the screens) | [Connection points](../symbols/pipes/connection-points.md#where-it-is-made-in-the-editor) |
+| SY-10.5 | List of the points | List, no + nor −, the icon of the mode on its title | In the left-hand panel, under the layers, before the zones, in every mode; the icon opens this mode, and clicked again in it goes back to the mode before; from another mode, a click on a point (Port A) opens this one (2026-11-26, [layout rule](README.md#nothing-hidden-every-list-in-every-mode)). The tool adds a point, the Delete key removes it. | Decided (to judge on the screens) | [Connection points](../symbols/pipes/connection-points.md#where-it-is-made-in-the-editor) |
 
 Gaps:
 

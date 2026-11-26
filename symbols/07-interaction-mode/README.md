@@ -17,7 +17,7 @@ The mode of the [editor](../03-editor/README.md) in which the user says what hap
   - a command of the type (see [Commands](../../metadata/draft.md#commands)): a command that sets a signal, or a trigger;
   - **opening the faceplate** of the element: the user says "this opens the faceplate of the element" (see [Type and faceplate](../02-type-and-faceplate.md)).
 - In the panel, the choice between the two is one click: **Command** or **Faceplate** (2026-11-26, [layout rule](../../screens/README.md#a-segmented-control-for-two-to-four-short-options)); for Command, a select of the commands of the type follows.
-- A layer that is the place of an interaction shows the icon of this mode on the right of its line in the layers, in every mode; a click on it opens this mode with the layer selected (Product Owner, 2026-11-26, see [Layers](../03-editor/layers.md)). The zones have their own list.
+- A layer that is the place of an interaction shows the icon of this mode on the right of its line in the layers, in every mode; a click on it opens this mode with the layer selected, a second click goes back to the mode before (Product Owner, 2026-11-26, see [Layers](../03-editor/layers.md)). The zones have their own list.
 - What the opened faceplate allows (display only, or display with commands) is **not** decided in the symbol editor. It is set later, once the symbol is placed, in the synoptic part (not written yet).
 - A symbol uses only the commands it links.
 
@@ -42,7 +42,7 @@ Each column has one job, from left to right (Product Owner, 2026-11-26: "la sél
 
 | Column | What it holds |
 | --- | --- |
-| Left-hand panel | The layers, the connection points, then the list **Interaction zones**: a line per zone; a click selects it. On its title, the icon of this mode, which opens it. **No + and no −** (Product Owner, 2026-11-26: "le + et le - ne sert strictement à rien"): the Interaction zone tool adds a zone, the Delete key removes the selected one. The list is there **in every mode**; a click on a zone from another mode opens this mode (see [the layout rule](../../screens/README.md#nothing-hidden-every-list-in-every-mode)). |
+| Left-hand panel | The layers, the connection points, then the list **Interaction zones**: a line per zone; a click selects it. On its title, the icon of this mode, which opens it, and clicked again in it goes back to the mode before. **No + and no −** (Product Owner, 2026-11-26: "le + et le - ne sert strictement à rien"): the Interaction zone tool adds a zone, the Delete key removes the selected one. The list is there **in every mode**; a click on a zone from another mode opens this mode (see [the layout rule](../../screens/README.md#nothing-hidden-every-list-in-every-mode)). |
 | Drawing area | The zones, seen on the symbol: a click selects one, the Interaction zone tool creates one. |
 | Right-hand panel | The interactions of the selected place, and their + (Product Owner, 2026-11-25: "tu cliques sur la zone et le menu à droite se fait en fonction"). |
 

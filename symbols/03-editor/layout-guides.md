@@ -8,7 +8,7 @@ Lines and grids drawn over the view of a symbol, to place and align shapes. They
 
 ## Rules
 
-- **Where**: a **Guides** button in a small floating bar **under the modes menu**, at the top left of the drawing area; it opens the **guides popup** (Product Owner, 2026-11-25: "un menu en dessous des modes").
+- **Where**: a **Guides** button in a small floating bar **under the modes menu**, centred at the top of the drawing area as the menu (2026-11-26); it opens the **guides popup** (Product Owner, 2026-11-25: "un menu en dessous des modes").
 - **Three kinds**, added with three buttons at the top of the popup:
 
 | Kind | What it draws | Its settings, on its line |
