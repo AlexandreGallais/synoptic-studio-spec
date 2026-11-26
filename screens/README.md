@@ -86,10 +86,11 @@ block-beta
     l3["Item n: the list grows downwards, the title and its + do not move"]:2
 ```
 
-### A segmented control for two or three short options
+### A segmented control for two to four short options
 
-- In a panel, a choice among **two or three short options** is a [segmented control](../design-system/07-molecules/segmented-control.md): the options side by side on one line, the chosen one in colour, changed in **one click** (Product Owner, 2026-11-26: "quand il n'y a pas beaucoup d'options, les listes, des fois, ça casse tout le truc"). Examples: Free or Anchored, Inside, Middle or Outside.
-- A **select** for the rest: four options or more, long labels that do not fit on the line, or a list that grows (signals, commands, fonts, gestures). Never a line of radios in a panel, which takes too much room (Product Owner, 2026-11-24).
+- In a panel, a choice among **two to four short options** is a [segmented control](../design-system/07-molecules/segmented-control.md): the options side by side on one line, the chosen one in colour, changed in **one click** (Product Owner, 2026-11-26: "quand il n'y a pas beaucoup d'options, les listes, des fois, ça casse tout le truc"; "pas de select à tout va [...] plutôt des radios sur une ligne"). Examples: Free or Anchored; Inside, Middle or Outside; Command or Faceplate; Bottom, Top, Left or Right. Four options only when they fit on the line of the panel.
+- A **select** for the rest: five options or more, long labels that do not fit on the line, or a list that grows (signals, commands, fonts, gestures, animations). Never a list of radios one under the other in a panel, which takes too much room (Product Owner, 2026-11-24).
+- No select for what follows from another choice: the kind of input of a text follows the type of its signal, the way the value acts follows the animation.
 - Where Figma has a select for the same field, the select stays (the format of the [colour field](../controls/colour-field.md), Fixed or Hug in the [size fields](../controls/size-fields.md)): see [Like Figma](#like-figma-one-line-per-value).
 - Radios stay where the choice sits in a form of the main area, not in a panel: the faceplate builder of Metadata ([MD-14.5](metadata.md#md-14--faceplate)), the General page of a synoptic ([SN-01.2](synoptics.md#sn-01--general-page-of-a-synoptic)), and the inputs a faceplate offers (`radio_horizontal`, `radio_vertical`).
 
@@ -208,7 +209,7 @@ Each screen has:
 | Number field | A number, with its unit when it has one, never "px". One shared component: arrows ±1, ±10 with a key (see [Number and text fields](../controls/number-and-text-fields.md)). |
 | Size fields | W and H on one line, Fixed or Hug (see [Size fields](../controls/size-fields.md)). |
 | Select | A choice in a list that drops down: four options or more, or long labels. |
-| Segmented control | Two or three short options side by side on one line, the chosen one in colour, one click (see [A segmented control for two or three short options](#a-segmented-control-for-two-or-three-short-options)). |
+| Segmented control | Two to four short options side by side on one line, the chosen one in colour, one click (see [A segmented control for two to four short options](#a-segmented-control-for-two-to-four-short-options)). |
 | Radio | A choice among a few options, all visible, in a form of the main area only; in a panel, a segmented control or a select. |
 | Toggle | On or off. |
 | Checkbox | Ticked or not, often in a list. |

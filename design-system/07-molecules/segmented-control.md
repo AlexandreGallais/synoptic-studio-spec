@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Design system](../README.md) › [Molecules](README.md) › segmented-control
 
-Two or three [buttons](../06-atoms/button.md) side by side, one selected: it switches a view or a mode, or chooses among two or three short options in a panel, in one click (see [the layout rule](../../screens/README.md#a-segmented-control-for-two-or-three-short-options)).
+Two to four [buttons](../06-atoms/button.md) side by side, one selected: it switches a view or a mode, or chooses among two to four short options in a panel, in one click (see [the layout rule](../../screens/README.md#a-segmented-control-for-two-to-four-short-options)).
 
 ## Figma
 

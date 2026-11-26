@@ -17,7 +17,7 @@ What every element of the drawing has in common: a [group](group.md), a [rectang
 
 Every element inside a group (a rectangle, an ellipse, a polygon, a path, a text, a group) has a **section of its own, "In the group"**, under its geometry (Product Owner, 2026-11-26: "que ce soit un carré, un rond, un polygone, peu importe. Mais il faut que ce soit une section à part"). It says how the element is placed in its group:
 
-- **Two placements, Free or Anchored**, chosen in one click with a [segmented control](../../screens/README.md#a-segmented-control-for-two-or-three-short-options) (Product Owner, 2026-11-26: "soit libre, soit avec ancre. Il n'y en a que deux"). "As the group" is no longer offered.
+- **Two placements, Free or Anchored**, chosen in one click with a [segmented control](../../screens/README.md#a-segmented-control-for-two-to-four-short-options) (Product Owner, 2026-11-26: "soit libre, soit avec ancre. Il n'y en a que deux"). "As the group" is no longer offered.
 - **Always an anchor**, in a 9-point grid, in both placements: every placement is computed from an anchor, so that a resized group never leaves a position to guess (Product Owner, 2026-11-26: "ce sera toujours un calcul par rapport à une ancre").
 
 | Placement | Anchor | X and Y | What it does |

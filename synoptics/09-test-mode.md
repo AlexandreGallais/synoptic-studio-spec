@@ -25,7 +25,7 @@ Proposed:
 - **Defaults**: every signal starts at the start value of the signal settings of the type of its placed symbol, with the values the synoptic changed.
 - **Ramps**: on a number signal, a small play button makes the value go from its minimum to its maximum and back, over a duration typed in seconds, to see an animation run without dragging a slider.
 - **Scenarios**: a set of test values can be saved under a name ("Pump P-101 tripped", "Night") and played again. Saved in the synoptic file, never sent anywhere.
-- **Quality**: a segmented control per signal (Good, Uncertain, Bad, one click; [layout rule](../screens/README.md#a-segmented-control-for-two-or-three-short-options), 2026-11-26), to see the quality mark the research advises (report T4, section 3.16).
+- **Quality**: a segmented control per signal (Good, Uncertain, Bad, one click; [layout rule](../screens/README.md#a-segmented-control-for-two-to-four-short-options), 2026-11-26), to see the quality mark the research advises (report T4, section 3.16).
 - **Links work**: a link zone opens its synoptic, in the Test mode too; a back button returns.
 - **Performance meter**: on demand, a small counter shows the time to draw each image and the images per second, to check the goals of the project (criteria C14 and C15) on the real synoptic.
 

@@ -138,7 +138,7 @@ Path: Canvas › Links.
 | --- | --- | --- | --- | --- | --- |
 | SN-07.1 | Link zone | Button (tool) | Draws a rectangle. | Proposed | [Navigation links](../synoptics/07-navigation-links.md) |
 | SN-07.2 | Target | Select + optional select | A synoptic, then a placed symbol of it. | Proposed | [Navigation links](../synoptics/07-navigation-links.md#the-panel-of-a-link) |
-| SN-07.3 | Look | Segmented control | Invisible, outline on hover, always outlined, one click ([layout rule](README.md#a-segmented-control-for-two-or-three-short-options), 2026-11-26); short labels Invisible, Hover, Always (assistant's). | Proposed | idem |
+| SN-07.3 | Look | Segmented control | Invisible, outline on hover, always outlined, one click ([layout rule](README.md#a-segmented-control-for-two-to-four-short-options), 2026-11-26); short labels Invisible, Hover, Always (assistant's). | Proposed | idem |
 | SN-07.4 | Tooltip | Text field | — | Proposed | idem |
 
 ## SN-08 · Faults

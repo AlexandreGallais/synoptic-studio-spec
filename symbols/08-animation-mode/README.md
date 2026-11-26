@@ -11,6 +11,9 @@ The mode of the [editor](../03-editor/README.md) in which the signals are linked
 - Tool bar: [Select](../03-editor/select.md) and [Hand](../03-editor/hand.md). Right-hand panel: the animations of the selected part.
 - The user selects a part (a shape, a layer, a text), **adds an output signal** to it with the + of its animations, then **chooses the kind of animation** (Product Owner, 2026-11-25: "faut pouvoir ajouter un signal qui est en sortie pour l'animation. Après, tu choisis quel type d'animation"). Only the kinds that fit the type of the signal are offered.
 - The kinds of animation possible: see the [catalogue of the animations](animation-catalogue.md), from which the Product Owner picks those of this version.
+- **How the value acts comes with the animation**: no separate choice of a "mapping". Each animation follows the value, takes it as a speed, works by steps, or per state, as its line of the catalogue says; only Colour offers two ways for a number, Steps or Blend, in one click (assistant's proposal, 2026-11-26).
+- **The panel of an animation**, the same order for all: the signal (select), the animation (select), then its own options, each choice of two to four short options in one click (Along, From, Colours, Mirror...), then the range of the value and what the part does at each end, then the transition and the pivot when the animation turns or mirrors the part.
+- A layer that has an animation shows the icon of this mode on the right of its line in the layers, in every mode; a click on the icon opens this mode with the layer selected (Product Owner, 2026-11-26: "que ce soit marqué [...] par une icône").
 - Only the output signals of the type are offered for an animation. An output is what the model sends, and the model computes what the symbol shows. An input is what the model receives and is never animated; it can only serve as the minimum or the maximum of a bounded linear animation (see [below](#the-input-range-of-a-bounded-linear-animation)).
 - A value ordered and a value obtained are two signals for the model. Example: `opening_order` (input, what the user asks) and `opening` (output, what the model computes). The symbol animates `opening`. The faceplate can show both (see [MD-14](../../screens/metadata.md#md-14--faceplate)).
 - Only a symbol with a type has animations. A symbol without a type has no signal to animate (see [Libraries and symbols](../01-libraries-and-symbols.md)).
@@ -26,8 +29,8 @@ flowchart LR
 
 | Signal type | Example | What it does |
 | --- | --- | --- |
-| Real or integer | `opening` from 0 to 1 | A range of values becomes a range of a property of the drawing: 0 to 1 becomes a rotation of 0 to 90 degrees. |
-| Boolean | `running` | A value gives a state: when `true`, an element blinks. |
+| Real or integer | `opening` from 0 to 1 | A range of values becomes a range of a property of the drawing: 0 to 1 becomes a rotation of 0 to 90 degrees (Rotate). |
+| Boolean | `fault` | A value gives a state: when `true`, an element blinks (Blink). |
 | Enum | `mode` | A property of the drawing takes the value of a column added to the enum in the Symbol Lib, for the current item: `mode` = 1 gives the colour of the column `color` for item 1 (see [Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md#used-by-an-animation)). |
 
 Every animation possible, with an example, is listed in the [catalogue of the animations](animation-catalogue.md) (2026-11-25), to choose from.

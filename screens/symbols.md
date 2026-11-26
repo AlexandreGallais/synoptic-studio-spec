@@ -165,7 +165,7 @@ mindmap
 | SY-03.12 | Layers | Tree | In the left-hand panel; groups as folders; one line per shape, its border included; the clip shapes under their shape. Under the layers, in every mode: the connection points (SY-10.5), then the interaction zones (SY-07.10), each title with the icon of its mode; a click on an element of another mode, or on that icon, opens that mode (2026-11-26, [layout rule](README.md#nothing-hidden-every-list-in-every-mode)). | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.13 | Search the layers | Button (search icon), then a text field | On the line of the title "Layers", under a separator; opens a field over the title that filters by name. No + on this title (2026-11-23). | Decided | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.14 | Unfold all, fold all | Button each | Every group of the tree. | Decided | [Layers](../symbols/03-editor/layers.md) |
-| SY-03.15 | Line of a layer | — | Name; icon of its kind, hide, lock proposed. | Decided (name), Proposed (the rest) | [Layers](../symbols/03-editor/layers.md) |
+| SY-03.15 | Line of a layer | — | Name and icon of its kind; on its right, the icon of the Animation mode when the layer has an animation, that of the Interaction mode when it is the place of an interaction, grey, blue while their mode is open; a click opens that mode on the layer, in every mode (2026-11-26). Hide, lock proposed. | Decided (name, kind, icons), Proposed (hide, lock) | [Layers](../symbols/03-editor/layers.md) |
 | SY-03.16 | Undo, redo | not said | The undo history keeps every action (decision 0093). No save: each change is written as it is made. | Decided (history, no save), Open (place) | [Files and conflicts](../storage/files-and-conflicts.md#undo-history) |
 | SY-03.17 | Layout guides | Button in a floating bar under the modes menu, then a popup | + Column, + Row, + Grid; one line per guide with its value, a place button and a −; the place button makes the guide follow the mouse, a click puts it; an eye hides them all; grid cells W × H linked by a chain (2026-11-25). | Decided (place, eye, placement from the line, grid W × H linked by a chain), Proposed (the rest of the form) | [Layout guides](../symbols/03-editor/layout-guides.md) |
 | SY-03.19 | Scroll bars | Scroll bar, horizontal and vertical | Shown as soon as part of the drawing is out of the view, always visible (no hover needed); gone once the whole drawing fits (2026-11-26). Same in the synoptic editor. | Decided | [Editor](../symbols/03-editor/README.md#moving-around-the-drawing) |
@@ -291,8 +291,8 @@ The order of the panel: the options that make the shape (polygon), the geometry,
 | SY-04.14 | Corner radius | Number field, no unit | Under the height (2026-11-25): for the whole rectangle, for every corner of a path drawn with the pen, and for every corner of a polygon (2026-11-26). Never for an ellipse. | Decided | [Rectangle](../symbols/04-drawing-mode/rectangle.md), [Pen](../symbols/04-drawing-mode/pen.md#panel-of-a-path) |
 | SY-04.15 | Link width and height | Icon button (link), at the end of the line W, H | Visible equivalent of the square or circle key. An icon on the size line rather than a toggle of its own (assistant, 2026-11-24). | Decided (link), Proposed (icon on the line) | [Size fields](../controls/size-fields.md#width-and-height-linked) |
 | SY-04.16 | Polygon: number of sides | Number field | 3 to 20; first in the panel (2026-11-25). | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
-| SY-04.17 | Polygon: how it fills its box | Segmented control | Filled, Equilateral, one click ([layout rule](README.md#a-segmented-control-for-two-or-three-short-options), 2026-11-26) (a third mode "like Figma": Open, advised against). | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
-| SY-04.18 | Polygon: anchor | 9-point grid + segmented control | An anchor of the box, and whether a Corner or a Side touches it, one click (2026-11-26; the labels "Corner", "Side": assistant's). | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
+| SY-04.17 | Polygon: how it fills its box | Segmented control | Filled, Equilateral, one click ([layout rule](README.md#a-segmented-control-for-two-to-four-short-options), 2026-11-26) (a third mode "like Figma": Open, advised against). | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
+| SY-04.18 | Polygon: placed in its box | 9-point grid + segmented control | An anchor of the box, and whether a Corner or a Side touches it, one click (2026-11-26; the labels "Corner", "Side": assistant's). Labelled "Placed in box", so as not to read as the anchor in the group, lower in the same panel (2026-11-26). | Decided | [Polygon](../symbols/04-drawing-mode/polygon.md) |
 | SY-04.19 | Group: width, height | [Size fields](../controls/size-fields.md), Fixed or Hug | W and H on one line; each value always shown, in pixels, no unit; the mode in the field, with a small arrow that opens a menu Fixed, Hug (2026-11-24). Hug by default. | Decided | [Group](../symbols/04-drawing-mode/group.md#two-sizes-hug-or-fixed) |
 | SY-04.20 | Group: placement of the children | Segmented control + 9-point grid | Free (default) or Anchored, one click; the grid of the anchor always shown, of no use in Free (2026-11-26, replaces centred by default); the placement a child takes when it enters the group, then keeps (2026-11-26); Hug or Fixed alike, free children included (2026-11-26); no flex. No rotation for a group (2026-11-26). | Decided (choice), Proposed (form) | [Group](../symbols/04-drawing-mode/group.md#layout-of-the-children) |
 | SY-04.21 | Child: section "In the group" | Section of its own: segmented control + 9-point grid | For every kind of element in a group (2026-11-26). Free (X and Y typed from the anchor, follows it when the group is resized) or Anchored (touches the anchor, X and Y read only), one click; always an anchor; no "As the group" (2026-11-26); a second grid for the anchor of the child makes it absolute (2026-11-25). | Decided (choice), Proposed (form) | [Geometry](../symbols/04-drawing-mode/geometry.md#in-the-group) |
@@ -438,7 +438,7 @@ mindmap
 | SY-07.10 | Interaction zones | List, no + nor −, the icon of the mode on its title | In the left-hand panel, under the layers and the connection points, in every mode; the icon opens this mode (2026-11-26, said with a doubt: to judge on the screens; replaces the right-hand panel). A click selects a zone, its interactions on the right; from another mode, it opens this one. The tool adds a zone, the Delete key removes it. | Decided (to judge on the screens) | [Interaction mode](../symbols/07-interaction-mode/README.md#panels) |
 | SY-07.3 | Interactions of the place | List | Several gestures per place. | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.4 | Gesture | Select | Click, double click, right click, while pressed, key (proposed list). | Decided (list: Proposed) | [Interaction mode](../symbols/07-interaction-mode/README.md) |
-| SY-07.5 | Effect | Select + Select | The first select: send a command, or open the faceplate; the second, for a command: a command of the type (set a signal, trigger). Selects rather than radios (2026-11-24). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
+| SY-07.5 | Effect | Segmented control + Select | Command or Faceplate, one click (2026-11-26, replaces the first select of 2026-11-24); for Command, a select of the commands of the type (set a signal, trigger). | Decided | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.6 | Disabled when | Select (boolean output signal) | The place looks inactive and sends nothing. | Proposed | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.7 | Confirm before sending | Toggle | Off by default. | Proposed | [Interaction mode](../symbols/07-interaction-mode/README.md) |
 | SY-07.8 | Tooltip | Text field | Plain text. | Proposed | [Interaction mode](../symbols/07-interaction-mode/README.md) |
@@ -462,8 +462,9 @@ mindmap
     Panel of the selected part
       Animations
         Signal
-        Property
-        Mapping
+        Animation
+        Its options, one click each
+        Value from, to
         Proposed
           Transition
           Pivot
@@ -480,21 +481,21 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | SY-08.1 | Animations of the part | List, + on its title | The part is a shape, a layer or a text. The + adds an output signal, then the kind of animation is chosen (2026-11-25). | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.2 | Signal | Select | Output signals of the type only. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
-| SY-08.3 | Kind of animation | Select | Only the kinds that fit the type of the signal; the possible kinds are listed in the [catalogue](../symbols/08-animation-mode/animation-catalogue.md) (2026-11-25), the Product Owner picks those of this version. | Proposed (list) | [Catalogue of the animations](../symbols/08-animation-mode/animation-catalogue.md) |
-| SY-08.4 | Mapping | Select + fields | Bounded linear (input range, output range), by ranges (table), two values (boolean). | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
+| SY-08.3 | Animation | Select | Only the animations that fit the type of the signal and the selected part: Rotate, Spin, Move, Endless scroll, Flow, Shake, Fill, Arc, Colour, Opacity, Show or hide, Swap, Blink, Pulse, Border style, Flip by sign (names of 2026-11-26, [catalogue](../symbols/08-animation-mode/animation-catalogue.md)); the Product Owner picks those of this version. | Proposed (list) | [Catalogue of the animations](../symbols/08-animation-mode/animation-catalogue.md) |
+| SY-08.4 | How the value acts | Fields, no select | Follows from the animation (2026-11-26, the select "Mapping" removed): Follow the value (Value from, to; the part at each end), Speed (a value for one turn or one length per second), Steps (a table of ranges), Per state (true, false, or a column of the enum). Colour alone offers Steps or Blend for a number, one click. The options of an animation are segmented controls: Along (X, Y, Path), Direction, From (Bottom, Top, Left, Right, drawn as arrows), Colours (Fill, Border), Mirror, At zero. | Proposed | [Catalogue of the animations](../symbols/08-animation-mode/animation-catalogue.md) |
 | SY-08.4c | Column of the enum | Select | For an enum signal: a column added to its enum on the Enums page of the Symbol Lib ([SY-12](#sy-12--enums-of-a-symbol-lib)); the property takes that column's value for the current item (2026-11-17). Only columns whose kind fits the property (assistant's reading). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#used-by-an-animation) |
-| SY-08.4b | Input range of a bounded linear | Two fields: minimum, maximum | Each a signal of the type, input or output, or a number typed (the number: to confirm); the value animated stays an output. | Decided (signal in or out), Proposed (number) | [Animation mode](../symbols/08-animation-mode/README.md#the-input-range-of-a-bounded-linear-animation) |
+| SY-08.4b | Value from, to (Follow the value) | Two fields: minimum, maximum | Each a signal of the type, input or output, or a number typed (the number: to confirm); the value animated stays an output. | Decided (signal in or out), Proposed (number) | [Animation mode](../symbols/08-animation-mode/README.md#the-input-range-of-a-bounded-linear-animation) |
 | SY-08.5 | Transition | Segmented control + number field | None or Linear, one click (2026-11-26), with a short duration, the field shown for Linear only. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
-| SY-08.6 | Pivot | 9-point grid or a point | Centre by default. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
+| SY-08.6 | Pivot | 9-point grid or a point | Centre by default; for Rotate, Spin and Flip by sign. The same grid as the anchors of the drawing mode. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.7 | Text: what it shows | Segmented control | Written text, the value of a signal, or the unit of a signal only, one click (2026-11-26); short labels Text, Value, Unit (assistant's). | Decided | [Text](../symbols/04-drawing-mode/text.md) |
 | SY-08.8 | Text: show the unit | Toggle | With the value. | Decided | [Animation mode](../symbols/08-animation-mode/README.md) |
-| SY-08.9 | Text: becomes an input | Select + Select | Selects rather than radios (2026-11-24). Number input or enum menu (display names shown, key sent); no text input, a signal is never a text (2026-11-18). What it writes is open since commands with a typed value were removed (2026-11-16); proposal: an input signal, directly. | Decided (input), Open (what it writes) | [Animation mode](../symbols/08-animation-mode/README.md) |
+| SY-08.9 | Text: becomes an input | Select | One select, the input signal written, or None (2026-11-26, the second select removed): a number signal gives a number input, an enum gives the menu of its display names (key sent); no text input, a signal is never a text (2026-11-18). What it writes is open since commands with a typed value were removed (2026-11-16); proposal: an input signal, directly. | Decided (input), Open (what it writes) | [Animation mode](../symbols/08-animation-mode/README.md) |
 | SY-08.10 | Number format | Toggles | Thousand separator, sign, leading zeros, notation. | Proposed | [Animation mode](../symbols/08-animation-mode/README.md) |
 
 Gaps:
 
-- Blink: its rate is fixed (proposed), but is it a property, or a mapping of a boolean?
-- Remove an animation; two animations on the same property (proposed: forbidden, flagged).
+- Remove an animation: a bin on the line, on hover, as drawn; two animations on the same property (proposed: forbidden, flagged).
+- Each animation is drawn and explained, its panel included, in the Figma section "Symbol mode · Animations (2026-11-26)" of the page Spec.
 
 ## SY-09 · Run mode (name proposed: Test mode)
 
@@ -525,7 +526,7 @@ mindmap
 | SY-09.1 | Test value of a number | Number field or Slider | Any value: a signal has no bounds of its own since 2026-11-17 (a bound is a plain signal). The list also shows the signals used as a minimum or a maximum of an animation, inputs included (proposed). | Decided (field), Proposed (bound signals listed) | [Run mode](../symbols/09-run-mode/README.md#open-questions) |
 | SY-09.2 | Test value of an enum | Select | The display names of the enum. | Decided | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.3 | Test value of a boolean | Toggle | — | Proposed | [Run mode](../symbols/09-run-mode/README.md) |
-| SY-09.4 | Quality of a signal | Select | Good, uncertain, bad. | Proposed | [Run mode](../symbols/09-run-mode/README.md) |
+| SY-09.4 | Quality of a signal | Segmented control | Good, Uncertain, Bad, one click (2026-11-26, as in the test mode of a synoptic). | Proposed | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.5 | Simulated screen | Number fields (or a list of screens) | Size and resolution; scale factor proposed. | Decided | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.6 | Simulation log | List | A line per action: time, place, gesture, effect, value (proposed form). | Decided (form: Open) | [Run mode](../symbols/09-run-mode/README.md) |
 | SY-09.7 | Simulated faceplate | Panel | Opens when an interaction opens the faceplate. | Decided (form: Open) | [Run mode](../symbols/09-run-mode/README.md) |

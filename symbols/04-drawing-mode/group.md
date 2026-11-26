@@ -35,7 +35,7 @@ The group says how its children are placed (Product Owner, 2026-11-26: "pour un 
 | **Free** (the default) | The child stays where the user puts it, its X and Y measured from the anchor of the group. |
 | **Anchored** | The child goes on the chosen [anchor](../03-editor/anchors.md) of the group ("tous les enfants qui n'ont pas décidé seront par rapport à l'ancre du parent"). |
 
-- **Free or Anchored in one click**, with a [segmented control](../../screens/README.md#a-segmented-control-for-two-or-three-short-options), not a select (Product Owner, 2026-11-26).
+- **Free or Anchored in one click**, with a [segmented control](../../screens/README.md#a-segmented-control-for-two-to-four-short-options), not a select (Product Owner, 2026-11-26).
 - **The 9-point grid of the anchor is always shown**, in Free too, where it does nothing (Product Owner, 2026-11-26: "autant le montrer tout le temps quand même").
 - Each child has its own placement, Free or Anchored, always with an anchor (see [Geometry](geometry.md#in-the-group)).
 - This replaces "all the children centred by default" (2026-11-24): the centre is now one anchor among nine.

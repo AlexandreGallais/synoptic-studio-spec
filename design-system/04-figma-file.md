@@ -42,6 +42,12 @@ Page Spec, section "Symbol mode · test screens (2026-11-23)" ([`776:81`](https:
 | Interaction | SY-07 · the interactions of Zone 1 | [`930:3062`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=930-3062) |
 | Run | SY-09 · the pump tried with test values | [`931:2828`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=931-2828) |
 
+Review of homogeneity (2026-11-26), on every screen of the section: the same layer tree in every editor screen (Body, Casing with its clip shape "Clip · Rectangle 1", Outlet, Impeller, Tag), the icon of the Animation mode on Casing and Impeller and that of the Interaction mode on Body ([SY-03.15](../screens/symbols.md#sy-03--symbol-editor-what-every-mode-shares)), a layer in bold only when selected; every field 27 high, as in the Drawing mode; the Effect of an interaction in one click (Command, Faceplate); no − on the list of the interactions, a bin on hover; the paint popup of the rectangle no longer over the tool bar; the names of the connection points no longer cut; "Placed in box" for the anchor of a polygon; the pipe styles in the same order and without + on both Pipes screens.
+
+## Animation screens
+
+Page Spec, section "Symbol mode · Animations (2026-11-26)" ([`972:3119`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=972-3119)), on the right of "Symbol mode · Effects kept": the catalogue of the animations, one line each ([`972:3122`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=972-3122)), then one row per animation, 19 rows: what it does, the part drawn at three values of its signal, and its right-hand panel. Quick test screens, with no design-system component (decision 0089). The spec: [Catalogue of the animations](../symbols/08-animation-mode/animation-catalogue.md).
+
 ## Effects screens
 
 Page Spec, section "Symbol mode · Effects (2026-11-25)" ([`905:609`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=905-609)), on the right of "Symbol mode · test screens": the catalogue of the effects ([`905:612`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=905-612)), 42 cards in 10 families, then one row per effect: its line and popup on the left, its editing mode on the right when it has one. Quick test screens, with no design-system component (decision 0089). The spec: [Effects](../symbols/04-drawing-mode/effects-and-masks.md).

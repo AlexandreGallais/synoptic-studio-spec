@@ -58,7 +58,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.15,
 - Figma's prototype chains triggers and actions without running anything. Opinion of the report: the log is a list, one line per action: time, place, gesture, effect, value.
 - Faceplate: a click on a value or an element opens its faceplate, which must not hide the graphic (HMI guide). Opinion: a floating window near the symbol, that can be moved.
 - Screen simulation: size and resolution are not enough; opinion of the report: add the **scale factor of the system** (100 % to 200 %).
-- Quality: a selector of quality per signal (good, uncertain, bad) would let the user test the quality mark (see [Animation mode](../08-animation-mode/README.md)).
+- Quality: a segmented control per signal, Good, Uncertain, Bad, in one click (2026-11-26), would let the user test the quality mark (see [Animation mode](../08-animation-mode/README.md)).
 - Name: nothing runs here. Opinion of the report: **Test mode** (the archived Figma file has a separate "Runtime" page).
 
 ## Open questions

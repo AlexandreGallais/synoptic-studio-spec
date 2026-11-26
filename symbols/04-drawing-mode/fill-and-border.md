@@ -46,7 +46,7 @@ The border is a [segment list](../../controls/segment-list.md) (Product Owner, 2
   - **One line**: a plain border.
   - **Several lines**: a **dash sequence** (the same rule as for pipes, see [Pipe styles](../pipes/pipe-styles.md#dash-sequences)): the segments follow each other along the border and repeat; a gap is a segment at **0 %** opacity: "black 100 % 2, black 0 % 2" gives classic dashes; "red 4, black 4" gives red and black dashes; as many lines as the user wants.
   - **No line**: no border; there is no toggle "Border" (Product Owner, 2026-11-24).
-- **Size** and **position**, on one line under the lines: the width of the border in pixels, written without unit (example: 2), then a **segmented control** Inside, Middle, Outside, changed in one click (Product Owner, 2026-11-26, replacing the select of 2026-11-24; see [the layout rule](../../screens/README.md#a-segmented-control-for-two-or-three-short-options)).
+- **Size** and **position**, on one line under the lines: the width of the border in pixels, written without unit (example: 2), then a **segmented control** Inside, Middle, Outside, changed in one click (Product Owner, 2026-11-26, replacing the select of 2026-11-24; see [the layout rule](../../screens/README.md#a-segmented-control-for-two-to-four-short-options)).
 - The dashes are computed along the border, as cleanly as possible; an odd cut in a corner is accepted.
 
 ### Border of an open path

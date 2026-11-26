@@ -16,6 +16,8 @@ The mode of the [editor](../03-editor/README.md) in which the user says what hap
 - Each interaction links a place, a gesture and what happens. What happens is one of two things:
   - a command of the type (see [Commands](../../metadata/draft.md#commands)): a command that sets a signal, or a trigger;
   - **opening the faceplate** of the element: the user says "this opens the faceplate of the element" (see [Type and faceplate](../02-type-and-faceplate.md)).
+- In the panel, the choice between the two is one click: **Command** or **Faceplate** (2026-11-26, [layout rule](../../screens/README.md#a-segmented-control-for-two-to-four-short-options)); for Command, a select of the commands of the type follows.
+- A layer that is the place of an interaction shows the icon of this mode on the right of its line in the layers, in every mode; a click on it opens this mode with the layer selected (Product Owner, 2026-11-26, see [Layers](../03-editor/layers.md)). The zones have their own list.
 - What the opened faceplate allows (display only, or display with commands) is **not** decided in the symbol editor. It is set later, once the symbol is placed, in the synoptic part (not written yet).
 - A symbol uses only the commands it links.
 

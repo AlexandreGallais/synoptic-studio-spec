@@ -2,127 +2,137 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Animation mode](README.md) › Catalogue of the animations
 
-Status: draft, written by the assistant at the Product Owner's request (2026-11-25: "fais-moi une liste de toutes les animations possibles [...] ça me permettra de réfléchir"). Nothing here is chosen yet: it is a list to think from.
+Status: draft, proposed by the assistant (2026-11-25, renamed and regrouped on 2026-11-26 at the Product Owner's request: "trouve de meilleurs noms [...] je veux vraiment comprendre chaque animation parfaitement"). Nothing here is chosen yet: the Product Owner picks the animations of this version.
 
-Every animation that a signal could drive on a part of a symbol, with an example from industrial synoptics. The Product Owner picks from it which ones the [animation mode](README.md) offers.
+Every animation that a signal can drive on a part of a symbol, one line each, with a short name that says what the part does. Each one is drawn and explained in Figma, page Spec, section "Symbol mode · Animations (2026-11-26)": the part at three values, and its options in the right-hand panel.
 
 ## How to read it
 
 - **Signal**: the type of the output signal that drives it: a number (real or integer), a boolean, an enum.
-- **Mapping**: how the value becomes the animation (see [Shapes of mapping](README.md#shapes-of-mapping)): bounded linear, by ranges, two values, column of the enum, or a **speed** (the value sets how fast something moves; its sign sets which way).
+- **How the value acts**: one of four ways, always the same words in the panel.
+  - **Follow the value**: between a minimum and a maximum of the value, the part goes from one end to the other (an angle, a position, a fill). Under the minimum or over the maximum, it stays at its end. The minimum and the maximum are each a number or a signal ([below](README.md#the-input-range-of-a-bounded-linear-animation)).
+  - **Speed**: the value is a speed. The bigger the value, the faster; the sign gives the way; zero stops.
+  - **Steps**: a table of ranges of the value, each with its result (a colour, shown or hidden).
+  - **Per state**: a boolean gives two results (true, false); an enum gives one result per item, taken from a column of the enum ([Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md)).
 - **Cost**: what the second research expects in the browser, nothing measured (see [Properties a signal can drive](README.md#properties-a-signal-can-drive)). Low: done by the graphics card (transform, opacity). Medium: a repaint at each change of value. High: a repaint at each frame, or a filter.
-- **Research**: the opinion of the report T4 when it gave one; "new" when the assistant adds it here.
-
-The direction of a movement comes from the **sign of the signal**: the model sends a positive or a negative value, and the animation runs one way or the other (Product Owner, 2026-11-25). Zero stops it.
 
 ```mermaid
 mindmap
   root((Animations))
     Movement
-      Rotation by a value
-      Continuous rotation at a speed
-      Move along a line
-      Move along a path
-      Continuous scrolling at a speed
-      Flow dashes
-      Vibration
-    Size and fill
-      Fill level
-      Bar
-      Arc gauge
-      Size
+      Rotate
+      Spin
+      Move
+      Endless scroll
+      Flow
+      Shake
+    Filling
+      Fill
+      Arc
     Appearance
-      Colour by ranges
-      Colour by state
-      Colour by a boolean
-      Colour between two colours
+      Colour
       Opacity
-      Visibility
-      Layer by state
-      Blinking
+      Show or hide
+      Swap
+      Blink
       Pulse
-      Border by state
+      Border style
     Text
-      Value and unit
-      Unit only
-      Text by state
-      Text colour
+      Value
+      Unit
+      State name
     Direction
-      Arrow turned by the sign
-      Mirror by the sign
+      Flip by sign
 ```
 
 ## Movement
 
-| # | Animation | Signal | Mapping | Example | Cost | Research |
+| # | Animation | What the part does | Signal | How the value acts | Example | Cost |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | **Rotation by a value**: the part turns to an angle | Number | Bounded linear | A damper opens from 0° to 90° with `opening` 0 to 1; the needle of a dial goes from −135° to 135° | Low | Offer |
-| 2 | **Rotation by steps**: the part takes one angle per state | Enum | Column of the enum | A selector switch on Off, Manual, Auto: 0°, 45°, 90° | Low | New |
-| 3 | **Continuous rotation at a speed**: the part turns without stopping, faster when the value grows | Number | Speed: turns per second from the value, the sign gives the direction | The impeller of a pump, a fan, a mixer, a motor shaft; `speed` = −10 turns it the other way | Low | New |
-| 4 | **Move along a line**: the part slides between two positions | Number | Bounded linear | The stem of a valve goes up as it opens; a piston; the float of a level; a crane hook | Low | Offer |
-| 5 | **Move along a path**: the part follows a line drawn in the symbol | Number | Bounded linear, 0 to 1 along the path | A cart on a rail; a carriage on a curved track; a part on a bent conveyor | Medium, to measure | New |
-| 6 | **Continuous scrolling at a speed**: a pattern or a row of parts moves without stopping | Number | Speed, the sign gives the direction | The belt of a conveyor; parcels moving on it; a chain | Low if a transform | New |
-| 7 | **Flow dashes**: dashes travel along a line | Number | Speed, the sign gives the direction | The flow in a pipe drawn inside the symbol; the direction of a flow inside a heat exchanger | High: repaint at each frame | Pipes and lines only, subject to POC P10 |
-| 8 | **Vibration**: the part shakes a little | Boolean | Two values: still, shaking | A motor with a vibration alarm | Low | New; to weigh against "keep the movement for the abnormal" |
+| 1 | **Rotate** | Turns to an angle given by the value, around its pivot, and stays there. | Number, boolean, enum | Follow the value (angle at the minimum, angle at the maximum); per state (an angle per item) | A damper opens from 0° to 90° with `opening` 0 to 1; a dial needle from −135° to 135°; a selector on Off, Manual, Auto at 0°, 45°, 90° | Low |
+| 2 | **Spin** | Turns without stopping, around its pivot. | Number | Speed: the user says how many turns per second the part makes at a given value; half the value, half the speed; a negative value turns it the other way; zero stops it | The impeller of a pump, a fan, a mixer: `speed` 1 500 rpm gives 1 turn a second, −1 500 the other way | Low |
+| 3 | **Move** | Moves to a position given by the value, and stays there. **Along**: X (sideways), Y (up and down), or a Path drawn in the symbol. | Number, boolean, enum | Follow the value (position at the minimum, at the maximum; for a path, 0 % to 100 % of its length); per state (a position per item) | The stem of a valve goes up as it opens (Vertical); a slider (Horizontal); a cart on a curved rail (Path) | Low (Path: medium, to measure) |
+| 4 | **Endless scroll** | What is inside the part slides without end and comes back on the other side, like a conveyor belt. The part shows only what is inside its box. **Direction**: Horizontal or Vertical. | Number | Speed | The parcels on a conveyor belt, a chain, a moving walkway | Low |
+| 5 | **Flow** | Dashes travel along a line or along the border of the part. | Number | Speed | The flow in a pipe drawn inside the symbol; the way of a flow in a heat exchanger | High: repaint at each frame (POC P10) |
+| 6 | **Shake** | Shakes a little, a few pixels, while the value is true. | Boolean | Per state | A motor with a vibration alarm | Low; keep the movement for the abnormal |
 
-## Size and fill
+## Filling
 
-| # | Animation | Signal | Mapping | Example | Cost | Research |
+| # | Animation | What the part does | Signal | How the value acts | Example | Cost |
 | --- | --- | --- | --- | --- | --- | --- |
-| 9 | **Fill level**: a part is filled up to a height, cut by a rectangle that moves | Number | Bounded linear | The level of a tank or a silo; the charge of a battery; up, down, left or right | Low if the cut is simple | Offer, as a dedicated animation |
-| 10 | **Bar**: a bar grows in length | Number | Bounded linear | A bar of power beside a motor; a bar of temperature | Low (the same cut as the fill level) | New, a variant of 9 |
-| 11 | **Arc gauge**: a ring fills by its angle | Number | Bounded linear | A round gauge from 0 to 100 %; the opening of a valve shown as a ring | Medium: repaint at each change | New, to measure |
-| 12 | **Size**: the part grows or shrinks | Number | Bounded linear | A flame bigger as the burner gives more power | Low, but makes the borders grow | Not first: against "never a scale" |
+| 7 | **Fill** | Is shown only up to the value, the rest cut off. **From**: Bottom, Top, Left or Right, shown in the panel as the arrows ↑ ↓ → ← of the way it grows. | Number | Follow the value: 0 % shown at the minimum, 100 % at the maximum | The level of a tank from the bottom; a bar of power from the left; the charge of a battery | Low (a simple cut) |
+| 8 | **Arc** | Is shown along an arc up to the value, like a ring gauge. **Start** and **end** angle of the full arc. | Number | Follow the value | A round gauge from 0 to 100 %; the opening of a valve shown as a ring | Medium, to measure |
+
+A gauge with **thresholds** (green, then orange, then red as the value grows) is an Arc or a Fill **plus** a Colour by steps on the same part: two animations, on two different properties.
 
 ## Appearance
 
-| # | Animation | Signal | Mapping | Example | Cost | Research |
+| # | Animation | What the part does | Signal | How the value acts | Example | Cost |
 | --- | --- | --- | --- | --- | --- | --- |
-| 13 | **Colour by ranges**: the fill or the border takes one colour per range of values | Number | By ranges | A temperature: normal, high from 80, very high from 95 | Medium, but rare (a change of range) | Offer |
-| 14 | **Colour by state**: one colour per item of an enum | Enum | Column of the enum ([Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md)) | A motor: stopped grey, running green, fault red | Medium, rare | Offer (decided as a column, 2026-11-17) |
-| 15 | **Colour by a boolean**: two colours | Boolean | Two values | A valve open or closed | Medium, rare | Offer |
-| 16 | **Colour between two colours**: the colour slides from one to the other with the value | Number | Bounded linear, between two colours | A pipe wall from blue (cold) to red (hot) | Medium: repaint at each change of value | New, to measure |
-| 17 | **Opacity**: the part fades in or out with the value | Number | Bounded linear | The density of a smoke; the intensity of a lamp | Low | Offer |
-| 18 | **Visibility**: the part is shown or hidden | Boolean, or a number by ranges | Two values | A fault icon shown when `fault` is true; a flame shown when the burner is on | Low | Offer |
-| 19 | **Layer by state**: one layer among several is shown, the others hidden | Enum | Column of the enum (a layer per item) | A valve drawn open, closed, in transit; a motor drawn three ways | Low | Offer (visible layers in the state table) |
-| 20 | **Blinking**: the part goes on and off at a fixed rate | Boolean | Two values: still, blinking | An alarm not yet acknowledged | Low (opacity) | Offer, under three flashes per second, with a global stop |
-| 21 | **Pulse**: the opacity rises and falls softly | Boolean | Two values | An element that asks for attention, less loud than a blink | Low | New |
-| 22 | **Border by state**: the border changes width or becomes dashed | Enum or boolean | Column of the enum, two values | A dashed border when the equipment is in manual mode | Medium, rare | New |
-| 23 | **Gradient that moves**: a stop of a gradient follows the value | Number | Bounded linear | A level with a soft surface | To measure | Subject to a POC |
+| 9 | **Colour** | Its fill, its border or, for a text, its letters take a colour given by the value. **Colours**: Fill or Border. For a number: **Steps** (a colour per range) or **Blend** (slides between two colours). | Number, boolean, enum | Steps or Blend; per state (two colours, or a colour column of the enum) | A temperature normal, high from 80, very high from 95 (Steps); a pipe wall from blue to red (Blend); a motor stopped grey, running green, fault red (per state) | Medium, rare (Blend: at each change) |
+| 10 | **Opacity** | Fades from transparent to opaque. | Number | Follow the value (opacity at the minimum, at the maximum) | The density of a smoke; the glow of a lamp | Low |
+| 11 | **Show or hide** | Is shown or hidden. | Boolean, number, enum | Per state (shown when true, or when false); Steps (shown inside a range) | A fault icon shown when `fault` is true; a flame shown when the burner is on | Low |
+| 12 | **Swap** | On a group: one of its children is shown at a time, the others hidden: the one of the current state. | Boolean, enum | Per state (a child per item) | A valve drawn open, closed, in transit | Low |
+| 13 | **Blink** | Goes on and off at a fixed rate, under three flashes per second, while the value is true. | Boolean | Per state | An alarm not acknowledged | Low; for the abnormal only, a global stop |
+| 14 | **Pulse** | Its opacity rises and falls softly while the value is true: quieter than Blink. | Boolean | Per state | An element that asks for attention | Low |
+| 15 | **Border style** | Its border becomes dashed, or thicker, by state. | Boolean, enum | Per state | A dashed border when the equipment is in manual mode | Medium, rare |
 
 ## Text
 
-| # | Animation | Signal | Mapping | Example | Cost | Research |
-| --- | --- | --- | --- | --- | --- | --- |
-| 24 | **Value and unit**: the text shows the value, in the display unit | Number | — | `12.5 m³/h` beside a flowmeter | Medium (text repainted) | Decided (see [Texts: value and unit](README.md#texts-value-and-unit)) |
-| 25 | **Unit only**: the text shows the display unit of a signal | Number | — | The unit on its own under a big value | Medium | Decided |
-| 26 | **Text by state**: the text shows the display name of the current item | Enum | — | "Running", "Stopped", "Fault" under a motor | Medium, rare | New (the display name of the item) |
-| 27 | **Text colour**: the colour of a text by ranges or by state | Number, enum, boolean | By ranges, column of the enum, two values | A value written in red above its alarm threshold | Medium, rare | New |
+A text shows a value through the field "What it shows" of the text (Text, Value, Unit: [SY-08.7](../../screens/symbols.md#sy-08--animation-mode)), not through the list of animations. They are listed here so that the whole is in one place.
+
+| # | Animation | What the text does | Signal | Example | Cost |
+| --- | --- | --- | --- | --- | --- |
+| 16 | **Value** | Shows the value, in the display unit, with or without the unit (see [Texts: value and unit](README.md#texts-value-and-unit)). | Number | `12.5 m³/h` beside a flowmeter | Medium (text repainted) |
+| 17 | **Unit** | Shows the display unit of a signal only. | Number | The unit alone under a big value | Medium |
+| 18 | **State name** | Shows the display name of the current item. | Enum | "Running", "Stopped", "Fault" under a motor | Medium, rare |
 
 ## Direction
 
-| # | Animation | Signal | Mapping | Example | Cost | Research |
+| # | Animation | What the part does | Signal | How the value acts | Example | Cost |
 | --- | --- | --- | --- | --- | --- | --- |
-| 28 | **Arrow turned by the sign**: an arrow points one way or the other | Number | Sign: positive, zero, negative | The arrow of a flow points right when the flow is positive, left when it is negative, is hidden at zero | Low | New |
-| 29 | **Mirror by the sign**: the part is mirrored when the value is negative | Number | Sign | A fan drawn turning the other way | Low | New; a mirror is a transform, to weigh against "never a scale" |
+| 19 | **Flip by sign** | Is mirrored while the value is negative. **Mirror**: Horizontal or Vertical. **At zero**: Keep or Hide. | Number | The sign: positive as drawn, negative mirrored, zero kept or hidden | The arrow of a flow points right when the flow is positive, left when it is negative, and is hidden at zero | Low; a mirror is a transform, to weigh against "never a scale" |
 
-## Refused by the research
+## Renamed or merged on 2026-11-26
+
+| Before | Now | Why |
+| --- | --- | --- |
+| Rotation by a value, Rotation by steps | Rotate | One animation; a number follows, an enum gives an angle per item. |
+| Continuous rotation at a speed | Spin | A short word for a part that never stops turning. |
+| Move along a line, Move along a path | Move, along Horizontal, Vertical or Path | The Product Owner wants X or Y, and the path too ("il faut pouvoir bouger par rapport à un X ou un Y aussi"). |
+| Continuous scrolling at a speed | Endless scroll | The name said "scrolling" without saying that it loops. |
+| Flow dashes | Flow | — |
+| Vibration | Shake | — |
+| Fill level, Bar | Fill, from Bottom, Top, Left or Right | A bar is a fill from the left: one animation. |
+| Arc gauge | Arc | The thresholds of a gauge are a Colour by steps on the same part. |
+| Colour by ranges, Colour by state, Colour by a boolean, Colour between two colours, Text colour | Colour | One animation; how the value acts depends on the signal. |
+| Visibility | Show or hide | Says what it does. |
+| Layer by state | Swap | One child of a group shown at a time. |
+| Border by state | Border style | — |
+| Text by state | State name | — |
+| Arrow turned by the sign, Mirror by the sign | Flip by sign | An arrow turned by the sign is a part mirrored by the sign. |
+
+## Set aside
 
 | Animation | Why |
 | --- | --- |
-| Deforming the points of a path | Repaint at each frame, high cost |
-| A parameter of a filter (blur, glow) | Filter recomputed, high cost |
-| A change of the `viewBox` | High cost |
-| A curve, an expression, a script as mapping | Against "for everyone" |
+| Size (grows or shrinks) | Makes the borders grow; against "never a scale" (research). |
+| Gradient that moves | Cost to measure first, POC. |
+| Deforming the points of a path | Repaint at each frame, high cost (refused by the research). |
+| A parameter of a filter (blur, glow) | Filter recomputed, high cost (refused by the research). |
+| A change of the `viewBox` | High cost (refused by the research). |
+| A curve, an expression, a script as mapping | Against "for everyone" (refused by the research). |
 
 ## Where it is used
 
 | Screen | Element |
 | --- | --- |
-| [SY-08](../../screens/symbols.md#sy-08--animation-mode) | SY-08.3, the kind of animation |
+| [SY-08](../../screens/symbols.md#sy-08--animation-mode) | SY-08.3, the animation chosen; SY-08.4, how the value acts |
+| [SY-03](../../screens/symbols.md#sy-03--symbol-editor-what-every-mode-shares) | SY-03.15, the icon of the Animation mode on the line of a layer that has an animation |
 
 ## Open questions
 
 - Which of these the animation mode offers in this version: the Product Owner picks.
-- The speed animations (3, 6, 7): the unit of the speed (turns per second, pixels per second), and its maximum.
-- Several animations on the same part (a rotation by a value and a colour by state): allowed, as long as they drive different properties (proposal of the research).
+- Spin, Endless scroll and Flow: the unit of the speed (turns per second, pixels per second) and its maximum. Proposal drawn: the user types the value of the signal that gives one turn (or one length of the pattern) per second.
+- Several animations on the same part (a Rotate and a Colour): allowed, as long as they drive different properties (proposal of the research).
+- Swap: the child shown for each item, chosen in the animation (drawn) or in a column of the enum, as the colours?
