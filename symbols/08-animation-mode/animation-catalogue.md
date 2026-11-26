@@ -155,5 +155,4 @@ Set apart by the Product Owner on 2026-11-26, not refused ("garde ça en mémoir
 - Arc, when it comes back as a shape: does a signal move the end angle of the [Arc shape](../04-drawing-mode/arc.md) through an animation, and is the animation Arc then kept or replaced?
 - Move along a path, when it comes back: is the part turned along the path or not?
 - Endless scroll and Flow (not in V1, to settle when they come back): the unit of the speed (lengths of the pattern per second) and its maximum. Proposal drawn: as for Spin, the user gives the value of the signal that makes one length of the pattern per second (settled for Spin, Product Owner, 2026-11-26: "when speed is [...] RPM, turn 1 par seconde [...] c'est parfait"); that value can be a signal, a maximum speed for example.
-- Several animations on the same part (a Rotate and a Show or hide): allowed, as long as they drive different properties (proposal of the research).
 - Swap, when it comes back: the child shown for each item, chosen in the animation (drawn) or in a column of the enum?

@@ -17,6 +17,7 @@ The mode of the [editor](../03-editor/README.md) in which the signals are linked
   2. its own options, each a choice of two to four short options in one click (Along, From);
   3. **what the value does, written as a sentence**: a header "When opening is → The blade is at", then one line per pair, `[0] → [0°]`, `[1] → [90°]`. Follow the value has two pairs; Steps has one line per step, the first "Lowest", the next ones "From [80]", a + on the title "Steps"; Per state has one line per state, the state on the left, read only. A value on the left can be a number or a signal: the signal icon inside the field picks one, and turns blue once a signal is chosen. A short grey hint says what happens in between and outside;
   4. the pivot, when the animation has one (below).
+- **Several animations on one part**: allowed, as long as each drives a different property (Product Owner, 2026-11-26): a Rotate and a Show or hide on the same needle, a Colour per state on the fill and another on the border. Two animations never drive the same property: in the panel, a choice that would drive a property already animated on this part is disabled, with the reason as a hint ("Already animated by Rotate"). Move and Rotate on one part compose in a fixed order, move then rotate (assistant's proposal, 2026-11-26, from the research).
 - **No transition** (Product Owner, 2026-11-26: "je veux que ce soit saccadé [...] que ça arrive en mode sec, point barre"): at each new value, the part jumps to its new place, angle or colour; nothing is smoothed between two values in this version.
 - **No Try** in the panel (Product Owner, 2026-11-26): the animation is seen in the Run mode.
 - **Pivot** (Rotate; Spin and Flip by sign when they come back): two lines (Product Owner, 2026-11-26: "ça pivote par rapport à telle ancre sur un autre élément"):
@@ -163,7 +164,7 @@ Decision 0036: the table is not written in each animation but **once per Symbol 
 | --- | --- | --- |
 | Jump or smooth | An option per animation: no transition, or a short linear duration; none by default for a change of state. Settled: no transition at all (Product Owner, 2026-11-26, [Rules](#rules)). | low |
 | Pivot | One of the nine anchors of the box (centre by default) or a point set by the user. In CSS, an SVG element turns around the origin of the `viewBox` unless `transform-box: fill-box` is set. Settled: an anchor of the part or of another element ([Rules](#rules)). | medium |
-| Two animations on one property | Forbid it and flag it in the editor; transforms of different kinds compose in a fixed order: move, then rotate. | very low |
+| Two animations on one property | Forbid it and flag it in the editor; transforms of different kinds compose in a fixed order: move, then rotate. Settled: several animations on one part, never two on the same property ([Rules](#rules)). | very low |
 | Blinking | A "Blink" animation at a fixed rate, under three flashes per second (WCAG level A), by opacity; a reminder in the editor ("keep it for the abnormal"); a global stop; follow the system's "reduce motion". A blink lasting more than five seconds must be possible to stop. | medium |
 | Many animated symbols | POC **P11**: 50, 200, 1 000 symbols animated by signals at 10 updates per second. | — |
 
