@@ -8,13 +8,12 @@ Status: draft. Not validated.
 
 ### Content
 
-A text is one of three things:
+A text is one of two things:
 
 - a text the user writes;
-- a text linked to a signal: it shows the value of the signal;
-- a text linked to the unit of a signal: it shows only the unit, in the display unit.
+- a text linked to a signal: a number shows its value, with or without its unit; an enum shows the column of the enum chosen.
 
-The last two are set in the [Animation mode](../08-animation-mode/README.md).
+The second is set in the [Animation mode](../08-animation-mode/README.md#texts-that-show-a-signal). A text that shows only the unit of a signal is kept for a later version (2026-11-26).
 
 ### Editing
 

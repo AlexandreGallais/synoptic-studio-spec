@@ -10,16 +10,16 @@ The mode of the [editor](../03-editor/README.md) in which the signals are linked
 
 - Tool bar: [Select](../03-editor/select.md), then [Guides](../03-editor/layout-guides.md); no Hand (2026-11-26). Right-hand panel: the animations of the selected part.
 - The user selects a part (a shape, a layer, a text), **adds an output signal** to it with the + of its animations, then **chooses the kind of animation** (Product Owner, 2026-11-25: "faut pouvoir ajouter un signal qui est en sortie pour l'animation. Après, tu choisis quel type d'animation"). Only the kinds that fit the type of the signal are offered.
-- The kinds of animation possible: see the [catalogue of the animations](animation-catalogue.md), from which the Product Owner picks those of this version.
-- **How the value acts comes with the animation**: no separate choice of a "mapping". Each animation follows the value, takes it as a speed, works by steps, or per state, as its line of the catalogue says; only Colour offers two ways for a number, Steps or Blend, in one click (assistant's proposal, 2026-11-26).
+- The kinds of animation: see the [catalogue of the animations](animation-catalogue.md). The V1 offers Rotate, Move, Fill, Show or hide, and a text that shows a signal (Value); the others are kept for later (Product Owner, 2026-11-26).
+- **How the value acts comes with the animation**: no separate choice of a "mapping". Each animation follows the value, works by steps, or per state, as its line of the catalogue says (assistant's proposal, 2026-11-26).
 - **The panel of an animation**, the same order for all (assistant's proposal, 2026-11-26, drawn in the section "Symbol mode · Animations" of the page Spec):
-  1. the signal (select), then the animation (select, grouped by family, each with a few words under its name: "Spin · Turns without stopping");
-  2. its own options, each a choice of two to four short options in one click (Along, Direction, From, Colours, How, Mirror, At zero);
-  3. **what the value does, written as a sentence**: a header "When opening is → The blade is at", then one line per pair, `[0] → [0°]`, `[1] → [90°]`. Follow the value and Blend have two pairs; Speed has one (`[1 500 rpm] → [1]` turn a second); Steps has one line per step, the first "Lowest", the next ones "From [80]", a + on the title "Steps"; Per state has one line per state, the state on the left, read only. A value on the left can be a number or a signal: the signal icon inside the field picks one, and turns blue once a signal is chosen. A short grey hint says what happens in between and outside;
+  1. the signal (select), then the animation (select, grouped by family, each with a few words under its name: "Rotate · Turns to an angle");
+  2. its own options, each a choice of two to four short options in one click (Along, From);
+  3. **what the value does, written as a sentence**: a header "When opening is → The blade is at", then one line per pair, `[0] → [0°]`, `[1] → [90°]`. Follow the value has two pairs; Steps has one line per step, the first "Lowest", the next ones "From [80]", a + on the title "Steps"; Per state has one line per state, the state on the left, read only. A value on the left can be a number or a signal: the signal icon inside the field picks one, and turns blue once a signal is chosen. A short grey hint says what happens in between and outside;
   4. the pivot, when the animation has one (below).
 - **No transition** (Product Owner, 2026-11-26: "je veux que ce soit saccadé [...] que ça arrive en mode sec, point barre"): at each new value, the part jumps to its new place, angle or colour; nothing is smoothed between two values in this version.
 - **No Try** in the panel (Product Owner, 2026-11-26): the animation is seen in the Run mode.
-- **Pivot** (Rotate, Spin, Flip by sign): two lines (Product Owner, 2026-11-26: "ça pivote par rapport à telle ancre sur un autre élément"):
+- **Pivot** (Rotate; Spin and Flip by sign when they come back): two lines (Product Owner, 2026-11-26: "ça pivote par rapport à telle ancre sur un autre élément"):
   - **Pivot**: a select, "This part" by default, or any other element of the symbol;
   - **Anchor**: the 9-point grid of that element, the centre by default, the same grid as the anchors of the drawing mode.
 - On the drawing, in this mode, the pivot of the selected animation shows as a small blue cross (assistant's proposal, 2026-11-26).
@@ -40,23 +40,26 @@ flowchart LR
 | Signal type | Example | What it does |
 | --- | --- | --- |
 | Real or integer | `opening` from 0 to 1 | A range of values becomes a range of a property of the drawing: 0 to 1 becomes a rotation of 0 to 90 degrees (Rotate). |
-| Boolean | `fault` | A value gives a state: when `true`, an element blinks (Blink). |
-| Enum | `mode` | A property of the drawing takes the value of a column added to the enum in the Symbol Lib, for the current item: `mode` = 1 gives the colour of the column `color` for item 1 (see [Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md#used-by-an-animation)). |
+| Boolean | `fault` | A value gives a state: when `true`, a fault icon is shown (Show or hide). |
+| Enum | `mode` | A property of the drawing takes the value of a column added to the enum in the Symbol Lib, for the current item: `mode` = 2 gives the angle of the column `angle` for item 2 (Rotate), or a text shows its column `display name short` (see [Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md#used-by-an-animation)). |
 
 Every animation possible, with an example, is listed in the [catalogue of the animations](animation-catalogue.md) (2026-11-25), to choose from.
 
-## Texts: value and unit
+## Texts that show a signal
 
-A text of the symbol can be linked to a signal that has a quantity (a volume, a flow...).
+A text of the symbol is either written by the user, or linked to a signal. The signal is chosen first; what the text shows follows from its type (Product Owner, 2026-11-26: "il faut d'abord sélectionner le signal et, en fonction de son type, ça va montrer [...] une valeur").
 
-- The text shows the signal's value, converted to the display unit and rounded to the decimal places set in the signal settings of the type (see [MD-07](../../screens/metadata.md#md-07--signal-settings)).
-- The user chooses whether the text shows the unit or not.
-- Another text can hold only the unit of the signal, in the display unit. This lets the user put the value in one place and the unit in another, and the unit follows the display unit.
+- **A number**: the text shows its value, converted to the display unit and rounded to the decimal places set in the signal settings of the type (see [MD-07](../../screens/metadata.md#md-07--signal-settings)).
+  - When the signal has a quantity, a checkbox **Show the unit** says whether the unit follows the value ("il faut pouvoir cocher [...] montrer une unité ou pas"). Nothing else to choose.
+- **An enum**: the user chooses which **column** of the enum the text shows, for the current item: the display name, or a column added on the [Enums page](../11-enums-of-a-symbol-lib.md) of the Symbol Lib ("il faut pouvoir choisir, dans les différentes colonnes de l'enum, ce qu'on va afficher"). A text column shows its text; a number column shows its value.
+- **A text with the unit only**: not in the V1, kept for later ("les unités, ça ne sert à rien [...] pour l'instant, on ne fera pas ça").
 
 ```mermaid
 flowchart LR
-    S["Signal: flow, model unit L/s"] --> V["Text 1: the value, in the display unit"]
-    S --> U["Text 2: the unit only, in the display unit"]
+    S["Signal chosen"] --> N{"Its type"}
+    N -->|"number"| V["Its value, in the display unit"]
+    V --> U["Show the unit: checkbox, when it has a quantity"]
+    N -->|"enum"| C["The column chosen, for the current item"]
 ```
 
 ### A text that becomes an input
@@ -90,7 +93,7 @@ flowchart LR
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Animation (signal, target, mapping) | Symbol editor | Symbol | Create, edit | No |
-| Text linked to a value or to a unit | Symbol editor | Symbol | Create, edit | No |
+| Text linked to a signal | Symbol editor | Symbol | Create, edit | No |
 
 ## What the research found
 
