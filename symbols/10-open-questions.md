@@ -81,7 +81,6 @@ This file is the index of the open questions. A question sits in the file it con
 | The Pen without its two buttons: are the straight line and the angle lock kept as gestures, and how? | [Pen](04-drawing-mode/pen.md#open-questions) | Not decided. |
 | How stacked colours add up in SVG, and whether plain ones are merged into one. | [Fill and border](04-drawing-mode/fill-and-border.md#several-fills) | Native alpha compositing; merge plain colours if a POC shows a gain. |
 | Run mode without a tool bar. | [Editor](03-editor/README.md#modes) | No tool bar. |
-| The modes menu and the tool bar against the left edge of the drawing area instead of centred: a trial asked by the Product Owner (2026-11-26), drawn on one screen ("SY-03 · Trial", Rectangle tool), the others stay centred. | [Editor](03-editor/README.md#modes) | Not decided: the Product Owner looks at the trial. |
 
 ## Still open, not researched
 
