@@ -28,16 +28,16 @@ A group is an SVG `g` element. Its first use is to give a structure to several s
 
 ### Layout of the children
 
-The group says how its children are placed (Product Owner, 2026-11-26: "pour un groupe, il faut pouvoir dire si les enfants, le placement sera libre ou sera avec des ancres"):
+The group says how its children are placed (Product Owner, 2026-11-26: "pour un groupe, il faut pouvoir dire si les enfants, le placement sera libre ou sera avec des ancres"). It is the **starting setting** of a child: an element that enters the group takes this placement and this anchor, then keeps its own; changing it later does not move the children already there (Product Owner, 2026-11-26, answer to the questionnaire).
 
-| Placement of the children | What it does |
+| Placement of the children | What a child that enters the group takes |
 | --- | --- |
-| **Free** (the default) | Each child is where the user puts it. |
-| **Anchored** | Every child goes on the chosen [anchor](../03-editor/anchors.md) of the group ("tous les enfants qui n'ont pas décidé seront par rapport à l'ancre du parent"). |
+| **Free** (the default) | The child stays where the user puts it, its X and Y measured from the anchor of the group. |
+| **Anchored** | The child goes on the chosen [anchor](../03-editor/anchors.md) of the group ("tous les enfants qui n'ont pas décidé seront par rapport à l'ancre du parent"). |
 
 - **Free or Anchored in one click**, with a [segmented control](../../screens/README.md#a-segmented-control-for-two-or-three-short-options), not a select (Product Owner, 2026-11-26).
 - **The 9-point grid of the anchor is always shown**, in Free too, where it does nothing (Product Owner, 2026-11-26: "autant le montrer tout le temps quand même").
-- Each child also has its own placement, Free or Anchored, always with an anchor (see [Geometry](geometry.md#in-the-group)); the placement of the group is the one a child takes when it enters the group (assistant's proposal).
+- Each child has its own placement, Free or Anchored, always with an anchor (see [Geometry](geometry.md#in-the-group)).
 - This replaces "all the children centred by default" (2026-11-24): the centre is now one anchor among nine.
 - The choice is offered whether the width and the height are Hug or Fixed, and a group whose children are free keeps both: its free children follow their own anchor when a Fixed group is resized (Product Owner, 2026-11-26: "peu importe si le width et le height sont en hug ou en fixed").
 - No flex display (rows, columns, gaps): no case where it would be useful.

@@ -26,7 +26,7 @@ Every element inside a group (a rectangle, an ellipse, a polygon, a path, a text
 | Anchored | A 9-point grid | Shown, read only | The element **touches** the anchor: its matching anchor on the anchor of the group, its top right corner on the top right corner. When the group is resized, it stays stuck there ("ça colle le coin, tout bêtement"). |
 
 - Free with the top left anchor is the X and Y of an element at the root (assistant's proposal: the anchor of a free element starts at the top left).
-- An element put in a group takes the placement and the anchor of its group (see [Group](group.md#layout-of-the-children)), then keeps its own (assistant's proposal).
+- An element put in a group takes the placement and the anchor of its group (see [Group](group.md#layout-of-the-children)), then keeps its own (Product Owner, 2026-11-26).
 - An element at the root of the symbol has no section "In the group": its X and Y are typed.
 - The anchors of the element and of the group can differ, to put the element outside the group: it is the absolute child of [Group](group.md#absolute-children), reached by a second 9-point grid "Anchor of the element", shown under the first once the user asks for it (assistant's proposal).
 
@@ -63,6 +63,5 @@ A text keeps its own sections after the geometry (see [Text](text.md)).
 
 - Mirror (horizontal, vertical): recomputed in the points, as the research proposes, or not offered?
 - The anchor a free element starts with: the top left (proposal)?
-- What the placement of the group does now that each child has its own: the placement and the anchor a child takes when it enters the group (proposal)?
 
 Skew and tilt in 3D are not offered: set aside with the [catalogue of the effects](effects-and-masks.md#catalogue-of-the-effects) (Product Owner, 2026-11-25).
