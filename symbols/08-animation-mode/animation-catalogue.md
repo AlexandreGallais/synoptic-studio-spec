@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Animation mode](README.md) › Catalogue of the animations
 
-Status: draft, proposed by the assistant (2026-11-25, renamed and regrouped on 2026-11-26 at the Product Owner's request: "trouve de meilleurs noms [...] je veux vraiment comprendre chaque animation parfaitement"). The Product Owner picked the animations of the V1, row by row (2026-11-26): see [Choice for the V1](#choice-for-the-v1).
+Status: draft, proposed by the assistant (2026-11-25, renamed on 2026-11-26 at the Product Owner's request: "trouve de meilleurs noms [...] je veux vraiment comprendre chaque animation parfaitement"). The Product Owner picked the animations of the V1, row by row (2026-11-26): see [Choice for the V1](#choice-for-the-v1).
 
 Every animation that a signal can drive on a part of a symbol, one line each, with a short name that says what the part does. Each one is drawn and explained in Figma, page Spec, section "Symbol mode · Animations (2026-11-26)": what it does, how to set it step by step in the order of the panel, the part at three values of its signal, and its right-hand panel (see [The panel of an animation](README.md#rules)). The main list holds the animations of the V1; the others are set apart, with their rows and their numbers, in a list of their own: [Not in V1, kept for later](#not-in-v1-kept-for-later), in Figma the column on the right of the section.
 
@@ -20,16 +20,12 @@ Every animation that a signal can drive on a part of a symbol, one line each, wi
 mindmap
   root((Animations))
     V1
-      Movement
-        Rotate
-        Move
-      Filling
-        Fill
-      Appearance
-        Show or hide
-        Colour per state
-      Text
-        Value
+      Rotate
+      Move
+      Fill
+      Show or hide
+      Colour per state
+      Value, on a text
     Not in V1, kept for later
       Move along a path
       Spin
@@ -56,34 +52,26 @@ Settled by the Product Owner on 2026-11-26, row by row: few animations, done wel
 | --- | --- |
 | Rotate, Move (along X or Y), Fill, Show or hide, Colour per state, Value | Yes |
 | Move along a path, Spin, Endless scroll, Flow, Shake, Arc, Colour by steps, Colour blend, Opacity, Swap, Blink, Pulse, Border style, Unit, Flip by sign | No, kept for later, in [their own list](#not-in-v1-kept-for-later) |
-| State name (18) | Merged into Value: a text linked to a signal shows the column of the enum chosen, or the texts of the boolean, see [Text](#text) |
+| State name (18) | Merged into Value: a text linked to a signal shows the column of the enum chosen, or the texts of the boolean, see [Value, on a text](#value-on-a-text) |
 
 - **Fill** stays in the V1: "le fil, l'arc, ça dégage" was about Flow, already kept for later (Product Owner, 2026-11-26).
 - **Colour per state** comes back in the V1: the colour of each item is written in a colour column of the enum, and this animation is what puts it on the part ("on est forcément obligé de l'avoir, donc bah, go l'ajouter", Product Owner, 2026-11-26).
 
 Arc: the Product Owner likes it, but it is a shape more than an animation ("c'est une forme [...] faut rajouter une forme arc, et point barre"). It comes back in a later version as an [Arc shape](../04-drawing-mode/arc.md), after the Ellipse (2026-11-26).
 
-## Movement
+## Animations of the V1
+
+One flat list, in this order, as in the select of the panel: no families, too few animations for them (Product Owner, 2026-11-26).
 
 | # | Animation | What the part does | Signal | How the value acts | Example | Cost |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | **Rotate** | Turns to an angle given by the value, around its pivot, and stays there. | Number, boolean, enum | Follow the value (angle at the minimum, angle at the maximum); per state (an angle per item) | A damper opens from 0° to 90° with `opening` 0 to 1; a dial needle from −135° to 135°; a selector on Off, Manual, Auto at 0°, 45°, 90° | Low |
 | 3 | **Move** | Moves to a position given by the value, and stays there. **Along**: X (sideways) or Y (up and down); to move both ways, two animations, one along X, one along Y (Product Owner, 2026-11-26). | Number, boolean, enum | Follow the value (position at the minimum, at the maximum); per state (a position per item) | The stem of a valve goes up as it opens (Y); a slider (X) | Low |
-
-## Filling
-
-| # | Animation | What the part does | Signal | How the value acts | Example | Cost |
-| --- | --- | --- | --- | --- | --- | --- |
 | 7 | **Fill** | Is shown only up to the value, the rest cut off. **From**: Bottom, Top, Left or Right, shown in the panel as the arrows ↑ ↓ → ← of the way it grows. | Number | Follow the value: 0 % shown at the minimum, 100 % at the maximum | The level of a tank from the bottom; a bar of power from the left; the charge of a battery | Low (a simple cut) |
-
-## Appearance
-
-| # | Animation | What the part does | Signal | How the value acts | Example | Cost |
-| --- | --- | --- | --- | --- | --- | --- |
 | 11 | **Show or hide** | Is shown or hidden. | Boolean, number, enum | Per state (shown when true, or when false); Steps (shown inside a range) | A fault icon shown when `fault` is true; a flame shown when the burner is on | Low |
 | 9c | **Colour per state** | Its fill, its border or, for a text, its letters take the colour of the current state. **Colours**: Fill or Border. | Enum, boolean | Per state: an enum takes the colour column of the enum chosen, one line per item, read only, with a link to the [Enums page](../11-enums-of-a-symbol-lib.md); a boolean, two colour fields in the panel, one for true and one for false (Product Owner, 2026-11-26) | The casing of a pump grey in Off, orange in Manual, green in Auto, from the column `color` of `mode`; a lamp red when `fault` is true | Medium, rare (a change of state) |
 
-## Text
+## Value, on a text
 
 A text shows a signal through its own fields in the panel ([SY-08.7](../../screens/symbols.md#sy-08--animation-mode)), not through the list of animations. It is listed here so that the whole is in one place. The rules: [Texts that show a signal](README.md#texts-that-show-a-signal).
 

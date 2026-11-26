@@ -13,7 +13,7 @@ The mode of the [editor](../03-editor/README.md) in which the signals are linked
 - The kinds of animation: see the [catalogue of the animations](animation-catalogue.md). The V1 offers Rotate, Move, Fill, Show or hide, Colour per state, and a text that shows a signal (Value); the others are kept for later (Product Owner, 2026-11-26).
 - **How the value acts comes with the animation**: no separate choice of a "mapping". Each animation follows the value, works by steps, or per state, as its line of the catalogue says (assistant's proposal, 2026-11-26).
 - **The panel of an animation**, the same order for all (assistant's proposal, 2026-11-26, drawn in the section "Symbol mode · Animations" of the page Spec):
-  1. the signal (select), then the animation (select, grouped by family, each with a few words under its name: "Rotate · Turns to an angle");
+  1. the signal (select), then the animation (select, one flat list without families, too few animations for them (Product Owner, 2026-11-26), each with a few words under its name: "Rotate · Turns to an angle");
   2. its own options, each a choice of two to four short options in one click (Along, From);
   3. **what the value does, written as a sentence**: a header "When opening is → The blade is at", then one line per pair, `[0] → [0°]`, `[1] → [90°]`. Follow the value has two pairs; Steps has one line per step, the first "Lowest", the next ones "From [80]", a + on the title "Steps"; Per state has one line per state, the state on the left, read only. A value on the left can be a number or a signal: the signal icon inside the field picks one, and turns blue once a signal is chosen. A short grey hint says what happens in between and outside;
   4. the pivot, when the animation has one (below).
