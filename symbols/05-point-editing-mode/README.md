@@ -10,7 +10,7 @@ The mode of the [editor](../03-editor/README.md) in which the points of a path a
 
 ### Tool bar
 
-- [Select](../03-editor/select.md), [Hand](../03-editor/hand.md) and [Pen](../04-drawing-mode/pen.md).
+- [Select](../03-editor/select.md) and [Pen](../04-drawing-mode/pen.md), then [Guides](../03-editor/layout-guides.md); no Hand (2026-11-26).
 - The Group, Rectangle, Ellipse, Polygon and Text tools disappear.
 
 ### Which shapes are edited

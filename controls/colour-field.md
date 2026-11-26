@@ -11,7 +11,8 @@ Every colour of the application is set with the same field, as Figma does: one l
 - **One line**: a **swatch**, then **two inputs in one field**, split by a thin **separator**: the **colour** (hex, six digits, no `#`) and the **opacity** (in %). They stay two inputs: each is typed on its own (Product Owner, 2026-11-24).
 - **No "Kind" line** in the panel: the kind of fill is chosen in the popup of the swatch.
 - A gradient shows in the swatch; the colour input then reads "Linear" or "Radial", and the colours are changed in the popup (assistant's proposal, as Figma).
-- **Removing and adding**: a **−** at the end of the line removes it; a **+** on the right of the title of the section adds one. There is no kind "None" (Product Owner, 2026-11-24: "comme Figma"). Where several are allowed (the fills of a shape, see [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#several-fills)), the + stays shown.
+- **Removing and adding**: a **−** at the end of the line removes it; a **+** on the right of the title of the section adds one. There is no kind "None" (Product Owner, 2026-11-24: "comme Figma"). Where several are allowed, the + stays shown: the fills of a shape (see [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#several-fills)), the colours of every border and of a text (2026-11-26).
+- **Linked to an enum**, in a pipe style only: a small signal icon inside the field picks an enum signal of the linked type and a colour column of that enum; the field then shows the name of the column (assistant's proposal, see [Pipe styles](../symbols/pipes/pipe-styles.md#linked-type)).
 
 ### The paint popup
 
@@ -42,7 +43,7 @@ block-beta
 | Line | Meaning |
 | --- | --- |
 | `■ D9DBE0 │ 100 %` | Plain light grey, opaque. |
-| `■ 40454D │ 0 %` | A transparent colour: a gap in a [segment list](segment-list.md). |
+| `■ 40454D │ 0 %` | A transparent colour: a gap in the [segment list](segment-list.md) of a pipe body. |
 | `▦ Linear │ 100 %` | A linear gradient; its stops are in the popup. |
 | Popup in HSL: `210  8  86 │ 100 %` | The same light grey written in HSL. |
 
@@ -50,12 +51,12 @@ block-beta
 
 | Screen | Control |
 | --- | --- |
-| [SY-04](../screens/symbols.md#sy-04--drawing-mode) · a shape | Each fill (SY-04.4), each segment of the border (SY-04.9) |
-| [SY-04](../screens/symbols.md#sy-04--drawing-mode) · a text | Text colour, text border (SY-04.28, SY-04.29) |
+| [SY-04](../screens/symbols.md#sy-04--drawing-mode) · a shape | Each fill (SY-04.4), each colour of the border (SY-04.8) |
+| [SY-04](../screens/symbols.md#sy-04--drawing-mode) · a text | Text colours, border colours, the colour of each line (SY-04.28, SY-04.29, SY-04.30) |
 | [SY-12](../screens/symbols.md#sy-12--enums-of-a-symbol-lib) | Value of a colour column (SY-12.7) |
-| [PI-02](../screens/pipes.md#pi-02--pipe-style) | Each segment of the body fill and of the border fill |
+| [PI-02](../screens/pipes.md#pi-02--pipe-style) | Each segment of the body fill, each colour of the border fill, linked to an enum or not (PI-02.17) |
 
 ## Open questions
 
 - RGB as a fourth format: said useless, then compared with HSB, on 2026-11-25; not offered until said.
-- A gradient for one segment of a border: allowed, or plain colours only in a segment?
+- A gradient for one colour of a border: allowed, or plain colours only?

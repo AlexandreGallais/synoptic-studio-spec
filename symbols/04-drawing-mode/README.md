@@ -8,7 +8,7 @@ The default mode of the [editor](../03-editor/README.md): draw and arrange shape
 
 ## Rules
 
-- Tool bar: [Select](../03-editor/select.md), [Hand](../03-editor/hand.md), then in this order: [Group](group.md), [Rectangle](rectangle.md), [Ellipse](ellipse.md), [Polygon](polygon.md), [Pen](pen.md), [Text](text.md). The order: groups, then the basic shapes, then the pen, then the text.
+- Tool bar, a separator between the groups: [Select](../03-editor/select.md) │ [Group](group.md) │ [Rectangle](rectangle.md), [Ellipse](ellipse.md), [Polygon](polygon.md), [Pen](pen.md), [Text](text.md) │ [Guides](../03-editor/layout-guides.md) (Product Owner, 2026-11-26: the separators show what looks alike; the text with the shapes: the assistant's choice among the two he offered). No Hand (see [Hand](../03-editor/hand.md)).
 - The Group, Rectangle, Ellipse, Polygon, Pen and Text tools exist only in this mode (the Pen is also in the point editing mode).
 - Right-hand panel: the options of the selected shape (colours, corner radius, opacity...). No section "Effects" in this version (2026-11-25).
 - The clip of a shape is drawn in the [Clip mode](clip-mode.md); a shape built from others and their intersections, in the [Intersection mode](intersection-mode.md), right after it.
@@ -33,7 +33,7 @@ The rectangle, the ellipse, the polygon and the path share the same pages; the g
 | Page | What it holds |
 | --- | --- |
 | [Geometry](geometry.md) | Size, position, rotation, placement in a group, and the order of the right-hand panel. Every element has them. |
-| [Fill and border](fill-and-border.md) | Fills stacked (colour or gradient), border (not an SVG stroke) outside, in the middle or inside, size, dashes. A group has neither. |
+| [Fill and border](fill-and-border.md) | Fills stacked (colour or gradient), border (not an SVG stroke) outside, in the middle or inside, its size, its colours stacked, no dashes. A group has neither. |
 | [Effects](effects-and-masks.md) | The catalogue of every effect SVG and CSS allow, the seven entries kept for this version and where each is set (2026-11-25); the section "Effects", removed, kept as a record. |
 | [Clip mode](clip-mode.md) | The clip of a shape, drawn in a mode of its own. |
 | [Intersection mode](intersection-mode.md) | A new shape built from chosen shapes and the regions of their intersections, in a mode of its own. |

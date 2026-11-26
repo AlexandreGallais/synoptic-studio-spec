@@ -8,7 +8,8 @@ Lines and grids drawn over the view of a symbol, to place and align shapes. They
 
 ## Rules
 
-- **Where**: a **Guides** button in a small floating bar **under the modes menu**, centred at the top of the drawing area as the menu (2026-11-26); it opens the **guides popup** (Product Owner, 2026-11-25: "un menu en dessous des modes").
+- **Where**: **Guides is a tool**, the last of the tool bar, after a separator, in every mode but Run (Product Owner, 2026-11-26: "ça reste un tool au final"; every mode: assistant's proposal). It replaces the small bar of its own under the modes menu (2026-11-25).
+- **A click on it opens the guides popup**, and nothing else (Product Owner, 2026-11-26).
 - **Three kinds**, added with three buttons at the top of the popup:
 
 | Kind | What it draws | Its settings, on its line |
@@ -19,7 +20,7 @@ Lines and grids drawn over the view of a symbol, to place and align shapes. They
 
 - **The list**: one line per guide, in the popup: its kind, its value, a **place** button, a **−** that removes it. Removing or adding a guide is one click (Product Owner, 2026-11-25: "simple à enlever, à ajouter").
 - **Placing by hand**: the place button of a column or a row starts the **placement**: the guide follows the mouse over the drawing and its value follows; a click puts it there and ends the placement; Escape ends it and puts the guide back. A guide is never dragged on the drawing itself: it is moved from its line (Product Owner, 2026-11-25: "pas en cliquant dessus sur la vue, mais un truc dans la liste").
-- **Show or hide all**: an eye on the Guides button hides every guide without removing them; Ctrl+' does the same (visible equivalent: the eye). Kept by the Product Owner (2026-11-25).
+- **Show or hide all**: an eye, **in the popup**, on the line of its title, hides every guide without removing them; Ctrl+' does the same (visible equivalent: the eye). Kept by the Product Owner (2026-11-25), moved into the popup (2026-11-26).
 - **Snapping**: while a shape, a point or a handle is dragged, it snaps to the guides near it, as to the other shapes (see [Editor](README.md#geometry-of-a-symbol)).
 - **Kept with the symbol**: the guides are saved in the file of the symbol, in the data of the editor, outside the drawing; they are the same in every mode.
 - **Colour**: one colour for every guide, from the design system, never a colour of the drawing.
@@ -28,8 +29,8 @@ Lines and grids drawn over the view of a symbol, to place and align shapes. They
 block-beta
     columns 3
     modes["Modes menu"]:3
-    guides["Guides button and its eye"] space:2
-    popup["Popup: + Column, + Row, + Grid, then one line per guide with its value, its place button and its −"]:3
+    tools["Tool bar: the tools of the mode │ Guides"]:3
+    popup["Popup: title and its eye; + Column, + Row, + Grid; one line per guide with its value, its place button and its −"]:3
 ```
 
 ```mermaid
@@ -54,7 +55,7 @@ stateDiagram-v2
 
 | Screen | Control |
 | --- | --- |
-| [SY-03](../../screens/symbols.md#sy-03--symbol-editor-what-every-mode-shares) | Guides button and popup (SY-03.17) |
+| [SY-03](../../screens/symbols.md#sy-03--symbol-editor-what-every-mode-shares) | Guides tool and popup (SY-03.17) |
 
 ## Open questions
 

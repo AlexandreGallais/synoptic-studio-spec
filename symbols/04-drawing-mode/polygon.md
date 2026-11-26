@@ -13,15 +13,18 @@ The polygon is drawn by dragging a box, like the rectangle and the ellipse. It b
 
 | Mode | The polygon... |
 | --- | --- |
-| Filled | fills the box as much as possible. It is not forced to be equilateral. |
-| Equilateral | keeps all its sides equal. It is not forced to fill the box. |
+| Filled | takes the whole box: it touches its four sides. It is not forced to be equilateral. |
+| Equilateral | keeps all its sides equal, and is **the largest equilateral polygon the box holds**: it touches two opposite sides of the box (Product Owner, 2026-11-26: "ça prend le plus de place possible en restant équilatéral"). |
+
+- No third mode "like Figma" (vertices on the ellipse inscribed in the box): refused (Product Owner, 2026-11-26: "le truc de Figma, je n'ai pas envie de l'implémenter").
 
 - **Anchors**: the user says where the polygon is placed in its box, with the [anchors](../03-editor/anchors.md) of the box (its sides and its corners). Two ways to use an anchor:
   - a **corner** of the polygon touches the anchor;
   - a **side** of the polygon touches the anchor.
 - Example: "a side always touches the left anchor, whatever the number of sides".
-- **In the panel**: the options of the polygon (sides, how it fills its box, anchor, what touches it) come **first**, before the size and the position, since they make its shape (Product Owner, 2026-11-25); then the [geometry](geometry.md), the opacity, the fill and the border.
-- **Corner radius**, under the height, as for the rectangle and the path: it rounds every corner of the polygon at once (Product Owner, 2026-11-26: "pour le polygone, pouvoir mettre le corner radius aussi [...] Il va falloir le rajouter"). A point given its own radius or its handles in the point editing mode keeps it, as for a path.
+- **In the panel**: "In the group" for a child, then the [geometry](geometry.md) (W and H, X and Y, rotation and corner radius), then the options of the polygon (sides, how it fills its box, anchor, what touches it), then the opacity, the fill and the border (Product Owner, 2026-11-26: "il y a in the group en premier, le width, height, xy, rotation, corner radius, le truc du polygone"; replaces the options first, 2026-11-25).
+- **Placed in box**: the 9-point grid of rectangles, the width of the panel, then the segmented control Corner │ Side under it, the width of the panel too (Product Owner, 2026-11-26: "il faut la réarranger pour faire un truc mieux"; the form: assistant's).
+- **Corner radius**, on the line of the rotation, as for the rectangle and the path: it rounds every corner of the polygon at once (Product Owner, 2026-11-26: "pour le polygone, pouvoir mettre le corner radius aussi [...] Il va falloir le rajouter"). A point given its own radius or its handles in the point editing mode keeps it, as for a path.
 - **Points**: like the rectangle and the ellipse, its points can be edited in the [point editing mode](../05-point-editing-mode/README.md). Each point can have its own corner radius, or its handles (see [Points and handles](../05-point-editing-mode/points-and-handles.md)).
 - **Fill and border**: the ones every shape has (see [Fill and border](fill-and-border.md)).
 - **Opacity and clip**: the ones every shape has (see [Effects](effects-and-masks.md#where-each-kept-entry-is-set)).
@@ -79,5 +82,4 @@ Examples (computed): a triangle in a 100 × 100 box. Filled: vertices (50; 0), (
 
 ## To decide by the Product Owner
 
-1. Keep or drop a third mode "like Figma"? The report advises dropping it. Check beforehand the vertices of Figma's triangle (above), if wanted.
-2. Anchors on corners: reserve them to 3 and 4 sides, or give them another meaning (place the empty space)?
+1. Anchors on corners: reserve them to 3 and 4 sides, or give them another meaning (place the empty space)?

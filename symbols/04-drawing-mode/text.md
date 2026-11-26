@@ -25,18 +25,19 @@ The last two are set in the [Animation mode](../08-animation-mode/README.md).
 
 In this order, each section compact (Product Owner, 2026-11-25: "plus lisibles, plus compactes et moins fouillis"):
 
-1. **Geometry**: the box and its place (see below and [Geometry](geometry.md)).
-2. **Opacity**, under the geometry, as every shape (Product Owner, 2026-11-25; no section "Effects" in this version).
-3. **Font**: family, then size and style on one line.
-4. **Colour**: the text colour, then its border.
-5. **Paragraph**: alignment, spacing, wrapping, lines.
+1. **In the group**, for a text inside a group (see [Geometry](geometry.md#in-the-group)).
+2. **Geometry**: the box and its place (see below and [Geometry](geometry.md)).
+3. **Opacity**, under the geometry, as every shape (Product Owner, 2026-11-25; no section "Effects" in this version).
+4. **Font**: family, then size and style on one line.
+5. **Colour**, then **Border**.
+6. **Paragraph**: alignment, wrapping, ellipsis, spacing, lines.
 
 ### Size of the box
 
 - **W** and **H** of the box, with the [size fields](../../controls/size-fields.md): each **Fixed** (the size typed) or **Hug** (the box fits its text) (Product Owner, 2026-11-25: "définir le width et le height de la box, ou alors mettre fit").
 - **Fit mode**, shown when a field is in Hug: what the box fits, The glyphs or The line, in a segmented control, one click (2026-11-26).
   - **Fit to the glyphs**: the box wraps the text as drawn.
-  - **Fit to the line**: the box follows the line of the text, its baseline. A "g" has a tail that goes below the line, an "a" starts on the line. In this mode the box does not change because of such letters. The goal is to align texts of different font sizes on the same line, for a better look.
+  - **Fit to the line**: the box follows the line of the text, from the top of a capital to its bottom, the baseline (Product Owner, 2026-11-26: "quand tu as une majuscule, c'est son bottom"). A "g" has a tail that goes below the line, an "a" starts on the line. In this mode the box does not change because of such letters. The goal is to align texts of different font sizes on the same line, for a better look.
 
 ### Font
 
@@ -48,16 +49,24 @@ In this order, each section compact (Product Owner, 2026-11-25: "plus lisibles, 
 
 ### Colour and border
 
-- **Text colour**: one [colour field](../../controls/colour-field.md).
+- **Text colour**: [colour fields](../../controls/colour-field.md) stacked, a + on the title "Colour" adds one, a − removes it, the top line drawn on top, as the fills of a shape (Product Owner, 2026-11-26: "tu peux mettre un petit +, comme ça on peut faire du mix de couleur").
 - **No background colour**: the background of a text is not coloured, for now (Product Owner, 2026-11-25: "jamais vu une utilisation").
-- **Text border**: a true SVG stroke of the letters, never a path made from them nor a simulated border (Product Owner, 2026-11-25: useful on desks, a white text with a dark border stays readable on any background). A + on the title "Border" adds it: a colour field and a size; a − removes it. One colour, no dashes, no position: the stroke is drawn under the letters (`paint-order: stroke`).
+- **Text border**: a true SVG stroke of the letters, never a path made from them nor a simulated border (Product Owner, 2026-11-25: useful on desks, a white text with a dark border stays readable on any background). As every border (see [Fill and border](fill-and-border.md#border-options)): its size on the first line, then its colours stacked, a + on the title "Border" adds one, a − removes it (Product Owner, 2026-11-26). No dashes, no position: the stroke is drawn under the letters (`paint-order: stroke`).
 
 ### Paragraph
 
-- **Alignment**: a 9-point [anchor](../03-editor/anchors.md) grid, the place of the text in its box: left, centre or right, and top, middle or bottom, in one click (Product Owner, 2026-11-25: "un truc d'ancre... plus simple visuellement").
-- **Spacing**: letter spacing, word spacing and line height, on one line; Auto for the line height and 0 for the others by default (Product Owner, 2026-11-25: "parfait").
+- **Alignment**: a 9-point [anchor](../03-editor/anchors.md) grid, the place of the text in its box: left, centre or right, and top, middle or bottom, in one click (Product Owner, 2026-11-25: "un truc d'ancre... plus simple visuellement"); the large grid of rectangles of every panel (2026-11-26).
 - **Wrapping** of the lines in the box: a toggle.
-- **Lines**: underline, strikethrough and line above, at the bottom, in the middle and at the top of the text, three toggle icon buttons on one line, each can be on with the others; once one is on, the colour of the lines shows under them, one colour field for all.
+- **Ellipsis**: a toggle; the text that does not fit is cut with "…" (Product Owner, 2026-11-26: "faut pouvoir mettre trois petits points aussi"):
+
+| Width | Height | What the ellipsis does |
+| --- | --- | --- |
+| Hug | any | Nothing: the box grows with the text; the toggle is greyed. |
+| Fixed | Hug | One line, cut at the width of the box. |
+| Fixed | Fixed | As many lines as the box holds without going out of it; the last one cut. |
+
+- **Spacing**: letter spacing, word spacing and line height, on one line; Auto for the line height and 0 for the others by default (Product Owner, 2026-11-25: "parfait").
+- **Lines**: **one line each**, Underline, Line above, Strikethrough (at the bottom, at the top and in the middle of the text), each a toggle, the icon of the line (its name in the tooltip) and **its own colour field**; they can all be on at once, each with a different colour (Product Owner, 2026-11-26: "une ligne pour le soulignage, le surlignage, le trait qui barre avec sa couleur associée"; replaces the three icons and one colour). A colour field is greyed while its line is off (assistant's proposal).
 
 ### Fonts of the software
 

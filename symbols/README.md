@@ -45,7 +45,7 @@ The only kind of library is the **Symbol Lib**, which sorts symbols. There are n
 | --- | --- |
 | [Libraries and symbols](01-libraries-and-symbols.md) | Symbol Libs, the left-hand panel (symbols, pipe styles, layers), creating a symbol, its optional type. |
 | [Type and faceplate](02-type-and-faceplate.md) | The type of a symbol, the only thing it chooses; its faceplate is the one of the type. |
-| [Editor](03-editor/README.md) | What is common to every mode: layout, floating bars, rules, modes, moving around, Select, Hand, layers, precise move, the advanced tools (set aside). |
+| [Editor](03-editor/README.md) | What is common to every mode: layout, floating bars, rules, modes, moving around (no Hand), Select, layers, precise move, the advanced tools (set aside). |
 | [Drawing mode](04-drawing-mode/README.md) | Rectangle, ellipse, polygon, text, pen; the [Clip mode](04-drawing-mode/clip-mode.md), which draws the clip of a shape; the [Intersection mode](04-drawing-mode/intersection-mode.md), which builds a shape from others and their intersections. |
 | [Point editing mode](05-point-editing-mode/README.md) | Editing the points of a path. |
 | [Alignment mode](06-alignment-mode/README.md) | Placing shapes in relation to each other. |

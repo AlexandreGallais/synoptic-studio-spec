@@ -29,11 +29,13 @@ A floating **modes menu** centred at the top of the canvas, as in the symbol edi
 
 | Mode | What it is for | Tools |
 | --- | --- | --- |
-| **Build** (default) | Place symbols, move, rotate, mirror, align, group in folders, lock. No distribution (Product Owner, 2026-11-26). | Select, Hand, Place, Align (the alignment of the symbol editor, decided 2026-11-26) |
-| **Pipes** | Draw and edit pipes, branches, crossings. | Select, Hand, Pipe, Edit points, Orthogonal lock |
-| **Annotate** | Draw what is not a symbol: texts, areas, shapes, legends, value labels. | Select, Hand, the drawing tools of the symbol editor, Legend, Value label |
-| **Links** | Make zones and placed symbols open another synoptic. | Select, Hand, Link zone |
-| **Test** | Try the synoptic with test values, as the Run mode of a symbol. | Hand only |
+| **Build** (default) | Place symbols, move, rotate, mirror, align, group in folders, lock. No distribution (Product Owner, 2026-11-26). | Select, Place, Align (the alignment of the symbol editor, decided 2026-11-26) |
+| **Pipes** | Draw and edit pipes, branches, crossings. | Select, Pipe, Edit points, Orthogonal lock |
+| **Annotate** | Draw what is not a symbol: texts, areas, shapes, legends, value labels. | Select, the drawing tools of the symbol editor, Legend, Value label |
+| **Links** | Make zones and placed symbols open another synoptic. | Select, Link zone |
+| **Test** | Try the synoptic with test values, as the Run mode of a symbol. | None: no tool bar |
+
+- No Hand tool, as in the symbol editor (decision 0109, 2026-11-26; extended here by the assistant, since this editor moves around as the symbol editor does). The tool bar sits under the modes menu, as there.
 
 - The **faults** are not a mode: a drawer at the bottom of the canvas, open in every mode, shows those of the open synoptic (see [Faults](08-faults.md)). Proposed.
 
@@ -52,7 +54,7 @@ stateDiagram-v2
 
 ### Moving around
 
-The same as the symbol editor: the **Hand** tool, the middle button held, the wheel, a **zoom** field where a value can be typed, and **scroll bars always visible** as soon as what is drawn goes out of the view, gone once it all fits (decided there; Product Owner, 2026-11-26, for both editors). Added for big installations, proposed:
+The same as the symbol editor: no Hand tool, the middle button held, the wheel, the trackpad, a **zoom** field where a value can be typed, and **scroll bars always visible** as soon as what is drawn goes out of the view, gone once it all fits, shown again when the mouse looks for them at the edge (decided there; Product Owner, 2026-11-26, for both editors). Added for big installations, proposed:
 
 - **Fit the frame** and **fit the selection**, one button each.
 - A **minimap** in a corner of the canvas, shown on demand: the whole frame, the visible part as a rectangle that can be dragged.

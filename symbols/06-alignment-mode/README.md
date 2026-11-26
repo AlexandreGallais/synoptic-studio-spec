@@ -10,7 +10,7 @@ The mode of the [editor](../03-editor/README.md) in which shapes are placed in r
 
 ### Tool bar and panel
 
-- Tool bar: only [Select](../03-editor/select.md) and [Hand](../03-editor/hand.md).
+- Tool bar: only [Select](../03-editor/select.md), then [Guides](../03-editor/layout-guides.md); no Hand (2026-11-26).
 - Select picks the shapes to place in relation to each other.
 - The right-hand panel becomes an alignment panel for the selected shapes.
 - The mode is only for placing shapes, not for drawing them.

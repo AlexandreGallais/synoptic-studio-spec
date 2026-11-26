@@ -22,24 +22,17 @@ A group is an SVG `g` element. Its first use is to give a structure to several s
   - Hug, on both: the group is a plain SVG group. It wraps its children and nothing more. This is the default.
   - Fixed: the group has the size the user gave it, and it no longer wraps its content.
   - The width and the height are **always shown**, in Hug too: the user sees the size of the group, and changes it in the same field (Product Owner, 2026-11-24).
-- Under the size, its X and Y. **No rotation**: a group is always a rectangle upright, its sides horizontal and vertical (Product Owner, 2026-11-26: "il n'y a pas de rotation possible pour les groupes et point barre").
+- Under the size, its X and Y. **No rotation**: a group is always a rectangle upright, its sides horizontal and vertical (Product Owner, 2026-11-26: "il n'y a pas de rotation possible pour les groupes et point barre"). **No corner radius**, not even greyed (Product Owner, 2026-11-26: "me fais pas ça dans les groupes").
 - A group has no fill and no border (see [Fill and border](fill-and-border.md)).
 - A group with its own size can be empty. The size and the position are only simulated by the editor: no rectangle is added inside the group, and the SVG bounding box is not relied on.
 
 ### Layout of the children
 
-The group says how its children are placed (Product Owner, 2026-11-26: "pour un groupe, il faut pouvoir dire si les enfants, le placement sera libre ou sera avec des ancres"). It is the **starting setting** of a child: an element that enters the group takes this placement and this anchor, then keeps its own; changing it later does not move the children already there (Product Owner, 2026-11-26, answer to the questionnaire).
+**Only the children** say how they are placed: the group itself has no setting for it (Product Owner, 2026-11-26: "on peut dégager ça du groupe et laisser ça qu'aux enfants [...] sur le parent, ça, rien"). It replaces the placement of the children on the group, set earlier the same day.
 
-| Placement of the children | What a child that enters the group takes |
-| --- | --- |
-| **Free** (the default) | The child stays where the user puts it, its X and Y measured from the anchor of the group. |
-| **Anchored** | The child goes on the chosen [anchor](../03-editor/anchors.md) of the group ("tous les enfants qui n'ont pas décidé seront par rapport à l'ancre du parent"). |
-
-- **Free or Anchored in one click**, with a [segmented control](../../screens/README.md#a-segmented-control-for-two-to-four-short-options), not a select (Product Owner, 2026-11-26).
-- **The 9-point grid of the anchor is always shown**, in Free too, where it does nothing (Product Owner, 2026-11-26: "autant le montrer tout le temps quand même").
-- Each child has its own placement, Free or Anchored, always with an anchor (see [Geometry](geometry.md#in-the-group)).
-- This replaces "all the children centred by default" (2026-11-24): the centre is now one anchor among nine.
-- The choice is offered whether the width and the height are Hug or Fixed, and a group whose children are free keeps both: its free children follow their own anchor when a Fixed group is resized (Product Owner, 2026-11-26: "peu importe si le width et le height sont en hug ou en fixed").
+- **Each child** has its section "In the group": Free or Anchored, in one click, always with an anchor in a 9-point grid (see [Geometry](geometry.md#in-the-group)).
+- **The first child gives the default**: an element that enters the group takes the placement and the anchor of the first child of the group, then keeps its own; changing it later does not move the others (Product Owner, 2026-11-26: "le premier enfant [...] ça définit le défaut du groupe"; the assistant's reading of the sentence). The very first child starts Free, at the top left anchor (assistant's proposal).
+- The placement works whether the width and the height of the group are Hug or Fixed: its free children follow their own anchor when a Fixed group is resized (Product Owner, 2026-11-26: "peu importe si le width et le height sont en hug ou en fixed").
 - No flex display (rows, columns, gaps): no case where it would be useful.
 
 ### Absolute children

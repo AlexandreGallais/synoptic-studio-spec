@@ -41,9 +41,8 @@ This file is the index of the open questions. A question sits in the file it con
 | --- | --- | --- |
 | Thumbnail of a symbol in the list: the symbol itself, or its outlines only; what else an item shows. | [Libraries and symbols](01-libraries-and-symbols.md) | Outlines only, as Figma's outline view, with the name. |
 | Look of the Interaction, Animation and Run modes before a type is chosen. | [Libraries and symbols](01-libraries-and-symbols.md) | Greyed in the mode menu, with a tooltip "choose a type first". |
-| Place of the floating tool bar: bottom or top of the drawing area. | [Editor](03-editor/README.md) | Bottom, centred. |
 | Ratio of the precise move; Ctrl and the context menu of a Mac. (A key only, Ctrl, no button, also for whole shapes moved with Select: settled on 2026-11-25.) | [Precise move](03-editor/precise-move.md) | See the page. |
-| Clip mode: its name, a group or a text clipped, where the points of a clip shape are edited; a path left open with the Pen. (The options of a clip shape are those of the drawing mode, same order, without opacity, fill or border; the Pen makes closed shapes only; the clip shapes chosen in the layers, no list of them on the right: settled on 2026-11-26, replacing the three lines of 2026-11-25. A mode of the modes menu, alone in its group; tools Select, Hand, Rectangle, Ellipse, Polygon, Pen; no section "Effects", the opacity under the geometry; no advanced tools in this version: settled on 2026-11-25.) | [Clip mode](04-drawing-mode/clip-mode.md), [Effects](04-drawing-mode/effects-and-masks.md#where-each-kept-entry-is-set) | Not researched. |
+| Clip mode: its name, a group or a text clipped, where the points of a clip shape are edited; a path left open with the Pen. (The options of a clip shape are those of the drawing mode, same order, without opacity, fill or border; the Pen makes closed shapes only; the clip shapes chosen in the layers, no list of them on the right: settled on 2026-11-26, replacing the three lines of 2026-11-25. A mode of the modes menu, alone in its group; tools Select, Rectangle, Ellipse, Polygon, Pen (no Hand since 2026-11-26); no section "Effects", the opacity under the geometry; no advanced tools in this version: settled on 2026-11-25.) | [Clip mode](04-drawing-mode/clip-mode.md), [Effects](04-drawing-mode/effects-and-masks.md#where-each-kept-entry-is-set) | Not researched. |
 | The four groups of the modes menu, being tried on the test screens (2026-11-25): kept as they are? | [Editor](03-editor/README.md#modes) | Keep them. |
 | Intersection mode: its name, the chosen shapes kept or replaced, the look of the new shape, its group in the menu, a group, a text or an open path chosen; the name "Shape builder" and no Select. (A mode after Clip, shapes chosen in the layers, the rest translucent: settled on 2026-11-25. Regions selected on the drawing by a click and unselected by a click again, no list of the regions, a + "Create a shape from the selection" that makes one shape and no option for several, no Validate: settled on 2026-11-26.) | [Intersection mode](04-drawing-mode/intersection-mode.md) | Shapes kept; look of the first chosen shape; in the group of Clip. |
 | What a line of the layer tree shows besides its name (lock, hide, icon of its kind). | [Layers](03-editor/layers.md) | Icon of the kind, name, hide, lock. |
@@ -71,6 +70,19 @@ This file is the index of the open questions. A question sits in the file it con
 | A gradient in one segment; RGB as a fourth format of the picker; the order of the lines. (Pattern and image: set aside, 2026-11-25.) (No line, no border; a − and a + instead of a kind "None"; selects instead of radios in every panel; no signal in a size field: settled on 2026-11-24. Eyedropper, hue and opacity sliders, Hex, HSL, HSB: settled on 2026-11-25.) | [Colour field](../controls/colour-field.md), [Segment list](../controls/segment-list.md) | Plain colours only in a segment; no pattern, no image, no RGB; a handle. |
 
 (X and Y: under W and H, settled on 2026-11-25, see [Geometry](04-drawing-mode/geometry.md).)
+
+## Raised by the review of the test screens on 2026-11-26
+
+(Settled the same day, decision 0109: no Hand; the tool bar under the modes menu, Guides its last tool, the eye in its popup; scroll bars shown on hover at the edge; "In the group" first, children only; fields on two columns with an icon slot; borders without dashes, colours stacked; text lines one each with its colour, ellipsis; pipe speed in px/s; a pipe style's type the base's or a sub-type.)
+
+| Question | Page | Proposal of the assistant |
+| --- | --- | --- |
+| Three more kinds of enum column: Symbol, Pipe style, Flow direction. | [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md#kinds-of-value) | Keep the three. |
+| The conversion of a speed signal into pixels per second: two pairs, a factor, or both. | [Pipe styles](pipes/pipe-styles.md#moving-dashes) | Two pairs, as the animations. |
+| Can the enum `pipe_style` carry colour columns, for the colours of the pipe styles? | [Pipe styles](pipes/pipe-styles.md#open-questions) | No: the look of an item stays on the Pipes page; a colour follows another enum by a signal. |
+| The first child of a group gives the placement of the next ones: the right reading? | [Group](04-drawing-mode/group.md#layout-of-the-children) | Yes. |
+| How stacked colours add up in SVG, and whether plain ones are merged into one. | [Fill and border](04-drawing-mode/fill-and-border.md#several-fills) | Native alpha compositing; merge plain colours if a POC shows a gain. |
+| Run mode without a tool bar. | [Editor](03-editor/README.md#modes) | No tool bar. |
 
 ## Still open, not researched
 

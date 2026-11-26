@@ -19,17 +19,15 @@ block-beta
 | Zone | What it holds |
 | --- | --- |
 | Left-hand panel | The symbols and the pipe styles of the Symbol Lib, then the [layers](layers.md) of the open symbol (see [Libraries and symbols](../01-libraries-and-symbols.md)). |
-| Modes menu | A floating bar **centred at the top of the drawing area**, as the tool bar at its bottom, so that it does not move away when a side panel is resized (Product Owner, 2026-11-26: "le menu des modes, faut forcément qu'il soit au milieu, comme le menu des tools"), **horizontal**, made of **icons only** (the name of each mode in its tooltip): every mode, in four groups split by **separators** (see [Modes](#modes)), and the switch from one to another (Product Owner, 2026-11-23; groups 2026-11-25). |
-| Guides | A small floating bar **under the modes menu**, centred with it, with the [layout guides](layout-guides.md) of the view (Product Owner, 2026-11-25). |
-| Tool bar | A floating bar over the drawing area, with the tools of the current mode, and nothing else: no button for the advanced tools, no button for the precise move (Product Owner, 2026-11-25). Its place is open: at the **bottom** or at the top. |
+| Modes menu | A floating bar **centred at the top of the drawing area**, the tool bar just under it, so that it does not move away when a side panel is resized (Product Owner, 2026-11-26: "le menu des modes, faut forcément qu'il soit au milieu, comme le menu des tools"), **horizontal**, made of **icons only** (the name of each mode in its tooltip): every mode, in four groups split by **separators** (see [Modes](#modes)), and the switch from one to another (Product Owner, 2026-11-23; groups 2026-11-25). |
+| Tool bar | A floating bar **just under the modes menu**, centred with it: the tools of the current mode, then the [layout guides](layout-guides.md), last, after a separator; no button for the advanced tools, no button for the precise move (Product Owner, 2026-11-25). At the top, so that the user sees the tools change with the mode, and the bottom of the view stays free for its scroll bar (Product Owner, 2026-11-26). |
 | Right-hand panel | The options of the selection; the type of the symbol (see [Type and faceplate](../02-type-and-faceplate.md)). |
 
 ```mermaid
 block-beta
     columns 3
     space modes["Modes menu (top, centred, horizontal, icons)"] space
-    space guides["Guides bar, under it"] space
-    space tools["Tool bar of the mode (bottom, place open)"] space
+    space tools["Tool bar of the mode, just under it, Guides last"] space
 ```
 
 Not placed yet: the zoom field, undo and redo. There is no save: each change is written as it is made, and the undo history keeps every action (decision 0093; see [Files and conflicts](../../storage/files-and-conflicts.md#undo-history)).
@@ -75,15 +73,18 @@ flowchart LR
 
 | Mode | What it is for | Tools in the tool bar | Right-hand panel |
 | --- | --- | --- | --- |
-| [Drawing](../04-drawing-mode/README.md) | The default mode: draw and arrange shapes. | Select, Hand, Group, Rectangle, Ellipse, Polygon, Pen, Text | Options of the selected shape (colours, corner radius...) |
-| [Point editing](../05-point-editing-mode/README.md) | Edit the points of a path. | Select, Hand, Pen | Options of the selected point |
-| [Alignment](../06-alignment-mode/README.md) | Place shapes in relation to each other. | Select, Hand | Alignment of the selected shapes |
-| [Clip](../04-drawing-mode/clip-mode.md) | Draw the clip shapes of the selected shape: it is shown only inside them. | Select, Hand, Rectangle, Ellipse, Polygon, Pen (closed shapes only) | The clip shapes of the shape, the options of the selected one without its look |
-| [Intersection](../04-drawing-mode/intersection-mode.md) | Build a new shape from several shapes and their intersections. | Hand, Shape builder | The chosen shapes, "Create a shape from the selection" and its + |
-| [Connection](../pipes/connection-points.md) | Place the connection points where pipes attach. | Select, Hand, Connection point | The options of the selected point |
-| [Animation](../08-animation-mode/README.md) | Link the signals to the parts of the drawing. | Select, Hand | The animations of the selected part |
-| [Interaction](../07-interaction-mode/README.md) | Draw the zones that react to a gesture, and link them to commands. | Select, Hand, Interaction zone | The interactions of the selected place |
-| [Run](../09-run-mode/README.md) | Try the symbol with test values and see it at the size of another screen. | Hand | The test values, and the simulated screen |
+| [Drawing](../04-drawing-mode/README.md) | The default mode: draw and arrange shapes. | Select │ Group │ Rectangle, Ellipse, Polygon, Pen, Text │ Guides | Options of the selected shape (colours, corner radius...) |
+| [Point editing](../05-point-editing-mode/README.md) | Edit the points of a path. | Select, Pen │ Guides | Options of the selected point |
+| [Alignment](../06-alignment-mode/README.md) | Place shapes in relation to each other. | Select │ Guides | Alignment of the selected shapes |
+| [Clip](../04-drawing-mode/clip-mode.md) | Draw the clip shapes of the selected shape: it is shown only inside them. | Select │ Rectangle, Ellipse, Polygon, Pen (closed shapes only) │ Guides | The clip shapes of the shape, the options of the selected one without its look |
+| [Intersection](../04-drawing-mode/intersection-mode.md) | Build a new shape from several shapes and their intersections. | Shape builder │ Guides | The chosen shapes, "Create a shape from the selection" and its + |
+| [Connection](../pipes/connection-points.md) | Place the connection points where pipes attach. | Select, Connection point │ Guides | The options of the selected point |
+| [Animation](../08-animation-mode/README.md) | Link the signals to the parts of the drawing. | Select │ Guides | The animations of the selected part |
+| [Interaction](../07-interaction-mode/README.md) | Draw the zones that react to a gesture, and link them to commands. | Select, Interaction zone │ Guides | The interactions of the selected place |
+| [Run](../09-run-mode/README.md) | Try the symbol with test values and see it at the size of another screen. | None: no tool bar (assistant's proposal, its only tool, the Hand, being removed) | The test values, and the simulated screen |
+
+- There is **no Hand tool**, in any mode (Product Owner, 2026-11-26: "il faut habituer les gens à utiliser le zoom pour se déplacer"): see [Moving around the drawing](#moving-around-the-drawing).
+- Guides is the last tool of every mode but Run, after a separator (assistant's proposal: the guides are the same in every mode).
 
 - The Connection mode is in the menu (Product Owner, 2026-11-23); its tool places points only, like a pen that draws no line (Product Owner, 2026-11-25); its panel is still the assistant's proposal (see [Connection points](../pipes/connection-points.md)).
 - The icon of each mode: to draw in the design system.
@@ -97,9 +98,10 @@ flowchart LR
 
 - Mouse: the scroll wheel, and the middle button held down, which shows the hand while it is held.
 - Trackpad: the usual gestures, to scroll and to zoom.
-- The [Hand tool](hand.md) does the same from the tool bar.
+- No Hand tool in the tool bar (Product Owner, 2026-11-26; see [Hand](hand.md)).
 - The zoom is shown as a percentage, in one place of the editor, and the user can type a value in it. At 100%, the symbol is shown at its real size.
 - **Scroll bars**: as soon as part of the drawing is out of the view (a big symbol, a zoom, a shape moved out), a horizontal or vertical scroll bar shows, **always visible**, not only when the mouse hovers it; it goes away once the whole drawing fits in the view (Product Owner, 2026-11-26: "il faut automatiquement montrer les scroll bars et les laisser en permanence"). Each direction has its own bar.
+- **Once the whole drawing fits**, a scroll bar still appears when the mouse goes looking for it, near the right edge of the view for the vertical bar, near the bottom edge for the horizontal one (Product Owner, 2026-11-26: "si jamais on met la souris et qu'on essaye de chercher une scrollbar"). The bar at the bottom is free since the tool bar went to the top.
 - Simulating the size of the symbol on another screen is done in the [Run mode](../09-run-mode/README.md), not here.
 
 ## What is common to the modes
@@ -107,11 +109,11 @@ flowchart LR
 | Page | What it holds |
 | --- | --- |
 | [Select](select.md) | The Select tool, in every mode except Run. |
-| [Hand](hand.md) | The Hand tool, in every mode. |
+| [Hand](hand.md) | Removed (2026-11-26): no Hand tool. |
 | [Layers](layers.md) | The tree of the layers of the symbol, in the left-hand panel. |
 | [Precise move](precise-move.md) | Ctrl held while moving with Select: what is dragged moves pixel by pixel. |
 | [Anchors](anchors.md) | The nine named points of a box, used by groups, polygons and alignment. |
-| [Layout guides](layout-guides.md) | Columns, rows and grids over the view, under the modes menu. |
+| [Layout guides](layout-guides.md) | Columns, rows and grids over the view, the last tool of the tool bar. |
 | [Advanced tools](expert-menu/README.md) | Set aside, not in this version (2026-11-25): the tools that are not for everyday drawing. |
 
 ## Where it is used

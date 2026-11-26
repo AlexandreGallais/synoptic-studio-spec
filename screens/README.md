@@ -119,7 +119,24 @@ flowchart LR
 
 ### Like Figma: one line per value
 
-The fields that Figma has are drawn the way Figma draws them (Product Owner, 2026-11-24): the [size fields](../controls/size-fields.md) (W and H, Fixed or Hug), the [colour field](../controls/colour-field.md) (a swatch and colour │ opacity) and the [segment list](../controls/segment-list.md) of a border. A length never writes "px".
+The fields that Figma has are drawn the way Figma draws them (Product Owner, 2026-11-24): the [size fields](../controls/size-fields.md) (W and H, Fixed or Hug), the [colour field](../controls/colour-field.md) (a swatch and colour │ opacity), the colours of a border stacked as the fills, and the [segment list](../controls/segment-list.md) of the body of a pipe. A length never writes "px".
+
+### Fields on two columns and an icon slot
+
+In a right-hand panel (Product Owner, 2026-11-26: "comme ça, tout est aligné tout le temps et tout est beau"):
+
+- A line of fields has **two columns of the same width**: W and H as wide as X and Y, the rotation and the corner radius on the line under them.
+- Every line keeps, on its right, **the room of one icon**, used or not: the link of W and H, a reset, a −. So every field lines up, from one line to the next and from one panel to another.
+- A field says what it holds with a letter or a small icon inside it (W, H, X, Y, the rotation, the corner radius, the size of a border), never with a label above it nor a header of columns.
+- A grid of anchors or a segmented control takes the width of the two columns.
+
+```mermaid
+block-beta
+    columns 3
+    w["W 72"] h["H 34"] link["link"]
+    x["X 64"] y["Y 0"] e1[" "]
+    r["Rotation 0°"] c["Corner radius 4"] e2[" "]
+```
 
 ### Columns of buttons have no header
 
@@ -217,7 +234,7 @@ Each screen has:
 | List | Items one under the other, with their own actions. |
 | Tree | Items with parents and children, folded or unfolded. |
 | Colour | The [colour field](../controls/colour-field.md): a swatch, then colour │ opacity; the swatch opens the popup of the kinds of fill. |
-| Segment list | A border or a dashed fill: one line per segment, + and − (see [Segment list](../controls/segment-list.md)). |
+| Segment list | The dashed body of a pipe: one line per segment, + and − (see [Segment list](../controls/segment-list.md)). |
 | Slider | A value chosen by dragging. |
 | Editor | A dedicated editing area (Markdown, drawing...). |
 | Table | Items one per line, their fields in columns. |

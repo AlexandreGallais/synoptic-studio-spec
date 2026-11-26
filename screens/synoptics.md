@@ -54,7 +54,7 @@ Path: Synoptic › a synoptic › Canvas.
 ```mermaid
 block-beta
     columns 5
-    rail["SN-00"] left["Library, then Objects"] canvas["Canvas: modes menu top left, tool bar at the bottom, faults drawer"]:2 panel["Right-hand panel"]
+    rail["SN-00"] left["Library, then Objects"] canvas["Canvas: modes menu top left, tool bar at the bottom (to redraw: both at the top, centred, as the symbol editor), faults drawer"]:2 panel["Right-hand panel"]
 ```
 
 | ID | Element | Kind | Values and behaviour | Status | Source |

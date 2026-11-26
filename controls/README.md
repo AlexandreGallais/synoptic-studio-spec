@@ -13,7 +13,7 @@ The controls shared by the whole application: a number field, a text field, and 
 | [Number and text fields](number-and-text-fields.md) | The number field (arrows, step, faster step with a key, no pixel unit) and the text field, shared by every screen. |
 | [Size fields](size-fields.md) | Width and height on one line, each Fixed or Hug with a small menu, the value always shown. |
 | [Colour field](colour-field.md) | A swatch and two inputs, colour │ opacity; the swatch opens the popup of the kinds of fill. |
-| [Segment list](segment-list.md) | A border or a dashed fill: one line per segment (colour, length), + and −, then size and position. |
+| [Segment list](segment-list.md) | The dashed body of a pipe: one line per segment (colour, length), + and −. A border has no dashes (2026-11-26). |
 
 ## See also
 

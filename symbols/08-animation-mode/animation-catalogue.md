@@ -75,7 +75,7 @@ A gauge with **thresholds** (green, then orange, then red as the value grows) is
 | 12 | **Swap** | On a group: one of its children is shown at a time, the others hidden: the one of the current state. | Boolean, enum | Per state (a child per item) | A valve drawn open, closed, in transit | Low |
 | 13 | **Blink** | Goes on and off at a fixed rate, under three flashes per second, while the value is true. | Boolean | Per state | An alarm not acknowledged | Low; for the abnormal only, a global stop |
 | 14 | **Pulse** | Its opacity rises and falls softly while the value is true: quieter than Blink. | Boolean | Per state | An element that asks for attention | Low |
-| 15 | **Border style** | Its border becomes dashed, or thicker, by state. | Boolean, enum | Per state | A dashed border when the equipment is in manual mode | Medium, rare |
+| 15 | **Border style** | Its border becomes thicker, or changes colour, by state; never dashed, a border has no dashes since 2026-11-26. | Boolean, enum | Per state | A thicker border when the equipment is in manual mode | Medium, rare |
 
 ## Text
 

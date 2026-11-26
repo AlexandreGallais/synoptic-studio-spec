@@ -8,7 +8,7 @@ The mode of the [editor](../03-editor/README.md) in which the signals are linked
 
 ## Rules
 
-- Tool bar: [Select](../03-editor/select.md) and [Hand](../03-editor/hand.md). Right-hand panel: the animations of the selected part.
+- Tool bar: [Select](../03-editor/select.md), then [Guides](../03-editor/layout-guides.md); no Hand (2026-11-26). Right-hand panel: the animations of the selected part.
 - The user selects a part (a shape, a layer, a text), **adds an output signal** to it with the + of its animations, then **chooses the kind of animation** (Product Owner, 2026-11-25: "faut pouvoir ajouter un signal qui est en sortie pour l'animation. Après, tu choisis quel type d'animation"). Only the kinds that fit the type of the signal are offered.
 - The kinds of animation possible: see the [catalogue of the animations](animation-catalogue.md), from which the Product Owner picks those of this version.
 - **How the value acts comes with the animation**: no separate choice of a "mapping". Each animation follows the value, takes it as a speed, works by steps, or per state, as its line of the catalogue says; only Colour offers two ways for a number, Steps or Blend, in one click (assistant's proposal, 2026-11-26).

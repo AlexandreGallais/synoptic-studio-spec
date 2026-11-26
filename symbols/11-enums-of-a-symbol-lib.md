@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Enums of a Symbol Lib · Previous: [Open questions](10-open-questions.md) · Next: [Sub-symbols](12-sub-symbols.md)
 
-Status: draft. The page and its added columns are carried by decisions 0036, 0090, 0091, 0092 and 0093; the assistant's readings below stay to confirm. Not validated. Open points are listed in [Open questions](#open-questions).
+Status: draft. The page and its added columns are carried by decisions 0036, 0090, 0091, 0092 and 0093; its test screens accepted on 2026-11-26, but for the kinds proposed then (decision 0109); the assistant's readings below stay to confirm. Not validated. Open points are listed in [Open questions](#open-questions).
 
 Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, read only, and lets the user add **columns** to them: a colour, a short text, a number... The animations of the symbols of this library then use these columns: when an enum signal changes value, a property of the drawing takes the value of the chosen column for that item.
 
@@ -35,7 +35,17 @@ Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, rea
 - Changing the kind of a column that has values: see [Changing the kind](#changing-the-kind).
 - **Deleting a column** is done at once, with no confirmation: the undo history takes it back (decision 0093; see [Files and conflicts](../storage/files-and-conflicts.md#undo-history)).
 - **The order of the columns does not change**: no handle.
-- **A template shows only its columns**: it has no items here, so the table has its headers and no lines; its name, its kind and its description are shown read only.
+- **A template shows its columns and one example line**: it has no items here; under the headers, **one line, read only, gives an example value for the kind of each column**, so that the kind chosen is seen at once (Product Owner, 2026-11-26: "en fonction du type qu'on met, il y a un exemple qui est mis"). Its Key, Display name and Description say "Example"; its name, its kind and its description are shown read only above the table.
+
+| Kind of the column | Example value shown |
+| --- | --- |
+| Colour | A swatch `D32F2F │ 100 %` |
+| Text | `OFF` |
+| Number | `90` |
+| Yes / no | A tick |
+| Symbol (proposed) | The name of a symbol of the library, `Valve` |
+| Pipe style (proposed) | The swatch and name of an item of `pipe_style`, `Water` |
+| Flow direction (proposed) | `Start to end` |
 
 ## When the columns do not fit
 
@@ -70,7 +80,15 @@ The kind of a column is **a kind of animation, not a type of the model** (Produc
 
 The four kinds and RGBA: Product Owner, 2026-11-23 (decision 0090).
 
-The list stays open to more kinds (a sub-symbol to show, a named colour of the Symbol Lib): see [Open questions](#open-questions).
+Three more kinds, proposed by the assistant on 2026-11-26 at the Product Owner's request ("si t'as d'autres idées de type [...] fais-toi plaisir"), shown in the list after a separator:
+
+| Kind | A value | Drives | Status |
+| --- | --- | --- | --- |
+| Symbol | A symbol of this Symbol Lib | Which drawing a group shows, by state ([Swap](08-animation-mode/animation-catalogue.md)) | Proposed |
+| Pipe style | An item of the built-in enum `pipe_style` | The look of the pipe of a symbol's own inlet or outlet, by state | Proposed |
+| Flow direction | Stopped, start to end, end to start (the built-in enum pipe direction) | The direction of moving dashes, by state: a pump stopped stops its flow | Proposed |
+
+The list stays open to more kinds (a named colour of the Symbol Lib): see [Open questions](#open-questions).
 
 ## Changing the kind
 
@@ -138,7 +156,7 @@ In the symbol of a pump, an animation gives the body of the pump the colour of t
 
 Noted, not to be asked now: they come up at the review of the part.
 
-- More kinds of value: a sub-symbol or a layer to show? Is a number always without unit (an angle in degrees, a position in px)?
+- The three kinds proposed (Symbol, Pipe style, Flow direction): kept? A layer cannot be a kind, the columns belonging to the library and not to one symbol. Is a number always without unit (an angle in degrees, a position in px)?
 - Is the memory of the earlier kinds a part of the undo history (decision 0093)?
 - More about the name of a column may come (said with a doubt).
 - An item added later in Metadata: its added columns are empty; what does the animation show then (a default value per column)?

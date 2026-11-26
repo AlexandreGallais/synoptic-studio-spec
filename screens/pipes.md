@@ -73,7 +73,7 @@ No colour and no dash in the base: the fills are in [PI-02](#pi-02--pipe-style).
 | PI-01.7 | Corner radius | Number field, no unit | Section Corners. 0 keeps sharp angles; also shapes the bridges. The same for every pipe style. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.8 | Moving dashes | — | Removed: no on or off; the movement comes from the direction ([PI-01.9](#pi-01--base-pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-01.9 | Direction | Select with a small icon inside to pick a signal | Section Movement, always shown, even without a type. The three items of the built-in enum "pipe direction" (stopped, start to end, end to start), or, with the icon, a signal of the linked type of that enum; without a type, the icon is greyed (2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
-| PI-01.10 | Speed | Number field with a small icon inside to pick a signal (unit: Open) | Section Movement, under Direction. A fixed value is typed; the icon picks a signal of the linked type instead (decision 0041). | Decided (unit: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
+| PI-01.10 | Speed | Number field in px/s with a small icon inside to pick a signal | Section Movement, under Direction. A fixed value is typed, in pixels per second (2026-11-26); the icon picks another signal of the linked type, a number, instead (decision 0041), converted to px/s by two pairs value → px/s (proposed). | Decided (unit), Proposed (conversion) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-01.11 | Junction kind | Segmented control | Flat (the pipes join in one clean outline, no marker), Circle, Square; one click ([layout rule](README.md#a-segmented-control-for-two-to-four-short-options), 2026-11-26). | Decided | [Junctions](../symbols/pipes/junctions.md) |
 | PI-01.12 | Junction size | Number field, no unit | For a circle or a square only: greyed out when the kind is Flat (2026-11-24). Fixed or a multiple of the width: Open. Example: 12. | Decided (fixed or multiple: Open) | [Junctions](../symbols/pipes/junctions.md) |
 | PI-01.17 | Junction fill | — | Removed: the junction takes the body fill of the pipe style (2026-11-23). | Decided | [Junctions](../symbols/pipes/junctions.md) |
@@ -106,7 +106,7 @@ mindmap
         Several lines, dashes
     Border
       Width, the base's or its own, with a reset
-      Border fill, a segment list
+      Border fill, colours stacked, no length
     Corners, Junctions, Crossings
       Shown, set by the base
     Movement
@@ -121,14 +121,15 @@ The sections are those of [PI-01](#pi-01--base-pipe-style), in the same order. A
 | --- | --- | --- | --- | --- | --- |
 | PI-02.1 | Name | — | Removed (2026-11-24, decision 0099): a pipe style has no name of its own; it shows its item of `pipe_style` ([PI-02.16](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#pipe-styles) |
 | PI-02.16 | Item of pipe_style | Read-only values | At the top, above the sections: the key, the display name and the description of the item this style draws, kept in the enum, not in the style (2026-11-24). Always read-only here, base item or not: changed in Metadata only (2026-11-24). | Decided | [The enum pipe_style](../symbols/pipes/pipe-styles.md#the-enum-pipe_style) |
-| PI-02.8 | Linked type | Select + reset | First section. The base's type until another is chosen; any type of Metadata (no library of types). Its signals feed Movement and the animations. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#linked-type) |
+| PI-02.8 | Linked type | Select + reset | First section. The base's type until another is chosen; when the base has a type, only that type or one of its sub-types (2026-11-26); else any type of Metadata (no library of types). Its signals feed Movement and the animations. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#linked-type) |
 | PI-02.12 | Body width | Number field, no unit, + reset | Section Body. The base's width until the user types one (gas pipes drawn thinner). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#overriding-a-value-of-the-base) |
 | PI-02.2 | Body fill | [Segment list](../controls/segment-list.md) ([PI-04](#pi-04--segment-list)) | Section Body. One line: a plain colour; several lines: a dash sequence that runs from the start of the pipe to its end; example: black 100 % 10, black 0 % 20, red 100 % 2. No radio "colour or dash sequence" (2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#dash-sequences) |
 | PI-02.13 | Border width | Number field, no unit, + reset | Section Border. The base's border width until the user types one, chosen apart from the body width (2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#overriding-a-value-of-the-base) |
-| PI-02.3 | Border fill | [Segment list](../controls/segment-list.md) ([PI-04](#pi-04--segment-list)) | Section Border. Like the body. Greyed out when the border width is 0 (proposed). | Decided (greyed: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md#dash-sequences) |
+| PI-02.3 | Border fill | [Colour fields](../controls/colour-field.md) stacked, small + on the title | Section Border. Colours stacked, no length, no dashes (2026-11-26, as every border); no strip under the lines, the preview shows the result (2026-11-26). Greyed out when the border width is 0 (proposed). | Decided (greyed: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md#pipe-styles) |
+| PI-02.17 | Colour that follows an enum | Small signal icon inside a colour field of the body or the border | Picks an enum signal of the linked type, then a colour column of that enum ([SY-12](symbols.md#sy-12--enums-of-a-symbol-lib)); the line takes the colour of the current value (Product Owner, 2026-11-26; the form: assistant's). Greyed without a type. | Decided (link), Proposed (form) | [Pipe styles](../symbols/pipes/pipe-styles.md#linked-type) |
 | PI-02.14 | Corners, Junctions, Crossings; border position | Read-only values, section tagged "Base" | The base's values, shown in their sections so that the user sees the whole pipe (accepted on 2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#the-same-sections-everywhere) |
 | PI-02.15 | Direction | Select with a small icon inside to pick a signal, + reset | Section Movement. The base's direction until another is chosen: stopped, start to end or end to start, chosen in the list, or a signal of the type of the built-in enum "pipe direction" picked with the icon (2026-11-24); no second signal. Overriding the type overrides the direction and the speed too; resetting the type gives back the base's. No type: only fixed values, the icon greyed. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
-| PI-02.11 | Speed | Number field with a small icon inside to pick a signal, + reset (unit: Open) | Section Movement, under Direction. A fixed value is typed in the field; the icon inside picks a signal of the linked type instead, as for the bounds of a signal in Metadata (decision 0041). No radio "fixed or signal" (2026-11-24). | Decided (unit: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
+| PI-02.11 | Speed | Number field in px/s with a small icon inside to pick a signal, + reset | Section Movement, under Direction. A fixed value is typed in the field, in pixels per second; the icon inside picks another signal of the linked type instead, as for the bounds of a signal in Metadata (decision 0041), converted to px/s (as PI-01.10). No radio "fixed or signal" (2026-11-24). | Decided (unit), Proposed (conversion) | [Pipe styles](../symbols/pipes/pipe-styles.md#moving-dashes) |
 | PI-02.9 | Animations | List, like [SY-08](symbols.md#sy-08--animation-mode) | Section Linked type. Output signals drive the colours, and more ("plenty of things"). | Decided (properties beyond these: Open) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.4 | Dashes or not | — | Removed: the body fill and the border fill choose between a colour and a dash sequence. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-02.5 | Override another option | — | Removed (2026-11-24): no list of overridden options; only the linked type, the movement, the body width and the border width can be overridden. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#overriding-a-value-of-the-base) |
@@ -140,7 +141,6 @@ Gaps:
 
 - Create, duplicate, delete a pipe style; what happens to the pipes that use a deleted style?
 - Which properties a signal can drive beyond speed, direction and colours (Open).
-- Unit of the speed of the moving dashes (pixels per second?).
 
 ## PI-03 · End shape editor (removed)
 
@@ -148,7 +148,7 @@ Removed on 2026-11-24 (decision 0098): a pipe has no start or end shape; an arro
 
 ## PI-04 · Segment list
 
-Path: in place, wherever a fill or a border can take dashes: the body fill and the border fill of [PI-02](#pi-02--pipe-style), and the border of a shape ([SY-04](symbols.md#sy-04--drawing-mode)). The control is described in [Segment list](../controls/segment-list.md) (2026-11-24; it was a separate dash sequence editor).
+Path: in place, the body fill of [PI-02](#pi-02--pipe-style), the only fill that takes dashes since 2026-11-26 (no border has dashes). The control is described in [Segment list](../controls/segment-list.md) (2026-11-24; it was a separate dash sequence editor).
 
 ```mermaid
 mindmap
@@ -169,7 +169,7 @@ mindmap
 | PI-04.1 | Lines | List | One line per segment, repeated along the line, in order, as long as wanted: "black 100 % 4, black 0 % 4"; "black 10, transparent 20, red 2", then black, transparent, red again. One line: a plain colour. | Decided | [Segment list](../controls/segment-list.md) |
 | PI-04.2 | Length | Number field, no unit | On each line, after the colour. | Decided | [Segment list](../controls/segment-list.md) |
 | PI-04.3 | Colour | [Colour field](../controls/colour-field.md) | Colour │ opacity on each line; a gap is a line at 0 %. | Decided | [Segment list](../controls/segment-list.md) |
-| PI-04.4 | Add a line | Button (small +) | On the right of the title of the section: Body fill, Border fill, Border ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Decided | [Segment list](../controls/segment-list.md) |
+| PI-04.4 | Add a line | Button (small +) | On the right of the title of the section, Body fill ([layout rules](README.md#a-title-and-a-small--on-its-right)). | Decided | [Segment list](../controls/segment-list.md) |
 | PI-04.5 | Remove a line | Icon button (−), at the end of each line | Removes the segment (2026-11-24: a −, no longer a bin). | Decided | [Segment list](../controls/segment-list.md) |
 | PI-04.6 | Reorder a line | not said | — | Implied | — |
 

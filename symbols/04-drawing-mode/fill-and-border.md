@@ -19,6 +19,7 @@ What every shape has in common: the [rectangle](rectangle.md), the [ellipse](ell
 - The **line at the top is drawn on top**, as in Figma. Example: a plain background on the last line, a linear gradient over it on the first line, partly transparent.
 - No fill: no line; there is no kind "None" (Product Owner, 2026-11-24).
 - Like the border, several fills are simulated: one shape in the layer tree, one path per fill in the exported SVG, the same geometry stacked.
+- **To check (note of the Product Owner, 2026-11-26)**: how stacked colours add up in SVG. Assistant's understanding, not read in a source during this session: SVG paints each path over the one under it with plain alpha compositing ("source over"), so a red at 60 % over a grey shows a mix of both, natively, with nothing to compute; plain colours could also be merged into one computed colour, to draw one path instead of several. To confirm with the SVG standard and a POC.
 
 ### What a fill can be
 
@@ -40,14 +41,24 @@ The border can be given the same kinds of fill as the background. The stops and 
 
 ### Border options
 
-The border is a [segment list](../../controls/segment-list.md) (Product Owner, 2026-11-24):
+The border has **colours stacked**, as the fills, and **no dashes** (Product Owner, 2026-11-26: "des pointillés sur les bords, ça ne sert à rien, que ce soit pour les tuyaux ou pour autre chose"; replaces the segment list of 2026-11-24):
 
-- **Lines**: a small + on the right of the title "Border" adds a line; each line is a segment, with its [colour field](../../controls/colour-field.md) (colour and opacity) and its **length**; a − removes it.
+- **Size** and **position**, on the **first line under the title** "Border", above the colours: the width of the border in pixels, written without unit (example: 2), an **icon of a border width inside the field** instead of a word, then a **segmented control** Inside, Middle, Outside, changed in one click (Product Owner, 2026-11-26, replacing the select of 2026-11-24; see [the layout rule](../../screens/README.md#a-segmented-control-for-two-to-four-short-options)). On the first line, it never moves when a colour is added (Product Owner, 2026-11-26: "ça fait descendre le size [...] j'aime pas beaucoup ça"; the place and the icon: assistant's proposal).
+- **Colours**: a small + on the right of the title "Border" adds a line; each line is a [colour field](../../controls/colour-field.md) (colour and opacity), then a −; **no length** (Product Owner, 2026-11-26).
   - **One line**: a plain border.
-  - **Several lines**: a **dash sequence** (the same rule as for pipes, see [Pipe styles](../pipes/pipe-styles.md#dash-sequences)): the segments follow each other along the border and repeat; a gap is a segment at **0 %** opacity: "black 100 % 2, black 0 % 2" gives classic dashes; "red 4, black 4" gives red and black dashes; as many lines as the user wants.
+  - **Several lines**: the colours stack, the top line drawn on top, as the fills ("ça permet de faire du mix de couleurs").
   - **No line**: no border; there is no toggle "Border" (Product Owner, 2026-11-24).
-- **Size** and **position**, on one line under the lines: the width of the border in pixels, written without unit (example: 2), then a **segmented control** Inside, Middle, Outside, changed in one click (Product Owner, 2026-11-26, replacing the select of 2026-11-24; see [the layout rule](../../screens/README.md#a-segmented-control-for-two-to-four-short-options)).
-- The dashes are computed along the border, as cleanly as possible; an odd cut in a corner is accepted.
+- **No header** of columns above the lines ("Colour · opacity", "Length"): a field says what it holds by itself (Product Owner, 2026-11-26).
+- The same rule for the border of a [text](text.md#colour-and-border) and of a [pipe](../pipes/pipe-styles.md); only the body of a pipe keeps dashes.
+
+```mermaid
+block-beta
+    columns 4
+    t["Border"]:3 add["+"]
+    s["Size icon 2"] p["Inside │ Middle │ Outside"]:2 e[" "]
+    c1["Swatch 40454D │ 100 %"]:3 r1["−"]
+    c2["Swatch D32F2F │ 40 %"]:3 r2["−"]
+```
 
 ### Border of an open path
 
@@ -55,10 +66,10 @@ The border is a [segment list](../../controls/segment-list.md) (Product Owner, 2
 - On an open path, Inside and Outside put the whole border on one side of the line or on the other, computed, instead of centred on it. Which side is "inside": the left of the line, in the direction it was drawn (assistant's proposal).
 - No line caps and no line joins to choose (butt, round, square; miter, round, bevel): not offered (Product Owner, 2026-11-25). The ends and the corners of a border are those the computation gives; a rounded corner comes from the corner radius of the path, which the border follows (Product Owner, 2026-11-25).
 
-### Dashes: what the research says
+### Dashes on a border
 
-- Native SVG dashes (`stroke-dasharray`) exist only for a stroke, and have **one colour**. The border of the project is a fill, and a dash sequence can have several colours: the dashes are therefore computed, each dash as a small shape, as for pipes. It is a geometric calculation redone at each resize, for the geometry research. Confirmed for shape borders (Product Owner, 2026-11-25: "ça va être calculé").
-- The cost follows the number of dashes (the perimeter divided by dash plus space). The editor needs a maximum number of dashes per shape, set by the POC (P8).
+- Removed (Product Owner, 2026-11-26). A border drawn in dashes could come back later as an option; the Product Owner doubts its use ("je sais même pas à quoi ça sert").
+- What the research said, kept for the body of a pipe: native SVG dashes (`stroke-dasharray`) exist only for a stroke and have one colour, so a sequence of several colours is computed, each dash a small shape; the cost follows the number of dashes (POC P8).
 - No source gives the cost of a gradient or of its number of colour stops: a short POC (P8) is planned.
 
 ## What the second research found
@@ -68,7 +79,7 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.18,
 ### Open paths
 
 - SVG 2 has no inner or outer stroke: the inside and outside borders of an open path are computed (decided above).
-- A border "in the middle" looks exactly like a native stroke. Opinion: allowing a native stroke under the hood **in this case only** would settle at once its dashes. Since then, dashes are sequences of several colours (2026-11-11), which a native stroke cannot draw in one piece: the native stroke would only help plain borders.
+- A border "in the middle" looks exactly like a native stroke. Opinion: allowing a native stroke under the hood **in this case only**. A border has no dashes since 2026-11-26; a native stroke could draw a plain border in the middle, one per stacked colour.
 - Arrows on a line: SVG markers exist (start, middle, end). Opinion: one single concept, the end shape of the Symbol Lib, for lines and pipes. The end shapes of pipes were removed (decision 0098), and the arrow heads are set aside in this version (2026-11-25).
 
 ### Gradients

@@ -2,7 +2,7 @@
 
 > [Home](../../README.md) › [Symbols](../README.md) › [Pipes](README.md) › Pipe styles
 
-Status: draft (base style and pipe styles reviewed on the test screens on 2026-11-24, decisions 0096, 0097 and 0099). Not validated.
+Status: draft (base style and pipe styles reviewed on the test screens on 2026-11-24, decisions 0096, 0097 and 0099; screens accepted on 2026-11-26, decision 0109). Not validated.
 
 How a pipe looks. A Symbol Lib has **one base pipe style**, the shape shared by all its pipes, and **pipe styles**, one for each item of the built-in enum `pipe_style` (water, oil, steam...), that give the fills and can override a few values of the base: the linked type, the movement of the dashes, the body and border widths.
 
@@ -51,13 +51,13 @@ The base pipe style and each pipe style are shown with the **same sections, in t
 | Section | Option | What it does |
 | --- | --- | --- |
 | Item | Key, display name, description | Those of the item of `pipe_style`, shown at the top of the style (see [The enum pipe_style](#the-enum-pipe_style)). |
-| Linked type | Type | The base's type, or a type of its own (see [Linked type](#linked-type)). |
+| Linked type | Type | The base's type, or a type of its own: the base's type or one of its sub-types (see [Linked type](#linked-type)). |
 | Body | Width | The width of the base, or a width of its own. |
 | Body | Body fill | A plain colour, or a **dash sequence** that follows the pipe from its start to its end (see [Dash sequences](#dash-sequences)). |
 | Border | Width | The border width of the base, or a width of its own. |
-| Border | Border fill | A plain colour or a dash sequence, like the body. Greyed out when the border width is 0 (assistant's reading). |
+| Border | Border fill | **Colours stacked, no dashes**, as every border (Product Owner, 2026-11-26; see [Fill and border](../04-drawing-mode/fill-and-border.md#border-options)): one line is a plain colour, several mix. Greyed out when the border width is 0 (assistant's reading). |
 | Movement | Direction | The base's direction, or its own: stopped, start to end or end to start, chosen in the list or given by a signal of its type (see [Moving dashes](#moving-dashes)). |
-| Movement | Speed | The base's speed, or its own: a fixed value, or a signal of the linked type. |
+| Movement | Speed | The base's speed, or its own: a fixed value in pixels per second, or a signal of the linked type, converted (see [Moving dashes](#moving-dashes)). |
 
 - The item says what the pipe contains; it only names and groups. The editor does not know what a fluid is: **each Symbol Lib draws each item as it wants** (Product Owner, 2026-11-24: "chaque lib interprète comme elle veut l'enum").
 - A pipe has one pipe style, chosen in the synoptic; its branches have the same (a pipe is one tree, see [Junctions](junctions.md)). The base style has no colour, so a pipe always has a pipe style (assumption of the assistant, to confirm).
@@ -76,7 +76,7 @@ The base pipe style and each pipe style are shown with the **same sections, in t
 flowchart TD
     B["Base pipe style of the Symbol Lib: linked type, width, border, corner radius, junctions, crossings, movement; no colour, no dash"]
     B --> W["Water: blue body, grey border"]
-    B --> S["Steam: white body, dashed border"]
+    B --> S["Steam: dashed white and grey body, grey border"]
     B --> G["Gas: yellow body, its own widths (small pipe), each with a reset"]
     W --> P1["Pipes of the synoptic"]
     S --> P1
@@ -85,7 +85,7 @@ flowchart TD
 
 ### Dash sequences
 
-The rule, for pipes and for **every border** of the software (the borders of shapes too, see [Fill and border](../04-drawing-mode/fill-and-border.md)):
+The rule, for the **body fill of a pipe only**: no border has dashes, neither a pipe's nor a shape's nor a text's (Product Owner, 2026-11-26: "les pipes qui restent en taille, c'est pour faire des pointillés, mais la couleur de fond"; see [Fill and border](../04-drawing-mode/fill-and-border.md#border-options)).
 
 - Dashes are not "a dash length and a gap". They are a **sequence of segments**, each with a **length** and a **colour**, repeated along the line.
 - A gap is simply a segment with a **transparent** colour. Classic dashes: black 4 px, transparent 4 px. Two-colour dashes: red 4 px, black 4 px, repeated.
@@ -118,10 +118,14 @@ block-beta
 
 - The dashes of a pipe style **move** to show the flow. There is **no on or off option**: the direction says whether they move, set in the section Movement of the base or of the pipe style (see [Overriding a value of the base](#overriding-a-value-of-the-base)).
 - **Direction**: a list of the three items of the built-in enum **pipe direction** of Metadata (see [Built-in enums](../../metadata/draft.md#built-in-enums)): stopped, from the start of the pipe to its end, or from the end to its start. A **small icon inside the field** picks instead **one signal** of the linked type, of that enum, as for the speed (Product Owner, 2026-11-24). There is no second signal "moving or not".
+  - It is a double link: the field picks a signal of the type, and only a signal whose enum is the built-in pipe direction (Product Owner, 2026-11-26: "tu choisis le signal qui est de type machin").
+  - When the type has no such signal, the icon offers nothing to pick, and the value chosen in the list is the default (Product Owner, 2026-11-26).
 - **Speed**: a number field where a fixed value is typed, with a **small icon inside the field** that picks a signal of the linked type instead, as for the bounds of a signal in Metadata (decision 0041). There is no choice "fixed or signal" beside the field. The fixed value can always be typed (Product Owner, 2026-11-24).
+  - The speed is in **pixels per second**: a fixed 40 moves the dashes 40 px a second (Product Owner, 2026-11-26).
+  - Its signal is **another signal** than the direction's, a number (Product Owner, 2026-11-26: "un signal différent que le flow direction [...] ça reste divisé, c'est plus propre").
+  - A signal has its own unit (a flow in m³/h): its value is **converted** to pixels per second. Assistant's proposal, which the Product Owner asked to think about ("soit une multiplication, soit un min/max"): two pairs `[value] → [px/s]`, as the pairs of the [Animation mode](../08-animation-mode/README.md) (0 → 0, 100 → 60); a plain multiplication is the pairs 0 → 0 and 1 → the factor. Between the pairs: linear; outside: held at the last pair.
 - The section Movement is **always shown**, even without a linked type: a fixed direction and a fixed speed move the dashes of a plain pipe. Without a type, the signal icons of the two fields are greyed (Product Owner, 2026-11-24).
 - **Propagation**: where a branch leaves the pipe (a junction), the movement goes on into the branch, following the flow: the whole tree is one flow. The pipe is no longer a plain drawing: it behaves half like a symbol.
-- The unit of the speed is open.
 - Assumption of the assistant, to confirm: the movement can be stopped by a global setting and by the system setting "reduce motion" (advised by the research).
 
 ```mermaid
@@ -138,6 +142,8 @@ flowchart LR
 ### Linked type
 
 - The base pipe style and each pipe style **can** be linked to a type of Metadata, in their first section. Putting the type on the base or on each style is the user's choice (Product Owner, 2026-11-24): a pipe style takes the base's type unless it overrides it, with a reset to go back to it (see [Overriding a value of the base](#overriding-a-value-of-the-base)).
+- When the base has a type, a pipe style can only choose **the same type or one of its sub-types** (Product Owner, 2026-11-26: "on peut choisir que le même ou alors un enfant, un sub type"). When the base has none, any type.
+- **A colour of a style can follow an enum** (Product Owner, 2026-11-26): the colour field of a line of the body or of the border has a small signal icon inside, as the speed; it picks an enum signal of the linked type, then a **colour column** of that enum on the [Enums page](../11-enums-of-a-symbol-lib.md) of the Symbol Lib; the line then takes the colour of that column for the current value. The form: assistant's proposal.
 - A style with no type, neither its own nor the base's, is a drawing: its dashes move only by the fixed values of the section Movement, and nothing else changes with the model.
 - Linked to a type, the style is animated by the model, like a symbol with a type (see [Animation mode](../08-animation-mode/README.md)):
   - the **direction** and the **speed** of the moving dashes, through the signals picked in the section Movement (above);
@@ -196,17 +202,17 @@ flowchart LR
 
 ## Example
 
-Base style of the library "Plant A": linked type `fluid_line`; width 6 px; border 1 px, outside; corner radius 8 px; junction circle 12 px; crossing bridge; direction `flow_direction`, speed 40 (fixed).
+Base style of the library "Plant A": linked type `fluid_line`; width 6 px; border 1 px, outside; corner radius 8 px; junction circle 12 px; crossing bridge; direction `flow_direction`, speed 40 px/s (fixed).
 
 Each line is the look "Plant A" gives to an item of `pipe_style`, items the user added (keys of the example).
 
 | Item of pipe_style | Linked type | Fills | Movement | Own widths |
 | --- | --- | --- | --- | --- |
 | 0: Water | Base's | Body blue; border dark grey. | Base's (a plain fill: nothing moves) | — |
-| 1: Steam | Base's | Body white; border dashes: grey 4, transparent 4. | Base's | — |
-| 2: Oil | Own: `oil_line` | Body dashes: black 10, transparent 20, red 2; border dark grey. | Own: direction `flow_direction`, speed `flow_speed` | — |
-| 3: Gas | Base's | Body yellow; border dashes: black 10, transparent 20, red 2. | Base's | Body 3 px, border 0.5 px (small pipes), each with its reset |
-| 5: Electricity | Own: `power_line` | Body yellow; border yellow. | Own: direction `current_direction`, speed 20 (fixed) | Body 2 px |
+| 1: Steam | Base's | Body dashes: white 4, grey 4; border grey. | Base's | — |
+| 2: Oil | Own: `oil_line`, a sub-type of `fluid_line` | Body dashes: black 10, transparent 20, red 2; border dark grey. | Own: direction `flow_direction`, speed `flow_speed` (0 → 0, 100 → 60 px/s) | — |
+| 3: Gas | Base's | Body yellow; border black, then red at 40 % over it. | Base's | Body 3 px, border 0.5 px (small pipes), each with its reset |
+| 5: Electricity | Own: `power_line`, a sub-type of `fluid_line` | Body yellow; border yellow. | Own: direction `current_direction`, speed 20 px/s (fixed) | Body 2 px |
 
 ## What the research found
 
@@ -243,7 +249,8 @@ Source: the second research report (`research/t4-…/rapport.md`, sections 3.2, 
 ## Open questions
 
 - Which properties of a style a signal can drive, beyond the speed, the direction and the colours?
-- In which unit is the speed of the moving dashes set (pixels per second)?
+- Can the enum `pipe_style` itself carry colour columns on the Enums page, so that a pipe style takes its colours from them (said by the Product Owner on 2026-11-26: "ça permet de mettre les couleurs dans l'enum directement"), while its look is given on the Pipes page today?
+- The conversion of a speed signal: two pairs (proposed), a factor, or both?
 - **To discuss again, nothing changed (Product Owner, 2026-11-24, said with a doubt):** should the direction stop being a built-in enum with base items (stopped, start to end, end to start) and become a **number**, such as −1, 0 or 1, that multiplies the speed: forward, stopped, backward? It would also allow 0.5 or −0.5 (half speed, either way). Until then, the direction stays the enum written in [Moving dashes](#moving-dashes).
 - A pipe linked to a type is one tree, one flow: do its branches share its values (assistant's reading), or can a branch have its own (a closed valve on one branch, stopping the movement downstream)?
 - Can a style hold several layers (the body, then a border, then a second line), or just the options above?
