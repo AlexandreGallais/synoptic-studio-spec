@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Synoptics](README.md) › Navigation links · Previous: [Annotations](06-annotations.md) · Next: [Faults](08-faults.md)
 
-Status: extrapolated by the assistant on 2026-11-20. Not validated. What the runtime does with a link depends on the runtime, still an open question of the [introduction](../overview/introduction.md#open-questions).
+Status: extrapolated by the assistant on 2026-11-20. Not validated. What the runtime does with a link is up to the runtime, a project of its own ([introduction](../overview/introduction.md#two-products-around-one-format)).
 
 An operator goes from the overview to the detail of a station, and back. A **navigation link** is what lets them.
 

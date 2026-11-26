@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Synoptics](README.md) › Outputs · Previous: [Test mode](09-test-mode.md) · Next: [Data model](11-data-model.md)
 
-Status: extrapolated by the assistant on 2026-11-20. Not validated. The runtime itself is still an open question of the [introduction](../overview/introduction.md#open-questions); this page only says what the editor could give it.
+Status: extrapolated by the assistant on 2026-11-20. Not validated. The runtime is a project of its own ([introduction](../overview/introduction.md#two-products-around-one-format)); this page only says what the editor could give it.
 
 What a synoptic gives to the world outside the editor: to the runtime, to the people who wire the controllers, to those who simulate.
 

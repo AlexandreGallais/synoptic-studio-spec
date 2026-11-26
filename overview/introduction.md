@@ -34,9 +34,9 @@ How the files of every part are read and written is described in [Storage](../st
 | Part | What it is | Status in these specs |
 | --- | --- | --- |
 | Editor (builder) | The application: draw the installation and build views. | In scope. |
-| Runtime | A JavaScript library. It receives a DOM element, creates an SVG inside it and displays the views made in the editor. | Open question (see below). |
+| Runtime | A JavaScript library. It receives a DOM element, creates an SVG inside it and displays the views made in the editor. | A project of its own in the V1, `synoptic-studio-runtime` (decided on 2026-11-26). These specs give only the view file format it reads. |
 
-The editor writes the views, the runtime reads them. The file format of a view is therefore the contract between the two.
+The editor writes the views, the runtime reads them. The file format of a view is therefore the contract between the two. The application uses the runtime for its Test mode.
 
 ```mermaid
 flowchart LR
@@ -73,6 +73,5 @@ These specs cover only the open source desktop application.
 ## Open questions
 
 - **The third part** of the application: extrapolated by the assistant ([Synoptics](../synoptics/README.md)), to review. It proposes an answer to the question on simulation below, not decided.
-- **Runtime.** It is not one of the 7 validated projects. Option advised: note it apart, specify the editor first and the view file format the runtime will read.
 - **Symbol types.** Who defines them: a built-in library, the user, or both? Partly answered by the Metadata part (the user creates types in a tree; there are no libraries of types since 2026-11-16); a built-in set of types is still to confirm.
 - **Simulation.** What exactly does the editor do for it: describe the circuit only, or run something? Not asked yet.

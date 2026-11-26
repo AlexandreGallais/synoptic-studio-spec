@@ -15,7 +15,7 @@ flowchart LR
     PLC["Controllers and boards (the company's own)"] -->|"signals"| SS
     subgraph SS["Synoptic Studio"]
         ED["Editor: model the installation, build views"]
-        RT["Runtime: displays the views (open question)"]
+        RT["Runtime: displays the views (synoptic-studio-runtime)"]
         ED -->|"view file format"| RT
     end
     SS --> U["Operators see the animated view"]
