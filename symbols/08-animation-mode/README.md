@@ -16,8 +16,12 @@ The mode of the [editor](../03-editor/README.md) in which the signals are linked
   1. the signal (select), then the animation (select, grouped by family, each with a few words under its name: "Spin · Turns without stopping");
   2. its own options, each a choice of two to four short options in one click (Along, Direction, From, Colours, How, Mirror, At zero);
   3. **what the value does, written as a sentence**: a header "When opening is → The blade is at", then one line per pair, `[0] → [0°]`, `[1] → [90°]`. Follow the value and Blend have two pairs; Speed has one (`[1 500 rpm] → [1]` turn a second); Steps has one line per step, the first "Lowest", the next ones "From [80]", a + on the title "Steps"; Per state has one line per state, the state on the left, read only. A value on the left can be a number or a signal: the signal icon inside the field picks one, and turns blue once a signal is chosen. A short grey hint says what happens in between and outside;
-  4. the transition and the pivot, when the animation has them;
-  5. **Try**: a slider (a number), a segmented control (a boolean) or a select (an enum) that moves the drawing in the editor without saving anything, to see the animation at once.
+  4. the pivot, when the animation has one (below).
+- **No transition** (Product Owner, 2026-11-26: "je veux que ce soit saccadé [...] que ça arrive en mode sec, point barre"): at each new value, the part jumps to its new place, angle or colour; nothing is smoothed between two values in this version.
+- **No Try** in the panel (Product Owner, 2026-11-26): the animation is seen in the Run mode.
+- **Pivot** (Rotate, Spin, Flip by sign): two lines (Product Owner, 2026-11-26: "ça pivote par rapport à telle ancre sur un autre élément"):
+  - **Pivot**: a select, "This part" by default, or any other element of the symbol;
+  - **Anchor**: the 9-point grid of that element, the centre by default, the same grid as the anchors of the drawing mode.
 - On the drawing, in this mode, the pivot of the selected animation shows as a small blue cross (assistant's proposal, 2026-11-26).
 - A layer that has an animation shows the icon of this mode on the right of its line in the layers, in every mode; a click on the icon opens this mode with the layer selected, a second click goes back to the mode before (Product Owner, 2026-11-26: "que ce soit marqué [...] par une icône").
 - Only the output signals of the type are offered for an animation. An output is what the model sends, and the model computes what the symbol shows. An input is what the model receives and is never animated; it can only serve as the minimum or the maximum of a bounded linear animation (see [below](#the-input-range-of-a-bounded-linear-animation)).
@@ -152,8 +156,8 @@ Decision 0036: the table is not written in each animation but **once per Symbol 
 
 | Subject | Opinion of the report | Confidence |
 | --- | --- | --- |
-| Jump or smooth | An option per animation: no transition, or a short linear duration; none by default for a change of state. | low |
-| Pivot | One of the nine anchors of the box (centre by default) or a point set by the user. In CSS, an SVG element turns around the origin of the `viewBox` unless `transform-box: fill-box` is set. | medium |
+| Jump or smooth | An option per animation: no transition, or a short linear duration; none by default for a change of state. Settled: no transition at all (Product Owner, 2026-11-26, [Rules](#rules)). | low |
+| Pivot | One of the nine anchors of the box (centre by default) or a point set by the user. In CSS, an SVG element turns around the origin of the `viewBox` unless `transform-box: fill-box` is set. Settled: an anchor of the part or of another element ([Rules](#rules)). | medium |
 | Two animations on one property | Forbid it and flag it in the editor; transforms of different kinds compose in a fixed order: move, then rotate. | very low |
 | Blinking | A "Blink" animation at a fixed rate, under three flashes per second (WCAG level A), by opacity; a reminder in the editor ("keep it for the abnormal"); a global stop; follow the system's "reduce motion". A blink lasting more than five seconds must be possible to stop. | medium |
 | Many animated symbols | POC **P11**: 50, 200, 1 000 symbols animated by signals at 10 updates per second. | — |
