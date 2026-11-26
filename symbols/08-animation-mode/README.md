@@ -44,7 +44,26 @@ flowchart LR
 | Boolean | `fault` | A value gives a state: when `true`, a fault icon is shown (Show or hide). |
 | Enum | `mode` | A property of the drawing takes the value of a column added to the enum in the Symbol Lib, for the current item: `mode` = 2 gives the angle of the column `angle` for item 2 (Rotate), the colour of the column `color` (Colour per state), or a text shows its column `display name short` (see [Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md#used-by-an-animation)). |
 
-Every animation possible, with an example, is listed in the [catalogue of the animations](animation-catalogue.md) (2026-11-25), to choose from. Every animation with every type of signal, one line each, is in [Animations by type of signal](animations-by-signal-type.md) (2026-11-26), to choose line by line.
+Every animation possible, with an example, is listed in the [catalogue of the animations](animation-catalogue.md) (2026-11-25), to choose from.
+
+### By type of signal
+
+Every animation of the V1 with every type of signal is drawn in Figma, page Spec, section "Symbol mode · Animations by type of signal (2026-11-26)": one row per animation, one column per type (Number, Boolean, Enum), and in each case the right-hand panel set and filled, numbered 1 to 30, each tagged In the spec, New · to choose, Refused or Not in V1 (Product Owner, 2026-11-26: "pour un signal, le rotate [...] pour un truc qui soit un nombre, un truc qui soit un enum [...] je veux ça sur Figma"). The Product Owner chooses there, by number, what to keep. How the panel follows the type of the signal (assistant's proposal, 2026-11-26, to validate):
+
+- **Number**: Follow the value (two pairs) or Steps. When an animation offers both, a segmented control **Values: Follow / Steps** chooses; it exists only if a Steps case of Rotate, Move or Fill is kept. Show or hide works by Steps only.
+- **Boolean**: one line for false, one for true, typed in the panel; Show or hide has **Shown when: True / False**.
+- **Enum**: a line **Column**, right under Animation. Its list: **Typed here** first, then the columns of the enum whose kind fits the animation (Number for an angle, a position, a level; Colour for Colour per state; Yes / no for Show or hide; the display name, Text and Number for a text). Typed here: one line per item, the item read only, the result typed. A column: the same lines, all read only, and a link to the Enums page.
+- **Colour per state** has no Typed here: its colours come from a colour column only (2026-11-26).
+
+```mermaid
+flowchart LR
+    S["Signal chosen"] --> T{"Its type"}
+    T -->|"number"| N["Values: Follow or Steps"]
+    T -->|"boolean"| B["A line for false, one for true"]
+    T -->|"enum"| E["Column: Typed here, or a column that fits"]
+    E -->|"Typed here"| E1["A line per item, result typed"]
+    E -->|"a column"| E2["A line per item, read only, link to the Enums page"]
+```
 
 ## Texts that show a signal
 
