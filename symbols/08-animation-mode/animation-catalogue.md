@@ -27,6 +27,7 @@ mindmap
         Fill
       Appearance
         Show or hide
+        Colour per state
       Text
         Value
     Not in V1, kept for later
@@ -53,10 +54,12 @@ Settled by the Product Owner on 2026-11-26, row by row: few animations, done wel
 
 | Animation | V1 |
 | --- | --- |
-| Rotate, Move (along X or Y), Fill, Show or hide, Value | Yes |
+| Rotate, Move (along X or Y), Fill, Show or hide, Colour per state, Value | Yes |
 | Move along a path, Spin, Endless scroll, Flow, Shake, Arc, Colour by steps, Colour blend, Opacity, Swap, Blink, Pulse, Border style, Unit, Flip by sign | No, kept for later, in [their own list](#not-in-v1-kept-for-later) |
-| Colour per state (9c) | No, and not kept: the colour of each item is written in a column of the enum ("on peut le mettre dans la définition de l'enum directement"), see [Set aside](#set-aside) |
-| State name (18) | Merged into Value: a text linked to an enum signal shows the column of the enum chosen, see [Text](#text) |
+| State name (18) | Merged into Value: a text linked to a signal shows the column of the enum chosen, or the texts of the boolean, see [Text](#text) |
+
+- **Fill** stays in the V1: "le fil, l'arc, ça dégage" was about Flow, already kept for later (Product Owner, 2026-11-26).
+- **Colour per state** comes back in the V1: the colour of each item is written in a colour column of the enum, and this animation is what puts it on the part ("on est forcément obligé de l'avoir, donc bah, go l'ajouter", Product Owner, 2026-11-26).
 
 Arc: the Product Owner likes it, but it is a shape more than an animation ("c'est une forme [...] faut rajouter une forme arc, et point barre"). It comes back in a later version as an [Arc shape](../04-drawing-mode/arc.md), after the Ellipse (2026-11-26).
 
@@ -78,6 +81,7 @@ Arc: the Product Owner likes it, but it is a shape more than an animation ("c'es
 | # | Animation | What the part does | Signal | How the value acts | Example | Cost |
 | --- | --- | --- | --- | --- | --- | --- |
 | 11 | **Show or hide** | Is shown or hidden. | Boolean, number, enum | Per state (shown when true, or when false); Steps (shown inside a range) | A fault icon shown when `fault` is true; a flame shown when the burner is on | Low |
+| 9c | **Colour per state** | Its fill, its border or, for a text, its letters take the colour of the current state. **Colours**: Fill or Border. | Enum, boolean | Per state: an enum takes the colour column of the enum chosen, one line per item, read only, with a link to the [Enums page](../11-enums-of-a-symbol-lib.md); a boolean, a colour for true and a colour for false, chosen in the panel (assistant's reading) | The casing of a pump grey in Off, orange in Manual, green in Auto, from the column `color` of `mode`; a lamp red when `fault` is true | Medium, rare (a change of state) |
 
 ## Text
 
@@ -85,7 +89,7 @@ A text shows a signal through its own fields in the panel ([SY-08.7](../../scree
 
 | # | Animation | What the text does | Signal | Example | Cost |
 | --- | --- | --- | --- | --- | --- |
-| 16 | **Value** | The signal is chosen first; what the text shows follows from its type. A number: its value, in the display unit, and **Show the unit**, a checkbox, when the signal has a quantity. An enum: the **column** of the enum chosen, for the current item (Product Owner, 2026-11-26). | Number, enum | `12.5 m³/h` beside a flowmeter; "Running" under a motor | Medium (text repainted) |
+| 16 | **Value** | The signal is chosen first; what the text shows follows from its type. A number: its value, in the display unit, and **Show the unit**, a checkbox, when the signal has a quantity. An enum: the **column** of the enum chosen, for the current item. A boolean: its true text or its false text, as written in Metadata (Product Owner, 2026-11-26). | Number, enum, boolean | `12.5 m³/h` beside a flowmeter; "Running" under a motor; "Fault" or "OK" for `fault` | Medium (text repainted) |
 
 ## Not in V1, kept for later
 
@@ -132,7 +136,6 @@ Set apart by the Product Owner on 2026-11-26, not refused ("garde ça en mémoir
 
 | Animation | Why |
 | --- | --- |
-| Colour per state, Colour by a boolean (9c) | The colour of each item is written in a column of the enum on the [Enums page](../11-enums-of-a-symbol-lib.md) ("ça ne sert à rien, parce que, littéralement, on peut le mettre dans la définition de l'enum directement", Product Owner, 2026-11-26). |
 | Size (grows or shrinks) | Makes the borders grow; against "never a scale" (research). |
 | Gradient that moves | Cost to measure first, POC. |
 | Deforming the points of a path | Repaint at each frame, high cost (refused by the research). |
@@ -144,14 +147,12 @@ Set apart by the Product Owner on 2026-11-26, not refused ("garde ça en mémoir
 
 | Screen | Element |
 | --- | --- |
-| [SY-08](../../screens/symbols.md#sy-08--animation-mode) | SY-08.3, the animation chosen; SY-08.4, how the value acts; SY-08.7 and SY-08.8, a text that shows a signal |
+| [SY-08](../../screens/symbols.md#sy-08--animation-mode) | SY-08.3, the animation chosen; SY-08.4, how the value acts; SY-08.4c, the column of the enum; SY-08.7 and SY-08.8, a text that shows a signal |
 | [SY-03](../../screens/symbols.md#sy-03--symbol-editor-what-every-mode-shares) | SY-03.15, the icon of the Animation mode on the line of a layer that has an animation |
 
 ## Open questions
 
-- Fill: still in the V1? Taken on 2026-11-26, then not named in the last list of the same day ("le fil, l'arc, ça dégage": Fill or Flow?).
-- Colour per state set aside: how does a part take the colour of the column of an enum, with no Colour animation in the V1?
-- Value, a boolean signal: does the text show the texts of the boolean (true, false), or is a boolean not offered?
+- Colour per state, a boolean signal: are the two colours chosen in the panel (drawn), or taken from elsewhere?
 - Value, a number column of an enum: does it have a unit to show?
 - Arc, when it comes back as a shape: does a signal move the end angle of the [Arc shape](../04-drawing-mode/arc.md) through an animation, and is the animation Arc then kept or replaced?
 - Move along a path, when it comes back: is the part turned along the path or not?

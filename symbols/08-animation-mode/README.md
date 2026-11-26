@@ -10,7 +10,7 @@ The mode of the [editor](../03-editor/README.md) in which the signals are linked
 
 - Tool bar: [Select](../03-editor/select.md), then [Guides](../03-editor/layout-guides.md); no Hand (2026-11-26). Right-hand panel: the animations of the selected part.
 - The user selects a part (a shape, a layer, a text); the + of its animations **adds an empty line**; in the panel, the user **chooses the output signal**, then **the kind of animation**, then its options show (Product Owner, 2026-11-26: "quand on fait +, ça rajoute juste une ligne vide. Après, on choisit le signal qu'on veut, l'animation, et après, ça met son menu"). Only the kinds of the V1 that fit the type of the signal are offered.
-- The kinds of animation: see the [catalogue of the animations](animation-catalogue.md). The V1 offers Rotate, Move, Fill, Show or hide, and a text that shows a signal (Value); the others are kept for later (Product Owner, 2026-11-26).
+- The kinds of animation: see the [catalogue of the animations](animation-catalogue.md). The V1 offers Rotate, Move, Fill, Show or hide, Colour per state, and a text that shows a signal (Value); the others are kept for later (Product Owner, 2026-11-26).
 - **How the value acts comes with the animation**: no separate choice of a "mapping". Each animation follows the value, works by steps, or per state, as its line of the catalogue says (assistant's proposal, 2026-11-26).
 - **The panel of an animation**, the same order for all (assistant's proposal, 2026-11-26, drawn in the section "Symbol mode · Animations" of the page Spec):
   1. the signal (select), then the animation (select, grouped by family, each with a few words under its name: "Rotate · Turns to an angle");
@@ -41,7 +41,7 @@ flowchart LR
 | --- | --- | --- |
 | Real or integer | `opening` from 0 to 1 | A range of values becomes a range of a property of the drawing: 0 to 1 becomes a rotation of 0 to 90 degrees (Rotate). |
 | Boolean | `fault` | A value gives a state: when `true`, a fault icon is shown (Show or hide). |
-| Enum | `mode` | A property of the drawing takes the value of a column added to the enum in the Symbol Lib, for the current item: `mode` = 2 gives the angle of the column `angle` for item 2 (Rotate), or a text shows its column `display name short` (see [Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md#used-by-an-animation)). |
+| Enum | `mode` | A property of the drawing takes the value of a column added to the enum in the Symbol Lib, for the current item: `mode` = 2 gives the angle of the column `angle` for item 2 (Rotate), the colour of the column `color` (Colour per state), or a text shows its column `display name short` (see [Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md#used-by-an-animation)). |
 
 Every animation possible, with an example, is listed in the [catalogue of the animations](animation-catalogue.md) (2026-11-25), to choose from.
 
@@ -52,6 +52,7 @@ A text of the symbol is either written by the user, or linked to a signal. The s
 - **A number**: the text shows its value, converted to the display unit and rounded to the decimal places set in the signal settings of the type (see [MD-07](../../screens/metadata.md#md-07--signal-settings)).
   - When the signal has a quantity, a checkbox **Show the unit** says whether the unit follows the value ("il faut pouvoir cocher [...] montrer une unité ou pas"). Nothing else to choose.
 - **An enum**: the user chooses which **column** of the enum the text shows, for the current item: the display name, or a column added on the [Enums page](../11-enums-of-a-symbol-lib.md) of the Symbol Lib ("il faut pouvoir choisir, dans les différentes colonnes de l'enum, ce qu'on va afficher"). A text column shows its text; a number column shows its value.
+- **A boolean**: the text shows the true text or the false text of the signal, as written in Metadata (see [Boolean texts](../../metadata/entities/18-boolean-texts.md)); nothing else to choose (Product Owner, 2026-11-26).
 - **A text with the unit only**: not in the V1, kept for later ("les unités, ça ne sert à rien [...] pour l'instant, on ne fera pas ça").
 
 ```mermaid
@@ -60,6 +61,7 @@ flowchart LR
     N -->|"number"| V["Its value, in the display unit"]
     V --> U["Show the unit: checkbox, when it has a quantity"]
     N -->|"enum"| C["The column chosen, for the current item"]
+    N -->|"boolean"| B["Its true text or its false text, from Metadata"]
 ```
 
 ### A text that becomes an input

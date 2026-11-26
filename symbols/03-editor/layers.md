@@ -40,7 +40,7 @@ The example of the test screens in Figma, the same in every mode:
 | Line | Kind | Icons on the right |
 | --- | --- | --- |
 | Body | Group, unfolded | Interaction (right click: `maintenance_requested`) |
-| — Casing | Shape | Animation (`flow` → Fill) |
+| — Casing | Shape | Animation (`flow` → Fill; `mode` → Colour per state on the Colour per state screen of SY-08 only) |
 | —— Clip · Rectangle 1 | Clip shape of Casing | — |
 | — Outlet | Shape | — |
 | — Impeller | Shape | Animation (`mode` → Rotate, `speed` → Move, `running` → Show or hide) |
