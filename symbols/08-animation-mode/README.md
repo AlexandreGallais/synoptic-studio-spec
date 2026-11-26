@@ -11,7 +11,7 @@ The mode of the [editor](../03-editor/README.md) in which the signals are linked
 - Tool bar: [Select](../03-editor/select.md), then [Guides](../03-editor/layout-guides.md); no Hand (2026-11-26). Right-hand panel: the animations of the selected part.
 - The user selects a part (a shape, a layer, a text); the + of its animations **adds an empty line**; in the panel, the user **chooses the output signal**, then **the kind of animation**, then its options show (Product Owner, 2026-11-26: "quand on fait +, ça rajoute juste une ligne vide. Après, on choisit le signal qu'on veut, l'animation, et après, ça met son menu"). Only the kinds of the V1 that fit the type of the signal are offered.
 - The kinds of animation: see the [catalogue of the animations](animation-catalogue.md). The V1 offers Rotate, Move, Fill, Show or hide, Colour per state, and a text that shows a signal (Value); the others are kept for later (Product Owner, 2026-11-26).
-- **How the value acts comes with the animation**: no separate choice of a "mapping". Each animation follows the value, works by steps, or per state, as its line of the catalogue says (assistant's proposal, 2026-11-26).
+- **How the value acts comes with the animation**: no separate choice of a "mapping". Each animation follows the value, works by steps, or per state, as its line of the catalogue says (assistant's proposal, 2026-11-26). With a number, Rotate, Move and Fill only follow the value: no Steps, and no choice between the two (Product Owner, 2026-11-26: "on n'est pas là pour faire des options à la con").
 - **The panel of an animation**, the same order for all (assistant's proposal, 2026-11-26, drawn in the section "Symbol mode · Animations" of the page Spec):
   1. the signal (select), then the animation (select, one flat list without families, too few animations for them (Product Owner, 2026-11-26), each with a few words under its name: "Rotate · Turns to an angle");
   2. its own options, each a choice of two to four short options in one click (Along, From);
@@ -48,17 +48,17 @@ Every animation possible, with an example, is listed in the [catalogue of the an
 
 ### By type of signal
 
-Every animation of the V1 with every type of signal is drawn in Figma, page Spec, section "Symbol mode · Animations by type of signal (2026-11-26)": one row per animation, one column per type (Number, Boolean, Enum), and in each case the right-hand panel set and filled, numbered 1 to 30, each tagged In the spec, New · to choose, Refused or Not in V1 (Product Owner, 2026-11-26: "pour un signal, le rotate [...] pour un truc qui soit un nombre, un truc qui soit un enum [...] je veux ça sur Figma"). The Product Owner chooses there, by number, what to keep. How the panel follows the type of the signal (assistant's proposal, 2026-11-26, to validate):
+Every animation of the V1 with every type of signal is drawn in Figma, page Spec, section "Symbol mode · Animations by type of signal (2026-11-26)": one row per animation, one column per type (Number, Boolean, Enum), and in each case the right-hand panel set and filled, numbered 1 to 30, each tagged In the spec, New · to choose, Refused or Not in V1 (Product Owner, 2026-11-26: "pour un signal, le rotate [...] pour un truc qui soit un nombre, un truc qui soit un enum [...] je veux ça sur Figma"). The Product Owner chooses there, by number, what to keep. How the panel follows the type of the signal:
 
-- **Number**: Follow the value (two pairs) or Steps. When an animation offers both, a segmented control **Values: Follow / Steps** chooses; it exists only if a Steps case of Rotate, Move or Fill is kept. Show or hide works by Steps only.
-- **Boolean**: one line for false, one for true, typed in the panel; Show or hide has **Shown when: True / False**.
-- **Enum**: a line **Column**, right under Animation. Its list: **Typed here** first, then the columns of the enum whose kind fits the animation (Number for an angle, a position, a level; Colour for Colour per state; Yes / no for Show or hide; the display name, Text and Number for a text). Typed here: one line per item, the item read only, the result typed. A column: the same lines, all read only, and a link to the Enums page.
+- **Number**: Rotate, Move and Fill follow the value, two pairs, nothing else; the Steps cases 2, 7 and 12 are refused, and no choice "Values: Follow / Steps" exists (Product Owner, 2026-11-26: "il y a que la partie follow et puis point barre"). Show or hide works by Steps only (assistant's proposal, still to review).
+- **Boolean**: one line for false, one for true, typed in the panel; Show or hide has **Shown when: True / False** (assistant's proposal, still to review).
+- **Enum**: a line **Column**, right under Animation. Its list: **Typed here** first, then the columns of the enum whose kind fits the animation (Number for an angle, a position, a level; Colour for Colour per state; Yes / no for Show or hide; the display name, Text and Number for a text). Typed here: one line per item, the item read only, the result typed. A column: the same lines, all read only, and a link to the Enums page (Product Owner, 2026-11-26: "les enums, ça fait sens").
 - **Colour per state** has no Typed here: its colours come from a colour column only (2026-11-26).
 
 ```mermaid
 flowchart LR
     S["Signal chosen"] --> T{"Its type"}
-    T -->|"number"| N["Values: Follow or Steps"]
+    T -->|"number"| N["Follow the value: two pairs"]
     T -->|"boolean"| B["A line for false, one for true"]
     T -->|"enum"| E["Column: Typed here, or a column that fits"]
     E -->|"Typed here"| E1["A line per item, result typed"]
