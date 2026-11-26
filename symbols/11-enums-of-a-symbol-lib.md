@@ -2,7 +2,7 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Enums of a Symbol Lib · Previous: [Open questions](10-open-questions.md) · Next: [Sub-symbols](12-sub-symbols.md)
 
-Status: draft. The page and its added columns are carried by decisions 0036, 0090, 0091, 0092 and 0093; its test screens accepted on 2026-11-26, with the four kinds only (decision 0109); the two lists and the columns of `pipe_style` the same day; the assistant's readings below stay to confirm. Not validated. Open points are listed in [Open questions](#open-questions).
+Status: draft. The page and its added columns are carried by decisions 0036, 0090, 0091, 0092 and 0093; its test screens accepted on 2026-11-26, with the four kinds only (decision 0109); the two lists and the read-only columns of `pipe_style` the same day; the assistant's readings below stay to confirm. Not validated. Open points are listed in [Open questions](#open-questions).
 
 Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, read only, and lets the user add **columns** to them: a colour, a short text, a number... The animations of the symbols of this library then use these columns: when an enum signal changes value, a property of the drawing takes the value of the chosen column for that item.
 
@@ -28,8 +28,8 @@ On the Enums page of a Symbol Lib, `pipe_style` shows the look this library give
 
 | Column | Value shown | From |
 | --- | --- | --- |
-| Body width | The width of the style, or the signal that gives it | Its own or the base's |
-| Border width | The same, for the border | Its own or the base's |
+| Body width | The fixed width of the style, in px | Its own or the base's |
+| Border width | The fixed width of the border, in px | Its own or the base's |
 | Corner radius | The base's | The base |
 | Junction size | The base's | The base |
 | Direction | The direction chosen in the list, or the signal that gives it | Its own or the base's |
@@ -38,7 +38,7 @@ On the Enums page of a Symbol Lib, `pipe_style` shows the look this library give
 | Border fill | Its colours, stacked | Its own |
 
 - **These columns are not added by the user** and cannot be deleted: they come with the pipe styles. More may come with them ("tout ce qui pourrait être utilisé après").
-- **Their values are read only here** and changed on the Pipes page, where a small link leads (assistant's reading, to confirm).
+- **Their values are read only here** and changed on the Pipes page only, where a small link leads (Product Owner, 2026-11-26).
 - **They follow the rules of the blocks** like the added columns: those that do not fit go to a block below, which repeats the Key (see [When the columns do not fit](#when-the-columns-do-not-fit)).
 - **Added columns come after them**, under their own title "Columns", as for any enum.
 
@@ -179,5 +179,4 @@ Noted, not to be asked now: they come up at the review of the part.
 - An item added later in Metadata: its added columns are empty; what does the animation show then (a default value per column)?
 - Deleting a column used by an animation breaks it, with the small red mark (see [What breaks a link](01-libraries-and-symbols.md#what-breaks-a-link)): to confirm.
 - Does a column hold a value, or a link to a named colour of the Symbol Lib (proposed by the research, see [Fill and border](04-drawing-mode/fill-and-border.md))?
-- The values of the pipe styles shown as columns of `pipe_style`: read only here and changed on the Pipes page (assistant's reading), or changed in both places?
 - Does `pipe_direction`, the other built-in enum, show values of its own here?

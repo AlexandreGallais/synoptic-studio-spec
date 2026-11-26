@@ -42,9 +42,9 @@ mindmap
   root((PI-01 Base pipe style))
     Linked type, optional
     Body
-      Width, a value or a signal picked in the field
+      Width, a fixed value
     Border
-      Width, 0 for none, a value or a signal
+      Width, 0 for none, a fixed value
       Position
     Corners
       Corner radius, the same for every style
@@ -64,10 +64,10 @@ No colour and no dash in the base: the fills are in [PI-02](#pi-02--pipe-style).
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | PI-01.19 | Linked type | Select | First section. Optional; any type of Metadata. Taken by every pipe style that does not override it (2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#linked-type) |
-| PI-01.1 | Width | Number field, no unit, with a small icon inside to pick a signal | Width of the body, in pixels; the icon picks a number signal of the linked type instead, greyed without a type (2026-11-26). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#widths-from-a-signal) |
+| PI-01.1 | Width | Number field, no unit | Width of the body, in pixels: a fixed value, no signal icon (2026-11-26). Shown in the columns of `pipe_style` ([SY-12](symbols.md#sy-12--enums-of-a-symbol-lib)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#fixed-widths) |
 | PI-01.2 | Body fill | — | Removed: moved to the pipe styles ([PI-02.2](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.3 | Border on or off | — | Removed (2026-11-24): a border width of 0 is no border. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#the-base-pipe-style) |
-| PI-01.4 | Border width | Number field, no unit, with a small icon inside to pick a signal | On both sides, the same. 0: no border. A value or a signal, as PI-01.1 (2026-11-26). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#widths-from-a-signal) |
+| PI-01.4 | Border width | Number field, no unit | On both sides, the same. 0: no border. A fixed value, as PI-01.1 (2026-11-26). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#fixed-widths) |
 | PI-01.5 | Border position | Segmented control | Inside, Middle, Outside the edge of the body, one click, as the border of a shape (2026-11-26, replaces the select). Greyed out when the width is 0 (proposed). | Decided (greyed: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.6 | Border fill | — | Removed: moved to the pipe styles ([PI-02.3](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
 | PI-01.7 | Corner radius | Number field, no unit | Section Corners. 0 keeps sharp angles; also shapes the bridges. The same for every pipe style. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md) |
@@ -100,12 +100,12 @@ mindmap
       The base's, or its own, with a reset
       Animations of the colours
     Body
-      Width, the base's or its own, a value or a signal, with a reset
+      Width, the base's or its own, a fixed value, with a reset
       Body fill, a segment list
         One line, a plain colour
         Several lines, dashes
     Border
-      Width, the base's or its own, a value or a signal, with a reset
+      Width, the base's or its own, a fixed value, with a reset
       Border fill, colours stacked, no length
     Corners, Junctions, Crossings
       Shown, set by the base
@@ -122,9 +122,9 @@ The sections are those of [PI-01](#pi-01--base-pipe-style), in the same order. A
 | PI-02.1 | Name | — | Removed (2026-11-24, decision 0099): a pipe style has no name of its own; it shows its item of `pipe_style` ([PI-02.16](#pi-02--pipe-style)). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#pipe-styles) |
 | PI-02.16 | Item of pipe_style | Read-only values | At the top, above the sections: the key, the display name and the description of the item this style draws, kept in the enum, not in the style (2026-11-24). Always read-only here, base item or not: changed in Metadata only (2026-11-24). | Decided | [The enum pipe_style](../symbols/pipes/pipe-styles.md#the-enum-pipe_style) |
 | PI-02.8 | Linked type | Select + reset | First section. The base's type until another is chosen; when the base has a type, only that type or one of its sub-types (2026-11-26); else any type of Metadata (no library of types). Its signals feed Movement and the animations. | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#linked-type) |
-| PI-02.12 | Body width | Number field, no unit, with a small icon inside to pick a signal, + reset | Section Body. The base's width until the user types one or picks a signal (gas pipes drawn thinner) (signal: 2026-11-26). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#widths-from-a-signal) |
+| PI-02.12 | Body width | Number field, no unit, + reset | Section Body. The base's width until the user types one (gas pipes drawn thinner); a fixed value, no signal icon (2026-11-26). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#fixed-widths) |
 | PI-02.2 | Body fill | [Segment list](../controls/segment-list.md) ([PI-04](#pi-04--segment-list)) | Section Body. One line: a plain colour; several lines: a dash sequence that runs from the start of the pipe to its end; example: black 100 % 10, black 0 % 20, red 100 % 2. No radio "colour or dash sequence" (2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#dash-sequences) |
-| PI-02.13 | Border width | Number field, no unit, with a small icon inside to pick a signal, + reset | Section Border. The base's border width until the user types one or picks a signal, chosen apart from the body width (2026-11-24; signal: 2026-11-26). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#widths-from-a-signal) |
+| PI-02.13 | Border width | Number field, no unit, + reset | Section Border. The base's border width until the user types one, chosen apart from the body width (2026-11-24); a fixed value, no signal icon (2026-11-26). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#fixed-widths) |
 | PI-02.3 | Border fill | [Colour fields](../controls/colour-field.md) stacked, small + on the title | Section Border. Colours stacked, no length, no dashes (2026-11-26, as every border); no strip under the lines, the preview shows the result (2026-11-26). Greyed out when the border width is 0 (proposed). | Decided (greyed: Proposed) | [Pipe styles](../symbols/pipes/pipe-styles.md#pipe-styles) |
 | PI-02.17 | Colour that follows an enum | Small signal icon inside a colour field of the body or the border | Picks an enum signal of the linked type, then a colour column of that enum ([SY-12](symbols.md#sy-12--enums-of-a-symbol-lib)); the line takes the colour of the current value (Product Owner, 2026-11-26; the form: assistant's). Greyed without a type. | Decided (link), Proposed (form) | [Pipe styles](../symbols/pipes/pipe-styles.md#linked-type) |
 | PI-02.14 | Corners, Junctions, Crossings; border position | Read-only values, section tagged "Base" | The base's values, shown in their sections so that the user sees the whole pipe (accepted on 2026-11-24). | Decided | [Pipe styles](../symbols/pipes/pipe-styles.md#the-same-sections-everywhere) |
@@ -140,7 +140,7 @@ The sections are those of [PI-01](#pi-01--base-pipe-style), in the same order. A
 Gaps:
 
 - Create, duplicate, delete a pipe style; what happens to the pipes that use a deleted style?
-- Which properties a signal can drive beyond speed, direction, widths and colours (Open).
+- Which properties a signal can drive beyond speed, direction and colours (Open); the widths stay fixed.
 
 ## PI-03 · End shape editor (removed)
 
