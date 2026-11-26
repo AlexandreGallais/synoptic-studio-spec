@@ -36,9 +36,13 @@ Page Spec, section "Symbol mode · test screens (2026-11-23)" ([`776:81`](https:
 | Clip | SY-13 · a free form clip shape of Casing, drawn with the Pen | [`960:3354`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=960-3354) |
 | Intersection | SY-14 · two regions selected with the Shape builder | [`946:3132`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=946-3132) |
 | Connection | SY-10 · two connection points, Port B selected | [`929:2686`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=929-2686) |
-| Animation | SY-08 · the animations of Impeller | [`930:2752`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=930-2752) |
-| Animation | SY-08 · the + of Impeller: choose an output signal | [`944:2944`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=944-2944) |
-| Animation | SY-08 · then choose the kind of animation for flow | [`944:3153`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=944-3153) |
+| Animation | SY-08 · the + adds an empty line, then its Signal, the list open under its field | [`944:2944`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=944-2944) |
+| Animation | SY-08 · then its Animation, the list open with the V1 only | [`944:3153`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=944-3153) |
+| Animation | SY-08 · Rotate (mode, per state, column angle; Pivot and Anchor) | [`930:2752`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=930-2752) |
+| Animation | SY-08 · Move (speed, along Y) | [`1026:3288`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=1026-3288) |
+| Animation | SY-08 · Show or hide (running) | [`1026:3604`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=1026-3604) |
+| Animation | SY-08 · Fill (flow on Casing, from the bottom) | [`1027:3358`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=1027-3358) |
+| Animation | SY-08 · Value (Tag, a text linked to flow, Show the unit checked) | [`1027:3679`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=1027-3679) |
 | Interaction | SY-07 · the interactions of Zone 1 | [`930:3062`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=930-3062) |
 | Run | SY-09 · the pump tried with test values | [`931:2828`](https://www.figma.com/design/2hW8t5CgVru1VFbQZ1yETL/?node-id=931-2828) |
 

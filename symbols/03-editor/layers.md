@@ -40,11 +40,11 @@ The example of the test screens in Figma, the same in every mode:
 | Line | Kind | Icons on the right |
 | --- | --- | --- |
 | Body | Group, unfolded | Interaction (right click: `maintenance_requested`) |
-| — Casing | Shape | Animation (`mode` → Colour) |
+| — Casing | Shape | Animation (`flow` → Fill) |
 | —— Clip · Rectangle 1 | Clip shape of Casing | — |
 | — Outlet | Shape | — |
-| — Impeller | Shape | Animation (`speed` → Spin, `fault` → Colour) |
-| Tag | Text | — |
+| — Impeller | Shape | Animation (`mode` → Rotate, `speed` → Move, `running` → Show or hide) |
+| Tag | Text | — (Animation, linked to `flow`, on the Value screen of SY-08 only) |
 
 ## Open questions
 

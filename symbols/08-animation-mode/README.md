@@ -9,7 +9,7 @@ The mode of the [editor](../03-editor/README.md) in which the signals are linked
 ## Rules
 
 - Tool bar: [Select](../03-editor/select.md), then [Guides](../03-editor/layout-guides.md); no Hand (2026-11-26). Right-hand panel: the animations of the selected part.
-- The user selects a part (a shape, a layer, a text), **adds an output signal** to it with the + of its animations, then **chooses the kind of animation** (Product Owner, 2026-11-25: "faut pouvoir ajouter un signal qui est en sortie pour l'animation. Après, tu choisis quel type d'animation"). Only the kinds that fit the type of the signal are offered.
+- The user selects a part (a shape, a layer, a text); the + of its animations **adds an empty line**; in the panel, the user **chooses the output signal**, then **the kind of animation**, then its options show (Product Owner, 2026-11-26: "quand on fait +, ça rajoute juste une ligne vide. Après, on choisit le signal qu'on veut, l'animation, et après, ça met son menu"). Only the kinds of the V1 that fit the type of the signal are offered.
 - The kinds of animation: see the [catalogue of the animations](animation-catalogue.md). The V1 offers Rotate, Move, Fill, Show or hide, and a text that shows a signal (Value); the others are kept for later (Product Owner, 2026-11-26).
 - **How the value acts comes with the animation**: no separate choice of a "mapping". Each animation follows the value, works by steps, or per state, as its line of the catalogue says (assistant's proposal, 2026-11-26).
 - **The panel of an animation**, the same order for all (assistant's proposal, 2026-11-26, drawn in the section "Symbol mode · Animations" of the page Spec):
