@@ -44,7 +44,7 @@ flowchart LR
 | Boolean | `fault` | A value gives a state: when `true`, a fault icon is shown (Show or hide). |
 | Enum | `mode` | A property of the drawing takes the value of a column added to the enum in the Symbol Lib, for the current item: `mode` = 2 gives the angle of the column `angle` for item 2 (Rotate), the colour of the column `color` (Colour per state), or a text shows its column `display name short` (see [Enums of a Symbol Lib](../11-enums-of-a-symbol-lib.md#used-by-an-animation)). |
 
-Every animation possible, with an example, is listed in the [catalogue of the animations](animation-catalogue.md) (2026-11-25), to choose from.
+Every animation possible, with an example, is listed in the [catalogue of the animations](animation-catalogue.md) (2026-11-25), to choose from. Every animation with every type of signal, one line each, is in [Animations by type of signal](animations-by-signal-type.md) (2026-11-26), to choose line by line.
 
 ## Texts that show a signal
 

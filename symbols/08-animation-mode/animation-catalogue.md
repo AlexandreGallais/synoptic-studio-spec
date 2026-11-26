@@ -6,6 +6,8 @@ Status: draft, proposed by the assistant (2026-11-25, renamed on 2026-11-26 at t
 
 Every animation that a signal can drive on a part of a symbol, one line each, with a short name that says what the part does. Each one is drawn and explained in Figma, page Spec, section "Symbol mode · Animations (2026-11-26)": what it does, how to set it step by step in the order of the panel, the part at three values of its signal, and its right-hand panel (see [The panel of an animation](README.md#rules)). The main list holds the animations of the V1; the others are set apart, with their rows and their numbers, in a list of their own: [Not in V1, kept for later](#not-in-v1-kept-for-later), in Figma the column on the right of the section.
 
+Each animation with each type of signal, one line per pair, to choose from: [Animations by type of signal](animations-by-signal-type.md).
+
 ## How to read it
 
 - **Signal**: the type of the output signal that drives it: a number (real or integer), a boolean, an enum.

@@ -50,7 +50,7 @@ The only kind of library is the **Symbol Lib**, which sorts symbols. There are n
 | [Point editing mode](05-point-editing-mode/README.md) | Editing the points of a path. |
 | [Alignment mode](06-alignment-mode/README.md) | Placing shapes in relation to each other. |
 | [Interaction mode](07-interaction-mode/README.md) | Interaction zones, gestures, what a gesture does. |
-| [Animation mode](08-animation-mode/README.md) | Linking an output signal to a change of the drawing, values and units in texts; the [catalogue of the animations](08-animation-mode/animation-catalogue.md), every animation possible with an example. |
+| [Animation mode](08-animation-mode/README.md) | Linking an output signal to a change of the drawing, values and units in texts; the [catalogue of the animations](08-animation-mode/animation-catalogue.md), every animation possible with an example; [animations by type of signal](08-animation-mode/animations-by-signal-type.md), one line per animation and type of signal, to choose from. |
 | [Run mode](09-run-mode/README.md) | Trying the symbol with test values, and simulating another screen. |
 | [Pipes](pipes/README.md) | Connection points of a symbol, and the pipe styles kept in the Symbol Lib, each with its junctions, crossings and ends. |
 | [Open questions](10-open-questions.md) | Every open question in one place. |
