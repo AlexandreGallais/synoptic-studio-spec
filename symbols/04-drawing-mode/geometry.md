@@ -28,8 +28,7 @@ Every element inside a group (a rectangle, an ellipse, a polygon, a path, a text
 | Free | A 9-point grid | Typed | The element does not touch the anchor: the user puts it where they want, its X and Y measured from the anchor. When the group is resized, it **follows the anchor**, at the same distance: anchored at the top right, it keeps its distance to the top right corner (Product Owner, 2026-11-26: "elle va suivre ce redimensionnement par rapport au coin en haut à droite"). |
 | Anchored | A 9-point grid | Shown, read only | The element **touches** the anchor: its matching anchor on the anchor of the group, its top right corner on the top right corner. When the group is resized, it stays stuck there ("ça colle le coin, tout bêtement"). |
 
-- Free with the top left anchor is the X and Y of an element at the root (assistant's proposal: the anchor of a free element starts at the top left).
-- An element put in a group takes the placement and the anchor of the first child of the group, then keeps its own (Product Owner, 2026-11-26: "le premier enfant [...] ça définit le défaut du groupe"; see [Group](group.md#layout-of-the-children)).
+- An element put in a group starts **Free, with the centre anchor**, whatever the other children have (Product Owner, 2026-11-26; see [Group](group.md#layout-of-the-children)). Its X and Y are then measured from the centre of the group.
 - An element at the root of the symbol has no section "In the group": its X and Y are typed.
 - The anchors of the element and of the group can differ, to put the element outside the group: it is the absolute child of [Group](group.md#absolute-children), reached by a second 9-point grid "Anchor of the element", shown under the first once the user asks for it (assistant's proposal).
 

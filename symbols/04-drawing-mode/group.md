@@ -31,7 +31,7 @@ A group is an SVG `g` element. Its first use is to give a structure to several s
 **Only the children** say how they are placed: the group itself has no setting for it (Product Owner, 2026-11-26: "on peut dégager ça du groupe et laisser ça qu'aux enfants [...] sur le parent, ça, rien"). It replaces the placement of the children on the group, set earlier the same day.
 
 - **Each child** has its section "In the group": Free or Anchored, in one click, always with an anchor in a 9-point grid (see [Geometry](geometry.md#in-the-group)).
-- **The first child gives the default**: an element that enters the group takes the placement and the anchor of the first child of the group, then keeps its own; changing it later does not move the others (Product Owner, 2026-11-26: "le premier enfant [...] ça définit le défaut du groupe"; the assistant's reading of the sentence). The very first child starts Free, at the top left anchor (assistant's proposal).
+- **Every element that enters a group starts Free, with the centre anchor**, whatever the other children have; the user picks Anchored or another anchor when they want one (Product Owner, 2026-11-26: "c'est beaucoup plus simple si c'est emplacement libre tout le temps et que, si on veut mettre avec une ancre, c'est avec une ancre [...] le placement libre et l'ancre, mais au milieu"). No child gives a default to the others.
 - The placement works whether the width and the height of the group are Hug or Fixed: its free children follow their own anchor when a Fixed group is resized (Product Owner, 2026-11-26: "peu importe si le width et le height sont en hug ou en fixed").
 - No flex display (rows, columns, gaps): no case where it would be useful.
 

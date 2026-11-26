@@ -73,14 +73,11 @@ This file is the index of the open questions. A question sits in the file it con
 
 ## Raised by the review of the test screens on 2026-11-26
 
-(Settled the same day, decision 0109: no Hand; the tool bar under the modes menu, Guides its last tool, the eye in its popup; scroll bars shown on hover at the edge; "In the group" first, children only; fields on two columns with an icon slot; borders without dashes, colours stacked; text lines one each with its colour, ellipsis; pipe speed in px/s; a pipe style's type the base's or a sub-type.)
+(Settled the same day, decision 0109: no Hand; the tool bar under the modes menu, Guides its last tool, the eye in its popup; scroll bars shown on hover at the edge; "In the group" first, children only; fields on two columns with an icon slot; borders without dashes, colours stacked; text lines one each with its colour, ellipsis; pipe speed in px/s; a pipe style's type the base's or a sub-type. Answered the same day: the enum columns stay at four kinds; a speed signal converted by two pairs value → px/s; an element entering a group starts Free with the centre anchor.)
 
 | Question | Page | Proposal of the assistant |
 | --- | --- | --- |
-| Three more kinds of enum column: Symbol, Pipe style, Flow direction. | [Enums of a Symbol Lib](11-enums-of-a-symbol-lib.md#kinds-of-value) | Keep the three. |
-| The conversion of a speed signal into pixels per second: two pairs, a factor, or both. | [Pipe styles](pipes/pipe-styles.md#moving-dashes) | Two pairs, as the animations. |
 | Can the enum `pipe_style` carry colour columns, for the colours of the pipe styles? | [Pipe styles](pipes/pipe-styles.md#open-questions) | No: the look of an item stays on the Pipes page; a colour follows another enum by a signal. |
-| The first child of a group gives the placement of the next ones: the right reading? | [Group](04-drawing-mode/group.md#layout-of-the-children) | Yes. |
 | How stacked colours add up in SVG, and whether plain ones are merged into one. | [Fill and border](04-drawing-mode/fill-and-border.md#several-fills) | Native alpha compositing; merge plain colours if a POC shows a gain. |
 | Run mode without a tool bar. | [Editor](03-editor/README.md#modes) | No tool bar. |
 
