@@ -8,7 +8,7 @@ The default mode of the [editor](../03-editor/README.md): draw and arrange shape
 
 ## Rules
 
-- Tool bar, a separator between the groups: [Select](../03-editor/select.md) │ [Group](group.md) │ [Rectangle](rectangle.md), [Ellipse](ellipse.md), [Polygon](polygon.md), [Pen](pen.md), [Text](text.md) │ [Guides](../03-editor/layout-guides.md) (Product Owner, 2026-11-26: the separators show what looks alike; the text with the shapes: the assistant's choice among the two he offered). No Hand (see [Hand](../03-editor/hand.md)).
+- Tool bar, a separator between the groups: [Select](../03-editor/select.md) │ [Group](group.md) │ [Rectangle](rectangle.md), [Ellipse](ellipse.md), [Polygon](polygon.md), [Pen](pen.md), [Text](text.md) │ [Guides](../03-editor/layout-guides.md) (Product Owner, 2026-11-26: the separators show what looks alike; the text with the shapes: the assistant's choice among the two he offered). No Hand (see [Hand](../03-editor/hand.md)). Later, not in V1: an [Arc](arc.md) tool, right after the Ellipse (2026-11-26).
 - The Group, Rectangle, Ellipse, Polygon, Pen and Text tools exist only in this mode (the Pen is also in the point editing mode).
 - Right-hand panel: the options of the selected shape (colours, corner radius, opacity...). No section "Effects" in this version (2026-11-25).
 - The clip of a shape is drawn in the [Clip mode](clip-mode.md); a shape built from others and their intersections, in the [Intersection mode](intersection-mode.md), right after it.
@@ -22,6 +22,7 @@ The default mode of the [editor](../03-editor/README.md): draw and arrange shape
 | [Group](group.md) | Creates a group (an SVG `g`), fit to its content or with its own size, with a layout of its children. |
 | [Rectangle](rectangle.md) | Draws a rectangle, with a corner radius. 4 points. |
 | [Ellipse](ellipse.md) | Draws an oval or a circle. 4 points, no corner radius. |
+| [Arc](arc.md) (not in V1) | Draws an ellipse from a start angle to an end angle, with a thickness and a track. Kept for later. |
 | [Polygon](polygon.md) | Draws a polygon of 3 to 20 sides, with anchors. One point per side. |
 | [Pen](pen.md) | Draws a path point by point, and lines. No button of its own in the tool bar. |
 | [Text](text.md) | Writes a text, written or linked to a signal or to its unit. |

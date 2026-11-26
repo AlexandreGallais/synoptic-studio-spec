@@ -4,7 +4,7 @@
 
 Status: draft, proposed by the assistant (2026-11-25, renamed and regrouped on 2026-11-26 at the Product Owner's request: "trouve de meilleurs noms [...] je veux vraiment comprendre chaque animation parfaitement"). The Product Owner picks the animations of the V1, row by row (2026-11-26): see [Choice for the V1](#choice-for-the-v1).
 
-Every animation that a signal can drive on a part of a symbol, one line each, with a short name that says what the part does. Each one is drawn and explained in Figma, page Spec, section "Symbol mode · Animations (2026-11-26)": what it does, how to set it step by step in the order of the panel, the part at three values of its signal, and its right-hand panel (see [The panel of an animation](README.md#rules)). Colour has three rows: Steps (9), Blend (9b), per state (9c).
+Every animation that a signal can drive on a part of a symbol, one line each, with a short name that says what the part does. Each one is drawn and explained in Figma, page Spec, section "Symbol mode · Animations (2026-11-26)": what it does, how to set it step by step in the order of the panel, the part at three values of its signal, and its right-hand panel (see [The panel of an animation](README.md#rules)). Colour has three rows: Steps (9), Blend (9b), per state (9c). The animations not in the V1 are set apart, with their rows and their numbers, in a list of their own: [Not in V1, kept for later](#not-in-v1-kept-for-later), in Figma the column on the right of the section.
 
 ## How to read it
 
@@ -23,12 +23,8 @@ mindmap
       Rotate
       Spin
       Move
-      Endless scroll
-      Flow
-      Shake
     Filling
       Fill
-      Arc
     Appearance
       Colour
       Opacity
@@ -43,6 +39,12 @@ mindmap
       State name
     Direction
       Flip by sign
+    Not in V1, kept for later
+      Move along a path
+      Endless scroll
+      Flow
+      Shake
+      Arc
 ```
 
 ## Choice for the V1
@@ -52,8 +54,10 @@ Under way, row by row (Product Owner, 2026-11-26). An animation left for later i
 | Animation | V1 |
 | --- | --- |
 | Rotate, Spin, Move (along X or Y), Fill | Yes |
-| Move along a path, Endless scroll, Flow, Shake | No, later |
+| Move along a path, Endless scroll, Flow, Shake, Arc | No, kept for later, in [their own list](#not-in-v1-kept-for-later) |
 | The others | Not reviewed yet |
+
+Arc: the Product Owner likes it, but it is a shape more than an animation ("c'est une forme [...] faut rajouter une forme arc, et point barre"). It comes back in a later version as an [Arc shape](../04-drawing-mode/arc.md), after the Ellipse (2026-11-26).
 
 ## Movement
 
@@ -62,18 +66,14 @@ Under way, row by row (Product Owner, 2026-11-26). An animation left for later i
 | 1 | **Rotate** | Turns to an angle given by the value, around its pivot, and stays there. | Number, boolean, enum | Follow the value (angle at the minimum, angle at the maximum); per state (an angle per item) | A damper opens from 0° to 90° with `opening` 0 to 1; a dial needle from −135° to 135°; a selector on Off, Manual, Auto at 0°, 45°, 90° | Low |
 | 2 | **Spin** | Turns without stopping, around its pivot. | Number | Speed: the user says how many turns per second the part makes at a given value; half the value, half the speed; a negative value turns it the other way; zero stops it | The impeller of a pump, a fan, a mixer: `speed` 1 500 rpm gives 1 turn a second, −1 500 the other way | Low |
 | 3 | **Move** | Moves to a position given by the value, and stays there. **Along**: X (sideways) or Y (up and down); to move both ways, two animations, one along X, one along Y (Product Owner, 2026-11-26). | Number, boolean, enum | Follow the value (position at the minimum, at the maximum); per state (a position per item) | The stem of a valve goes up as it opens (Y); a slider (X) | Low |
-| 4 | **Endless scroll** (not in V1) | What is inside the part slides without end and comes back on the other side, like a conveyor belt. The part shows only what is inside its box. **Direction**: X or Y. The part is a group: its box is the window, its content slides inside it. | Number | Speed | The parcels on a conveyor belt, a chain, a moving walkway | Low |
-| 5 | **Flow** (not in V1) | Dashes travel along a line or along the border of the part. | Number | Speed | The flow in a pipe drawn inside the symbol; the way of a flow in a heat exchanger | High: repaint at each frame (POC P10) |
-| 6 | **Shake** (not in V1) | Shakes a little, a few pixels, while the value is true. | Boolean | Per state | A motor with a vibration alarm | Low; keep the movement for the abnormal |
 
 ## Filling
 
 | # | Animation | What the part does | Signal | How the value acts | Example | Cost |
 | --- | --- | --- | --- | --- | --- | --- |
 | 7 | **Fill** | Is shown only up to the value, the rest cut off. **From**: Bottom, Top, Left or Right, shown in the panel as the arrows ↑ ↓ → ← of the way it grows. | Number | Follow the value: 0 % shown at the minimum, 100 % at the maximum | The level of a tank from the bottom; a bar of power from the left; the charge of a battery | Low (a simple cut) |
-| 8 | **Arc** | Is shown along an arc up to the value, like a ring gauge. **Start** and **end** angle of the full arc. | Number | Follow the value | A round gauge from 0 to 100 %; the opening of a valve shown as a ring | Medium, to measure |
 
-A gauge with **thresholds** (green, then orange, then red as the value grows) is an Arc or a Fill **plus** a Colour by steps on the same part: two animations, on two different properties.
+A gauge with **thresholds** (green, then orange, then red as the value grows) is a Fill **plus** a Colour by steps on the same part: two animations, on two different properties.
 
 ## Appearance
 
@@ -103,13 +103,25 @@ A text shows a value through the field "What it shows" of the text (Text, Value,
 | --- | --- | --- | --- | --- | --- | --- |
 | 19 | **Flip by sign** | Is mirrored while the value is negative. **Mirror**: ↔ (left and right swap) or ↕ (top and bottom swap). **At zero**: Keep or Hide. | Number | The sign: positive as drawn, negative mirrored, zero kept or hidden | The arrow of a flow points right when the flow is positive, left when it is negative, and is hidden at zero | Low; a mirror is a transform, to weigh against "never a scale" |
 
+## Not in V1, kept for later
+
+Set apart by the Product Owner on 2026-11-26, not refused ("garde ça en mémoire, c'est pas délirant"); each keeps its number, to be taken again in a later version. In Figma: the column "Not in V1 · kept for later", on the right of the section, with its own list and its rows.
+
+| # | Animation | What the part does | Signal | How the value acts | Example | Cost |
+| --- | --- | --- | --- | --- | --- | --- |
+| 3b | **Move along a path** | Moves along a path of the symbol, to a point given by the value, and stays there. **Path**: a shape of the symbol, chosen in a select. | Number | Follow the value: at the start of the path at the minimum, at its end at the maximum | A marker along a curved track; a level along a bent tube | Low for the move; the point on the path, to measure |
+| 4 | **Endless scroll** | What is inside the part slides without end and comes back on the other side, like a conveyor belt. The part shows only what is inside its box. **Direction**: X or Y. The part is a group: its box is the window, its content slides inside it. | Number | Speed | The parcels on a conveyor belt, a chain, a moving walkway | Low |
+| 5 | **Flow** | Dashes travel along a line or along the border of the part. | Number | Speed | The flow in a pipe drawn inside the symbol; the way of a flow in a heat exchanger | High: repaint at each frame (POC P10) |
+| 6 | **Shake** | Shakes a little, a few pixels, while the value is true. | Boolean | Per state | A motor with a vibration alarm | Low; keep the movement for the abnormal |
+| 8 | **Arc** | Is shown along an arc up to the value, like a ring gauge. **Start** and **end** angle of the full arc. Comes back as a shape: [Arc](../04-drawing-mode/arc.md). | Number | Follow the value | A round gauge from 0 to 100 %; the opening of a valve shown as a ring | Medium, to measure |
+
 ## Renamed or merged on 2026-11-26
 
 | Before | Now | Why |
 | --- | --- | --- |
 | Rotation by a value, Rotation by steps | Rotate | One animation; a number follows, an enum gives an angle per item. |
 | Continuous rotation at a speed | Spin | A short word for a part that never stops turning. |
-| Move along a line, Move along a path | Move, along X or Y | The Product Owner wants X or Y ("il faut pouvoir bouger par rapport à un X ou un Y aussi"); the path is left for a later version (2026-11-26). |
+| Move along a line, Move along a path | Move, along X or Y | The Product Owner wants X or Y ("il faut pouvoir bouger par rapport à un X ou un Y aussi"); the path is kept for a later version, row 3b of [Not in V1](#not-in-v1-kept-for-later) (2026-11-26). |
 | Continuous scrolling at a speed | Endless scroll | The name said "scrolling" without saying that it loops. |
 | Flow dashes | Flow | — |
 | Vibration | Shake | — |
@@ -142,7 +154,9 @@ A text shows a value through the field "What it shows" of the text (Text, Value,
 
 ## Open questions
 
-- Which of these the animation mode offers in this version: the Product Owner picks.
+- Which of the animations not reviewed yet the V1 offers (Colour, Opacity, Show or hide, Swap, Blink, Pulse, Border style, Value, Unit, State name, Flip by sign): the Product Owner goes on, row by row.
+- Arc, when it comes back as a shape: does a signal move the end angle of the [Arc shape](../04-drawing-mode/arc.md) through an animation, and is the animation Arc then kept or replaced?
+- Move along a path, when it comes back: is the part turned along the path or not?
 - Endless scroll and Flow (not in V1, to settle when they come back): the unit of the speed (lengths of the pattern per second) and its maximum. Proposal drawn: as for Spin, the user gives the value of the signal that makes one length of the pattern per second. Spin is settled this way (Product Owner, 2026-11-26: "when speed is [...] RPM, turn 1 par seconde [...] c'est parfait"); that value can be a signal, a maximum speed for example.
 - Several animations on the same part (a Rotate and a Colour): allowed, as long as they drive different properties (proposal of the research).
 - Swap: the child shown for each item, chosen in the animation (drawn) or in a column of the enum, as the colours?
