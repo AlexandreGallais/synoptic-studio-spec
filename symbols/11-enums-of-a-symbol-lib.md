@@ -2,14 +2,14 @@
 
 > [Home](../README.md) › [Symbols](README.md) › Enums of a Symbol Lib · Previous: [Open questions](10-open-questions.md) · Next: [Sub-symbols](12-sub-symbols.md)
 
-Status: draft. The page and its added columns are carried by decisions 0036, 0090, 0091, 0092 and 0093; its test screens accepted on 2026-11-26, with the four kinds only (decision 0109); the assistant's readings below stay to confirm. Not validated. Open points are listed in [Open questions](#open-questions).
+Status: draft. The page and its added columns are carried by decisions 0036, 0090, 0091, 0092 and 0093; its test screens accepted on 2026-11-26, with the four kinds only (decision 0109); the two lists and the columns of `pipe_style` the same day; the assistant's readings below stay to confirm. Not validated. Open points are listed in [Open questions](#open-questions).
 
 Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, read only, and lets the user add **columns** to them: a colour, a short text, a number... The animations of the symbols of this library then use these columns: when an enum signal changes value, a property of the drawing takes the value of the chosen column for that item.
 
 ## Rules
 
 - **One Enums page in each Symbol Lib**. It opens from the navigation bar, as one of the four pages of the selected library (see [Libraries and symbols](01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode)).
-- **It lists every enum of Metadata**, the global enums and the templates (see [Enums](../metadata/draft.md#global-enums-and-templates)). The list and the selected enum say whether it is **Global** or **Template**, read only (Product Owner, 2026-11-23).
+- **It lists every enum of Metadata**, the global enums and the templates (see [Enums](../metadata/draft.md#global-enums-and-templates)), in **two lists**: the **built-in enums** first, under their own title, then the user's **enums** (Product Owner, 2026-11-26: "qu'on sépare bien les deux"), as on the Enums page of Metadata. The list and the selected enum say whether it is **Global** or **Template**, read only (Product Owner, 2026-11-23).
 - **What comes from Metadata is read only**: the key, the display name and the description of each item, so that the items can be understood. They are changed in Metadata only. Same columns, same order as on the Enums page of Metadata: Key, Display name, Description (decision 0032).
 - **The user adds columns, as many as needed**, with no limit. Each column has:
   - a **name**, chosen freely by the user: `color`, `display name short`...;
@@ -18,7 +18,36 @@ Each Symbol Lib has a small **Enums** page. It shows every enum of Metadata, rea
 - **For a template, the user adds the columns the same way**, without items, since a template has none in advance. The items of a template are completed on each placed symbol, in the synoptic, with a small warning until they are (see [Enums](../metadata/draft.md#global-enums-and-templates)). The values of these columns are filled there too, with the items (assistant's reading: the question asked both together). Here, a template shows its name and its description, read only, instead of items.
 - **The columns belong to the Symbol Lib**, not to Metadata: two Symbol Libs can give the same enum different colours, as they give the same objects a different look (see [Libraries and symbols](01-libraries-and-symbols.md#symbol-lib)). Assistant's reading, to confirm.
 - Added columns never go to the model: they only serve the drawing.
-- **The built-in enums are listed here too**, `pipe_style` included, like any global enum. The look each item of `pipe_style` gets in this library is its pipe style, given on the Pipes page, not in columns here (see [The enum pipe_style](pipes/pipe-styles.md#the-enum-pipe_style), decision 0099).
+- **The built-in enums take added columns too**, like any global enum. `pipe_style` also shows, before them, the values of its pipe styles (see [The built-in enum pipe_style](#the-built-in-enum-pipe_style)).
+
+## The built-in enum pipe_style
+
+On the Enums page of a Symbol Lib, `pipe_style` shows the look this library gives each of its items, so that the look can be used elsewhere, by an animation (Product Owner, 2026-11-26: "comme ça, on peut le réutiliser à d'autres endroits après").
+
+- **After the key, the display name and the description, one column per value of the pipe style** of this library for the item (see [Pipe styles](pipes/pipe-styles.md)), in the order of the sections of a pipe style:
+
+| Column | Value shown | From |
+| --- | --- | --- |
+| Body width | The width of the style, or the signal that gives it | Its own or the base's |
+| Border width | The same, for the border | Its own or the base's |
+| Corner radius | The base's | The base |
+| Junction size | The base's | The base |
+| Direction | The direction chosen in the list, or the signal that gives it | Its own or the base's |
+| Speed | The fixed speed in px/s, or the signal that gives it | Its own or the base's |
+| Body fill | Its colour, or its dash sequence | Its own |
+| Border fill | Its colours, stacked | Its own |
+
+- **These columns are not added by the user** and cannot be deleted: they come with the pipe styles. More may come with them ("tout ce qui pourrait être utilisé après").
+- **Their values are read only here** and changed on the Pipes page, where a small link leads (assistant's reading, to confirm).
+- **They follow the rules of the blocks** like the added columns: those that do not fit go to a block below, which repeats the Key (see [When the columns do not fit](#when-the-columns-do-not-fit)).
+- **Added columns come after them**, under their own title "Columns", as for any enum.
+
+```mermaid
+flowchart LR
+    M["Metadata: pipe_style, key, display name, description"] --> E["Enums page of the Symbol Lib: pipe_style"]
+    P["Pipes page of the Symbol Lib: a pipe style per item"] -->|"read only here"| E
+    E --> A["Animation of a symbol: a column of pipe_style for the current item"]
+```
 
 ## Added columns
 
@@ -133,6 +162,7 @@ In the symbol of a pump, an animation gives the body of the pump the colour of t
 | Thing | Created and changed in | Used in | In a symbol | In a synoptic |
 | --- | --- | --- | --- | --- |
 | Key, display name, description of an item | Metadata, Enums page | Shown read only here | No | No |
+| Column of `pipe_style` from its pipe styles | Pipes page of the Symbol Lib | Shown read only here; animations of the symbols of this library | Chosen by an animation | No |
 | Added column (name, kind of value) | Enums page of a Symbol Lib, in the header of the column | Animations of the symbols of this library | Chosen by an animation | No |
 | Value of an added column, global enum | Enums page of a Symbol Lib | Animations | Shown through the animation | No |
 | Values of a column under its earlier kinds | Kept by the application while it runs, never in the file | Given back when an earlier kind is chosen again | No | No |
@@ -149,3 +179,5 @@ Noted, not to be asked now: they come up at the review of the part.
 - An item added later in Metadata: its added columns are empty; what does the animation show then (a default value per column)?
 - Deleting a column used by an animation breaks it, with the small red mark (see [What breaks a link](01-libraries-and-symbols.md#what-breaks-a-link)): to confirm.
 - Does a column hold a value, or a link to a named colour of the Symbol Lib (proposed by the research, see [Fill and border](04-drawing-mode/fill-and-border.md))?
+- The values of the pipe styles shown as columns of `pipe_style`: read only here and changed on the Pipes page (assistant's reading), or changed in both places?
+- Does `pipe_direction`, the other built-in enum, show values of its own here?

@@ -129,6 +129,9 @@ In a right-hand panel (Product Owner, 2026-11-26: "comme ça, tout est aligné t
 - Every line keeps, on its right, **the room of one icon**, used or not: the link of W and H, a reset, a −. So every field lines up, from one line to the next and from one panel to another.
 - A field says what it holds with a letter or a small icon inside it (W, H, X, Y, the rotation, the corner radius, the size of a border), never with a label above it nor a header of columns.
 - A grid of anchors or a segmented control takes the width of the two columns.
+- A field with a word before it (Opacity, Sides) sits in the **second column**, as wide as the others; the word takes the first (Product Owner, 2026-11-26: the opacity "pourrait avoir la même taille que les autres").
+- In a colour field, the **separator before the opacity** is always at the same place, whatever the colour or the percentage written (Product Owner, 2026-11-26: "la séparation, elle est pas tout le temps au même endroit").
+- Two toggles that go together (wrapping and ellipsis of a text) share one line, one in each column (assistant's layout, 2026-11-26, to confirm).
 
 ```mermaid
 block-beta

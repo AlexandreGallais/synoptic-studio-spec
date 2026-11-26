@@ -210,8 +210,8 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SY-04.1 | Tools | Button | In this order, a separator between the groups: Select │ Group │ Rectangle, Ellipse, Polygon, Pen, Text │ Guides (Product Owner, 2026-11-26: no Hand; the text with the shapes, the assistant's choice among the two he offered). | Decided | [Drawing mode](../symbols/04-drawing-mode/README.md) |
-| SY-04.2 | Pen: straight line | Button | Turns the curve being drawn back into a straight line. | Decided | [Pen](../symbols/04-drawing-mode/pen.md) |
-| SY-04.3 | Pen: angle lock | Toggle + Select | Step 15°, 30°, 45° or 90° (45° usual). | Decided (steps: Proposed) | [Pen](../symbols/04-drawing-mode/pen.md) |
+| SY-04.2 | Pen: straight line | — | Removed (Product Owner, 2026-11-26: "les trucs que t'as rajoutés, ça devrait pas être là dans le mode plume"): the tool bar shows nothing more while the Pen is used. | Decided | [Pen](../symbols/04-drawing-mode/pen.md#no-buttons-of-its-own) |
+| SY-04.3 | Pen: angle lock | — | Removed with SY-04.2 (Product Owner, 2026-11-26), its step select too. | Decided | [Pen](../symbols/04-drawing-mode/pen.md#no-buttons-of-its-own) |
 
 ### Panel of a shape: fill, border, effects
 
@@ -219,7 +219,7 @@ mindmap
 | --- | --- | --- | --- | --- | --- |
 | SY-04.4 | Fills | [Colour field](../controls/colour-field.md) per line, + on the title | Several fills stacked, the top line on top; the + adds one, the − of a line removes it (2026-11-25). Each line: swatch, colour │ opacity; the swatch opens the paint popup: Plain colour, Linear, Radial (no conic, pattern or image: set aside, 2026-11-25), eyedropper, hue and opacity sliders, Hex, HSL, HSB (2026-11-25). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#several-fills) |
 | SY-04.5 | Border | Colours stacked, as the fills, small + on the title | A shape can have a border; a group cannot. The + adds a colour (2026-11-24); several colours stack, the top line on top, as the fills (Product Owner, 2026-11-26). No line: no border; no toggle (2026-11-24). No header "Colour · opacity" above the lines (2026-11-26). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
-| SY-04.6 | Border size | Number field with an icon inside, no unit | First line under the title "Border", above the colours, so that it never moves when a colour is added; an icon of a border width in the field instead of a word (assistant's proposal, asked by the Product Owner on 2026-11-26). Example 2. | Decided (field), Proposed (place, icon) | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
+| SY-04.6 | Border size | Number field with an icon inside, no unit | First line under the title "Border", above the colours, so that it never moves when a colour is added; an icon of a border width in the field instead of a word (assistant's proposal, accepted on the test screen the same day: "tu l'as mis au-dessus quand même [...] ça me va"). Example 2. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
 | SY-04.7 | Border position | Segmented control | Next to the size: Inside, Middle, Outside, one click (2026-11-26, replaces the select). An open path has the three too, Inside and Outside on one side of the line (2026-11-25). | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-of-an-open-path) |
 | SY-04.8 | Colour of the border | [Colour field](../controls/colour-field.md) per line, a − at its end | Colour │ opacity on each line. A gradient in a line: Open. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
 | SY-04.9 | Dashes of the border | — | Removed (Product Owner, 2026-11-26: "des pointillés sur les bords, ça ne sert à rien"): no length on a line of a border, for shapes, texts and pipes alike. | Decided | [Fill and border](../symbols/04-drawing-mode/fill-and-border.md#border-options) |
@@ -312,9 +312,9 @@ In order: "In the group" for a child, geometry, opacity, font, colour, border, p
 | SY-04.29 | Text border | Small + on the title, a size, then [colour fields](../controls/colour-field.md) | A true SVG stroke under the letters (2026-11-25). The + adds a colour, a − removes it; several colours stack, as every border (2026-11-26); the size on the first line, as every border; no dashes, no position. | Decided | [Text](../symbols/04-drawing-mode/text.md#colour-and-border) |
 | SY-04.31 | Alignment | 9-point grid, the whole width | The place of the text in its box (2026-11-25; replaces the two selects); the grid of rectangles, as large as the others (2026-11-26). | Decided | [Text](../symbols/04-drawing-mode/text.md#paragraph) |
 | SY-04.32 | Spacing | Number field each, on one line | Letter spacing 0, word spacing 0, line height Auto. | Decided | [Text](../symbols/04-drawing-mode/text.md#paragraph) |
-| SY-04.33 | Wrapping | Toggle | Lines wrap in the box. | Decided | [Text](../symbols/04-drawing-mode/text.md#paragraph) |
+| SY-04.33 | Wrapping | Toggle | Lines wrap in the box. On one line with the ellipsis (SY-04.80), one in each column (assistant's layout, asked by the Product Owner on 2026-11-26: "le wrap et l'ellipse [...] tu peux mettre ça mieux"). | Decided (toggle), Proposed (one line) | [Text](../symbols/04-drawing-mode/text.md#paragraph) |
 | SY-04.30 | Lines | One line each: Underline, Line above, Strikethrough, each a toggle, the icon of the line (its name in the tooltip) and its [colour field](../controls/colour-field.md) | Each on with the others, each with its own colour (Product Owner, 2026-11-26, replaces the three icons and one colour). The colour field is greyed while its line is off; an icon rather than the word, so that the colour field keeps its colour and its opacity on one line (assistant's proposal). | Decided (lines, colour each), Proposed (icon, greyed) | [Text](../symbols/04-drawing-mode/text.md#paragraph) |
-| SY-04.80 | Ellipsis | Toggle | Cuts the text that does not fit with "…" (Product Owner, 2026-11-26). W in Hug: no effect, the toggle greyed; W Fixed, H in Hug: one line, cut; W and H Fixed: as many lines as the box holds, the last one cut. | Decided | [Text](../symbols/04-drawing-mode/text.md#paragraph) |
+| SY-04.80 | Ellipsis | Toggle | In the second column of the line of the wrapping (SY-04.33). Cuts the text that does not fit with "…" (Product Owner, 2026-11-26). W in Hug: no effect, the toggle greyed; W Fixed, H in Hug: one line, cut; W and H Fixed: as many lines as the box holds, the last one cut. | Decided | [Text](../symbols/04-drawing-mode/text.md#paragraph) |
 | SY-04.35 | Embed the fonts | — | Removed from the text panel (2026-11-25): an option of the export of the views ([SN-12.6](synoptics.md#sn-12--publish)). | Decided | [Outputs](../synoptics/10-outputs.md) |
 
 Gaps:
@@ -684,14 +684,19 @@ Gaps:
 
 Path: Symbols › a Symbol Lib › Enums, a page of the library in the navigation bar ([SY-00.4](#sy-00--navigation-bar-of-the-symbol-mode)).
 
-Following the layout rules, the list of enums is on the left and the selected enum on the right, as on [MD-09](metadata.md#md-09--enums).
+Following the layout rules, the list of enums is on the left and the selected enum on the right, as on [MD-09](metadata.md#md-09--enums). Test screens in Figma, page Spec, section "Symbol mode · test screens (2026-11-23)": a global enum, a template, and the built-in `pipe_style` (2026-11-26).
 
 ```mermaid
 mindmap
   root((SY-12 Enums of a Symbol Lib))
     List of enums, from Metadata
-      Global enums
-      Templates
+      Built-in enums, first
+      Enums
+        Global enums
+        Templates
+    pipe_style
+      Columns of its pipe styles, read only
+      Link to the Pipes page
     An enum
       Columns from Metadata, read only
         Key
@@ -714,7 +719,9 @@ mindmap
 | ID | Element | Kind | Values and behaviour | Status | Source |
 | --- | --- | --- | --- | --- | --- |
 | SY-12.1 | Entry of the page | Button of the navigation bar | Enums, a page of the selected Symbol Lib ([SY-00.4](#sy-00--navigation-bar-of-the-symbol-mode), 2026-11-23). | Decided | [Libraries and symbols](../symbols/01-libraries-and-symbols.md#navigation-bar-of-the-symbol-mode) |
-| SY-12.2 | List of enums | List | Every enum of Metadata, global and template; none is made here. Each line says Global or Template (2026-11-23). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
+| SY-12.2 | List of enums | Two lists, each with its title | Every enum of Metadata, global and template; none is made here. Each line says Global or Template (2026-11-23). The built-in enums in a list of their own, "Built-in enums", above the user's, "Enums" (Product Owner, 2026-11-26), as on [MD-09](metadata.md#md-09--enums). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#rules) |
+| SY-12.12 | Columns of the pipe styles | Read-only columns, after Description, under the title "Pipe style of this library" | For the built-in enum `pipe_style` only: body width, border width, corner radius, junction size, direction, speed, body fill, border fill of the pipe style of each item; a value from a signal shows the signal (Product Owner, 2026-11-26). Read only here (assistant's reading). In blocks, as the added columns (SY-12.10); the added columns under their own title after them. | Decided (columns), Proposed (read only, titles) | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#the-built-in-enum-pipe_style) |
+| SY-12.13 | Link to the Pipes page | Link, on the right of the title "Pipe style of this library" | Opens the Pipes page of this Symbol Lib, where the pipe styles are changed. | Proposed | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#the-built-in-enum-pipe_style) |
 | SY-12.3 | Key, Display name, Description | Read-only columns | From Metadata, in the order of decision 0032; changed in Metadata only. A template has no items, so no lines of items: its name and its description are shown instead, read only (end of 2026-11-17), and one example line (SY-12.11). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md) |
 | SY-12.4 | Add a column | Button (+) on the right of the title "Columns" | As many columns as needed. The + adds the column at once, at the end of the last block, without a form (decision 0091, which replaces the form of 0090). The new column: name field focused and empty, kind Text by default, values empty text fields (Product Owner, 2026-11-23, replacing "Choose a kind"). The place of the + follows the [layout rules](README.md#a-title-and-a-small--on-its-right). | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |
 | SY-12.5 | Name of a column | Text field, always visible in the header of the column, above the kind | Edited at any time (end of 2026-11-17): `color`, `display name short`... | Decided | [Enums of a Symbol Lib](../symbols/11-enums-of-a-symbol-lib.md#added-columns) |

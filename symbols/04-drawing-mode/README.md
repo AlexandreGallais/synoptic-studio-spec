@@ -23,7 +23,7 @@ The default mode of the [editor](../03-editor/README.md): draw and arrange shape
 | [Rectangle](rectangle.md) | Draws a rectangle, with a corner radius. 4 points. |
 | [Ellipse](ellipse.md) | Draws an oval or a circle. 4 points, no corner radius. |
 | [Polygon](polygon.md) | Draws a polygon of 3 to 20 sides, with anchors. One point per side. |
-| [Pen](pen.md) | Draws a path point by point, and lines. Two buttons: straight line, angle lock. |
+| [Pen](pen.md) | Draws a path point by point, and lines. No button of its own in the tool bar. |
 | [Text](text.md) | Writes a text, written or linked to a signal or to its unit. |
 
 ## What shapes have in common

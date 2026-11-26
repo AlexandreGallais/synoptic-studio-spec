@@ -56,7 +56,7 @@ In this order, each section compact (Product Owner, 2026-11-25: "plus lisibles, 
 ### Paragraph
 
 - **Alignment**: a 9-point [anchor](../03-editor/anchors.md) grid, the place of the text in its box: left, centre or right, and top, middle or bottom, in one click (Product Owner, 2026-11-25: "un truc d'ancre... plus simple visuellement"); the large grid of rectangles of every panel (2026-11-26).
-- **Wrapping** of the lines in the box: a toggle.
+- **Wrapping** of the lines in the box: a toggle, on one line with the ellipsis (2026-11-26).
 - **Ellipsis**: a toggle; the text that does not fit is cut with "…" (Product Owner, 2026-11-26: "faut pouvoir mettre trois petits points aussi"):
 
 | Width | Height | What the ellipsis does |
